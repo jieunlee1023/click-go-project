@@ -1,0 +1,45 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '2.7.7'
+	id 'io.spring.dependency-management' version '1.0.15.RELEASE'
+}
+
+group = 'com.click-go'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	//시큐리티
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	//implementation 'org.springframework.security:spring-security-taglibs:6.0.0'
+	//testImplementation 'org.springframework.security:spring-security-test'
+	
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	runtimeOnly 'com.mysql:mysql-connector-j'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	
+	//추가 라이브러리 시작 ----------------------------------------------------------------------
+	implementation 'javax.servlet:jstl:1.2'
+	implementation group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: '9.0.60'
+	implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.5'
+	//추가 라이브러리 끝 ----------------------------------------------------------------------
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
