@@ -6,15 +6,19 @@
 
 	<div class="d-flex justify-content-end m-2 ">
 
-		<button type="button" class="login"
-			style="background-color: white; border:none; text-align: cetner">
-			LogIn</button>
-		<button type="button" class="signup"
-			style="background-color: white; border:none; text-align: cetner">
-			SignUp</button>
+		<form action="/auth/login_form">
+			<button type="submit" class="login"
+				style="background-color: white; border: none; text-align: cetner">
+				LogIn</button>
+		</form>
+
+		<form action="/auth/join_form">
+			<button type="submit" class="signup"
+				style="background-color: white; border: none; text-align: cetner">
+				SignUp</button>
+		</form>
 
 	</div>
-
 
 </div>
 

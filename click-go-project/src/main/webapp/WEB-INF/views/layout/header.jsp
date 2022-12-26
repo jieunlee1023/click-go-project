@@ -13,7 +13,7 @@
 <title>Click-go</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
-<link href="../image/favicon.png" rel="shortcut icon"
+<link href="image/favicon.png" rel="shortcut icon"
 	type="image/x-icon">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
