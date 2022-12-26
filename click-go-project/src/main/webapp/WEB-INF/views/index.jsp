@@ -21,5 +21,12 @@
 
 </div>
 
+<a
+	href="https://accounts.google.com/o/oauth2/v2/auth
+?client_id=182145852170-7h7g9dmnjs01k3fqq94pcbi8v1p964an.apps.googleusercontent.com
+&redirect_uri=http://localhost:7777/api/google/callback
+&response_type=code
+&scope=https://www.googleapis.com/auth/userinfo.profile">구글</a>
+
 <%@ include file="layout/footer.jsp"%>
 
