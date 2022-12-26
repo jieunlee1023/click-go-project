@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.clickgo.project.dto.res.User;
+import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.repository.IUserRepository;
 
 @Service
@@ -38,11 +39,27 @@ public class UserService {
 			return false;
 		}
 	}
-
 	@Transactional
 	public User searchUserName(String username) {
 		return repository.findByUsername(username).orElseGet(() -> {
 			return new User();
 		});
 	}
+	
+	@Transactional
+	public boolean saveUser(User user) {
+		try {
+			// 비밀번호를 넣을 때 여기서 암호화 처리 하고 DB 저장 하기 ! 
+			String rawPassword = user.getPassword(); 
+			String encPassword = encoder.encode(rawPassword);
+			user.setPassword(encPassword);
+			user.setRole(RoleType.GEUST);
+			repository.save(user);
+			return true; 
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return false; 
+	}
+	
 }

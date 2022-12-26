@@ -13,8 +13,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.clickgo.project.auth.PrincipalDetailsService;
 
-import lombok.AllArgsConstructor;
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -22,6 +20,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private PrincipalDetailsService detailsService;
+	
+	@Bean
+	@Override
+	public AuthenticationManager authenticationManagerBean() throws Exception {
+		return super.authenticationManagerBean();
+	}
 
 	@Bean
 	public BCryptPasswordEncoder encoderPWD() {
@@ -33,12 +37,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		auth.userDetailsService(detailsService).passwordEncoder(encoderPWD());
 	}
 
-	@Bean
-	@Override
-	public AuthenticationManager authenticationManagerBean() throws Exception {
-		// TODO Auto-generated method stub
-		return super.authenticationManagerBean();
-	}
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {

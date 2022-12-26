@@ -21,13 +21,13 @@
 				name="password" value="asd1234">
 		</div>
 		<button type="submit" id="btn--login" class="btn btn-primary">signIn</button>
-		<!-- 		<a href="https://kauth.kakao.com/oauth/authorize?client_id=a3af89fb8269257123c6854ffafc500d&redirect_uri=http://localhost:9090/auth/kakao/callback&response_type=code">
-			<img alt="카카오로그인" src="/image/kakao_login.png" width="70" height="40"></a> -->
-
-
-		<!-- 	<a href="https://accounts.google.com/o/oauth2/v2/auth?client_id=789881452915-9mdacp2nqc8j8kvjkiqu96jud7ae9vce.apps.googleusercontent.com&redirect_uri=http://localhost:9090/auth/google/callback&response_type=code&scope=https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email">
-			<img alt="구글로그인" src="/image/google_login.png" width="100" height="40"></a> -->
 	</form>
+	<a
+		href="https://kauth.kakao.com/oauth/authorize?client_id=cfa26e4df221d547437be19dcc30de42&redirect_uri=http://localhost:7777/auth/kakao/callback&response_type=code">
+		<img alt="카카오로그인" src="/image/kakao_login_medium.png" width="78"
+		height="38">
+
+	</a>
 	<%
 	String redirectURI = URLEncoder.encode("http://localhost:7777/auth/naver/callback", "UTF-8");
 	SecureRandom random = new SecureRandom();
