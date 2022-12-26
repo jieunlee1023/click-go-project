@@ -9,5 +9,4 @@ public class ClickGoProjectApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ClickGoProjectApplication.class, args);
 	}
-
 }
