@@ -34,10 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.csrf().disable();
-		
+
 		http.authorizeHttpRequests()
-				.antMatchers("/auth/**", "/api/**", "/", "/js/**", "/css/**", "/layout/**", "/jsp/**", "/image/**").permitAll()
-				.anyRequest().authenticated().and().formLogin().loginPage("/auth/login_form")
+				.antMatchers("/auth/**", "/api/**", "/", "/js/**", "/css/**", "/layout/**", "/jsp/**", "/image/**")
+				.permitAll().anyRequest().authenticated().and().formLogin().loginPage("/auth/login_form")
 				.loginProcessingUrl("/auth/loginProc").defaultSuccessUrl("/");
 	}
 }
