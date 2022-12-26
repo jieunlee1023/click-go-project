@@ -85,8 +85,6 @@ public class UserController {
 
 		User orginUser = userService.searchUserName(naverUser.getUsername());
 
-		System.err.println(orginUser.getUsername());
-		System.err.println(naverUser.getUsername());
 
 		if (orginUser.getUsername() == null) {
 			userService.signUp(naverUser);
