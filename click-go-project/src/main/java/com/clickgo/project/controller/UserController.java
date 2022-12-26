@@ -99,6 +99,7 @@ public class UserController {
 
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(kakaoUser.getUsername(), clickGoKey));
+		
 		return "redirect:/";
 
 	}
