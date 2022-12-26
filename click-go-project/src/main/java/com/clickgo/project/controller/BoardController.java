@@ -8,7 +8,6 @@ public class BoardController {
 
 	@GetMapping({ "", "/" })
 	public String test() {
-		System.out.println("111111111111111111111111");
 		return "index";
 	}
 

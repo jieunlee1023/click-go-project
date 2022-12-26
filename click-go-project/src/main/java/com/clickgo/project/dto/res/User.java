@@ -15,6 +15,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 
 import com.clickgo.project.model.enums.LoginType;
 import com.clickgo.project.model.enums.RoleType;
@@ -29,13 +30,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
+@DynamicInsert
 public class User {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false, length = 50, unique = true)
 	@Size(max = 50, min = 2)
 	private String username;
 
@@ -44,7 +46,7 @@ public class User {
 	private String password;
 
 	@Column(nullable = false)
-	@Pattern(regexp = "^\\d{2, 3}-\\d{3, 4}-\\d{4}$")
+	@Pattern(regexp = "^\\d{3}-\\d{4}-\\d{4}$")
 	private String phoneNumber;
 
 	@Column(nullable = false)
@@ -55,14 +57,12 @@ public class User {
 	@Email
 	private String email;
 
-	@Column(nullable = false)
+	@ColumnDefault(value = "0")
 	private int reportCount;
 
-	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private RoleType role;
 
-	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
 	private LoginType loginType;
 
