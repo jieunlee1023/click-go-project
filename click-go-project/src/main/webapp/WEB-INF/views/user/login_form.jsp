@@ -20,7 +20,7 @@
 		<button type="submit" id="btn--login" class="btn btn-primary">signIn</button>
 	</form>
 	<a
-		href="https://kauth.kakao.com/oauth/authorize?client_id=cfa26e4df221d547437be19dcc30de42&redirect_uri=http://localhost:7777/oauth/kakao/callback&response_type=code">
+		href="https://kauth.kakao.com/oauth/authorize?client_id=cfa26e4df221d547437be19dcc30de42&redirect_uri=http://localhost:7777/auth/kakao/callback&response_type=code">
 		<img alt="카카오로그인" src="/image/kakao_login_medium.png" width="78"
 		height="38">
 	</a>
