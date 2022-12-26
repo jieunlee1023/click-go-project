@@ -1,5 +1,6 @@
 package com.clickgo.project.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,15 +9,15 @@ import com.clickgo.project.dto.res.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.repository.IUserRepository;
 
-import lombok.AllArgsConstructor;
-
 @Service
-@AllArgsConstructor
 public class UserService {
 
-	private final IUserRepository repository;
-	private final BCryptPasswordEncoder encoder;
+	@Autowired
+	private IUserRepository repository;
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 
+	@Transactional
 	public User findByUsername(String username) {
 		User userEntity = repository.findByUsername(username).orElseThrow(() -> {
 			return new IllegalArgumentException("존재하지 않는 회원입니다.");
@@ -24,6 +25,7 @@ public class UserService {
 		return userEntity;
 	}
 
+	@Transactional
 	public boolean signUp(User user) {
 		try {
 			String rawPw = encoder.encode(user.getPassword());
@@ -37,8 +39,6 @@ public class UserService {
 			return false;
 		}
 	}
-	
-	
 	@Transactional
 	public User searchUserName(String username) {
 		return repository.findByUsername(username).orElseGet(() -> {
