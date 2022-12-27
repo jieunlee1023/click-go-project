@@ -111,7 +111,7 @@
 						<li class="nav-item" role="button"><a class="nav-link"
 							href="/home/store?pageName=store" id="li--store">Store</a></li>
 						<li class="nav-item" role="button"><a class="nav-link"
-							href="/home/board/board-form?pageName=board" id="li--board">Board</a></li>
+							href="/home/board/board-list?pageName=board" id="li--board">Board</a></li>
 						<li class="nav-item"><a class="nav-link"
 							href="/home/content?pageName=content" id="li--content">Content</a></li>
 					</ul>

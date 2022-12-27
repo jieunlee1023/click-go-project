@@ -10,6 +10,8 @@ import com.clickgo.project.dto.res.CsBoard;
 import com.clickgo.project.dto.res.CsReply;
 import com.clickgo.project.dto.res.Reply;
 import com.clickgo.project.dto.res.User;
+import com.clickgo.project.model.enums.BoardType;
+import com.clickgo.project.model.enums.SecretType;
 import com.clickgo.project.repository.IBoardRepository;
 import com.clickgo.project.repository.IReplyRepository;
 
@@ -22,11 +24,16 @@ public class BoardService {
 	@Autowired
 	private IReplyRepository iReplyRepository;
 
-	public void write(CsBoard csBoard, User user) {
-
+	public boolean write(CsBoard csBoard, User user) {
+		
 		csBoard.setCount(0);
 		csBoard.setUser(user);
+		csBoard.setBoardType(BoardType.QUESTION);
+		csBoard.setSecretType(SecretType.PUBLIC);
+		
 		iBoardRepository.save(csBoard);
+		
+		return true;
 	}
 
 	@Transactional(readOnly = true)

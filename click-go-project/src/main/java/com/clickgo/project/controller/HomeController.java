@@ -36,6 +36,14 @@ public class HomeController {
 		model.addAttribute("nowPage", pageName);
 		return "board/board-form";
 	}
+	
+	@GetMapping("/home/board/board-list")
+	public String boardListForm(@RequestParam(required = false) String pageName, Model model) {
+		model.addAttribute("nowPage", pageName);
+		return "board/board-list";
+	}
+	
+	
 
 	@GetMapping("/home/content")
 	public String content(@RequestParam(required = false) String pageName, Model model) {

@@ -14,28 +14,29 @@
 <!--  -->
 <div class="container">
 
-	<form>
-
+	<!-- <form action="/api/board" method="post"> -->
+	
+	<input type="hidden" name="${_csrf.parameterName }" value="${_csrf.token }">
 		<div class="form-group">
-			<label for="title">TITLE</label> <input type="text" name="title"
-				id="title" class="form-control">
+			<label for="title">TITLE</label> 
+			<input type="text" name="title" id="title" class="form-control">
 		</div>
 
 		<div class="form-group">
 			<label for="content">CONTENT</label>
-			<textarea class="content" name="content" id="content" rows="5"
-				cols="form-control content"></textarea>
+			<textarea class="content" name="content" id="content" rows="5" class="form-control content"></textarea>
 		</div>
+		
 		<div class="d-flex justify-content-between">
 			<div>
 
 				<span>비밀글Check > </span><input type="checkbox" checked>
 			</div>
 			<div>
-				<button type="submit" id="" class="btn btn-primary">ENTER</button>
 			</div>
+				<button type="button" id="btn--save" class="btn btn-primary">ENTER</button>
 		</div>
-	</form>
+	<!-- </form> -->
 
 
 
@@ -56,7 +57,7 @@
 
 
 
-
+<script type="text/javascript" src="/js/board.js"></script>
 
 <%@ include file="../layout/footer.jsp"%>
 
