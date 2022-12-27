@@ -14,6 +14,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -41,4 +43,7 @@ public class Reply {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "reviewId", nullable = false)
 	private Review review;
+	
+	
+	
 }
