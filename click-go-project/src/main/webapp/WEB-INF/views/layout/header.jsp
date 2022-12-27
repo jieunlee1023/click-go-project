@@ -1,8 +1,12 @@
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+
+<sec:authorize access="isAuthenticated()">
+	<sec:authentication property="principal" var="principal" />
+</sec:authorize>
 
 
 <!DOCTYPE html>
@@ -13,7 +17,7 @@
 <title>Click-go</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
-<link href="image/favicon.png" rel="shortcut icon"
+<link href="../image/favicon.png" rel="shortcut icon"
 	type="image/x-icon">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -34,10 +38,28 @@
 .signup:hover {
 	color: #578cd2
 }
+
 .navbar-toggler-icon:hover {
 	color: #578cd2
 }
 
+#btn--login:hover {
+	color: #578cd2
+}
+
+#id-password-btn:hover {
+	text-decoration: none;
+	color: #578cd2;
+}
+
+#signin-btn:hover {
+	text-decoration: none;
+	color: #578cd2;
+}
+
+#btn--save:hover {
+	color: #578cd2;
+}
 </style>
 
 
@@ -63,9 +85,9 @@
 
 			<div class="d-flex justify-content-center ">
 
-				<a class="navbar-brand" href="#" style="color: black"> <img
-					src="image/favicon.png" alt="logo" style="width: 50px;" class="m-2">Click
-					Go
+				<a class="navbar-brand" href="/" style="color: black"> <img
+					src="../image/favicon.png" alt="logo" style="width: 50px;"
+					class="m-2">Click Go
 				</a>
 
 			</div>
