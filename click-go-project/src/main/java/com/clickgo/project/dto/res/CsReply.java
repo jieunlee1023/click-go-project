@@ -1,4 +1,5 @@
 package com.clickgo.project.dto.res;
+
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,15 +32,23 @@ public class CsReply {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(nullable = false)
-	@CreationTimestamp
-	private Timestamp createDate;
-
 	@Lob
 	@Column(nullable = false)
 	private String content;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "csBoardId", nullable = false)
+	// sw
+	@ManyToOne
+	@JoinColumn(name = "boardId")
+	@JsonIgnoreProperties({ "csReply", "userId" })
 	private CsBoard csBoard;
+
+	// sw
+	@ManyToOne
+	@JoinColumn(name = "userId")
+	@JsonIgnoreProperties({ "password", "role", "email", "loginType" })
+	private User user;
+
+	@Column(nullable = false)
+	@CreationTimestamp
+	private Timestamp createDate;
 }
