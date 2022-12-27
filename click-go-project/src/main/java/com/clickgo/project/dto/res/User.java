@@ -45,7 +45,6 @@ public class User {
 	@Size(max = 100, min = 5)
 	private String password;
 
-	@Column(nullable = false)
 	@Pattern(regexp = "^\\d{3}-\\d{4}-\\d{4}$")
 	private String phoneNumber;
 
@@ -53,7 +52,6 @@ public class User {
 	@CreationTimestamp
 	private Timestamp createDate;
 
-	@Column(nullable = false)
 	@Email
 	private String email;
 
