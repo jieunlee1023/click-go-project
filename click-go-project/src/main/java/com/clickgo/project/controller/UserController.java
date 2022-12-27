@@ -1,5 +1,8 @@
 package com.clickgo.project.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -10,12 +13,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import com.clickgo.project.dto.res.GoogleToken;
@@ -208,6 +211,17 @@ public class UserController {
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(googleUser.getUsername(), clickGoKey));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+		return "redirect:/";
+	}
+	
+	// 로그아웃
+	@GetMapping("/m-logout")
+	public String logout(HttpServletRequest req, HttpServletResponse res) {
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); 
+		if(authentication != null) {
+			new SecurityContextLogoutHandler().logout(req, res, authentication);
+		}
 		return "redirect:/";
 	}
 }

@@ -26,7 +26,7 @@
 						My</button>
 				</form>
 
-				<form action="/logout">
+				<form action="/m-logout">
 					<button type="submit" class="logout"
 						style="background-color: white; border: none; text-align: cetner">
 						LogOut</button>
