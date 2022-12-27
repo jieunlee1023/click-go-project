@@ -59,6 +59,11 @@
 #btn--save:hover {
 	color: #578cd2;
 }
+// TODO
+#update-btn:hover {
+	text-decoration: none;
+	color: #578cd2;
+}
 </style>
 
 
@@ -102,24 +107,19 @@
 				<nav class="navbar navbar-expand-sm navbar-light"
 					style="color: black">
 					<ul class="navbar-nav">
-						<li class="nav-item " role="button" ><a class="nav-link" href="/?pageName=home" id="li--home">Home</a></li>
-						<li class="nav-item " role="button" ><a class="nav-link" href="/home/about-us?pageName=about-us" id="li--about-us">About us</a></li>
-						<li class="nav-item" role="button" ><a class="nav-link" href="/home/store?pageName=store" id="li--store">Store</a></li>
-						<li class="nav-item" role="button" ><a class="nav-link" href="/home/board?pageName=board" id="li--board">Board</a></li>
-						<li class="nav-item"><a class="nav-link" href="/home/content?pageName=content" id="li--content" >Concent</a></li>
+						<li class="nav-item " role="button"><a class="nav-link"
+							href="/?pageName=home" id="li--home">Home</a></li>
+						<li class="nav-item " role="button"><a class="nav-link"
+							href="/home/about-us?pageName=about-us" id="li--about-us">About
+								us</a></li>
+						<li class="nav-item" role="button"><a class="nav-link"
+							href="/home/store?pageName=store" id="li--store">Store</a></li>
+						<li class="nav-item" role="button"><a class="nav-link"
+							href="/home/board?pageName=board" id="li--board">Board</a></li>
+						<li class="nav-item"><a class="nav-link"
+							href="/home/content?pageName=content" id="li--content">Concent</a></li>
 					</ul>
 				</nav>
 			</div>
 		</nav>
 	</div>
-
-
-
-
-
-
-
-
-
-
-
