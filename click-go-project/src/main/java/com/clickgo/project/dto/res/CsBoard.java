@@ -17,6 +17,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.clickgo.project.model.enums.BoardType;
@@ -66,4 +67,10 @@ public class CsBoard {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
+	
+	
+	// sw
+	@ColumnDefault("0")
+	private int count;
+	
 }
