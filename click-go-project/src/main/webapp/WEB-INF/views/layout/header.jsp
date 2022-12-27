@@ -106,7 +106,7 @@
 						<li class="nav-item"><a class="nav-link" href="#">About
 								us</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Store</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Board</a></li>
+						<li class="nav-item"><a class="nav-link" href="/home/board">Board</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Contect</a></li>
 					</ul>
 				</nav>

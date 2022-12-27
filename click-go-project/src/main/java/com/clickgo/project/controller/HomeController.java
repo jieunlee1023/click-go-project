@@ -4,11 +4,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class BoardController {
+public class HomeController {
 
 	@GetMapping({ "", "/" })
-	public String test() {
+	public String home() {
 		return "index";
+	}
+	
+	@GetMapping("/home/board")
+	public String boardTest() {
+		return "board/board_form";
 	}
 
 }
