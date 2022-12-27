@@ -41,36 +41,18 @@
 		<div style="position: relative; width: 70%;">
 			<input
 				style="width: 100%; border: 1px solid #bbb; border-radius: 0px; padding: 10px 12px; font-size: 14px; outline: none;"
-				placeholder="검색어를 입력하세요.">
-
-			<a  href="#"
-			style="position: absolute; width: 25px; top: 8px; right: 10px; margin: 0;">
-				<img alt="검색" src="image/search.png" width="18px"
-		>
+				placeholder="검색어를 입력하세요."> <a href="#"
+				style="position: absolute; width: 25px; top: 8px; right: 10px; margin: 0;">
+				<img alt="검색" src="image/search.png" width="18px">
 			</a>
 		</div>
 	</div>
-	
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
+	<br> <br> <br> <br> <br> <br> <br> <br>
+	<br> <br> <br> <br> <br> <br> <br> <br>
 	<br> <br>
 
 </div>
-
 
 <%@ include file="layout/footer.jsp"%>
 
