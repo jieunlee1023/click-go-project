@@ -74,6 +74,7 @@
 
 <body>
 
+	<input type="hidden" value="${nowPage}" id="nowPage">
 	<header style="background-color: #6885ab; text-align: center"
 		class=" d-flex justify-content-center p-2"> Our company
 		provides a service environment that makes leisure activities more fun
@@ -102,12 +103,11 @@
 				<nav class="navbar navbar-expand-sm navbar-light"
 					style="color: black">
 					<ul class="navbar-nav">
-						<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">About
-								us</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Store</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Board</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Contect</a></li>
+						<li class="nav-item " role="button" ><a class="nav-link" href="/" id="li--home">Home</a></li>
+						<li class="nav-item " role="button" ><a class="nav-link" href="/home/store?pageName=aboutUs" id="li--aboutUs">About us</a></li>
+						<li class="nav-item" role="button" ><a class="nav-link" href="/home/store?pageName=store" id="li--store">Store</a></li>
+						<li class="nav-item" role="button" ><a class="nav-link" href="/home/board?pageName=board" id="li--board">Board</a></li>
+						<li class="nav-item"><a class="nav-link" href="/home/content?pageName=content" id="li--content" >Contect</a></li>
 					</ul>
 				</nav>
 			</div>
@@ -115,4 +115,12 @@
 	</div>
 
 
-	</div>
+
+
+
+
+
+
+
+
+

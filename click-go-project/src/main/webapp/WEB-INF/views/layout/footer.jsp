@@ -25,7 +25,36 @@
 	</div>
 	
 </div>
+<script>
 
+	$(document).ready(function(){
+		 let temp = $("#nowPage").val();
+
+		 if(temp == ) {
+			 $("#li--store").css("color", "red");
+		 }else {
+			 
+		 }
+		
+		 $(this).addClass('active');
+         $(".nav-item > .active").css("color", "black");
+		//$(this).addClass('active');
+       // $(".nav-item a").css("color", "gray");
+   
+        $('.nav-link').click(function () {
+            // .nav-link 클릭시 이전의 active 값 해제 후, 
+            $(".nav-item > .active").css("color", "gray");
+            $('.nav-link').removeClass('active');
+
+            // 클릭한 위치 active 적용 
+            $(this).addClass('active');
+            $(".nav-item > .active").css("color", "black");
+        });
+        
+	});
+
+        
+    </script>
 
 
 </body>

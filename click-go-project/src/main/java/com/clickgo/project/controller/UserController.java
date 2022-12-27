@@ -80,7 +80,6 @@ public class UserController {
 		ResponseEntity<KakaoProfile> kakaoDataResponse = rt2.exchange("https://kapi.kakao.com/v2/user/me",
 				HttpMethod.POST, kakaoDataRequset, KakaoProfile.class);
 
-//		KakaoAccount account = kakaoDataResponse.getBody().kakaoAccount;
 		KakaoAccount account = kakaoDataResponse.getBody().kakaoAccount;
 
 		User kakaoUser = User.builder().username(account.profile.nickname + "_" + kakaoDataResponse.getBody().id)
