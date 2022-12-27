@@ -45,11 +45,11 @@ public class UserController {
 
 	@GetMapping("/auth/login_form")
 	public String loginForm() {
-		return "user/login_form";
+		return "user/login-form";
 	}
 
 	public String joinForm() {
-		return "user/join_form";
+		return "user/join-form";
 	}
 
 	@GetMapping("/auth/kakao/callback")
