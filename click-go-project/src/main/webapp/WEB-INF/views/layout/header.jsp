@@ -37,6 +37,7 @@
 
 .signup:hover {
 	color: #578cd2
+	
 }
 
 .navbar-toggler-icon:hover {
@@ -104,7 +105,7 @@
 					style="color: black">
 					<ul class="navbar-nav">
 						<li class="nav-item " role="button"><a class="nav-link"
-							href="?pageName=home" id="li--home">Home</a></li>
+							href="/?pageName=home" id="li--home">Home</a></li>
 						<li class="nav-item " role="button"><a class="nav-link"
 							href="/home/about-us?pageName=about-us" id="li--about-us">About
 								us</a></li>

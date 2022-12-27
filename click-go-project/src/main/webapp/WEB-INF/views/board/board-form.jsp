@@ -44,8 +44,6 @@
 
 
 
-
-
 <script>
 	$('.content').summernote({
 		placeholder : 'insert',
