@@ -11,33 +11,33 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class homeController {
 
 	@GetMapping({ "", "/" })
-	public String home() {
+	public String home(@RequestParam(required = false) String pageName, Model model) {
+		model.addAttribute("nowPage", pageName);
 		return "index";
 	}
 
-	
 	@GetMapping("/home/about-us")
-	public String aboutUs(@RequestParam String nowPage, Model model) {
-		model.addAttribute("nowPage", model);
+	public String aboutUs(@RequestParam String pageName, Model model) {
+		model.addAttribute("nowPage", pageName);
 		return "home/about-us";
 	}
-	
-	
+
 	@GetMapping("/home/store")
-	public String store() {
+	public String store(@RequestParam String pageName, Model model) {
+		model.addAttribute("nowPage", pageName);
 		return "home/store";
 	}
-	
+
 	@GetMapping("/home/board")
-	public String board() {
+	public String board(@RequestParam String pageName, Model model) {
+		model.addAttribute("nowPage", pageName);
 		return "home/board";
 	}
-	
-	
-	
+
 	@GetMapping("/home/content")
-	public String content() {
+	public String content(@RequestParam String pageName, Model model) {
+		model.addAttribute("nowPage", pageName);
 		return "home/content";
 	}
-	
+
 }

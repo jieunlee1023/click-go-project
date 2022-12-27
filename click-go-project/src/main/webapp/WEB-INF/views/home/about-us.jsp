@@ -2,9 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 
-<h1>content화면</h1>
 
-sdafasdfasdf
 
 <br>
 <div class="container">

@@ -29,11 +29,17 @@
 
 	$(document).ready(function(){
 		 let temp = $("#nowPage").val();
-
-		 if(temp == ) {
-			 $("#li--store").css("color", "red");
-		 }else {
-			 
+		console.log(temp);
+		 if(temp == "home") {
+			 $("#li--home").css("color", "black");
+		 }else if(temp == "about-us") {
+			 $("#li--about-us").css("color", "black");
+		 } else if(temp == "store") {
+			 $("#li--store").css("color", "black");
+		 }else if(temp == "board") {
+			 $("#li--board").css("color", "black");
+		 }else if(temp == "content") {
+			 $("#li--content").css("color", "black");
 		 }
 		
 		 $(this).addClass('active');
@@ -41,15 +47,15 @@
 		//$(this).addClass('active');
        // $(".nav-item a").css("color", "gray");
    
-        $('.nav-link').click(function () {
+       // $('.nav-link').click(function () {
             // .nav-link 클릭시 이전의 active 값 해제 후, 
-            $(".nav-item > .active").css("color", "gray");
-            $('.nav-link').removeClass('active');
+           // $(".nav-item > .active").css("color", "gray");
+           // $('.nav-link').removeClass('active');
 
             // 클릭한 위치 active 적용 
-            $(this).addClass('active');
-            $(".nav-item > .active").css("color", "black");
-        });
+            //$(this).addClass('active');
+            //$(".nav-item > .active").css("color", "black");
+       // });
         
 	});
 
