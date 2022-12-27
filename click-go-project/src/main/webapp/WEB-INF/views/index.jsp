@@ -6,13 +6,13 @@
 	<div class="d-flex justify-content-end m-3 ">
 		<c:choose>
 			<c:when test="${empty principal}">
-				<form action="/auth/login_form">
+				<form action="/auth/login-form">
 					<button type="submit" class="login"
 						style="background-color: white; border: none; text-align: cetner">
 						LogIn</button>
 				</form>
 
-				<form action="/auth/join_form">
+				<form action="/auth/join-form">
 					<button type="submit" class="signup"
 						style="background-color: white; border: none; text-align: cetner">
 						SignUp</button>
@@ -20,7 +20,7 @@
 			</c:when>
 			<c:otherwise>
 
-				<form action="/user/update_form">
+				<form action="/user/update-form">
 					<button type="submit"
 						style="background-color: white; border: none; text-align: cetner">
 						My</button>

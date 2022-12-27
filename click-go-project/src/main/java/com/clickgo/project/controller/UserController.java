@@ -34,17 +34,17 @@ public class UserController {
 	@Autowired
 	private AuthenticationManager authenticationManager;
 
-	@GetMapping("/auth/login_form")
+	@GetMapping("/auth/login-form")
 	public String loginForm() {
-		return "user/login_form";
+		return "user/login-form";
 	}
 
 	@Value("${click_go.key}")
 	private String clickGoKey;
 
-	@GetMapping("/auth/join_form")
+	@GetMapping("/auth/join-form")
 	public String joinForm() {
-		return "user/join_form";
+		return "user/join-form";
 	}
 
 	@GetMapping("/auth/kakao/callback")
