@@ -3,7 +3,7 @@
 
 <br>
 <div class="d-flex jumbotron text-left "
-	style="margin-bottom: 0; background-color: white;">
+	style="margin-bottom: 0; background-color: #b4cae8;">
 	<div style="margin-right: 20px">
 		<p style="color: #4e637f; margin-bottom: 10; font-size: 20px">Click-Go</p>
 		<div style="font-size: 13px">
@@ -25,7 +25,36 @@
 	</div>
 	
 </div>
+<script>
 
+	$(document).ready(function(){
+		 let temp = $("#nowPage").val();
+
+		 if(temp == ) {
+			 $("#li--store").css("color", "red");
+		 }else {
+			 
+		 }
+		
+		 $(this).addClass('active');
+         $(".nav-item > .active").css("color", "black");
+		//$(this).addClass('active');
+       // $(".nav-item a").css("color", "gray");
+   
+        $('.nav-link').click(function () {
+            // .nav-link 클릭시 이전의 active 값 해제 후, 
+            $(".nav-item > .active").css("color", "gray");
+            $('.nav-link').removeClass('active');
+
+            // 클릭한 위치 active 적용 
+            $(this).addClass('active');
+            $(".nav-item > .active").css("color", "black");
+        });
+        
+	});
+
+        
+    </script>
 
 
 </body>
