@@ -17,8 +17,7 @@ public class homeController {
 
 	
 	@GetMapping("/home/about-us")
-	public String aboutUs(@RequestParam String nowPage, Model model) {
-		model.addAttribute("nowPage", model);
+	public String aboutUs(l) {
 		return "home/about-us";
 	}
 	
