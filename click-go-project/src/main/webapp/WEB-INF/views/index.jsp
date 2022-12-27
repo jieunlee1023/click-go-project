@@ -20,7 +20,8 @@
 			</c:when>
 			<c:otherwise>
 
-				<form action="/user/update-form">
+				<form action="/mypage" >
+					<input type="hidden" value="${principal.user.role}" name="role">
 					<button type="submit"
 						style="background-color: white; border: none; text-align: cetner">
 						My</button>

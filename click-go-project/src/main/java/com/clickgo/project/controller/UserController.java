@@ -53,12 +53,7 @@ public class UserController {
 
 	@GetMapping("/user/update-form")
 	public String updateForm() {
-		return "user/update-form";
-	}
-
-	@GetMapping("/user/password-update_form")
-	public String passwordUpdateForm() {
-		return "user/PWDUpdate-form";
+		return "user/mypage/update-form";
 	}
 
 	@GetMapping("/auth/join-form")
