@@ -29,15 +29,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Store {
+public class StoreApply {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "categoryId")
-	private Category category;
+	@Column(nullable = false)
+	private String category;
 
 	@Column(nullable = false, length = 15)
 	private String storeName;
@@ -49,23 +48,14 @@ public class Store {
 	private String storeAddress;
 
 	@Column(nullable = false)
-	private int storeTotalRoomCount;
-
-	@Column(nullable = false)
 	@CreationTimestamp
-	private Timestamp createDate;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "hostId", nullable = false)
-	private Host host;
-
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "likeStoreId", nullable = false)
-	private LikeStore likeStore;
+	private Timestamp applyDate;
 
 	@Column(nullable = false)
-	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties
-	private List<Image> image;
+	private String storeLicense;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId")
+	private User user;
 
 }
