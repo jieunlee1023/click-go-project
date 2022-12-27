@@ -104,7 +104,7 @@
 					style="color: black">
 					<ul class="navbar-nav">
 						<li class="nav-item " role="button" ><a class="nav-link" href="/" id="li--home">Home</a></li>
-						<li class="nav-item " role="button" ><a class="nav-link" href="/home/store?pageName=aboutUs" id="li--aboutUs">About us</a></li>
+						<li class="nav-item " role="button" ><a class="nav-link" href="/home/about-us?pageName=aboutUs" id="li--aboutUs">About us</a></li>
 						<li class="nav-item" role="button" ><a class="nav-link" href="/home/store?pageName=store" id="li--store">Store</a></li>
 						<li class="nav-item" role="button" ><a class="nav-link" href="/home/board?pageName=board" id="li--board">Board</a></li>
 						<li class="nav-item"><a class="nav-link" href="/home/content?pageName=content" id="li--content" >Contect</a></li>
