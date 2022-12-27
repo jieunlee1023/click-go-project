@@ -19,7 +19,7 @@
 	<div class="media border p-3 mr-5"
 		style="width: 374px; height: 260px; border-radius: 15px;">
 		<div class="d-flex-column">
-			<a href="/user/update-form" id="update-btn"> <img
+			<a href="/user/update-form" > <img
 				src="../image/mypage/user_update.png" alt="수정 사진"
 				class="ml-5 mt-4 m-4" style="width: 60px;">
 				<div class="media-body">
@@ -66,16 +66,19 @@
 	<div class="media border p-3 mr-5"
 		style="width: 374px; height: 260px; border-radius: 15px;">
 		<div class="d-flex-column ">
-			<img src="../image/mypage/wish_list.png" alt="수정 사진"
+			<a href="/mypage/reservation-list"> <img
+				src="../image/mypage/wish_list.png" alt="수정 사진"
 				class="ml-5 mt-4 m-4" style="width: 60px;">
-			<div class="media-body">
-				<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-					<h3 style="font-weight: bold;">예약 내역</h3>
-					<p class="mt-3">예약 정보와 결제 정보를 한 눈에 확인하세요.</p>
+				<div class="media-body">
+					<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
+						<h3 style="font-weight: bold;">예약 내역</h3>
+						<p class="mt-3">예약 정보와 결제 정보를 한 눈에 확인하세요.</p>
+					</div>
 				</div>
-			</div>
+			</a>
 		</div>
 	</div>
+
 	<div class="media border p-3"
 		style="width: 374px; height: 260px; border-radius: 15px;">
 		<div class="d-flex-column ">

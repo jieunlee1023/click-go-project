@@ -66,6 +66,11 @@ TODO
 	text-decoration: none;
 	color: #578cd2;
 }
+
+#reply-btn:hover {
+	text-decoration: none;
+	color: #578cd2;
+}
 </style>
 
 
