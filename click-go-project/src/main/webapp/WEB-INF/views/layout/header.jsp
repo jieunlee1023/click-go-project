@@ -102,12 +102,12 @@
 				<nav class="navbar navbar-expand-sm navbar-light"
 					style="color: black">
 					<ul class="navbar-nav">
-						<li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">About
+						<li class="nav-item active"><a class="nav-link" href="/">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="/home/about-us">About
 								us</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Store</a></li>
 						<li class="nav-item"><a class="nav-link" href="#">Board</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">Contect</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
 					</ul>
 				</nav>
 			</div>

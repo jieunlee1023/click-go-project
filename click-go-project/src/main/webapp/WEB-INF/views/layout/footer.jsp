@@ -3,7 +3,7 @@
 
 <br>
 <div class="d-flex jumbotron text-left "
-	style="margin-bottom: 0; background-color: white;">
+	style="margin-bottom: 0; background-color: #b4cae8;">
 	<div style="margin-right: 20px">
 		<p style="color: #4e637f; margin-bottom: 10; font-size: 20px">Click-Go</p>
 		<div style="font-size: 13px">
