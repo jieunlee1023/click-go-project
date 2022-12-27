@@ -29,7 +29,7 @@
 		<div class="d-flex justify-content-between">
 			<div>
 
-				<span>비밀글Check >  </span><input type="checkbox" checked>
+				<span>비밀글Check > </span><input type="checkbox" checked>
 			</div>
 			<div>
 				<button type="submit" id="" class="btn btn-primary">ENTER</button>

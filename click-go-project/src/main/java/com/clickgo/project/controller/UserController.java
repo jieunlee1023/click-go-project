@@ -43,20 +43,23 @@ public class UserController {
 	@Value("${phoneNumber.key}")
 	private String phoneNumber;
 
-	@GetMapping("/auth/login_form")
+	@GetMapping("/auth/login-form")
 	public String loginForm() {
-		return "user/login_form";
+		return "user/login-form";
 	}
 
+	@GetMapping("/auth/join-form")
 	public String joinForm() {
-		return "user/join_form";
+		return "user/join-form";
 	}
-
+	
+	// 카카오 로그인
 	@GetMapping("/auth/kakao/callback")
 	public String kakaoCallback(@RequestParam String code) {
+		
 		RestTemplate rt = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
-
+		
 		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
@@ -66,26 +69,22 @@ public class UserController {
 		params.add("client_id", "BvSSlS3rTAUDe0wev5Qa");
 		params.add("client_secret", "uhjzmVB5cj");
 		params.add("code", code);
-
+		
 		HttpEntity<MultiValueMap<String, String>> requestKakaoToken = new HttpEntity<>(params, headers);
 		ResponseEntity<OAuthToken> response = rt.exchange("https://kauth.kakao.com/oauth/token", HttpMethod.POST,
 				requestKakaoToken, OAuthToken.class);
-
+		
 		OAuthToken authToken = response.getBody();
-		System.out.println("authToken" + response.getBody());
-
+		
 		RestTemplate rt2 = new RestTemplate();
-
 		HttpHeaders headers2 = new HttpHeaders();
 		headers2.add("Authorization", "Bearer " + authToken.accessToken);
-		headers2.add("Content-Type", "application/x-www-form-urlencoded");
+		headers2.add("Content-type", "application/x-www-form-urlencoded");
 
 		HttpEntity<MultiValueMap<String, String>> kakaoDataRequset = new HttpEntity<>(headers2);
 
 		ResponseEntity<KakaoProfile> kakaoDataResponse = rt2.exchange("https://kapi.kakao.com/v2/user/me",
 				HttpMethod.POST, kakaoDataRequset, KakaoProfile.class);
-
-		System.err.println("kakaoDataResponse" + kakaoDataResponse);
 
 		KakaoAccount account = kakaoDataResponse.getBody().kakaoAccount;
 
@@ -93,22 +92,24 @@ public class UserController {
 				.email(account.email).password(clickGoKey).loginType(LoginType.KAKAO).email("a@nave.com")
 				.phoneNumber(phoneNumber).build();
 
-		System.out.println("kakao >>> " + kakaoUser);
 
 		User originUser = userService.searchUserName(kakaoUser.getUsername());
 
 		if (originUser.getUsername() == null) {
-			System.out.println("신규회원이기 때문에 회원 가입을 진행");
 			userService.saveUser(kakaoUser);
 		}
 
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(kakaoUser.getUsername(), clickGoKey));
+		
+		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
 
 		return "redirect:/";
 
 	}
 
+	// 네이버 로그인
 	@GetMapping("/auth/naver/callback")
 	public String NaverCallback(@RequestParam String code, @RequestParam String state) {
 
