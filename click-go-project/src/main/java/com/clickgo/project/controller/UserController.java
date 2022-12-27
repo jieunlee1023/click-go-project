@@ -42,14 +42,9 @@ public class UserController {
 	@Value("${phoneNumber.key}")
 	private String phoneNumber;
 
-	@GetMapping("/auth/login_form")
+	@GetMapping("/auth/login-form")
 	public String loginForm() {
 		return "user/login-form";
-	}
-
-	@GetMapping("/auth/join_form")
-	public String joinForm() {
-		return "user/join-form";
 	}
 
 	@GetMapping("/user/update_form")
@@ -61,14 +56,19 @@ public class UserController {
 	public String passwordUpdateForm() {
 		return "user/PWDUpdate-form";
 	}
-	
+
+	@GetMapping("/auth/join-form")
+	public String joinForm() {
+		return "user/join-form";
+	}
+
 	// 카카오 로그인
 	@GetMapping("/auth/kakao/callback")
 	public String kakaoCallback(@RequestParam String code) {
-		
+
 		RestTemplate rt = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
-		
+
 		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
@@ -78,13 +78,13 @@ public class UserController {
 		params.add("client_id", "BvSSlS3rTAUDe0wev5Qa");
 		params.add("client_secret", "uhjzmVB5cj");
 		params.add("code", code);
-		
+
 		HttpEntity<MultiValueMap<String, String>> requestKakaoToken = new HttpEntity<>(params, headers);
 		ResponseEntity<OAuthToken> response = rt.exchange("https://kauth.kakao.com/oauth/token", HttpMethod.POST,
 				requestKakaoToken, OAuthToken.class);
-		
+
 		OAuthToken authToken = response.getBody();
-		
+
 		RestTemplate rt2 = new RestTemplate();
 		HttpHeaders headers2 = new HttpHeaders();
 		headers2.add("Authorization", "Bearer " + authToken.accessToken);
@@ -101,7 +101,6 @@ public class UserController {
 				.email(account.email).password(clickGoKey).loginType(LoginType.KAKAO).email("a@nave.com")
 				.phoneNumber(phoneNumber).build();
 
-
 		User originUser = userService.searchUserName(kakaoUser.getUsername());
 
 		if (originUser.getUsername() == null) {
@@ -110,9 +109,8 @@ public class UserController {
 
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(kakaoUser.getUsername(), clickGoKey));
-		
+
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
 
 		return "redirect:/";
 

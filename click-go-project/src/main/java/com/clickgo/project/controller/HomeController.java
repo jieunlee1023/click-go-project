@@ -1,9 +1,7 @@
 package com.clickgo.project.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class HomeController {
@@ -15,8 +13,7 @@ public class HomeController {
 
 	
 	@GetMapping("/home/about-us")
-	public String aboutUs(@RequestParam String nowPage, Model model) {
-		model.addAttribute("nowPage", model);
+	public String aboutUs() {
 		return "home/about-us";
 	}
 	

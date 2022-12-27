@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 
-<h1>content화면</h1>
+<h1>board화면</h1>
 
 
 <%@ include file="../layout/footer.jsp"%>
