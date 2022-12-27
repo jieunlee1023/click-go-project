@@ -17,7 +17,7 @@ public class homeController {
 
 	
 	@GetMapping("/home/about-us")
-	public String aboutUs(l) {
+	public String aboutUs() {
 		return "home/about-us";
 	}
 	
