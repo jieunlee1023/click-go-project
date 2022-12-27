@@ -82,7 +82,7 @@ public class BoardService {
 //	}
 	@Transactional
 	public Page<CsBoard> searchBoard(String q, Pageable pageable) {
-		return iBoardRepository.findByTitleContaining(q, pageable);
+		return iBoardRepository.findByTitleContaining1(q, pageable);
 	}
 
 }
