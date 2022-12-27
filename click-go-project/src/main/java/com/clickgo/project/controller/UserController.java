@@ -15,12 +15,11 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import com.clickgo.project.dto.res.GoogleToken;
-import com.clickgo.project.dto.res.GoogleUserDto;
 import com.clickgo.project.dto.res.User;
+import com.clickgo.project.dto.res.googleLogin.GoogleToken;
+import com.clickgo.project.dto.res.googleLogin.GoogleUserDto;
 import com.clickgo.project.dto.res.kakao_login.KakaoAccount;
 import com.clickgo.project.dto.res.kakao_login.KakaoProfile;
 import com.clickgo.project.dto.res.kakao_login.OAuthToken;
@@ -39,7 +38,7 @@ public class UserController {
 
 	@Value("${click_go.key}")
 	private String clickGoKey;
-	
+
 	@Value("${phoneNumber.key}")
 	private String phoneNumber;
 
@@ -48,8 +47,19 @@ public class UserController {
 		return "user/login-form";
 	}
 
+	@GetMapping("/auth/join_form")
 	public String joinForm() {
 		return "user/join-form";
+	}
+
+	@GetMapping("/user/update_form")
+	public String updateForm() {
+		return "user/update-form";
+	}
+
+	@GetMapping("/user/password-update_form")
+	public String passwordUpdateForm() {
+		return "user/PWDUpdate-form";
 	}
 
 	@GetMapping("/auth/kakao/callback")
@@ -196,8 +206,8 @@ public class UserController {
 				"https://www.googleapis.com/oauth2/v1/userinfo", HttpMethod.GET, request, GoogleUserDto.class);
 
 		GoogleUserDto account = googleUserInfo.getBody();
-		User googleUser = User.builder().username(account.id).email("").loginType(LoginType.GOOGLE).phoneNumber(phoneNumber)
-				.password(clickGoKey).build();
+		User googleUser = User.builder().username(account.id).email("").loginType(LoginType.GOOGLE)
+				.phoneNumber(phoneNumber).password(clickGoKey).build();
 		User orginUser = userService.searchUserName(googleUser.getUsername());
 
 		if (orginUser.getUsername() == null) {

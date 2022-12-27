@@ -15,12 +15,12 @@
 				<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> --%>
 				<label for="username" class="d-flex m-0" style="font-size: 13px">아이디</label>
 				<input type="text" class="form-control" id="username"
-					style="border-radius: 0px" name="username" value="">
+					style="border-radius: 0px" name="username" value="minicar">
 			</div>
 			<div class="form-group ">
 				<label for="password" class="d-flex m-0" style="font-size: 13px">비밀번호</label>
 				<input type="password" class="form-control" id="password"
-					style="border-radius: 0px" name="password" value="">
+					style="border-radius: 0px" name="password" value="123">
 			</div>
 			<br>
 			<div class="form-control d-flex justify-content-center color-"
