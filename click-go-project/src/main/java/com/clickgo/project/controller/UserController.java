@@ -43,13 +43,14 @@ public class UserController {
 	@Value("${phoneNumber.key}")
 	private String phoneNumber;
 
-	@GetMapping("/auth/login_form")
+	@GetMapping("/auth/login-form")
 	public String loginForm() {
-		return "user/login_form";
+		return "user/login-form";
 	}
 
+	@GetMapping("/auth/join-form")
 	public String joinForm() {
-		return "user/join_form";
+		return "user/join-form";
 	}
 	
 	// 카카오 로그인
