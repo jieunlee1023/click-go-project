@@ -62,31 +62,20 @@ public class UserService {
 	}
 
 	@Transactional
-	public void updateUser(User user) {
+	public User updateUser(User user) {
 		User userEntity = userRepository.findById(user.getId()).orElseThrow(() -> {
 			return new IllegalArgumentException("찾을 수 없는 회원입니다.");
 		});
 
 		if (userEntity.getLoginType() == null || userEntity.getLoginType().equals("")) {
 
-			userEntity.setEmail(user.getEmail());
-			userEntity.setPhoneNumber(user.getPhoneNumber());
-			System.out.println(user);
-		}
-	}
-
-	@Transactional
-	public void pwdUpdateUser(User user) {
-		User userEntity = userRepository.findById(user.getId()).orElseThrow(() -> {
-			return new IllegalArgumentException("찾을 수 없는 회원입니다.");
-		});
-		if (userEntity.getLoginType() == null || userEntity.getLoginType().equals("")) {
-
-			System.err.println(user.getPassword());
 			String rawPassword = user.getPassword();
 			String encPassword = encoder.encode(rawPassword);
 
 			userEntity.setPassword(encPassword);
+			userEntity.setEmail(user.getEmail());
+			userEntity.setPhoneNumber(user.getPhoneNumber());
 		}
+		return userEntity;
 	}
 }

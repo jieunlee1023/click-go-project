@@ -14,13 +14,13 @@ import lombok.AllArgsConstructor;
 @AllArgsConstructor
 public class PrincipalDetailsService implements UserDetailsService {
 
-   private IUserRepository userRepository;
+	private IUserRepository userRepository;
 
-   @Override
-   public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-      User principal = userRepository.findByUsername(username).orElseThrow(() -> {
-         return new IllegalArgumentException("존재하지 않는 회원입니다.");
-      }); 
-      return new PrincipalDetails(principal);
-   }
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		User principal = userRepository.findByUsername(username).orElseThrow(() -> {
+			return new IllegalArgumentException("존재하지 않는 회원입니다.");
+		});
+		return new PrincipalDetails(principal);
+	}
 }

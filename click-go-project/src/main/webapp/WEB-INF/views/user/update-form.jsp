@@ -10,14 +10,29 @@
 			<c:when test="${empty principal.user.loginType}">
 				<form>
 					<input type="hidden" value="${principal.user.id}" id="id">
-					<input type="hidden" value=""
-						id="password">
+					<input type="hidden" value="" id="password">
 					<div class="form-group ">
 						<label for="username" class="d-flex m-0" style="font-size: 13px">아이디</label>
 						<input type="text" class="form-control " id="username"
 							style="border-radius: 0px" value="${principal.user.username}"
 							readonly="readonly">
 					</div>
+					<c:if test="${empty principal.user.loginType }">
+						<input type="hidden" value="${principal.user.username}"
+							id="username">
+						<input type="hidden" value="${principal.user.id}" id="id">
+						<div class="form-group">
+							<label for="email" class="d-flex m-0" style="font-size: 13px">새
+								비밀번호</label> <input type="text" class="form-control" id="new--pwd"
+								style="border-radius: 0px" value="">
+						</div>
+						<div class="form-group">
+							<label for="phoneNumber" class="d-flex m-0"
+								style="font-size: 13px">비밀번호 확인</label> <input type="text"
+								class="form-control" style="border-radius: 0px"
+								id="new--pwd-check" value="">
+						</div>
+					</c:if>
 					<div class="form-group">
 						<label for="email" class="d-flex m-0" style="font-size: 13px">이메일</label>
 						<input type="email" class="form-control" id="email"
@@ -30,12 +45,6 @@
 							value="${principal.user.phoneNumber}">
 					</div>
 					<br>
-					<div class="form-control d-flex justify-content-center color-"
-						id="joinbutton" style="border-radius: 0px;">
-						<a type="submit" class="d-flex widt"
-							style="border: none; background-color: white;"
-							href="/user/password-update_form">비밀번호 수정</a>
-					</div>
 				</form>
 				<br>
 				<div class="form-control d-flex justify-content-center color-"
