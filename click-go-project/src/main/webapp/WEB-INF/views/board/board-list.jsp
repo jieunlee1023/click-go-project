@@ -15,7 +15,7 @@
 		<form action="/board/search" class="form-inline" method="get">
 			<input type="text" class="form-control" placeholder="검색" name="q" value="${q }">
 			<div class="input-group-append">
-				<button class="btn bg-secondary">검색</button>
+				<button type="button" class="btn bg-secondary">검색</button>
 			</div>
 		</form>
 	</div>

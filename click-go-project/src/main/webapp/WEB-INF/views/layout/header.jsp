@@ -328,7 +328,7 @@ keyframes youtubeAnim {
 								<li>
 									<div class="search-box">
 										<form action="#" method="get">
-											<button class="btn-search">
+											<button class="btn-search" type="button">
 												<img class="search-img" alt="검색" src="../image/search.png"
 													width="18px">
 											</button>
@@ -371,7 +371,7 @@ keyframes youtubeAnim {
 								<li>
 									<div class="search-box">
 										<form action="#" method="get">
-											<button class="btn-search">
+											<button class="btn-search" type="button">
 												<img class="search-img" alt="검색" src="../image/search.png"
 													width="18px">
 											</button>
@@ -432,7 +432,7 @@ keyframes youtubeAnim {
 								<li>
 									<div class="search-box">
 										<form action="#" method="get">
-											<button class="btn-search">
+											<button class="btn-search" type="button">
 												<img class="search-img" alt="검색" src="../image/search.png"
 													width="18px">
 											</button>

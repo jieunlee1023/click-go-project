@@ -7,7 +7,7 @@
 	<button class="btn bg-secondary" onclick="history.back();">돌아가기</button>
 	<c:if test="${board.user.id == principal.user.id }">
 		<a class="btn bg-secondary" id="" href="/board/${board.id }/update-form">수정하기</a>
-		<button class="btn bg-secondary" id="btn--delete">삭제하기</button>
+		<button type="button" class="btn bg-secondary" id="btn--delete">삭제하기</button>
 	</c:if>
 
 	<div>
@@ -34,7 +34,7 @@
 		</div>
 
 		<div class="card-footer">
-			<button class="" id="btn-reply-save">등록</button>
+			<button type="button" class="" id="btn-reply-save">등록</button>
 		</div>
 	</div>
 	<br>
@@ -49,7 +49,7 @@
 						<div>작성자 : &nbsp;${reply.user.username }&nbsp;&nbsp;&nbsp;</div>
 
 						<c:if test="${reply.user.id eq principal.user.id }">
-							<button class="btn btn-danger badge" onclick="boardIndex.replyDelete(${board.id}, ${reply.id });" >삭제</button>
+							<button type="button" class="btn btn-danger badge" onclick="boardIndex.replyDelete(${board.id}, ${reply.id });" >삭제</button>
 						</c:if>
 					</div>
 
