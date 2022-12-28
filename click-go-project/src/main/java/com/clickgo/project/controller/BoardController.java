@@ -24,23 +24,30 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
-	
+
 	@Autowired
 	private StoreFranchiseService franchiseService;
 
-	@GetMapping({ "/board/board-list", "board/search" })
+	@GetMapping({ "/board/board-list", "/board/search"})
 	public String board(@RequestParam(required = false) String q, Model model,
 			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchTitle = q == null ? "" : q;
+		System.out.println("searchTitle" + searchTitle);
 
+//		Page<CsBoard> boards = boardService.searchBoard(searchTitle.replace("//", ""), pageable);
 		Page<CsBoard> boards = boardService.getBoardList(pageable);
 
+		System.out.println(boards + ": boardsddddddddd");
 		int PAGENATION_BLOCK_COUNT = 10;
+		System.out.println("개시글 갯수" + boards.getSize());
+		System.out.println("전체페이지크기" + boards.getTotalPages());
+		System.out.println(" 전체 애기 갯수" + boards.getTotalElements());
+		System.out.println("현재패ㅔ이지 번호" + boards.getPageable().getPageNumber());
 
 		int nowPage = boards.getPageable().getPageNumber() + 1;
 
-		int startPageNumber = Math.max(nowPage + PAGENATION_BLOCK_COUNT, boards.getTotalPages());
-		int endPageNumber = Math.min(nowPage - startPageNumber, 1);
+		int startPageNumber = Math.max(nowPage + PAGENATION_BLOCK_COUNT, 1);
+		int endPageNumber = Math.min(nowPage - startPageNumber, boards.getTotalPages());
 
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
@@ -56,7 +63,7 @@ public class BoardController {
 		franchiseMassageCount(model);
 		return "board/board-list";
 	}
-	
+
 	@GetMapping("/board/board-write-form")
 	public String board(@RequestParam(required = false) String pageName, Model model) {
 		model.addAttribute("nowPage", pageName);
@@ -77,9 +84,16 @@ public class BoardController {
 		franchiseMassageCount(model);
 		return "board/board-update-form";
 	}
-	
+
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
 		model.addAttribute("message", franchiseMessages);
 	}
+
+//    @GetMapping({"/board/board-list"})
+//    @PreAuthorize("hasRole('ROLE_MEMBER') || hasRole('ROLE_ADMIN')")
+//    public void get(@RequestParam Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
+//        model.addAttribute("board", service.get(bno));
+//        model.addAttribute("cri", cri);
+//    }
 }

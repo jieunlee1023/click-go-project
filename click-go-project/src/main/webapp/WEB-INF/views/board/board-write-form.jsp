@@ -1,14 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 
 
 
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
 
 <br>
 <br>
@@ -18,32 +14,35 @@
 		<input type="hidden" id="id" value="${principal.user.id }">
 
 		<div class="form-group">
-			<label for="title" id="board-id" data-id="${board.id }">글 번호
-				: ${board.id }</label>
+			<label for="title" id="board-id" data-id="${board.id }">글 번호 : ${board.id }</label>
 		</div>
 
 		<div class="form-group">
-			<label for="username">작성자</label> <input type="text" name="username"
-				id="username" class="form-control"
-				value="${principal.user.username }" readonly="readonly">
+			<label for="username">작성자</label> <input type="text" name="username" id="username" class="form-control" value="${principal.user.username }"
+				readonly="readonly">
 		</div>
 
 		<div class="form-group">
-			<label for="content">제목</label> <input type="text" name="title"
-				id="title" class="form-control" value="${board.title }">
+			<label for="content">제목</label> <input type="text" name="title" id="title" class="form-control" value="${board.title }">
 		</div>
 
 		<div class="form-group">
 			<label for="content">내용</label>
-			<textarea name="content" id="content" rows="5"
-				class="form-control content">
+			<textarea name="content" id="content" rows="5" class="form-control content">
 				${board.content }
 			</textarea>
 
 		</div>
 	</form>
-	<button type="button" id="btn--write" class="btn btn-primary">글
-		작성</button>
+
+
+	<div class="">
+		<div class="form-check form-check-inline mt-3">
+			<input class="form-check-input" type="checkbox" name="secret" id="secret"> 
+			<label class="form-check-label">비밀글 설정</label>
+		</div>
+		<button type="button" id="btn--write" class="btn btn-primary">글 작성</button>
+	</div>
 </div>
 
 <script>

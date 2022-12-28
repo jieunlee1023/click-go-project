@@ -1,11 +1,11 @@
 package com.clickgo.project.service;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.clickgo.project.dto.res.CsBoard;
 import com.clickgo.project.dto.res.CsReply;
@@ -100,23 +100,9 @@ public class BoardService {
 		}
 
 	}
-
-//	@Transactional
-//	public CsReply writeReply(int boardId, CsReply reqReply, User user) {
-//		
-//		CsBoard board = iBoardRepository.findById(boardId).orElseThrow(() -> {
-//			return new IllegalArgumentException("댓글 쓰기 실패 : 게시글이 존재하지 않습니다");
-//		});
-//		
-//		 reqReply.setUser(user);
-//		 reqReply.setCsBoard(board);
-//		 CsReply replyEntity = iReplyRepository.save(reqReply);
-//		 
-//		 return replyEntity;
-//	}
-//	@Transactional
-//	public Page<CsBoard> searchBoard(String q, Pageable pageable) {
-//		return iBoardRepository.findByTitleContaining1(q, pageable);
-//	}
-
+	@Transactional
+	public Page<CsBoard> searchBoard(String q, Pageable pageable){
+		System.out.println("들어어오낭낭 " + q);
+		return iBoardRepository.findByTitleContaining1(q, pageable);
+	}
 }
