@@ -9,9 +9,13 @@
 			<h3>가맹점 신청</h3>
 			<br> <br>
 		</div>
+
+
+	<input type="hidden" value="${principal.user.id}" id="principalUser">
+
 		<div class="form-group ">
 			<div class="d-flex" style="font-size: 13px">
-				<select name="category" id="category">
+				<select class=" custom-select mb-3" name="category" id="category" style="border-radius: 0px" >
 					<option value="pc방" disabled="disabled" selected="selected">카테고리를
 						선택해주세요.</option>
 					<option value="pc방">PC방</option>
@@ -23,6 +27,10 @@
 				</select>
 			</div>
 		</div>
+
+
+
+
 		<div class="form-group ">
 			<label for="storeName" class="d-flex m-0" style="font-size: 13px">가맹점명</label>
 			<input type="text" class="form-control" id="storeName"
@@ -50,9 +58,9 @@
 		</div>
 
 		<br>
-		<div class="form-control d-flex justify-content-center color-"
-			id="loginbutton" style="border-radius: 0px;">
-			<button type="button" id="btn--store--apply" class="d-flex widt"
+		<div class="form-control d-flex justify-content-center"
+			    style="border-radius: 0px;">
+			<button type="button" id="btn--store-franchise-apply" class="d-flex "
 				style="border: none; background-color: white;">가맹점 신청하기</button>
 		</div>
 	</div>
@@ -60,5 +68,5 @@
 
 
 
-<script type="text/javascript" src="/js/store.js"></script>
+<script type="text/javascript" src="/js/storeFranchise.js"></script>
 <%@ include file="../layout/footer.jsp"%>

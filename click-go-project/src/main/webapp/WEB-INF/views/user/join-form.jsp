@@ -10,23 +10,23 @@
 			<div class="form-group ">
 				<label for="username" class="d-flex m-0" style="font-size: 13px">아이디</label>
 				<input type="text" class="form-control " id="username"
-					style="border-radius: 0px" value="">
+					style="border-radius: 0px" value="minicar">
 			</div>
 			<div class="form-group">
 				<label for="password" class="d-flex m-0" style="font-size: 13px">비밀번호</label>
 				<input type="password" class="form-control" id="password"
-					style="border-radius: 0px" value="">
+					style="border-radius: 0px" value="123">
 			</div>
 			<div class="form-group">
 				<label for="password-check" class="d-flex m-0"
 					style="font-size: 13px">비밀번호 확인</label> <input type="password"
 					class="form-control" id="password-check" style="border-radius: 0px"
-					value="">
+					value="123">
 			</div>
 			<div class="form-group">
 				<label for="email" class="d-flex m-0" style="font-size: 13px">이메일</label>
 				<input type="email" class="form-control" id="email"
-					style="border-radius: 0px" value="">
+					style="border-radius: 0px" value="1@naver.com">
 			</div>
 			<div class="form-group">
 				<label for="phoneNumber" class="d-flex m-0" style="font-size: 13px">휴대전화</label>

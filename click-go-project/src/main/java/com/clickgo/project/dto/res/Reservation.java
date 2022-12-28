@@ -34,10 +34,6 @@ public class Reservation {
 
 	@Column(nullable = false)
 	@CreationTimestamp
-	private Timestamp createDate;
-
-	@Column(nullable = false)
-	@CreationTimestamp
 	private Timestamp reservationTime;
 
 	@Column(nullable = false)
