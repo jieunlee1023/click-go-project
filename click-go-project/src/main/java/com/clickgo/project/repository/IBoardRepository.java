@@ -10,7 +10,12 @@ import com.clickgo.project.dto.res.CsBoard;
 // sw
 public interface IBoardRepository extends JpaRepository<CsBoard, Integer> {
 
-	@Query(value = " select * from CsBoard where title like '%q%' ", nativeQuery = true)
+	@Query(value = " SELECT  "
+			+ "    * "
+			+ " FROM "
+			+ "    csboard "
+			+ " WHERE "
+			+ "    title LIKE '%?1%' ", nativeQuery = true)
 	Page<CsBoard> findByTitleContaining1(String q, Pageable pageable);
 
 }

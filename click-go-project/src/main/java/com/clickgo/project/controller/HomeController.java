@@ -32,17 +32,17 @@ public class HomeController {
 
 	}
 
-	@GetMapping("/home/board/board-form")
+	@GetMapping("/home/board/board-write-form")
 	public String board(@RequestParam(required = false) String pageName, Model model) {
 		model.addAttribute("nowPage", pageName);
-		return "board/board-form";
+		return "board/board-write-form";
 	}
 	
-	@GetMapping("/home/board/board-list")
-	public String boardListForm(@RequestParam(required = false) String pageName, Model model) {
-		model.addAttribute("nowPage", pageName);
-		return "board/board-list";
-	}
+//	@GetMapping("/home/board/board-list")
+//	public String boardListForm(@RequestParam(required = false) String pageName, Model model) {
+//		model.addAttribute("nowPage", pageName);
+//		return "board/board-list";
+//	}
 	
 	
 

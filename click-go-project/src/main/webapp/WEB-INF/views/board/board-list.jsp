@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="d-flex justify-content-between">
 		<h1>클릭꼬 고객센터</h1>
-		<form class="form-inline" action="/home/board/board-form">
+		<form class="form-inline" action="/home/board/board-write-form">
 			<button type="submit" class="btn btn-outline-info" id="btn--write">글쓰기</button>
 		</form>
 	</div>
@@ -19,12 +19,15 @@
 			</div>
 		</form>
 	</div>
-</div>
 
-<c:forEach var="board" items="${boards.title}">
-	<div class="container">
-		<div class="list-group">
-			<a href="/board/${board.id }" class="list-group-item list-group-item-action">${board.title }</a>
+
+
+ <c:forEach var="board" items="${boards.content}">
+	<div class="list-group ">
+		<div class="d-flex justify-content-between"> 
+		<a href="/home/board/${board.id }" class="list-group-item list-group-item-action">글번호 : ${board.id } 작성자 : ${board.user.username } 제목 : ${board.title } </a>
+		</div>
+		<div>
 		</div>
 	</div>
 </c:forEach>
@@ -32,7 +35,7 @@
 <ul class="pagination justify-content-center">
 	<c:set var="isDisabled" value="disabled"></c:set>
 	<c:set var="isNotDisabled" value=""></c:set>
-	<li class="page-item ${boards.first ? isDisabled : isNotDisabled } "><a class="page-link" href="?page=${boards.number - 1 }">Previous</a></li>
+	<li class="page-item ${boards.first ? isDisabled : isNotDisabled } "><a class="page-link" href="?page=${boards.number - 1 }">이전</a></li>
 	<!-- 반복문 처리 하기-->
 	<!-- 1 2 3, 1 2 3 4 , 1 2 3 4 5  -->
 	<c:forEach var="num" items="${pageNumbers }">
@@ -48,15 +51,14 @@
 		</c:choose>
 	</c:forEach>
 
-	<li class="page-item ${boards.last ? isDisabled : isNotDisabled }"><a class="page-link" href="?page=${boards.number + 1 }">Next</a></li>
+	<li class="page-item ${boards.last ? isDisabled : isNotDisabled }"><a class="page-link" href="?page=${boards.number + 1 }">다음</a></li>
 
-</ul>
+</ul> 
 
 
 
 
 </div>
-
 
 
 

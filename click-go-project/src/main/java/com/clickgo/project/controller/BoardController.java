@@ -1,6 +1,7 @@
 package com.clickgo.project.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -22,32 +23,25 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 
-	@GetMapping({"/board/board-list", "board/search"})
+	@GetMapping({ "/home/board/board-list", "board/search" })
 	public String board(@RequestParam(required = false) String q, Model model,
-			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
-		
+			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchTitle = q == null ? "" : q;
-		System.err.println(q);
-		
-		Page<CsBoard> boards = boardService.searchBoard(searchTitle, pageable);
-		
-		boards.forEach(t -> {
-			System.err.println(t + "sadfsadf");
-		});
-		
-		int PAGENATION_BLOCK_COUNT = 3;
-		
+
+		Page<CsBoard> boards = boardService.getBoardList(pageable);
+
+		int PAGENATION_BLOCK_COUNT = 10;
+
 		int nowPage = boards.getPageable().getPageNumber() + 1;
-		
+
 		int startPageNumber = Math.max(nowPage + PAGENATION_BLOCK_COUNT, boards.getTotalPages());
 		int endPageNumber = Math.min(nowPage - startPageNumber, 1);
-		
-		
+
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
-		for(int i = startPageNumber; i <= endPageNumber; i++) {
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
-		
+
 		model.addAttribute("boards", boards);
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPageNumber", startPageNumber);
@@ -56,17 +50,17 @@ public class BoardController {
 		model.addAttribute("q", searchTitle);
 		return "board/board-list";
 	}
-	
-	@GetMapping("/board/{id}")
+
+	@GetMapping("/home/board/{id}")
 	public String showDetail(@PathVariable int id, Model model) {
 		model.addAttribute("board", boardService.boardDetail(id));
-		
-		return "/board/board-detail";
+
+		return "board/board-detail";
 	}
-	
-	@GetMapping("/boad/{id}/update_form")
+
+	@GetMapping("/home/board/{id}/update-form")
 	public String updateForm(@PathVariable(name = "id") int boardId, Model model) {
 		model.addAttribute("board", boardService.boardDetail(boardId));
-		return "/board/update_form";
+		return "board/board-update-form";
 	}
 }
