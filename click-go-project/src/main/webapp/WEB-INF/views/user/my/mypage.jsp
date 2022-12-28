@@ -3,7 +3,7 @@
 
 <%@ include file="../../layout/header.jsp"%>
 <c:choose>
-	<c:when test="${empty principal.user.role}">
+	<c:when test="${principal.user.role eq 'GEUST'}">
 		<br>
 		<br>
 		<div class="d-flex ml-5 pl-5">

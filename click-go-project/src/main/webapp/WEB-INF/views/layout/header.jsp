@@ -292,9 +292,11 @@ footer a {
                
                <!-- 검색 애니메이션 -->
                  <div class="search-box">
-                 <form action="/board" method="get">
-                   <button class="btn-search"><img class="search-img" alt="검색"
-                        src="../image/search.png" width="18px"></button>
+                 <form action="#" method="get">
+                   <button class="btn-search">
+                   <img class="search-img" alt="검색"
+                        src="../image/search.png" width="18px">
+                        </button>
                    <input type="text" class="input-search">
                     </form>
                  </div>
