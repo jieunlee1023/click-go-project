@@ -14,7 +14,8 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 			+ " FROM Reservation AS r "
 			+ " JOIN store AS s "
 			+ " ON r.storeId = s.id "
-			+ " WHERE s.storeName LIKE %?1% "
+			+ " WHERE r.userId = ?1 "
+			+ " AND s.storeName LIKE %?2% "
 			, nativeQuery = true)
-	public Page<Reservation> findByTitleContaining(String q, Pageable pageable);
+	public Page<Reservation> findByTitleContaining(int id, String q, Pageable pageable);
 }

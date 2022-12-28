@@ -17,9 +17,8 @@ public class ReservationService {
 	private IReservationRepository reservationRepository;
 
 	@Transactional
-	public Page<Reservation> searchBoard(String q, Pageable pageable) {
-		System.err.println("123456" + q);
-		return reservationRepository.findByTitleContaining(q, pageable);
+	public Page<Reservation> searchBoard(String q, int id, Pageable pageable) {
+		return reservationRepository.findByTitleContaining(id, q, pageable);
 	}
 
 	@Transactional

@@ -8,13 +8,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.Reservation;
+import com.clickgo.project.dto.res.User;
 import com.clickgo.project.service.ReservationService;
 
 @Controller
@@ -31,9 +34,11 @@ public class MyPageController {
 
 	@GetMapping("/reservation-list")
 	public String reservationList(@RequestParam(required = false) String q, Model model,
-			@PageableDefault(size = 2, sort = "id", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 2, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 
-		Page<Reservation> reservations = reservationService.searchBoard(q == null ? "O" : q, pageable);
+		User userEntity = principalDetails.getUser();
+		Page<Reservation> reservations = reservationService.searchBoard(q == null ? "O" : q, userEntity.getId(), pageable);
 
 		int PAGENATION_BLOCK_COUNT = 2;
 		int nowPage = reservations.getNumber() + 1;
