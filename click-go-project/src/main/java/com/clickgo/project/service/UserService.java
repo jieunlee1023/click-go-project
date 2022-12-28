@@ -31,6 +31,7 @@ public class UserService {
 		try {
 			String rawPw = encoder.encode(user.getPassword());
 			user.setPassword(rawPw);
+			user.setRole(RoleType.GEUST);
 			userRepository.save(user);
 			return true;
 		} catch (Exception e) {
