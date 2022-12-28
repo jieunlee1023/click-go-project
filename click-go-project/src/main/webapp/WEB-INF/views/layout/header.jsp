@@ -61,8 +61,6 @@
 	color: #578cd2;
 }
 
-//
-TODO
 #update-btn:hover {
 	text-decoration: none;
 	color: #578cd2;
