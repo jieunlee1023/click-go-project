@@ -46,10 +46,10 @@ public class Store {
 	private String storeTEL;
 
 	@Column(nullable = false)
-	private String address;
+	private String storeAddress;
 
 	@Column(nullable = false)
-	private int totalRoomCount;
+	private int storeTotalRoomCount;
 
 	@Column(nullable = false)
 	@CreationTimestamp

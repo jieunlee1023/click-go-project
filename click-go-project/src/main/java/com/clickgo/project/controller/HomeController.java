@@ -8,11 +8,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class HomeController {
 
-	@GetMapping({ "", "/home" })
-	public String home() {
-		return "index";
-	}
-
 	@GetMapping({ "", "/" })
 	public String home(@RequestParam(required = false) String pageName, Model model) {
 		model.addAttribute("nowPage", pageName);
@@ -29,6 +24,12 @@ public class HomeController {
 	public String store(@RequestParam(required = false) String pageName, Model model) {
 		model.addAttribute("nowPage", pageName);
 		return "home/store";
+	}
+
+	@GetMapping("/home/board")
+	public String board() {
+		return "home/board";
+
 	}
 
 	@GetMapping("/home/board/board-form")
@@ -50,5 +51,4 @@ public class HomeController {
 		model.addAttribute("nowPage", pageName);
 		return "home/content";
 	}
-
 }

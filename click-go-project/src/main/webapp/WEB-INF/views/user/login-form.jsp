@@ -15,12 +15,12 @@
 				<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> --%>
 				<label for="username" class="d-flex m-0" style="font-size: 13px">아이디</label>
 				<input type="text" class="form-control" id="username"
-					style="border-radius: 0px" name="username" value="">
+					style="border-radius: 0px" name="username" value="minicar">
 			</div>
 			<div class="form-group ">
 				<label for="password" class="d-flex m-0" style="font-size: 13px">비밀번호</label>
 				<input type="password" class="form-control" id="password"
-					style="border-radius: 0px" name="password" value="">
+					style="border-radius: 0px" name="password" value="123">
 			</div>
 			<br>
 			<div class="form-control d-flex justify-content-center color-"
@@ -43,19 +43,25 @@
 			String state = new BigInteger(130, random).toString();
 			%>
 			<a class="d-flex m-1"
-				href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=BvSSlS3rTAUDe0wev5Qa&state=<%=state%>&redirect_uri=<%=redirectURI%>">
+				href="https://nid.naver.com/oauth2.0/authorize
+				?response_type=code
+				&client_id=BvSSlS3rTAUDe0wev5Qa&state=<%=state%>
+				&redirect_uri=<%=redirectURI%>">
 				<img alt="네이버로그인" src="/image/naver_login.png" width="50"
 				height="50">
 			</a> <a class="d-flex m-1"
-				href="https://kauth.kakao.com/oauth/authorize?client_id=cfa26e4df221d547437be19dcc30de42&redirect_uri=http://localhost:7777/auth/kakao/callback&response_type=code">
+				href="https://kauth.kakao.com/oauth/authorize
+				?client_id=cfa26e4df221d547437be19dcc30de42
+				&redirect_uri=http://localhost:7777/auth/kakao/callback
+				&response_type=code">
 				<img alt="카카오로그인" src="/image/kakao_login.png" width="50"
 				height="50">
 			</a> <a class="d-flex m-1"
 				href="https://accounts.google.com/o/oauth2/v2/auth
-?client_id=182145852170-7h7g9dmnjs01k3fqq94pcbi8v1p964an.apps.googleusercontent.com
-&redirect_uri=http://localhost:7777/api/google/callback
-&response_type=code
-&scope=https://www.googleapis.com/auth/userinfo.profile">
+						?client_id=182145852170-7h7g9dmnjs01k3fqq94pcbi8v1p964an.apps.googleusercontent.com
+						&redirect_uri=http://localhost:7777/api/google/callback
+						&response_type=code
+						&scope=https://www.googleapis.com/auth/userinfo.profile">
 				<img alt="구글로그인" src="/image/google_login.png" width="50"
 				height="50">
 			</a>

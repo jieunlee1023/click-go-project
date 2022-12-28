@@ -1,10 +1,8 @@
-package com.clickgo.project.dto.res;
+package com.clickgo.project.dto.res.googleLogin;
 
 import java.util.HashMap;
 import java.util.Map;
-
 import javax.annotation.Generated;
-
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,20 +11,22 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({ "access_token", "expires_in", "scope", "token_type", "id_token" })
+@JsonPropertyOrder({ "id", "name", "given_name", "family_name", "picture", "locale" })
 @Generated("jsonschema2pojo")
-public class GoogleToken {
+public class GoogleUserDto {
 
-	@JsonProperty("access_token")
-	public String accessToken;
-	@JsonProperty("expires_in")
-	public Integer expiresIn;
-	@JsonProperty("scope")
-	public String scope;
-	@JsonProperty("token_type")
-	public String tokenType;
-	@JsonProperty("id_token")
-	public String idToken;
+	@JsonProperty("id")
+	public String id;
+	@JsonProperty("name")
+	public String name;
+	@JsonProperty("given_name")
+	public String givenName;
+	@JsonProperty("family_name")
+	public String familyName;
+	@JsonProperty("picture")
+	public String picture;
+	@JsonProperty("locale")
+	public String locale;
 	@JsonIgnore
 	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
