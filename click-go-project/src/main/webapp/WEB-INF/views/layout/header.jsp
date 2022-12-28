@@ -25,6 +25,28 @@
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
 	rel="stylesheet">
+<!-- 자주 묻는 질문  -->
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+	crossorigin="anonymous">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<link
+	href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
+	rel="stylesheet">
+
+<!-- 자주 묻는 질문  -->
 
 <style type="text/css">
 * {
@@ -61,6 +83,9 @@
 	color: #578cd2;
 }
 
+<<<<<<< HEAD
+=======
+TODO
 #update-btn:hover {
 	text-decoration: none;
 	color: #578cd2;
@@ -82,6 +107,174 @@
 	color: white;
 	height: 15px;
 }
+
+<!--
+검색 애니메이션 -->* {
+	box-sizing: border-box;
+}
+
+.search-img {
+	margin: 10px;
+	margin-right:
+}
+
+.search-box {
+	width: fit-content;
+	height: fit-content;
+	position: relative;
+}
+
+.input-search {
+	height: 50px;
+	width: 50px;
+	border-style: none;
+	padding: 10px;
+	font-size: 18px;
+	letter-spacing: 2px;
+	outline: none;
+	border-radius: 25px;
+	transition: all .5s ease-in-out;
+	padding-right: 40px;
+	color: 070707;
+}
+
+.input-search::placeholder {
+	color: rgba(255, 255, 255, .5);
+	font-size: 18px;
+	letter-spacing: 2px;
+	font-weight: 100;
+}
+
+.btn-search {
+	width: 50px;
+	height: 50px;
+	border-style: none;
+	font-size: 20px;
+	font-weight: bold;
+	outline: none;
+	cursor: pointer;
+	border-radius: 50%;
+	position: absolute;
+	right: 0px;
+	color: #ffffff;
+	background-color: transparent;
+	pointer-events: painted;
+	padding-right: 58px;
+}
+
+.btn-search:focus ~ .input-search {
+	width: 300px;
+	border-radius: 0px;
+	background-color: transparent;
+	border: 1px solid rgba(0, 0, 0, .5);
+	transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+.input-search:focus {
+	width: 300px;
+	border-radius: 0px;
+	background-color: transparent;
+	border: 1px solid rgba(0, 0, 0, .5);
+	transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
+}
+
+/*  footer   */
+footer {
+	background-color: #222;
+	color: #fff;
+	font-size: 14px;
+	bottom: 0;
+	position: fixed;
+	left: 0;
+	right: 0;
+	text-align: center;
+	z-index: 999;
+}
+
+footer p {
+	margin: 10px 0;
+	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida  Grande',
+		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+footer .fa-heart {
+	color: red;
+}
+
+footer .fa-dev {
+	color: #fff;
+}
+
+footer .fa-twitter-square {
+	color: #1da0f1;
+}
+
+footer .fa-instagram {
+	color: #f0007c;
+}
+
+fotter .fa-linkedin {
+	color: #0073b1;
+}
+
+footer .fa-codepen {
+	color: #fff
+}
+
+footer a {
+	color: #3c97bf;
+	text-decoration: none;
+	margin-right: 5px;
+}
+
+.youtubeBtn {
+	position: fixed;
+	left: 50%;
+	transform: translatex(-50%);
+	bottom: 45px;
+	cursor: pointer;
+	transition: all .3s;
+	vertical-align: middle;
+	text-align: center;
+	display: inline-block;
+}
+
+.youtubeBtn i {
+	font-size: 20px;
+	float: left;
+}
+
+.youtubeBtn a {
+	color: #ff0000;
+	animation: youtubeAnim 1000ms linear infinite;
+	float: right;
+}
+
+.youtubeBtn a:hover {
+	color: #c9110f;
+	transition: all .3s ease-in-out;
+	text-shadow: none;
+}
+
+.youtubeBtn i:active {
+	transform: scale(.9);
+	transition: all .3s ease-in-out;
+}
+
+.youtubeBtn span {
+	font-family: 'Lato';
+	font-weight: normal;
+	color: #fff;
+	display: block;
+	font-size: 12px;
+	float: right;
+	line-height: 20px;
+	padding-left: 5px;
+}
+
+@
+keyframes youtubeAnim { 
+	color: #c9110f;}
 </style>
 
 
@@ -99,6 +292,7 @@
 	<input type="hidden" value="${nowPage}" id="nowPage">
 
 	<div>
+	
 
 		<nav class="navbar navbar-expand-md " style="padding-top: 10px;">
 
@@ -128,9 +322,18 @@
 						<c:choose>
 							<c:when test="${empty principal}">
 
-								<li class="nav-item " role="button"><a class="nav-link"
-									href="#" id="li--search"><img alt="검색"
-										src="../image/search.png" width="18px"></a></li>
+						<!-- 검색 애니메이션 -->
+						<li>
+							<div class="search-box">
+								<form action="#" method="get">
+									<button class="btn-search">
+										<img class="search-img" alt="검색" src="../image/search.png"
+											width="18px">
+									</button>
+									<input type="text" class="input-search">
+								</form>
+							</div>
+						</li>
 
 								<li class="nav-item " role="button"><a class="nav-link"
 									href="/?pageName=home" id="li--home">홈</a></li>
@@ -157,10 +360,18 @@
 
 							<c:when test="${principal.user.role == 'ADMIN'}">
 
-
-								<li class="nav-item " role="button"><a class="nav-link"
-									href="#" id="li--search"><img alt="검색"
-										src="../image/search.png" width="18px"></a></li>
+						<!-- 검색 애니메이션 -->
+						<li>
+							<div class="search-box">
+								<form action="#" method="get">
+									<button class="btn-search">
+										<img class="search-img" alt="검색" src="../image/search.png"
+											width="18px">
+									</button>
+									<input type="text" class="input-search">
+								</form>
+							</div>
+						</li>
 
 
 								<li class="nav-item">
@@ -213,9 +424,18 @@
 							<c:otherwise>
 
 
-								<li class="nav-item " role="button"><a class="nav-link"
-									href="#" id="li--search"><img alt="검색"
-										src="../image/search.png" width="18px"></a></li>
+								<!-- 검색 애니메이션 -->
+						<li>
+							<div class="search-box">
+								<form action="#" method="get">
+									<button class="btn-search">
+										<img class="search-img" alt="검색" src="../image/search.png"
+											width="18px">
+									</button>
+									<input type="text" class="input-search">
+								</form>
+							</div>
+						</li>
 
 								<li class="nav-item " role="button"><a class="nav-link"
 									href="/?pageName=home" id="li--home">홈</a></li>

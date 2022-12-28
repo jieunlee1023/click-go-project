@@ -55,13 +55,14 @@ public class Store {
 	@CreationTimestamp
 	private Timestamp createDate;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "hostId", nullable = false)
-	private Host host;
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "hostId", nullable = false)
+//	private Host host;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "likeStoreId", nullable = false)
-	private LikeStore likeStore;
+	@Column(nullable = false)
+	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties
+	private List<LikeStore> likeStore;
 
 	@Column(nullable = false)
 	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)

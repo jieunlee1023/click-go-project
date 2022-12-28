@@ -59,4 +59,9 @@ public class HomeController {
 		model.addAttribute("message", franchiseMessages);
 	}
 
+	
+	@GetMapping("/home/board/question-form")
+	public String question() {
+		return "home/frequently-asked-questions";
+	}
 }

@@ -31,10 +31,9 @@ public class LikeStore {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(nullable = false)
-	@OneToMany(mappedBy = "likeStore", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties
-	private List<Store> store;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "storeId", nullable = false)
+	private Store store;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)

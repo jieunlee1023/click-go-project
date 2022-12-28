@@ -43,7 +43,5 @@ public class Reply {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "reviewId", nullable = false)
 	private Review review;
-	
-	
-	
+
 }
