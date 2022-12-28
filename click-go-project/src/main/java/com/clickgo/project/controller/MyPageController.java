@@ -34,7 +34,9 @@ public class MyPageController {
 
 	@GetMapping({ "", "/" })
 	public String myPage(Model model) {
+		franchiseMassageCount(model);
 		return "/user/my/mypage";
+		
 	}
 
 	@GetMapping("/reservation-list")
@@ -55,7 +57,6 @@ public class MyPageController {
 		for (int i = startPage; i <= endPage; i++) {
 			pageNumbers.add(i);
 		}
-		franchiseMassageCount(model);
 		
 		model.addAttribute("reservations", reservations);
 		model.addAttribute("pageNumbers", pageNumbers);
@@ -63,6 +64,7 @@ public class MyPageController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("q", q);
+		franchiseMassageCount(model);
 
 		return "/user/my/reservations";
 	}
