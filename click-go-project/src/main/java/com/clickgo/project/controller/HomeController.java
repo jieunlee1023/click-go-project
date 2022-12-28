@@ -43,4 +43,9 @@ public class HomeController {
 		model.addAttribute("nowPage", pageName);
 		return "home/content";
 	}
+	
+	@GetMapping("/home/board/question-form")
+	public String question() {
+		return "home/frequently-asked-questions";
+	}
 }
