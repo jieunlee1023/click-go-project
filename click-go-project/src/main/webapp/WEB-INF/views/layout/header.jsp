@@ -316,7 +316,7 @@ keyframes youtubeAnim {
 								<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown"> 더보기 </a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="/home/about-us?pageName=about-us" id="li--about-us">회사 소개</a> <a class="dropdown-item"
-											href="/home/board/board-list?pageName=board" id="li--board">게시판</a> <a class="dropdown-item" href="#">1:1문의</a>
+											href="/board/board-list?pageName=board" id="li--board">게시판</a> <a class="dropdown-item" href="#">1:1문의</a>
 									</div></li>
 
 								<li class="nav-item"><a class="nav-link" href="/auth/login-form" id="li--content">로그인</a></li>
@@ -354,7 +354,7 @@ keyframes youtubeAnim {
 								<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown"> 더보기 </a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="/home/about-us?pageName=about-us" id="li--about-us">회사 소개</a> <a class="dropdown-item"
-											href="/home/board/board-list?pageName=board" id="li--board">게시판</a> <a class="dropdown-item" href="#">1:1문의</a>
+											href="/board/board-list?pageName=board" id="li--board">게시판</a> <a class="dropdown-item" href="#">1:1문의</a>
 									</div></li>
 								<li class="nav-item"><a class="nav-link" href="/storeFranchise/store-franchise-list?pageName=content" id="li--content">가맹점 목록</a></li>
 
@@ -386,7 +386,7 @@ keyframes youtubeAnim {
 								<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown"> 더보기 </a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="/home/about-us?pageName=about-us" id="li--about-us">회사 소개</a> <a class="dropdown-item"
-											href="/home/board/board-list?pageName=board" id="li--board">게시판</a> <a class="dropdown-item" href="#">1:1문의</a>
+											href="/board/board-list?pageName=board" id="li--board">게시판</a> <a class="dropdown-item" href="#">1:1문의</a>
 									</div></li>
 
 								<li class="nav-item"><a class="nav-link" href="/storeFranchise/store-franchise-apply?pageName=content" id="li--content">가맹점 신청</a></li>

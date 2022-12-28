@@ -42,7 +42,7 @@ let boardIndex = {
 			console.log(data);
 			if (data.httpStatus == true) {
 				alert("글쓰기 성공");
-				location.href = "/home/board/board-list";
+				location.href = "/board/board-list";
 			}
 		}).fail(function(error) {
 			alert("글 등록 실패" + error.responseJSON.message);
@@ -66,7 +66,7 @@ let boardIndex = {
 		}).done(function(data) {
 			if (data.httpStatus == true) {
 				alert("글 수정이 완료됐습니다");
-				location.href = "/home/board/board-list"
+				location.href = "/board/board-list"
 			}
 		}).fail(function(error) {
 			alert("글 등록 실패" + error.responseJSON.message);
@@ -82,7 +82,7 @@ let boardIndex = {
 		}).done(function(data){
 			if(data.httpStatus == true){
 				alert("글 삭제 완료");
-				location.href = "/home/board/board-list"
+				location.href = "/board/board-list"
 			}
 		}).fail(function(error){
 			alert("글 삭제 실패 " + error.responseJSON.message);
@@ -105,7 +105,7 @@ let boardIndex = {
 			if (data.httpStatus == true) {
 				alert("댓글 등록 성공");
 				console.log(data.body);
-				location.href = "/home/board/"+ replyData.boardId;
+				location.href = "/board/"+ replyData.boardId;
 
 
 			}
@@ -126,7 +126,7 @@ let boardIndex = {
 		}).done(function(resData) {
 			if (resData.httpStatus == true) {
 				alert("댓글 삭제 성공");
-				location.href = "/home/board/"+ boardId;
+				location.href = "/board/"+ boardId;
 			}
 		}).fail(function(error) {
 			alert("댓삭제실패" + error.responseJSON.message);
@@ -137,11 +137,5 @@ let boardIndex = {
 
 
 } // boardIndex 종료
-
-
-
-
-
-
 
 boardIndex.init();

@@ -6,7 +6,7 @@
 
 	<button class="btn bg-secondary" onclick="history.back();">돌아가기</button>
 	<c:if test="${board.user.id == principal.user.id }">
-		<a class="btn bg-secondary" id="" href="/home/board/${board.id }/update-form">수정하기</a>
+		<a class="btn bg-secondary" id="" href="/board/${board.id }/update-form">수정하기</a>
 		<button class="btn bg-secondary" id="btn--delete">삭제하기</button>
 	</c:if>
 
@@ -17,8 +17,6 @@
 	<div>
 		글 작성자 : <span>${board.user.username }</span>
 	</div>
-
-	<div>구분자값-----------------------------------------------------------</div>
 
 	<span>제목 : </span>
 	<div class="container p-3 my-3 border">

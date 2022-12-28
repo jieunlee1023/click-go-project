@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="d-flex justify-content-between">
 		<h1>클릭꼬 고객센터</h1>
-		<form class="form-inline" action="/home/board/board-write-form">
+		<form class="form-inline" action="/board/board-write-form">
 			<button type="submit" class="btn btn-outline-info" id="btn--write">글쓰기</button>
 		</form>
 	</div>
@@ -25,7 +25,7 @@
  <c:forEach var="board" items="${boards.content}">
 	<div class="list-group ">
 		<div class="d-flex justify-content-between"> 
-		<a href="/home/board/${board.id }" class="list-group-item list-group-item-action">글번호 : ${board.id } 작성자 : ${board.user.username } 제목 : ${board.title } </a>
+		<a href="/board/${board.id }" class="list-group-item list-group-item-action">글번호 : ${board.id } 작성자 : ${board.user.username } 제목 : ${board.title } </a>
 		</div>
 		<div>
 		</div>

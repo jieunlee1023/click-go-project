@@ -40,28 +40,6 @@ public class HomeController {
 		return "home/store";
 	}
 
-	@GetMapping("/home/board")
-	public String board(Model model) {
-		franchiseMassageCount(model);
-		return "home/board";
-
-	}
-
-	@GetMapping("/home/board/board-write-form")
-	public String board(@RequestParam(required = false) String pageName, Model model) {
-		model.addAttribute("nowPage", pageName);
-		franchiseMassageCount(model);
-		return "board/board-write-form";
-	}
-	
-//	@GetMapping("/home/board/board-list")
-//	public String boardListForm(@RequestParam(required = false) String pageName, Model model) {
-//		model.addAttribute("nowPage", pageName);
-//		return "board/board-list";
-//	}
-	
-	
-	
 	
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
