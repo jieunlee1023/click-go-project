@@ -1,5 +1,8 @@
 package com.clickgo.project.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
@@ -10,17 +13,17 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import com.clickgo.project.dto.res.GoogleToken;
-import com.clickgo.project.dto.res.GoogleUserDto;
 import com.clickgo.project.dto.res.User;
+import com.clickgo.project.dto.res.googleLogin.GoogleToken;
+import com.clickgo.project.dto.res.googleLogin.GoogleUserDto;
 import com.clickgo.project.dto.res.kakao_login.KakaoAccount;
 import com.clickgo.project.dto.res.kakao_login.KakaoProfile;
 import com.clickgo.project.dto.res.kakao_login.OAuthToken;
@@ -39,7 +42,7 @@ public class UserController {
 
 	@Value("${click_go.key}")
 	private String clickGoKey;
-	
+
 	@Value("${phoneNumber.key}")
 	private String phoneNumber;
 
@@ -48,18 +51,23 @@ public class UserController {
 		return "user/login-form";
 	}
 
+	@GetMapping("/user/update-form")
+	public String updateForm() {
+		return "user/mypage/update-form";
+	}
+
 	@GetMapping("/auth/join-form")
 	public String joinForm() {
 		return "user/join-form";
 	}
-	
+
 	// 카카오 로그인
 	@GetMapping("/auth/kakao/callback")
 	public String kakaoCallback(@RequestParam String code) {
-		
+
 		RestTemplate rt = new RestTemplate();
 		HttpHeaders headers = new HttpHeaders();
-		
+
 		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
@@ -69,13 +77,13 @@ public class UserController {
 		params.add("client_id", "BvSSlS3rTAUDe0wev5Qa");
 		params.add("client_secret", "uhjzmVB5cj");
 		params.add("code", code);
-		
+
 		HttpEntity<MultiValueMap<String, String>> requestKakaoToken = new HttpEntity<>(params, headers);
 		ResponseEntity<OAuthToken> response = rt.exchange("https://kauth.kakao.com/oauth/token", HttpMethod.POST,
 				requestKakaoToken, OAuthToken.class);
-		
+
 		OAuthToken authToken = response.getBody();
-		
+
 		RestTemplate rt2 = new RestTemplate();
 		HttpHeaders headers2 = new HttpHeaders();
 		headers2.add("Authorization", "Bearer " + authToken.accessToken);
@@ -92,7 +100,6 @@ public class UserController {
 				.email(account.email).password(clickGoKey).loginType(LoginType.KAKAO).email("a@nave.com")
 				.phoneNumber(phoneNumber).build();
 
-
 		User originUser = userService.searchUserName(kakaoUser.getUsername());
 
 		if (originUser.getUsername() == null) {
@@ -101,9 +108,8 @@ public class UserController {
 
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(kakaoUser.getUsername(), clickGoKey));
-		
+
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
 
 		return "redirect:/";
 
@@ -197,8 +203,8 @@ public class UserController {
 				"https://www.googleapis.com/oauth2/v1/userinfo", HttpMethod.GET, request, GoogleUserDto.class);
 
 		GoogleUserDto account = googleUserInfo.getBody();
-		User googleUser = User.builder().username(account.id).email("").loginType(LoginType.GOOGLE).phoneNumber(phoneNumber)
-				.password(clickGoKey).build();
+		User googleUser = User.builder().username(account.id).email("").loginType(LoginType.GOOGLE)
+				.phoneNumber(phoneNumber).password(clickGoKey).build();
 		User orginUser = userService.searchUserName(googleUser.getUsername());
 
 		if (orginUser.getUsername() == null) {
@@ -208,6 +214,17 @@ public class UserController {
 		Authentication authentication = authenticationManager
 				.authenticate(new UsernamePasswordAuthenticationToken(googleUser.getUsername(), clickGoKey));
 		SecurityContextHolder.getContext().setAuthentication(authentication);
+		return "redirect:/";
+	}
+	
+	// 로그아웃
+	@GetMapping("/m-logout")
+	public String logout(HttpServletRequest req, HttpServletResponse res) {
+		
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); 
+		if(authentication != null) {
+			new SecurityContextLogoutHandler().logout(req, res, authentication);
+		}
 		return "redirect:/";
 	}
 }

@@ -6,7 +6,7 @@
 <div class="container">
 	<div class="d-flex justify-content-between">
 		<h1>클릭꼬 고객센터</h1>
-		<form class="form-inline" action="/board/board-form">
+		<form class="form-inline" action="/home/board/board-form">
 			<button type="submit" class="btn btn-outline-info" id="btn--write">글쓰기</button>
 		</form>
 	</div>
