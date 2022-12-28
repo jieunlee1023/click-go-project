@@ -3,7 +3,7 @@
 <%@ include file="../../layout/header.jsp"%>
 <div class="d-flex justify-content-center">
 
-	<ul>
+	<ul class="mr-5">
 		<li><a href="#"> 포인트 </a></li>
 		<li><a href="#">쿠폰함</a></li>
 		<li><a href="#"> 예약 내역 </a></li>
@@ -13,36 +13,29 @@
 	</ul>
 
 	<div class="d-flex-column">
-		<div class="media border p-3 mt-3"
-			style="width: 650px; height: 260px; border-radius: 15px;">
-			<div class="d-flex-column">
-				<a href="/user/update-form"> <img
-					src="../image/mypage/user_update.png" alt="수정 사진"
-					class="ml-5 mt-4 m-4" style="width: 60px;">
+		<c:forEach var="reservation" items="${reservations.content}">
+			<div class="media border mt-3"
+				style="width: 500px; height: 350px; border-radius: 15px;">
+				<div class="d-flex-column">
+					<img src="../image/about-us/pc_room_m.jpg" alt="가게 사진"
+						style="width: 500px; height: 200px; border-radius: 15px;">
 					<div class="media-body">
 						<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-							<h3 style="font-weight: bold;">내 정보 수정</h3>
-							<p class="mt-3">비밀번호를 주기적으로 변경하여 계정을 보다 안전하게 보호하세요.</p>
+							<div class="d-flex justify-content-between pl-3 pt-3 pr-3">
+								<h3 class="" style="font-weight: bold;">${reservation.store.storeName}</h3>
+								<h5 class="mr-3 m-1">${reservation.approveStatus}</h5>
+							</div>
+							<div class="d-flex-column pl-3 mt-3">
+								<span>${reservation.reservationTime}</span>
+								<div class="d-flex">
+									<span >${reservation.price}</span>
+								</div>
+							</div>
 						</div>
 					</div>
-				</a>
+				</div>
 			</div>
-		</div>
-		<div class="media border p-3 mt-3"
-			style="width: 650px; height: 260px; border-radius: 15px;">
-			<div class="d-flex-column">
-				<a href="/user/update-form"> <img
-					src="../image/mypage/user_update.png" alt="수정 사진"
-					class="ml-5 mt-4 m-4" style="width: 60px;">
-					<div class="media-body">
-						<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-							<h3 style="font-weight: bold;">내 정보 수정</h3>
-							<p class="mt-3">비밀번호를 주기적으로 변경하여 계정을 보다 안전하게 보호하세요.</p>
-						</div>
-					</div>
-				</a>
-			</div>
-		</div>
+		</c:forEach>
 	</div>
 </div>
 <%@ include file="../../layout/footer.jsp"%>

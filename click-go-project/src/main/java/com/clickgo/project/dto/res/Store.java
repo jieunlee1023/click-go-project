@@ -55,9 +55,9 @@ public class Store {
 	@CreationTimestamp
 	private Timestamp createDate;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "hostId", nullable = false)
-	private Host host;
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "hostId", nullable = false)
+//	private Host host;
 
 	@Column(nullable = false)
 	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
