@@ -25,9 +25,6 @@ public class BoardController {
 	@GetMapping({"/board/board-list", "board/search"})
 	public String board(@RequestParam(required = false) String q, Model model,
 			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
-	System.out.println("0----0-0--0-0-00-0-0--");
-//		public String boardIndex(@RequestParam(required = false) String q, Model model,
-//				@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		
 		String searchTitle = q == null ? "" : q;
 		System.err.println(q);

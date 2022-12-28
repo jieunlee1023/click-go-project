@@ -13,15 +13,15 @@
 
 	<div class="input-group mb-3">
 		<form action="/board/search" class="form-inline" method="get">
-			<input type="text" class="form-control" placeholder="검색할래?" name="q" value="${q }">
+			<input type="text" class="form-control" placeholder="검색" name="q" value="${q }">
 			<div class="input-group-append">
-				<button class="btn bg-secondary">검색할래?</button>
+				<button class="btn bg-secondary">검색</button>
 			</div>
 		</form>
 	</div>
 </div>
 
-<c:forEach var="board" items="${boards}">
+<c:forEach var="board" items="${boards.title}">
 	<div class="container">
 		<div class="list-group">
 			<a href="/board/${board.id }" class="list-group-item list-group-item-action">${board.title }</a>
