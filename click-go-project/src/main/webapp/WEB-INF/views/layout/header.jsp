@@ -19,7 +19,6 @@
 <link href="../image/favicon.png" rel="shortcut icon"
 	type="image/x-icon">
 
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
@@ -117,25 +116,24 @@ TODO
 					style="color: black">
 					<ul class="navbar-nav">
 
-						<li class="nav-item " role="button"><a class="nav-link"
+						<li class="nav-item mr-3" role="button"><a class="nav-link"
 							href="#" id="li--search"><img alt="검색"
 								src="../image/search.png" width="18px"></a></li>
 
-						<li class="nav-item " role="button"><a class="nav-link"
+						<li class="nav-item mr-3" role="button"><a class="nav-link"
 							href="/?pageName=home" id="li--home">홈</a></li>
-						<li class="nav-item" role="button"><a class="nav-link"
+						<li class="nav-item mr-3" role="button"><a class="nav-link"
 							href="/home/store?pageName=store" id="li--store">상점</a></li>
 
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" data-toggle="dropdown"> 더보기
+						<li class="nav-item dropdown mr-3"><a
+							class="nav-link dropdown-toggle " data-toggle="dropdown"> 더보기
 						</a>
-							<div class="dropdown-menu">
+							<div class="dropdown-menu ">
 								<a class="dropdown-item" href="/home/about-us?pageName=about-us"
-									id="li--about-us">회사 소개</a> <a class="dropdown-item"
+									id="li--about-us">회사 소개</a> <a class="dropdown-item "
 									href="/home/board/board-form?pageName=board" id="li--board">게시판</a>
-								<a class="dropdown-item" href="#">1:1문의</a>
+								<a class="dropdown-item " href="#">1:1문의</a>
 							</div></li>
-
 
 						<c:choose>
 							<c:when test="${empty principal}">
@@ -146,20 +144,18 @@ TODO
 							</c:when>
 							<c:otherwise>
 
-								<li class="nav-item"><a class="nav-link"
+								<li class="nav-item mr-3"><a class="nav-link"
 									href="/home/content?pageName=content" id="li--content">가맹점
 										신청</a></li>
 
 								<input type="hidden" value="${principal.user.role}" name="role">
 
-								<li class="nav-item"><a class="nav-link"
-									href="/mypage?role=${principal.user.role}" id="li--content">내
-										정보</a></li>
+								<li class="nav-item mr-3"><a class="nav-link"
+									href="/mypage" id="li--content">내 정보</a></li>
 
 								<li class="nav-item"><a class="nav-link" href="/m-logout"
 									id="li--content">로그아웃</a></li>
-
-
+							
 							</c:otherwise>
 						</c:choose>
 
@@ -171,8 +167,8 @@ TODO
 
 
 	<script type="text/javascript">
-		$("#li--search").bind("click",function() {
-			
-			  $("#div--search").show();
-				});
+		$("#li--search").bind("click", function() {
+
+			$("#div--search").show();
+		});
 	</script>
