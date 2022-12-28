@@ -67,6 +67,23 @@ TODO
 	text-decoration: none;
 	color: #578cd2;
 }
+
+.note-num {
+	position: absolute;
+	bottom: 18px;
+	left: 25px;
+	height: 15px;
+	width: 15px;
+	font-size: 12px;
+	line-height: 15px;
+	justify-content: center;
+	text-align: center;
+	background-color: red;
+	border-radius: 15px;
+	display: inline-block;
+	color: white;
+	height: 15px;
+}
 </style>
 
 
@@ -81,15 +98,7 @@ TODO
 
 <body>
 
-
-
 	<input type="hidden" value="${nowPage}" id="nowPage">
-	<!-- 
-	<header style="background-color: #6885ab; text-align: center"
-		class=" d-flex justify-content-center p-2"> Our company
-		provides a service environment that makes leisure activities more fun
-		and convenient. </header>
- -->
 
 	<div>
 
@@ -117,38 +126,118 @@ TODO
 					style="color: black">
 					<ul class="navbar-nav">
 
-						<li class="nav-item " role="button"><a class="nav-link"
-							href="#" id="li--search"><img alt="검색"
-								src="../image/search.png" width="18px"></a></li>
-
-						<li class="nav-item " role="button"><a class="nav-link"
-							href="/?pageName=home" id="li--home">홈</a></li>
-						<li class="nav-item" role="button"><a class="nav-link"
-							href="/home/store?pageName=store" id="li--store">상점</a></li>
-
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" data-toggle="dropdown"> 더보기
-						</a>
-							<div class="dropdown-menu">
-								<a class="dropdown-item" href="/home/about-us?pageName=about-us"
-									id="li--about-us">회사 소개</a> <a class="dropdown-item"
-									href="/home/board/board-form?pageName=board" id="li--board">게시판</a>
-								<a class="dropdown-item" href="#">1:1문의</a>
-							</div></li>
-
 
 						<c:choose>
 							<c:when test="${empty principal}">
 
+								<li class="nav-item " role="button"><a class="nav-link"
+									href="#" id="li--search"><img alt="검색"
+										src="../image/search.png" width="18px"></a></li>
+
+								<li class="nav-item " role="button"><a class="nav-link"
+									href="/?pageName=home" id="li--home">홈</a></li>
+								<li class="nav-item" role="button"><a class="nav-link"
+									href="/home/store?pageName=store" id="li--store">상점</a></li>
+
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" data-toggle="dropdown">
+										더보기 </a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item"
+											href="/home/about-us?pageName=about-us" id="li--about-us">회사
+											소개</a> <a class="dropdown-item"
+											href="/home/board/board-form?pageName=board" id="li--board">게시판</a>
+										<a class="dropdown-item" href="#">1:1문의</a>
+									</div></li>
+
 								<li class="nav-item"><a class="nav-link"
 									href="/auth/login-form" id="li--content">로그인</a></li>
 
+
+
 							</c:when>
-							<c:otherwise>
+
+							<c:when test="${principal.user.role == 'ADMIN'}">
+
+
+								<li class="nav-item " role="button"><a class="nav-link"
+									href="#" id="li--search"><img alt="검색"
+										src="../image/search.png" width="18px"></a></li>
+
+
+								<li class="nav-item">
+									<form action="/storeFranchise/store-franchise-message"
+										method="get">
+										<div class="nav-btn justify-content-bottom" id="notification"
+											style="position: relative; margin: 0px">
+											<button class="btn" type="submit">
+												<img alt="메시지" src="../image/msg.png" width="20px"
+													height="20px"><span class="note-num">${message.size()}</span>
+											</button>
+										</div>
+									</form>
+								</li>
+
+								<li class="nav-item " role="button"><a class="nav-link"
+									href="/?pageName=home" id="li--home">홈</a></li>
+								<li class="nav-item" role="button"><a class="nav-link"
+									href="/home/store?pageName=store" id="li--store">상점</a></li>
+
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" data-toggle="dropdown">
+										더보기 </a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item"
+											href="/home/about-us?pageName=about-us" id="li--about-us">회사
+											소개</a> <a class="dropdown-item"
+											href="/home/board/board-form?pageName=board" id="li--board">게시판</a>
+										<a class="dropdown-item" href="#">1:1문의</a>
+									</div></li>
+
+
 
 								<li class="nav-item"><a class="nav-link"
-									href="/home/content?pageName=content" id="li--content">가맹점
-										신청</a></li>
+									href="/storeFranchise/store-franchise-list?pageName=content"
+									id="li--content">가맹점 목록</a></li>
+
+								<input type="hidden" value="${principal.user.role}" name="role">
+
+								<li class="nav-item"><a class="nav-link"
+									href="/mypage?role=${principal.user.role}" id="li--content">내
+										정보</a></li>
+
+								<li class="nav-item"><a class="nav-link" href="/m-logout"
+									id="li--content">로그아웃</a></li>
+
+							</c:when>
+
+
+							<c:otherwise>
+
+
+								<li class="nav-item " role="button"><a class="nav-link"
+									href="#" id="li--search"><img alt="검색"
+										src="../image/search.png" width="18px"></a></li>
+
+								<li class="nav-item " role="button"><a class="nav-link"
+									href="/?pageName=home" id="li--home">홈</a></li>
+								<li class="nav-item" role="button"><a class="nav-link"
+									href="/home/store?pageName=store" id="li--store">상점</a></li>
+
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" data-toggle="dropdown">
+										더보기 </a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item"
+											href="/home/about-us?pageName=about-us" id="li--about-us">회사
+											소개</a> <a class="dropdown-item"
+											href="/home/board/board-form?pageName=board" id="li--board">게시판</a>
+										<a class="dropdown-item" href="#">1:1문의</a>
+									</div></li>
+
+								<li class="nav-item"><a class="nav-link"
+									href="/storeFranchise/store-franchise-apply?pageName=content"
+									id="li--content">가맹점 신청</a></li>
 
 								<input type="hidden" value="${principal.user.role}" name="role">
 
@@ -171,8 +260,8 @@ TODO
 
 
 	<script type="text/javascript">
-		$("#li--search").bind("click",function() {
-			
-			  $("#div--search").show();
-				});
+		$("#li--search").bind("click", function() {
+
+			$("#div--search").show();
+		});
 	</script>
