@@ -126,8 +126,9 @@ TODO
 
 .input-search {
 	height: 50px;
-	width: 50px;
-	border-style: none;
+	width: 50px; 
+	border-style: hidden; 
+	border-style: none; 
 	padding: 10px;
 	font-size: 18px;
 	letter-spacing: 2px;
@@ -150,8 +151,9 @@ TODO
 	height: 50px;
 	border-style: none;
 	font-size: 20px;
-	font-weight: bold;
-	outline: none;
+	font-weight: bold; 
+	HEAD outline: hidden; 
+	outline: none; 
 	cursor: pointer;
 	border-radius: 50%;
 	position: absolute;
@@ -159,7 +161,8 @@ TODO
 	color: #ffffff;
 	background-color: transparent;
 	pointer-events: painted;
-	padding-right: 58px;
+	padding-right: 58px; 
+	font-size: 20px;
 }
 
 .btn-search:focus ~ .input-search {
@@ -275,8 +278,8 @@ footer a {
 @
 keyframes youtubeAnim { 
 	color: #c9110f;}
-</style>
 
+</style>
 
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
@@ -292,7 +295,6 @@ keyframes youtubeAnim {
 	<input type="hidden" value="${nowPage}" id="nowPage">
 
 	<div>
-	
 
 		<nav class="navbar navbar-expand-md " style="padding-top: 10px;">
 
@@ -318,22 +320,23 @@ keyframes youtubeAnim {
 					style="color: black">
 					<ul class="navbar-nav">
 
+						<!-- 검색 애니메이션 -->
 
 						<c:choose>
 							<c:when test="${empty principal}">
 
-						<!-- 검색 애니메이션 -->
-						<li>
-							<div class="search-box">
-								<form action="#" method="get">
-									<button class="btn-search">
-										<img class="search-img" alt="검색" src="../image/search.png"
-											width="18px">
-									</button>
-									<input type="text" class="input-search">
-								</form>
-							</div>
-						</li>
+								<!-- 검색 애니메이션 -->
+								<li>
+									<div class="search-box">
+										<form action="#" method="get">
+											<button class="btn-search">
+												<img class="search-img" alt="검색" src="../image/search.png"
+													width="18px">
+											</button>
+											<input type="text" class="input-search">
+										</form>
+									</div>
+								</li>
 
 								<li class="nav-item " role="button"><a class="nav-link"
 									href="/?pageName=home" id="li--home">홈</a></li>
@@ -354,24 +357,22 @@ keyframes youtubeAnim {
 								<li class="nav-item"><a class="nav-link"
 									href="/auth/login-form" id="li--content">로그인</a></li>
 
-
-
 							</c:when>
 
 							<c:when test="${principal.user.role == 'ADMIN'}">
 
-						<!-- 검색 애니메이션 -->
-						<li>
-							<div class="search-box">
-								<form action="#" method="get">
-									<button class="btn-search">
-										<img class="search-img" alt="검색" src="../image/search.png"
-											width="18px">
-									</button>
-									<input type="text" class="input-search">
-								</form>
-							</div>
-						</li>
+								<!-- 검색 애니메이션 -->
+								<li>
+									<div class="search-box">
+										<form action="#" method="get">
+											<button class="btn-search">
+												<img class="search-img" alt="검색" src="../image/search.png"
+													width="18px">
+											</button>
+											<input type="text" class="input-search">
+										</form>
+									</div>
+								</li>
 
 
 								<li class="nav-item">
@@ -420,22 +421,20 @@ keyframes youtubeAnim {
 
 							</c:when>
 
-
 							<c:otherwise>
 
-
 								<!-- 검색 애니메이션 -->
-						<li>
-							<div class="search-box">
-								<form action="#" method="get">
-									<button class="btn-search">
-										<img class="search-img" alt="검색" src="../image/search.png"
-											width="18px">
-									</button>
-									<input type="text" class="input-search">
-								</form>
-							</div>
-						</li>
+								<li>
+									<div class="search-box">
+										<form action="#" method="get">
+											<button class="btn-search">
+												<img class="search-img" alt="검색" src="../image/search.png"
+													width="18px">
+											</button>
+											<input type="text" class="input-search">
+										</form>
+									</div>
+								</li>
 
 								<li class="nav-item " role="button"><a class="nav-link"
 									href="/?pageName=home" id="li--home">홈</a></li>
@@ -465,7 +464,6 @@ keyframes youtubeAnim {
 
 								<li class="nav-item"><a class="nav-link" href="/m-logout"
 									id="li--content">로그아웃</a></li>
-
 
 							</c:otherwise>
 						</c:choose>
