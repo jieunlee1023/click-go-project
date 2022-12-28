@@ -3,6 +3,7 @@ package com.clickgo.project.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -44,8 +45,9 @@ public class HomeController {
 		return "home/content";
 	}
 	
-	@GetMapping("/home/board/question-form")
-	public String question() {
+	@GetMapping("/home/board/question-form/{id}")
+	public String question(Model model, @PathVariable(required = false) int id) {
+		model.addAttribute("questNum", id);
 		return "home/frequently-asked-questions";
 	}
 }
