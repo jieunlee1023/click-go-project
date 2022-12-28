@@ -63,7 +63,7 @@ public class User {
 
 	@Enumerated(EnumType.STRING)
 	private LoginType loginType;
-
+ 
 	@ColumnDefault(value = "0")
 	private int point;
 }

@@ -9,10 +9,6 @@
 
 
 
-	<br> <br> <br> <br> <br> <br> <br> <br>
-	<br> <br> <br> <br> <br> <br> <br> <br>
-	<br> <br>
-
 </div>
 
 <%@ include file="layout/footer.jsp"%>

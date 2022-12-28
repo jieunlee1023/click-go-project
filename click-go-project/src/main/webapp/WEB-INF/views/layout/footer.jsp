@@ -25,7 +25,6 @@
 <script>
 	$(document).ready(function() {
 		let temp = $("#nowPage").val();
-		console.log(temp);
 		if (temp == "home") {
 			$("#li--home").css("color", "black");
 		} else if (temp == "about-us") {
@@ -42,6 +41,21 @@
 		$(".nav-item > .active").css("color", "black");
 
 	});
+
+	function getShow(){
+		alert("dfjsk");
+		document.getElementById("test1").style.display = "";
+	}
+	
+	function getHide(){
+		document.getElementById("test1").style.display = "none";
+		
+	}
+	
+	target.fadeIn(100, function() {
+        $('#m-focus').focus();
+     }).addClass('reveal');
+	
 </script>
 
 

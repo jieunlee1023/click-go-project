@@ -1,14 +1,14 @@
 package com.clickgo.project.service;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.clickgo.project.dto.res.CsBoard;
 import com.clickgo.project.dto.res.CsReply;
-import com.clickgo.project.dto.res.Reply;
 import com.clickgo.project.dto.res.User;
 import com.clickgo.project.model.enums.BoardType;
 import com.clickgo.project.model.enums.SecretType;
@@ -36,7 +36,7 @@ public class BoardService {
 		return true;
 	}
 
-	@Transactional(readOnly = true)
+	@Transactional
 	public Page<CsBoard> getBoardList(Pageable pageable) {
 
 		return iBoardRepository.findAll(pageable);
