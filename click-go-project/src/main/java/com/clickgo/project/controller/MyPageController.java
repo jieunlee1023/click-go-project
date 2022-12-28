@@ -13,11 +13,7 @@ public class MyPageController {
 	@GetMapping({ "", "/" })
 	public String myPage(@RequestParam String role, Model model) {
 		System.out.println(role);
-		if (role == null || role == "") {
-			return "/user/mypage/mypage";
-		}
-		model.addAttribute("role", role);
-		return "/host/mypage/mypage";
+			return "/user/my/mypage";
 	}
 
 	@GetMapping("/reservation-list")

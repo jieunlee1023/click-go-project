@@ -3,9 +3,9 @@
 
 <br>
 <div class="d-flex jumbotron text-left "
-	style="margin-bottom: 0; background-color: #b4cae8;">
+	style="margin-bottom: 0; background-color: #DADADA;">
 	<div style="margin-right: 20px">
-		<p style="color: #4e637f; margin-bottom: 10; font-size: 20px">Click-Go</p>
+		<p style="color: black; margin-bottom: 10; font-size: 20px">Click-Go</p>
 		<div style="font-size: 13px">
 			<div>CS CENTER : CLICK_GO@GMAIL.COM</div>
 			<div>WEEKDAYS 9AM-6PM</div>

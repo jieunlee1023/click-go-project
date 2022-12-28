@@ -22,12 +22,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link
-	href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500&family=Sunflower:wght@300;500&display=swap"
+	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
 	rel="stylesheet">
 
 <style type="text/css">
 * {
-	font-family: 'DM Sans', sans-serif;
+	font-family: 'Noto Sans KR', sans-serif;
 }
 
 .login:hover {
@@ -85,15 +85,19 @@ TODO
 
 <body>
 
+
+
 	<input type="hidden" value="${nowPage}" id="nowPage">
+	<!-- 
 	<header style="background-color: #6885ab; text-align: center"
 		class=" d-flex justify-content-center p-2"> Our company
 		provides a service environment that makes leisure activities more fun
 		and convenient. </header>
+ -->
+
 	<div>
 
-
-		<nav class="navbar navbar-expand-md " style="margin-top: 10px">
+		<nav class="navbar navbar-expand-md " style="padding-top: 10px;">
 
 			<div class="d-flex justify-content-center ">
 
@@ -106,28 +110,70 @@ TODO
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#collapsibleNavbar">
-				<span class="navbar-toggler-icon" style="font-size: 20px"> ▼
+				<span class="navbar-toggler-icon"> <img
+					src="../image/menu.png" width="30px" height="30px">
 				</span>
 			</button>
 
-			<div class="collapse navbar-collapse" id="collapsibleNavbar">
+			<div class="collapse navbar-collapse justify-content-end"
+				id="collapsibleNavbar">
 				<nav class="navbar navbar-expand-sm navbar-light"
 					style="color: black">
 					<ul class="navbar-nav">
 
-						<li class="nav-item " role="button"><a class="nav-link"
-							href="/?pageName=home" id="li--home">Home</a></li>
-						<li class="nav-item " role="button"><a class="nav-link"
-							href="/home/about-us?pageName=about-us" id="li--about-us">About
-								us</a></li>
-						<li class="nav-item" role="button"><a class="nav-link"
-							href="/home/store?pageName=store" id="li--store">Store</a></li>
-						<li class="nav-item" role="button"><a class="nav-link"
-							href="/home/board/board-form?pageName=board" id="li--board">Board</a></li>
-						<li class="nav-item"><a class="nav-link"
-							href="/home/content?pageName=content" id="li--content">Content</a></li>
+						<li class="nav-item mr-3" role="button"><a class="nav-link"
+							href="#" id="li--search"><img alt="검색"
+								src="../image/search.png" width="18px"></a></li>
+
+						<li class="nav-item mr-3" role="button"><a class="nav-link"
+							href="/?pageName=home" id="li--home">홈</a></li>
+						<li class="nav-item mr-3" role="button"><a class="nav-link"
+							href="/home/store?pageName=store" id="li--store">상점</a></li>
+
+						<li class="nav-item dropdown mr-3"><a
+							class="nav-link dropdown-toggle " data-toggle="dropdown"> 더보기
+						</a>
+							<div class="dropdown-menu ">
+								<a class="dropdown-item" href="/home/about-us?pageName=about-us"
+									id="li--about-us">회사 소개</a> <a class="dropdown-item "
+									href="/home/board/board-form?pageName=board" id="li--board">게시판</a>
+								<a class="dropdown-item " href="#">1:1문의</a>
+							</div></li>
+
+						<c:choose>
+							<c:when test="${empty principal}">
+
+								<li class="nav-item"><a class="nav-link"
+									href="/auth/login-form" id="li--content">로그인</a></li>
+
+							</c:when>
+							<c:otherwise>
+
+								<li class="nav-item mr-3"><a class="nav-link"
+									href="/home/content?pageName=content" id="li--content">가맹점
+										신청</a></li>
+
+								<input type="hidden" value="${principal.user.role}" name="role">
+
+								<li class="nav-item mr-3"><a class="nav-link"
+									href="/mypage" id="li--content">내 정보</a></li>
+
+								<li class="nav-item"><a class="nav-link" href="/m-logout"
+									id="li--content">로그아웃</a></li>
+							
+							</c:otherwise>
+						</c:choose>
+
 					</ul>
 				</nav>
 			</div>
 		</nav>
 	</div>
+
+
+	<script type="text/javascript">
+		$("#li--search").bind("click", function() {
+
+			$("#div--search").show();
+		});
+	</script>

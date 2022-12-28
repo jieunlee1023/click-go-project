@@ -46,10 +46,10 @@ public class Store {
 	private String storeTEL;
 
 	@Column(nullable = false)
-	private String address;
+	private String storeAddress;
 
 	@Column(nullable = false)
-	private int totalRoomCount;
+	private int storeTotalRoomCount;
 
 	@Column(nullable = false)
 	@CreationTimestamp
@@ -59,9 +59,10 @@ public class Store {
 	@JoinColumn(name = "hostId", nullable = false)
 	private Host host;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "likeStoreId", nullable = false)
-	private LikeStore likeStore;
+	@Column(nullable = false)
+	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties
+	private List<LikeStore> likeStore;
 
 	@Column(nullable = false)
 	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
