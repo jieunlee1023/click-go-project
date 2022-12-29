@@ -1,5 +1,6 @@
 package com.clickgo.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class StoreFranchiseController {
 
 	@GetMapping("/store-franchise-apply")
 	public String franchiseApply() {
-		
+
 		return "/storeFranchise/store-franchise-apply";
 	}
 
@@ -38,10 +39,12 @@ public class StoreFranchiseController {
 		franchiseMassageCount(model);
 		return "/storeFranchise/store-franchise-message";
 	}
-	
+
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
+		int count = 0;
 		model.addAttribute("message", franchiseMessages);
+		model.addAttribute("count", count);
 	}
 
 }

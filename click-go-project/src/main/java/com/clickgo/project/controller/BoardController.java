@@ -34,8 +34,10 @@ public class BoardController {
 		String searchTitle = q == null ? "" : q;
 		System.out.println("searchTitle" + searchTitle);
 
-//		Page<CsBoard> boards = boardService.searchBoard(searchTitle.replace("//", ""), pageable);
-		Page<CsBoard> boards = boardService.getBoardList(pageable);
+//		CsBoard boards1 = boardService.searchBoard(searchTitle, pageable);
+		
+//		Page<CsBoard> boards = boardService.getBoardList(pageable);
+		Page<CsBoard> boards = boardService.searchBoard(searchTitle, pageable);
 
 		System.out.println(boards + ": boardsddddddddd");
 		int PAGENATION_BLOCK_COUNT = 10;
@@ -60,6 +62,9 @@ public class BoardController {
 		model.addAttribute("endPageNumber", endPageNumber);
 		model.addAttribute("pageNumbers", pageNumbers);
 		model.addAttribute("q", searchTitle);
+		
+//		model.addAttribute("boards1",boards1);
+		
 		franchiseMassageCount(model);
 		return "board/board-list";
 	}

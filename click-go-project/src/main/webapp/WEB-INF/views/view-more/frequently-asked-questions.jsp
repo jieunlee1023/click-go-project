@@ -2,11 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 
-<head>
+
 <style>
-* {
-	font-family: 'Gowun Batang', sans-serif;
-}
 
 .mybtns {
 	display: flex;
@@ -21,49 +18,43 @@
 }
 </style>
 
-</head>
 
 <body>
 
-	<p></p>
-
-	<nav class="navbar navbar-dark bg-white">
-		<!-- Navbar content -->
-	</nav>
 	<hr>
 
 	<div class="d-flex justify-content-center">
 
 		<!-- 이용문의 -->
 		<button type="button"
-			onclick="location.href = '/home/board/question-form/1'"
+			onclick="location.href = '/view-more/question-form/1'"
 			class="btn btn-outline-dark mx-2" data-bs-toggle="modal"
 			data-bs-target="#staticBackdrop1">이용문의</button>
 
 
 		<!-- 편의점 버튼-->
 		<button type="button"
-			onclick="location.href = '/home/board/question-form/2'"
+			onclick="location.href = '/view-more/question-form/2'"
 			class="btn btn-outline-dark mx-2" data-bs-toggle="modal"
 			data-bs-target="#staticBackdrop">결제 영수증</button>
 
 
 		<!-- 질문1 -->
 		<button type="button"
-			onclick="location.href = '/home/board/question-form/3'"
+			onclick="location.href = '/view-more/question-form/3'"
 			class="btn btn-outline-dark mx-2" data-bs-toggle="modal"
 			data-bs-target="#staticBackdrop">질문1</button>
 
 
 		<button type="button"
-			onclick="location.href = '/home/board/question-form/4'"
+			onclick="location.href = '/view-more/question-form/4'"
 			class="btn btn-outline-dark mx-2" data-bs-toggle="modal"
 			data-bs-target="#staticBackdrop">질문2</button>
 
 
 		<!-- 질문5 -->
 		<button type="button"
-			onclick="location.href = '/home/board/question-form/5'"
+			onclick="location.href = '/view-more/question-form/5'"
 			class="btn btn-outline-dark mx-2" data-bs-toggle="modal"
 			data-bs-target="#staticBackdrop">질문5</button>
 
@@ -72,7 +63,7 @@
 
 		<!-- 질문6 -->
 		<button type="button"
-			onclick="location.href = '/home/board/question-form/6'"
+			onclick="location.href = '/view-more/question-form/6'"
 			class="btn btn-outline-dark mx-2" data-bs-toggle="modal"
 			data-bs-target="#staticBackdrop">질문6</button>
 
@@ -81,25 +72,25 @@
 
 		<!-- 질문7 -->
 		<button type="button"
-			onclick="location.href = '/home/board/question-form/7'"
+			onclick="location.href = '/view-more/question-form/7'"
 			class="btn btn-outline-dark mx-2" data-bs-toggle="modal"
 			data-bs-target="#staticBackdrop">질문7</button>
 
 		<!-- 질문8 -->
 		<button type="button"
-			onclick="location.href = '/home/board/question-form/8'"
+			onclick="location.href = '/view-more/question-form/8'"
 			class="btn btn-outline-dark mx-2" data-bs-toggle="modal"
 			data-bs-target="#staticBackdrop">질문8</button>
 
 		<!-- 질문9 -->
 		<button type="button"
-			onclick="location.href = '/home/board/question-form/9'"
+			onclick="location.href = '/view-more/question-form/9'"
 			class="btn btn-outline-dark mx-2" data-bs-toggle="modal"
 			data-bs-target="#staticBackdrop">질문5</button>
 
 		<!-- 질문10 -->
 		<button type="button"
-			onclick="location.href = '/home/board/question-form/2'"
+			onclick="location.href = '/view-more/question-form/2'"
 			class="btn btn-outline-dark mx-2" data-bs-toggle="modal"
 			data-bs-target="#staticBackdrop">질문10</button>
 	</div>

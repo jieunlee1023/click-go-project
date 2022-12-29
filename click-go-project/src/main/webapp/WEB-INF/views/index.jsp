@@ -3,9 +3,6 @@
 <%@ include file="layout/header.jsp"%>
 
 <div>
-	<div class="d-flex justify-content-end m-3 ">
-
-	</div>
 
 
 

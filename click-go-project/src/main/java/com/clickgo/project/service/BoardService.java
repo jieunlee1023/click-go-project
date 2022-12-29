@@ -1,6 +1,5 @@
 package com.clickgo.project.service;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -38,7 +37,7 @@ public class BoardService {
 
 	@Transactional
 	public Page<CsBoard> getBoardList(Pageable pageable) {
-
+		
 		return iBoardRepository.findAll(pageable);
 	}
 
@@ -100,9 +99,18 @@ public class BoardService {
 		}
 
 	}
+	
+	// 서치 ..
 	@Transactional
 	public Page<CsBoard> searchBoard(String q, Pageable pageable){
 		System.out.println("들어어오낭낭 " + q);
-		return iBoardRepository.findByTitleContaining1(q, pageable);
+		
+		return iBoardRepository.findByTitleContaining(q, pageable);
 	}
+	
+//	@Transactional
+//	public CsBoard searchBoard1(String q, Pageable pageable) {
+//		
+//		return iBoardRepository.findByTitleContaining2(q, pageable);
+//	}
 }
