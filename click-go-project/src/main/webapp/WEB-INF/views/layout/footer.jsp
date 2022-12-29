@@ -21,7 +21,6 @@
 			</div>
 		</div>
 	</div>
-	<br>
 </footer>
 <script>
 	$(document).ready(function() {
