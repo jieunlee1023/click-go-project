@@ -11,9 +11,22 @@ import com.clickgo.project.dto.res.Report;
 
 public interface IReportRepository extends JpaRepository<Report, Integer> {
 
-	@Query(value = " SELECT * FROM Report WHERE userId = ?1 ", nativeQuery = true)
-	Page<Report> findByUserId(int userId, Pageable pageable);
-
 	@Query(value = " SELECT * FROM Report WHERE id = ?1 AND userId = ?2", nativeQuery = true)
 	Optional<Report> findByIdAndByUserId(int id, int userId);
+
+	// GEUST가 받은 신고
+	// 즉, STORE가 GEUST에게 한 신고 내역
+	@Query(value = " SELECT * FROM Report WHERE userId = ?1 AND reportType = 'USER' ", nativeQuery = true)
+	Page<Report> findByUserIdToUSER(int userId, Pageable pageable);
+
+	// STORE가 받은 신고
+	// 즉, GEUST가 STORE에게 한 신고 내역
+	@Query(value = " SELECT r.* "
+								+ " FROM report AS r "
+								+ " JOIN store AS s "
+								+ " ON r.storeId = s.id "
+								+ " WHERE s.userId = ?1 "
+								+ " AND r.reportType = 'STORE' "
+								, nativeQuery = true)
+	Page<Report> findByUserIdToSTORE(int id, Pageable pageable);
 }

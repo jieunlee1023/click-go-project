@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -75,13 +76,6 @@ public class User {
 	@ColumnDefault(value = "0")
 	private int point;
 
-//	@Column(nullable = false)
-//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-//	@JsonIgnoreProperties
-//	private List<Store> store;
-
-//	@Column(nullable = false)
-//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-//	@JsonManagedReference
-//	private List<Report> report;
+	@OneToOne(mappedBy = "user")
+	private ReportReply reportReply;
 }
