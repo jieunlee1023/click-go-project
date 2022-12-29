@@ -74,7 +74,7 @@
 			<div class="d-flex justify-content-center ">
 
 				<a class="navbar-brand" href="/" style="color: black"> <img
-					src="../image/favicon.png" alt="logo" style="width: 50px;"
+					src="/image/favicon.png" alt="logo" style="width: 50px;"
 					class="m-2">Click Go
 				</a>
 
@@ -83,7 +83,7 @@
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#collapsibleNavbar">
 				<span class="navbar-toggler-icon"> <img
-					src="../image/menu.png" width="30px" height="30px">
+					src="/image/menu.png" width="30px" height="30px">
 				</span>
 			</button>
 
@@ -103,7 +103,7 @@
 									<div class="search-box">
 										<form action="#" method="get">
 											<button class="btn-search" type="button">
-												<img class="search-img" alt="검색" src="../image/search.png"
+												<img class="search-img" alt="검색" src="/image/search.png"
 													width="18px">
 											</button>
 											<input type="text" class="input-search">
@@ -146,7 +146,7 @@
 									<div class="search-box">
 										<form action="#" method="get">
 											<button class="btn-search" type="button">
-												<img class="search-img" alt="검색" src="../image/search.png"
+												<img class="search-img" alt="검색" src="/image/search.png"
 													width="18px">
 											</button>
 											<input type="text" class="input-search">
@@ -161,7 +161,7 @@
 										<div class="nav-btn justify-content-bottom" id="notification"
 											style="position: relative; margin: 0px">
 											<button class="btn" type="submit">
-												<img alt="메시지" src="../image/msg.png" width="20px"
+												<img alt="메시지" src="/image/msg.png" width="20px"
 													height="20px"><span class="note-num">${message.size()}</span>
 											</button>
 										</div>
@@ -215,7 +215,7 @@
 									<div class="search-box">
 										<form action="#" method="get">
 											<button class="btn-search" type="button">
-												<img class="search-img" alt="검색" src="../image/search.png"
+												<img class="search-img" alt="검색" src="/image/search.png"
 													width="18px">
 											</button>
 											<input type="text" class="input-search">
@@ -274,7 +274,7 @@
 									<div class="search-box">
 										<form action="#" method="get">
 											<button class="btn-search" type="button">
-												<img class="search-img" alt="검색" src="../image/search.png"
+												<img class="search-img" alt="검색" src="/image/search.png"
 													width="18px">
 											</button>
 											<input type="text" class="input-search">
