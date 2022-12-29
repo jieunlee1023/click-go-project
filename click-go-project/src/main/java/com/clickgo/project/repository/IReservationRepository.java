@@ -5,7 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.clickgo.project.dto.res.Reservation;
+import com.clickgo.project.entity.Reservation;
 
 public interface IReservationRepository extends JpaRepository<Reservation, Integer> {
 

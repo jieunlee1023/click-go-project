@@ -1,4 +1,4 @@
-package com.clickgo.project.dto.res;
+package com.clickgo.project.entity;
 
 import java.sql.Timestamp;
 

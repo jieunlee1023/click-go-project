@@ -5,7 +5,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.clickgo.project.dto.res.User;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.repository.IUserRepository;
 
 import lombok.AllArgsConstructor;

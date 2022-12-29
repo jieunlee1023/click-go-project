@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.RequestFileDto;
-import com.clickgo.project.dto.res.Store;
-import com.clickgo.project.dto.res.StoreFranchise;
+import com.clickgo.project.entity.Store;
+import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.repository.IStoreFranchiseRepository;
 import com.clickgo.project.repository.IStoreRepository;

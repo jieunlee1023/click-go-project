@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.clickgo.project.dto.res.Report;
+import com.clickgo.project.entity.Report;
 
 public interface IReportRepository extends JpaRepository<Report, Integer> {
 

@@ -1,4 +1,4 @@
-package com.clickgo.project.dto.res;
+package com.clickgo.project.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

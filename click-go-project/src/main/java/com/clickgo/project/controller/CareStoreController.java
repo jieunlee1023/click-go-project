@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.dto.res.Store;
+import com.clickgo.project.entity.Store;
 import com.clickgo.project.service.StoreService;
 
 @Controller

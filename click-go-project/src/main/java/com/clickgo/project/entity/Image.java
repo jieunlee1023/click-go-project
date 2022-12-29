@@ -1,4 +1,4 @@
-package com.clickgo.project.dto.res;
+package com.clickgo.project.entity;
 
 import java.sql.Timestamp;
 
@@ -23,27 +23,24 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Reservation {
+public class Image {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Column(nullable = false)
-	private String approveStatus;
-
-	@Column(nullable = false)
 	@CreationTimestamp
-	private Timestamp reservationTime;
+	private Timestamp createDate;
 
 	@Column(nullable = false)
-	private int price;
+	private String imageUrl;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "userId", nullable = false)
-	private User user;
+	@Column(nullable = false)
+	private String originFileName;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId", nullable = false)
 	private Store store;
+
 }

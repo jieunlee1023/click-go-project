@@ -6,8 +6,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.clickgo.project.dto.res.Reservation;
-import com.clickgo.project.dto.res.User;
+import com.clickgo.project.entity.Reservation;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.repository.IReservationRepository;
 

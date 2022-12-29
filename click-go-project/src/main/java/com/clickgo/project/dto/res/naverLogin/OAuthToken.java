@@ -1,4 +1,4 @@
-package com.clickgo.project.dto.common;
+package com.clickgo.project.dto.res.naverLogin;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({"access_token", "token_type", "refresh_token", "id_token", "expires_in", 
-	"scope", "refresh_token_expires_in"})
+@JsonPropertyOrder({ "access_token", "token_type", "refresh_token", "id_token", "expires_in", "scope",
+		"refresh_token_expires_in" })
 public class OAuthToken {
 
 	@JsonProperty("access_token")
@@ -29,18 +29,18 @@ public class OAuthToken {
 	public String scope;
 	@JsonProperty("refresh_token_expires_in")
 	public Integer refreshTokenExpiresIn;
-	
+
 	@JsonIgnore
 	public Map<String, Object> additionalProperties = new HashMap<String, Object>();
-	
+
 	@JsonAnyGetter
 	public Map<String, Object> getAdditionalProperties() {
-		return  this.additionalProperties;
+		return this.additionalProperties;
 	}
+
 	@JsonAnySetter
 	public void setAdditionalProperties(Map<String, Object> additionalProperties) {
 		this.additionalProperties = additionalProperties;
 	}
-	
-	
+
 }

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.clickgo.project.dto.res.User;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.repository.IUserRepository;
 

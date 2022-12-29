@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.clickgo.project.dto.res.Category;
+import com.clickgo.project.entity.Category;
 import com.clickgo.project.repository.ICategoryRepository;
 
 @Service

@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.clickgo.project.dto.res.ReportReply;
+import com.clickgo.project.entity.ReportReply;
 
 public interface IReportReplyRepository extends JpaRepository<ReportReply, Integer> {
 

@@ -21,13 +21,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.client.RestTemplate;
 
-import com.clickgo.project.dto.res.User;
 import com.clickgo.project.dto.res.googleLogin.GoogleToken;
 import com.clickgo.project.dto.res.googleLogin.GoogleUserDto;
 import com.clickgo.project.dto.res.kakao_login.KakaoAccount;
 import com.clickgo.project.dto.res.kakao_login.KakaoProfile;
 import com.clickgo.project.dto.res.kakao_login.OAuthToken;
 import com.clickgo.project.dto.res.naverLogin.NaverProfile;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.LoginType;
 import com.clickgo.project.service.UserService;
 

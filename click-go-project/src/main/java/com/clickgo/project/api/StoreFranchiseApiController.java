@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clickgo.project.dto.res.ResponseDto;
-import com.clickgo.project.dto.res.Store;
-import com.clickgo.project.dto.res.StoreFranchise;
+import com.clickgo.project.entity.Store;
+import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.service.StoreFranchiseService;
 
 @RestController

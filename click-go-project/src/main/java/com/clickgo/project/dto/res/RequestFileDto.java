@@ -2,6 +2,8 @@ package com.clickgo.project.dto.res;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.clickgo.project.entity.StoreFranchise;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.StoreCategory;
 
 import lombok.Data;

@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.clickgo.project.dto.res.LikeStore;
+import com.clickgo.project.entity.LikeStore;
 import com.clickgo.project.repository.IWishListRepository;
 
 @Service

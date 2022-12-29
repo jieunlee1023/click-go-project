@@ -1,4 +1,4 @@
-package com.clickgo.project.dto.res;
+package com.clickgo.project.entity;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -13,55 +13,71 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.Pattern;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.clickgo.project.model.enums.StoreCategory;
+import com.clickgo.project.model.enums.BoardType;
+import com.clickgo.project.model.enums.SecretType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Entity
-@ToString
-public class StoreFranchise {
+public class CsBoard {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
 	@Column(nullable = false)
-	@Enumerated(EnumType.STRING)
-	private StoreCategory category;
-
-	@Column(nullable = false, length = 15)
-	private String storeName;
-
-	@Pattern(regexp = "^\\d{3}-\\d{3}-\\d{4}$")
-	private String storeTEL;
+	@OneToMany(mappedBy = "csBoard", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+	@JsonIgnoreProperties
+	private List<CsReply> csReply;
 
 	@Column(nullable = false)
-	private String storeAddress;
+	@Enumerated(EnumType.STRING)
+	private BoardType boardType;
 
 	@Column(nullable = false)
 	@CreationTimestamp
-	private Timestamp applyDate;
+	private Timestamp createDate;
+
+	@Lob
+	@Column(nullable = false)
+	private String content;
 
 	@Column(nullable = false)
-	private String storeLicense;
-	
+	@Enumerated(EnumType.STRING)
+	private SecretType secretType;
+
+	@Column(nullable = false)
+	private String title;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
-
+ 
+	// sw
+	@ColumnDefault("0")
+	private int count;
+	
+	/*
+	 * // 비밀글 여부
+	 * 
+	 * @Column(nullable = true) private boolean secret;
+	 */
+	
 }

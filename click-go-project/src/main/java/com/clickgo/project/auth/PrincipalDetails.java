@@ -6,7 +6,7 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.clickgo.project.dto.res.User;
+import com.clickgo.project.entity.User;
 
 public class PrincipalDetails implements UserDetails {
 

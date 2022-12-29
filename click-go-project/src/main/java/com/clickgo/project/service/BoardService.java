@@ -6,9 +6,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.clickgo.project.dto.res.CsBoard;
-import com.clickgo.project.dto.res.CsReply;
-import com.clickgo.project.dto.res.User;
+import com.clickgo.project.entity.CsBoard;
+import com.clickgo.project.entity.CsReply;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.BoardType;
 import com.clickgo.project.model.enums.SecretType;
 import com.clickgo.project.repository.IBoardRepository;

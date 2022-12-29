@@ -7,8 +7,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.clickgo.project.dto.res.Store;
-import com.clickgo.project.dto.res.StoreFranchise;
+import com.clickgo.project.entity.Store;
+import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.repository.IStoreRepository;
 
 @Service

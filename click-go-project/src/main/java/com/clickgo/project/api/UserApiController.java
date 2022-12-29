@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.ResponseDto;
-import com.clickgo.project.dto.res.User;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.service.UserService;
 
 import lombok.RequiredArgsConstructor;

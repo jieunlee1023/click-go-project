@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.dto.res.CsBoard;
-import com.clickgo.project.dto.res.CsReply;
 import com.clickgo.project.dto.res.ResponseDto;
+import com.clickgo.project.entity.CsBoard;
+import com.clickgo.project.entity.CsReply;
 import com.clickgo.project.service.BoardService;
 
 @RestController

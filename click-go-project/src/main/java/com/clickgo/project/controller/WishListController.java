@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.dto.res.Category;
-import com.clickgo.project.dto.res.LikeStore;
+import com.clickgo.project.entity.Category;
+import com.clickgo.project.entity.LikeStore;
 import com.clickgo.project.service.KategoryService;
 import com.clickgo.project.service.WishListService;
 

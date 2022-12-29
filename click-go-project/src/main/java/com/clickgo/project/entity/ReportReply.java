@@ -1,4 +1,4 @@
-package com.clickgo.project.dto.res;
+package com.clickgo.project.entity;
 
 import java.sql.Timestamp;
 
@@ -9,9 +9,13 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,24 +27,26 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Image {
+public class ReportReply {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@Lob
+	@Column(nullable = false)
+	private String content;
+
 	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp createDate;
 
-	@Column(nullable = false)
-	private String imageUrl;
-
-	@Column(nullable = false)
-	private String originFileName;
+//	@OneToOne
+//	@JoinColumn(name = "userId")
+//	private User user;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "storeId", nullable = false)
-	private Store store;
-
+	@JoinColumn(name = "reportId")
+	@JsonBackReference
+	private Report report;
 }

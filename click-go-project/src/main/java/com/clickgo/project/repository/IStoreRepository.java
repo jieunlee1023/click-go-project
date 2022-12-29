@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
-import com.clickgo.project.dto.res.Store;
+import com.clickgo.project.entity.Store;
 
 public interface IStoreRepository extends JpaRepository<Store, Integer>{
 

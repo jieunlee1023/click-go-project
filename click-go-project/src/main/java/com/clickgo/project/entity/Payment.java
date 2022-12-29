@@ -1,20 +1,17 @@
-package com.clickgo.project.dto.res;
-
-import java.sql.Timestamp;
+package com.clickgo.project.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.annotations.CreationTimestamp;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.clickgo.project.model.enums.PaymentType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,22 +23,30 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Reply {
+public class Payment {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Lob
 	@Column(nullable = false)
-	private String content;
+	private String aId;
 
 	@Column(nullable = false)
-	@CreationTimestamp
-	private Timestamp createDate;
+	@Enumerated(EnumType.STRING)
+	private PaymentType paymentMethod;
 
+	@Column(nullable = false)
+	private int total;
+
+	@Column(nullable = false)
+	private String approveAt;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "reviewId", nullable = false)
-	private Review review;
+	@JoinColumn(name = "storeId")
+	private Store store;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", nullable = false)
+	private User user;
 }

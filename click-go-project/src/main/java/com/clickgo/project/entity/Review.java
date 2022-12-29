@@ -1,4 +1,4 @@
-package com.clickgo.project.dto.res;
+package com.clickgo.project.entity;
 
 import java.sql.Timestamp;
 
@@ -11,11 +11,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
-
-import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -27,7 +25,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class ReportReply {
+public class Review {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -41,12 +39,15 @@ public class ReportReply {
 	@CreationTimestamp
 	private Timestamp createDate;
 
-//	@OneToOne
-//	@JoinColumn(name = "userId")
-//	private User user;
+	@Column(nullable = false)
+	@ColumnDefault(value = "0")
+	private int starScore;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "reportId")
-	@JsonBackReference
-	private Report report;
+	@JoinColumn(name = "userId", nullable = false)
+	private User user;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "storeId", nullable = false)
+	private Store store;
 }
