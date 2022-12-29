@@ -16,31 +16,73 @@
 
 <div class="container">
 	<div class="d-flex justify-content-between">
-		<h1>클릭꼬 고객센터</h1>
+		<h1>Click-Go Board 👨‍💻👩‍💻</h1>
+		<div class="spinner-border text-muted"></div>
+		<div class="spinner-border text-primary"></div>
+		<div class="spinner-border text-success"></div>
+		<div class="spinner-border text-info"></div>
+		<div class="spinner-border text-warning"></div>
+		<div class="spinner-border text-danger"></div>
+		<div class="spinner-border text-secondary"></div>
+		<div class="spinner-border text-dark"></div>
+		<div class="spinner-border text-light"></div>
 		<form class="form-inline" action="/board/board-write-form">
-			<button type="submit" class="btn btn-outline-info" id="btn--write">글쓰기</button>
+			<button type="submit" class="btn btn-outline-success" id="btn--write">글쓰기</button>
 		</form>
 	</div>
 
-	<div class="input-group mb-3">
-		<form action="/board/search" class="form-inline" method="get">
-			<div class="input-group-append">
-				<input type="text" class="form-control" placeholder="검색" name="q" value="${q }">
-				<button class="btn bg-secondary" type="submit">제목으로검색</button>
-			</div>
-		</form>
+	<div class="d-flex">
+		<div class="input-group mt-5 mb-5  justify-content-end">
+			<form action="/board/search" class="form-inline" method="get">
+				<div class="input-group-append">
+					<input type="text" class="form-control mr-2" placeholder="검색" name="q" value="${q }">
+					<button class="btn btn-outline-dark" type="submit">검색</button>
+				</div>
+			</form>
+		</div>
 	</div>
 
 
 
+	<div class="d-flex justify-content-between">
+		<p>번호</p>
+		<p>제목</p>
+		<p>글쓴이</p>
+		<p>등록시간</p>
+	</div>
 	<c:forEach var="board" items="${boards.content}">
-		<div class="list-group ">
+		<div class="d-flex justify-content-between">
 			<div class="d-flex justify-content-between">
-				<a href="/board/${board.id }" class="list-group-item list-group-item-action">글번호 : ${board.id }, 작성자 : ${board.user.username }, 제목 :
-					${board.title }, 작성시간 : ${board.createDate } </a>
+				<ul class="list-group list-group-flush ">
+					<li class="list-group-item d-flex justify-content-start">
+						<p class="text-danger">
+							<small>${board.id }</small>
+						</p> <a href="/board/${board.id }" class="col"><small>${board.title}</small> </a>
+						<p class="text-danger">
+							<small>${board.user.username }</small>
+						</p>
+						<p>
+							<small>${board.createDate }</small>
+						</p>
+					</li>
+				</ul>
 			</div>
 		</div>
 	</c:forEach>
+
+	<%-- <c:forEach var="board" items="${boards.content}">
+		<div class="container mb-5">
+			<div class=" row d-flex justify-content-center">
+				<div class="col">
+					<p class="text-danger"><small>글번호 : ${board.id }</small></p>
+					<a href="/board/${board.id }" class="col">, 제목 :${board.title }, 작성시간 : ${board.createDate } </a>
+					<p class="text-danger">
+						<small>, 작성자 : ${board.user.username }</small>
+					</p>
+				</div>
+			</div>
+		</div>
+	</c:forEach> --%>
 
 
 	<ul class="pagination justify-content-center">
