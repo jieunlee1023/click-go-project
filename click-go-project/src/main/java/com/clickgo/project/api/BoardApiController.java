@@ -27,8 +27,8 @@ public class BoardApiController {
 
 	@PostMapping("/api/board")
 	public ResponseDto<?> boardSave(@RequestBody CsBoard csBoard, @AuthenticationPrincipal PrincipalDetails details) {
+		System.out.println("들어오니 ");
 		boolean success = boardService.write(csBoard, details.getUser());
-		System.out.println(success + "오ㅓㅐ안대져");
 
 		return new ResponseDto<>(success, csBoard.getId());
 	}

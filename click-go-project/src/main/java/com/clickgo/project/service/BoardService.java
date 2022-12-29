@@ -103,7 +103,6 @@ public class BoardService {
 	// 서치 ..
 	@Transactional
 	public Page<CsBoard> searchBoard(String q, Pageable pageable){
-		System.out.println("들어어오낭낭 " + q);
 		
 		return iBoardRepository.findByTitleContaining(q, pageable);
 	}

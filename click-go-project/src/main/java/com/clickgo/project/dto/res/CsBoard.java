@@ -67,7 +67,7 @@ public class CsBoard {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
-
+ 
 	// sw
 	@ColumnDefault("0")
 	private int count;

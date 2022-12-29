@@ -5,11 +5,11 @@ let boardIndex = {
 		$("#btn--write").bind("click", () => {
 			this.write();
 		});
-		
+
 		$("#btn--update").bind("click", () => {
 			this.update();
 		});
-		$("#btn--delete").bind("click", () =>{
+		$("#btn--delete").bind("click", () => {
 			this.deleteById();
 		});
 		$("#btn-reply-save").bind("click", () => {
@@ -28,7 +28,7 @@ let boardIndex = {
 			content: $("#content").val(),
 			title: $("#title").val()
 		};
-
+		console.log(data);
 		$.ajax({
 			//beforeSend: function(xhr){
 			//	xhr.setRequestHeader(csrfHeader, token);
@@ -72,19 +72,19 @@ let boardIndex = {
 			alert("글 등록 실패" + error.responseJSON.message);
 		});
 	},
-	
-	deleteById: function(){
+
+	deleteById: function() {
 		let id = $("#board-id").val();
-		
+
 		$.ajax({
 			type: "DELETE",
 			url: "/api/board/" + id
-		}).done(function(data){
-			if(data.httpStatus == true){
+		}).done(function(data) {
+			if (data.httpStatus == true) {
 				alert("글 삭제 완료");
 				location.href = "/board/board-list"
 			}
-		}).fail(function(error){
+		}).fail(function(error) {
 			alert("글 삭제 실패 " + error.responseJSON.message);
 		});
 	},
@@ -105,7 +105,7 @@ let boardIndex = {
 			if (data.httpStatus == true) {
 				alert("댓글 등록 성공");
 				console.log(data.body);
-				location.href = "/board/"+ replyData.boardId;
+				location.href = "/board/" + replyData.boardId;
 
 
 			}
@@ -126,7 +126,7 @@ let boardIndex = {
 		}).done(function(resData) {
 			if (resData.httpStatus == true) {
 				alert("댓글 삭제 성공");
-				location.href = "/board/"+ boardId;
+				location.href = "/board/" + boardId;
 			}
 		}).fail(function(error) {
 			alert("댓삭제실패" + error.responseJSON.message);
