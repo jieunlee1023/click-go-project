@@ -19,7 +19,7 @@ import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.clickgo.project.model.enums.StoreCategory;
+import com.clickgo.project.model.enums.StoreKategory;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -42,7 +42,7 @@ public class StoreFranchise {
 
 	@Column(nullable = false)
 	@Enumerated(EnumType.STRING)
-	private StoreCategory category;
+	private StoreKategory category;
 
 	@Column(nullable = false, length = 15)
 	private String storeName;

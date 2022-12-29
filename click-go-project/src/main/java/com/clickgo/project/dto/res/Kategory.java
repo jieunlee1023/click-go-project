@@ -5,7 +5,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Id;
 
-import com.clickgo.project.model.enums.StoreCategory;
+import com.clickgo.project.model.enums.StoreKategory;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -17,9 +17,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Category {
+public class Kategory {
 
 	@Id
 	@Enumerated(EnumType.STRING)
-	private StoreCategory id;
+	private StoreKategory id;
 }
