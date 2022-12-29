@@ -52,6 +52,10 @@
 		
 	}
 	
+	target.fadeIn(100, function() {
+        $('#m-focus').focus();
+     }).addClass('reveal');
+	
 </script>
 
 

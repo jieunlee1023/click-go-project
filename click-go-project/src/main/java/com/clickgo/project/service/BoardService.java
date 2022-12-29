@@ -8,7 +8,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.clickgo.project.dto.res.CsBoard;
+import com.clickgo.project.dto.res.CsReply;
 import com.clickgo.project.dto.res.User;
+import com.clickgo.project.model.enums.BoardType;
+import com.clickgo.project.model.enums.SecretType;
 import com.clickgo.project.repository.IBoardRepository;
 import com.clickgo.project.repository.IReplyRepository;
 
@@ -21,11 +24,16 @@ public class BoardService {
 	@Autowired
 	private IReplyRepository iReplyRepository;
 
-	public void write(CsBoard csBoard, User user) {
+	public boolean write(CsBoard csBoard, User user) {
 
 		csBoard.setCount(0);
 		csBoard.setUser(user);
+		csBoard.setBoardType(BoardType.QUESTION);
+		csBoard.setSecretType(SecretType.PUBLIC);
+
 		iBoardRepository.save(csBoard);
+
+		return true;
 	}
 
 	@Transactional
@@ -43,12 +51,13 @@ public class BoardService {
 	}
 
 	@Transactional
-	public void deleteById(int id) {
+	public boolean deleteById(int id) {
 		iBoardRepository.deleteById(id);
+		return true;
 	}
 
 	@Transactional
-	public int modifyBoard(int boardId, CsBoard csBoard) {
+	public boolean modifyBoard(int boardId, CsBoard csBoard) {
 		CsBoard boardEntity = iBoardRepository.findById(boardId).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 글을 찾을 수 없네요");
 		});
@@ -56,7 +65,40 @@ public class BoardService {
 		boardEntity.setTitle(csBoard.getTitle());
 		boardEntity.setContent(csBoard.getContent());
 
-		return 1;
+		return true;
+	}
+
+	@Transactional
+	public boolean writeReply(int boardId, CsReply requestReply, User user) {
+		CsBoard board = iBoardRepository.findById(boardId).orElseThrow(() -> {
+			return new IllegalArgumentException("댓글 쓰기 실패");
+		});
+		requestReply.setUser(user);
+		requestReply.setCsBoard(board);
+		CsReply replyEntity = iReplyRepository.save(requestReply);
+		return true;
+	}
+
+	@Transactional
+	public boolean deleteById(int replyId, int requestUserId) {
+
+		CsReply replyEntity = iReplyRepository.findById(replyId).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 리플 찾을수없음");
+		});
+		try {
+			int dbWriter = replyEntity.getUser().getId();
+			int principalId = requestUserId;
+
+			if (dbWriter == principalId) {
+				iReplyRepository.deleteById(replyId);
+			} else {
+				throw new IllegalArgumentException("본인글아닙니다");
+			}
+			return true;
+		} catch (Exception e) {
+			return false;
+		}
+
 	}
 
 //	@Transactional
@@ -72,9 +114,9 @@ public class BoardService {
 //		 
 //		 return replyEntity;
 //	}
-	@Transactional
-	public Page<CsBoard> searchBoard(String q, Pageable pageable) {
-		return iBoardRepository.findByTitleContaining(q, pageable);
-	}
+//	@Transactional
+//	public Page<CsBoard> searchBoard(String q, Pageable pageable) {
+//		return iBoardRepository.findByTitleContaining1(q, pageable);
+//	}
 
 }

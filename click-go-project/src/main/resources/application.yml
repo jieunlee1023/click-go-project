@@ -37,7 +37,7 @@ spring:
         
 
 file:
-  path: C:/play-ce-project/images/
+  path: C:/click-go-project/images/
 
 click_go:
   key: 85135f3c6bfe9df1735f8806f045ae73cece7219f7840d8e7e9297a7f846b48a

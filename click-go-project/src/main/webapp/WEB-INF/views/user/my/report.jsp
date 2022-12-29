@@ -38,7 +38,11 @@
 											<h5 >${report.title}</h5>
 									<div>
 											<span class="m-1 mr-2">${report.store.storeName}</span>
+											<c:choose>
+												<c:when test="">
 											<span class="m-1 mr-2">${report.approveStatus}</span>
+												</c:when>
+											</c:choose>
 									</div>
 										</div>
 									</a>

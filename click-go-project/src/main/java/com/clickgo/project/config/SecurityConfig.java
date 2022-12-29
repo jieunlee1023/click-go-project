@@ -43,7 +43,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.authorizeHttpRequests()
 				.antMatchers("/auth/**", "/api/**", "/", "/js/**", "/css/**", "/layout/**", "/jsp/**", "/image/**",
+<<<<<<< HEAD
 						"/home/about-us", "/home/store", "/board/**, /mypage/**")
+=======
+						"/home/about-us", "/store/**", "/board/**", "/view-more/**")
+>>>>>>> developer
 				.permitAll().anyRequest().authenticated().and().formLogin().loginPage("/auth/login-form")
 				.loginProcessingUrl("/auth/loginProc").defaultSuccessUrl("/");
 	}

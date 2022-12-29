@@ -19,14 +19,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.Report;
 import com.clickgo.project.dto.res.Reservation;
+import com.clickgo.project.dto.res.StoreFranchise;
 import com.clickgo.project.dto.res.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.service.ReportService;
 import com.clickgo.project.service.ReservationService;
+import com.clickgo.project.service.StoreFranchiseService;
 
 @Controller
 @RequestMapping("/mypage")
 public class MyPageController {
+
+	@Autowired
+	private StoreFranchiseService franchiseService;
 
 	@Autowired
 	private ReservationService reservationService;
@@ -36,7 +41,9 @@ public class MyPageController {
 
 	@GetMapping({ "", "/" })
 	public String myPage(Model model) {
+		franchiseMassageCount(model);
 		return "/user/my/mypage";
+
 	}
 
 	@GetMapping("/reservation-list")
@@ -56,6 +63,7 @@ public class MyPageController {
 		for (int i = startPage; i <= endPage; i++) {
 			pageNumbers.add(i);
 		}
+		franchiseMassageCount(model);
 
 		model.addAttribute("reservations", reservations);
 		model.addAttribute("pageNumbers", pageNumbers);
@@ -68,7 +76,8 @@ public class MyPageController {
 
 	@GetMapping("/report-list")
 	public String reportList(Model model,
-			@PageableDefault(size = 2, sort = "id", direction = Direction.DESC) Pageable pageable, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+			@PageableDefault(size = 2, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 
 		Page<Report> reports = reportService.findByUserId(principalDetails.getUser().getId(), pageable);
 
@@ -80,7 +89,7 @@ public class MyPageController {
 		List<Integer> pageNumbers = new ArrayList<>();
 
 		for (int i = startPage; i <= endPage; i++) {
-			pageNumbers.add(i); 
+			pageNumbers.add(i);
 		}
 
 		model.addAttribute("reports", reports);
@@ -89,13 +98,21 @@ public class MyPageController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 
+		franchiseMassageCount(model);
 		return "/user/my/report";
 	}
-	
+
 	@GetMapping("/report/detail/{id}")
-	public String reportDetail(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
+	public String reportDetail(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails,
+			Model model) {
 		Report reportEntity = reportService.findByIdAndUserId(id, principalDetails.getUser());
+		franchiseMassageCount(model);
 		model.addAttribute("report", reportEntity);
 		return "user/my/report-detail";
+	}
+
+	public void franchiseMassageCount(Model model) {
+		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
+		model.addAttribute("message", franchiseMessages);
 	}
 }

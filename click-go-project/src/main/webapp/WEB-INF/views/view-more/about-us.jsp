@@ -9,6 +9,7 @@
 	<div class="d-flex justify-content-center" style="font-size: 70px">Our
 		History</div>
 	<br>
+	<!-- 
 	<div id="demo" class="carousel slide" data-ride="carousel">
 		<ul class="carousel-indicators">
 			<li data-target="#demo" data-slide-to="0" class="active"></li>
@@ -65,12 +66,12 @@
 			<span class="carousel-control-next-icon"></span>
 		</a>
 	</div>
-
+ -->
 
 	<div class="d-flex justify-content-center" style="font-size: 50px">·</div>
 	<div class="d-flex justify-content-center" style="font-size: 100%">우리
 		회사는 여가 활동을 더욱 즐겁고 편리하게 만들어주는 서비스 환경을 제공합니다.</div>
-	<div class="d-flex justify-content-center" style="font-size:100%">
+	<div class="d-flex justify-content-center" style="font-size: 100%">
 		(Our company provides a service environment that makes leisure
 		activities more fun and convenient.)</div>
 	<br> <br>
@@ -108,14 +109,14 @@
 		<div>
 			<br> <br> <br> <br>
 			<hr style="border: dashed 2px black; width: 50px;">
-			<br> <br> <br> <br> <br> 
+			<br> <br> <br> <br> <br>
 			<hr style="border: dashed 2px black; width: 50px;">
 		</div>
 		<div>
 			<br> <br> <br> <img alt="start"
 				src="../image/about-us/togeter.png" width="120px"> <br> <br>
-			<br> <img alt="goal"
-				src="../image/about-us/goal.png" width="120px">
+			<br> <img alt="goal" src="../image/about-us/goal.png"
+				width="120px">
 		</div>
 		<div>
 			<br> <br> <br>
