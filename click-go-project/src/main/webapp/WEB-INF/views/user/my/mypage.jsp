@@ -36,7 +36,7 @@
 			<div class="media border p-3 mr-5"
 				style="width: 374px; height: 260px; border-radius: 15px;">
 				<div class="d-flex-column ">
-					<a href="/mypage/report-list"> <img
+					<a href="/report/report-list/0"> <img
 						src="../image/mypage/report_list.png" alt="수정 사진"
 						class="ml-5 mt-4 m-4" style="width: 60px;">
 						<div class="media-body">
@@ -133,14 +133,15 @@
 			<div class="media border p-3 mr-5"
 				style="width: 374px; height: 260px; border-radius: 15px;">
 				<div class="d-flex-column ">
-					<img src="../image/mypage/report_list.png" alt="수정 사진"
+					<a href="/report/report-list/0"> <img src="../image/mypage/report_list.png" alt="수정 사진"
 						class="ml-5 mt-4 m-4" style="width: 60px;">
-					<div class="media-body">
-						<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-							<h3 style="font-weight: bold;">신고 내역</h3>
-							<p class="mt-3">신고 내역을 확인하세요.</p>
+						<div class="media-body">
+							<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
+								<h3 style="font-weight: bold;">신고 내역</h3>
+								<p class="mt-3">신고 내역을 확인하세요.</p>
+							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 			</div>
 			<div class="media border p-3"

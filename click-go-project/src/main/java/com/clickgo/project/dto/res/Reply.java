@@ -40,8 +40,8 @@ public class Reply {
 	@CreationTimestamp
 	private Timestamp createDate;
 
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "reviewId", nullable = false)
 	private Review review;
-
 }
