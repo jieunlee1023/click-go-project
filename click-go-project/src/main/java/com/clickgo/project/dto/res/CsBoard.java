@@ -74,8 +74,10 @@ public class CsBoard {
 	@ColumnDefault("0")
 	private int count;
 	
-	// 비밀글 여부
-	@Column(nullable = true)
-	private boolean secret;     
+	/*
+	 * // 비밀글 여부
+	 * 
+	 * @Column(nullable = true) private boolean secret;
+	 */
 	
 }
