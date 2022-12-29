@@ -2,7 +2,7 @@
 <%@ include file="../layout/header.jsp"%>
 
 
-  <c:if  test="${boards.secret == true}">
+<%--   <c:if  test="${boards.secret == true}">
     <c:choose>
         <c:when test="${boards.user eq member.vo.userid || member.authorities eq '[ROLE_ADMIN, ROLE_MEMBER]'}"> <!-- 작성자이거나 관리자일 때 -->
             <td><a href="get${pageMaker.cri.listLink}&bno=${board.bno}" class="text-secondary text-center"><i class="icofont-lock"></i><c:out value="${board.title}"/><span class="text-muted small"> [${board.replyCnt}]</span></a></td>
@@ -11,7 +11,7 @@
             <td class="text-secondary"><i class="icofont-lock"></i><c:out value="${board.title}"/><span class="text-muted small"> [${board.replyCnt}]</span></td>
         </c:otherwise>
     </c:choose>                                            
-</c:if> 
+</c:if>  --%>
 
 
 <div class="container">
