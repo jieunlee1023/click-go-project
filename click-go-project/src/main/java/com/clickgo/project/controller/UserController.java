@@ -170,9 +170,7 @@ public class UserController {
 	@GetMapping("/api/google/callback")
 	public String googleCallback(@RequestParam String code, @RequestParam String scope) {
 
-		System.err.println(code);
 		RestTemplate restTemplate = new RestTemplate();
-
 		HttpHeaders headers = new HttpHeaders();
 		headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
 

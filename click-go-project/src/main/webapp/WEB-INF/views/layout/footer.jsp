@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
-
 	<div class="d-flex  text-left ">
 		<div style="margin-right: 20px">
 			<p style="color: black; margin-bottom: 10; font-size: 20px">Click-Go</p>

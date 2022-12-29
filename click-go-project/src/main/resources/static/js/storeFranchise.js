@@ -1,8 +1,5 @@
 let index = {
 	init: function() {
-		$("#btn--store-franchise-apply").bind("click", () => {
-			this.apply();
-		});
 
 		let msgSizeData = $("#msgSize").val();
 
