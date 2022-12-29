@@ -1,13 +1,22 @@
 package com.clickgo.project.controller;
 
 import java.util.List;
+import java.util.UUID;
+
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.clickgo.project.auth.PrincipalDetails;
+import com.clickgo.project.dto.res.RequestFileDto;
+import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.dto.res.Store;
 import com.clickgo.project.dto.res.StoreFranchise;
 import com.clickgo.project.service.StoreFranchiseService;
@@ -22,11 +31,19 @@ public class StoreFranchiseController {
 	
 	@Autowired
 	private StoreService storeService;
+	
 
 	@GetMapping("/store-franchise-apply")
 	public String franchiseApply() {
-
 		return "/storeFranchise/store-franchise-apply";
+	}
+	
+	
+	@PostMapping("/apply/upload")
+	public String franchiseApply( RequestFileDto fileDto ,
+			@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
+		 franchiseService.apply(fileDto, principalDetails);
+		return "redirect:/";
 	}
 
 	@GetMapping("/store-franchise-list")

@@ -5,8 +5,8 @@
 <c:forEach var="msg" items="${message}">
 <input type="hidden" value="${message.size() }" id="msgSize">
 <div class="d-flex justify-content-center m-5">
-		<div class="card " style="width: 400px">
-		<!-- 	<img class="card-img-top" src="${msg.storeLicense}" alt="사업자 등록증"> -->
+		<div class="card  " style="width: 800px">
+		 	<img class="card-img " src="http://localhost:7777/licence/${msg.storeLicense}" alt="사업자 등록증" style="width: 500px;"> 
 			<div class="card-body ">
 				<span>사용자ID : </span> <span id="userId${message.indexOf(msg)}">${msg.user.id}</span> <br>
 				<span>사용자이름: </span> <span  id="userName${message.indexOf(msg)}">${msg.user.username}</span> <br> <br> 

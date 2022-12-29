@@ -13,6 +13,7 @@
 
 		<input type="hidden" value="${principal.user.id}" id="principalUser">
 
+		<form action="/storeFranchise/apply/upload" method="post" enctype="multipart/form-data" >
 		<div class="form-group ">
 			<div class="d-flex" style="font-size: 13px">
 				<select class=" custom-select mb-3" name="category" id="category"
@@ -31,7 +32,6 @@
 
 
 
-		<form action="/api/store-franchise/apply" method="post" enctype="multipart/form-data" >
 			<div class="form-group ">
 				<label for="storeName" class="d-flex m-0" style="font-size: 13px">가맹점명</label>
 				<input type="text" class="form-control" id="storeName"
@@ -55,13 +55,14 @@
 			</div>
 
 			<div class="form-group">
-				<input type="file" name="file" class="custom-file-input" id="customFile" required="required" id="storeLicense">
+				<input type="file" name="file" 
+				class="custom-file-input" id="customFile" required="required" id="storeLicense">
 			</div>
 
 			<br>
 			<div class="form-control d-flex justify-content-center"
 				style="border-radius: 0px;">
-				<button type="submit" id="btn--store-franchise-apply"
+				<button type="submit" 
 					class="d-flex " style="border: none; background-color: white;">가맹점
 					신청하기</button>
 			</div>

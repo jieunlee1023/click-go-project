@@ -1,15 +1,22 @@
 package com.clickgo.project.service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import com.clickgo.project.auth.PrincipalDetails;
+import com.clickgo.project.dto.res.RequestFileDto;
 import com.clickgo.project.dto.res.Store;
 import com.clickgo.project.dto.res.StoreFranchise;
-import com.clickgo.project.dto.res.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.repository.IStoreFranchiseRepository;
 import com.clickgo.project.repository.IStoreRepository;
@@ -23,13 +30,29 @@ public class StoreFranchiseService {
 	private IUserRepository userRepository;
 	@Autowired
 	private IStoreRepository storeRepository;
+	
+	@Value("${licenceFile.path}")
+	private String licenceFile;
 
 	@Transactional
-	public boolean apply(StoreFranchise storeFranchise, User user) {
+	public void apply(RequestFileDto fileDto, PrincipalDetails principalDetails) {
+		UUID uuid = UUID.randomUUID();
+		System.out.println("uuid:" + uuid);
+		
+		String imageFilename = uuid+"_"+fileDto.getFile().getOriginalFilename();
+		System.out.println("imageFileName:"+imageFilename);
 
-		storeFranchise.setUser(user);
-		franchiseRepository.save(storeFranchise);
-		return true;
+		Path imageFilePath = Paths.get(licenceFile+imageFilename);
+		System.out.println("파일패스:"+imageFilePath);
+		
+		try {
+			Files.write(imageFilePath, fileDto.getFile().getBytes());
+			StoreFranchise franchise = fileDto.toEntitiy(imageFilename, principalDetails.getUser());
+			franchiseRepository.save(franchise);
+			
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	@Transactional

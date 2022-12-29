@@ -49,10 +49,7 @@
 		document.getElementById("test1").style.display = "none";
 
 	}
-
-	target.fadeIn(100, function() {
-		$('#m-focus').focus();
-	}).addClass('reveal');
+ 
 </script>
 
 
