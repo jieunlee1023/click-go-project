@@ -1,18 +1,14 @@
 package com.clickgo.project.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.clickgo.project.dto.res.StoreFranchise;
-import com.clickgo.project.dto.res.User;
 import com.clickgo.project.service.StoreFranchiseService;
 
 @Controller
@@ -39,7 +35,14 @@ public class StoreFranchiseController {
 		franchiseMassageCount(model);
 		return "/storeFranchise/store-franchise-message";
 	}
+	
 
+	@GetMapping("/store-franchise-my")
+	public String franchiseMy(Model model) {
+		franchiseMassageCount(model);
+		return "/storeFranchise/store-franchise-my";
+	}
+	
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
 		int count = 0;

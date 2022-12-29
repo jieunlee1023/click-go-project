@@ -11,6 +11,7 @@ import com.clickgo.project.dto.res.StoreFranchise;
 import com.clickgo.project.dto.res.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.repository.IStoreFranchiseRepository;
+import com.clickgo.project.repository.IStoreRepository;
 import com.clickgo.project.repository.IUserRepository;
 
 @Service
@@ -19,6 +20,8 @@ public class StoreFranchiseService {
 	private IStoreFranchiseRepository franchiseRepository;
 	@Autowired
 	private IUserRepository userRepository;
+	@Autowired
+	private IStoreRepository storeRepository;
 
 	@Transactional
 	public boolean apply(StoreFranchise storeFranchise, User user) {
@@ -37,7 +40,6 @@ public class StoreFranchiseService {
 	public boolean deleteByIdAndUserApprove(int id, int userId) {
 		franchiseRepository.deleteById(id);
 		userRepository.findById(userId).get().setRole(RoleType.HOST);
-		System.out.println(">>>>>>>"+userRepository.findById(userId).get().getRole());
 		return true;
 	}
 }

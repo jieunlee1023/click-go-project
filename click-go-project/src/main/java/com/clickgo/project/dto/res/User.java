@@ -66,4 +66,5 @@ public class User {
  
 	@ColumnDefault(value = "0")
 	private int point;
+	
 }

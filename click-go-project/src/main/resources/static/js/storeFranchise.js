@@ -60,7 +60,7 @@ let index = {
 			console.log(">>" + data);
 			if (data.httpStatus == true) {
 				alert("등록완료!");
-				//location.href = "/";
+				location.href = "/storeFranchise/store-franchise-message";
 			} else {
 				alert("실패");
 			}

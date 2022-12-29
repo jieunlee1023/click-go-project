@@ -426,6 +426,59 @@ keyframes youtubeAnim {
 
 							</c:when>
 
+							
+
+
+							<c:when test="${principal.user.role == 'HOST'}">
+
+								<!-- 검색 애니메이션 -->
+								<li>
+									<div class="search-box">
+										<form action="#" method="get">
+											<button class="btn-search" type="button">
+												<img class="search-img" alt="검색" src="../image/search.png"
+													width="18px">
+											</button>
+											<input type="text" class="input-search">
+										</form>
+									</div>
+								</li>
+
+								<li class="nav-item " role="button"><a class="nav-link"
+									href="/?pageName=home" id="li--home">홈</a></li>
+								<li class="nav-item" role="button"><a class="nav-link"
+									href="/store/main?pageName=store" id="li--store">상점</a></li>
+
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" data-toggle="dropdown">
+										더보기 </a>
+									<div class="dropdown-menu">
+										<a class="dropdown-item"
+											href="/view-more/about-us?pageName=about-us"
+											id="li--about-us">회사 소개</a> <a class="dropdown-item"
+											href="/board/board-list?pageName=board" id="li--board">게시판</a>
+										<a class="dropdown-item" href="#">1:1문의</a> <a
+											class="dropdown-item" href="/view-more/question-form/1">자주
+											묻는 질문</a>
+									</div></li>
+								<li class="nav-item"><a class="nav-link"
+									href="/storeFranchise/store-franchise-my?pageName=content"
+									id="li--content">가맹점</a></li>
+
+								<input type="hidden" value="${principal.user.role}" name="role">
+
+								<li class="nav-item"><a class="nav-link"
+									href="/mypage?role=${principal.user.role}" id="li--content">내
+										정보</a></li>
+
+								<li class="nav-item"><a class="nav-link" href="/m-logout"
+									id="li--content">로그아웃</a></li>
+
+							</c:when>
+
+							
+
+
 							<c:otherwise>
 
 								<!-- 검색 애니메이션 -->

@@ -68,5 +68,5 @@ public class Store {
 	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties
 	private List<Image> image;
-
+	
 }
