@@ -1,7 +1,6 @@
 package com.clickgo.project.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -14,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.CsBoard;
 import com.clickgo.project.dto.res.CsReply;
-import com.clickgo.project.dto.res.Reply;
 import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.service.BoardService;
 
@@ -30,6 +28,7 @@ public class BoardApiController {
 	@PostMapping("/api/board")
 	public ResponseDto<?> boardSave(@RequestBody CsBoard csBoard, @AuthenticationPrincipal PrincipalDetails details) {
 		boolean success = boardService.write(csBoard, details.getUser());
+		System.out.println(success + "오ㅓㅐ안대져");
 
 		return new ResponseDto<>(success, csBoard.getId());
 	}

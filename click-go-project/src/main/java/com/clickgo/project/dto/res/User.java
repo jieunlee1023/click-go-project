@@ -9,6 +9,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -66,6 +67,8 @@ public class User {
 
 	@ColumnDefault(value = "0")
 	private int point;
-	
 
+	// 경민.. 수정 대기 중
+	@OneToOne(mappedBy = "user")
+	private ReportReply reportReply;
 }
