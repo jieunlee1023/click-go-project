@@ -28,4 +28,9 @@ public class StoreService {
 	public List<Store> getStoreAllList() {
 		return storeRepository.findAll();
 	}
+	
+	@Transactional
+	public List<Store> findAllByUserId(int id) {
+		return storeRepository.findAllByUserId(id);
+	}
 }
