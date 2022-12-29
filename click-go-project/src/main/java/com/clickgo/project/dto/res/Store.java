@@ -16,8 +16,10 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicInsert;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -29,6 +31,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 @Entity
+@DynamicInsert
 public class Store {
 
 	@Id
@@ -55,10 +58,10 @@ public class Store {
 	@CreationTimestamp
 	private Timestamp createDate;
 
-//	@ManyToOne(fetch = FetchType.EAGER)
-//	@JoinColumn(name = "hostId", nullable = false)
-//	private Host host;
-
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "userId", nullable = false)
+	private User user;
+	
 	@Column(nullable = false)
 	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties
@@ -69,4 +72,8 @@ public class Store {
 	@JsonIgnoreProperties
 	private List<Image> image;
 
+//	@Column(nullable = false)
+//	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
+//	@JsonManagedReference
+//	private List<Report> report;
 }

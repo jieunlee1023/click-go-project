@@ -1,6 +1,6 @@
 package com.clickgo.project.service;
 
-import javax.transaction.Transactional;
+import org.springframework.transaction.annotation.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -31,6 +31,7 @@ public class UserService {
 		try {
 			String rawPw = encoder.encode(user.getPassword());
 			user.setPassword(rawPw);
+			user.setRole(RoleType.GEUST);
 			userRepository.save(user);
 			return true;
 		} catch (Exception e) {
