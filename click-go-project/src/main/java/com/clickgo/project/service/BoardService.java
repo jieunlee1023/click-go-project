@@ -37,7 +37,7 @@ public class BoardService {
 
 	@Transactional
 	public Page<CsBoard> getBoardList(Pageable pageable) {
-		
+
 		return iBoardRepository.findAll(pageable);
 	}
 
@@ -99,17 +99,11 @@ public class BoardService {
 		}
 
 	}
-	
+
 	// 서치 ..
 	@Transactional
-	public Page<CsBoard> searchBoard(String q, Pageable pageable){
-		
+	public Page<CsBoard> searchBoard(String q, Pageable pageable) {
 		return iBoardRepository.findByTitleContaining(q, pageable);
 	}
-	
-//	@Transactional
-//	public CsBoard searchBoard1(String q, Pageable pageable) {
-//		
-//		return iBoardRepository.findByTitleContaining2(q, pageable);
-//	}
+
 }

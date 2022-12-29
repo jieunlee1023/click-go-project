@@ -22,7 +22,9 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import com.clickgo.project.model.enums.BoardType;
 import com.clickgo.project.model.enums.SecretType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -73,4 +75,5 @@ public class CsBoard {
 	private int count;
 	
 
+	
 }
