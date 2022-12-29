@@ -2,6 +2,17 @@
 <%@ include file="../layout/header.jsp"%>
 
 
+<%--  <c:if test="${board.secret == true}">
+    <c:choose>
+        <c:when test="${board.writer eq member.vo.userid || member.authorities eq '[ROLE_ADMIN, ROLE_MEMBER]'}"> <!-- 작성자이거나 관리자일 때 -->
+            <td><a href="get${pageMaker.cri.listLink}&bno=${board.bno}" class="text-secondary text-center"><i class="icofont-lock"></i><c:out value="${board.title}"/><span class="text-muted small"> [${board.replyCnt}]</span></a></td>
+        </c:when>
+        <c:otherwise>
+            <td class="text-secondary"><i class="icofont-lock"></i><c:out value="${board.title}"/><span class="text-muted small"> [${board.replyCnt}]</span></td>
+        </c:otherwise>
+    </c:choose>                                            
+</c:if> --%>
+
 
 <div class="container">
 	<div class="d-flex justify-content-between">
@@ -13,9 +24,9 @@
 
 	<div class="input-group mb-3">
 		<form action="/board/search" class="form-inline" method="get">
-			<input type="text" class="form-control" placeholder="검색" name="q" value="${q }">
 			<div class="input-group-append">
-				<button type="button" class="btn bg-secondary">검색</button>
+			<input type="text" class="form-control" placeholder="검색" name="q" value="${q }">
+				<button class="btn bg-secondary" type="submit">검색</button>
 			</div>
 		</form>
 	</div>
@@ -25,9 +36,7 @@
  <c:forEach var="board" items="${boards.content}">
 	<div class="list-group ">
 		<div class="d-flex justify-content-between"> 
-		<a href="/board/${board.id }" class="list-group-item list-group-item-action">글번호 : ${board.id } 작성자 : ${board.user.username } 제목 : ${board.title } </a>
-		</div>
-		<div>
+		<a href="/board/${board.id }" class="list-group-item list-group-item-action">글번호 : ${board.id }, 작성자 : ${board.user.username }, 제목 : ${board.title }, 작성시간 : ${board.createDate }  </a>
 		</div>
 	</div>
 </c:forEach>
@@ -35,7 +44,8 @@
 <ul class="pagination justify-content-center">
 	<c:set var="isDisabled" value="disabled"></c:set>
 	<c:set var="isNotDisabled" value=""></c:set>
-	<li class="page-item ${boards.first ? isDisabled : isNotDisabled } "><a class="page-link" href="?page=${boards.number - 1 }">이전</a></li>
+	<li class="page-item ${boards.first ? isDisabled : isNotDisabled } ">
+	<a class="page-link" href="?page=${boards.number - 1 }">이전</a></li>
 	<!-- 반복문 처리 하기-->
 	<!-- 1 2 3, 1 2 3 4 , 1 2 3 4 5  -->
 	<c:forEach var="num" items="${pageNumbers }">

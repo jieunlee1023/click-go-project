@@ -7,10 +7,12 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.clickgo.project.dto.res.Store;
 import com.clickgo.project.dto.res.StoreFranchise;
 import com.clickgo.project.dto.res.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.repository.IStoreFranchiseRepository;
+import com.clickgo.project.repository.IStoreRepository;
 import com.clickgo.project.repository.IUserRepository;
 
 @Service
@@ -19,10 +21,12 @@ public class StoreFranchiseService {
 	private IStoreFranchiseRepository franchiseRepository;
 	@Autowired
 	private IUserRepository userRepository;
+	@Autowired
+	private IStoreRepository storeRepository;
 
 	@Transactional
 	public boolean apply(StoreFranchise storeFranchise, User user) {
-	
+
 		storeFranchise.setUser(user);
 		franchiseRepository.save(storeFranchise);
 		return true;
@@ -34,10 +38,20 @@ public class StoreFranchiseService {
 	}
 
 	@Transactional
-	public boolean deleteByIdAndUserApprove(int id, int userId) {
-		franchiseRepository.deleteById(id);
+	public boolean deleteByIdAndUserApprove(int id,int userId,StoreFranchise storeFranchise, Store store) {
+
+		franchiseRepository.deleteById(storeFranchise.getId());
 		userRepository.findById(userId).get().setRole(RoleType.HOST);
-		System.out.println(">>>>>>>"+userRepository.findById(userId).get().getRole());
+		
+		store.setCategory(storeFranchise.getCategory());
+		store.setStoreName(storeFranchise.getStoreName());
+		store.setStoreTEL(storeFranchise.getStoreTEL());
+		store.setStoreAddress(storeFranchise.getStoreAddress());
+		store.setStoreTotalRoomCount(0);
+		store.setUser(userRepository.findById(userId).get());
+		
+		storeRepository.save(store);
+
 		return true;
 	}
 }

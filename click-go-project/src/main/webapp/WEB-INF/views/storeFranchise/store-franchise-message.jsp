@@ -9,14 +9,14 @@
 		<!-- 	<img class="card-img-top" src="${msg.storeLicense}" alt="사업자 등록증"> -->
 			<div class="card-body ">
 				<span>사용자ID : </span> <span id="userId${message.indexOf(msg)}">${msg.user.id}</span> <br>
-				<span>사용자이름: </span> <span>${msg.user.username}</span> <br> <br> 
+				<span>사용자이름: </span> <span  id="userName${message.indexOf(msg)}">${msg.user.username}</span> <br> <br> 
 				<span>신청서 ID: </span> <span id="franchiseId${message.indexOf(msg)}">${msg.id}</span> <br> <br> 
-				<span>카테고리 :</span> <span>${msg.category}</span> <br> 
-				<span>가게명 : </span> <span>${msg.storeName}</span><br> 
-				<span>가게번호 : </span> <span>${msg.storeTEL}</span><br>
-				<span>가게주소 : </span> <span>${msg.storeAddress}</span><br> 
+				<span>카테고리 :</span> <span  id="catagory${message.indexOf(msg)}">${msg.category}</span> <br> 
+				<span>가게명 : </span> <span  id="storeName${message.indexOf(msg)}">${msg.storeName}</span><br> 
+				<span>가게번호 : </span> <span  id="storeTel${message.indexOf(msg)}">${msg.storeTEL}</span><br>
+				<span>가게주소 : </span> <span  id="storeAddress${message.indexOf(msg)}">${msg.storeAddress}</span><br> 
 				<br><br>
-				<button type="button" class="btn btn-danger" 
+				<button type="button" class="btn btn-danger"
 				id="btn--store-franchise-approve-${message.indexOf(msg)}">가맹점 등록</button>
 			</div>
 		</div>
