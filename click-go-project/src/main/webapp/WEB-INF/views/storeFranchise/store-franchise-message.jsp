@@ -17,7 +17,9 @@
 				<span>가게주소 : </span> <span  id="storeAddress${message.indexOf(msg)}">${msg.storeAddress}</span><br> 
 				<br><br>
 				<button type="button" class="btn btn-danger"
-				id="btn--store-franchise-approve-${message.indexOf(msg)}">가맹점 등록</button>
+				id="btn--store-franchise-approve-${message.indexOf(msg)}">가맹점 승인</button>
+				<button type="button" class="btn btn-warning"
+				id="btn--store-franchise-reject-${message.indexOf(msg)}">가맹점 거절</button>
 			</div>
 		</div>
 

@@ -10,6 +10,7 @@
 
 <!DOCTYPE html>
 <html>
+
 <head>
 <meta charset="UTF-8">
 
@@ -50,251 +51,23 @@
 	rel="stylesheet">
 
 
-<!-- 자주 묻는 질문  -->
-
-<style type="text/css">
-* {
-	font-family: 'Noto Sans KR', sans-serif;
-}
-
-.login:hover {
-	color: #578cd2
-}
-
-.signup:hover {
-	color: #578cd2
-}
-
-.navbar-toggler-icon:hover {
-	color: #578cd2
-}
-
-#btn--login:hover {
-	color: #578cd2
-}
-
-#id-password-btn:hover {
-	text-decoration: none;
-	color: #578cd2;
-}
-
-#signin-btn:hover {
-	text-decoration: none;
-	color: #578cd2;
-}
-
-#btn--save:hover {
-	color: #578cd2;
-}
-
-#update-btn:hover {
-	text-decoration: none;
-	color: #578cd2;
-}
-
-.note-num {
-	position: absolute;
-	bottom: 18px;
-	left: 25px;
-	height: 15px;
-	width: 15px;
-	font-size: 12px;
-	line-height: 15px;
-	justify-content: center;
-	text-align: center;
-	background-color: red;
-	border-radius: 15px;
-	display: inline-block;
-	color: white;
-	height: 15px;
-}
-/* 검색에니메이션 */
-* {
-	box-sizing: border-box;
-}
-
-.search-img {
-	margin: 10px;
-	margin-right:
-}
-
-.search-box {
-	width: fit-content;
-	height: fit-content;
-	position: relative;
-}
-
-.input-search {
-	height: 50px;
-	width: 50px;
-	border-style: hidden;
-	border-style: none;
-	padding: 10px;
-	font-size: 18px;
-	letter-spacing: 2px;
-	outline: none;
-	border-radius: 25px;
-	transition: all .5s ease-in-out;
-	padding-right: 40px;
-	color: 070707;
-}
-
-.input-search::placeholder {
-	color: rgba(255, 255, 255, .5);
-	font-size: 18px;
-	letter-spacing: 2px;
-	font-weight: 100;
-}
-
-.btn-search {
-	width: 50px;
-	height: 50px;
-	border-style: none;
-	font-size: 20px;
-	font-weight: bold;
-	HEAD outline: hidden;
-	outline: none;
-	cursor: pointer;
-	border-radius: 50%;
-	position: absolute;
-	right: 0px;
-	color: #ffffff;
-	background-color: transparent;
-	pointer-events: painted;
-	padding-right: 58px;
-	font-size: 20px;
-}
-
-.btn-search:focus ~ .input-search {
-	width: 300px;
-	border-radius: 0px;
-	background-color: transparent;
-	border: 1px solid rgba(0, 0, 0, .5);
-	transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-}
-
-.input-search:focus {
-	width: 300px;
-	border-radius: 0px;
-	background-color: transparent;
-	border: 1px solid rgba(0, 0, 0, .5);
-	transition: all 500ms cubic-bezier(0, 0.110, 0.35, 2);
-}
-
-/*  footer   */
-footer {
-	background-color: #222;
-	color: #fff;
-	font-size: 14px;
-	bottom: 0;
-	position: fixed;
-	left: 0;
-	right: 0;
-	text-align: center;
-	z-index: 999;
-}
-
-footer p {
-	margin: 10px 0;
-	font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida  Grande',
-		'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-footer .fa-heart {
-	color: red;
-}
-
-footer .fa-dev {
-	color: #fff;
-}
-
-footer .fa-twitter-square {
-	color: #1da0f1;
-}
-
-footer .fa-instagram {
-	color: #f0007c;
-}
-
-fotter .fa-linkedin {
-	color: #0073b1;
-}
-
-footer .fa-codepen {
-	color: #fff
-}
-
-footer a {
-	color: #3c97bf;
-	text-decoration: none;
-	margin-right: 5px;
-}
-
-.youtubeBtn {
-	position: fixed;
-	left: 50%;
-	transform: translatex(-50%);
-	bottom: 45px;
-	cursor: pointer;
-	transition: all .3s;
-	vertical-align: middle;
-	text-align: center;
-	display: inline-block;
-}
-
-.youtubeBtn i {
-	font-size: 20px;
-	float: left;
-}
-
-.youtubeBtn a {
-	color: #ff0000;
-	animation: youtubeAnim 1000ms linear infinite;
-	float: right;
-}
-
-.youtubeBtn a:hover {
-	color: #c9110f;
-	transition: all .3s ease-in-out;
-	text-shadow: none;
-}
-
-.youtubeBtn i:active {
-	transform: scale(.9);
-	transition: all .3s ease-in-out;
-}
-
-.youtubeBtn span {
-	font-family: 'Lato';
-	font-weight: normal;
-	color: #fff;
-	display: block;
-	font-size: 12px;
-	float: right;
-	line-height: 20px;
-	padding-left: 5px;
-}
-
-@
-keyframes youtubeAnim {
-	color: #c9110f;
-}
-</style>
-
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-</head>
 
+<!-- CSS 연결 -->
+<link href="/css/common.css" rel="stylesheet" type="text/css" />	
+<link href="/css/search.css" rel="stylesheet" type="text/css" />	
+</head>
 
 <body>
 
 	<input type="hidden" value="${nowPage}" id="nowPage">
 
-	<div>
+	<div id='wrapper'>
 
 		<nav class="navbar navbar-expand-md " style="padding-top: 10px;">
 
@@ -339,18 +112,18 @@ keyframes youtubeAnim {
 								</li>
 
 								<li class="nav-item " role="button"><a class="nav-link"
-									href="/?pageName=home" id="li--home">홈</a></li>
+									href="/" id="li--home">홈</a></li>
 								<li class="nav-item" role="button"><a class="nav-link"
-									href="/store/main?pageName=store" id="li--store">상점</a></li>
+									href="/store/main" id="li--store">상점</a></li>
 
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" data-toggle="dropdown">
 										더보기 </a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item"
-											href="/view-more/about-us?pageName=about-us"
+											href="/view-more/about-us"
 											id="li--about-us">회사 소개</a> <a class="dropdown-item"
-											href="/board/board-list?pageName=board" id="li--board">게시판</a>
+											href="/board/board-list" id="li--board">게시판</a>
 										<a class="dropdown-item" href="#">1:1문의</a> <a
 											class="dropdown-item" href="/view-more/question-form/1">자주
 											묻는 질문</a>
@@ -396,25 +169,30 @@ keyframes youtubeAnim {
 								</li>
 
 								<li class="nav-item " role="button"><a class="nav-link"
-									href="/?pageName=home" id="li--home">홈</a></li>
+									href="/" id="li--home">홈</a></li>
 								<li class="nav-item" role="button"><a class="nav-link"
-									href="/store/main?pageName=store" id="li--store">상점</a></li>
+									href="/store/main" id="li--store">상점</a></li>
+
+
+
+
+								<li class="nav-item"><a class="nav-link"
+									href="/storeFranchise/store-franchise-list"
+									id="li--content">가맹점 목록</a></li>
 
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" data-toggle="dropdown">
 										더보기 </a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item"
-											href="/view-more/about-us?pageName=about-us"
+											href="/view-more/about-us"
 											id="li--about-us">회사 소개</a> <a class="dropdown-item"
-											href="/board/board-list?pageName=board" id="li--board">게시판</a>
+											href="/board/board-list" id="li--board">게시판</a>
 										<a class="dropdown-item" href="#">1:1문의</a> <a
 											class="dropdown-item" href="/view-more/question-form/1">자주
 											묻는 질문</a>
 									</div></li>
-								<li class="nav-item"><a class="nav-link"
-									href="/storeFranchise/store-franchise-list?pageName=content"
-									id="li--content">가맹점 목록</a></li>
+
 
 								<input type="hidden" value="${principal.user.role}" name="role">
 
@@ -446,25 +224,37 @@ keyframes youtubeAnim {
 								</li>
 
 								<li class="nav-item " role="button"><a class="nav-link"
-									href="/?pageName=home" id="li--home">홈</a></li>
+									href="/" id="li--home">홈</a></li>
 								<li class="nav-item" role="button"><a class="nav-link"
-									href="/store/main?pageName=store" id="li--store">상점</a></li>
+									href="/store/main" id="li--store">상점</a></li>
+
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" data-toggle="dropdown">
+										가맹점 </a>
+									<div class="dropdown-menu">
+										<a class="nav-link"
+											href="/storeFranchise/store-franchise-my"
+											id="li--content">내 가게</a> <a class="nav-link"
+											href="/storeFranchise/store-franchise-apply"
+											id="li--content">가맹점 신청</a> <a class="nav-link"
+											href="/storeFranchise/store-franchise-applyList"
+											id="li--content">가맹점 신청목록</a>
+									</div></li>
 
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" data-toggle="dropdown">
 										더보기 </a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item"
-											href="/view-more/about-us?pageName=about-us"
+											href="/view-more/about-us"
 											id="li--about-us">회사 소개</a> <a class="dropdown-item"
-											href="/board/board-list?pageName=board" id="li--board">게시판</a>
+											href="/board/board-list" id="li--board">게시판</a>
 										<a class="dropdown-item" href="#">1:1문의</a> <a
 											class="dropdown-item" href="/view-more/question-form/1">자주
 											묻는 질문</a>
 									</div></li>
-								<li class="nav-item"><a class="nav-link"
-									href="/storeFranchise/store-franchise-my?pageName=content"
-									id="li--content">가맹점</a></li>
+
+
 
 								<input type="hidden" value="${principal.user.role}" name="role">
 
@@ -476,9 +266,6 @@ keyframes youtubeAnim {
 									id="li--content">로그아웃</a></li>
 
 							</c:when>
-
-
-
 
 							<c:otherwise>
 
@@ -496,32 +283,42 @@ keyframes youtubeAnim {
 								</li>
 
 								<li class="nav-item " role="button"><a class="nav-link"
-									href="/?pageName=home" id="li--home">홈</a></li>
+									href="/" id="li--home">홈</a></li>
 								<li class="nav-item" role="button"><a class="nav-link"
-									href="/store/main?pageName=store" id="li--store">상점</a></li>
+									href="/store/main" id="li--store">상점</a></li>
+
+
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle" data-toggle="dropdown">
+										가맹점 </a>
+									<div class="dropdown-menu">
+
+										<a class="nav-link"
+											href="/storeFranchise/store-franchise-my"
+											id="li--content">내 가게</a> <a class="nav-link"
+											href="/storeFranchise/store-franchise-apply"
+											id="li--content">가맹점 신청</a> <a class="nav-link"
+											href="/storeFranchise/store-franchise-applyList"
+											id="li--content">가맹점 신청목록</a>
+									</div></li>
 
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" data-toggle="dropdown">
 										더보기 </a>
 									<div class="dropdown-menu">
 										<a class="dropdown-item"
-											href="/view-more/about-us?pageName=about-us"
+											href="/view-more/about-us"
 											id="li--about-us">회사 소개</a> <a class="dropdown-item"
-											href="/board/board-list?pageName=board" id="li--board">게시판</a>
+											href="/board/board-list" id="li--board">게시판</a>
 										<a class="dropdown-item" href="#">1:1문의</a> <a
 											class="dropdown-item" href="/view-more/question-form/1">자주
 											묻는 질문</a>
 									</div></li>
 
-								<li class="nav-item"><a class="nav-link"
-									href="/storeFranchise/store-franchise-apply?pageName=content"
-									id="li--content">가맹점 신청</a></li>
-
 								<input type="hidden" value="${principal.user.role}" name="role">
 
 								<li class="nav-item"><a class="nav-link"
-									href="/mypage?role=${principal.user.role}" id="li--content">내
-										정보</a></li>
+									href="/mypage?role=${principal.user.role}" id="li--content">내정보</a></li>
 
 								<li class="nav-item"><a class="nav-link" href="/m-logout"
 									id="li--content">로그아웃</a></li>
