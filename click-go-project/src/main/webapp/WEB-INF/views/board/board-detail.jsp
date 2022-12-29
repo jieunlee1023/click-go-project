@@ -34,7 +34,7 @@
 		</div>
 
 		<div class="card-footer">
-			<button type="button" class="" id="btn-reply-save">등록</button>
+			<button type="button" class="btn bg-secondary" id="btn-reply-save">등록</button>
 		</div>
 	</div>
 	<br>
@@ -49,7 +49,7 @@
 						<div>작성자 : &nbsp;${reply.user.username }&nbsp;&nbsp;&nbsp;</div>
 
 						<c:if test="${reply.user.id eq principal.user.id }">
-							<button type="button" class="btn btn-danger badge" onclick="boardIndex.replyDelete(${board.id}, ${reply.id });" >삭제</button>
+							<button type="button" class="btn btn-danger badge" onclick="boardIndex.replyDelete(${board.id}, ${reply.id });">삭제</button>
 						</c:if>
 					</div>
 

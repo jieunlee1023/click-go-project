@@ -28,43 +28,36 @@ public class BoardController {
 	@Autowired
 	private StoreFranchiseService franchiseService;
 
-	@GetMapping({ "/board/board-list", "/board/search"})
+	@GetMapping({ "/board/board-list", "/board/search" })
 	public String board(@RequestParam(required = false) String q, Model model,
 			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchTitle = q == null ? "" : q;
-		System.out.println("searchTitle" + searchTitle);
 
 //		CsBoard boards1 = boardService.searchBoard(searchTitle, pageable);
-		
+
 //		Page<CsBoard> boards = boardService.getBoardList(pageable);
 		Page<CsBoard> boards = boardService.searchBoard(searchTitle, pageable);
 
-		System.out.println(boards + ": boardsddddddddd");
 		int PAGENATION_BLOCK_COUNT = 10;
-		System.out.println("개시글 갯수" + boards.getSize());
-		System.out.println("전체페이지크기" + boards.getTotalPages());
-		System.out.println(" 전체 애기 갯수" + boards.getTotalElements());
-		System.out.println("현재패ㅔ이지 번호" + boards.getPageable().getPageNumber());
 
 		int nowPage = boards.getPageable().getPageNumber() + 1;
 
-		int startPageNumber = Math.max(nowPage + PAGENATION_BLOCK_COUNT, 1);
-		int endPageNumber = Math.min(nowPage - startPageNumber, boards.getTotalPages());
+		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
+		int endPageNumber = Math.min(nowPage + startPageNumber, boards.getTotalPages());
 
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
-
 		model.addAttribute("boards", boards);
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPageNumber", startPageNumber);
 		model.addAttribute("endPageNumber", endPageNumber);
 		model.addAttribute("pageNumbers", pageNumbers);
 		model.addAttribute("q", searchTitle);
-		
+
 //		model.addAttribute("boards1",boards1);
-		
+
 		franchiseMassageCount(model);
 		return "board/board-list";
 	}
