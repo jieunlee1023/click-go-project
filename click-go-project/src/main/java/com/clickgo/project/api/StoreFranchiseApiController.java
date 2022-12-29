@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.ResponseDto;
+import com.clickgo.project.dto.res.Store;
 import com.clickgo.project.dto.res.StoreFranchise;
+import com.clickgo.project.dto.res.User;
 import com.clickgo.project.service.StoreFranchiseService;
 
 @RestController
@@ -30,12 +32,10 @@ public class StoreFranchiseApiController {
 	}
 	
 
-	@DeleteMapping("/approve/{id}/{userId}")
-	public ResponseDto<?> franchiseApprove(
-			@PathVariable int id,
-			@PathVariable int userId) {
-
-		boolean success = franchiseService.deleteByIdAndUserApprove(id, userId);
+	@PostMapping("/approve/{id}/{userId}")
+	public ResponseDto<?> franchiseApprove(@PathVariable int id, @PathVariable int userId, 
+			@RequestBody StoreFranchise storeFranchise, Store store, Model model) {
+		boolean success = franchiseService.deleteByIdAndUserApprove(id,userId, storeFranchise,store);
 		return new ResponseDto<>(success, "승인완료!");
 	}
 

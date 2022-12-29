@@ -7,6 +7,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.clickgo.project.dto.res.Store;
 import com.clickgo.project.dto.res.StoreFranchise;
 import com.clickgo.project.dto.res.User;
 import com.clickgo.project.model.enums.RoleType;
@@ -25,7 +26,7 @@ public class StoreFranchiseService {
 
 	@Transactional
 	public boolean apply(StoreFranchise storeFranchise, User user) {
-	
+
 		storeFranchise.setUser(user);
 		franchiseRepository.save(storeFranchise);
 		return true;
@@ -37,9 +38,20 @@ public class StoreFranchiseService {
 	}
 
 	@Transactional
-	public boolean deleteByIdAndUserApprove(int id, int userId) {
-		franchiseRepository.deleteById(id);
+	public boolean deleteByIdAndUserApprove(int id,int userId,StoreFranchise storeFranchise, Store store) {
+
+		franchiseRepository.deleteById(storeFranchise.getId());
 		userRepository.findById(userId).get().setRole(RoleType.HOST);
+		
+		store.setCategory(storeFranchise.getCategory());
+		store.setStoreName(storeFranchise.getStoreName());
+		store.setStoreTEL(storeFranchise.getStoreTEL());
+		store.setStoreAddress(storeFranchise.getStoreAddress());
+		store.setStoreTotalRoomCount(0);
+		store.setUser(userRepository.findById(userId).get());
+		
+		storeRepository.save(store);
+
 		return true;
 	}
 }

@@ -49,6 +49,7 @@
 	href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap"
 	rel="stylesheet">
 
+
 <!-- 자주 묻는 질문  -->
 
 <style type="text/css">
@@ -426,7 +427,7 @@ keyframes youtubeAnim {
 
 							</c:when>
 
-							
+
 
 
 							<c:when test="${principal.user.role == 'HOST'}">
@@ -476,7 +477,7 @@ keyframes youtubeAnim {
 
 							</c:when>
 
-							
+
 
 
 							<c:otherwise>

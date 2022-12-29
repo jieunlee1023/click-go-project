@@ -8,8 +8,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.clickgo.project.dto.res.Store;
 import com.clickgo.project.dto.res.StoreFranchise;
 import com.clickgo.project.service.StoreFranchiseService;
+import com.clickgo.project.service.StoreService;
 
 @Controller
 @RequestMapping("/storeFranchise")
@@ -17,6 +19,9 @@ public class StoreFranchiseController {
 
 	@Autowired
 	private StoreFranchiseService franchiseService;
+	
+	@Autowired
+	private StoreService storeService;
 
 	@GetMapping("/store-franchise-apply")
 	public String franchiseApply() {
@@ -26,6 +31,8 @@ public class StoreFranchiseController {
 
 	@GetMapping("/store-franchise-list")
 	public String franchiseList(Model model) {
+		List<Store> storeList = storeService.getStoreAllList();
+		model.addAttribute("storeList", storeList);
 		franchiseMassageCount(model);
 		return "/storeFranchise/store-franchise-list";
 	}
@@ -45,9 +52,7 @@ public class StoreFranchiseController {
 	
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
-		int count = 0;
 		model.addAttribute("message", franchiseMessages);
-		model.addAttribute("count", count);
 	}
 
 }

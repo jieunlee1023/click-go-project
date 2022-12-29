@@ -10,12 +10,20 @@ import com.clickgo.project.dto.res.Reservation;
 public interface IReservationRepository extends JpaRepository<Reservation, Integer> {
 
 	@Query(value = " SELECT "
-			+ " r.* "
-			+ " FROM Reservation AS r "
-			+ " JOIN store AS s "
-			+ " ON r.storeId = s.id "
-			+ " WHERE r.userId = ?1 "
-			+ " AND s.storeName LIKE %?2% "
+								+ " * "
+								+ " FROM Reservation "
+								+ " WHERE userId = ?1 "
+								, nativeQuery = true)
+	public Page<Reservation> findByReservation(int id, Pageable pageable);
+	 
+	@Query(value = " SELECT r.* "
+			+ " FROM Reservation as r "
+			+ " JOIN store as s "
+			+ " ON s.id = r.storeId "
+			+ " JOIN user as u "
+			+ " ON u.id = s.userId "
+			+ " WHERE s.userId = ?1 "
 			, nativeQuery = true)
-	public Page<Reservation> findByTitleContaining(int id, String q, Pageable pageable);
+	public Page<Reservation> findByHostReservation(int id, Pageable pageable);
+	
 }
