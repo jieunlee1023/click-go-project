@@ -18,9 +18,9 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 	 
 	@Query(value = " SELECT r.* "
 			+ " FROM Reservation as r "
-			+ " JOIN store as s "
+			+ " JOIN Store as s "
 			+ " ON s.id = r.storeId "
-			+ " JOIN user as u "
+			+ " JOIN User as u "
 			+ " ON u.id = s.userId "
 			+ " WHERE s.userId = ?1 "
 			, nativeQuery = true)

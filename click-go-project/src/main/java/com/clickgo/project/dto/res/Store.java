@@ -40,10 +40,10 @@ public class Store {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-//	@ManyToOne(fetch = FetchType.EAGER)
-//	@JoinColumn(name = "categoryId")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "kategoryId")
 	@Enumerated(EnumType.STRING)
-	private StoreKategory category;
+	private Kategory kategory;
 
 	@Column(nullable = false, length = 15)
 	private String storeName;
@@ -64,13 +64,9 @@ public class Store {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
-	
-	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties
-	private List<LikeStore> likeStore;
 
 	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties
 	private List<Image> image;
-	
+
 }

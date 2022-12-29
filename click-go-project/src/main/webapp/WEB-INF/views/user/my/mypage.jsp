@@ -149,14 +149,16 @@
 			<div class="media border p-3"
 				style="width: 374px; height: 260px; border-radius: 15px;">
 				<div class="d-flex-column ">
+				<a href="/care-store/">
 					<img src="../image/mypage/wish_list.png" alt="수정 사진"
 						class="ml-5 mt-4 m-4" style="width: 60px;">
 					<div class="media-body">
 						<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
 							<h3 style="font-weight: bold;">매장 관리</h3>
-							<p class="mt-3">매장의 cctv를 등록하여 집에서도 편하게 가게를 볼수 있어요..</p>
+							<p class="mt-3">사장님의 매장을 관리해보세요 !</p>
 						</div>
 					</div>
+				</a>
 				</div>
 			</div>
 		</div>

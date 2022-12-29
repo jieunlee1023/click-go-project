@@ -43,7 +43,7 @@ public class StoreFranchiseService {
 		franchiseRepository.deleteById(storeFranchise.getId());
 		userRepository.findById(userId).get().setRole(RoleType.HOST);
 		
-		store.setCategory(storeFranchise.getCategory());
+//		store.setKategory(storeFranchise.getCategory());
 		store.setStoreName(storeFranchise.getStoreName());
 		store.setStoreTEL(storeFranchise.getStoreTEL());
 		store.setStoreAddress(storeFranchise.getStoreAddress());

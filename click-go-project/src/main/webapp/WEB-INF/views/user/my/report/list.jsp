@@ -83,8 +83,11 @@
 										<div class="d-flex justify-content-between m-2 ml-3">
 											<h5>${report.title}</h5>
 											<div>
-												<span class="m-1 mr-2">${report.user.username}</span> <span
-													class="m-1 mr-2">${report.approveStatus}</span>
+												<span class="m-1 mr-2">${report.user.username}</span> 
+												<div class="d-flex justify-content-between m-2 ml-3">
+												<span class="m-1 mr-2">${report.store.storeName}</span>
+												<span class="m-1 mr-2">${report.approveStatus}</span>
+												</div>
 											</div>
 										</div>
 									</a>
