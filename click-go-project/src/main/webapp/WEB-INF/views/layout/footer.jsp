@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 
 
-<footer>
 	<div class="d-flex  text-left ">
 		<div style="margin-right: 20px">
 			<p style="color: black; margin-bottom: 10; font-size: 20px">Click-Go</p>
@@ -22,7 +21,6 @@
 		</div>
 	</div>
 	<br>
-</footer>
 <script>
 	$(document).ready(function() {
 		let temp = $("#nowPage").val();
