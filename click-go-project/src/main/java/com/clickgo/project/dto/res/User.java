@@ -69,6 +69,6 @@ public class User {
 	private int point;
 
 	// 경민.. 수정 대기 중
-	@OneToOne(mappedBy = "user")
-	private ReportReply reportReply;
+//	@OneToOne(mappedBy = "user")
+//	private ReportReply reportReply;
 }

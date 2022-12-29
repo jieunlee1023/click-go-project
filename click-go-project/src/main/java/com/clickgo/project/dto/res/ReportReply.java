@@ -41,9 +41,9 @@ public class ReportReply {
 	@CreationTimestamp
 	private Timestamp createDate;
 
-	@OneToOne
-	@JoinColumn(name = "userId")
-	private User user;
+//	@OneToOne
+//	@JoinColumn(name = "userId")
+//	private User user;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "reportId")
