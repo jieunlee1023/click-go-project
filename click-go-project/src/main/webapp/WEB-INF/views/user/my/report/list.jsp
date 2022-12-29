@@ -43,28 +43,28 @@
 		<c:otherwise>
 			<c:choose>
 				<c:when test="${myList == 0}">
-				<div class="mr-5 mt-5">
-					<div class="mr-5">
-						<br>
-						<div class="d-flex-column">
-							<div class="m-4">
-								<a href="/report/report-list/1">내 가게가 받은 신고 내역 보기</a>
+					<div class="mr-5 mt-5">
+						<div class="mr-5">
+							<br>
+							<div class="d-flex-column">
+								<div class="m-4">
+									<a href="/report/report-list/1">내 가게가 받은 신고 내역 보기</a>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 				</c:when>
 				<c:otherwise>
-				<div class="mr-5 mt-5">
-					<div class="mr-5">
-						<br>
-						<div class="d-flex-column">
-							<div class="m-4">
-								<a href="/report/report-list/0">내가 보낸 신고 내역 보기</a>
+					<div class="mr-5 mt-5">
+						<div class="mr-5">
+							<br>
+							<div class="d-flex-column">
+								<div class="m-4">
+									<a href="/report/report-list/0">내가 보낸 신고 내역 보기</a>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
 				</c:otherwise>
 			</c:choose>
 			<div class="d-flex-column">
