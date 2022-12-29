@@ -39,22 +39,21 @@ public class BoardController {
 //		Page<CsBoard> boards = boardService.getBoardList(pageable);
 		Page<CsBoard> boards = boardService.searchBoard(searchTitle, pageable);
 
-		System.out.println(boards + ": boardsddddddddd");
+		
 		int PAGENATION_BLOCK_COUNT = 10;
-		System.out.println("개시글 갯수" + boards.getSize());
-		System.out.println("전체페이지크기" + boards.getTotalPages());
-		System.out.println(" 전체 애기 갯수" + boards.getTotalElements());
-		System.out.println("현재패ㅔ이지 번호" + boards.getPageable().getPageNumber());
 
 		int nowPage = boards.getPageable().getPageNumber() + 1;
 
-		int startPageNumber = Math.max(nowPage + PAGENATION_BLOCK_COUNT, 1);
-		int endPageNumber = Math.min(nowPage - startPageNumber, boards.getTotalPages());
+		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
+		int endPageNumber = Math.min(nowPage + startPageNumber, boards.getTotalPages());
 
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
+		System.out.println("시작해야하는번호" + startPageNumber);
+		System.out.println("마지막에 보여줄 번호" + endPageNumber);
+		System.out.println(pageNumbers.size());
 
 		model.addAttribute("boards", boards);
 		model.addAttribute("nowPage", nowPage);

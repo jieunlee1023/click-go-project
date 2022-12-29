@@ -41,7 +41,7 @@
 			<input class="form-check-input" type="checkbox" name="secret" id="secret"> 
 			<label class="form-check-label">비밀글 설정</label>
 		</div>
-		<button type="button" id="btn--write" class="btn btn-primary">글 작성</button>
+		<button type="button" id="btn--write" class="btn bg-secondary">글 작성</button>
 	</div>
 </div>
 

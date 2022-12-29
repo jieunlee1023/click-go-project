@@ -72,8 +72,5 @@ public class CsBoard {
 	@ColumnDefault("0")
 	private int count;
 	
-//	// sw
-//	@Column(nullable = true)
-//	private boolean secret;
 
 }
