@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,8 +20,8 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 
+import com.clickgo.project.model.enums.StoreCategory;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -38,9 +40,10 @@ public class Store {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "categoryId")
-	private Category category;
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "categoryId")
+	@Enumerated(EnumType.STRING)
+	private StoreCategory category;
 
 	@Column(nullable = false, length = 15)
 	private String storeName;
@@ -62,18 +65,12 @@ public class Store {
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
 	
-	@Column(nullable = false)
 	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties
 	private List<LikeStore> likeStore;
 
-	@Column(nullable = false)
 	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
 	@JsonIgnoreProperties
 	private List<Image> image;
-
-//	@Column(nullable = false)
-//	@OneToMany(mappedBy = "store", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-//	@JsonManagedReference
-//	private List<Report> report;
+	
 }

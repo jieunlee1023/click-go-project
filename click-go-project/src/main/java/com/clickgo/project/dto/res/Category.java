@@ -1,9 +1,11 @@
 package com.clickgo.project.dto.res;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
+
+import com.clickgo.project.model.enums.StoreCategory;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,5 +20,6 @@ import lombok.NoArgsConstructor;
 public class Category {
 
 	@Id
-	private String id;
+	@Enumerated(EnumType.STRING)
+	private StoreCategory id;
 }

@@ -14,14 +14,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.Report;
 import com.clickgo.project.dto.res.Reservation;
 import com.clickgo.project.dto.res.StoreFranchise;
-import com.clickgo.project.dto.res.User;
-import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.service.ReportService;
 import com.clickgo.project.service.ReservationService;
 import com.clickgo.project.service.StoreFranchiseService;

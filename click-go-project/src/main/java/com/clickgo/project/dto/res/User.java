@@ -1,20 +1,14 @@
 package com.clickgo.project.dto.res;
 
 import java.sql.Timestamp;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -25,8 +19,6 @@ import org.hibernate.annotations.DynamicInsert;
 
 import com.clickgo.project.model.enums.LoginType;
 import com.clickgo.project.model.enums.RoleType;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -74,14 +66,6 @@ public class User {
 
 	@ColumnDefault(value = "0")
 	private int point;
+	
 
-//	@Column(nullable = false)
-//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-//	@JsonIgnoreProperties
-//	private List<Store> store;
-
-//	@Column(nullable = false)
-//	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-//	@JsonManagedReference
-//	private List<Report> report;
 }
