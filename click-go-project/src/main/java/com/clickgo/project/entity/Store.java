@@ -57,7 +57,6 @@ public class Store {
 	@Column(nullable = false)
 	private int storeTotalRoomCount;
 
-	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp createDate;
 

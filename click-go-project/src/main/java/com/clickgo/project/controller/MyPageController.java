@@ -39,7 +39,7 @@ public class MyPageController {
 
 	@GetMapping("/reservation-list")
 	public String reservationList(Model model,
-			@PageableDefault(size = 2, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 
 		Page<Reservation> reservations = reservationService.searchBoard(principalDetails.getUser(), pageable);

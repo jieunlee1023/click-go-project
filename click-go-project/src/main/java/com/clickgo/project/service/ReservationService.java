@@ -22,11 +22,11 @@ public class ReservationService {
 		if (user.getRole().equals(RoleType.GEUST)) {
 			System.out.println("손님");
 			return reservationRepository.findByReservation(user.getId(), pageable);
-		} else if (user.getRole().equals(RoleType.HOST)) {
+		} else {
 			System.out.println("사장님");
-			return reservationRepository.findByHostReservation(user.getId(), pageable);
+			System.out.println(user.getId());
+			return reservationRepository.findByHostReservation1(1, pageable);
 		}
-		return null;
 	}
 
 	@Transactional

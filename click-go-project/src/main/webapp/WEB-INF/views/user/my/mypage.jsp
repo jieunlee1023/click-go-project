@@ -58,8 +58,8 @@
 			<div class="media border p-3"
 				style="width: 374px; height: 260px; border-radius: 15px;">
 				<div class="d-flex-column ">
-					<a href="/wish-list/"> <img src="../image/mypage/wish_list.png" alt="수정 사진"
-						class="ml-5 mt-4 m-4" style="width: 60px;">
+					<a href="/wish-list/"> <img src="../image/mypage/wish_list.png"
+						alt="수정 사진" class="ml-5 mt-4 m-4" style="width: 60px;">
 						<div class="media-body">
 							<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
 								<h3 style="font-weight: bold;">위시리스트</h3>
@@ -94,14 +94,15 @@
 		<div class="media border p-3"
 			style="width: 374px; height: 260px; border-radius: 15px;">
 			<div class="d-flex-column ">
-				<img src="../image/mypage/wish_list.png" alt="수정 사진"
-					class="ml-5 mt-4 m-4" style="width: 60px;">
-				<div class="media-body">
-					<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-						<h3 style="font-weight: bold;">리뷰 내역</h3>
-						<p class="mt-3">내가 쓴 리뷰와 사장님의 댓글을 확인하세요.</p>
+				<a href="/review"> <img src="../image/mypage/wish_list.png"
+					alt="수정 사진" class="ml-5 mt-4 m-4" style="width: 60px;">
+					<div class="media-body">
+						<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
+							<h3 style="font-weight: bold;">리뷰 내역</h3>
+							<p class="mt-3">내가 쓴 리뷰와 사장님의 댓글을 확인하세요.</p>
+						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 		</div>
 		</div>
@@ -156,16 +157,16 @@
 			<div class="media border p-3"
 				style="width: 374px; height: 260px; border-radius: 15px;">
 				<div class="d-flex-column ">
-				<a href="/care-store/">
-					<img src="../image/mypage/wish_list.png" alt="수정 사진"
+					<a href="/care-store/"> <img
+						src="../image/mypage/wish_list.png" alt="수정 사진"
 						class="ml-5 mt-4 m-4" style="width: 60px;">
-					<div class="media-body">
-						<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-							<h3 style="font-weight: bold;">매장 관리</h3>
-							<p class="mt-3">사장님의 매장을 관리해보세요 !</p>
+						<div class="media-body">
+							<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
+								<h3 style="font-weight: bold;">매장 관리</h3>
+								<p class="mt-3">사장님의 매장을 관리해보세요 !</p>
+							</div>
 						</div>
-					</div>
-				</a>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -192,14 +193,15 @@
 			<div class="media border p-3"
 				style="width: 374px; height: 260px; border-radius: 15px;">
 				<div class="d-flex-column ">
-					<img src="../image/mypage/wish_list.png" alt="수정 사진"
-						class="ml-5 mt-4 m-4" style="width: 60px;">
-					<div class="media-body">
-						<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-							<h3 style="font-weight: bold;">리뷰 내역</h3>
-							<p class="mt-3">손님들이 작성한 리뷰를 확인하세요.</p>
+					<a href="/review"> <img src="../image/mypage/wish_list.png"
+						alt="수정 사진" class="ml-5 mt-4 m-4" style="width: 60px;">
+						<div class="media-body">
+							<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
+								<h3 style="font-weight: bold;">리뷰 내역</h3>
+								<p class="mt-3">손님들이 작성한 리뷰를 확인하세요.</p>
+							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 			</div>
 		</div>
