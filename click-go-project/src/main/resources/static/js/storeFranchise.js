@@ -80,11 +80,8 @@ let index = {
 			console.log(error);
 			alert("오류가 발생했습니다.");
 		});
-
 	},
-
 }
-
 
 index.init();
 

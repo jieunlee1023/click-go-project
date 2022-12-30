@@ -70,12 +70,12 @@ public class StoreFranchiseController {
 	}
 
 	@GetMapping("/store-franchise-applyList")
-	public String frannchiseApplyList() {
+	public String frannchiseApplyList(Model model) {
+		franchiseMassageCount(model);
 		return "/storeFranchise/store-franchise-applyList";
 	}
 
 	public void franchiseMassageCount(Model model) {
-		
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
 		model.addAttribute("message", franchiseMessages);
 

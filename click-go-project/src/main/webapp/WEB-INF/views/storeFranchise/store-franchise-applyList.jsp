@@ -7,54 +7,64 @@
 		<h1>가맹점 신청 내역</h1>
 	</div>
 
-	<br><br>
-	<div class="d-flex justify-content-between">
-		<p>번호</p>
-		<p>제목</p>
-		<p>등록일</p>
-	</div>
-	<c:forEach var="board" items="${boards.content}">
+	<br> <br>
+	<div>
 		<div class="d-flex justify-content-between">
-			<div class="d-flex justify-content-between">
-				<ul class="list-group list-group-flush ">
-					<li class="list-group-item d-flex justify-content-start">
-						<p class="text-danger">
-							<small>${board.id }</small>
-						</p> <a href="/board/${board.id }" class="col"><small>${board.title}</small> </a>
-						<p class="text-danger">
-							<small>${board.user.username }</small>
-						</p>
-						<p>
-							<small>${board.createDate }</small>
-						</p>
-					</li>
-				</ul>
-			</div>
+			<div style="width: 100px; height: 50px; text-align: center">등록번호</div>
+			<div style="width: 100px; height: 50px; text-align: center">카테고리</div>
+			<div style="width: 100px; height: 50px; text-align: center">가게명</div>
+			<div style="width: 130px; height: 50px; text-align: center">가게번호</div>
+			<div style="width: 100px; height: 50px; text-align: center">등록일</div>
+			<div style="width: 100px; height: 50px; text-align: center">상태</div>
+			<div style="width: 100px; height: 50px; text-align: center">거절이유</div>
+
 		</div>
-	</c:forEach>
+		<c:forEach var="msg" items="${message}">
+			<c:if test="${principal.user.id eq msg.user.id }">
+				<c:choose>
+					<c:when test="${msg.state eq 'APPROVE'}">
+						<div class="d-flex justify-content-between">
+							<div style="width: 100px; height: 50px; text-align: center">${10000+msg.id }</div>
+							<div style="width: 100px; height: 50px;; text-align: center">${msg.category.id}</div>
+							<div style="width: 100px; height: 50px; text-align: center">${msg.storeName}</div>
+							<div style="width: 130px; height: 50px; text-align: center">${msg.storeTEL}</div>
+							<div style="width: 100px; height: 50px; text-align: center">${msg.applyDate}</div>
+							<div style="width: 100px; height: 50px; text-align: center; color: blue;">${msg.state}</div>
+							<small style="width: 100px; height: 50px; text-align: center">${msg.rejectReason}</small>
+						</div>
+					</c:when>
+					<c:when test="${msg.state eq 'REJECT'}">
+						<div class="d-flex justify-content-between">
+							<div style="width: 100px; height: 50px; text-align: center">${10000+msg.id }</div>
+							<div style="width: 100px; height: 50px;; text-align: center">${msg.category.id}</div>
+							<div style="width: 100px; height: 50px; text-align: center">${msg.storeName}</div>
+							<div style="width: 130px; height: 50px; text-align: center">${msg.storeTEL}</div>
+							<div style="width: 100px; height: 50px; text-align: center">${msg.applyDate}</div>
+							<div style="width: 100px; height: 50px; text-align: center; color: red;">${msg.state}</div>
+							<small style="width: 100px; height: 50px; text-align: center">${msg.rejectReason}</small>
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="d-flex justify-content-between">
+							<div style="width: 100px; height: 50px; text-align: center">${10000+msg.id }</div>
+							<div style="width: 100px; height: 50px;; text-align: center">${msg.category.id}</div>
+							<div style="width: 100px; height: 50px; text-align: center">${msg.storeName}</div>
+							<div style="width: 130px; height: 50px; text-align: center">${msg.storeTEL}</div>
+							<div style="width: 100px; height: 50px; text-align: center">${msg.applyDate}</div>
+							<div style="width: 100px; height: 50px; text-align: center; color: orange;">${msg.state}</div>
+							<small style="width: 100px; height: 50px; text-align: center">${msg.rejectReason}</small>
+						</div>
+					</c:otherwise>
+
+				</c:choose>
 
 
-	<ul class="pagination justify-content-center">
-		<c:set var="isDisabled" value="disabled"></c:set>
-		<c:set var="isNotDisabled" value=""></c:set>
-		<li class="page-item ${boards.first ? isDisabled : isNotDisabled } "><a class="page-link" href="?page=${boards.number - 1 }">이전</a></li>
-		<!-- 반복문 처리 하기-->
-		<!-- 1 2 3, 1 2 3 4 , 1 2 3 4 5  -->
-		<c:forEach var="num" items="${pageNumbers }">
-			<c:choose>
-				<c:when test="${nowPage eq num }">
-					<!-- http://localhost:9090/board/search?q=%EC%95%84%EB%8B%88 -->
-					<!-- 0 부터 시작 컨트롤러에서 +1 -->
-					<li class="page-item active"><a class="page-link" href="?q=${q }&page=${num - 1 }">${num }</a></li>
-				</c:when>
-				<c:otherwise>
-					<li class="page-item"><a class="page-link" href="?q=${q }&page=${num - 1 }">${num }</a></li>
-				</c:otherwise>
-			</c:choose>
+			</c:if>
 		</c:forEach>
+	</div>
 
-		<li class="page-item ${boards.last ? isDisabled : isNotDisabled }"><a class="page-link" href="?page=${boards.number + 1 }">다음</a></li>
-	</ul>
+
+
 
 
 </div>

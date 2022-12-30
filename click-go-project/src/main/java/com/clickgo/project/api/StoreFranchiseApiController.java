@@ -22,9 +22,6 @@ public class StoreFranchiseApiController {
 	@Autowired
 	private StoreFranchiseService franchiseService;
 
-	@Autowired
-	private IStoreFranchiseRepository franchiseRepository;
-
 	@PostMapping("/approve/{id}/{userId}")
 	public ResponseDto<?> franchiseApprove(@PathVariable int id, @PathVariable int userId,
 			@RequestBody StoreFranchise storeFranchise, Store store, Model model) {
@@ -35,7 +32,6 @@ public class StoreFranchiseApiController {
 	@PostMapping("/reject/{id}/{userId}")
 	public ResponseDto<?> franchiseReject(@PathVariable int id, @PathVariable int userId, 
 			@RequestBody StoreFranchise storeFranchise, Store store, Model model) {
-
 		boolean rejectSuccess = franchiseService.changeStateReject(id,userId, storeFranchise,store);
 		return new ResponseDto<>(rejectSuccess, "거절완료!");
 	}
