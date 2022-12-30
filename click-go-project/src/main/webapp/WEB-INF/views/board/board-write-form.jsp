@@ -38,12 +38,15 @@
 
 	<div class="">
 		<div class="form-check form-check-inline mt-3">
-			<input class="form-check-input" type="checkbox" name="secret" id="secret"> 
-			<label class="form-check-label">비밀글 설정</label>
+			<input class="form-check-input" type="checkbox" name="secret" id="secret"> <label class="form-check-label">비밀글 설정</label>
 		</div>
+		<!-- <div class="form-check">
+			<label class="form-check-label"> <input type="checkbox" class="form-check-input" value="">Option 1
+			</label>
+		</div> -->
 		<button type="button" id="btn--write" class="btn bg-secondary">
-		<span class="spinner-border spinner-border-sm"></span>
-		글 작성</button>
+			<span class="spinner-border spinner-border-sm"></span> 글 작성
+		</button>
 	</div>
 </div>
 
