@@ -2,17 +2,24 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="../../layout/header.jsp"%>
+
+<input type="hidden" value="${principal.user.id}" id="user-id">
 <c:choose>
+	
 	<c:when test="${principal.user.role eq 'GEUST'}">
 		<br>
 		<br>
 		<div class="d-flex ml-5 pl-5">
 			<div class="d-flex-column justify-content-start ml-5">
+			<button class="btn--delete-user" type="button" id="btn--delete-user">
+  				<span class="button__text">회원탈퇴</span>
+				</button>
 				<h1 style="font-weight: bold;">마이 페이지</h1>
 				<br>
 				<h4>반갑습니다. ${principal.user.username}님,</h4>
 				<h4>최고의 서비스로 모시겠습니다.</h4>
 			</div>
+			
 		</div>
 		<br>
 		<br>
@@ -199,4 +206,5 @@
 	</c:otherwise>
 </c:choose>
 <br>
+<script src="/js/user.js"></script>
 <%@ include file="../../layout/footer.jsp"%>

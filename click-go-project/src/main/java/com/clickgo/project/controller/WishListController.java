@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.LikeStore;
-import com.clickgo.project.service.KategoryService;
+import com.clickgo.project.service.CategoryService;
 import com.clickgo.project.service.WishListService;
 
 @Controller
@@ -27,7 +27,7 @@ import com.clickgo.project.service.WishListService;
 public class WishListController {
 
 	@Autowired
-	private KategoryService kategoryService;
+	private CategoryService kategoryService;
 
 	@Autowired
 	private WishListService wishListService;

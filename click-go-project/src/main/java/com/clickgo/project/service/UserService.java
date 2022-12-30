@@ -1,13 +1,19 @@
 package com.clickgo.project.service;
 
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.clickgo.project.auth.PrincipalDetails;
+import com.clickgo.project.entity.DeleteUser;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
+import com.clickgo.project.repository.IDeleteUserRepository;
 import com.clickgo.project.repository.IUserRepository;
 
 @Service
@@ -17,6 +23,8 @@ public class UserService {
 	private IUserRepository userRepository;
 	@Autowired
 	private BCryptPasswordEncoder encoder;
+	@Autowired
+	private IDeleteUserRepository deleteUserRepository;
 
 	@Transactional
 	public User findByUsername(String username) {
@@ -80,4 +88,30 @@ public class UserService {
 		}
 		return userEntity;
 	}
+	
+	@Transactional
+	public void deleteUser(int userId, int requestUserId) {
+		User userEntity = userRepository.findById(userId).orElseThrow(() -> {
+			return new IllegalArgumentException("찾을 수 없는 회원입니다.");
+		});
+		new DeleteUser();
+		deleteUserRepository.save(DeleteUser
+				.builder()
+				.username(userEntity.getUsername())
+				.password(userEntity.getPassword())
+				.deleteDate(userEntity.getCreateDate())
+				.email(userEntity.getEmail())
+				.loginType(userEntity.getLoginType())
+				.phoneNumber(userEntity.getPhoneNumber())
+				.role(userEntity.getRole())
+				.build());
+		try {
+			userRepository.deleteById(userId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	
 }

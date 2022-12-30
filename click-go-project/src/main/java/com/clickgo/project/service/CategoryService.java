@@ -10,7 +10,7 @@ import com.clickgo.project.entity.Category;
 import com.clickgo.project.repository.ICategoryRepository;
 
 @Service
-public class KategoryService {
+public class CategoryService {
 
 	@Autowired
 	private ICategoryRepository kategoryRepository;
