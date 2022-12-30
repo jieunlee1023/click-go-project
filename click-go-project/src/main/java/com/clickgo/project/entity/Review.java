@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +16,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
+
+import com.clickgo.project.model.enums.ReviewType;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -50,4 +54,7 @@ public class Review {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId", nullable = false)
 	private Store store;
+
+	@Enumerated(EnumType.STRING)
+	private ReviewType reviewType;
 }
