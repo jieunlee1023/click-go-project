@@ -7,6 +7,9 @@ let index = {
 		$("#btn--update").bind("click", () => {
 			this.update();
 		});
+		$("#btn--delete-user").bind("click", () => {
+			this.deleteUser();
+		});
 	},
 
 	save: function() {
@@ -73,7 +76,40 @@ let index = {
 				alert("오류가 발생했습니다. 관리자에게 문의해주세요.");
 			});
 		}
+	},
+
+	deleteUser: function() {
+		let id = $("#user-id").val();
+		let data = {
+			username: $("#username").val(),
+			password: $("#password").val(),
+			phoneNumber: $("#phoneNumber").val(),
+			email: $("#email").val(),
+			role: $("#role").val()
+		};
+		if (confirm('정말 회원탈퇴를 하시겠습니까?')) {
+
+			$.ajax({
+				type: 'delete',
+				url: '/api/user/delete/' + id,
+				data: JSON.stringify(data),
+			}).done(function(data) {
+				if (data.httpStatus == true) {
+					alert("회원탈퇴가 되었습니다.")
+					location.href = "/";
+				} else {
+					alert("회원탈퇴에 실패하셨습니다.");
+				}
+			}).fail(function(error) {
+				console.log(error);
+				alert("오류가 발생했습니다. 관리자에게 문의해주세요.");
+			});
+		}
 	}
+
+
+
+
 };
 
 index.init();

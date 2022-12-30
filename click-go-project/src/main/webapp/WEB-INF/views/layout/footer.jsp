@@ -40,15 +40,7 @@
 
 	});
 
-	function getShow() {
-		alert("dfjsk");
-		document.getElementById("test1").style.display = "";
-	}
-
-	function getHide() {
-		document.getElementById("test1").style.display = "none";
-
-	}
+	
  
 </script>
 

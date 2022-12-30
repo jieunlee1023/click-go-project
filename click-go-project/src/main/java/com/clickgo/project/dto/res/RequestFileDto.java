@@ -35,5 +35,15 @@ public class RequestFileDto {
 				.build();
 	}
 
+//	public Store toStoreEntitiy(List<Image> postImageUrl, User user) {
+//		return Store.builder()
+//				.category(category)
+//				.storeName(storeName)
+//				.storeTEL(storeTEL)
+//				.storeAddress(storeAddress)
+//				.image(postImageUrl)
+//				.user(user)
+//				.build();
+//	}
 
 }

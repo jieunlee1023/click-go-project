@@ -42,6 +42,7 @@ public class Store {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "categoryId")
+	@Enumerated(EnumType.STRING)
 	private Category category;
 
 	@Column(nullable = false, length = 15)

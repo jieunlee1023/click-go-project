@@ -41,10 +41,8 @@ public class StoreFranchiseService {
 		System.out.println("uuid:" + uuid);
 
 		String imageFilename = uuid + "_" + fileDto.getFile().getOriginalFilename();
-		System.out.println("imageFileName:" + imageFilename);
 
 		Path imageFilePath = Paths.get(licenceFile + imageFilename);
-		System.out.println("파일패스:" + imageFilePath);
 
 		try {
 			Files.write(imageFilePath, fileDto.getFile().getBytes());
