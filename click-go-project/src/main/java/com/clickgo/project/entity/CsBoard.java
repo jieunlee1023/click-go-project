@@ -69,15 +69,14 @@ public class CsBoard {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
- 
+
 	// sw
 	@ColumnDefault("0")
 	private int count;
-	
-	/*
-	 * // 비밀글 여부
-	 * 
-	 * @Column(nullable = true) private boolean secret;
-	 */
-	
+
+	// 비밀글 여부
+
+//	@Column(nullable = true)
+//	private boolean secret;
+
 }

@@ -51,6 +51,7 @@
 		<p>등록시간</p>
 	</div>
 	<c:forEach var="board" items="${boards.content}">
+	
 		<div class="d-flex justify-content-between">
 			<div class="d-flex justify-content-between">
 				<ul class="list-group list-group-flush ">
