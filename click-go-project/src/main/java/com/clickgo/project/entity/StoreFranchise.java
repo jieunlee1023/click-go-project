@@ -1,9 +1,7 @@
 package com.clickgo.project.entity;
 
 import java.sql.Timestamp;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -14,13 +12,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.clickgo.project.model.enums.StoreCategory;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.clickgo.project.model.enums.StoreFranchiseState;
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -34,15 +31,16 @@ import lombok.ToString;
 @Builder
 @Entity
 @ToString
+@JsonAutoDetect 
 public class StoreFranchise {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(nullable = false)
-	@Enumerated(EnumType.STRING)
-	private StoreCategory category;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "categoryId")
+	private Category category;
 
 	@Column(nullable = false, length = 15)
 	private String storeName;
@@ -63,5 +61,10 @@ public class StoreFranchise {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
+	
+	@Enumerated(EnumType.STRING)
+	private StoreFranchiseState state;
+	
+	private String rejectReason;
 
 }

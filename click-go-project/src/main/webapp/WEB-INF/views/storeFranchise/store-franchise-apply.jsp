@@ -20,12 +20,9 @@
 					style="border-radius: 0px">
 					<option value="pc방" disabled="disabled" selected="selected">카테고리를
 						선택해주세요.</option>
-					<option value="pc방">PC방</option>
-					<option value="노래방">노래방</option>
-					<option value="동전노래방">동전노래방</option>
-					<option value="당구장">당구장</option>
-					<option value="볼링장">볼링장</option>
-					<option value="스크린야구장">스크린야구장</option>
+						<c:forEach var="category" items="${categories}">
+						<option value="${category}">${category}</option>
+						</c:forEach>
 				</select>
 			</div>
 		</div>

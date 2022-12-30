@@ -34,5 +34,5 @@ public interface IWishListRepository extends JpaRepository<LikeStore, Integer> {
 			+ "    l.userId = ?1 "
 			+ " AND s.kategoryId = ?2 "
 			, nativeQuery = true)
-	Page<LikeStore> findByKategory(int userId, String kategory, Pageable pageable);
+	Page<LikeStore> findByCategory(int userId, String kategory, Pageable pageable);
 }
