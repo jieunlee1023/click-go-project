@@ -38,7 +38,6 @@ public class StoreFranchiseService {
 	@Transactional
 	public void apply(RequestFileDto fileDto, PrincipalDetails principalDetails) {
 		UUID uuid = UUID.randomUUID();
-		System.out.println("uuid:" + uuid);
 
 		String imageFilename = uuid + "_" + fileDto.getFile().getOriginalFilename();
 
