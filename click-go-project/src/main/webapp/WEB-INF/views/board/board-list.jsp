@@ -2,90 +2,77 @@
 <%@ include file="../layout/header.jsp"%>
 
 
-<%--   <c:if  test="${boards.secret == true}">
-    <c:choose>
-        <c:when test="${boards.user eq member.vo.userid || member.authorities eq '[ROLE_ADMIN, ROLE_MEMBER]'}"> <!-- 작성자이거나 관리자일 때 -->
-            <td><a href="get${pageMaker.cri.listLink}&bno=${board.bno}" class="text-secondary text-center"><i class="icofont-lock"></i><c:out value="${board.title}"/><span class="text-muted small"> [${board.replyCnt}]</span></a></td>
-        </c:when>
-        <c:otherwise>
-            <td class="text-secondary"><i class="icofont-lock"></i><c:out value="${board.title}"/><span class="text-muted small"> [${board.replyCnt}]</span></td>
-        </c:otherwise>
-    </c:choose>                                            
-</c:if> 
- --%>
+
+<!--  -->
 
 <div class="container">
-	<div class="d-flex justify-content-between">
-		<h1>Click-Go Board 👨‍💻👩‍💻</h1>
-		<div class="spinner-border text-muted"></div>
-		<div class="spinner-border text-primary"></div>
-		<div class="spinner-border text-success"></div>
-		<div class="spinner-border text-info"></div>
-		<div class="spinner-border text-warning"></div>
-		<div class="spinner-border text-danger"></div>
-		<div class="spinner-border text-secondary"></div>
-		<div class="spinner-border text-dark"></div>
-		<div class="spinner-border text-light"></div>
+
+	<!-- 제목 -->
+	<div class="d-flex justify-content-start">
+		<h1 class="display-4">Click-Go Board !!!</h1>
+	</div>
+
+	<!-- 글쓰기버튼 -->
+	<div class="mb-5 d-flex justify-content-end">
 		<form class="form-inline" action="/board/board-write-form">
 			<button type="submit" class="btn btn-outline-success" id="btn--write">글쓰기</button>
 		</form>
 	</div>
 
-	<div class="d-flex">
-		<div class="input-group mt-5 mb-5  justify-content-end">
-			<form action="/board/search" class="form-inline" method="get">
-				<div class="input-group-append">
-					<input type="text" class="form-control mr-2" placeholder="검색" name="q" value="${q }">
-					<button class="btn btn-outline-dark" type="submit">검색</button>
-				</div>
-			</form>
+	<div class="input-group mt-5 mb-5 d-flex justify-content-end">
+		<form action="/board/search" class="form-inline" method="get">
+			<input type="text" class="form-control mr-2" placeholder="검색" name="q" value="${q }">
+			<button class="btn btn-outline-dark" type="submit">검색</button>
+		</form>
+	</div>
+
+
+
+	<!-- 내용시작 -->
+	<!-- <div class="container row" style="float: none; margin: 100 auto;"> -->
+
+
+	<div class="row border-top border-bottom pt-2">
+		<div class="col-lg">
+			<p class="font-weight-bold" style="font-family: monospace; font-weight: light;">번호</p>
+		</div>
+		<div class="col-lg">
+			<p class="font-weight-bold" style="font-family: monospace; font-weight: light;">제목</p>
+		</div>
+		<div class="col-lg">
+			<p class="font-weight-bold" style="font-family: monospace; font-weight: light;">글쓴이</p>
+		</div>
+		<div class="col-lg">
+			<p class="font-weight-bold" style="font-family: monospace; font-weight: light;">등록시간</p>
 		</div>
 	</div>
 
-
-
-	<div class="d-flex justify-content-between">
-		<p>번호</p>
-		<p>제목</p>
-		<p>글쓴이</p>
-		<p>등록시간</p>
-	</div>
 	<c:forEach var="board" items="${boards.content}">
-	
-		<div class="d-flex justify-content-between">
-			<div class="d-flex justify-content-between">
-				<ul class="list-group list-group-flush ">
-					<li class="list-group-item d-flex justify-content-start">
-						<p class="text-danger">
-							<small>${board.id }</small>
-						</p> <a href="/board/${board.id }" class="col"><small>${board.title}</small> </a>
-						<p class="text-danger">
-							<small>${board.user.username }</small>
-						</p>
-						<p>
+		<div class="row border-bottom">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item d-flex justify-content-between">
+					<div class="col-lg">
+						<p class="font-weight-light" style="color: gray; font-family: sans-serif; font-weight: lighter;">${board.id }</p>
+					</div>
+					<div class="col-lg">
+						<a class="font-weight-light" href="/board/${board.id }" style="text-decoration: none; color: black; font-family: monospace;">${board.title}</a>
+					</div>
+					<div class="col-lg">
+						<p class="font-weight-light" style="color: gray; font-family: sans-serif; font-weight: light;">${board.user.username }</p>
+					</div>
+					<div class="col-lg">
+						<p class="font-weight-light" style="color: gray">
 							<small>${board.createDate }</small>
 						</p>
-					</li>
-				</ul>
-			</div>
+					</div>
+				</li>
+			</ul>
 		</div>
 	</c:forEach>
 
-	<%-- <c:forEach var="board" items="${boards.content}">
-		<div class="container mb-5">
-			<div class=" row d-flex justify-content-center">
-				<div class="col">
-					<p class="text-danger"><small>글번호 : ${board.id }</small></p>
-					<a href="/board/${board.id }" class="col">, 제목 :${board.title }, 작성시간 : ${board.createDate } </a>
-					<p class="text-danger">
-						<small>, 작성자 : ${board.user.username }</small>
-					</p>
-				</div>
-			</div>
-		</div>
-	</c:forEach> --%>
 
 
+	<div class="m-5"></div>
 	<ul class="pagination justify-content-center">
 		<c:set var="isDisabled" value="disabled"></c:set>
 		<c:set var="isNotDisabled" value=""></c:set>
@@ -97,7 +84,7 @@
 				<c:when test="${nowPage eq num }">
 					<!-- http://localhost:9090/board/search?q=%EC%95%84%EB%8B%88 -->
 					<!-- 0 부터 시작 컨트롤러에서 +1 -->
-					<li class="page-item active"><a class="page-link" href="?q=${q }&page=${num - 1 }">${num }</a></li>
+					<li class="page-item"><a class="page-link" href="?q=${q }&page=${num - 1 }" style="color: black">${num }</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link" href="?q=${q }&page=${num - 1 }">${num }</a></li>
@@ -109,12 +96,7 @@
 
 	</ul>
 
-
-
-
 </div>
-
-
 
 
 
