@@ -2,7 +2,6 @@ package com.clickgo.project.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -20,7 +19,7 @@ import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.LikeStore;
 import com.clickgo.project.model.enums.StoreCategory;
-import com.clickgo.project.service.KategoryService;
+import com.clickgo.project.service.CategoryService;
 import com.clickgo.project.service.WishListService;
 
 @Controller
@@ -28,24 +27,26 @@ import com.clickgo.project.service.WishListService;
 public class WishListController {
 
 	@Autowired
-	private KategoryService kategoryService;
+	private CategoryService categoryService;
 
 	@Autowired
 	private WishListService wishListService;
 
 	@GetMapping({ "", "/" })
-	public String wishList(@RequestParam(required = false) String kategory, Model model,
+	public String wishList(@RequestParam(required = false) String category, Model model,
 			@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		List<StoreCategory> kategoryEntitys = new ArrayList<>();
-		List<Category> kategories = kategoryService.findAll();
-		kategories.forEach(t -> {
-			kategoryEntitys.add(t.getId());
+		List<StoreCategory> categoryEntitys = new ArrayList<>();
+		List<Category> categories = categoryService.findAll();
+		categories.forEach(t -> {
+			categoryEntitys.add(t.getId());
 		});
-		Page<LikeStore> likeStores = wishListService.findByKategory(principalDetails.getUser().getId(),
-				kategory, pageable);
+		
+		
+		Page<LikeStore> likeStores = wishListService.findByCategory(principalDetails.getUser().getId(),
+				category, pageable);
 
-		model.addAttribute("kategoryEntitys", kategoryEntitys);
+		model.addAttribute("categoryEntitys", categoryEntitys);
 		model.addAttribute("likeStores", likeStores);
 		return "user/my/wish-list/list";
 	}
