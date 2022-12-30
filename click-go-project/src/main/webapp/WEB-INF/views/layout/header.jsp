@@ -61,14 +61,11 @@
 
 
 <!-- CSS 연결 -->
-<<<<<<< HEAD
 <link href="/css/common.css" rel="stylesheet" type="text/css" />	
 <link href="/css/search.css" rel="stylesheet" type="text/css" />	
 <link href="/css/board.css" rel="stylesheet" type="text/css" />	
-=======
 <link href="/css/common.css" rel="stylesheet" type="text/css" />
 <link href="/css/search.css" rel="stylesheet" type="text/css" />
->>>>>>> fb603507b191291082d4cfe131c12b6936316737
 </head>
 
 <body>
