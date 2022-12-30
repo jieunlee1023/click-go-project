@@ -13,10 +13,10 @@ import com.clickgo.project.repository.ICategoryRepository;
 public class CategoryService {
 
 	@Autowired
-	private ICategoryRepository kategoryRepository;
+	private ICategoryRepository categoryRepository;
 
 	@Transactional
 	public List<Category> findAll() {
-		return kategoryRepository.findAll();
+		return categoryRepository.findAll();
 	}
 }

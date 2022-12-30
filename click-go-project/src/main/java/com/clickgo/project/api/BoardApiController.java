@@ -60,7 +60,6 @@ public class BoardApiController {
 			return new ResponseDto<>(success, "댓글삭제성공");
 		} catch (Exception e) {
 			return new ResponseDto<>(success, "댓글삭제실패");
-			// TODO: handle exception
 		}
 	}
 

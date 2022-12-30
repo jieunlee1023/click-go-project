@@ -57,7 +57,6 @@ public class BoardController {
 		model.addAttribute("q", searchTitle);
 
 //		model.addAttribute("boards1",boards1);
-
 		franchiseMassageCount(model);
 		return "board/board-list";
 	}
@@ -86,6 +85,16 @@ public class BoardController {
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
 		model.addAttribute("message", franchiseMessages);
+
+		List<StoreFranchise> allMsg = franchiseService.getMessageList();
+		franchiseMessages.forEach(t->{
+			if (t.getState().toString().equals("WAIT")) {
+				allMsg.add(t);
+			}
+		});
+		int waitMsg = allMsg.size()-franchiseMessages.size();
+		model.addAttribute("waitMsg", waitMsg);
+
 	}
 
 //    @GetMapping({"/board/board-list"})

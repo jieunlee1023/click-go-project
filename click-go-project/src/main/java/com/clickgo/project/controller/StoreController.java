@@ -38,5 +38,16 @@ public class StoreController {
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
 		model.addAttribute("message", franchiseMessages);
+		
+
+		List<StoreFranchise> allMsg = franchiseService.getMessageList();
+		franchiseMessages.forEach(t->{
+			if (t.getState().toString().equals("WAIT")) {
+				allMsg.add(t);
+			}
+		});
+		int waitMsg = allMsg.size()-franchiseMessages.size();
+		model.addAttribute("waitMsg", waitMsg);
+
 	}
 }

@@ -9,10 +9,10 @@
 <br>
 <div class="container d-flex justify-content-center">
 	<div class="m-5 pr-5">
-		<c:forEach var="kategory" items="${kategoryEntitys}">
+		<c:forEach var="category" items="${categoryEntitys}">
 			<br>
 			<div class="d-flex-column">
-				<a href="/wish-list?kategory=${kategory}">${kategory}</a>
+				<a href="/wish-list?kategory=${category}">${category}</a>
 			</div>
 		</c:forEach>
 	</div>

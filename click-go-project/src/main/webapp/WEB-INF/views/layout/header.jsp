@@ -57,12 +57,12 @@
 	src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script
 	src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
-	
-	
+
+
 
 <!-- CSS 연결 -->
-<link href="/css/common.css" rel="stylesheet" type="text/css" />	
-<link href="/css/search.css" rel="stylesheet" type="text/css" />	
+<link href="/css/common.css" rel="stylesheet" type="text/css" />
+<link href="/css/search.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -84,8 +84,8 @@
 
 			<button class="navbar-toggler" type="button" data-toggle="collapse"
 				data-target="#collapsibleNavbar">
-				<span class="navbar-toggler-icon"> <img
-					src="/image/menu.png" width="30px" height="30px">
+				<span class="navbar-toggler-icon"> <img src="/image/menu.png"
+					width="30px" height="30px">
 				</span>
 			</button>
 
@@ -112,8 +112,8 @@
 										</form>
 									</div>
 								</li>
-								
-								
+
+
 
 								<li class="nav-item " role="button"><a class="nav-link"
 									href="/" id="li--home">홈</a></li>
@@ -124,11 +124,9 @@
 									class="nav-link dropdown-toggle" data-toggle="dropdown">
 										더보기 </a>
 									<div class="dropdown-menu">
-										<a class="dropdown-item"
-											href="/view-more/about-us"
+										<a class="dropdown-item" href="/view-more/about-us"
 											id="li--about-us">회사 소개</a> <a class="dropdown-item"
-											href="/board/board-list" id="li--board">게시판</a>
-										<a class="dropdown-item" href="#">1:1문의</a> <a
+											href="/board/board-list" id="li--board">게시판</a> <a
 											class="dropdown-item" href="/view-more/question-form/1">자주
 											묻는 질문</a>
 
@@ -165,8 +163,9 @@
 										<div class="nav-btn justify-content-bottom" id="notification"
 											style="position: relative; margin: 0px">
 											<button class="btn" type="submit">
-												<img alt="메시지" src="/image/msg.png" width="20px"
-													height="20px"><span class="note-num">${message.size()}</span>
+													<img alt="메시지" src="/image/msg.png" width="20px"
+														height="20px">
+													<span class="note-num">${waitMsg}</span>
 											</button>
 										</div>
 									</form>
@@ -181,18 +180,16 @@
 
 
 								<li class="nav-item"><a class="nav-link"
-									href="/storeFranchise/store-franchise-list"
-									id="li--content">가맹점 목록</a></li>
+									href="/storeFranchise/store-franchise-list" id="li--content">가맹점
+										목록</a></li>
 
 								<li class="nav-item dropdown"><a
 									class="nav-link dropdown-toggle" data-toggle="dropdown">
 										더보기 </a>
 									<div class="dropdown-menu">
-										<a class="dropdown-item"
-											href="/view-more/about-us"
+										<a class="dropdown-item" href="/view-more/about-us"
 											id="li--about-us">회사 소개</a> <a class="dropdown-item"
-											href="/board/board-list" id="li--board">게시판</a>
-										<a class="dropdown-item" href="#">1:1문의</a> <a
+											href="/board/board-list" id="li--board">게시판</a> <a
 											class="dropdown-item" href="/view-more/question-form/1">자주
 											묻는 질문</a>
 									</div></li>
@@ -237,10 +234,8 @@
 										가맹점 </a>
 									<div class="dropdown-menu">
 										<a class="nav-link"
-											href="/storeFranchise/store-franchise-my"
-											id="li--content">내 가게</a> <a class="nav-link"
-											href="/storeFranchise/store-franchise-apply"
-											id="li--content">가맹점 신청</a> <a class="nav-link"
+											href="/storeFranchise/store-franchise-apply" id="li--content">가맹점
+											신청</a> <a class="nav-link"
 											href="/storeFranchise/store-franchise-applyList"
 											id="li--content">가맹점 신청목록</a>
 									</div></li>
@@ -249,11 +244,9 @@
 									class="nav-link dropdown-toggle" data-toggle="dropdown">
 										더보기 </a>
 									<div class="dropdown-menu">
-										<a class="dropdown-item"
-											href="/view-more/about-us"
+										<a class="dropdown-item" href="/view-more/about-us"
 											id="li--about-us">회사 소개</a> <a class="dropdown-item"
-											href="/board/board-list" id="li--board">게시판</a>
-										<a class="dropdown-item" href="#">1:1문의</a> <a
+											href="/board/board-list" id="li--board">게시판</a> <a
 											class="dropdown-item" href="/view-more/question-form/1">자주
 											묻는 질문</a>
 									</div></li>
@@ -298,10 +291,8 @@
 									<div class="dropdown-menu">
 
 										<a class="nav-link"
-											href="/storeFranchise/store-franchise-my"
-											id="li--content">내 가게</a> <a class="nav-link"
-											href="/storeFranchise/store-franchise-apply"
-											id="li--content">가맹점 신청</a> <a class="nav-link"
+											href="/storeFranchise/store-franchise-apply" id="li--content">가맹점
+											신청</a> <a class="nav-link"
 											href="/storeFranchise/store-franchise-applyList"
 											id="li--content">가맹점 신청목록</a>
 									</div></li>
@@ -310,11 +301,9 @@
 									class="nav-link dropdown-toggle" data-toggle="dropdown">
 										더보기 </a>
 									<div class="dropdown-menu">
-										<a class="dropdown-item"
-											href="/view-more/about-us"
+										<a class="dropdown-item" href="/view-more/about-us"
 											id="li--about-us">회사 소개</a> <a class="dropdown-item"
-											href="/board/board-list" id="li--board">게시판</a>
-										<a class="dropdown-item" href="#">1:1문의</a> <a
+											href="/board/board-list" id="li--board">게시판</a> <a
 											class="dropdown-item" href="/view-more/question-form/1">자주
 											묻는 질문</a>
 									</div></li>
