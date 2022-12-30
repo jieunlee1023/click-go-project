@@ -40,9 +40,9 @@ public class StoreFranchise {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@Column(nullable = false)
-	@Enumerated(EnumType.STRING)
-	private StoreCategory category;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "categoryId", nullable = false)
+	private Category category;
 
 	@Column(nullable = false, length = 15)
 	private String storeName;

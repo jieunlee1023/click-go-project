@@ -41,7 +41,7 @@ public class Store {
 	private int id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "kategoryId")
+	@JoinColumn(name = "categoryId")
 	@Enumerated(EnumType.STRING)
 	private Category category;
 

@@ -1,10 +1,14 @@
 package com.clickgo.project.dto.res;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
+import com.clickgo.project.entity.Category;
+import com.clickgo.project.entity.Image;
+import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
-import com.clickgo.project.model.enums.StoreCategory;
 
 import lombok.Data;
 
@@ -16,7 +20,7 @@ public class RequestFileDto {
 	private MultipartFile file;
 	private String uuid; //고유한 파일 이름을 만들기 위한 변수
 	
-	private StoreCategory category;
+	private Category category;
 	private String storeName;
 	private String storeTEL;
 	private String storeAddress;
@@ -34,5 +38,15 @@ public class RequestFileDto {
 				.build();
 	}
 
+//	public Store toStoreEntitiy(List<Image> postImageUrl, User user) {
+//		return Store.builder()
+//				.category(category)
+//				.storeName(storeName)
+//				.storeTEL(storeTEL)
+//				.storeAddress(storeAddress)
+//				.image(postImageUrl)
+//				.user(user)
+//				.build();
+//	}
 
 }

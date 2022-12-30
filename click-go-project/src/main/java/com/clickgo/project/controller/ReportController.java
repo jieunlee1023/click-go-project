@@ -38,10 +38,6 @@ public class ReportController {
 	@Autowired
 	private ReportReplyService reportReplyService;
 
-//	@GetMapping("/report-list/{myList}")
-//	public String reportList(Model model,
-//			@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable,
-//			@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable(required = false) int myList) {
 		@GetMapping("/report-list/{myList}")
 		public String reportList(Model model,
 				@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable,
