@@ -48,6 +48,13 @@
 	</div>
 
 	<c:forEach var="board" items="${boards.content}">
+		<%-- <c:if test="${board.secretType} }">
+			<c:choose>
+				<c:when test="${board.user.id eq principal.user.id || principal.user.role eq 'ADMIN'}">
+				
+				</c:when>
+			</c:choose>
+		</c:if> --%>
 		<div class="row border-bottom">
 			<ul class="list-group list-group-flush">
 				<li class="list-group-item d-flex justify-content-between">
