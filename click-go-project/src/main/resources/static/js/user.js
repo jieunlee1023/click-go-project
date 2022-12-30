@@ -10,6 +10,12 @@ let index = {
 		$("#btn--delete-user").bind("click", () => {
 			this.deleteUser();
 		});
+		$("#btn--search-id").bind("click", () => {
+			this.searchId();
+		});
+		$("#btn--search-pw").bind("click", () => {
+			this.searchPw();
+		});
 	},
 
 	save: function() {
@@ -90,7 +96,7 @@ let index = {
 		if (confirm('정말 회원탈퇴를 하시겠습니까?')) {
 
 			$.ajax({
-				type: 'delete',
+				type: 'DELETE',
 				url: '/api/user/delete/' + id,
 				data: JSON.stringify(data),
 			}).done(function(data) {
@@ -105,6 +111,28 @@ let index = {
 				alert("오류가 발생했습니다. 관리자에게 문의해주세요.");
 			});
 		}
+	},
+
+	searchId: function() {
+		let data = {
+			email: $("#email").val()
+		}
+
+		$.ajax({
+			type: 'POST',
+			url: '/api/user/search',
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json"
+		}).done(function(data) {
+			if (data.httpStatus == true) {
+				alert("당신의 아이디는 : " + data.body);
+				location.href = "/auth/info-search";
+			} 
+		}).fail(function(error) {
+			console.log(error);
+			alert("해당하는 이메일이 없습니다 다시 확인해주세요");
+		});
 	}
 
 

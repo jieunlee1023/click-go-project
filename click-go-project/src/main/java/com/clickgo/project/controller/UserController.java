@@ -60,6 +60,12 @@ public class UserController {
 	public String joinForm() {
 		return "user/join-form";
 	}
+	
+	@GetMapping("/auth/info-search")
+	public String userInfoSearchForm() {
+		System.out.println("아이디 찾기 폼");
+		return "/user/info-search-form";
+	}
 
 	// 카카오 로그인
 	@GetMapping("/auth/kakao/callback")

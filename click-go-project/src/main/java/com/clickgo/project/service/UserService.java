@@ -113,5 +113,9 @@ public class UserService {
 		
 	}
 	
-	
+	public User searchUserEmail(String email) {
+		return userRepository.findByEmail(email).orElseThrow(() -> {
+			return new IllegalArgumentException("해당하는 이메일을 찾을수 없습니다.");
+		});
+	}
 }

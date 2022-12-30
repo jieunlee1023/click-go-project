@@ -2,8 +2,8 @@ package com.clickgo.project.api;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.controller.UserController;
 import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.service.UserService;
@@ -31,13 +30,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class UserApiController {
 
+	
 	private final UserService userService;
 	private final AuthenticationManager authenticationManager;
 
 	@PostMapping("/sign-up")
 	public ResponseDto<?> signUp(@RequestBody User user, Model model) {
 		boolean success = userService.signUp(user);
-
 		return new ResponseDto<>(success, user.getUsername() + "님 회원가입을 진심으로 축하드립니다. ");
 	}
 
@@ -70,4 +69,17 @@ public class UserApiController {
 			return new ResponseDto<>(false, "회원탈퇴에 실패하셨습니다...");
 		}
 	}
+
+	@PostMapping("/search")
+	public ResponseDto<?> selectEamil(@RequestBody User user) {
+		User userEntity = userService.searchUserEmail(user.getEmail());
+		return new ResponseDto<>(true, userEntity.getUsername());
+	}
+	
+	
+	
+	
+	
+	
+
 }
