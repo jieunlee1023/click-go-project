@@ -20,7 +20,6 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 
-import com.clickgo.project.model.enums.StoreCategory;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -41,7 +40,7 @@ public class Store {
 	private int id;
 
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "kategoryId")
+	@JoinColumn(name = "categoryId")
 	@Enumerated(EnumType.STRING)
 	private Category category;
 
@@ -57,7 +56,6 @@ public class Store {
 	@Column(nullable = false)
 	private int storeTotalRoomCount;
 
-	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp createDate;
 

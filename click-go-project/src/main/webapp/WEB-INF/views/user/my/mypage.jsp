@@ -2,17 +2,24 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="../../layout/header.jsp"%>
+
+<input type="hidden" value="${principal.user.id}" id="user-id">
 <c:choose>
+	
 	<c:when test="${principal.user.role eq 'GEUST'}">
 		<br>
 		<br>
 		<div class="d-flex ml-5 pl-5">
 			<div class="d-flex-column justify-content-start ml-5">
+			<button class="btn--delete-user" type="button" id="btn--delete-user">
+  				<span class="button__text">회원탈퇴</span>
+				</button>
 				<h1 style="font-weight: bold;">마이 페이지</h1>
 				<br>
 				<h4>반갑습니다. ${principal.user.username}님,</h4>
 				<h4>최고의 서비스로 모시겠습니다.</h4>
 			</div>
+			
 		</div>
 		<br>
 		<br>
@@ -51,8 +58,8 @@
 			<div class="media border p-3"
 				style="width: 374px; height: 260px; border-radius: 15px;">
 				<div class="d-flex-column ">
-					<a href="/wish-list/"> <img src="../image/mypage/wish_list.png" alt="수정 사진"
-						class="ml-5 mt-4 m-4" style="width: 60px;">
+					<a href="/wish-list/"> <img src="../image/mypage/wish_list.png"
+						alt="수정 사진" class="ml-5 mt-4 m-4" style="width: 60px;">
 						<div class="media-body">
 							<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
 								<h3 style="font-weight: bold;">위시리스트</h3>
@@ -87,14 +94,15 @@
 		<div class="media border p-3"
 			style="width: 374px; height: 260px; border-radius: 15px;">
 			<div class="d-flex-column ">
-				<img src="../image/mypage/wish_list.png" alt="수정 사진"
-					class="ml-5 mt-4 m-4" style="width: 60px;">
-				<div class="media-body">
-					<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-						<h3 style="font-weight: bold;">리뷰 내역</h3>
-						<p class="mt-3">내가 쓴 리뷰와 사장님의 댓글을 확인하세요.</p>
+				<a href="/review"> <img src="../image/mypage/wish_list.png"
+					alt="수정 사진" class="ml-5 mt-4 m-4" style="width: 60px;">
+					<div class="media-body">
+						<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
+							<h3 style="font-weight: bold;">리뷰 내역</h3>
+							<p class="mt-3">내가 쓴 리뷰와 사장님의 댓글을 확인하세요.</p>
+						</div>
 					</div>
-				</div>
+				</a>
 			</div>
 		</div>
 		</div>
@@ -149,16 +157,16 @@
 			<div class="media border p-3"
 				style="width: 374px; height: 260px; border-radius: 15px;">
 				<div class="d-flex-column ">
-				<a href="/care-store/">
-					<img src="../image/mypage/wish_list.png" alt="수정 사진"
+					<a href="/care-store/"> <img
+						src="../image/mypage/wish_list.png" alt="수정 사진"
 						class="ml-5 mt-4 m-4" style="width: 60px;">
-					<div class="media-body">
-						<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-							<h3 style="font-weight: bold;">매장 관리</h3>
-							<p class="mt-3">사장님의 매장을 관리해보세요 !</p>
+						<div class="media-body">
+							<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
+								<h3 style="font-weight: bold;">매장 관리</h3>
+								<p class="mt-3">사장님의 매장을 관리해보세요 !</p>
+							</div>
 						</div>
-					</div>
-				</a>
+					</a>
 				</div>
 			</div>
 		</div>
@@ -185,18 +193,20 @@
 			<div class="media border p-3"
 				style="width: 374px; height: 260px; border-radius: 15px;">
 				<div class="d-flex-column ">
-					<img src="../image/mypage/wish_list.png" alt="수정 사진"
-						class="ml-5 mt-4 m-4" style="width: 60px;">
-					<div class="media-body">
-						<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-							<h3 style="font-weight: bold;">리뷰 내역</h3>
-							<p class="mt-3">손님들이 작성한 리뷰를 확인하세요.</p>
+					<a href="/review"> <img src="../image/mypage/wish_list.png"
+						alt="수정 사진" class="ml-5 mt-4 m-4" style="width: 60px;">
+						<div class="media-body">
+							<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
+								<h3 style="font-weight: bold;">리뷰 내역</h3>
+								<p class="mt-3">손님들이 작성한 리뷰를 확인하세요.</p>
+							</div>
 						</div>
-					</div>
+					</a>
 				</div>
 			</div>
 		</div>
 	</c:otherwise>
 </c:choose>
 <br>
+<script src="/js/user.js"></script>
 <%@ include file="../../layout/footer.jsp"%>

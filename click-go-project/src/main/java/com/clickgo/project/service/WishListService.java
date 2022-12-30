@@ -16,12 +16,12 @@ public class WishListService {
 	private IWishListRepository wishRepository;
 
 	@Transactional
-	public Page<LikeStore> findByKategory(int userId, String kategory, Pageable pageable) {
+	public Page<LikeStore> findByCategory(int userId, String kategory, Pageable pageable) {
 		System.out.println(kategory == null ? "이게 널이니..?" : "널 아니였음 ㅅㅂ ㅋㅋ");
 		if (kategory == null) {
 			return wishRepository.findByUserId(userId, pageable);
 		}
 		System.out.println("여기 들어옴 fucking");
-		return wishRepository.findByKategory(userId, kategory, pageable);
+		return wishRepository.findByCategory(userId, kategory, pageable);
 	}
 }

@@ -13,6 +13,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,20 +31,24 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@JsonIgnoreProperties
 	@Column(nullable = false)
 	private String approveStatus;
 
+	@JsonIgnoreProperties
 	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp reservationTime;
 
+	
 	@Column(nullable = false)
 	private int price;
 
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
 
+	@JsonIgnoreProperties
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId", nullable = false)
 	private Store store;

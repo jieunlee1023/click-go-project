@@ -11,8 +11,8 @@ import com.clickgo.project.entity.Report;
 
 public interface IReportRepository extends JpaRepository<Report, Integer> {
 
-	@Query(value = " SELECT * FROM Report WHERE id = ?1 AND userId = ?2", nativeQuery = true)
-	Optional<Report> findByIdAndByUserId(int id, int userId);
+	@Query(value = " SELECT * FROM Report WHERE id = ?1 ", nativeQuery = true)
+	Optional<Report> findByIdAndByUserId(int id);
 
 	// GEUST가 받은 신고
 	// 즉, STORE가 GEUST에게 한 신고 내역

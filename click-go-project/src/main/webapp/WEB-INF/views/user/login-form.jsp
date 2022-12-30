@@ -31,9 +31,9 @@
 		</form>
 
 		<div class="d-flex justify-content-between pt-2">
-			<a id="id-password-btn" style="font-size: 12px; color: black" href="">아이디/비밀번호
-				찾기</a> <a id="signin-btn" style="font-size: 12px; color: black"
-				href="/auth/join-form">회원가입</a>
+			<a id="id-infosearch-btn" style="font-size: 12px; color: black" href="/auth/info-search">아이디/비밀번호
+				찾기</a> 
+				<a id="signin-btn" style="font-size: 12px; color: black" href="/auth/join-form">회원가입</a>
 		</div>
 		<br>
 		<div class="d-flex justify-content-center">

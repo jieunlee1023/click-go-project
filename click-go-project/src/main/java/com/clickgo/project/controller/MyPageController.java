@@ -39,7 +39,7 @@ public class MyPageController {
 
 	@GetMapping("/reservation-list")
 	public String reservationList(Model model,
-			@PageableDefault(size = 2, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 
 		Page<Reservation> reservations = reservationService.searchBoard(principalDetails.getUser(), pageable);
@@ -68,5 +68,16 @@ public class MyPageController {
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
 		model.addAttribute("message", franchiseMessages);
+		
+
+		List<StoreFranchise> allMsg = franchiseService.getMessageList();
+		franchiseMessages.forEach(t->{
+			if (t.getState().toString().equals("WAIT")) {
+				allMsg.add(t);
+			}
+		});
+		int waitMsg = allMsg.size()-franchiseMessages.size();
+		model.addAttribute("waitMsg", waitMsg);
+
 	}
 }

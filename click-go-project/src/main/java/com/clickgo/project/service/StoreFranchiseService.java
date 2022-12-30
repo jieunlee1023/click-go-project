@@ -18,6 +18,7 @@ import com.clickgo.project.dto.res.RequestFileDto;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.model.enums.RoleType;
+import com.clickgo.project.model.enums.StoreFranchiseState;
 import com.clickgo.project.repository.IStoreFranchiseRepository;
 import com.clickgo.project.repository.IStoreRepository;
 import com.clickgo.project.repository.IUserRepository;
@@ -30,26 +31,24 @@ public class StoreFranchiseService {
 	private IUserRepository userRepository;
 	@Autowired
 	private IStoreRepository storeRepository;
-	
+
 	@Value("${licenceFile.path}")
 	private String licenceFile;
 
 	@Transactional
 	public void apply(RequestFileDto fileDto, PrincipalDetails principalDetails) {
 		UUID uuid = UUID.randomUUID();
-		System.out.println("uuid:" + uuid);
-		
-		String imageFilename = uuid+"_"+fileDto.getFile().getOriginalFilename();
-		System.out.println("imageFileName:"+imageFilename);
 
-		Path imageFilePath = Paths.get(licenceFile+imageFilename);
-		System.out.println("파일패스:"+imageFilePath);
-		
+		String imageFilename = uuid + "_" + fileDto.getFile().getOriginalFilename();
+
+		Path imageFilePath = Paths.get(licenceFile + imageFilename);
+
 		try {
 			Files.write(imageFilePath, fileDto.getFile().getBytes());
 			StoreFranchise franchise = fileDto.toEntitiy(imageFilename, principalDetails.getUser());
+
 			franchiseRepository.save(franchise);
-			
+
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -61,19 +60,28 @@ public class StoreFranchiseService {
 	}
 
 	@Transactional
-	public boolean deleteByIdAndUserApprove(int id,int userId,StoreFranchise storeFranchise, Store store) {
+	public boolean changeStateApproveAndAddStore(int id, int userId, StoreFranchise storeFranchise, Store store) {
 
-		franchiseRepository.deleteById(storeFranchise.getId());
 		userRepository.findById(userId).get().setRole(RoleType.HOST);
-		
-//		store.setKategory(storeFranchise.getCategory());
+		franchiseRepository.findById(id).get().setState(StoreFranchiseState.APPROVE);
+
+		store.setCategory(storeFranchise.getCategory());
 		store.setStoreName(storeFranchise.getStoreName());
 		store.setStoreTEL(storeFranchise.getStoreTEL());
 		store.setStoreAddress(storeFranchise.getStoreAddress());
 		store.setStoreTotalRoomCount(0);
 		store.setUser(userRepository.findById(userId).get());
-		
+
 		storeRepository.save(store);
+
+		return true;
+	}
+
+	@Transactional
+	public boolean changeStateReject(int id, int userId, StoreFranchise storeFranchise, Store store) {
+
+		franchiseRepository.findById(id).get().setState(StoreFranchiseState.REJECT);
+		franchiseRepository.findById(id).get().setRejectReason(storeFranchise.getRejectReason());
 
 		return true;
 	}
