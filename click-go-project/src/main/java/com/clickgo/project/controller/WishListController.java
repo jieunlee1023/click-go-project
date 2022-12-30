@@ -2,7 +2,6 @@ package com.clickgo.project.controller;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -19,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.LikeStore;
+import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.service.CategoryService;
 import com.clickgo.project.service.WishListService;
 
@@ -36,22 +36,13 @@ public class WishListController {
 	public String wishList(@RequestParam(required = false) String kategory, Model model,
 			@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		List<String> kategoryEntitys = new ArrayList<>();
+		List<StoreCategory> kategoryEntitys = new ArrayList<>();
 		List<Category> kategories = kategoryService.findAll();
 		kategories.forEach(t -> {
-			StringTokenizer firstTokenizer = new StringTokenizer(t.toString(), "=");
-			String firstStr = firstTokenizer.nextToken();
-			String secondStr = firstTokenizer.nextToken();
-			StringTokenizer stringTokenizer = new StringTokenizer(secondStr, ")");
-			String kate = stringTokenizer.nextToken();
-			kategoryEntitys.add(kate);
+			kategoryEntitys.add(t.getId());
 		});
 		Page<LikeStore> likeStores = wishListService.findByKategory(principalDetails.getUser().getId(),
 				kategory, pageable);
-
-		likeStores.getContent().forEach((t) -> {
-			System.out.println(t);
-		});
 
 		model.addAttribute("kategoryEntitys", kategoryEntitys);
 		model.addAttribute("likeStores", likeStores);

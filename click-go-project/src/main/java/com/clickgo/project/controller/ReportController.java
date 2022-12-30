@@ -79,7 +79,9 @@ public class ReportController {
 	@GetMapping("/detail/{id}")
 	public String reportDetail(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails,
 			Model model) {
-		Report reportEntity = reportService.findByIdAndUserId(id, principalDetails.getUser());
+		System.out.println(id);
+		System.out.println(principalDetails.getUser().getId());
+		Report reportEntity = reportService.findByIdAndUserId(id);
 		ReportReply reportReplyEntity = reportReplyService.findByReportId(reportEntity.getId());
 		if (reportReplyEntity != null) {
 			reportService.findById(reportEntity.getId());

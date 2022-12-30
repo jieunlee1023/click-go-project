@@ -33,8 +33,8 @@ public class ReportService {
 	}
 
 	@Transactional
-	public Report findByIdAndUserId(int id, User user) {
-		return reportRepository.findByIdAndByUserId(id, user.getId()).orElseThrow(() -> {
+	public Report findByIdAndUserId(int id) {
+		return reportRepository.findByIdAndByUserId(id).orElseThrow(() -> {
 			return new IllegalArgumentException("존재하지 않는 신고글이거나 권한이 없는 회원님입니다.");
 		});
 	}

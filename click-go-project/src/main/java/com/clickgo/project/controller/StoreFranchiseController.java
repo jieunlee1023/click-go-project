@@ -60,7 +60,6 @@ public class StoreFranchiseController {
 		List<Store> storeList = storeService.findAllByUserId(principalDetails.getUser().getId());
 		model.addAttribute("storeList", storeList);
 		franchiseMassageCount(model);
-		System.out.println(storeList);
 		return "/storeFranchise/store-franchise-my";
 	}
 
