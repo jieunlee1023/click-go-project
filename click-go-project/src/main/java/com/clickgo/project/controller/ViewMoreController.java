@@ -57,5 +57,11 @@ public class ViewMoreController {
 	public String noticeList() {
 		return "view-more/notice-list";
 	}
+	
+	// s w
+	@GetMapping("/terms-list")
+	public String termsList() {
+		return "view-more/terms-list";
+	}
 
 }

@@ -6,6 +6,7 @@
 
 	<div class="border-bottom">
 		<h1>공지사항</h1>
+		<div class="spinner-grow text-info"></div>
 	</div>
 
 	<br>
@@ -34,10 +35,10 @@
 
 			<div class="card">
 				<div class="card-header">
-					<a class="collapsed card-link" data-toggle="collapse" href="#collapseThree"> 밍밍이는 보아라 </a>
+					<a class="collapsed card-link" data-toggle="collapse" href="#collapseThree"> 클릭고 서비스 시작 안내 </a>
 				</div>
 				<div id="collapseThree" class="collapse" data-parent="#accordion">
-					<div class="card-body">궁금했어?</div>
+					<div class="card-body" style="color: red">궁금했어?</div>
 				</div>
 			</div>
 		</div>
