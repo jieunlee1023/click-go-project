@@ -129,9 +129,12 @@
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="/view-more/about-us"
 											id="li--about-us">회사 소개</a> <a class="dropdown-item"
+											href="/view-more/notice-list" id="li--notice">공지사항</a>
+											<a class="dropdown-item"
 											href="/board/board-list" id="li--board">게시판</a> <a
 											class="dropdown-item" href="/view-more/question-form/1">자주
-											묻는 질문</a>
+											묻는 질문</a> <a
+											class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a>
 
 
 									</div></li>
@@ -192,9 +195,11 @@
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="/view-more/about-us"
 											id="li--about-us">회사 소개</a> <a class="dropdown-item"
+											href="/view-more/notice-list" id="li--notice">공지사항</a> <a class="dropdown-item"
 											href="/board/board-list" id="li--board">게시판</a> <a
 											class="dropdown-item" href="/view-more/question-form/1">자주
-											묻는 질문</a>
+											묻는 질문</a> <a
+											class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a>
 									</div></li>
 
 
@@ -249,9 +254,11 @@
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="/view-more/about-us"
 											id="li--about-us">회사 소개</a> <a class="dropdown-item"
+											href="/view-more/notice-list" id="li--notice">공지사항</a> <a class="dropdown-item"
 											href="/board/board-list" id="li--board">게시판</a> <a
 											class="dropdown-item" href="/view-more/question-form/1">자주
-											묻는 질문</a>
+											묻는 질문</a> <a
+											class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a>
 									</div></li>
 
 
@@ -306,9 +313,11 @@
 									<div class="dropdown-menu">
 										<a class="dropdown-item" href="/view-more/about-us"
 											id="li--about-us">회사 소개</a> <a class="dropdown-item"
+											href="/view-more/notice-list" id="li--notice">공지사항</a> <a class="dropdown-item"
 											href="/board/board-list" id="li--board">게시판</a> <a
 											class="dropdown-item" href="/view-more/question-form/1">자주
-											묻는 질문</a>
+											묻는 질문</a> <a
+											class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a>
 									</div></li>
 
 								<input type="hidden" value="${principal.user.role}" name="role">
