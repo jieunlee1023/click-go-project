@@ -45,6 +45,13 @@ public class UserController {
 
 	@Value("${phoneNumber.key}")
 	private String phoneNumber;
+	
+//	이메일인증 테스트 코드
+	@GetMapping("/auth/email")
+	public String emailForm() {
+		return "email";
+	}
+//	이메일인증 테스트 코드
 
 	@GetMapping("/auth/login-form")
 	public String loginForm() {
@@ -224,6 +231,7 @@ public class UserController {
 	// 로그아웃
 	@GetMapping("/m-logout")
 	public String logout(HttpServletRequest req, HttpServletResponse res) {
+
 		
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); 
 		if(authentication != null) {
@@ -231,4 +239,7 @@ public class UserController {
 		}
 		return "redirect:/";
 	}
+
+	
+
 }

@@ -1,13 +1,13 @@
 package com.clickgo.project.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clickgo.project.auth.PrincipalDetails;
@@ -22,15 +22,6 @@ public class BoardApiController {
 	@Autowired
 	private BoardService boardService;
 
-	@Autowired
-	private AuthenticationManager authenticationManager;
-
-	@PostMapping("/api/board")
-	public ResponseDto<?> boardSave(@RequestBody CsBoard csBoard, @AuthenticationPrincipal PrincipalDetails details) {
-		boolean success = boardService.write(csBoard, details.getUser());
-
-		return new ResponseDto<>(success, csBoard.getId());
-	}
 
 	@PutMapping("/api/board/{boardId}")
 	public ResponseDto<?> boardUpdate(@PathVariable int boardId, @RequestBody CsBoard csBoard) {

@@ -1,5 +1,4 @@
 
-
 let boardIndex = {
 	init: function() {
 		$("#btn--write").bind("click", () => {
@@ -15,7 +14,6 @@ let boardIndex = {
 		$("#btn-reply-save").bind("click", () => {
 			this.replySave();
 		});
-
 	},
 
 	write: function() {
@@ -24,15 +22,16 @@ let boardIndex = {
 		//let csrfHeader = $("meta[name='_csrf_header']").attr("content");
 
 		let data = {
-			//title: xCheckTitle,
 			content: $("#content").val(),
 			title: $("#title").val()
 		};
-		console.log(data);
+
+		var checkBoxArray = new Array();
+		$('input:checkbox[name=secret]:checked').each(function() {
+			checkBoxArray.push(this.value);
+		});
+
 		$.ajax({
-			//beforeSend: function(xhr){
-			//	xhr.setRequestHeader(csrfHeader, token);
-			//},
 			type: "POST",
 			url: "/api/board",
 			contentType: "application/json; charset=utf-8",
@@ -136,6 +135,9 @@ let boardIndex = {
 
 
 
-} // boardIndex 종료
+}
+
+
+
 
 boardIndex.init();

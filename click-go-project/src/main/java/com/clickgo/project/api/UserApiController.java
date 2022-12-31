@@ -2,8 +2,15 @@ package com.clickgo.project.api;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.clickgo.project.dto.res.ResponseDto;
+
+import javax.mail.*;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import java.util.Properties;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -12,14 +19,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.service.UserService;
 
@@ -70,13 +75,60 @@ public class UserApiController {
 		}
 	}
 
+	// 아이디 찾기
 	@PostMapping("/search")
 	public ResponseDto<?> selectEamil(@RequestBody User user) {
 		User userEntity = userService.searchUserEmail(user.getEmail());
 		return new ResponseDto<>(true, userEntity.getUsername());
 	}
 	
-	
+	// 비밀번호 찾기
+	@GetMapping("/auth/send")
+    public ResponseDto<Integer> mailSend(String username, String email){
+        return new ResponseDto<>(true, naverMailSend(username,email));
+    }
+
+    public static int naverMailSend(String username, String email){
+        String host = "smtp.naver.com";
+        String user = "whwlgns42@naver.com"; 
+        String password = ""; // 테스트후 개인정보 보안상 비밀번호는 지워주세요
+
+        // SMTP 서버 정보를 설정한다.
+        Properties props = new Properties(); // Properties는 java.util의 Properties입니다.
+        props.put("mail.smtp.host", host); // smtp의 호스트
+        props.put("mail.smtp.port", 587); // 587 포트 사용
+        props.put("mail.smtp.auth", "true"); 
+        props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // 이 설정을 안붙이면 TLS Exception이 뜨더라구요. (버전이 안맞아서)
+
+        Session session = Session.getDefaultInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(user,password);
+            }
+        });
+
+        try{
+            MimeMessage message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(user));
+            // 수신자 이메일
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress("whwlgns42@naver.com"));
+
+            // 메일 제목
+            message.setSubject("SMTP TEST");
+
+            // 메일 내용
+            message.setText("안녕하세요.\n 이건 메일 테스트입니다ffffffffffffffffffff."); // 랜덤인 임시비밀번호를 생성
+
+            // send the message
+            Transport.send(message);
+            System.out.println("Success Message Send");
+            return 0;
+        }catch (MessagingException e){
+            e.printStackTrace();
+            return -1;
+
+        }
+    }
 	
 	
 	
