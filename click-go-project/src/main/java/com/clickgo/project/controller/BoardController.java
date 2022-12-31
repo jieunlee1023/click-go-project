@@ -8,12 +8,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.clickgo.project.auth.PrincipalDetails;
+import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.entity.CsBoard;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.service.BoardService;
@@ -27,6 +31,14 @@ public class BoardController {
 
 	@Autowired
 	private StoreFranchiseService franchiseService;
+
+	@PostMapping("/board/save")
+	public String boardSave(@RequestParam(value = "secret", required = false) String[] secret, CsBoard csBoard,
+			@AuthenticationPrincipal PrincipalDetails details) {
+		
+		boardService.write(secret, csBoard, details.getUser());
+		return "redirect:/board/board-list";
+	}
 
 	@GetMapping({ "/board/board-list", "/board/search" })
 	public String board(@RequestParam(required = false) String q, Model model,
@@ -87,20 +99,14 @@ public class BoardController {
 		model.addAttribute("message", franchiseMessages);
 
 		List<StoreFranchise> allMsg = franchiseService.getMessageList();
-		franchiseMessages.forEach(t->{
+		franchiseMessages.forEach(t -> {
 			if (t.getState().toString().equals("WAIT")) {
 				allMsg.add(t);
 			}
 		});
-		int waitMsg = allMsg.size()-franchiseMessages.size();
+		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
 
 	}
 
-//    @GetMapping({"/board/board-list"})
-//    @PreAuthorize("hasRole('ROLE_MEMBER') || hasRole('ROLE_ADMIN')")
-//    public void get(@RequestParam Long bno, @ModelAttribute("cri") Criteria cri, Model model) {
-//        model.addAttribute("board", service.get(bno));
-//        model.addAttribute("cri", cri);
-//    }
 }
