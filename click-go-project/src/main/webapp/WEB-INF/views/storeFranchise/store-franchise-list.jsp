@@ -19,7 +19,7 @@
 
 
 
-	<c:forEach var="store" items="${storeList}">
+	<c:forEach var="store" items="${storeList.content}">
 		<div class="d-flex justify-content-center mb-1">
 			<div class="card " style="width: 500px">
 			
