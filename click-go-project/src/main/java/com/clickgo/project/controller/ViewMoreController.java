@@ -50,7 +50,12 @@ public class ViewMoreController {
 		});
 		int waitMsg = allMsg.size()-franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
-
+	}
+	
+	// s w
+	@GetMapping("/notice-list")
+	public String noticeList() {
+		return "view-more/notice-list";
 	}
 
 }
