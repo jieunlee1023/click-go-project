@@ -12,7 +12,6 @@
 	<div class="container">
 		<form action="/auth/loginProc" method="post">
 			<div class="form-group ">
-				<%-- <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"> --%>
 				<label for="username" class="d-flex m-0" style="font-size: 13px">아이디</label>
 				<input type="text" class="form-control" id="username"
 					style="border-radius: 0px" name="username" value="minicar">

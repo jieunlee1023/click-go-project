@@ -30,7 +30,6 @@ let index = {
 		if (data.password != passwordCheck) {
 			alert("비밀번호를 확인해주세요.");
 		} else {
-			console.log(data);
 			$.ajax({
 				type: 'post',
 				url: '/api/user/sign-up',

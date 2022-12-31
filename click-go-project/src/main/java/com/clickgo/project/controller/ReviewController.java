@@ -12,12 +12,15 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Review;
+import com.clickgo.project.entity.ReviewReply;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
+import com.clickgo.project.service.ReviewReplyService;
 import com.clickgo.project.service.ReviewService;
 import com.clickgo.project.service.StoreFranchiseService;
 
@@ -30,6 +33,9 @@ public class ReviewController {
 
 	@Autowired
 	private StoreFranchiseService franchiseService;
+
+	@Autowired
+	private ReviewReplyService reviewReplyService;
 
 	@GetMapping({ "", "/" })
 	public String reviewList(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails,
@@ -55,6 +61,18 @@ public class ReviewController {
 		}
 		franchiseMassageCount(model);
 		return "/user/my/review/list";
+	}
+
+	@GetMapping("/detail/{id}")
+	public String reviewDetail(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails,
+			Model model) {
+		Review reviewEntity = reviewService.findById(id);
+		ReviewReply reviewReplyEntity = reviewReplyService.findByReviewId(id);
+		User userEntity = principalDetails.getUser();
+		model.addAttribute("review", reviewEntity);
+		model.addAttribute("reviewReply", reviewReplyEntity);
+		model.addAttribute("role", userEntity.getRole());
+		return "/user/my/review/detail";
 	}
 
 	public void franchiseMassageCount(Model model) {
