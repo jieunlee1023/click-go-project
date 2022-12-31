@@ -4,8 +4,7 @@
 <br>
 <div class="container">
 	<h1>매장 꾸미기</h1>
-	<h5>이용자들이 보는 가게의 화면입니다.</h5>
-	<h5>아래의 수정 버튼을 눌러 마음껏 꾸며보세요 !</h5>
+	<h5>수정을 완료 했다면 아래의 수정 완료 버튼을 눌러보세요 !</h5>
 </div>
 <br>
 &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;

@@ -11,7 +11,7 @@
 					<h4 class="m-5"><a href="/store/main?pageName=${category}" >${category}</a></h4>
 				</c:forEach>
 		</div>
-	<a href="#" class="d-flex justify-content-end mr-4">지도로 보기</a>
+	<a href="/store/map" class="d-flex justify-content-end mr-4">지도로 보기</a>
 <br>
 <br>
 		<div class="d-flex-column"> 

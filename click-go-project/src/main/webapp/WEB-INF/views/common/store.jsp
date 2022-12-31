@@ -4,7 +4,7 @@
 	<div class="media border mt-3"
 		style="width: 1150px; height: 510px; border-radius: 15px;">
 		<div class="d-flex-column">
-			<a href="/care-store/detail/${store.id}"> <img
+			<a href="/store/detail/${store.id}"> <img
 				src="../image/about-us/pc_room_m.jpg" alt="가게 사진"
 				style="width: 1150px; height: 400px; border-radius: 15px;">
 				<div class="d-flex justify-content-between ml-3 mr-2 md-2 mt-1" 
