@@ -35,11 +35,16 @@ public class Reservation {
 	@Column(nullable = false)
 	private String approveStatus;
 
-	@JsonIgnoreProperties
+	@Column(nullable = false)
+	@CreationTimestamp
+	private Timestamp createDate;
+	
 	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp reservationTime;
 
+	@Column(nullable = false)
+	private int reservationSeat;
 	
 	@Column(nullable = false)
 	private int price;

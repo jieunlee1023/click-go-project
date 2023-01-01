@@ -13,19 +13,20 @@
 
 		<input type="hidden" value="${principal.user.id}" id="principalUser">
 
-		<form action="/storeFranchise/apply/upload" method="post" enctype="multipart/form-data" >
-		<div class="form-group ">
-			<div class="d-flex" style="font-size: 13px">
-				<select class=" custom-select mb-3" name="category" id="category"
-					style="border-radius: 0px">
-					<option value="pc방" disabled="disabled" selected="selected">카테고리를
-						선택해주세요.</option>
+		<form action="/storeFranchise/apply/upload" method="post"
+			enctype="multipart/form-data">
+			<div class="form-group ">
+				<div class="d-flex" style="font-size: 13px">
+					<select class=" custom-select mb-3" name="category" id="category"
+						style="border-radius: 0px">
+						<option value="pc방" disabled="disabled" selected="selected">카테고리를
+							선택해주세요.</option>
 						<c:forEach var="category" items="${categories}">
-						<option value="${category}">${category}</option>
+							<option value="${category}">${category}</option>
 						</c:forEach>
-				</select>
+					</select>
+				</div>
 			</div>
-		</div>
 
 
 
@@ -52,27 +53,29 @@
 			</div>
 
 			<div class="form-group">
-				<input type="file" name="file" 
-				class="custom-file-input" id="customFile" required="required" id="storeLicense">
+				<input type="file" name="file" class="custom-file-input"
+					id="customFile" required="required" id="storeLicense">
 			</div>
 
 			<br>
 			<div class="form-control d-flex justify-content-center"
 				style="border-radius: 0px;">
-				<button type="submit" 
-					class="d-flex " style="border: none; background-color: white;">가맹점
-					신청하기</button>
+				<button type="submit" class="d-flex "
+					style="border: none; background-color: white;">가맹점 신청하기</button>
 			</div>
 		</form>
 	</div>
 </div>
 
 <script>
-$(".custom-file-input").bind("change", function() {
-	console.log("test code:"+$(this).val());
-  var fileName = $(this).val().split("\\").pop();
-  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-});
+	$(".custom-file-input").bind(
+			"change",
+			function() {
+				console.log("test code:" + $(this).val());
+				var fileName = $(this).val().split("\\").pop();
+				$(this).siblings(".custom-file-label").addClass("selected")
+						.html(fileName);
+			});
 </script>
 
 

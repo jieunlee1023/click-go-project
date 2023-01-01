@@ -4,8 +4,8 @@
 <br>
 <div class="container">
 	<c:if test="${role eq 'HOST'}">
-	<h5>이용자들이 보는 가게의 화면입니다.</h5>
-	<h5>아래의 수정 버튼을 눌러 마음껏 꾸며보세요 !</h5>
+		<h5>이용자들이 보는 가게의 화면입니다.</h5>
+		<h5>아래의 수정 버튼을 눌러 마음껏 꾸며보세요 !</h5>
 	</c:if>
 </div>
 <br>
@@ -23,12 +23,24 @@
 			</div>
 		</c:when>
 		<c:otherwise>
-			<div class="container d-flex">
+			<div class="container d-flex justify-content-between">
+				<div class="d-flex-column">
+					<li class="nav-item dropdown"><a
+						class="nav-link dropdown-toggle" data-toggle="dropdown"> 예약 시간
+					</a>
+						<div class="dropdown-menu">
+							<c:forEach var="hour" items="${hours}">
+								<a class="dropdown-item nav-link dropdown-toggle"
+									data-toggle="dropdown">${hour}시</a>
+							</c:forEach>
+						</div></li>
+						<button type="button" id="btn--time-ok">예약 확인</button>
+				</div>
 				<div class="media border mt-3"
-					style="width: 1150px; height: 510px; border-radius: 15px;">
+					style="width: 900px; height: 510px; border-radius: 15px;">
 					<div class="d-flex-column">
 						<img src="../image/about-us/pc_room_m.jpg" alt="가게 사진"
-							style="width: 1150px; height: 400px; border-radius: 15px;">
+							style="width: 900px; height: 400px; border-radius: 15px;">
 						<div class="media-body">
 							<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
 								<div class="d-flex justify-content-between pl-3 pt-3 pr-3">
@@ -38,6 +50,7 @@
 									<p>지점 : ${store.storeAddress}</p>
 									<p>카테고리 : ${store.category}</p>
 									<p>총 자릿수 : ${store.storeTotalRoomCount}</p>
+
 									<c:choose>
 										<c:when test="${empty store.storeTEL}">
 											<p>가게 연락처는 등록 되지 않았어요 ㅠㅠ</p>
@@ -46,9 +59,11 @@
 											<p>가게 연락처 : ${store.storeTEL}</p>
 										</c:otherwise>
 									</c:choose>
+
 									<c:if test="${role eq 'HOST'}">
-									<a href="/care-store/update/${store.id}">수정</a>
+										<a href="/care-store/update/${store.id}">수정</a>
 									</c:if>
+									<a href="/reservation/${store.id}">예약</a>
 								</div>
 							</div>
 						</div>
@@ -60,4 +75,5 @@
 	</c:choose>
 </div>
 <br>
+<script type="text/javascript" src="/js/reservation.js"></script>
 <%@ include file="../layout/footer.jsp"%>

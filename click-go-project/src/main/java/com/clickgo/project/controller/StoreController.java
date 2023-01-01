@@ -20,6 +20,7 @@ import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.service.CategoryService;
@@ -80,8 +81,16 @@ public class StoreController {
 	public String detail(@PathVariable int id, Model model,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Store storeEntity = storeService.findById(id);
+		List<Integer> hours = new ArrayList<>();
+		// 비로그인 회원 접속 시 임시 RoleType을 GEUST로 지정
+		if (principalDetails == null) {
+			principalDetails = new PrincipalDetails(new User().builder().role(RoleType.GEUST).build());
+		}
+		for (int i = 1; i < 25; i++) {
+			hours.add(i);
+		}
 		RoleType role = principalDetails.getUser().getRole();
-		System.out.println(storeEntity);
+		model.addAttribute("hours", hours);
 		model.addAttribute("store", storeEntity);
 		model.addAttribute("role", role);
 		return "/store/detail";
