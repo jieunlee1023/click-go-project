@@ -16,11 +16,10 @@ import com.clickgo.project.service.StoreFranchiseService;
 @Controller
 @RequestMapping("/view-more")
 public class ViewMoreController {
-	
+
 	@Autowired
 	private StoreFranchiseService franchiseService;
-	
-	
+
 	@GetMapping("/about-us")
 	public String aboutUs(@RequestParam(required = false) String pageName, Model model) {
 		model.addAttribute("nowPage", pageName);
@@ -28,29 +27,39 @@ public class ViewMoreController {
 		return "view-more/about-us";
 	}
 
-
-	
 	@GetMapping("/question-form/{id}")
 	public String question(Model model, @PathVariable(required = false) int id) {
 		model.addAttribute("questNum", id);
 		franchiseMassageCount(model);
 		return "view-more/frequently-asked-questions";
 	}
-	
+
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
 		model.addAttribute("message", franchiseMessages);
-		
 
 		List<StoreFranchise> allMsg = franchiseService.getMessageList();
-		franchiseMessages.forEach(t->{
+		franchiseMessages.forEach(t -> {
 			if (t.getState().toString().equals("WAIT")) {
 				allMsg.add(t);
 			}
 		});
-		int waitMsg = allMsg.size()-franchiseMessages.size();
+		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
+	}
 
+	// s w
+	@GetMapping("/notice-list")
+	public String noticeList(Model model) {
+		franchiseMassageCount(model);
+		return "view-more/notice-list";
+	}
+
+	// s w
+	@GetMapping("/terms-list")
+	public String termsList(Model model) {
+		franchiseMassageCount(model);
+		return "view-more/terms-list";
 	}
 
 }

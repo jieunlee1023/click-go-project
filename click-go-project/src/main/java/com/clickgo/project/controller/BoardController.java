@@ -35,7 +35,7 @@ public class BoardController {
 	@PostMapping("/board/save")
 	public String boardSave(@RequestParam(value = "secret", required = false) String[] secret, CsBoard csBoard,
 			@AuthenticationPrincipal PrincipalDetails details) {
-		
+
 		boardService.write(secret, csBoard, details.getUser());
 		return "redirect:/board/board-list";
 	}
@@ -106,7 +106,6 @@ public class BoardController {
 		});
 		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
-
 	}
 
 }

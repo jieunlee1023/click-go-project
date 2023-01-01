@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+.s0, .s1, .s2, .s3, .s4 {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.section {
+	color: white;
+	padding-top: 150px;
+}
+
+#fp-nav {
+	margin-right: 120px;
+	margin-top: 350px;
+	position: absolute;
+}
+
+#fp-nav ul li a span {
+	background-color: #fff;
+}
+
+#franchise-btn {
+	display: inline-flex;
+	position: fixed;
+	float: right;
+	top: 0%;
+	right: 0%;
+}
+
+#main--text {
+	margin-top: 80px;
+	display: inline-flex;
+	vertical-align: bottom;
+	flex-direction: column;
+}
+
+.main--text--add {
+	font-size: 16px;
+	font-family: sans-serif;
+}
+
+.main--text--add2 {
+	font-size: 13px;
+	font-family: sans-serif;
+}
+
+#main--img, #main--img2, #main--img3, #main--img4, #main--img5 {
+	display: inline-flex;
+	position: absolute;
+	justify-content: flex-end;
+	float: right;
+	margin-top: 300px;
+	margin-left: 100px;
+	top: 900px;
+}

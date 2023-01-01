@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../../../layout/header.jsp"%>
+<%@ include file="../layout/header.jsp"%>
 <br>
 <div class="container">
-	<h1>매장 꾸미기</h1>
+	<c:if test="${role eq 'HOST'}">
 	<h5>이용자들이 보는 가게의 화면입니다.</h5>
 	<h5>아래의 수정 버튼을 눌러 마음껏 꾸며보세요 !</h5>
+	</c:if>
 </div>
 <br>
 &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
@@ -45,7 +46,9 @@
 											<p>가게 연락처 : ${store.storeTEL}</p>
 										</c:otherwise>
 									</c:choose>
+									<c:if test="${role eq 'HOST'}">
 									<a href="/care-store/update/${store.id}">수정</a>
+									</c:if>
 								</div>
 							</div>
 						</div>
@@ -57,4 +60,4 @@
 	</c:choose>
 </div>
 <br>
-<%@ include file="../../../layout/footer.jsp"%>
+<%@ include file="../layout/footer.jsp"%>

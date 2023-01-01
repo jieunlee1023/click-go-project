@@ -1,0 +1,47 @@
+package com.clickgo.project.entity;
+
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.CreationTimestamp;
+
+import com.clickgo.project.model.enums.ReviewType;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Entity
+public class ReviewReply {
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
+	@Lob
+	@Column(nullable = false)
+	private String content;
+
+	@Column(nullable = false)
+	@CreationTimestamp
+	private Timestamp createDate;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "reviewId")
+	private Review review;
+
+}

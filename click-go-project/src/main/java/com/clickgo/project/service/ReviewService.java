@@ -26,4 +26,10 @@ public class ReviewService {
 			return reviewRepository.findByStoreUserId(userId, pageable);
 		}
 	}
+
+	public Review findById(int id) {
+		return reviewRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("찾으시는 리뷰가 존재하지 않습니다.");
+		});
+	}
 }

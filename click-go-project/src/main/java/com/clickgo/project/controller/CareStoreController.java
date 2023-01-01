@@ -30,15 +30,7 @@ public class CareStoreController {
 		return "/user/my/care-store/list";
 	}
 
-	@GetMapping("/detail/{id}")
-	public String careStoreDetail(@PathVariable int id, Model model,
-			@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		Store storeEntity = storeService.findById(id);
-		if (storeEntity.getUser().getId() == principalDetails.getUser().getId()) {
-			model.addAttribute("store", storeEntity);
-		}
-		return "/user/my/care-store/detail";
-	}
+
 
 	@GetMapping("/update/{id}")
 	public String careStoreUpdate(@PathVariable int id, Model model,

@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +21,6 @@ import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.model.enums.StoreCategory;
-import com.clickgo.project.model.enums.StoreFranchiseState;
 import com.clickgo.project.service.CategoryService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
@@ -32,10 +35,10 @@ public class StoreFranchiseController {
 	private StoreService storeService;
 	@Autowired
 	private CategoryService categoryService;
-	
-	//메시지 개수
+
+	// 메시지 개수
 	int count;
-	
+
 	@GetMapping("/store-franchise-apply")
 	public String franchiseApply(Model model) {
 
@@ -45,6 +48,7 @@ public class StoreFranchiseController {
 			categories.add(t.getId());
 		});
 		model.addAttribute("categories", categories);
+		franchiseMassageCount(model);
 		return "/storeFranchise/store-franchise-apply";
 	}
 
@@ -52,12 +56,14 @@ public class StoreFranchiseController {
 	public String franchiseApply(RequestFileDto fileDto, @AuthenticationPrincipal PrincipalDetails principalDetails,
 			Model model) {
 		franchiseService.apply(fileDto, principalDetails);
+		franchiseMassageCount(model);
 		return "redirect:/";
 	}
 
 	@GetMapping("/store-franchise-list")
-	public String franchiseList(Model model) {
-		List<Store> storeList = storeService.getStoreAllList();
+	public String franchiseList(Model model,
+			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		Page<Store> storeList = storeService.getStoreAllList(pageable);
 		model.addAttribute("storeList", storeList);
 		franchiseMassageCount(model);
 		return "/storeFranchise/store-franchise-list";
@@ -80,12 +86,12 @@ public class StoreFranchiseController {
 		model.addAttribute("message", franchiseMessages);
 
 		List<StoreFranchise> allMsg = franchiseService.getMessageList();
-		franchiseMessages.forEach(t->{
+		franchiseMessages.forEach(t -> {
 			if (t.getState().toString().equals("WAIT")) {
 				allMsg.add(t);
 			}
 		});
-		int waitMsg = allMsg.size()-franchiseMessages.size();
+		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
 
 	}

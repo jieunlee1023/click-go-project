@@ -29,12 +29,7 @@
 	</div>
 
 
-
-	<!-- 내용시작 -->
-	<!-- <div class="container row" style="float: none; margin: 100 auto;"> -->
-
-
-	<div class="row border-top border-bottom pt-2">
+	<div class="row border-top border-bottom pt-2 ">
 		<div class="col-lg">
 			<p class="font-weight-bold"
 				style="font-family: monospace; font-weight: light;">번호</p>
@@ -63,9 +58,9 @@
 					<!-- 작성자이거나 관리자일 때 -->
 					<!--  확인 가능하고 -->
 
-					<div class="row border-bottom">
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item d-flex justify-content-between">
+					<div class="row border-bottom justify-content-between">
+						<ul class="list-group list-group-flush justify-content-between " >
+							<li class="list-group-item d-flex ">
 								<div class="col-lg">
 									<p class="font-weight-light"
 										style="color: gray; font-family: sans-serif; font-weight: lighter;">${board.id }</p>

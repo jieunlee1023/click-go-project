@@ -1,0 +1,124 @@
+@charset "UTF-8";
+
+#view-more-title {
+	margin-top: 20px;
+	font-size: 50px;
+	display: flex;
+	justify-content: center;
+}
+
+
+/*회사 소개*/
+.about-us {
+	color: black;
+	border: solid 1px balck;
+}
+
+#about-us-service {
+	font-size: 20px;
+	border: solid 5px #6478ff;
+	border-radius: 10px;
+	text-align: center;
+	background-color: white;
+}
+
+.about-us-date {
+	color: white;
+	font-size: 20px;
+}
+
+/*공지사항*/
+#notice, #f-a-question {
+	margin-bottom: 150px;
+}
+
+#Accordion_wrap {
+	width: 800px;
+	justify-content:center;
+	text-align: center;
+}
+
+.que:first-child {
+	border-top: 2px solid black;
+}
+
+
+.que {
+	position: relative;
+	padding: 17px 0;
+	cursor: pointer;
+	font-size: 14px;
+	border-bottom: 1px dotted black;
+}
+
+.que::before {
+	display: inline-block;
+	content: '※';
+	font-size: 14px;
+	color: red;
+	margin: 0 5px;
+}
+
+.que.on>span {
+	font-weight: bold;
+}
+
+.anw {
+	display: none;
+	overflow: hidden;
+	font-size: 14px;
+	padding: 27px 0;
+	background-color: rgba(255, 255, 255, 0.2);
+}
+
+.anw::before {
+	display: inline-block;
+	content: 'A';
+	font-size: 14px;
+	font-weight: bold;
+	color: balck;
+	margin: 0 5px;
+}
+
+.arrow-wrap {
+	position: absolute;
+	top: 50%;
+	right: 10px;
+	transform: translate(0, -50%);
+}
+
+
+/*  약관 및 정책 */
+
+#tab-menu {
+  width: 70%; 
+  position: absolute; 
+  background-color: #9ab4ff;
+  padding: 20px;
+  border-radius: 20px;
+}
+#tab-btn ul {
+  overflow: hidden;
+}
+
+#tab-btn li {
+  float: left; width: 200px; 
+  text-align: center;
+  list-style: none;
+}
+#tab-btn li a {
+  display: block; color: #fff; 
+  padding: 15px 20px; 
+  font-weight: bold;
+}
+#tab-btn li.active a {
+  border-bottom: 3px solid #6478ff;
+  color: #6478ff;
+}
+
+#tab-cont {
+  width: 100%; 
+  background: #fff; padding: 20px; 
+  box-sizing: border-box;
+  border-radius: 10px;
+}

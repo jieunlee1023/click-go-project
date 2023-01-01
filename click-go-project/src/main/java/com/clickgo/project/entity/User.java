@@ -54,6 +54,7 @@ public class User {
 	private Timestamp createDate;
 
 	@Email
+	@Column(unique = true)
 	private String email;
 
 	@ColumnDefault(value = "0")
@@ -67,8 +68,4 @@ public class User {
 
 	@ColumnDefault(value = "0")
 	private int point;
-
-	// 경민.. 수정 대기 중
-//	@OneToOne(mappedBy = "user")
-//	private ReportReply reportReply;
 }
