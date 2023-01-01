@@ -64,8 +64,9 @@
 <link href="/css/common.css" rel="stylesheet" type="text/css" />	
 <link href="/css/search.css" rel="stylesheet" type="text/css" />	
 <link href="/css/board.css" rel="stylesheet" type="text/css" />	
-<link href="/css/common.css" rel="stylesheet" type="text/css" />
-<link href="/css/search.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="fullpage.css" />
+
+
 </head>
 
 <body>

@@ -3,6 +3,13 @@
 <%@ include file="layout/header.jsp"%>
 
 
+<div id="fullpage">
+	<div class="section">Some section</div>
+	<div class="section">Some section</div>
+	<div class="section">Some section</div>
+	<div class="section">Some section</div>
+</div>
+
 
 <%@ include file="layout/footer.jsp"%>
 
