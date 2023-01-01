@@ -48,6 +48,7 @@ public class StoreFranchiseController {
 			categories.add(t.getId());
 		});
 		model.addAttribute("categories", categories);
+		franchiseMassageCount(model);
 		return "/storeFranchise/store-franchise-apply";
 	}
 
@@ -55,6 +56,7 @@ public class StoreFranchiseController {
 	public String franchiseApply(RequestFileDto fileDto, @AuthenticationPrincipal PrincipalDetails principalDetails,
 			Model model) {
 		franchiseService.apply(fileDto, principalDetails);
+		franchiseMassageCount(model);
 		return "redirect:/";
 	}
 

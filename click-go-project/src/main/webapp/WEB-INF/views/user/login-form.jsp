@@ -22,7 +22,7 @@
 				</div>
 				<br>
 				<div class="form-control d-flex justify-content-center" id="loginbutton">
-					<button type="submit" id="btn--login">SIGN IN</button>
+					<button type="submit" id="btn--login">로그인</button>
 				</div>
 			</form>
 

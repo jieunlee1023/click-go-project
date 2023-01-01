@@ -1,12 +1,8 @@
 @charset "UTF-8";
 
-.login--form, .join--form {
-	background-color: #b4c8ff;
-}
-
-#login--main, #join--main {
+#login--main, #join--main, #info-search--main {
 	width: 800px;
-	padding-top: 300px;
+	padding-top: 70px;
 	padding-bottom: 100px;
 }
 
@@ -18,10 +14,11 @@
 		background-color: white;
 }
 
-#loginbutton :hover, #joinbutton  :hover{
+#loginbutton :hover, #joinbutton  :hover , 
+#search-id :hover , #search-pw :hover{
 	color: #6478ff;
 }
-#btn--login, #btn--save{
+#btn--login, #btn--save ,#btn--search-id, #btn--search-pw{
 	border: none;
 	background-color: transparent;
 }
@@ -34,4 +31,9 @@
 
  #id-infosearch-btn:hover , #signin-btn:hover{
 	color: #6478ff;	
+}
+
+#search--text {
+	font-size: 18px;
+	margin: 0px;
 }

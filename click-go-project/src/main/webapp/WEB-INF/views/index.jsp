@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="layout/header.jsp"%>
+<%@ include file="layout/header-fixed.jsp"%>
 
 
 <div id="full-page">
@@ -82,22 +82,21 @@
 	</div>
 </div>
 
-<div class="section s5">
-	<div class="container mt-5">
-<%@ include file="layout/footer.jsp"%>		
+	<div class="section s5">
+		<div class="container d-flex mb-5 justify-content-center">
+		<img src="/image/logo.png" width="300px">	</div>
+	<%@ include file="layout/footer.jsp"%>		
 	</div>
 </div>
 
-</div>
-
 <div id="footer">
-<img id="footer--scroll" src="/image/index/scroll.png" width="80px">
+	<img id="footer--scroll" src="/image/index/scroll.png" width="80px">
 </div>
 
 <script>
 	new fullpage('#full-page',
 			{
-				fixedElements: '#header',
+				fixedElements: '#header-fixed',
 				licenseKey : 'gplv3-license',
 				sectionsColor : [ '#b4c8ff', '#b4c8ff', '#b4c8ff', '#b4c8ff','#b4c8ff','#b4c8ff'  ],
 				navigation : true,
@@ -107,7 +106,7 @@
 					//console.log('onleave', origin.index, destination.index);
 					if (origin.index == 5) {
 						$('#footer--scroll').show();
-						$('#header').show();
+						$('#header-fixed').show();
 					} 
 				},
 				afterLoad : function(origin, destination, direction) {
@@ -131,7 +130,7 @@
 						      });
 					}else if (destination.index == 5){
 						$('#footer--scroll').hide();
-						$('#header').hide();
+						$('#header-fixed').hide();
 					}
 				},
 			});

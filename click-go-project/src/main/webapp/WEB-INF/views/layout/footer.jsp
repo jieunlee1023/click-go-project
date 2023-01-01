@@ -2,14 +2,9 @@
 	pageEncoding="UTF-8"%>
 
 <div class="d-flex justify-content-center">
-<img src="/image/logo.png" alt="click-go-logo" style="width: 300px">
-</div>
-
-<div class="d-flex justify-content-center">
 	<div class="d-flex  text-center ">
 
-		<div>
-			<br><br><br>
+		<div style="color:white">
 
 			<div>CS CENTER : CLICK_GO@GMAIL.COM</div>
 			<div>WEEKDAYS 9AM-6PM</div>
@@ -24,7 +19,7 @@
 		</div>
 	</div>
 </div>
-
+<br><br>
 
 </body>
 </html>
