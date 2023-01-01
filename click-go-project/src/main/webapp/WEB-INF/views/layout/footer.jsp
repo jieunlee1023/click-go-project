@@ -9,7 +9,7 @@
 	<div class="d-flex  text-center ">
 
 		<div>
-			<br>
+			<br><br><br>
 
 			<div>CS CENTER : CLICK_GO@GMAIL.COM</div>
 			<div>WEEKDAYS 9AM-6PM</div>

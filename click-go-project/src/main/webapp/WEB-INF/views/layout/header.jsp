@@ -45,6 +45,7 @@
 <link href="/css/board.css" rel="stylesheet" type="text/css" />
 <link href="/css/common.css" rel="stylesheet" type="text/css" />
 <link href="/css/search.css" rel="stylesheet" type="text/css" />
+<link href="/css/loginAndJoin.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="/css/fullpage.min.css">
 <link rel="stylesheet" href="/css/index.css">
@@ -65,16 +66,6 @@
 
 			</div>
 	</div>
-
-
-<!-- 사이즈 작아졌을 때 토글  -->
-<!-- 			<button class="navbar-toggler" type="button" data-toggle="collapse"
-				data-target="#collapsibleNavbar">
-				<span class="navbar-toggler-icon"> <img src="/image/menu.png"
-					width="30px" height="30px">
-				</span>
-			</button> --> 
-
 
 		<c:choose>
 			<c:when test="${empty principal}">
