@@ -43,12 +43,12 @@ public class StoreController {
 
 	@GetMapping("/main")
 	public String store(@RequestParam(required = false) String pageName, Model model,
-			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		List<StoreCategory> categories = new ArrayList<>();
 		List<Category> categoryEntitys = categoryService.findAll();
 		categoryEntitys.forEach(t -> {
 			categories.add(t.getId());
-		});
+		}); 
 		if (pageName == null) {
 			stores = storeService.getStoreAllList(pageable);
 		} else {
