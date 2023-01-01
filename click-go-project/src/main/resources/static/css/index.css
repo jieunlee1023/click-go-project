@@ -1,0 +1,173 @@
+@charset "UTF-8";
+
+.s0, .s1, .s2, .s3, .s4 {
+	display: flex;
+	justify-content: flex-start;
+}
+
+#header {
+	top: 0px;
+	width: 100%;
+	position: fixed;
+	display: flex;
+	padding-top: 70px;
+}
+
+#footer {
+	bottom: 130px;
+	width: 100%;
+	position: relative;
+	display: flex;
+	padding-bottom: 50px;
+	justify-content: center;
+}
+
+#footer--scroll {
+	position: relative;
+	top: 20px;
+	animation: bounce .3s ease infinite alternate;
+	font-size: 80px;
+}
+
+@keyframes bounce { 100% {
+	top: -20px;
+}
+
+}
+.section {
+	color: white;
+	padding-top: 150px;
+}
+
+#fp-nav {
+	margin-right: 120px;
+	margin-top: 350px;
+	position: absolute;
+}
+
+#fp-nav ul li a span {
+	background-color: #fff;
+}
+
+#franchise-btn {
+	display: inline-flex;
+	position: absolute;
+	float: right;
+	top: 0%;
+	right: 0%;
+}
+
+#wrapper {
+	display: inline-flex;
+}
+
+#logo {
+	display: inline-flex;
+}
+
+.nav--list {
+	display: inline-flex;
+	float: right;
+}
+
+.nav--list ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav--list li {
+	font-size: 20px;
+	float: left;
+	margin-top: 20px;
+	float: left;
+}
+
+.nav--list li a {
+	color: #fff;
+	display: block;
+	margin: 0px;
+	text-align: center;
+}
+
+.nav--list li a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+.nav--list ul li:hover a {
+	color: #6478ff;
+	text-decoration: none;
+}
+
+.nav--list li ul {
+	display: none;
+	position: absolute;
+}
+
+.nav--list li:hover ul {
+	display: block;
+}
+
+.nav--list li li {
+	display: block;
+	float: none;
+}
+
+.nav--list li:hover li a {
+	background: none;
+}
+
+.nav--list li ul a {
+	display: block;
+	font-size: 16px;
+	margin: 0px;
+	padding: 0px 10px 0px 15px;
+	text-align: left;
+}
+
+.nav--list li ul a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+#btn--msg {
+	background-color: transparent;
+	border: 0;
+}
+
+#msg--icon {
+	font-size: 30px;
+	align-items: flex-start;
+}
+
+#msg--count {
+	margin: 8px;
+}
+
+#main--text {
+	margin-top: 80px;
+	display: inline-flex;
+	vertical-align: bottom;
+	flex-direction: column;
+}
+
+.main--text--add {
+	font-size: 16px;
+	font-family: sans-serif;
+}
+
+.main--text--add2 {
+	font-size: 13px;
+	font-family: sans-serif;
+}
+
+#main--img, #main--img2, #main--img3, #main--img4, #main--img5 {
+	display: inline-flex;
+	position: absolute;
+	justify-content: flex-end;
+	float: right;
+	margin-top: 300px;
+	margin-left: 100px;
+	top: 900px;
+}
