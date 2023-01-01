@@ -16,7 +16,7 @@
 <!-- 자주 묻는 질문  -->
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+ 
 <title>Click-go</title>
 
 <link rel="stylesheet"
@@ -52,7 +52,7 @@
 
 <body>
 
-<div id="header">
+<div id="header-fixed">
 <div class="container ">
 	<div id='wrapper'>
 

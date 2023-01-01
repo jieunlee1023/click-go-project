@@ -5,13 +5,149 @@
 	box-sizing: border-box;
 }
 
-#btn--login
-#id-password-btn
-#signin-btn
-#btn--save
-#update-btn:hover {
-		text-decoration: none;
-	color: #578cd2
+#header-fixed {
+	top: 0px;
+	width: 100%;
+	display: flex;
+	position: fixed;
+	padding-top: 70px;
+}
+
+#selected {color:#6478ff;}
+
+#header {
+	top: 0px;
+	width: 100%;
+	position: relative;
+	display: flex;
+	padding-top: 70px;
+}
+
+body {
+	background-color: #b4c8ff;
+}
+
+footer {
+	justify-content: flex-end;
+	width: 100%;
+	height: 100px; /* footer의 높이 */
+	position: absolute;
+	bottom: 70px;
+	left: 0;
+}
+
+#footer { /*스크롤 id*/
+	top: 0px;
+	width: 100%;
+	position: fixed;
+	padding-top: 100px;
+	display: flex;
+	justify-content: center;
+}
+
+#footer--scroll {
+	position: absolute;
+	transform: translateY(1050%);
+	top: 20px;
+	animation: bounce .3s ease infinite alternate;
+	font-size: 80px;
+}
+
+@keyframes bounce { 100% {
+	top: -20px;
+}
+
+}
+#wrapper {
+	display: inline-flex;
+}
+
+#logo {
+	display: inline-flex;
+}
+
+.nav--list {
+	display: inline-flex;
+	float: right;
+}
+
+.nav--list ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.nav--list li {
+	font-size: 20px;
+	float: left;
+	float: left;
+}
+
+.nav--list li a {
+	color: #fff;
+	display: block;
+	margin: 0px;
+	text-align: center;
+}
+
+.nav--list li a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+
+.nav--list ul li:hover a {
+	color: #6478ff;
+	text-decoration: none;
+}
+
+.nav--list li ul {
+	display: none;
+	position: absolute;
+}
+
+.nav--list li:hover ul {
+	display: block;
+}
+
+.nav--list li li {
+	display: block;
+	float: none;
+}
+
+.nav--list li:hover li a {
+	background: none;
+}
+
+.nav--list li ul a {
+	display: block;
+	font-size: 16px;
+	margin: 0px;
+	text-align: left;
+}
+
+.nav--list li ul a:hover {
+	color: white;
+	background-color: #6478ff;
+	text-decoration: none;
+}
+
+#nave--moreview--item {
+	background-color: white;
+}
+
+
+#btn--msg {
+	background-color: transparent;
+	border: 0;
+}
+
+#msg--icon {
+	font-size: 30px;
+	align-items: flex-start;
+}
+
+#msg--count {
+	margin: 8px;
 }
 
 .note-num {
@@ -30,4 +166,3 @@
 	color: white;
 	height: 15px;
 }
-
