@@ -22,11 +22,11 @@
 		<div class="form-group">
 		<input type="text"
 				class="form-control" id="username" 
-				value="" placeholder="아이디를 입력해주세요">
+				placeholder="아이디를 입력해주세요">
 		</div>
 		<div class="form-group">
 			<input type="email" class="form-control" id="search-email"
-			 value="" placeholder="email을 입력해주세요">
+			  placeholder="email을 입력해주세요">
 		</div>
 		<div class="form-control d-flex justify-content-center"id="search-pw">
 			<button type="button" id="btn--search-pw" class="d-flex widt">비밀번호 찾기</button>
