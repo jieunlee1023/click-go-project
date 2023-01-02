@@ -5,14 +5,8 @@
 
 <div class="container" id="board--list">
 
-	<!-- 제목 -->
-	<div id="view-more-title">
-		<div>* Board *</div>
-	</div>
-
+	<br> <br>
 	<div class=" d-flex" id="board--list--top">
-
-
 		<!-- 글쓰기버튼 -->
 		<div>
 			<form class="form-inline" action="/board/board-write-form">
@@ -28,10 +22,8 @@
 				<button class="btn" id="board--search--btn" type="submit">검색</button>
 			</form>
 		</div>
-
 	</div>
-
-	<br> <br>
+	<br>
 	<div id="board--list--main--title"
 		class="border-top border-bottom pt-2 ">
 		<div class="col-lg-title">

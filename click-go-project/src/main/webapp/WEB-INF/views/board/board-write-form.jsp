@@ -60,7 +60,7 @@
 </script>
 
 <script type="text/javascript" src="/js/board.js"></script>
-
+<br><br><br>
 <%@ include file="../layout/shortFooter.jsp"%>
 
 
