@@ -114,19 +114,19 @@
 					console.log(destination);
 					if (destination.index == 1) {	
 					    $(".s1").ready(function(e){
-					        $("#main--img2").animate({ top : "50px" },700);
+					        $("#main--img2").animate({ top : "10px" },700);
 					      });
 					} else if (destination.index == 2){
 						 $(".s2").ready(function(e){
-						     $("#main--img3").animate({ top : "50px" },700);
+						     $("#main--img3").animate({ top : "10px" },700);
 						      });
 					}else if (destination.index == 3){
 						 $(".s2").ready(function(e){
-						     $("#main--img4").animate({ top : "50px" },700);
+						     $("#main--img4").animate({ top : "10px" },700);
 						      });
 					}else if (destination.index == 4){
 						 $(".s2").ready(function(e){
-						     $("#main--img5").animate({ top : "50px" },700);
+						     $("#main--img5").animate({ top : "10px" },700);
 						      });
 					}else if (destination.index == 5){
 						$('#footer--scroll').hide();
@@ -135,7 +135,7 @@
 				},
 			});
     $(".s0").ready(function(e){
-        $("#main--img").animate({ top : "50px" },700);
+        $("#main--img").animate({ top : "10px" },700);
       });
 
 	

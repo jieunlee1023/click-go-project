@@ -53,7 +53,8 @@ public class StoreFranchiseController {
 	}
 
 	@PostMapping("/apply/upload")
-	public String franchiseApply(RequestFileDto fileDto, @AuthenticationPrincipal PrincipalDetails principalDetails,
+	public String franchiseApply(RequestFileDto fileDto, 
+			@AuthenticationPrincipal PrincipalDetails principalDetails,
 			Model model) {
 		franchiseService.apply(fileDto, principalDetails);
 		franchiseMassageCount(model);
