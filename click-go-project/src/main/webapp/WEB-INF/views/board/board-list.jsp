@@ -54,7 +54,7 @@
 							<p id="board--id">${board.id }</p>
 						</div>
 						<div class="col-lg-board-list-item">
-							<a id="board--title" href="/board/${board.id }"> <img src="/image/secret.png" width="15px"> ${board.title}
+							<a id="board--title" href="/board/${board.id }"> <img src="/image/secret.png" width="15px"> 비밀글입니다
 							</a>
 						</div>
 						<div class="col-lg-board-list-item">

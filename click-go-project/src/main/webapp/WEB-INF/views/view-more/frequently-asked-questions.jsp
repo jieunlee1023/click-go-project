@@ -5,7 +5,7 @@
 <div class="container" id="f-a-question">
 
 		<div id="view-more-title">
-			<div>* 자주 묻는 질문 *</div>
+			<div>📫 자주 묻는 질문</div>
 		</div>
 		<br>
 
