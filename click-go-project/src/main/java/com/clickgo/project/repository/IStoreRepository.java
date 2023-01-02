@@ -24,4 +24,10 @@ public interface IStoreRepository extends JpaRepository<Store, Integer>{
 			, nativeQuery = true)
 	Page<Store> findAllByStoreCategory(String pageName, Pageable pageable);
 
+	// s w 검색
+	Page<Store> findByStoreNameContaining(String q, Pageable pageable);
+
+
+
+
 }

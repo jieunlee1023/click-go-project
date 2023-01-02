@@ -132,9 +132,32 @@ let index = {
 			console.log(error);
 			alert("해당하는 이메일이 없습니다 다시 확인해주세요");
 		});
+	},
+
+
+
+	searchPw: function() {
+		let data = {
+			username: $("#username").val(),
+			email: $("#search-email").val(),
+		}
+		$.ajax({
+			type: 'POST',
+			url: '/api/user/send-mail',
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=UTF-8",
+			dataType: "json"
+		}).done(function(data) {
+			if (data.httpStatus == true) {
+				alert("가입하신 이메일 주소로 임시비밀번호를 발송하였습니다.");
+				location.href = "/auth/login-form";
+			} 
+		}).fail(function(error) {
+			console.log(error);
+		console.log("username " + username + "   email" + email);
+			alert("가입하신 회원정보가 없습니다 다시 확인하여 주세요");
+		});
 	}
-
-
 
 
 };

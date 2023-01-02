@@ -85,4 +85,5 @@ public class StoreFranchiseService {
 
 		return true;
 	}
+
 }
