@@ -7,7 +7,6 @@
 	justify-content: center;
 }
 
-
 /*회사 소개*/
 .about-us {
 	color: black;
@@ -34,14 +33,13 @@
 
 #Accordion_wrap {
 	width: 800px;
-	justify-content:center;
+	justify-content: center;
 	text-align: center;
 }
 
 .que:first-child {
 	border-top: 2px solid black;
 }
-
 
 .que {
 	position: relative;
@@ -87,43 +85,48 @@
 	transform: translate(0, -50%);
 }
 
-
 /*  약관 및 정책 */
-
 #tab-menu {
-  width: 70%; 
-  position: absolute; 
-  background-color: #9ab4ff;
-  padding: 20px;
-  border-radius: 20px;
+	width: 100%;
+	position: absolute;
+	background-color: #9ab4ff;
+	padding: 20px;
+	border-radius: 20px;
 }
+
 #tab-btn ul {
-  overflow: hidden;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
 }
 
 #tab-btn li {
-  float: left; width: 200px; 
-  text-align: center;
-  list-style: none;
+	float: left;
+	width: 200px;
+	text-align: center;
+	list-style: none;
 }
+
 #tab-btn li a {
-  display: block; color: #fff; 
-  padding: 15px 20px; 
-  font-weight: bold;
+	display: block;
+	color: #fff;
+	padding: 15px 20px;
+	font-weight: bold;
 }
+
 #tab-btn li.active a {
-  border-bottom: 3px solid #6478ff;
-  color: #6478ff;
+	border-bottom: 3px solid #6478ff;
+	color: #6478ff;
 }
 
 #tab-cont {
-  width: 100%; 
-  background: #fff; padding: 20px; 
-  box-sizing: border-box;
-  border-radius: 10px;
+	width: 100%;
+	background: #fff;
+	padding: 20px;
+	box-sizing: border-box;
+	border-radius: 10px;
 }
 
-.terms-1{
+.terms-1 {
 	font-weight: lighter;
-	font-family: inherit;	
 }

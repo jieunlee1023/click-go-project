@@ -72,7 +72,8 @@
 			        <ul id="nav--item">
 			            <li><a class="nav-link" href="/">홈</a></li>
 			            <li><a class="nav-link" href="/store/main">상점</a></li>
-						<li id="more--view"> <a class="nav-link" href="#" >더보기</a>
+						<li id="more--view"> 
+							<a class="nav-link" href="#" >더보기</a>
 								<ul id="nave--moreview--item"> 
 									<li><a class="dropdown-item" href="/view-more/notice-list" >공지사항</a> </li>
 									<li><a class="dropdown-item" href="/board/board-list">게시판</a></li>
