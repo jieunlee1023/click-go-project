@@ -27,21 +27,24 @@
 	top: 0%;
 	right: 0%;
 }
+#main--item{
+	margin-top: 60px;
+}
 
 #main--text {
-	margin-top: 80px;
+	margin-top: 100px;
 	display: inline-flex;
 	vertical-align: bottom;
 	flex-direction: column;
 }
 
 .main--text--add {
-	font-size: 16px;
+	font-size: 20px;
 	font-family: sans-serif;
 }
 
 .main--text--add2 {
-	font-size: 13px;
+	font-size: 17px;
 	font-family: sans-serif;
 }
 

@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+/* 글쓰는 form */
+.board--save {
+	background-color: #6478ff;
+	color: white;
+}
+
+.form-group-board>label {
+	color: white;
+}
+
+.form-check-label {
+	color: white;
+}
+
+/*글 수정 form*/
+#board--update--id {
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+
+/*글 리스트*/
+#board--list--top {
+	justify-content: space-between;
+	margin-bottom: 15px;
+}
+
+#btn--write {
+	background-color: #6478ff;
+	color: white;
+}
+
+#board--search--input {
+	border: none;
+	padding: 5px;
+	background-color: transparent;
+	border-bottom: 2px solid #6478ff;
+}
+
+input::placeholder {
+	color: white;
+}
+
+input:focus {
+	outline: none;
+}
+
+#board--search--btn {
+	background-color: #6478ff;
+	color: white;
+}
+
+#board--list--main--title {
+	display: flex;
+	padding-top: 2px;
+	justify-content: space-around;
+}
+
+.col-lg-title {
+	font-weight: bold;
+	width: 150px;
+	text-align: center;
+	color: #6478ff;
+	font-size: 18px;
+}
+
+.list-group {
+	border-radius: 0px;
+	justify-content: space-around;
+}
+
+.list-group-item {
+	background-color: transparent;
+	border-radius: 0px;
+	border: none;
+}
+
+.board--list--main--main {
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+}
+
+#board--id, #board--title, #board--user--name {
+	width: 150px;
+	max-width: 150px;
+	display: inline-block;
+	vertical-align: middle;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	height: 20px;
+	font-size: 13px;
+	color: #4b4b4b;
+	text-decoration: none;
+	margin-top: 8px;
+}
+
+#board--date {
+	width: 150px;
+	font-size: 12px;
+	color: #4b4b4b;
+	margin-top: 8px;
+}
+
+
+/* 글 디테일*/
+#btn--back , #btn--update, #btn--delete{
+	background-color: #6478ff;
+	
+}
+
+
+.board--detail--top{
+	margin-top: 10px;
+}
