@@ -3,11 +3,8 @@
 
 
 <div class="container" id="board--list">
-
-	<!-- 제목 -->
-	<div id="view-more-title">
-		<div>* Board *</div>
-	</div>
+<br>
+<br>
 
 	<div class=" d-flex" id="board--list--top">
 
@@ -29,7 +26,6 @@
 
 	</div>
 
-	<br> <br>
 	<div id="board--list--main--title" class="border-top border-bottom pt-2 ">
 		<div class="col-lg-title">
 			<p>번호</p>
