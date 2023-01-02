@@ -68,7 +68,7 @@ let boardIndex = {
 				location.href = "/board/board-list"
 			}
 		}).fail(function(error) {
-			alert("글 등록 실패" + error.responseJSON.message);
+			alert("글 수정 실패" + error.responseJSON.message);
 		});
 	},
 
