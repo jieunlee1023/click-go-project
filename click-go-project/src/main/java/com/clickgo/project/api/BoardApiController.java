@@ -35,12 +35,6 @@ public class BoardApiController {
 		return new ResponseDto<>(success, "글삭제완료");
 	}
 
-	@PostMapping("/api/board/{boardId}/reply")
-	public ResponseDto<?> replySave(@PathVariable int boardId, @RequestBody CsReply requestReply,
-			@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		boolean success = boardService.writeReply(boardId, requestReply, principalDetails.getUser());
-		return new ResponseDto<>(success, requestReply);
-	}
 
 	@DeleteMapping("/api/board/{boardId}/reply/{replyId}")
 	public ResponseDto<?> deleteReplyById(@PathVariable String boardId, @PathVariable int replyId,

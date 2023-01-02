@@ -89,10 +89,19 @@ let boardIndex = {
 	},
 
 	replySave: function() {
+
 		let replyData = {
 			boardId: $("#board-id").val(),
 			content: $("#reply--content").val()
 		};
+		
+		
+		var checkBoxArray = new Array();
+		$('input:checkbox[name=secret]:checked').each(function() {
+			checkBoxArray.push(this.value);
+		});
+		
+		
 		$.ajax({
 			type: "POST",
 			url: "/api/board/" + replyData.boardId + "/reply",
@@ -136,6 +145,8 @@ let boardIndex = {
 
 
 }
+
+
 
 
 
