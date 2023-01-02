@@ -27,22 +27,22 @@ import com.clickgo.project.repository.IUserRepository;
 
 @Service
 public class StoreFranchiseService {
-	
+
 	@Autowired
 	private IStoreFranchiseRepository franchiseRepository;
-	
+
 	@Autowired
 	private IUserRepository userRepository;
-	
+
 	@Autowired
 	private IStoreRepository storeRepository;
-	
+
 	@Value("${licenceFile.path}")
 	private String licenceFile;
 
 	@Value("${layoutFile.path}")
 	private String layoutFile;
-	
+
 	@Transactional
 	public void apply(RequestFileDto fileDto, PrincipalDetails principalDetails) {
 		UUID uuid = UUID.randomUUID();
