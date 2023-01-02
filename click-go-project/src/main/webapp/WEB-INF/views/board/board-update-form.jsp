@@ -10,20 +10,21 @@
 	<form action="">
 		<input type="hidden" id="id" value="${principal.user.id }">
 
-		<div class="form-group">
-			<label for="title" id="board-id" data-id="${board.id }">글 번호 : ${board.id }</label>
+		<div class="form-group-board" id="board--update--id">
+			<label for="title" id="board-id" data-id="${board.id }">※ 글 번호 : ${board.id }</label>
 		</div>
 
-		<div class="form-group">
-			<label for="username">유저id번호 </label> <input type="text" name="username" id="username" class="form-control" value="${principal.user.id }"
+		<div class="form-group-board">
+			<label for="username"> 작성자 </label> <input type="text" name="username" id="username" class="form-control" value="${principal.user.username }"
 				readonly="readonly">
 		</div>
 
-		<div class="form-group">
+		
+		<div class="form-group-board">
 			<label for="content">제목</label> <input type="text" name="title" id="title" class="form-control" value="${board.title }">
 		</div>
 
-		<div class="form-group">
+		<div class="form-group-board">
 			<label for="content">내용</label>
 			<textarea name="content" id="content" rows="5" class="form-control content">
 				${board.content }
@@ -31,7 +32,16 @@
 
 		</div>
 	</form>
-	<button type="button" id="btn--update" class="btn btn-primary">글 수정하기</button>
+	
+			<div class="d-flex justify-content-between mb-5 ">
+			<div class="form-check form-check-inline">
+				<input class="form-check-input" type="checkbox" name="secret"
+					id="secret"> <label class="form-check-label">비밀글 설정</label>
+			</div>
+			<button id="btn--update" class="btn board--save mt-3">
+				수정하기
+			</button>
+		</div>
 </div>
 
 <script>

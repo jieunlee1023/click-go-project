@@ -31,9 +31,11 @@ footer {
 	justify-content: flex-end;
 	width: 100%;
 	height: 100px; /* footer의 높이 */
-	position: absolute;
 	bottom: 70px;
 	left: 0;
+	position:relative;
+	margin-top: 10px;
+	margin-bottom: 20px;
 }
 
 #footer { /*스크롤 id*/
@@ -47,7 +49,7 @@ footer {
 
 #footer--scroll {
 	position: absolute;
-	transform: translateY(1050%);
+	transform: translateY(1000%);
 	top: 20px;
 	animation: bounce .3s ease infinite alternate;
 	font-size: 80px;
