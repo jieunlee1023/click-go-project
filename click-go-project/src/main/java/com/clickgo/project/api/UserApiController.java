@@ -1,5 +1,15 @@
 package com.clickgo.project.api;
 
+import java.util.Properties;
+
+import javax.mail.Authenticator;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -29,10 +39,13 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserApiController {
-	
+
 	@Value("${mail.pw}")
 	private String password;
-	
+
+	@Value("${mail.id}")
+	private String id;
+
 	private final UserService userService;
 	private final AuthenticationManager authenticationManager;
 
@@ -78,7 +91,7 @@ public class UserApiController {
 		User userEntity = userService.searchUserEmail(user.getEmail());
 		return new ResponseDto<>(true, userEntity.getUsername());
 	}
-	
+
 //	// 비밀번호 찾기
 //		@PostMapping("/auth/send")
 //	    public ResponseDto<Integer> mailSend(@RequestBody User user){
@@ -128,9 +141,93 @@ public class UserApiController {
 //	            return -1;
 //	        }
 //	    }
-	
-	
-	
-	
+	/*
+	 * // 비밀번호 찾기
+	 * 
+	 * @PostMapping("/auth/send") public ResponseDto<Integer> mailSend(@RequestBody
+	 * User user){ User userEntity =
+	 * userService.searchPassword(user.getUsername(),user.getEmail());
+	 * 
+	 * 
+	 * return new ResponseDto<>(true, naverMailSend(userEntity.getEmail())); }
+	 * 
+	 * public int naverMailSend(String email){ String host = "smtp.naver.com"; //
+	 * 테스트후 개인정보 보안상 비밀번호는 지워주세요
+	 * 
+	 * // SMTP 서버 정보를 설정한다. Properties props = new Properties(); // Properties는
+	 * java.util의 Properties입니다. props.put("mail.smtp.host", host); // smtp의 호스트
+	 * props.put("mail.smtp.port", 587); // 587 포트 사용 props.put("mail.smtp.auth",
+	 * "true"); props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // 이 설정을 안붙이면 TLS
+	 * Exception이 뜨더라구요. (버전이 안맞아서)
+	 * 
+	 * Session session = Session.getDefaultInstance(props, new Authenticator() {
+	 * 
+	 * @Override protected PasswordAuthentication getPasswordAuthentication() {
+	 * return new PasswordAuthentication("whwlgns42@naver.com",password); } });
+	 * 
+	 * try{ MimeMessage message = new MimeMessage(session); message.setFrom(new
+	 * InternetAddress(email)); // 수신자 이메일
+	 * message.addRecipient(Message.RecipientType.TO, new
+	 * InternetAddress("whwlgns42@kakao.com"));
+	 * 
+	 * // 메일 제목 message.setSubject("SMTP TEST");
+	 * 
+	 * // 메일 내용 String temporary = userService.searchPasswordChange(email);
+	 * message.setText("안녕하세요.\n 저희 클릭고 입니다. \n 임시비밀번호 : " + temporary); // 랜덤인
+	 * 임시비밀번호를 생성
+	 * 
+	 * // send the message Transport.send(message);
+	 * System.out.println("Success Message Send"); return 0; }catch
+	 * (MessagingException e){ e.printStackTrace(); return -1; } }
+	 */
+
+	// 비밀번호 찾기
+	@PostMapping("/send-mail")
+	public ResponseDto<Integer> mailSend(@RequestBody User user) {
+		User userEntity = userService.searchPassword(user.getUsername(), user.getEmail());
+
+		return new ResponseDto<>(true, naverMailSend(userEntity.getEmail()));
+	}
+
+	public int naverMailSend(String email) {
+		String host = "smtp.naver.com";
+		// 테스트후 개인정보 보안상 비밀번호는 지워주세요
+
+		// SMTP 서버 정보를 설정한다.
+		Properties props = new Properties(); // Properties는 java.util의 Properties입니다.
+		props.put("mail.smtp.host", host); // smtp의 호스트
+		props.put("mail.smtp.port", 587); // 587 포트 사용
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // 이 설정을 안붙이면 TLS Exception이 뜨더라구요. (버전이 안맞아서)
+
+		Session session = Session.getDefaultInstance(props, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(id, password);
+			}
+		});
+
+		try {
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(id)); // 발신자의 이메일
+			// 수신자 이메일
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+
+			// 메일 제목
+			message.setSubject("Click-Go");
+
+			// 메일 내용
+			String temporary = userService.searchPasswordChange(email);
+			message.setText("안녕하세요.\n 저희 클릭고 입니다. \n 임시비밀번호 : " + temporary); // 랜덤인 임시비밀번호를 생성
+
+			// send the message
+			Transport.send(message);
+			System.out.println("Success Message Send");
+			return 0;
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return -1;
+		}
+	}
 
 }

@@ -31,18 +31,12 @@ public class ReservationController {
 	public String reservation(@RequestParam(required = false) int seatNumber, @PathVariable int storeId, @RequestParam String startTime, @RequestParam String endTime, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Reservation reservationEntity = new Reservation();
 		Store storeEntity = storeService.findById(storeId);
-		System.out.println(startTime);
-		System.out.println(endTime);
 		StringTokenizer startTimeTokenizer = new StringTokenizer(startTime, ":");
 		int startHour = Integer.parseInt(startTimeTokenizer.nextToken());
 		int startMinute = Integer.parseInt(startTimeTokenizer.nextToken());
 		StringTokenizer endTimeTokenizer = new StringTokenizer(endTime, ":");
 		int endHour = Integer.parseInt(endTimeTokenizer.nextToken());
 		int endMinute = Integer.parseInt(endTimeTokenizer.nextToken());
-		System.out.println("예약 시간 : " + startHour + "시 ");
-		System.out.println(startMinute + "분");
-		System.out.println("종료 시간 : " + endHour + "시 ");
-		System.out.println(endMinute + "분");
 
 		if (endHour == 0 || endMinute == 0) {
 			reservationEntity.setPrice(storeEntity.getPrice());

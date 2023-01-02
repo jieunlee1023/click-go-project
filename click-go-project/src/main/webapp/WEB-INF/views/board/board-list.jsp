@@ -3,54 +3,53 @@
 <%@ include file="../layout/header.jsp"%>
 
 
-
-<!--  -->
-
-<div class="container">
+<div class="container" id="board--list">
 
 	<!-- 제목 -->
-	<div class="d-flex justify-content-start">
-		<h1 class="display-4">Click-Go Board !!!</h1>
+	<div id="view-more-title">
+		<div>* Board *</div>
 	</div>
 
-	<!-- 글쓰기버튼 -->
-	<div class="mb-5 d-flex justify-content-end">
-		<form class="form-inline" action="/board/board-write-form">
-			<button type="submit" class="btn btn-outline-success" id="btn--write">글쓰기</button>
-		</form>
-	</div>
-
-	<div class="input-group mt-5 mb-5 d-flex justify-content-end">
-		<form action="/board/search" class="form-inline" method="get">
-			<input type="text" class="form-control mr-2" placeholder="검색"
-				name="q" value="${q }">
-			<button class="btn btn-outline-dark" type="submit">검색</button>
-		</form>
-	</div>
+	<div class=" d-flex" id="board--list--top">
 
 
-	<div class="row border-top border-bottom pt-2 ">
-		<div class="col-lg">
-			<p class="font-weight-bold"
-				style="font-family: monospace; font-weight: light;">번호</p>
+		<!-- 글쓰기버튼 -->
+		<div>
+			<form class="form-inline" action="/board/board-write-form">
+				<button type="submit" class="btn" id="btn--write">글쓰기</button>
+			</form>
 		</div>
-		<div class="col-lg">
-			<p class="font-weight-bold"
-				style="font-family: monospace; font-weight: light;">제목</p>
+
+		<!-- 검색 -->
+		<div class="">
+			<form action="/board/search" class="" method="get">
+				<input type="text" class="" placeholder="검색어를 입력하세요." name="q"
+					value="${q }" id="board--search--input">
+				<button class="btn" id="board--search--btn" type="submit">검색</button>
+			</form>
 		</div>
-		<div class="col-lg">
-			<p class="font-weight-bold"
-				style="font-family: monospace; font-weight: light;">글쓴이</p>
+
+	</div>
+
+	<br> <br>
+	<div id="board--list--main--title"
+		class="border-top border-bottom pt-2 ">
+		<div class="col-lg-title">
+			<p>번호</p>
 		</div>
-		<div class="col-lg">
-			<p class="font-weight-bold"
-				style="font-family: monospace; font-weight: light;">등록시간</p>
+		<div class="col-lg-title">
+			<p>제목</p>
+		</div>
+		<div class="col-lg-title">
+			<p>글쓴이</p>
+		</div>
+		<div class="col-lg-title">
+			<p>등록시간</p>
 		</div>
 	</div>
+
 
 	<c:forEach var="board" items="${boards.content}">
-
-
 		<c:if test="${board.secretType eq 'PRIVATE'}">
 			<c:choose>
 				<c:when
@@ -58,58 +57,49 @@
 					<!-- 작성자이거나 관리자일 때 -->
 					<!--  확인 가능하고 -->
 
-					<div class="row border-bottom justify-content-between">
-						<ul class="list-group list-group-flush justify-content-between " >
-							<li class="list-group-item d-flex ">
-								<div class="col-lg">
-									<p class="font-weight-light"
-										style="color: gray; font-family: sans-serif; font-weight: lighter;">${board.id }</p>
-								</div> <span>🔒</span>
-								<div class="col-lg">
-									<a class="font-weight-light" href="/board/${board.id }"
-										style="text-decoration: none; color: black; font-family: monospace;">${board.title}</a>
-								</div>
-								<div class="col-lg">
-									<p class="font-weight-light"
-										style="color: gray; font-family: sans-serif; font-weight: light;">${board.user.username }</p>
-								</div>
-								<div class="col-lg">
-									<p class="font-weight-light" style="color: gray">
-										<small>${board.createDate }</small>
-									</p>
-								</div>
-							</li>
-						</ul>
+					<div class="board--list--main--main border-bottom">
+						<div class="col-lg-board-list-item">
+							<p id="board--id">${board.id }</p>
+						</div>
+						<div class="col-lg-board-list-item">
+							<a id="board--title" href="/board/${board.id }"> <img
+								src="/image/secret.png" width="15px"> ${board.title}
+							</a>
+						</div>
+						<div class="col-lg-board-list-item">
+							<p id="board--user--name">${board.user.username }</p>
+						</div>
+						<div class="col-lg-board-list-item">
+							<p id="board--date">${board.createDate }</p>
+						</div>
 					</div>
+
+
+
+
+
 
 				</c:when>
 				<c:otherwise>
 
 					<!--  확인 불가능 -->
 
-					<div class="row border-bottom">
-						<ul class="list-group list-group-flush">
-							<li class="list-group-item d-flex justify-content-between">
-								<div class="col-lg">
-									<p class="font-weight-light"
-										style="color: gray; font-family: sans-serif; font-weight: lighter;">${board.id }</p>
-								</div> <span>🔒</span>
-								<div class="col-lg">
-									<a class="font-weight-light" href="#"
-										onclick="alert('비밀글은 작성자만 확인 가능합니다.')"
-										style="text-decoration: none; color: black; font-family: monospace;">${board.title}</a>
-								</div>
-								<div class="col-lg">
-									<p class="font-weight-light"
-										style="color: gray; font-family: sans-serif; font-weight: light;">${board.user.username }</p>
-								</div>
-								<div class="col-lg">
-									<p class="font-weight-light" style="color: gray">
-										<small>${board.createDate }</small>
-									</p>
-								</div>
-							</li>
-						</ul>
+					<div class="board--list--main--main border-bottom">
+						<div class="col-lg-board-list-item">
+							<p id="board--id">${board.id }</p>
+						</div>
+						<div class="col-lg-board-list-item">
+							<a id="board--title" href="#"
+								onclick="alert('비밀글은 작성자만 확인 가능합니다.')"> <img
+								src="/image/secret.png" width="15px"> ${board.title}
+							</a>
+						</div>
+						<div class="col-lg-board-list-item">
+							<p id="board--user--name">${board.user.username }</p>
+						</div>
+						<div class="col-lg-board-list-item">
+							<p id="board--date">${board.createDate }</p>
+						</div>
 					</div>
 
 
@@ -120,30 +110,23 @@
 
 		<!-- 공개글 -->
 		<c:if test="${board.secretType eq 'PUBLIC'}">
-			<div class="row border-bottom">
-				<ul class="list-group list-group-flush">
-					<li class="list-group-item d-flex justify-content-between">
-						<div class="col-lg">
-							<p class="font-weight-light"
-								style="color: gray; font-family: sans-serif; font-weight: lighter;">${board.id }</p>
-						</div>
 
-						<div class="col-lg">
-							<a class="font-weight-light" href="/board/${board.id }"
-								style="text-decoration: none; color: black; font-family: monospace;">${board.title}</a>
-						</div>
-						<div class="col-lg">
-							<p class="font-weight-light"
-								style="color: gray; font-family: sans-serif; font-weight: light;">${board.user.username }</p>
-						</div>
-						<div class="col-lg">
-							<p class="font-weight-light" style="color: gray">
-								<small>${board.createDate }</small>
-							</p>
-						</div>
-					</li>
-				</ul>
+			<div class="board--list--main--main border-bottom">
+				<div class="col-lg-board-list-item">
+					<p id="board--id">${board.id }</p>
+				</div>
+
+				<div class="col-lg-board-list-item">
+					<a id="board--title" href="/board/${board.id }">${board.title}</a>
+				</div>
+				<div class="col-lg-board-list-item">
+					<p id="board--user--name">${board.user.username }</p>
+				</div>
+				<div class="col-lg-board-list-item">
+					<p id="board--date">${board.createDate }</p>
+				</div>
 			</div>
+
 
 		</c:if>
 
@@ -154,11 +137,13 @@
 
 
 	<div class="m-5"></div>
-	<ul class="pagination justify-content-center">
+	<ul class="pagination justify-content-center"
+		style="border-radius: 0px;">
 		<c:set var="isDisabled" value="disabled"></c:set>
 		<c:set var="isNotDisabled" value=""></c:set>
 		<li class="page-item ${boards.first ? isDisabled : isNotDisabled } "><a
-			class="page-link" href="?page=${boards.number - 1 }">이전</a></li>
+			class="page-link" href="?page=${boards.number - 1 }"
+			style="color: white; background-color: #6478ff; border: none;">이전</a></li>
 		<!-- 반복문 처리 하기-->
 		<!-- 1 2 3, 1 2 3 4 , 1 2 3 4 5  -->
 		<c:forEach var="num" items="${pageNumbers }">
@@ -167,35 +152,30 @@
 					<!-- http://localhost:9090/board/search?q=%EC%95%84%EB%8B%88 -->
 					<!-- 0 부터 시작 컨트롤러에서 +1 -->
 					<li class="page-item"><a class="page-link"
-						href="?q=${q }&page=${num - 1 }" style="color: black">${num }</a></li>
+						href="?q=${q }&page=${num - 1 }"
+						style="color: white; background-color: #6478ff; border: none;">${num }</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link"
+						style="color: #96bbff; background-color: #6478ff; border: none;"
 						href="?q=${q }&page=${num - 1 }">${num }</a></li>
 				</c:otherwise>
 			</c:choose>
 		</c:forEach>
 
 		<li class="page-item ${boards.last ? isDisabled : isNotDisabled }"><a
-			class="page-link" href="?page=${boards.number + 1 }">다음</a></li>
+			class="page-link" href="?page=${boards.number + 1 }"
+			style="color: white; background-color: #6478ff; border: none;">다음</a></li>
 
 	</ul>
 
 </div>
 
 
+<br>
+<br>
 
-
-
-
-
-
-
-
-
-
-
-<%@ include file="../layout/footer.jsp"%>
+<%@ include file="../layout/shortFooter.jsp"%>
 
 
 

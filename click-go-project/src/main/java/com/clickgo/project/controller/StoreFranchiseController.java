@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.RequestFileDto;
@@ -39,7 +40,7 @@ public class StoreFranchiseController {
 
 	@Autowired
 	private ImageService imageService;
-	
+
 	// 메시지 개수
 	int count;
 
@@ -64,6 +65,16 @@ public class StoreFranchiseController {
 		return "redirect:/";
 	}
 
+	// list만 나오는코드
+//	@GetMapping("/store-franchise-list")
+//	public String franchiseList(Model model,
+//			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
+//		Page<Store> storeList = storeService.getStoreAllList(pageable);
+//		
+//		model.addAttribute("storeList", storeList);
+//		franchiseMassageCount(model);
+//		return "/storeFranchise/store-franchise-list";
+//	}
 	@GetMapping("/store-franchise-list")
 	public String franchiseList(Model model,
 			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable) {
@@ -72,6 +83,36 @@ public class StoreFranchiseController {
 			getImage(model, t.getId());
 		});
 		model.addAttribute("storeList", storeList);
+		franchiseMassageCount(model);
+		return "/storeFranchise/store-franchise-list";
+	}
+
+	// s w
+	@GetMapping({ "/store-franchise-list", "/store-franchise-list/search" })
+	public String franchiseList(@RequestParam(required = false) String q, Model model,
+			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		String searchFtitle = q == null ? "" : q;
+
+		Page<Store> storeList = storeService.searchStoreList(searchFtitle, pageable);
+
+		int PAGENATION_BLOCK_COUNT = 3;
+		int nowPage = storeList.getPageable().getPageNumber() + 1;
+
+		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
+		int endPageNumber = Math.min(nowPage + startPageNumber, storeList.getTotalPages());
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+
+		model.addAttribute("storeList", storeList);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPageNumber", startPageNumber);
+		model.addAttribute("endPageNumber", endPageNumber);
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("q", searchFtitle);
+
 		franchiseMassageCount(model);
 		return "/storeFranchise/store-franchise-list";
 	}
@@ -101,7 +142,7 @@ public class StoreFranchiseController {
 		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
 	}
-	
+
 	public void getImage(Model model, int storeId) {
 		model.addAttribute("image", imageService.findByStoreId(storeId).get(1).getImageUrl());
 	}
