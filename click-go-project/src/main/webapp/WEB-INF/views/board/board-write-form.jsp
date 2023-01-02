@@ -17,23 +17,18 @@
 	<form action="/board/save" method="POST">
 		<input type="hidden" id="id" value="${principal.user.id }">
 
-		<div class="form-group">
-			<label for="title" id="board-id" data-id="${board.id }">글 번호
-				: ${board.id }</label>
-		</div>
-
-		<div class="form-group">
+		<div class="form-group-board">
 			<label for="username">작성자</label> <input type="text" name="username"
 				id="username" class="form-control"
 				value="${principal.user.username }" readonly="readonly">
 		</div>
-
-		<div class="form-group">
+		<br>
+		<div class="form-group-board">
 			<label for="content">제목</label> <input type="text" name="title"
 				id="title" class="form-control" value="${board.title }">
 		</div>
 
-		<div class="form-group">
+		<div class="form-group-board">
 			<label for="content">내용</label>
 			<textarea name="content" id="content" rows="5"
 				class="form-control content">
@@ -44,13 +39,13 @@
 
 
 
-		<div class="">
-			<div class="form-check form-check-inline mt-3">
+		<div class="d-flex justify-content-between mb-5 ">
+			<div class="form-check form-check-inline">
 				<input class="form-check-input" type="checkbox" name="secret"
 					id="secret"> <label class="form-check-label">비밀글 설정</label>
 			</div>
-			<button type="submit"class="btn bg-secondary">
-				<span class="spinner-border spinner-border-sm"></span> 글 작성
+			<button type="submit" class="btn board--save mt-3">
+				글 작성
 			</button>
 		</div>
 	</form>
@@ -66,9 +61,7 @@
 
 <script type="text/javascript" src="/js/board.js"></script>
 
-
-
-<%@ include file="../layout/footer.jsp"%>
+<%@ include file="../layout/shortFooter.jsp"%>
 
 
 

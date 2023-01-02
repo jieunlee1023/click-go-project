@@ -43,6 +43,7 @@
 <link href="/css/common.css" rel="stylesheet" type="text/css" />
 <link href="/css/login-join-infosearch.css" rel="stylesheet" type="text/css" />
 <link href="/css/view-more.css" rel="stylesheet" type="text/css" />
+<link href="/css/board.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="/css/fullpage.min.css">
 <link rel="stylesheet" href="/css/index.css">
