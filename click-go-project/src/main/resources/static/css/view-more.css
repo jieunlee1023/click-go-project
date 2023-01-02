@@ -122,3 +122,8 @@
   box-sizing: border-box;
   border-radius: 10px;
 }
+
+.terms-1{
+	font-weight: lighter;
+	font-family: inherit;	
+}
