@@ -1,5 +1,6 @@
 package com.clickgo.project.controller;
 
+import java.util.List;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,10 @@ public class ReservationController {
 	private StoreService storeService;
 
 	@PostMapping("/{storeId}")
-	public String reservation(@RequestParam(required = false) int seatNumber, @PathVariable int storeId, @RequestParam String startTime, @RequestParam String endTime, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-		Reservation reservationEntity = new Reservation();
+	public String reservation(@RequestParam(required = false) Integer[] seatNumber, @PathVariable int storeId,
+			@RequestParam String startTime, @RequestParam String endTime,
+			@AuthenticationPrincipal PrincipalDetails principalDetails) throws InterruptedException {
+
 		Store storeEntity = storeService.findById(storeId);
 		StringTokenizer startTimeTokenizer = new StringTokenizer(startTime, ":");
 		int startHour = Integer.parseInt(startTimeTokenizer.nextToken());
@@ -38,54 +41,60 @@ public class ReservationController {
 		int endHour = Integer.parseInt(endTimeTokenizer.nextToken());
 		int endMinute = Integer.parseInt(endTimeTokenizer.nextToken());
 
-		if (endHour == 0 || endMinute == 0) {
-			reservationEntity.setPrice(storeEntity.getPrice());
-		} else {
-			if (startHour == endHour) {
-				int minute = (endMinute - startMinute) / 10;
-				reservationEntity.setPrice((storeEntity.getPrice() * minute));
-			} else if (startHour < endHour) {
-				int minuteToHour = ((endHour - startHour) * 60);
-				if (startMinute > endMinute) {
-					if (startMinute - endMinute == 10) {
-						int minute = (50 + minuteToHour) / 10;
+		for (int i = 0; i < seatNumber.length; i++) {
+			Reservation reservationEntity = new Reservation();
+			if (endHour == 0 || endMinute == 0) {
+				reservationEntity.setPrice(storeEntity.getPrice());
+			} else {
+				if (startHour == endHour) {
+					int minute = (endMinute - startMinute) / 10;
+					reservationEntity.setPrice((storeEntity.getPrice() * minute));
+				} else if (startHour < endHour) {
+					int minuteToHour = ((endHour - startHour) * 60);
+					if (startMinute > endMinute) {
+						if (startMinute - endMinute == 10) {
+							int minute = (50 + minuteToHour) / 10;
+							System.out.println(minute);
+							reservationEntity.setPrice((storeEntity.getPrice() * minute));
+						} else if (startMinute - endMinute == 20) {
+							int minute = (40 + minuteToHour) / 10;
+							System.out.println(minute);
+							reservationEntity.setPrice((storeEntity.getPrice() * minute));
+						} else if (startMinute - endMinute == 30) {
+							int minute = (30 + minuteToHour) / 10;
+							System.out.println(minute);
+							reservationEntity.setPrice((storeEntity.getPrice() * minute));
+						} else if (startMinute - endMinute == 40) {
+							int minute = (20 + minuteToHour) / 10;
+							System.out.println(minute);
+							reservationEntity.setPrice((storeEntity.getPrice() * minute));
+						} else if (startMinute - endMinute == 50) {
+							int minute = (10 + minuteToHour) / 10;
+							System.out.println(minute);
+							reservationEntity.setPrice((storeEntity.getPrice() * minute));
+						}
+					} else if (startMinute == endMinute) {
+						int minute = minuteToHour;
 						System.out.println(minute);
 						reservationEntity.setPrice((storeEntity.getPrice() * minute));
-					} else if (startMinute - endMinute == 20) {
-						int minute = (40 + minuteToHour) / 10;
-						System.out.println(minute);
-						reservationEntity.setPrice((storeEntity.getPrice() * minute));
-					} else if (startMinute - endMinute == 30) {
-						int minute = (30 + minuteToHour) / 10;
-						System.out.println(minute);
-						reservationEntity.setPrice((storeEntity.getPrice() * minute));
-					} else if (startMinute - endMinute == 40) {
-						int minute = (20 + minuteToHour) / 10;
-						System.out.println(minute);
-						reservationEntity.setPrice((storeEntity.getPrice() * minute));
-					} else if (startMinute - endMinute == 50) {
-						int minute = (10 + minuteToHour) / 10;
+					} else {
+						int minute = (endMinute - startMinute + minuteToHour) / 10;
 						System.out.println(minute);
 						reservationEntity.setPrice((storeEntity.getPrice() * minute));
 					}
-				} else if (startMinute == endMinute) {
-					int minute = minuteToHour;
-					System.out.println(minute);
-					reservationEntity.setPrice((storeEntity.getPrice() * minute));
-				} else {
-					int minute = (endMinute - startMinute + minuteToHour) / 10;
-					System.out.println(minute);
-					reservationEntity.setPrice((storeEntity.getPrice() * minute));
 				}
 			}
+			reservationEntity.setApproveStatus(ApproveStatus.WATING);
+			reservationEntity.setReservationSeat(seatNumber[i]);
+			reservationEntity.setUser(principalDetails.getUser());
+			reservationEntity.setStore(storeEntity);
+			reservationEntity.setReservationTime(startHour + ":" + startMinute + "");
+			reservationEntity.setEndTime(endHour + ":" + endMinute + ":");
+			reservationService.save(reservationEntity);
+			System.out.println("ㅋ" + reservationEntity);
+			Thread.sleep(1000);
 		}
-		reservationEntity.setApproveStatus(ApproveStatus.WATING);
-		reservationEntity.setReservationSeat(seatNumber);
-		reservationEntity.setUser(principalDetails.getUser());
-		reservationEntity.setStore(storeEntity);
-		reservationEntity.setReservationTime(startHour + ":" + startMinute + "");
-		reservationEntity.setEndTime(endHour + ":" + endMinute + ":");
-		reservationService.save(reservationEntity);
 		return "/store/reservation";
 	}
+
 }

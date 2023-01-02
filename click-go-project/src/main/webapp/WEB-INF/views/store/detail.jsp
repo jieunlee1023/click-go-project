@@ -11,7 +11,7 @@
 <br>
 &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp;&nbsp;&nbsp; &nbsp;
-					<form action="/reservation/1?seatNumber=20" method="post">
+					<form action="/reservation/1" method="post">
 <div class="d-flex-column justify-content-center">
 	<c:choose>
 		<c:when test="${empty store}">
@@ -43,7 +43,7 @@
 				<div class="media border m-3"
 					style="width: 900px; height: 510px; border-radius: 15px;">
 					<div class="d-flex-column">
-						<img src="../image/about-us/pc_room_m.jpg" alt="가게 사진"
+						<img src="${image}" alt="가게 사진"
 							style="width: 900px; height: 400px; border-radius: 15px;">
 						<div class="media-body md-5">
 							<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
@@ -91,10 +91,10 @@
 
 									<div class="d-flex ml-4">
 										<% for(start = 1; start < totalRoomCount; start++) { %>
-										<button class="d-flex justify-content-center mr-1"
-											name="seatNumber"
+										<input type="checkbox"
+											class="d-flex justify-content-center mr-1" name="seatNumber"
 											style="border: 1px solid black; width: 30px; height: 30px"
-											value="<%=start %>"><%=start %></button>
+											value="<%=start %>">
 
 										<% if (start == firstSpace) {%>
 										&nbsp; &nbsp; &nbsp;
@@ -105,7 +105,7 @@
 									</div>
 									<div class="d-flex ml-4 mt-1">
 							<% for(start = first + 1; start < totalRoomCount; start++) { %>
-								<button class="d-flex justify-content-center mr-1" name="seatNumber" style="border: 1px solid black; width: 30px; height: 30px"value="<%=start %>"><%=start %></button>
+								<input  type="checkbox"  class="d-flex justify-content-center mr-1" name="seatNumber" style="border: 1px solid black; width: 30px; height: 30px"value="<%=start %>">
 							
 								<% if (start == secondSpace) {%>
 									&nbsp; &nbsp; &nbsp;
@@ -116,7 +116,7 @@
 						<br>
 						<div class="d-flex ml-4">
 							<% for(start = second + 1; start < totalRoomCount; start++) { %>
-								<button class="d-flex justify-content-center mr-1" name="seatNumber" style="border: 1px solid black; width: 30px; height: 30px" value="<%=start %>"><%=start %></button>
+								<input type="checkbox"  class="d-flex justify-content-center mr-1" name="seatNumber" style="border: 1px solid black; width: 30px; height: 30px" value="<%=start %>">
 							
 								<% if (start == thirdSpace) {%>
 									&nbsp; &nbsp; &nbsp;
@@ -128,7 +128,7 @@
 						
 						<div class="d-flex ml-4 mt-1">
 							<% for(start = third + 1; start < totalRoomCount; start++) { %>
-								<button class="d-flex justify-content-center mr-1" name="seatNumber" style="border: 1px solid black; width: 30px; height: 30px"value="<%=start %>"><%=start %></button>
+								<input type="checkbox"   class="d-flex justify-content-center mr-1" name="seatNumber" style="border: 1px solid black; width: 30px; height: 30px"value="<%=start %>">
 							
 								<% if (start == foursSpace) {%>
 									&nbsp; &nbsp; &nbsp;
@@ -139,7 +139,7 @@
 						<br>
 						<div class="d-flex mt-2">  
 							<% for(start = fours + 1; start <= totalRoomCount; start++) { %>
-								<input onclick="alert(value)" type="button" id="seatButton" class="d-flex justify-content-center mr-1" name="seatNumber" style="border: 1px solid black; width: 30px; height: 30px"value="<%=start %>"></input>
+								<input type="checkbox" id="seatButton" class="d-flex justify-content-center mr-1" name="seatNumber" style="border: 1px solid black; width: 30px; height: 30px"value="<%=start %>">
 							
 						 	<%}%>
 											</div>

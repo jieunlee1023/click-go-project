@@ -31,6 +31,7 @@ public class ReservationService {
 		return reservationRepository.findAll(pageable);
 	}
 
+	@Transactional
 	public void save(Reservation reservation) {
 		reservationRepository.save(reservation);
 	}
