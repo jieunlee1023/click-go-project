@@ -15,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,15 +47,13 @@ public class UserController {
 	@Value("${phoneNumber.key}")
 	private String phoneNumber;
 	
-//	이메일인증 테스트 코드
-	@GetMapping("/auth/email")
-	public String emailForm() {
-		return "email";
-	}
-//	이메일인증 테스트 코드
 
 	@GetMapping("/auth/login-form")
-	public String loginForm() {
+	public String loginForm(@RequestParam(value = "error", required = false) String error, 
+				@RequestParam(value = "exception", required = false) String exception,
+				Model model) {
+		model.addAttribute("error", error);
+		model.addAttribute("exception", exception);
 		return "user/login-form";
 	}
 

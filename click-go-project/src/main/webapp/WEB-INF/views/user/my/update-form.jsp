@@ -23,12 +23,12 @@
 						<input type="hidden" value="${principal.user.id}" id="id">
 						<div class="form-group">
 							<label for="email" class="d-flex m-0" style="font-size: 13px">새
-								비밀번호</label> <input type="text" class="form-control" id="new--pwd"
+								비밀번호</label> <input type="password" class="form-control" id="new--pwd"
 								style="border-radius: 0px" value="">
 						</div>
 						<div class="form-group">
 							<label for="phoneNumber" class="d-flex m-0"
-								style="font-size: 13px">비밀번호 확인</label> <input type="text"
+								style="font-size: 13px">비밀번호 확인</label> <input type="password"
 								class="form-control" style="border-radius: 0px"
 								id="new--pwd-check" value="">
 						</div>

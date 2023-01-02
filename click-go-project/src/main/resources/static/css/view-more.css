@@ -122,3 +122,9 @@
   box-sizing: border-box;
   border-radius: 10px;
 }
+
+/* 자주묻는 질문  */
+.card {
+	background: #b4c8ff;
+	border-radius: none;
+}
