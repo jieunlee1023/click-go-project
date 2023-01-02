@@ -37,13 +37,13 @@ public class CsReply {
 	@Column(nullable = false)
 	private String content;
 
-	// sw
+	// s w
 	@ManyToOne
 	@JoinColumn(name = "boardId")
 	@JsonIgnoreProperties({ "csReply", "userId" })
 	private CsBoard csBoard;
 
-	// sw
+	// s w
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	@JsonIgnoreProperties({ "password", "role", "email", "loginType" })
@@ -52,4 +52,9 @@ public class CsReply {
 	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp createDate;
+	
+	
+	// 비밀글 여부
+	@Column(nullable = true)
+	private boolean secret;
 }

@@ -5,13 +5,18 @@
 <div class="about-us">
 
 
-	<div id="view-more-title">
-		<div style="color: black;">* Our History *</div>
+	<br> <br>
+	<div class="d-flex justify-content-center">
+		<img alt="메인 이미지" src="../image/viewmore/games.png" width="300px">
 	</div>
-	<br>
+	<br> <br>
 	<div class="d-flex justify-content-center" style="font-size: 50px">·</div>
-	<br>
-
+	<div class="d-flex justify-content-center" style="font-size: 100%">우리
+		회사는 여가 활동을 더욱 즐겁고 편리하게 만들어주는 서비스 환경을 제공합니다.</div>
+	<div class="d-flex justify-content-center" style="font-size: 100%">
+		(Our company provides a service environment that makes leisure
+		activities more fun and convenient.)</div>
+	<br> <br>
 	<div class="d-flex justify-content-center">
 		<div id="about-us-service">
 			<div class="d-flex justify-content-center m-0" id="about-us-category">
@@ -29,21 +34,12 @@
 		</div>
 	</div>
 
-	<div class="d-flex justify-content-center" style="font-size: 50px">·</div>
-	<div class="d-flex justify-content-center" style="font-size: 100%">우리
-		회사는 여가 활동을 더욱 즐겁고 편리하게 만들어주는 서비스 환경을 제공합니다.</div>
-	<div class="d-flex justify-content-center" style="font-size: 100%">
-		(Our company provides a service environment that makes leisure
-		activities more fun and convenient.)</div>
-	<br> <br>
-	<div class="d-flex justify-content-center">
-		<img alt="메인 이미지" src="../image/viewmore/games.png" width="300px">
-	</div>
-	<br> <br> <br>
+
+	<br> <br> <br> <br> <br>
 	<div class="d-flex justify-content-center">
 		<div>
 			<div class="about-us-date">· 2022.08</div>
-			<div style="font-size: 100%; ;">
+			<div style="font-size: 100%;">
 				우리는 많은 이들의 <br>즐거운 여가생활을 위해 <br> 4명의 친구들이 모여<br>시작하였습니다.
 			</div>
 			<br> <br> <br>
@@ -92,7 +88,7 @@
 			</div>
 		</div>
 	</div>
-	<br> <br>	<br> <br>	<br> <br>
+	<br> <br> <br> <br> <br> <br>
 </div>
 
 <%@ include file="../layout/footer.jsp"%>

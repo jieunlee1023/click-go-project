@@ -12,6 +12,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -38,6 +39,7 @@ import lombok.RequiredArgsConstructor;
 @RestController
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
+
 public class UserApiController {
 
 	@Value("${mail.pw}")
@@ -50,7 +52,7 @@ public class UserApiController {
 	private final AuthenticationManager authenticationManager;
 
 	@PostMapping("/sign-up")
-	public ResponseDto<?> signUp(@RequestBody User user, Model model) {
+	public ResponseDto<?> signUp(@Valid @RequestBody User user, Model model) {
 		boolean success = userService.signUp(user);
 		return new ResponseDto<>(success, user.getUsername() + "님 회원가입을 진심으로 축하드립니다. ");
 	}
@@ -91,6 +93,7 @@ public class UserApiController {
 		User userEntity = userService.searchUserEmail(user.getEmail());
 		return new ResponseDto<>(true, userEntity.getUsername());
 	}
+<<<<<<< HEAD
 
 //	// 비밀번호 찾기
 //		@PostMapping("/auth/send")
@@ -181,10 +184,18 @@ public class UserApiController {
 	 * (MessagingException e){ e.printStackTrace(); return -1; } }
 	 */
 
+=======
+>>>>>>> developer
 	// 비밀번호 찾기
 	@PostMapping("/send-mail")
 	public ResponseDto<Integer> mailSend(@RequestBody User user) {
 		User userEntity = userService.searchPassword(user.getUsername(), user.getEmail());
+<<<<<<< HEAD
+=======
+
+		return new ResponseDto<>(true, naverMailSend(userEntity.getEmail()));
+	}
+>>>>>>> developer
 
 		return new ResponseDto<>(true, naverMailSend(userEntity.getEmail()));
 	}
@@ -200,6 +211,7 @@ public class UserApiController {
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // 이 설정을 안붙이면 TLS Exception이 뜨더라구요. (버전이 안맞아서)
 
+<<<<<<< HEAD
 		Session session = Session.getDefaultInstance(props, new Authenticator() {
 			@Override
 			protected PasswordAuthentication getPasswordAuthentication() {
@@ -229,5 +241,24 @@ public class UserApiController {
 			return -1;
 		}
 	}
+=======
+	            // 메일 내용
+	            String temporary = userService.searchPasswordChange(email);
+	            message.setText("안녕하세요.\n 저희 클릭고 입니다. \n 임시비밀번호 : " +  temporary); // 랜덤인 임시비밀번호를 생성
+	            System.out.println(">>>>>>>>>>"+temporary);
+	            // send the message
+	            Transport.send(message);
+	            System.out.println("Success Message Send");
+	            return 0;
+	        }catch (MessagingException e){
+	            e.printStackTrace();
+	            return -1;
+	        }
+	    }
+	
+	
+	
+	
+>>>>>>> developer
 
 }
