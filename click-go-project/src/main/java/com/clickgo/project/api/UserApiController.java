@@ -44,6 +44,9 @@ public class UserApiController {
 	@Value("${mail.pw}")
 	private String password;
 	
+	@Value("${mail.id}")
+	private String id;
+	
 	private final UserService userService;
 	private final AuthenticationManager authenticationManager;
 
@@ -90,8 +93,10 @@ public class UserApiController {
 		return new ResponseDto<>(true, userEntity.getUsername());
 	}
 	
+	
+	
 	// 비밀번호 찾기
-		@PostMapping("/auth/send")
+		@PostMapping("/send-mail")
 	    public ResponseDto<Integer> mailSend(@RequestBody User user){
 			User userEntity = userService.searchPassword(user.getUsername(),user.getEmail());
 			
@@ -100,7 +105,7 @@ public class UserApiController {
 	    }
 
 	    public int naverMailSend(String email){
-	        String host = "smtp.naver.com";
+	    	String host = "smtp.naver.com";
 	         // 테스트후 개인정보 보안상 비밀번호는 지워주세요
 
 	        // SMTP 서버 정보를 설정한다.
@@ -109,22 +114,22 @@ public class UserApiController {
 	        props.put("mail.smtp.port", 587); // 587 포트 사용
 	        props.put("mail.smtp.auth", "true"); 
 	        props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // 이 설정을 안붙이면 TLS Exception이 뜨더라구요. (버전이 안맞아서)
-
+	        
 	        Session session = Session.getDefaultInstance(props, new Authenticator() {
 	            @Override
 	            protected PasswordAuthentication getPasswordAuthentication() {
-	                return new PasswordAuthentication("whwlgns42@naver.com",password);
+	                return new PasswordAuthentication(id,password);
 	            }
 	        });
 
 	        try{
 	            MimeMessage message = new MimeMessage(session);
-	            message.setFrom(new InternetAddress(email));
+	            message.setFrom(new InternetAddress(id)); // 발신자의 이메일
 	            // 수신자 이메일
-	            message.addRecipient(Message.RecipientType.TO, new InternetAddress("whwlgns42@kakao.com"));
-
+	            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+	            
 	            // 메일 제목
-	            message.setSubject("SMTP TEST");
+	            message.setSubject("Click-Go");
 
 	            // 메일 내용
 	            String temporary = userService.searchPasswordChange(email);
