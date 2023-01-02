@@ -80,9 +80,15 @@ public class BoardService {
 		CsBoard board = iBoardRepository.findById(boardId).orElseThrow(() -> {
 			return new IllegalArgumentException("댓글 쓰기 실패");
 		});
+		
+		if(requestReply.isSecret() == true) {
+			requestReply.setSecret(true);
+		}else {
+			requestReply.setSecret(false);
+		}
 		requestReply.setUser(user);
 		requestReply.setCsBoard(board);
-		CsReply replyEntity = iReplyRepository.save(requestReply);
+		iReplyRepository.save(requestReply);	
 		return true;
 	}
 

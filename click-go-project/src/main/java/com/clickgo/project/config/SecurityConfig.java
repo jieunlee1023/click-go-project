@@ -20,6 +20,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
 	private PrincipalDetailsService detailsService;
+	
+	@Autowired
+	private UserLoginFailHandler userLoginFailHandler;
 
 	@Bean
 	@Override
@@ -45,6 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 				.antMatchers("/auth/**", "/api/**", "/", "/js/**", "/css/**", "/layout/**", "/jsp/**", "/image/**",
 						"/home/about-us", "/store/**", "/board/**", "/view-more/**", "/mypage/**", "/report/**")
 				.permitAll().anyRequest().authenticated().and().formLogin().loginPage("/auth/login-form")
-				.loginProcessingUrl("/auth/loginProc").defaultSuccessUrl("/");
+				.loginProcessingUrl("/auth/loginProc").failureHandler(userLoginFailHandler).defaultSuccessUrl("/");
 	}
+	
+	
 }
