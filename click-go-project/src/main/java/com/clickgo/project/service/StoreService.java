@@ -60,4 +60,11 @@ public class StoreService {
 	public Page<Store> findAllByStoreCategory(String pageName, Pageable pageable) {
 		return storeRepository.findAllByStoreCategory(pageName, pageable);
 	}
+
+	// 검색
+	@Transactional
+	public Page<Store> searchStoreList(String q, Pageable pageable) {
+		return storeRepository.findByStoreNameContaining(q, pageable);
+	}
+
 }
