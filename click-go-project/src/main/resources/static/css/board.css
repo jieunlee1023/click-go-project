@@ -74,6 +74,9 @@ input:focus {
 	background-color: transparent;
 	border-radius: 0px;
 	border: none;
+	margin: 0px;
+	padding: 0px;
+	text-align: center;
 }
 
 .board--list--main--main {
@@ -104,14 +107,79 @@ input:focus {
 	margin-top: 8px;
 }
 
-
 /* 글 디테일*/
-#btn--back , #btn--update, #btn--delete{
+#btn--back, #btn--update--css, #btn--delete {
 	background-color: #6478ff;
-	
+	color: white;
+	margin-right: 5px;
 }
 
-
-.board--detail--top{
+.board--detail--top {
 	margin-top: 10px;
 }
+
+#board--deatil--title {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-bottom: 1px dotted white;
+}
+
+#board--deatil--content {
+	background-color: rgb(255, 255, 255, 0.5);
+	border-radius: 10px;
+	height: 300px;
+	padding: 20px;
+}
+
+.in-line {
+	width: 350px;
+	height: 40px;
+}
+
+#reply--content {
+	width: 95%;
+	height: 100%;
+	border: none;
+	padding-left: 5px;
+	display: inline;
+	outline: none;
+	color: black;
+	border-bottom: 1px solid black;
+	background-color: transparent;
+}
+
+.board--detail--card {
+	border-radius: 0px;
+	background-color: rgb(255, 255, 255, 0.5);
+}
+
+.card-header {
+	border-radius: 0px;
+}
+
+#card--body {
+	border-radius: 0px;
+	background-color: rgb(255, 255, 255, 0.5);
+}
+
+.card-body {
+	justify-content: space-between;
+}
+
+#btn-reply-save {
+	color: white;
+	background-color: #6478ff;
+	font-size: 11px;
+	border: none;
+	border-radius: 3px;
+	padding: 0px 10px;
+}
+
+#btn-reply-delete {
+	color: white;
+	background-color: red;
+	font-size: 11px;
+	border: none;
+	border-radius: 3px;
+}
+
