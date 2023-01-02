@@ -7,7 +7,7 @@
 
 
 <div class="container">
-	<form action="">
+	<form action="" >
 		<input type="hidden" id="id" value="${principal.user.id }">
 
 		<div class="form-group-board" id="board--update--id">
@@ -19,7 +19,7 @@
 				readonly="readonly">
 		</div>
 
-		
+
 		<div class="form-group-board">
 			<label for="content">제목</label> <input type="text" name="title" id="title" class="form-control" value="${board.title }">
 		</div>
@@ -31,17 +31,15 @@
 			</textarea>
 
 		</div>
-	</form>
-	
-			<div class="d-flex justify-content-between mb-5 ">
+
+
+		<div class="d-flex justify-content-between mb-5 ">
 			<div class="form-check form-check-inline">
-				<input class="form-check-input" type="checkbox" name="secret"
-					id="secret"> <label class="form-check-label">비밀글 설정</label>
+				<input class="form-check-input" type="checkbox" name="secret" id="secret"> <label class="form-check-label">비밀글 설정</label>
 			</div>
-			<button id="btn--update" class="btn board--save mt-3">
-				수정하기
-			</button>
+			<button type="submit" id="btn--update" class="btn board--save mt-3">수정하기</button>
 		</div>
+	</form>
 </div>
 
 <script>

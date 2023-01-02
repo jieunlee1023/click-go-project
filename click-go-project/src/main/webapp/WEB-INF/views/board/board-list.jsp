@@ -4,12 +4,7 @@
 
 
 <div class="container" id="board--list">
-
-	<!-- 제목 -->
-	<div id="view-more-title">
-		<div>* Board *</div>
-	</div>
-
+	<br> <br>
 	<div class=" d-flex" id="board--list--top">
 
 
@@ -31,7 +26,7 @@
 
 	</div>
 
-	<br> <br>
+
 	<div id="board--list--main--title"
 		class="border-top border-bottom pt-2 ">
 		<div class="col-lg-title">
@@ -63,7 +58,7 @@
 						</div>
 						<div class="col-lg-board-list-item">
 							<a id="board--title" href="/board/${board.id }"> <img
-								src="/image/secret.png" width="15px"> ${board.title}
+								src="/image/secret.png" width="15px"> 비밀글입니다
 							</a>
 						</div>
 						<div class="col-lg-board-list-item">
@@ -73,11 +68,6 @@
 							<p id="board--date">${board.createDate }</p>
 						</div>
 					</div>
-
-
-
-
-
 
 				</c:when>
 				<c:otherwise>
@@ -89,9 +79,8 @@
 							<p id="board--id">${board.id }</p>
 						</div>
 						<div class="col-lg-board-list-item">
-							<a id="board--title" href="#"
-								onclick="alert('비밀글은 작성자만 확인 가능합니다.')"> <img
-								src="/image/secret.png" width="15px"> ${board.title}
+							<a id="board--title" onclick="alert('비밀글은 작성자만 확인 가능합니다.')">
+								<img src="/image/secret.png" width="15px"> 비밀글입니다
 							</a>
 						</div>
 						<div class="col-lg-board-list-item">
@@ -101,8 +90,6 @@
 							<p id="board--date">${board.createDate }</p>
 						</div>
 					</div>
-
-
 				</c:otherwise>
 			</c:choose>
 

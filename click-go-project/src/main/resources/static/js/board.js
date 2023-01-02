@@ -68,7 +68,7 @@ let boardIndex = {
 				location.href = "/board/board-list"
 			}
 		}).fail(function(error) {
-			alert("글 등록 실패" + error.responseJSON.message);
+			alert("글 수정 실패" + error.responseJSON.message);
 		});
 	},
 
@@ -89,10 +89,19 @@ let boardIndex = {
 	},
 
 	replySave: function() {
+
 		let replyData = {
 			boardId: $("#board-id").val(),
 			content: $("#reply--content").val()
 		};
+		
+		
+		var checkBoxArray = new Array();
+		$('input:checkbox[name=secret]:checked').each(function() {
+			checkBoxArray.push(this.value);
+		});
+		
+		
 		$.ajax({
 			type: "POST",
 			url: "/api/board/" + replyData.boardId + "/reply",
@@ -136,6 +145,8 @@ let boardIndex = {
 
 
 }
+
+
 
 
 

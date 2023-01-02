@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+#store-franchise-title {
+	margin-top: 20px;
+	font-size: 50px;
+	display: flex;
+	margin-bottom: 10px;
+	color: #6478ff;
+}
+
+#storeLicense--main {
+	background-color: white;
+	margin: 0px;
+	padding: 0px;
+}
+
+#store--licence--text, #store--licence--seat {
+	align-items: center;
+}
+
+#franchise--apply {
+	border: none;
+	background-color: #6478ff;
+	color: white;
+}
+
+#seat--que, #licence--que {
+	color: white;
+	background-color: #6478ff;
+	border: none;
+	border-radius: 100px;
+	width: 16px;
+	height: 16px;
+	font-size: 10px;
+	justify-content: center;
+	text-align: center;
+	margin-bottom: 2px;
+}
+
+#seat--que:hover, #licence--que:hover {
+	background-color: white;
+	color: #6478ff;
+}
+
+#applylist--list>div , #applylist--list>small  {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	
+}
+
+#applylist--list>div>p {
+	
+}

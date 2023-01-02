@@ -10,7 +10,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.dto.res.MailDto;
 import com.clickgo.project.entity.DeleteUser;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
@@ -142,6 +141,7 @@ public class UserService {
 			String encPassword = encoder.encode(rawPassword);
 
 			userEntity.setPassword(encPassword);
+			
 		}
 		return rawPassword;
 	}

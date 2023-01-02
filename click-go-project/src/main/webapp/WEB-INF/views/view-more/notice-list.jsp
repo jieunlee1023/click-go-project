@@ -6,7 +6,7 @@
 <div class="container" id="notice">
 
 	<div id="view-more-title">
-		<div>* 공지사항 *</div>
+		<div>📬 공지사항</div>
 	</div>
 	<br>
 

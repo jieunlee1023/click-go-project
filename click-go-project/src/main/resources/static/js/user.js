@@ -29,7 +29,7 @@ let index = {
 		};
 		if (data.password != passwordCheck) {
 			alert("비밀번호를 확인해주세요.");
-		} else {
+		} 
 			$.ajax({
 				type: 'post',
 				url: '/api/user/sign-up',
@@ -45,10 +45,11 @@ let index = {
 					alert("회원가입에 실패하셨습니다. 형식을 맞춰주세요.");
 				}
 			}).fail(function(error) {
-				console.log(error);
-				alert("오류가 발생했습니다. 관리자에게 문의해주세요.");
+				alert(error.responseText);
+
+				console.log("오류가 발생했습니다. 관리자에게 문의해주세요.");
 			});
-		}
+		
 	},
 	update: function() {
 		let passwordCheck = $("#new--pwd-check").val();
@@ -157,7 +158,10 @@ let index = {
 		console.log("username " + username + "   email" + email);
 			alert("가입하신 회원정보가 없습니다 다시 확인하여 주세요");
 		});
-	}
+	},
+	
+ 	
+	
 
 
 };

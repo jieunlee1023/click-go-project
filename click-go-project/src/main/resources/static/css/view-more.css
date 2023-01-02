@@ -4,9 +4,9 @@
 	margin-top: 20px;
 	font-size: 50px;
 	display: flex;
-	justify-content: center;
+	margin-bottom:10px;
+	color:#6478ff;
 }
-
 
 /*회사 소개*/
 .about-us {
@@ -19,7 +19,7 @@
 	border: solid 5px #6478ff;
 	border-radius: 10px;
 	text-align: center;
-	background-color: white;
+	background-color: rgb(255,255,255,0.5);
 }
 
 .about-us-date {
@@ -33,22 +33,21 @@
 }
 
 #Accordion_wrap {
-	width: 800px;
-	justify-content:center;
+	width: 100%;
+	justify-content: center;
 	text-align: center;
 }
 
 .que:first-child {
-	border-top: 2px solid black;
+	border-top: 1px solid white;
 }
-
 
 .que {
 	position: relative;
 	padding: 17px 0;
 	cursor: pointer;
 	font-size: 14px;
-	border-bottom: 1px dotted black;
+	border-bottom: 1px dotted white;
 }
 
 .que::before {
@@ -87,43 +86,53 @@
 	transform: translate(0, -50%);
 }
 
-
 /*  약관 및 정책 */
-
 #tab-menu {
-  width: 70%; 
-  position: absolute; 
-  background-color: #9ab4ff;
-  padding: 20px;
-  border-radius: 20px;
+	width: 100%;
+	position: absolute;
+	background-color: #9ab4ff;
+	padding: 20px;
+	border-radius: 20px;
 }
+
 #tab-btn ul {
-  overflow: hidden;
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
 }
 
 #tab-btn li {
-  float: left; width: 200px; 
-  text-align: center;
-  list-style: none;
+	float: left;
+	width: 200px;
+	text-align: center;
+	list-style: none;
 }
+
 #tab-btn li a {
-  display: block; color: #fff; 
-  padding: 15px 20px; 
-  font-weight: bold;
+	display: block;
+	color: #fff;
+	padding: 15px 20px;
+	font-weight: bold;
 }
+
 #tab-btn li.active a {
-  border-bottom: 3px solid #6478ff;
-  color: #6478ff;
+	border-bottom: 3px solid #6478ff;
+	color: #6478ff;
 }
 
 #tab-cont {
-  width: 100%; 
-  background: #fff; padding: 20px; 
-  box-sizing: border-box;
-  border-radius: 10px;
+	width: 100%;
+	background: rgb(255,255,255,0.7);
+	padding: 20px;
+	box-sizing: border-box;
+	border-radius: 10px;
 }
 
+/* 자주묻는 질문  */
+.card {
+	background: #b4c8ff;
+	border-radius: none;
+}
 .terms-1{
 	font-weight: lighter;
-	font-family: inherit;	
 }
