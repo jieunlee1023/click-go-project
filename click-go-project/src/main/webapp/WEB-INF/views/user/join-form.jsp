@@ -17,7 +17,7 @@
 						value="123" required>
 				</div>
 				<div class="form-group">
-					<label for="password-check" class="d-flex m-0">비밀번호 확인</label> 
+					<label for="password-check" class="d-flex m-0">비밀번호 확인<M/label> 
 					<input type="password"
 						class="form-control" id="password-check"
 						value="123" required>

@@ -39,13 +39,26 @@
 				<label for="storeAddress" class="d-flex m-0" style="font-size: 13px">가맹점
 					주소</label> <input type="text" class="form-control" id="storeAddress"
 					style="border-radius: 0px" name="storeAddress" value="부산광역시 진구">
-
 			</div>
+
+			<div class="form-group ">
+				<label for="storeTotalRoomCount" class="d-flex m-0" style="font-size: 13px">가맹점
+					총 자릿 수</label> <input type="text" class="form-control" id="storeTotalRoomCount"
+					style="border-radius: 0px" name="storeTotalRoomCount" value="63">
+			</div>
+
 			<div class="form-group ">
 				<label for="storeTEL" class="d-flex m-0" style="font-size: 13px">가맹점
 					번호</label> <input type="text" class="form-control" id="storeTEL"
 					style="border-radius: 0px" name="storeTEL" value="051-123-3333">
 			</div>
+
+			<div class="form-group ">
+				<label for="price" class="d-flex m-0" style="font-size: 13px">
+					10분당 이용 금액</label> <input type="text" class="form-control" id="price"
+					style="border-radius: 0px" name="price" value="300">
+			</div>
+
 			<div class="d-flex form-group justify-content-between">
 				<span class="d-flex m-0" style="font-size: 13px">사업자 등록증</span> <a>
 					<img src="/image/q.png" width="15px" height="15px">
@@ -55,6 +68,18 @@
 			<div class="form-group">
 				<input type="file" name="file" class="custom-file-input"
 					id="customFile" required="required" id="storeLicense">
+			</div>
+
+			<div class="d-flex form-group justify-content-between">
+				<span class="d-flex m-0" style="font-size: 13px">자리 배치도</span> <a>
+					<img src="/image/q.png" width="15px" height="15px">
+				</a>
+			</div>
+			<div class="form-group">
+				<input type="file" name="file" class="custom-file-input"
+					id="customFile" required="required" id="storeLicense">
+				<div class="d-flex justify-content-end" style="font-size: 13px">
+					예약 서비스에 이용됩니다.</div>
 			</div>
 
 			<br>

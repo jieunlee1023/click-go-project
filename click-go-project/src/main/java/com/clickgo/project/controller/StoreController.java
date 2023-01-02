@@ -18,12 +18,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
+import com.clickgo.project.entity.Image;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.service.CategoryService;
+import com.clickgo.project.service.ImageService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 
@@ -40,6 +42,9 @@ public class StoreController {
 	@Autowired
 	private CategoryService categoryService;
 
+	@Autowired
+	private ImageService imageService;
+
 	private Page<Store> stores;
 
 	@GetMapping("/main")
@@ -55,7 +60,9 @@ public class StoreController {
 		} else {
 			stores = storeService.findAllByStoreCategory(pageName, pageable);
 		}
-
+		stores.forEach(t -> {
+			getImage(model, t.getId());
+		});
 		model.addAttribute("nowPage", pageName);
 		model.addAttribute("categories", categories);
 		model.addAttribute("stores", stores);
@@ -89,6 +96,9 @@ public class StoreController {
 		for (int i = 1; i < 25; i++) {
 			hours.add(i);
 		}
+
+		getImage(model, id);
+		
 		RoleType role = principalDetails.getUser().getRole();
 		model.addAttribute("hours", hours);
 		model.addAttribute("store", storeEntity);
@@ -99,5 +109,9 @@ public class StoreController {
 	@GetMapping("/map")
 	public String map() {
 		return "/store/map";
+	}
+
+	public void getImage(Model model, int storeId) {
+		model.addAttribute("image", imageService.findByStoreId(storeId).get(1).getImageUrl());
 	}
 }

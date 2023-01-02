@@ -36,9 +36,6 @@ public class Image {
 	@Column(nullable = false)
 	private String imageUrl;
 
-	@Column(nullable = false)
-	private String originFileName;
-
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId", nullable = false)
 	private Store store;

@@ -22,6 +22,7 @@ import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.service.CategoryService;
+import com.clickgo.project.service.ImageService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 
@@ -36,6 +37,9 @@ public class StoreFranchiseController {
 	@Autowired
 	private CategoryService categoryService;
 
+	@Autowired
+	private ImageService imageService;
+	
 	// 메시지 개수
 	int count;
 
@@ -64,6 +68,9 @@ public class StoreFranchiseController {
 	public String franchiseList(Model model,
 			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		Page<Store> storeList = storeService.getStoreAllList(pageable);
+		storeList.forEach(t -> {
+			getImage(model, t.getId());
+		});
 		model.addAttribute("storeList", storeList);
 		franchiseMassageCount(model);
 		return "/storeFranchise/store-franchise-list";
@@ -93,6 +100,9 @@ public class StoreFranchiseController {
 		});
 		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
-
+	}
+	
+	public void getImage(Model model, int storeId) {
+		model.addAttribute("image", imageService.findByStoreId(storeId).get(1).getImageUrl());
 	}
 }

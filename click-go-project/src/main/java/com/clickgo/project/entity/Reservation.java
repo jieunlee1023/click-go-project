@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.clickgo.project.model.enums.ApproveStatus;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -33,19 +34,20 @@ public class Reservation {
 
 	@JsonIgnoreProperties
 	@Column(nullable = false)
-	private String approveStatus;
+	private ApproveStatus approveStatus;
 
 	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp createDate;
-	
+
 	@Column(nullable = false)
-	@CreationTimestamp
-	private Timestamp reservationTime;
+	private String reservationTime;
+
+	private String endTime;
 
 	@Column(nullable = false)
 	private int reservationSeat;
-	
+
 	@Column(nullable = false)
 	private int price;
 

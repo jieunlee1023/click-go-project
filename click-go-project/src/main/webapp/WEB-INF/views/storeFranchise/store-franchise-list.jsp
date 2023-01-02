@@ -38,7 +38,11 @@
 					<span>${store.storeAddress}</span><br>
 
 					<span>이미지 : </span> 
-					<span>${store.image}</span><br>
+					
+					<span>
+					<img alt="사진" src="${image}" style="width: 450px; height: 400px;">
+					</span>
+					<br>
 				
 		
 				</div>

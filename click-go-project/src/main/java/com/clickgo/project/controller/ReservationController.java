@@ -1,31 +1,97 @@
 package com.clickgo.project.controller;
 
+import java.util.StringTokenizer;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
+import com.clickgo.project.entity.Reservation;
+import com.clickgo.project.entity.Store;
+import com.clickgo.project.model.enums.ApproveStatus;
+import com.clickgo.project.service.ReservationService;
+import com.clickgo.project.service.StoreService;
 
 @Controller
 @RequestMapping("/reservation")
 public class ReservationController {
 
-	@GetMapping("/{storeId}")
-	public String reservation(@PathVariable int storeId, @AuthenticationPrincipal PrincipalDetails principalDetails) {
-		// Security에게 /reservation의 맵핑을 막아달라 요청.. 비로그인 회원의 예약 시도 시 로그인화면으로 리턴
-		
-		// start-select-time
-		// end-select-time은 지정하지 않을 수도 있고 지정할 수도 있음
-		// end-select-time을 지정하지 않았을 시 start시간부터 기본 30분은 무조건이라는 전제를 깐다.
-		// 시간대는 10분 간격으로 예약 가능
-		// 30분당 금액은 가게에게 받아오는 데이터 삽입
-		// 예약은 1일전 부터 당일 예약만 받는다.
-		// 예약은 현 시간부로 최소 30분 후만 가능하다.
-		// 예약 취소는 최소 3시간 전 까지만 가능하다. 
-		// 예약 취소 사유도 받아야한다. 
-		// 취소 수수료 30퍼센트
+	@Autowired
+	private ReservationService reservationService;
+
+	@Autowired
+	private StoreService storeService;
+
+	@PostMapping("/{storeId}")
+	public String reservation(@RequestParam(required = false) int seatNumber, @PathVariable int storeId, @RequestParam String startTime, @RequestParam String endTime, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		Reservation reservationEntity = new Reservation();
+		Store storeEntity = storeService.findById(storeId);
+		System.out.println(startTime);
+		System.out.println(endTime);
+		StringTokenizer startTimeTokenizer = new StringTokenizer(startTime, ":");
+		int startHour = Integer.parseInt(startTimeTokenizer.nextToken());
+		int startMinute = Integer.parseInt(startTimeTokenizer.nextToken());
+		StringTokenizer endTimeTokenizer = new StringTokenizer(endTime, ":");
+		int endHour = Integer.parseInt(endTimeTokenizer.nextToken());
+		int endMinute = Integer.parseInt(endTimeTokenizer.nextToken());
+		System.out.println("예약 시간 : " + startHour + "시 ");
+		System.out.println(startMinute + "분");
+		System.out.println("종료 시간 : " + endHour + "시 ");
+		System.out.println(endMinute + "분");
+
+		if (endHour == 0 || endMinute == 0) {
+			reservationEntity.setPrice(storeEntity.getPrice());
+		} else {
+			if (startHour == endHour) {
+				int minute = (endMinute - startMinute) / 10;
+				reservationEntity.setPrice((storeEntity.getPrice() * minute));
+			} else if (startHour < endHour) {
+				int minuteToHour = ((endHour - startHour) * 60);
+				if (startMinute > endMinute) {
+					if (startMinute - endMinute == 10) {
+						int minute = (50 + minuteToHour) / 10;
+						System.out.println(minute);
+						reservationEntity.setPrice((storeEntity.getPrice() * minute));
+					} else if (startMinute - endMinute == 20) {
+						int minute = (40 + minuteToHour) / 10;
+						System.out.println(minute);
+						reservationEntity.setPrice((storeEntity.getPrice() * minute));
+					} else if (startMinute - endMinute == 30) {
+						int minute = (30 + minuteToHour) / 10;
+						System.out.println(minute);
+						reservationEntity.setPrice((storeEntity.getPrice() * minute));
+					} else if (startMinute - endMinute == 40) {
+						int minute = (20 + minuteToHour) / 10;
+						System.out.println(minute);
+						reservationEntity.setPrice((storeEntity.getPrice() * minute));
+					} else if (startMinute - endMinute == 50) {
+						int minute = (10 + minuteToHour) / 10;
+						System.out.println(minute);
+						reservationEntity.setPrice((storeEntity.getPrice() * minute));
+					}
+				} else if (startMinute == endMinute) {
+					int minute = minuteToHour;
+					System.out.println(minute);
+					reservationEntity.setPrice((storeEntity.getPrice() * minute));
+				} else {
+					int minute = (endMinute - startMinute + minuteToHour) / 10;
+					System.out.println(minute);
+					reservationEntity.setPrice((storeEntity.getPrice() * minute));
+				}
+			}
+		}
+		reservationEntity.setApproveStatus(ApproveStatus.WATING);
+		reservationEntity.setReservationSeat(seatNumber);
+		reservationEntity.setUser(principalDetails.getUser());
+		reservationEntity.setStore(storeEntity);
+		reservationEntity.setReservationTime(startHour + ":" + startMinute + "");
+		reservationEntity.setEndTime(endHour + ":" + endMinute + ":");
+		reservationService.save(reservationEntity);
 		return "/store/reservation";
 	}
 }

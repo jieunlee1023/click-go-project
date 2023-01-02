@@ -1,6 +1,7 @@
 package com.clickgo.project.entity;
 
 import java.sql.Timestamp;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,7 +32,7 @@ import lombok.ToString;
 @Builder
 @Entity
 @ToString
-@JsonAutoDetect 
+@JsonAutoDetect
 public class StoreFranchise {
 
 	@Id
@@ -52,19 +53,28 @@ public class StoreFranchise {
 	private String storeAddress;
 
 	@Column(nullable = false)
+	private int storeTotalRoomCount;
+
+	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp applyDate;
 
 	@Column(nullable = false)
-	private String storeLicense;
-	
+	private String licenseImageUrl;
+
+	@Column(nullable = false)
+	private int price;
+
+	@Column(nullable = false)
+	private String layoutImageUrl;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
-	
+
 	@Enumerated(EnumType.STRING)
 	private StoreFranchiseState state;
-	
+
 	private String rejectReason;
 
 }

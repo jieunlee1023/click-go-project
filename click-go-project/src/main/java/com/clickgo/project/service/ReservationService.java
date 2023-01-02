@@ -20,17 +20,18 @@ public class ReservationService {
 	@Transactional
 	public Page<Reservation> searchBoard(User user, Pageable pageable) {
 		if (user.getRole().equals(RoleType.GEUST)) {
-			System.out.println("손님");
 			return reservationRepository.findByReservation(user.getId(), pageable);
 		} else {
-			System.out.println("사장님");
-			System.out.println(user.getId());
-			return reservationRepository.findByHostReservation1(1, pageable);
+			return reservationRepository.findByHostReservation1(user.getId(), pageable);
 		}
 	}
 
 	@Transactional
 	public Page<Reservation> searchAllBoard(Pageable pageable) {
 		return reservationRepository.findAll(pageable);
+	}
+
+	public void save(Reservation reservation) {
+		reservationRepository.save(reservation);
 	}
 }
