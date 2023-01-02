@@ -128,6 +128,11 @@
 	border-radius: 10px;
 }
 
-.terms-1 {
+/* 자주묻는 질문  */
+.card {
+	background: #b4c8ff;
+	border-radius: none;
+}
+.terms-1{
 	font-weight: lighter;
 }

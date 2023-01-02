@@ -21,5 +21,16 @@
 </div>
 <br><br>
 
+<script>
+function validateForm() {
+	  var x = document.forms["join-form"]["username"].value;
+	  if (x == "") {
+	    alert("Name must be filled out");
+	    return false;
+	  }
+	}
+
+</script>
+
 </body>
 </html>

@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.entity.CsBoard;
+import com.clickgo.project.entity.CsReply;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.service.BoardService;
 import com.clickgo.project.service.StoreFranchiseService;
@@ -86,7 +87,14 @@ public class BoardController {
 		franchiseMassageCount(model);
 		return "board/board-detail";
 	}
-
+	// s w 비밀댓글
+	@PostMapping("/board/{boardId}/reply")
+	public String replySave(@PathVariable int boardId, CsReply requestReply,
+			@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		boardService.writeReply(boardId, requestReply, principalDetails.getUser());
+		return "redirect:";
+	}
+	
 	@GetMapping("/board/{id}/update-form")
 	public String updateForm(@PathVariable(name = "id") int boardId, Model model) {
 		model.addAttribute("board", boardService.boardDetail(boardId));
@@ -107,5 +115,7 @@ public class BoardController {
 		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
 	}
+	
+	
 
 }

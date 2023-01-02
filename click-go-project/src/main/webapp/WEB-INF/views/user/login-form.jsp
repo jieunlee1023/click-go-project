@@ -11,7 +11,10 @@
 		<div class="container">
 			<form action="/auth/loginProc" method="post">
 				<div class="form-group ">
-					<label for="username" class="d-flex m-0" >아이디</label>
+				<c:if test="${error eq 'true' }">
+					<div class="alert alert-danger">${exception }</div>
+					</c:if>
+					<label for="username" class="d-flex m-0" >아이디</label> 
 					<input type="text" class="form-control" id="username"
 						name="username" value="minicar" required>
 				</div>
