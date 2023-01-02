@@ -142,6 +142,7 @@ public class UserService {
 			String encPassword = encoder.encode(rawPassword);
 
 			userEntity.setPassword(encPassword);
+			
 		}
 		return rawPassword;
 	}
