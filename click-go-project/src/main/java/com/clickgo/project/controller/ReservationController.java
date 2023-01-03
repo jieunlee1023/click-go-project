@@ -30,19 +30,36 @@ public class ReservationController {
 
 	@PostMapping("/{storeId}")
 	public String reservation(@RequestParam(required = false) Integer[] seatNumber, @PathVariable int storeId,
-			@RequestParam String startTime, @RequestParam String endTime,
-			@AuthenticationPrincipal PrincipalDetails principalDetails) throws InterruptedException {
+			@RequestParam String startTime, @RequestParam String endTime, @RequestParam String startDate,
+			@RequestParam String endDate, @AuthenticationPrincipal PrincipalDetails principalDetails)
+			throws InterruptedException {
+		int endHour = 0;
+		int endMinute = 0;
+		Reservation reservationEntity = null;
+
+		StringTokenizer startDateTokenizer = new StringTokenizer(startDate, "-");
+		int startYear = Integer.parseInt(startDateTokenizer.nextToken());
+		int startMonth = Integer.parseInt(startDateTokenizer.nextToken());
+		int startDay = Integer.parseInt(startDateTokenizer.nextToken());
+
+		StringTokenizer endDateTokenizer = new StringTokenizer(endDate, "-");
+		int endYear = Integer.parseInt(endDateTokenizer.nextToken());
+		int endMonth = Integer.parseInt(endDateTokenizer.nextToken());
+		int endDay = Integer.parseInt(endDateTokenizer.nextToken());
 
 		Store storeEntity = storeService.findById(storeId);
 		StringTokenizer startTimeTokenizer = new StringTokenizer(startTime, ":");
 		int startHour = Integer.parseInt(startTimeTokenizer.nextToken());
 		int startMinute = Integer.parseInt(startTimeTokenizer.nextToken());
-		StringTokenizer endTimeTokenizer = new StringTokenizer(endTime, ":");
-		int endHour = Integer.parseInt(endTimeTokenizer.nextToken());
-		int endMinute = Integer.parseInt(endTimeTokenizer.nextToken());
+
+		if (endTime != "" || endTime != null) {
+			StringTokenizer endTimeTokenizer = new StringTokenizer(endTime, ":");
+			endHour = Integer.parseInt(endTimeTokenizer.nextToken());
+			endMinute = Integer.parseInt(endTimeTokenizer.nextToken());
+		}
 
 		for (int i = 0; i < seatNumber.length; i++) {
-			Reservation reservationEntity = new Reservation();
+			reservationEntity = new Reservation();
 			if (endHour == 0 || endMinute == 0) {
 				reservationEntity.setPrice(storeEntity.getPrice());
 			} else {
@@ -81,11 +98,12 @@ public class ReservationController {
 			reservationEntity.setReservationSeat(seatNumber[i]);
 			reservationEntity.setUser(principalDetails.getUser());
 			reservationEntity.setStore(storeEntity);
-			reservationEntity.setReservationTime(startHour + ":" + startMinute + "");
-			reservationEntity.setEndTime(endHour + ":" + endMinute + ":");
+			reservationEntity.setReservationTime(startHour + ":" + startMinute);
+			reservationEntity.setEndTime(endHour + ":" + endMinute);
+			reservationEntity.setReservationDate(startYear + "-" + startMonth + "-" + startDay);
+			reservationEntity.setEndDate(endYear + "-" + endMonth + "-" + endDay);
 			reservationService.save(reservationEntity);
 		}
 		return "/store/reservation";
 	}
-
 }

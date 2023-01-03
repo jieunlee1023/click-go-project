@@ -9,7 +9,9 @@ let index = {
 		let storeId = $("#storeId").val();
 		let data = {
 			startTime: $("#startTime").val(),
-			endTime: $("#endTime").val()
+			endTime: $("#endTime").val(),
+			startDate: $("#startDate").val(),
+			endDate: $("#endDate").val()
 		};
 		$.ajax({
 			type: 'post',
@@ -19,13 +21,32 @@ let index = {
 			dataType: "json"
 		}).done(function(data) {
 			if (data.httpStatus == true) {
-				alert("현 시간대에는 " + data.body + "개의 자리가 남아있습니다.");
+				closeSeats(data.body);
 			}
 		}).fail(function(error) {
-				alert("예상치 못한 오류가 발생하였습니다. 관리자에게 문의해주세요.");
+			alert("예상치 못한 오류가 발생하였습니다. 관리자에게 문의해주세요.");
 		});
 	}
 };
+
+function closeSeats(closeSeats) {
+	let closeSeatsToMap = new Map(Object.entries(closeSeats));
+	let totalRoomCount = closeSeatsToMap.get("totalRoomCount");
+
+	console.log(totalRoomCount[0] + '번 시작');
+	for (let i = 0; i < totalRoomCount; i++) {
+		console.log(i);
+
+		$("#" + i).attr("disabled", null);
+		for (seat of closeSeatsToMap.get("seats")) {
+			console.log(seat);
+			if (seat == i) {
+				$("#" + i).attr("disabled", "disabled");
+			};
+		};
+	};
+};
+
 
 index.init();
 
