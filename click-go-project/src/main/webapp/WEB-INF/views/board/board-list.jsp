@@ -130,7 +130,7 @@
 		<c:set var="isNotDisabled" value=""></c:set>
 		<li class="page-item ${boards.first ? isDisabled : isNotDisabled } "><a
 			class="page-link" href="?page=${boards.number - 1 }"
-			style="color: white; background-color: #6478ff; border: none;">이전</a></li>
+			id="page--previous">이전</a></li>
 		<!-- 반복문 처리 하기-->
 		<!-- 1 2 3, 1 2 3 4 , 1 2 3 4 5  -->
 		<c:forEach var="num" items="${pageNumbers }">
@@ -140,11 +140,11 @@
 					<!-- 0 부터 시작 컨트롤러에서 +1 -->
 					<li class="page-item"><a class="page-link"
 						href="?q=${q }&page=${num - 1 }"
-						style="color: white; background-color: #6478ff; border: none;">${num }</a></li>
+						id="page--select">${num }</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link"
-						style="color: #96bbff; background-color: #6478ff; border: none;"
+						id="page--no--select"
 						href="?q=${q }&page=${num - 1 }">${num }</a></li>
 				</c:otherwise>
 			</c:choose>
@@ -152,7 +152,7 @@
 
 		<li class="page-item ${boards.last ? isDisabled : isNotDisabled }"><a
 			class="page-link" href="?page=${boards.number + 1 }"
-			style="color: white; background-color: #6478ff; border: none;">다음</a></li>
+			id="page--next">다음</a></li>
 
 	</ul>
 </div>

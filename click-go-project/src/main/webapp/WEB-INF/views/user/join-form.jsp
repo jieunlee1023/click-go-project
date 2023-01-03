@@ -14,13 +14,13 @@
 				<div class="form-group">
 					<label for="password" class="d-flex m-0">비밀번호</label>
 					<input type="password" class="form-control" id="password"
-						value="123" required>
+						value="11111" required>
 				</div>
 				<div class="form-group">
 					<label for="password-check" class="d-flex m-0">비밀번호 확인</label> 
 					<input type="password"
 						class="form-control" id="password-check"
-						value="123" required>
+						value="11111" required>
 				</div>
 				<div class="form-group">
 					<label for="email" class="d-flex m-0">이메일</label>

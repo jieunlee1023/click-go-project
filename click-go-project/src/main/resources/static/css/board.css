@@ -156,10 +156,6 @@ input:focus {
 	background-color: rgb(255, 255, 255, 0.5);
 }
 
-.card-header {
-	border-radius: 0px;
-}
-
 #card--body {
 	border-radius: 0px;
 	background-color: rgb(255, 255, 255, 0.5);
@@ -188,4 +184,13 @@ input:focus {
 
 .board--list--main--main {
 	background-color: rgb(255, 255, 255, 0.3);
+}
+
+.card-header {
+	border-radius: 0px;
+	background-color: rgb(255, 255, 255, 0.5);
+}
+
+.card-block {
+	background-color: rgb(255, 255, 255, 0.5);
 }

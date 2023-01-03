@@ -128,7 +128,6 @@ public class UserService {
 		});
 	}
 	
-	 //랜덤함수로 임시비밀번호 구문 만들기
 	
 	// 임시비밀번호로 DB저장
 	@Transactional

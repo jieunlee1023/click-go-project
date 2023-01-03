@@ -41,6 +41,11 @@ public class Reservation {
 	private Timestamp createDate;
 
 	@Column(nullable = false)
+	private String reservationDate;
+
+	private String endDate;
+	
+	@Column(nullable = false)
 	private String reservationTime;
 
 	private String endTime;

@@ -45,6 +45,7 @@
 <link href="/css/view-more.css" rel="stylesheet" type="text/css" />
 <link href="/css/board.css" rel="stylesheet" type="text/css" />
 <link href="/css/storeFranchise.css" rel="stylesheet" type="text/css" />
+<link href="/css/mypage.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="/css/fullpage.min.css">
 <link rel="stylesheet" href="/css/index.css">
