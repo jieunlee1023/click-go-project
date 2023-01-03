@@ -2,6 +2,8 @@ package com.clickgo.project.repository;
 
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -17,6 +19,9 @@ public interface IUserRepository extends JpaRepository<User, Integer> {
 
 	@Query(value = " select * from user where username = ?1 and email = ?2 ", nativeQuery = true)
 	Optional<User> findByPassword(String username, String email);
+
+	// 승원
+	Page<User> findByUsernameContaining(String q, Pageable pageable);
 
 
 }

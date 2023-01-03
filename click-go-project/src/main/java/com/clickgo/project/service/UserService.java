@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -161,4 +163,11 @@ public class UserService {
         }
         return str;
     }
+
+
+    @Transactional
+	public Page<User> searchUserInfo(String q, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return userRepository.findByUsernameContaining(q, pageable);
+	}
 }

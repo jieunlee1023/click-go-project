@@ -123,7 +123,7 @@
 
 
 
-	<div class="m-5"></div>
+	<div class="m-5">
 	<ul class="pagination justify-content-center"
 		style="border-radius: 0px;">
 		<c:set var="isDisabled" value="disabled"></c:set>
@@ -155,7 +155,7 @@
 			style="color: white; background-color: #6478ff; border: none;">다음</a></li>
 
 	</ul>
-
+</div>
 </div>
 
 

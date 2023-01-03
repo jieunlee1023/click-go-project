@@ -88,7 +88,7 @@
 
 			</c:when>
 
-			<c:when test="${principal.user.role == 'ADMIN'}">
+			<c:when test="${principal.user.role eq 'ADMIN'}">
 				<div class="nav--list">
 			        <ul id="nav--item">
 			       		 <li>
@@ -114,7 +114,7 @@
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
 								</ul>
 						</li>
-						<li><a class="nav-link" href="/mypage">내 정보</a></li>
+						<li><a class="nav-link" href="/admin/admin-mypage">관리자</a></li>
 						<li><a class="nav-link" href="/logout">로그아웃</a></li>
 			        </ul>
 			    </div>
