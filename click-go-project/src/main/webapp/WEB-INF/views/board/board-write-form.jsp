@@ -55,12 +55,13 @@
 	$('.content').summernote({
 		placeholder : '내용을 입력해주세요',
 		tabsize : 2,
-		height : 300
+		height : 300,
+		
 	});
 </script>
 
 <script type="text/javascript" src="/js/board.js"></script>
-
+<br><br><br>
 <%@ include file="../layout/shortFooter.jsp"%>
 
 

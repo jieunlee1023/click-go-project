@@ -4,12 +4,7 @@
 
 
 <div class="container" id="board--list">
-
-	<!-- 제목 -->
-	<div id="view-more-title">
-		<div>* Board *</div>
-	</div>
-
+	<br> <br>
 	<div class=" d-flex" id="board--list--top">
 
 
@@ -31,7 +26,7 @@
 
 	</div>
 
-	<br> <br>
+
 	<div id="board--list--main--title"
 		class="border-top border-bottom pt-2 ">
 		<div class="col-lg-title">
@@ -63,7 +58,7 @@
 						</div>
 						<div class="col-lg-board-list-item">
 							<a id="board--title" href="/board/${board.id }"> <img
-								src="/image/secret.png" width="15px"> ${board.title}
+								src="/image/secret.png" width="15px"> 비밀글입니다
 							</a>
 						</div>
 						<div class="col-lg-board-list-item">
@@ -73,11 +68,6 @@
 							<p id="board--date">${board.createDate }</p>
 						</div>
 					</div>
-
-
-
-
-
 
 				</c:when>
 				<c:otherwise>
@@ -89,9 +79,8 @@
 							<p id="board--id">${board.id }</p>
 						</div>
 						<div class="col-lg-board-list-item">
-							<a id="board--title" href="#"
-								onclick="alert('비밀글은 작성자만 확인 가능합니다.')"> <img
-								src="/image/secret.png" width="15px"> ${board.title}
+							<a id="board--title" onclick="alert('비밀글은 작성자만 확인 가능합니다.')">
+								<img src="/image/secret.png" width="15px"> 비밀글입니다
 							</a>
 						</div>
 						<div class="col-lg-board-list-item">
@@ -101,8 +90,6 @@
 							<p id="board--date">${board.createDate }</p>
 						</div>
 					</div>
-
-
 				</c:otherwise>
 			</c:choose>
 
@@ -136,14 +123,14 @@
 
 
 
-	<div class="m-5"></div>
+	<div class="m-5">
 	<ul class="pagination justify-content-center"
 		style="border-radius: 0px;">
 		<c:set var="isDisabled" value="disabled"></c:set>
 		<c:set var="isNotDisabled" value=""></c:set>
 		<li class="page-item ${boards.first ? isDisabled : isNotDisabled } "><a
 			class="page-link" href="?page=${boards.number - 1 }"
-			style="color: white; background-color: #6478ff; border: none;">이전</a></li>
+			id="page--previous">이전</a></li>
 		<!-- 반복문 처리 하기-->
 		<!-- 1 2 3, 1 2 3 4 , 1 2 3 4 5  -->
 		<c:forEach var="num" items="${pageNumbers }">
@@ -153,11 +140,11 @@
 					<!-- 0 부터 시작 컨트롤러에서 +1 -->
 					<li class="page-item"><a class="page-link"
 						href="?q=${q }&page=${num - 1 }"
-						style="color: white; background-color: #6478ff; border: none;">${num }</a></li>
+						id="page--select">${num }</a></li>
 				</c:when>
 				<c:otherwise>
 					<li class="page-item"><a class="page-link"
-						style="color: #96bbff; background-color: #6478ff; border: none;"
+						id="page--no--select"
 						href="?q=${q }&page=${num - 1 }">${num }</a></li>
 				</c:otherwise>
 			</c:choose>
@@ -165,10 +152,10 @@
 
 		<li class="page-item ${boards.last ? isDisabled : isNotDisabled }"><a
 			class="page-link" href="?page=${boards.number + 1 }"
-			style="color: white; background-color: #6478ff; border: none;">다음</a></li>
+			id="page--next">다음</a></li>
 
 	</ul>
-
+</div>
 </div>
 
 

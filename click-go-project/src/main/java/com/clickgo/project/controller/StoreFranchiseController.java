@@ -23,6 +23,7 @@ import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.service.CategoryService;
+import com.clickgo.project.service.ImageService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 
@@ -36,6 +37,9 @@ public class StoreFranchiseController {
 	private StoreService storeService;
 	@Autowired
 	private CategoryService categoryService;
+
+	@Autowired
+	private ImageService imageService;
 
 	// 메시지 개수
 	int count;
@@ -54,55 +58,53 @@ public class StoreFranchiseController {
 	}
 
 	@PostMapping("/apply/upload")
-	public String franchiseApply(RequestFileDto fileDto, 
-			@AuthenticationPrincipal PrincipalDetails principalDetails,
+	public String franchiseApply(RequestFileDto fileDto, @AuthenticationPrincipal PrincipalDetails principalDetails,
 			Model model) {
 		franchiseService.apply(fileDto, principalDetails);
 		franchiseMassageCount(model);
-		return "redirect:/";
+		return "/storeFranchise/store-franchise-applyList";
 	}
-	
-	// list만 나오는코드
-//	@GetMapping("/store-franchise-list")
-//	public String franchiseList(Model model,
-//			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
-//		Page<Store> storeList = storeService.getStoreAllList(pageable);
-//		
-//		model.addAttribute("storeList", storeList);
-//		franchiseMassageCount(model);
-//		return "/storeFranchise/store-franchise-list";
-//	}
-	
+
+
 	// s w
-		@GetMapping({ "/store-franchise-list", "/store-franchise-list/search" })
-		public String franchiseList(@RequestParam(required = false) String q, Model model,
-				@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
-			String searchFtitle = q == null ? "" : q; 
-			
-			
-			Page<Store> storeList = storeService.searchStoreList(searchFtitle, pageable);
-			
-			int PAGENATION_BLOCK_COUNT = 3;
-			int nowPage = storeList.getPageable().getPageNumber() + 1;
+	@GetMapping({ "/store-franchise-list", "/store-franchise-list/search" })
+	public String franchiseList(@RequestParam(required = false) String q, Model model,
+			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		String searchFtitle = q == null ? "" : q;
 
-			int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
-			int endPageNumber = Math.min(nowPage + startPageNumber, storeList.getTotalPages());
+		Page<Store> storeList = storeService.searchStoreList(searchFtitle, pageable);
 
-			ArrayList<Integer> pageNumbers = new ArrayList<>();
-			for (int i = startPageNumber; i <= endPageNumber; i++) {
-				pageNumbers.add(i);
-			}
-			
-			model.addAttribute("storeList", storeList);
-			model.addAttribute("nowPage", nowPage);
-			model.addAttribute("startPageNumber", startPageNumber);
-			model.addAttribute("endPageNumber", endPageNumber);
-			model.addAttribute("pageNumbers", pageNumbers);
-			model.addAttribute("q", searchFtitle);
-			
-			franchiseMassageCount(model);
-			return "/storeFranchise/store-franchise-list";
+		int PAGENATION_BLOCK_COUNT = 3;
+		int nowPage = storeList.getPageable().getPageNumber() + 1;
+
+		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
+		int endPageNumber = Math.min(nowPage + startPageNumber, storeList.getTotalPages());
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
 		}
+		
+		storeList.forEach(t -> {
+			getImage(model, t.getId());
+		});
+
+		
+		
+		
+		model.addAttribute("storeSearch", storeList.getTotalElements());
+		model.addAttribute("storeList", storeList);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPageNumber", startPageNumber);
+		model.addAttribute("endPageNumber", endPageNumber);
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("q", searchFtitle);
+		
+		
+
+		franchiseMassageCount(model);
+		return "/storeFranchise/store-franchise-list";
+	}
 
 	@GetMapping("/store-franchise-message")
 	public String franchiseMessage(Model model) {
@@ -128,6 +130,9 @@ public class StoreFranchiseController {
 		});
 		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
+	}
 
+	public void getImage(Model model, int storeId) {
+		model.addAttribute("image", imageService.findByStoreId(storeId).get(1).getImageUrl());
 	}
 }

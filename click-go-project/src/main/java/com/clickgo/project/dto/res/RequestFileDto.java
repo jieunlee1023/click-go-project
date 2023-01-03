@@ -1,5 +1,7 @@
 package com.clickgo.project.dto.res;
 
+import java.util.List;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.clickgo.project.entity.Category;
@@ -13,37 +15,30 @@ import lombok.Data;
 public class RequestFileDto {
 	
 //	private MultipartFile[] files; :여러개
-	private MultipartFile file;
+	private List<MultipartFile> file;
 	private String uuid; //고유한 파일 이름을 만들기 위한 변수
 	
 	private Category category;
 	private String storeName;
 	private String storeTEL;
 	private String storeAddress;
+	private int storeTotalRoomCount;
+	private int price;
 
 
 	// 기능 만들기
-	public StoreFranchise toEntitiy(String postImageUrl, User user) {
+	public StoreFranchise toEntitiy(String licenseImageUrl, String layoutImageUrl, User user) {
 		return StoreFranchise.builder()
 				.category(category)
 				.storeName(storeName)
 				.storeTEL(storeTEL)
 				.storeAddress(storeAddress)
-				.storeLicense(postImageUrl)
+				.storeTotalRoomCount(storeTotalRoomCount)
+				.price(price)
+				.licenseImageUrl(licenseImageUrl)
+				.layoutImageUrl(layoutImageUrl)
 				.state(StoreFranchiseState.WAIT)
 				.user(user)
 				.build();
 	}
-
-//	public Store toStoreEntitiy(List<Image> postImageUrl, User user) {
-//		return Store.builder()
-//				.category(category)
-//				.storeName(storeName)
-//				.storeTEL(storeTEL)
-//				.storeAddress(storeAddress)
-//				.image(postImageUrl)
-//				.user(user)
-//				.build();
-//	}
-
 }

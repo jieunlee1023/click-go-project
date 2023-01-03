@@ -11,8 +11,12 @@ let index = {
          let storeName = $("#storeName" + i).text();
          let storeTel = $("#storeTel" + i).text();
          let storeAddress = $("#storeAddress" + i).text();
+         let storeTotalRoomCount = $("#storeTotalRoomCount" + i).text();
+         let licenseImageUrl = $("#licenseImageUrl" + i).val();
+         let layoutImageUrl = $("#layoutImageUrl" + i).val();
+         let price = $("#price" + i).text();
          $("#btn--store-franchise-approve-" + i).bind("click", () => {
-            this.approve(userId, userName, franchiseId, category, storeName, storeTel, storeAddress);
+            this.approve(userId, userName, franchiseId, category, storeName, storeTel, storeAddress, licenseImageUrl, layoutImageUrl, storeTotalRoomCount, price);
          });
          $("#btn--store-franchise-reject-" + i).bind("click", () => {
             var rejectMsg = prompt("유저에게 보낼 승인 거절 사유를 적어주세요!");
@@ -20,12 +24,10 @@ let index = {
                this.reject(userId, userName, franchiseId, category, storeName, storeTel, storeAddress, rejectMsg);
             }
          });
-
       }
-
    },
 
-   approve: function(userId, userName, franchiseId, category, storeName, storeTel, storeAddress) {
+   approve: function(userId, userName, franchiseId, category, storeName, storeTel, storeAddress, licenseImageUrl, layoutImageUrl, storeTotalRoomCount, price) {
       let data = {
          id: franchiseId,
          categoryId: category,
@@ -33,6 +35,10 @@ let index = {
          storeAddress: storeAddress,
          storeTEL: storeTel,
          userId: userId,
+         licenseImageUrl: licenseImageUrl,
+         layoutImageUrl: layoutImageUrl,
+         storeTotalRoomCount: storeTotalRoomCount,
+         price: price,
       }
 
       $.ajax({

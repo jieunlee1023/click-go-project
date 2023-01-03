@@ -55,6 +55,9 @@ input:focus {
 	display: flex;
 	padding-top: 2px;
 	justify-content: space-around;
+	background-color: rgb(255, 255, 255, 0.6);
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
 }
 
 .col-lg-title {
@@ -153,10 +156,6 @@ input:focus {
 	background-color: rgb(255, 255, 255, 0.5);
 }
 
-.card-header {
-	border-radius: 0px;
-}
-
 #card--body {
 	border-radius: 0px;
 	background-color: rgb(255, 255, 255, 0.5);
@@ -183,3 +182,15 @@ input:focus {
 	border-radius: 3px;
 }
 
+.board--list--main--main {
+	background-color: rgb(255, 255, 255, 0.3);
+}
+
+.card-header {
+	border-radius: 0px;
+	background-color: rgb(255, 255, 255, 0.5);
+}
+
+.card-block {
+	background-color: rgb(255, 255, 255, 0.5);
+}

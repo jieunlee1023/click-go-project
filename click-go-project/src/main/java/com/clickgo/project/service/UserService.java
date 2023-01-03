@@ -1,6 +1,8 @@
 package com.clickgo.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -122,7 +124,6 @@ public class UserService {
 		});
 	}
 	
-	 //랜덤함수로 임시비밀번호 구문 만들기
 	
 	// 임시비밀번호로 DB저장
 	@Transactional
@@ -137,6 +138,7 @@ public class UserService {
 			String encPassword = encoder.encode(rawPassword);
 
 			userEntity.setPassword(encPassword);
+			
 		}
 		return rawPassword;
 	}
@@ -165,5 +167,11 @@ public class UserService {
 		return userEntity;
     }
     
-    
+
+
+    @Transactional
+	public Page<User> searchUserInfo(String q, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return userRepository.findByUsernameContaining(q, pageable);
+	}
 }

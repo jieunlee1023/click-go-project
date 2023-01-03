@@ -2,13 +2,15 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../../layout/header.jsp"%>
 <br>
-<div class="container">
-	<h1>매장 관리</h1>
-	<h5>이용자들이 보는 가게의 화면을 꾸며보세요 !</h5>
+<div class="container" id="reservation">
+	<div id="view-more-title">
+		<div>🌟 매장 관리</div>
+	</div>
+	<span style="color: #6478ff">: 이용자들이 보는 가게의 화면을 꾸며보세요 !</span>
+	<hr>
+	<br>
 </div>
-<br>
-&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp;&nbsp;&nbsp; &nbsp;
+
 <div class="d-flex-column justify-content-center">
 	<c:choose>
 		<c:when test="${empty stores}">
@@ -22,7 +24,7 @@
 		</c:when>
 		<c:otherwise>
 			<c:forEach var="store" items="${stores}">
-				<%@ include file="../../../common/store.jsp" %>
+				<%@ include file="../../../common/store.jsp"%>
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>

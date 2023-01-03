@@ -1,6 +1,7 @@
 package com.clickgo.project.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,11 +19,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
+import com.clickgo.project.entity.Image;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.service.CategoryService;
+import com.clickgo.project.service.ImageService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 
@@ -39,6 +43,9 @@ public class StoreController {
 	@Autowired
 	private CategoryService categoryService;
 
+	@Autowired
+	private ImageService imageService;
+
 	private Page<Store> stores;
 
 	@GetMapping("/main")
@@ -54,7 +61,9 @@ public class StoreController {
 		} else {
 			stores = storeService.findAllByStoreCategory(pageName, pageable);
 		}
-
+		stores.forEach(t -> {
+			getImage(model, t.getId());
+		});
 		model.addAttribute("nowPage", pageName);
 		model.addAttribute("categories", categories);
 		model.addAttribute("stores", stores);
@@ -80,8 +89,14 @@ public class StoreController {
 	public String detail(@PathVariable int id, Model model,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Store storeEntity = storeService.findById(id);
+		// 비로그인 회원 접속 시 임시 RoleType을 GEUST로 지정
+		if (principalDetails == null) {
+			principalDetails = new PrincipalDetails(new User().builder().role(RoleType.GEUST).build());
+		}
+
+		getNowDateAndTime(model);
+		getImage(model, id);
 		RoleType role = principalDetails.getUser().getRole();
-		System.out.println(storeEntity);
 		model.addAttribute("store", storeEntity);
 		model.addAttribute("role", role);
 		return "/store/detail";
@@ -90,5 +105,27 @@ public class StoreController {
 	@GetMapping("/map")
 	public String map() {
 		return "/store/map";
+	}
+
+	private void getNowDateAndTime(Model model) {
+		Date date = new Date();
+
+		int nowYear = (date.getYear() + 1900);
+		String nowMonth = "0" + (date.getMonth() + 1);
+		String nowDay = "0" + date.getDate();
+		int nowHour = date.getHours();
+		int nowMinutes = date.getMinutes();
+
+		String nowDate = nowYear + "-" + nowMonth + "-" + nowDay;
+		String nowTime = nowHour + ":" + nowMinutes;
+		System.out.println(nowDate);
+		System.out.println(nowTime);
+		
+		model.addAttribute("nowDate", nowDate);
+		model.addAttribute("nowTime", nowTime);
+	}
+
+	public void getImage(Model model, int storeId) {
+		model.addAttribute("image", imageService.findByStoreId(storeId).get(1).getImageUrl());
 	}
 }

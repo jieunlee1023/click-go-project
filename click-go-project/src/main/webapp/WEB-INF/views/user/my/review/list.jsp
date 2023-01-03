@@ -2,8 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../../layout/header.jsp"%>
 <br>
-<div class="container d-flex justify-content-start pl-5">
-	<h1 style="font-weight: bold;">리뷰 내역</h1>
+<div class="container" id="reservation">
+	<div id="view-more-title">
+		<div>📝 리뷰 내역</div>
+	</div>
+	<hr>
+	<br>
 </div>
 <div class="d-flex justify-content-center">
 
@@ -14,9 +18,15 @@
 				<br> <br> <br>
 				<c:choose>
 					<c:when test="${empty reviewList.content}">
-						<h1>현재 작성하신 리뷰가 존재하지 않습니다.</h1>
-						<h5>${principal.user.username}님의리뷰는click go와 가맹점 개선에 큰 힘이 됩니다
-							!</h5>
+						<div class="d-flex justify-content-center">
+							<div id="franchise--none">
+								<br>
+								<div>현재 작성하신 리뷰가 존재하지 않습니다.</div>
+								<span style="color: #6478ff; font-size: 15px;">"${principal.user.username}""님의
+									리뷰는 click-go와 가맹점 개선에 큰 힘이 됩니다</span> <br> <br> <br> <br>
+							</div>
+						</div>
+
 					</c:when>
 
 					<c:otherwise>
@@ -43,11 +53,19 @@
 		</c:when>
 		<c:otherwise>
 			<div class="d-flex-column">
-				<br> <br> <br>
+				<br> <br>
 				<c:choose>
 					<c:when test="${empty reviewList.content}">
-						<h1>현재 사장님의 가게의 리뷰가 존재하지 않습니다.</h1>
-						<h5>click go는 사장님의 성공을 위해 최선을 다 할 것입니다.</h5>
+
+						<div class="d-flex justify-content-center">
+							<div id="franchise--none">
+								<br>
+								<div>현재 작성하신 리뷰가 존재하지 않습니다.</div>
+								<span style="color: #6478ff; font-size: 15px;"> click-go는
+									가맹점주님의 성공을 위해 최선을 다 할 것입니다.</span> <br> <br> <br> <br>
+							</div>
+						</div>
+
 					</c:when>
 					<c:otherwise>
 						<c:forEach var="review" items="${reviewList.content}">

@@ -10,14 +10,23 @@ import org.springframework.web.servlet.resource.PathResourceResolver;
 public class WebConfig implements WebMvcConfigurer{
 
 	@Value("${licenceFile.path}")
-	private String uploadFolder;
+	private String licenceFolder;
+
+	@Value("${layoutFile.path}")
+	private String layoutFolder;
 	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		WebMvcConfigurer.super.addResourceHandlers(registry);
 		
 		registry.addResourceHandler("/licence/**")
-		.addResourceLocations("file:///"+uploadFolder)
+		.addResourceLocations("file:///"+licenceFolder)
+		.setCachePeriod(60*10*6)
+		.resourceChain(true)
+		.addResolver(new PathResourceResolver());
+		
+		registry.addResourceHandler("/layout/**")
+		.addResourceLocations("file:///"+layoutFolder)
 		.setCachePeriod(60*10*6)
 		.resourceChain(true)
 		.addResolver(new PathResourceResolver());
