@@ -23,10 +23,6 @@ let index = {
 			this.checkEmail();
 		});
 
-
-
-
-
 	},
 
 	save: function() {
@@ -39,7 +35,10 @@ let index = {
 			role: $("#role").val()
 		};
 		if (data.password != passwordCheck) {
-			alert("비밀번호를 확인해주세요.");
+			Swal.fire({
+				icon: 'warning',
+				text: '비밀번호를 확인해주세요!',
+			});
 		}
 		$.ajax({
 			type: 'post',
@@ -53,12 +52,20 @@ let index = {
 				alert(data.body);
 				location.href = "/";
 			} else {
-				alert("회원가입에 실패하셨습니다. 형식을 맞춰주세요.");
+				Swal.fire({
+					icon: 'error',
+					text: '회원가입에 실패하셨습니다. 형식을 맞춰주세요.',
+				});
+
 			}
 		}).fail(function(error) {
 			alert(error.responseText);
 
 			console.log("오류가 발생했습니다. 관리자에게 문의해주세요.");
+			Swal.fire({
+				icon: 'error',
+				text: '오류가 발생했습니다. 관리자에게 문의해주세요.',
+			});
 		});
 
 	},
@@ -72,7 +79,10 @@ let index = {
 			password: $("#new--pwd").val(),
 		};
 		if (data.password != passwordCheck) {
-			alert("비밀번호를 확인해주세요.");
+			Swal.fire({
+				icon: 'warning',
+				text: '비밀번호를 확인해주세요!',
+			});
 		} else {
 			$.ajax({
 				type: 'post',
@@ -86,11 +96,17 @@ let index = {
 					alert(data.body);
 					location.href = "/";
 				} else {
-					alert("회원 정보 수정에 실패하셨습니다. 형식을 맞춰주세요.");
+					Swal.fire({
+						icon: 'error',
+						text: '회원 정보 수정에 실패하셨습니다. 형식을 맞춰주세요.',
+					});
 				}
 			}).fail(function(error) {
 				console.log(error.responseText);
-				alert("오류가 발생했습니다. 관리자에게 문의해주세요.");
+				Swal.fire({
+					icon: 'error',
+					text: '오류가 발생했습니다. 관리자에게 문의해주세요.',
+				});
 			});
 		}
 	},
@@ -104,6 +120,9 @@ let index = {
 			email: $("#email").val(),
 			role: $("#role").val()
 		};
+
+
+
 		if (confirm('정말 회원탈퇴를 하시겠습니까?')) {
 
 			$.ajax({
@@ -119,7 +138,10 @@ let index = {
 				}
 			}).fail(function(error) {
 				console.log(error);
-				alert("오류가 발생했습니다. 관리자에게 문의해주세요.");
+				Swal.fire({
+					icon: 'error',
+					text: '오류가 발생했습니다. 관리자에게 문의해주세요.',
+				});
 			});
 		}
 	},
@@ -137,12 +159,18 @@ let index = {
 			dataType: "json"
 		}).done(function(data) {
 			if (data.httpStatus == true) {
-				alert("당신의 아이디는 : " + data.body);
-				location.href = "/auth/info-search";
+				Swal.fire({
+					icon: 'success',
+					text: "당신의 아이디는 : " + data.body,
+				});
+
 			}
 		}).fail(function(error) {
 			console.log(error);
-			alert("해당하는 이메일이 없습니다 다시 확인해주세요");
+			Swal.fire({
+				icon: 'error',
+				text: '해당하는 이메일이 없습니다 다시 확인해주세요',
+			});
 		});
 	},
 
@@ -161,13 +189,19 @@ let index = {
 			dataType: "json"
 		}).done(function(data) {
 			if (data.httpStatus == true) {
-				alert("가입하신 이메일 주소로 임시비밀번호를 발송하였습니다.");
-				location.href = "/auth/login-form";
+				Swal.fire({
+					icon: 'success',
+					text: '가입하신 이메일 주소로 임시비밀번호를 발송하였습니다.',
+				}).then(function() {
+					location.href = "/auth/login-form";
+				});
 			}
 		}).fail(function(error) {
 			console.log(error);
-			console.log("username " + username + "   email" + email);
-			alert("가입하신 회원정보가 없습니다 다시 확인하여 주세요");
+			Swal.fire({
+				icon: 'error',
+				text: '가입하신 회원정보가 없습니다 다시 확인하여 주세요',
+			});
 		});
 	},
 
@@ -187,10 +221,10 @@ let index = {
 
 				if (data == 1) {
 					$("#id-feedback").html('이미 사용중인 아이디입니다.');
-					$("#id-feedback").attr('color', '#dc3545');
+					$("#id-feedback").attr('color', '#db0008');
 				} else {
 					$("#id-feedback").html('사용할 수 있는 아이디입니다.');
-					$("#id-feedback").attr('color', '#2fb380');
+					$("#id-feedback").attr('color', '#009129');
 				}
 			},
 			error: function() {
@@ -210,14 +244,13 @@ let index = {
 			contentType: "application/json; charset=UTF-8",
 			dataType: 'json',
 			success: function(data) {
-				console.log("데이터 들어오나요" + data);
 
 				if (data == 1) {
 					$("#email-feedback-email").html('이미 사용중인 이메일입니다.');
-					$("#email-feedback-email").attr('color', '#dc3545');
+					$("#email-feedback-email").attr('color', '#db0008');
 				} else {
 					$("#email-feedback-email").html('사용할 수 있는 이메일입니다.');
-					$("#email-feedback-email").attr('color', '#2fb380');
+					$("#email-feedback-email").attr('color', '#009129');
 				}
 			},
 			error: function() {

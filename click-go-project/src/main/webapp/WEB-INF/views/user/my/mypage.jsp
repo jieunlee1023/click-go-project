@@ -16,7 +16,6 @@
 				</button>
 			</div>
 
-
 			<br>
 			<h4 id="mypage--title">반갑습니다.</h4>
 			<h4 id="mypage--title">" ${principal.user.username} " 님,</h4>
@@ -186,21 +185,20 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<div class="btn-wrapper">
 				<div class="btn-wrapper__container">
 					<div class="btn-inner">
 						<a href="###" class="mypage-btn"> <img
 							src="/image/mypage/sales.png" width="50px"> <br> <br>
 							<span>매출 내역</span> <br> <span id="mypage-mini-title">
-							가맹점의 매출을 확인해보세요! 
-						</span>
+								가맹점의 매출을 확인해보세요! </span>
 						</a>
 					</div>
 				</div>
 			</div>
-			
-			
+
+
 		</div>
 
 	</c:otherwise>
@@ -209,4 +207,5 @@
 <br>
 <br>
 <script src="/js/user.js"></script>
+
 <%@ include file="../../layout/footer.jsp"%>
