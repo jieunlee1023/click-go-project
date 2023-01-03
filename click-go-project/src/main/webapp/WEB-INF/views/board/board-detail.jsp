@@ -40,24 +40,7 @@
 			<div class="card-header">💬</div>
 
 			<ul class="list-group" id="reply--box">
-				<%-- <c:forEach var="reply" items="${board.csReply }">
-				
-				<li class="list-group-item" id="reply--${reply.id }">
-					<div class="d-flex justify-content-between p-0">
-						<p class="ml-3">
-							↪ <small id="small--item">&nbsp;${reply.user.username }&nbsp; (${reply.createDate })&nbsp; : ${reply.content }</small>
-						</p>
 
-						<div>
-							<c:if test="${reply.user.id eq principal.user.id }">
-								<button type="button" class="mr-4" id="btn-reply-delete" onclick="boardIndex.replyDelete(${board.id}, ${reply.id });">삭제</button>
-
-							</c:if>
-						</div>
-					</div>
-				</li>
-
-			</c:forEach> --%>
 
 				<c:forEach var="reply" items="${board.csReply }">
 					<c:if test="${reply.secret == true }">
@@ -65,7 +48,7 @@
 							<c:when test="${reply.user.id eq principal.user.id || principal.user.role eq 'ADMIN' }">
 
 								<li class="list-group-item" id="reply--${reply.id }">
-									<div class="d-flex justify-content-between p-0">
+									<div class="d-flex justify-content-start p-0">
 										<p class="ml-3">
 											↪ <small id="small--item">&nbsp;${reply.user.username }&nbsp; (${reply.createDate })&nbsp; : ${reply.content }</small>
 										</p>
@@ -87,7 +70,7 @@
 
 					<c:if test="${reply.secret == false }">
 						<li class="list-group-item" id="reply--${reply.id }">
-							<div class="d-flex justify-content-between p-0">
+							<div class="d-flex justify-content-start p-0">
 								<p class="ml-3">
 									↪ <small id="small--item">&nbsp;${reply.user.username }&nbsp; (${reply.createDate })&nbsp; : ${reply.content }</small>
 								</p>
@@ -107,21 +90,17 @@
 		<div class="card" id="card--body">
 
 
-			<div class="card-body d-flex justify-content-between">
+			<div class="card-body d-flex justify-content-center">
 
 				<input type="text" id="reply--content" name="content">
-				<button type="submit" class="" id="">등록</button>
-
-				<div class="form-check form-check-inline mt-3">
-					<input class="form-check-input" type="checkbox" name="secret" id="secret"> 
-					<label class="form-check-label"></label>
+				<div class="form-check form-check-inline ml-3 ">
+					<input class="form-check-input" type="checkbox" name="secret"
+						id="secret"> <label class="form-check-label">🔒</label>
 				</div>
+			<button type="submit" class="" id="btn-reply-save">등록</button>
 			</div>
 
-
 		</div>
-
-
 	</form>
 </div>
 <br>

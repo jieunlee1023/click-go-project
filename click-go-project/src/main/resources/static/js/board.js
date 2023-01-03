@@ -11,9 +11,11 @@ let boardIndex = {
 		$("#btn--delete").bind("click", () => {
 			this.deleteById();
 		});
+		/*
 		$("#btn-reply-save").bind("click", () => {
 			this.replySave();
 		});
+		*/
 	},
 
 	write: function() {

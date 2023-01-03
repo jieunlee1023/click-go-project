@@ -99,7 +99,6 @@ public class UserApiController {
 	// 비밀번호 찾기
 		@PostMapping("/send-mail")
 	    public ResponseDto<Integer> mailSend(@RequestBody User user){
-			System.out.println("durl");
 			User userEntity = userService.searchPassword(user.getUsername(),user.getEmail());
 			
 			
@@ -139,8 +138,6 @@ public class UserApiController {
 
 	            // send the message
 	            Transport.send(message);
-	            System.out.println("Success Message Send");
-	            System.out.println(">>>"+temporary);
 	            return 0;
 	        }catch (MessagingException e){
 	            e.printStackTrace();
@@ -151,8 +148,6 @@ public class UserApiController {
 	 // 아이디 중복체크
 		@PostMapping("/check-id")
 		public int checkId(@RequestBody User user) {
-			System.out.println("여기오나요?");
-			System.out.println("찾고자하는 이메일 값" + user.getUsername());
 			try {
 				int result = userService.findByUsername(user.getUsername());
 				return 1;
@@ -164,13 +159,9 @@ public class UserApiController {
 		 // 이메일 중복체크
 		@PostMapping("/check-email")
 		public int checkEmail(@RequestBody User user) {
-			System.out.println("이메일");
-			System.out.println("찾고자하는 이메일 값" + user.getEmail());
 			try {
 				User userEntity = userService.searchUserEmail(user.getEmail());
-				System.out.println(userEntity);
 				int result = (userEntity != null) ? 1 : -1;
-				System.out.println("이메일값 " + result);
 				return result;
 			} catch (Exception e) {
 				return -1;
