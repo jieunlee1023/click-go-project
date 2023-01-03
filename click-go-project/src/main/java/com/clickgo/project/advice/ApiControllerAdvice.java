@@ -42,4 +42,25 @@ public class ApiControllerAdvice {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
 
 	}
+	
+	@ExceptionHandler(value = NotFoundIdException.class)
+	public ResponseEntity<?> notFoundIdException(NotFoundIdException e) {
+		System.out.println("머리아프다");
+			
+			System.err.println(e.getMessage());
+			System.out.println(e.getStackTrace().toString());
+			// name과 age 둘 다 잘못들어왔다면,
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
+
+	}
+	
+	
+	@ExceptionHandler(value = IllegalArgumentException.class)
+	public ResponseEntity<?> illegalArgumentException(IllegalArgumentException e) {
+
+			System.out.println("여기");
+		// name과 age 둘 다 잘못들어왔다면,
+		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
+
+	}
 }

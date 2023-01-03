@@ -23,10 +23,12 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.clickgo.project.auth.PrincipalDetails;
@@ -94,45 +96,7 @@ public class UserApiController {
 		return new ResponseDto<>(true, userEntity.getUsername());
 	}
 	
-	/*
-	 * // 비밀번호 찾기
-	 * 
-	 * @PostMapping("/auth/send") public ResponseDto<Integer> mailSend(@RequestBody
-	 * User user){ User userEntity =
-	 * userService.searchPassword(user.getUsername(),user.getEmail());
-	 * 
-	 * 
-	 * return new ResponseDto<>(true, naverMailSend(userEntity.getEmail())); }
-	 * 
-	 * public int naverMailSend(String email){ String host = "smtp.naver.com"; //
-	 * 테스트후 개인정보 보안상 비밀번호는 지워주세요
-	 * 
-	 * // SMTP 서버 정보를 설정한다. Properties props = new Properties(); // Properties는
-	 * java.util의 Properties입니다. props.put("mail.smtp.host", host); // smtp의 호스트
-	 * props.put("mail.smtp.port", 587); // 587 포트 사용 props.put("mail.smtp.auth",
-	 * "true"); props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // 이 설정을 안붙이면 TLS
-	 * Exception이 뜨더라구요. (버전이 안맞아서)
-	 * 
-	 * Session session = Session.getDefaultInstance(props, new Authenticator() {
-	 * 
-	 * @Override protected PasswordAuthentication getPasswordAuthentication() {
-	 * return new PasswordAuthentication("whwlgns42@naver.com",password); } });
-	 * 
-	 * try{ MimeMessage message = new MimeMessage(session); message.setFrom(new
-	 * InternetAddress(email)); // 수신자 이메일
-	 * message.addRecipient(Message.RecipientType.TO, new
-	 * InternetAddress("whwlgns42@kakao.com"));
-	 * 
-	 * // 메일 제목 message.setSubject("SMTP TEST");
-	 * 
-	 * // 메일 내용 String temporary = userService.searchPasswordChange(email);
-	 * message.setText("안녕하세요.\n 저희 클릭고 입니다. \n 임시비밀번호 : " + temporary); // 랜덤인
-	 * 임시비밀번호를 생성
-	 * 
-	 * // send the message Transport.send(message);
-	 * System.out.println("Success Message Send"); return 0; }catch
-	 * (MessagingException e){ e.printStackTrace(); return -1; } }
-	 */
+	
 	
 	
 	// 비밀번호 찾기
@@ -185,8 +149,34 @@ public class UserApiController {
 	        }
 	    }
 	
-	
-	
-	
+	 // 아이디 중복체크
+		@PostMapping("/check-id")
+		public int checkId(@RequestBody User user) {
+			System.out.println("여기오나요?");
+			System.out.println("찾고자하는 이메일 값" + user.getUsername());
+			try {
+				int result = userService.findByUsername(user.getUsername());
+				return 1;
+			} catch (Exception e) {
+				return -1;
+			}
+		}
+		
+		 // 이메일 중복체크
+		@PostMapping("/check-email")
+		public int checkEmail(@RequestBody User user) {
+			System.out.println("이메일");
+			System.out.println("찾고자하는 이메일 값" + user.getEmail());
+			try {
+				User userEntity = userService.searchUserEmail(user.getEmail());
+				System.out.println(userEntity);
+				int result = (userEntity != null) ? 1 : -1;
+				System.out.println("이메일값 " + result);
+				return result;
+			} catch (Exception e) {
+				return -1;
+			}
+		}
+	    
 
 }

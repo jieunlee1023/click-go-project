@@ -1,15 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 	<%@ include file="../layout/header.jsp"%>
+	
+
+	
 <div class="join--form">
 	<div class="container d-flex justify-content-center" id="join--main">
 		<div class="container" >
 			<form>
 				<div class="form-group ">
 					<label for="username" class="d-flex m-0" >아이디</label>
-					<input type="text" class="form-control " id="username"
-						value="minicar" required>
+					<input type="text" class="form-control " id="username" name="username"
+						 required>
+					<font id="id-feedback" size="3"></font>
 				</div>
 				<div class="form-group">
 					<label for="password" class="d-flex m-0">비밀번호</label>
@@ -24,8 +29,9 @@
 				</div>
 				<div class="form-group">
 					<label for="email" class="d-flex m-0">이메일</label>
-					<input type="email" class="form-control" id="email"
-						 value="1@naver.com" required>
+					<input type="email" class="form-control" id="email" name="email"
+						  required>
+						 <font id="email-feedback-email" size="3"></font>
 				</div>
 				<div class="form-group">
 					<label for="phoneNumber" class="d-flex m-0">휴대전화</label>

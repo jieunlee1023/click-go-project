@@ -1,15 +1,11 @@
 package com.clickgo.project.service;
 
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import com.clickgo.project.auth.PrincipalDetails;
+import com.clickgo.project.advice.NotFoundIdException;
 import com.clickgo.project.entity.DeleteUser;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
@@ -27,11 +23,11 @@ public class UserService {
 	private IDeleteUserRepository deleteUserRepository;
 
 	@Transactional
-	public User findByUsername(String username) {
+	public int findByUsername(String username) {
 		User userEntity = userRepository.findByUsername(username).orElseThrow(() -> {
 			return new IllegalArgumentException("존재하지 않는 회원입니다.");
 		});
-		return userEntity;
+		return 1;
 	}
 
 	@Transactional
@@ -113,9 +109,9 @@ public class UserService {
 		
 	}
 	@Transactional
-	public User searchUserEmail(String email) {
+	public User searchUserEmail(String email)   {
 		return userRepository.findByEmail(email).orElseThrow(() -> {
-			return new IllegalArgumentException("해당하는 이메일을 찾을수 없습니다." );
+			return new NotFoundIdException("해당하는 이메일이 없습니다 다시확인해주세요");
 		});
 	}
 
@@ -160,4 +156,14 @@ public class UserService {
         }
         return str;
     }
+    
+ // 아이디 중복 검사
+    public User checkID(String username) { 
+    	User userEntity = userRepository.findByUsername(username).orElseThrow(() -> {
+    		return new IllegalArgumentException("테스트");
+    	});
+		return userEntity;
+    }
+    
+    
 }

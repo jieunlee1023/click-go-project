@@ -29,7 +29,6 @@ function validateForm() {
 	    return false;
 	  }
 	}
-
 </script>
 
 </body>
