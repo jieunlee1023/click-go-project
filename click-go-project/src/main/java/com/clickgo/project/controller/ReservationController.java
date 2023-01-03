@@ -33,6 +33,7 @@ public class ReservationController {
 			@RequestParam String startTime, @RequestParam String endTime, @RequestParam String startDate,
 			@RequestParam String endDate, @AuthenticationPrincipal PrincipalDetails principalDetails)
 			throws InterruptedException {
+		Store storeEntity = storeService.findById(storeId);
 		int endHour = 0;
 		int endMinute = 0;
 		Reservation reservationEntity = null;
@@ -47,7 +48,6 @@ public class ReservationController {
 		int endMonth = Integer.parseInt(endDateTokenizer.nextToken());
 		int endDay = Integer.parseInt(endDateTokenizer.nextToken());
 
-		Store storeEntity = storeService.findById(storeId);
 		StringTokenizer startTimeTokenizer = new StringTokenizer(startTime, ":");
 		int startHour = Integer.parseInt(startTimeTokenizer.nextToken());
 		int startMinute = Integer.parseInt(startTimeTokenizer.nextToken());
@@ -58,52 +58,56 @@ public class ReservationController {
 			endMinute = Integer.parseInt(endTimeTokenizer.nextToken());
 		}
 
-		for (int i = 0; i < seatNumber.length; i++) {
-			reservationEntity = new Reservation();
-			if (endHour == 0 || endMinute == 0) {
-				reservationEntity.setPrice(storeEntity.getPrice());
-			} else {
-				if (startHour == endHour) {
-					int minute = (endMinute - startMinute) / 10;
-					reservationEntity.setPrice((storeEntity.getPrice() * minute));
-				} else if (startHour < endHour) {
-					int minuteToHour = ((endHour - startHour) * 60);
-					if (startMinute > endMinute) {
-						if (startMinute - endMinute == 10) {
-							int minute = (50 + minuteToHour) / 10;
+		if (seatNumber != null) {
+
+			for (int i = 0; i < seatNumber.length; i++) {
+				reservationEntity = new Reservation();
+				if (endHour == 0 || endMinute == 0) {
+					reservationEntity.setPrice(storeEntity.getPrice());
+				} else {
+					if (startHour == endHour) {
+						int minute = (endMinute - startMinute) / 10;
+						reservationEntity.setPrice((storeEntity.getPrice() * minute));
+					} else if (startHour < endHour) {
+						int minuteToHour = ((endHour - startHour) * 60);
+						if (startMinute > endMinute) {
+							if (startMinute - endMinute == 10) {
+								int minute = (50 + minuteToHour) / 10;
+								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+							} else if (startMinute - endMinute == 20) {
+								int minute = (40 + minuteToHour) / 10;
+								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+							} else if (startMinute - endMinute == 30) {
+								int minute = (30 + minuteToHour) / 10;
+								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+							} else if (startMinute - endMinute == 40) {
+								int minute = (20 + minuteToHour) / 10;
+								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+							} else if (startMinute - endMinute == 50) {
+								int minute = (10 + minuteToHour) / 10;
+								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+							}
+						} else if (startMinute == endMinute) {
+							int minute = minuteToHour;
 							reservationEntity.setPrice((storeEntity.getPrice() * minute));
-						} else if (startMinute - endMinute == 20) {
-							int minute = (40 + minuteToHour) / 10;
-							reservationEntity.setPrice((storeEntity.getPrice() * minute));
-						} else if (startMinute - endMinute == 30) {
-							int minute = (30 + minuteToHour) / 10;
-							reservationEntity.setPrice((storeEntity.getPrice() * minute));
-						} else if (startMinute - endMinute == 40) {
-							int minute = (20 + minuteToHour) / 10;
-							reservationEntity.setPrice((storeEntity.getPrice() * minute));
-						} else if (startMinute - endMinute == 50) {
-							int minute = (10 + minuteToHour) / 10;
+						} else {
+							int minute = (endMinute - startMinute + minuteToHour) / 10;
 							reservationEntity.setPrice((storeEntity.getPrice() * minute));
 						}
-					} else if (startMinute == endMinute) {
-						int minute = minuteToHour;
-						reservationEntity.setPrice((storeEntity.getPrice() * minute));
-					} else {
-						int minute = (endMinute - startMinute + minuteToHour) / 10;
-						reservationEntity.setPrice((storeEntity.getPrice() * minute));
 					}
 				}
+				reservationEntity.setApproveStatus(ApproveStatus.WATING);
+				reservationEntity.setReservationSeat(seatNumber[i]);
+				reservationEntity.setUser(principalDetails.getUser());
+				reservationEntity.setStore(storeEntity);
+				reservationEntity.setReservationTime(startHour + ":" + startMinute);
+				reservationEntity.setEndTime(endHour + ":" + endMinute);
+				reservationEntity.setReservationDate(startYear + "-" + startMonth + "-" + startDay);
+				reservationEntity.setEndDate(endYear + "-" + endMonth + "-" + endDay);
+				reservationService.save(reservationEntity);
 			}
-			reservationEntity.setApproveStatus(ApproveStatus.WATING);
-			reservationEntity.setReservationSeat(seatNumber[i]);
-			reservationEntity.setUser(principalDetails.getUser());
-			reservationEntity.setStore(storeEntity);
-			reservationEntity.setReservationTime(startHour + ":" + startMinute);
-			reservationEntity.setEndTime(endHour + ":" + endMinute);
-			reservationEntity.setReservationDate(startYear + "-" + startMonth + "-" + startDay);
-			reservationEntity.setEndDate(endYear + "-" + endMonth + "-" + endDay);
-			reservationService.save(reservationEntity);
+			return "/store/detail/" + storeId;
 		}
-		return "/store/reservation";
+		return "/store/detail/" + storeId;
 	}
 }
