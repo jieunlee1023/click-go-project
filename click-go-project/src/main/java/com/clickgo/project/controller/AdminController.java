@@ -84,9 +84,9 @@ public class AdminController {
 		return "admin/admin-user";
 	}
 
-	@GetMapping("/admin-franchise")
+	@GetMapping("/admin-store")
 	public String adminFranchise() {
-		return "admin/admin-franchise";
+		return "admin/admin-store";
 	}
 
 	@GetMapping("/admin-ask")

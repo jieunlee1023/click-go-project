@@ -7,7 +7,7 @@
 	<div id="view-more-title">
 		<div>🏤 가맹점 목록</div>
 	</div>
-
+<hr>
 	<div class="input-group mb-3 justify-content-end">
 		<form action="/storeFranchise/store-franchise-list/search"
 			class="form-inline" method="get">

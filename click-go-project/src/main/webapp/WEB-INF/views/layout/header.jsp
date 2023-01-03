@@ -54,7 +54,6 @@
 </head>
 
 <body>
-
 <div id="header">
 <div class="container ">
 	<div id='wrapper'>
@@ -150,4 +149,4 @@
 		</c:choose>
 </div>
 </div>
-
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
