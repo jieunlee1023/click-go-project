@@ -12,8 +12,7 @@
 					<h5 class="d-flex  pl-3 pt-3 pr-3" style="font-weight: bold;">${store.storeName}</h5>
 					<div class="d-flex-column m-3 mr-4">
 						<div class="d-flex m-2 justify-content-end">
-							<span>TODO !! = 가게의 총 자리 - 이용자가 예약한 자리 = 화면에 보여줌</span> <span>자리
-								: ${store.storeTotalRoomCount}</span>
+							<span>매장의 총 자리 : ${store.storeTotalRoomCount}</span>
 						</div>
 						<div class="d-flex m-1 justify-content-end">
 							<span>지점 : ${store.storeAddress}</span>

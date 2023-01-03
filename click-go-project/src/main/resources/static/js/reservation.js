@@ -22,6 +22,8 @@ let index = {
 		}).done(function(data) {
 			if (data.httpStatus == true) {
 				closeSeats(data.body);
+			} else {
+				alert(data.body);
 			}
 		}).fail(function(error) {
 			alert("예상치 못한 오류가 발생하였습니다. 관리자에게 문의해주세요.");

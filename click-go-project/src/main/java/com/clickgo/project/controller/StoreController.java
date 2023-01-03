@@ -1,6 +1,7 @@
 package com.clickgo.project.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -88,19 +89,14 @@ public class StoreController {
 	public String detail(@PathVariable int id, Model model,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Store storeEntity = storeService.findById(id);
-		List<Integer> hours = new ArrayList<>();
 		// 비로그인 회원 접속 시 임시 RoleType을 GEUST로 지정
 		if (principalDetails == null) {
 			principalDetails = new PrincipalDetails(new User().builder().role(RoleType.GEUST).build());
 		}
-		for (int i = 1; i < 25; i++) {
-			hours.add(i);
-		}
 
+		getNowDateAndTime(model);
 		getImage(model, id);
-		
 		RoleType role = principalDetails.getUser().getRole();
-		model.addAttribute("hours", hours);
 		model.addAttribute("store", storeEntity);
 		model.addAttribute("role", role);
 		return "/store/detail";
@@ -109,6 +105,24 @@ public class StoreController {
 	@GetMapping("/map")
 	public String map() {
 		return "/store/map";
+	}
+
+	private void getNowDateAndTime(Model model) {
+		Date date = new Date();
+
+		int nowYear = (date.getYear() + 1900);
+		String nowMonth = "0" + (date.getMonth() + 1);
+		String nowDay = "0" + date.getDate();
+		int nowHour = date.getHours();
+		int nowMinutes = date.getMinutes();
+
+		String nowDate = nowYear + "-" + nowMonth + "-" + nowDay;
+		String nowTime = nowHour + ":" + nowMinutes;
+		System.out.println(nowDate);
+		System.out.println(nowTime);
+		
+		model.addAttribute("nowDate", nowDate);
+		model.addAttribute("nowTime", nowTime);
 	}
 
 	public void getImage(Model model, int storeId) {

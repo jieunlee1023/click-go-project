@@ -27,16 +27,16 @@
 				<div class="container d-flex justify-content-between">
 					<div class="d-flex-column">
 						<div>
-							<input type="date" name="startDate"id="startDate">
+							<input type="date" name="startDate"id="startDate" value="${nowDate}" min="${nowDate}">
 						</div>
 						<div>
-							<input type="date" name="endDate" id="endDate">
+							<input type="date" name="endDate" id="endDate"value="${nowDate}" min="${nowDate}">
 						</div>
 						<div>
-							<input type="time" name="startTime" id="startTime">
+							<input type="time" name="startTime" id="startTime"value="${nowTime}" min="${nowTime}">
 						</div>
 						<div>
-							<input type="time" name="endTime" id="endTime">
+							<input type="time" name="endTime" id="endTime"value="${nowTime}"min="${nowTime}">
 						</div>
 						<input type="hidden" id="storeId" value="${store.id }">
 						<button type="button" id="btn--time-check">예약 하기</button>

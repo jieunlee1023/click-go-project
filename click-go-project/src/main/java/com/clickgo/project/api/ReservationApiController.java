@@ -1,6 +1,7 @@
 package com.clickgo.project.api;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,48 +46,60 @@ public class ReservationApiController {
 		int startMonth = Integer.parseInt(reservationDateTokenizer.nextToken());
 		int startDay = Integer.parseInt(reservationDateTokenizer.nextToken());
 
-		List<Integer> seats = new ArrayList<>();
-		List<Reservation> reservations = reservationService.findByStoreId(storeId);
-		reservations.forEach(t -> {
-			StringTokenizer findReservationTimeTokenizer = new StringTokenizer(t.getEndTime(), ":");
-			int findHour = Integer.parseInt(findReservationTimeTokenizer.nextToken());
-			int findMinute = Integer.parseInt(findReservationTimeTokenizer.nextToken());
-			int findSeat = t.getReservationSeat();
+		Date date = new Date();
 
-			StringTokenizer findReservationDateTokenizer = new StringTokenizer(t.getEndDate(), "-");
-			int findYear = Integer.parseInt(findReservationDateTokenizer.nextToken());
-			int findMonth = Integer.parseInt(findReservationDateTokenizer.nextToken());
-			int findDay = Integer.parseInt(findReservationDateTokenizer.nextToken());
+		int nowYear = (date.getYear() + 1900);
+		int nowMonth = (date.getMonth() + 1);
+		int nowDay = date.getDate();
+		int nowHour = date.getHours();
+		int nowMinutes = date.getMinutes();
 
-			// 같은 달
-			if (startMonth == findMonth) {
-				// 같은 날
-				if (startDay == findDay) {
-					// 같은 시간
-					if (startHour == findHour) {
-						// 찾는 분 < 예약된 분
-						if (startMinute < findMinute) {
+		if (startYear >= nowYear && startMonth >= nowMonth && startDay >= nowDay && startHour >= nowHour
+				&& startMinute >= nowMinutes) {
+			List<Integer> seats = new ArrayList<>();
+			List<Reservation> reservations = reservationService.findByStoreId(storeId);
+			reservations.forEach(t -> {
+				StringTokenizer findReservationTimeTokenizer = new StringTokenizer(t.getEndTime(), ":");
+				int findHour = Integer.parseInt(findReservationTimeTokenizer.nextToken());
+				int findMinute = Integer.parseInt(findReservationTimeTokenizer.nextToken());
+				int findSeat = t.getReservationSeat();
+
+				StringTokenizer findReservationDateTokenizer = new StringTokenizer(t.getEndDate(), "-");
+				int findYear = Integer.parseInt(findReservationDateTokenizer.nextToken());
+				int findMonth = Integer.parseInt(findReservationDateTokenizer.nextToken());
+				int findDay = Integer.parseInt(findReservationDateTokenizer.nextToken());
+
+				// 같은 달
+				if (startMonth == findMonth) {
+					// 같은 날
+					if (startDay == findDay) {
+						// 같은 시간
+						if (startHour == findHour) {
+							// 찾는 분 < 예약된 분
+							if (startMinute < findMinute) {
+								seats.add(findSeat);
+							}
+							// 찾는 시간 < 예약된 시간
+						} else if (startHour < findHour) {
 							seats.add(findSeat);
 						}
-						// 찾는 시간 < 예약된 시간
-					} else if (startHour < findHour) {
+						// 찾는 날 < 예약된 날
+					} else if (startDay < findDay) {
 						seats.add(findSeat);
 					}
-					// 찾는 날 < 예약된 날
-				} else if (startDay < findDay) {
+					// 찾는 달 < 예약된 달
+				} else if (startMonth < findMonth) {
 					seats.add(findSeat);
 				}
-				// 찾는 달 < 예약된 달
-			} else if (startMonth < findMonth) {
-				seats.add(findSeat);
+			});
+			Map<String, List<Integer>> seatDisabled = new HashMap<>();
+			seatDisabled.put("seats", seats);
+			seatDisabled.put("totalRoomCount", totalRoomCounts);
+			for (int i = 0; i < seatDisabled.get("totalRoomCount").size(); i++) {
+
 			}
-		});
-		Map<String, List<Integer>> seatDisabled = new HashMap<>();
-		seatDisabled.put("seats", seats);
-		seatDisabled.put("totalRoomCount", totalRoomCounts);
-		for (int i = 0; i < seatDisabled.get("totalRoomCount").size(); i++) {
-			
+			return new ResponseDto<>(true, seatDisabled);
 		}
-		return new ResponseDto<>(true, seatDisabled);
+		return new ResponseDto<>(false, "장난치면 못 써요 ~");
 	}
 }
