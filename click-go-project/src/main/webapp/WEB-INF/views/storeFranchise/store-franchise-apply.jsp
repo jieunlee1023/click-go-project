@@ -18,14 +18,8 @@
 			enctype="multipart/form-data">
 			<div class="form-group ">
 				<div class="d-flex" style="font-size: 13px">
-<<<<<<< HEAD
-					<select class=" custom-select mb-3" name="category" id="category"
-						style="border-radius: 0px">
-						<option value="pc방" disabled="disabled" selected="selected">카테고리를
-=======
 					<select class=" custom-select mb-3" name="category" id="category" required>
 						<option value="none" disabled="disabled" selected="selected"  >카테고리를
->>>>>>> developer
 							선택해주세요.</option>
 						<c:forEach var="category" items="${categories}">
 							<option value="${category}">${category}</option>
@@ -44,12 +38,7 @@
 			<div class="form-group ">
 				<label for="storeAddress" class="d-flex m-0" style="font-size: 13px">가맹점
 					주소</label> <input type="text" class="form-control" id="storeAddress"
-<<<<<<< HEAD
 					style="border-radius: 0px" name="storeAddress" value="부산광역시 진구">
-=======
-					name="storeAddress" value="부산광역시 진구" required>
-
->>>>>>> developer
 			</div>
 
 			<div class="form-group ">
@@ -63,7 +52,6 @@
 					번호</label> <input type="text" class="form-control" id="storeTEL"
 					name="storeTEL" value="051-123-3333" required>
 			</div>
-<<<<<<< HEAD
 
 			<div class="form-group ">
 				<label for="price" class="d-flex m-0" style="font-size: 13px">
@@ -71,35 +59,6 @@
 					style="border-radius: 0px" name="price" value="300">
 			</div>
 
-			<div class="d-flex form-group justify-content-between">
-				<span class="d-flex m-0" style="font-size: 13px">사업자 등록증</span> <a>
-					<img src="/image/q.png" width="15px" height="15px">
-				</a>
-			</div>
-
-			<div class="form-group">
-				<input type="file" name="file" class="custom-file-input"
-					id="customFile" required="required" id="storeLicense">
-			</div>
-
-			<div class="d-flex form-group justify-content-between">
-				<span class="d-flex m-0" style="font-size: 13px">자리 배치도</span> <a>
-					<img src="/image/q.png" width="15px" height="15px">
-				</a>
-			</div>
-			<div class="form-group">
-				<input type="file" name="file" class="custom-file-input"
-					id="customFile" required="required" id="storeLicense">
-				<div class="d-flex justify-content-end" style="font-size: 13px">
-					예약 서비스에 이용됩니다.</div>
-			</div>
-
-			<br>
-			<div class="form-control d-flex justify-content-center"
-				style="border-radius: 0px;">
-				<button type="submit" class="d-flex "
-					style="border: none; background-color: white;">가맹점 신청하기</button>
-=======
 			<div class="d-flex" id="store--licence--text">
 				<span class="d-flex mr-2" style="font-size: 13px">사업자 등록증</span>
 
@@ -134,7 +93,6 @@
 			<div class="d-flex justify-content-end">
 				<button type="submit" class="btn" id="franchise--apply">가맹점
 					신청하기</button>
->>>>>>> developer
 			</div>
 		</form>
 	</div>
@@ -153,13 +111,10 @@
 				$(this).siblings(".custom-file-label").addClass("selected")
 						.html(fileName);
 			});
-<<<<<<< HEAD
-=======
 
 	$(function() {
 		$('[data-toggle="tooltip"]').tooltip()
 	})
->>>>>>> developer
 </script>
 
 
