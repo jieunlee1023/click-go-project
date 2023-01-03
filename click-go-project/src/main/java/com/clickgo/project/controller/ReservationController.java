@@ -54,32 +54,25 @@ public class ReservationController {
 					if (startMinute > endMinute) {
 						if (startMinute - endMinute == 10) {
 							int minute = (50 + minuteToHour) / 10;
-							System.out.println(minute);
 							reservationEntity.setPrice((storeEntity.getPrice() * minute));
 						} else if (startMinute - endMinute == 20) {
 							int minute = (40 + minuteToHour) / 10;
-							System.out.println(minute);
 							reservationEntity.setPrice((storeEntity.getPrice() * minute));
 						} else if (startMinute - endMinute == 30) {
 							int minute = (30 + minuteToHour) / 10;
-							System.out.println(minute);
 							reservationEntity.setPrice((storeEntity.getPrice() * minute));
 						} else if (startMinute - endMinute == 40) {
 							int minute = (20 + minuteToHour) / 10;
-							System.out.println(minute);
 							reservationEntity.setPrice((storeEntity.getPrice() * minute));
 						} else if (startMinute - endMinute == 50) {
 							int minute = (10 + minuteToHour) / 10;
-							System.out.println(minute);
 							reservationEntity.setPrice((storeEntity.getPrice() * minute));
 						}
 					} else if (startMinute == endMinute) {
 						int minute = minuteToHour;
-						System.out.println(minute);
 						reservationEntity.setPrice((storeEntity.getPrice() * minute));
 					} else {
 						int minute = (endMinute - startMinute + minuteToHour) / 10;
-						System.out.println(minute);
 						reservationEntity.setPrice((storeEntity.getPrice() * minute));
 					}
 				}
@@ -91,8 +84,6 @@ public class ReservationController {
 			reservationEntity.setReservationTime(startHour + ":" + startMinute + "");
 			reservationEntity.setEndTime(endHour + ":" + endMinute + ":");
 			reservationService.save(reservationEntity);
-			System.out.println("ㅋ" + reservationEntity);
-			Thread.sleep(1000);
 		}
 		return "/store/reservation";
 	}

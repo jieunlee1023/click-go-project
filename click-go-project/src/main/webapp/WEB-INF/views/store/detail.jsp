@@ -33,12 +33,13 @@
 				<input type="date" name="endTime">
 				</div> -->
 				<div>
-				<input type="time" name="startTime">
+				<input type="time" name="startTime" id="startTime">
 				</div>
 				<div>
-				<input type="time" name="endTime">
+				<input type="time" name="endTime" id="endTime">
 				</div>
-					<button type="button" id="btn--time-ok">예약 하기</button>
+				<input type="hidden" id="storeId" value="${store.id }">
+					<button type="button" id="btn--time-check">예약 하기</button>
 				</div>
 				<div class="media border m-3"
 					style="width: 900px; height: 510px; border-radius: 15px;">
@@ -86,12 +87,17 @@
 							int fours = (standard * 8);
 							int totalRoomCount = 63;
 						%>
+						<c:forEach var="seats" items="${seats.size()}">
+						
+						</c:forEach>
 						<div class="d-flex justify-content-center" style="border: 1px solid black; width: 550px; height: 245px">
 							<div class=" ml-1 mt-4">
 
 									<div class="d-flex ml-4">
 										<% for(start = 1; start < totalRoomCount; start++) { %>
-										<input type="checkbox"
+										<input type="checkbox" <% if (false) { %>
+											disabled="disabled"
+										<%} %>
 											class="d-flex justify-content-center mr-1" name="seatNumber"
 											style="border: 1px solid black; width: 30px; height: 30px"
 											value="<%=start %>">
@@ -139,7 +145,7 @@
 						<br>
 						<div class="d-flex mt-2">  
 							<% for(start = fours + 1; start <= totalRoomCount; start++) { %>
-								<input type="checkbox" id="seatButton" class="d-flex justify-content-center mr-1" name="seatNumber" style="border: 1px solid black; width: 30px; height: 30px"value="<%=start %>">
+								<input type="checkbox" id="seatButton" class="d-flex justify-content-center mr-1 disabled" name="seatNumber" style="border: 1px solid black; width: 30px; height: 30px"value="<%=start %>">
 							
 						 	<%}%>
 											</div>
@@ -155,12 +161,5 @@
 </div>
 <br>
 							</form>
-<script type="text/javascript"  >
-
-$("#seatButton").onclick(var value){
-	alert(value);
-};
-
-</script>
 <script type="text/javascript" src="/js/reservation.js"></script>
 <%@ include file="../layout/footer.jsp"%>
