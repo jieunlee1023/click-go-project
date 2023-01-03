@@ -150,8 +150,6 @@ public class UserApiController {
 	 // 아이디 중복체크
 		@PostMapping("/check-id")
 		public int checkId(@RequestBody User user) {
-			System.out.println("여기오나요?");
-			System.out.println("찾고자하는 이메일 값" + user.getUsername());
 			try {
 				int result = userService.findByUsername(user.getUsername());
 				return 1;
@@ -163,13 +161,10 @@ public class UserApiController {
 		 // 이메일 중복체크
 		@PostMapping("/check-email")
 		public int checkEmail(@RequestBody User user) {
-			System.out.println("이메일");
-			System.out.println("찾고자하는 이메일 값" + user.getEmail());
 			try {
 				User userEntity = userService.searchUserEmail(user.getEmail());
 				System.out.println(userEntity);
 				int result = (userEntity != null) ? 1 : -1;
-				System.out.println("이메일값 " + result);
 				return result;
 			} catch (Exception e) {
 				return -1;
