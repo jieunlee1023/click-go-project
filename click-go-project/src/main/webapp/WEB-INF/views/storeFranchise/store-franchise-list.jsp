@@ -23,7 +23,7 @@
 	<c:choose>
 		<c:when test="${storeSearch == 0}">
 			<div class="d-flex justify-content-center">
-				<div id="franchise--search--none">
+				<div id="franchise--none">
 					<div>검색하신 "${q }" 와/과</div>
 					<div>관련된 가맹점이 존재하지 않습니다.</div>
 					<div>확인 후 다시 검색해주세요!</div>

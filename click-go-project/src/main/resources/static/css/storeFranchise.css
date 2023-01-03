@@ -88,7 +88,7 @@
 	color: #6478ff;
 }
 
-#franchise--search--none{
+#franchise--none{
 	font-size: 30px;
 	text-align: center;
 	margin-top: 50px;
@@ -96,6 +96,6 @@
 	color: #6478ff;
 }
 
-#franchise--search--none > div{
+#franchise--none > div{
 	display: block;
 }
