@@ -42,15 +42,60 @@
 	color: #6478ff;
 }
 
-#applylist--list>div , #applylist--list>small  {
+#applylist--list>div, #applylist--list>small {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	margin-top: 10px;
 	margin-bottom: 10px;
-	
 }
 
-#applylist--list>div>p {
-	
+#search--franchise {
+	background-color: #6478ff;
+	color: white;
+}
+
+.franchise--main {
+	justify-content: center;
+	border: 3px solid #6478ff;
+	border-radius: 10px;
+	background-color: rgb(255, 255, 255, 0.5);
+	float: left;
+	width: 31%;
+	padding: 5px;
+	margin: 10px;
+}
+
+#franchise--main--img {
+	display: flex;
+	justify-content: center;
+	margin-top: 5px;
+	object-fit: cover;
+}
+
+#franchise--main--text {
+	position: absolute;
+	justify-content: center;
+}
+
+#franchise--main--text--val {
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid #6478ff;
+	margin-left: 10px;
+	margin-bottom: 10px;
+	margin-top:5px;
+	color: #6478ff;
+}
+
+#franchise--search--none{
+	font-size: 30px;
+	text-align: center;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	color: #6478ff;
+}
+
+#franchise--search--none > div{
+	display: block;
 }

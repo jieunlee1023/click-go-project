@@ -168,3 +168,10 @@ footer {
 	color: white;
 	height: 15px;
 }
+
+#page--previous , #page--next, #page--select{
+	color: white; background-color: #6478ff; border: none;
+}
+#page--no--select{
+color: #96bbff; background-color: #6478ff; border: none;
+}
