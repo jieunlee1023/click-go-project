@@ -140,6 +140,7 @@ public class UserApiController {
 	            // send the message
 	            Transport.send(message);
 	            System.out.println("Success Message Send");
+	            System.out.println(">>>"+temporary);
 	            return 0;
 	        }catch (MessagingException e){
 	            e.printStackTrace();
