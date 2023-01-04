@@ -30,6 +30,8 @@ public class OneOnOne {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	
 
 	@Lob
 	@Column(nullable = false)

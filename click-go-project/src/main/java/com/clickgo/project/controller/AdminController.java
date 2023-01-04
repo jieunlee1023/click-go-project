@@ -136,16 +136,6 @@ public class AdminController {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();

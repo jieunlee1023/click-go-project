@@ -1,5 +1,6 @@
 package com.clickgo.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,18 +72,26 @@ public class ViewMoreController {
 	}
 	
 	// s w
-	@GetMapping({"/one-on-one", "/one-on-one{id}"})
+	@GetMapping({"/one-on-one", "/one-on-one/{id}"})
 	public String oneOnone(Model model) {
 		franchiseMassageCount(model);
 		return "view-more/one-on-one";
 	}
 	
-	@PostMapping({"/one-on-one/save", "/one-on-one/save/{id}"})
-	public String oneOnoneWrite(@PathVariable int oooId, OneOnOne requestOoo,
-			@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		oneOnOneService.writeOOO(oooId, requestOoo, principalDetails.getUser());
+	@PostMapping("/one-on-one/save")
+	public String oneOnoneWrite(OneOnOne requestOoo,
+			@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
 		
-		return "redirect:/view-more/one-on-one";
+		oneOnOneService.writeOOO(requestOoo, principalDetails.getUser());
+		
+		int userId = requestOoo.getUser().getId();
+		List<OneOnOne> contents = oneOnOneService.getContentList();
+
+		//이거하는중
+		model.addAttribute("userId", userId);
+		model.addAttribute("contents", contents);
+		
+		return "view-more/one-on-one";
 	}
 
 	

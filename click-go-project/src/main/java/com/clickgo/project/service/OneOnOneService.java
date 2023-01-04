@@ -1,5 +1,7 @@
 package com.clickgo.project.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +15,14 @@ public class OneOnOneService {
 	@Autowired
 	private IOneOnOneRepository iOneOnOneRepository;
 
-	/*
-	 * public boolean writeOOO(int oooId, OneOnOne requestOoo, User user) { // TODO
-	 * Auto-generated method stub
-	 * 
-	 * }
-	 */
-	
-	
-	
+	public void writeOOO(OneOnOne requestOoo, User user) {
+		requestOoo.setContent(requestOoo.getContent());
+		requestOoo.setUser(user);
+		iOneOnOneRepository.save(requestOoo);
+	}
+
+	public List<OneOnOne> getContentList() {
+		return iOneOnOneRepository.findAll();
+	}
+
 }
