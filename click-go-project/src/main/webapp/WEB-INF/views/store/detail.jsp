@@ -150,7 +150,7 @@
 										<% if (start == fours) { break; }%>
 										<% } %>
 									</div>
-									<br>
+									<br>g
 									<div class="d-flex mt-2">
 										<% for(start = fours + 1; start <= totalRoomCount; start++) { %>
 										<input type="checkbox" id="<%=start %>"
@@ -166,14 +166,19 @@
 							<div class="d-flex-column justify-content-end" id="add--button">
 							</div>
 						</div>
+						<br>
+						<br>
+							<input type="hidden" value="${store.storeAddress}" id="store-address">
+							<input type="hidden" value="${store.storeName}" id="store-name">
+								<div id="map" style="width: 700px; height: 350px;"></div>
 						</div>
 					</div>
 				</div>
-				<br>
 			</c:otherwise>
 		</c:choose>
 	</div>
-	<br>
 </form>
+	<br> <br> <br> <br>
+				<br> <br> <br> <br> <br> <br>
 <script type="text/javascript" src="/js/reservation.js"></script>
 <%@ include file="../layout/footer.jsp"%>

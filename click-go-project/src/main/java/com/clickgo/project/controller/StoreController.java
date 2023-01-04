@@ -104,11 +104,6 @@ public class StoreController {
 		return "/store/detail";
 	}
 
-	@GetMapping("/map")
-	public String map() {
-		return "/store/map";
-	}
-
 	private void getNowDateAndTime(Model model) {
 		Date date = new Date();
 
