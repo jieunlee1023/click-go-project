@@ -27,7 +27,8 @@ let index = {
 
 	save: function() {
 		let passwordCheck = $("#password-check").val();
-		
+		let password = $("#password").val();
+		let username = $("#username").val();
 		let data = {
 			username: $("#username").val(),
 			password: $("#password").val(),
@@ -35,19 +36,19 @@ let index = {
 			email: $("#email").val(),
 			role: $("#role").val()
 		};
-		if (data.password != passwordCheck) {
+		if (password != passwordCheck) {
 			Swal.fire({
 				icon: 'warning',
 				text: '비밀번호를 확인해주세요!',
 			});
 				return false;
-		}else if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{5,12}$/.test(data.password)){
+		}else if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{5,12}$/.test(password)){
 			Swal.fire({
 				icon: 'warning',
 				text: '숫자+영문자+특수문자 조합으로 5 ~ 12자리 이상 사용해야 합니다.',
 			});
 			return false;
-		}else if (!/^[a-zA-Z]*$/.test(data.username)) {
+		}else if (!/^[a-z|A-Z]+$/.test(username)) {
 			Swal.fire({
 				icon: 'warning',
 				text: '아이디는 영문으로만 가능합니다.',
@@ -72,8 +73,10 @@ let index = {
 					icon: 'error',
 					text: '회원가입에 실패하셨습니다. 형식을 맞춰주세요.',
 				});
+
 			}
 		}).fail(function(error) {
+
 			console.log("오류가 발생했습니다. 관리자에게 문의해주세요.");
 			Swal.fire({
 				icon: 'error',
