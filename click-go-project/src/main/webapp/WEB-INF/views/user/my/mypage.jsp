@@ -41,7 +41,7 @@
 			<div class="btn-wrapper">
 				<div class="btn-wrapper__container">
 					<div class="btn-inner">
-						<a href="/mypage/reservation-list" class="mypage-btn"> <img
+						<a href="/reservation/list" class="mypage-btn"> <img
 							src="/image/mypage/reservation.png" width="60px"> <br>
 							<br> <span>예약 내역</span> <br> <span
 							id="mypage-mini-title">예약 정보와 결제 정보를 <br> 한 눈에 확인하세요.
@@ -135,7 +135,7 @@
 			<div class="btn-wrapper">
 				<div class="btn-wrapper__container">
 					<div class="btn-inner">
-						<a href="/mypage/reservation-list" class="mypage-btn"> <img
+						<a href="/reservation/list" class="mypage-btn"> <img
 							src="/image/mypage/reservation.png" width="60px"> <br>
 							<br> <span>예약 관리</span> <br> <span
 							id="mypage-mini-title">가맹점의 예약 정보와 결제 정보를<br> 한 눈에

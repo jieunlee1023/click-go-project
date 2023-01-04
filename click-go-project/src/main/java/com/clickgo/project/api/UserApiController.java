@@ -92,81 +92,76 @@ public class UserApiController {
 		User userEntity = userService.searchUserEmail(user.getEmail());
 		return new ResponseDto<>(true, userEntity.getUsername());
 	}
-	
-	
-	
-	
+
 	// 비밀번호 찾기
-		@PostMapping("/send-mail")
-	    public ResponseDto<Integer> mailSend(@RequestBody User user){
-			User userEntity = userService.searchPassword(user.getUsername(),user.getEmail());
-			
-			
-	        return new ResponseDto<>(true, naverMailSend(userEntity.getEmail()));
-	    }
+	@PostMapping("/send-mail")
+	public ResponseDto<Integer> mailSend(@RequestBody User user) {
+		User userEntity = userService.searchPassword(user.getUsername(), user.getEmail());
 
-	    public int naverMailSend(String email){
-	    	String host = "smtp.naver.com";
-	         // 테스트후 개인정보 보안상 비밀번호는 지워주세요
+		return new ResponseDto<>(true, naverMailSend(userEntity.getEmail()));
+	}
 
-	        // SMTP 서버 정보를 설정한다.
-	        Properties props = new Properties(); // Properties는 java.util의 Properties입니다.
-	        props.put("mail.smtp.host", host); // smtp의 호스트
-	        props.put("mail.smtp.port", 587); // 587 포트 사용
-	        props.put("mail.smtp.auth", "true"); 
-	        props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // 이 설정을 안붙이면 TLS Exception이 뜨더라구요. (버전이 안맞아서)
-	        
-	        Session session = Session.getDefaultInstance(props, new Authenticator() {
-	            @Override
-	            protected PasswordAuthentication getPasswordAuthentication() {
-	                return new PasswordAuthentication(id,password);
-	            }
-	        });
+	public int naverMailSend(String email) {
+		String host = "smtp.naver.com";
+		// 테스트후 개인정보 보안상 비밀번호는 지워주세요
 
-	        try{
-	            MimeMessage message = new MimeMessage(session);
-	            message.setFrom(new InternetAddress(id)); // 발신자의 이메일
-	            // 수신자 이메일
-	            message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
-	            
-	            // 메일 제목
-	            message.setSubject("Click-Go");
+		// SMTP 서버 정보를 설정한다.
+		Properties props = new Properties(); // Properties는 java.util의 Properties입니다.
+		props.put("mail.smtp.host", host); // smtp의 호스트
+		props.put("mail.smtp.port", 587); // 587 포트 사용
+		props.put("mail.smtp.auth", "true");
+		props.put("mail.smtp.ssl.protocols", "TLSv1.2"); // 이 설정을 안붙이면 TLS Exception이 뜨더라구요. (버전이 안맞아서)
 
-	            // 메일 내용
-	            String temporary = userService.searchPasswordChange(email);
-	            message.setText("안녕하세요.\n 저희 클릭고 입니다. \n 임시비밀번호 : " +  temporary); // 랜덤인 임시비밀번호를 생성
-
-	            // send the message
-	            Transport.send(message);
-	            return 0;
-	        }catch (MessagingException e){
-	            e.printStackTrace();
-	            return -1;
-	        }
-	    }
-	
-	 // 아이디 중복체크
-		@PostMapping("/check-id")
-		public int checkId(@RequestBody User user) {
-			try {
-				int result = userService.findByUsername(user.getUsername());
-				return 1;
-			} catch (Exception e) {
-				return -1;
+		Session session = Session.getDefaultInstance(props, new Authenticator() {
+			@Override
+			protected PasswordAuthentication getPasswordAuthentication() {
+				return new PasswordAuthentication(id, password);
 			}
+		});
+
+		try {
+			MimeMessage message = new MimeMessage(session);
+			message.setFrom(new InternetAddress(id)); // 발신자의 이메일
+			// 수신자 이메일
+			message.addRecipient(Message.RecipientType.TO, new InternetAddress(email));
+
+			// 메일 제목
+			message.setSubject("Click-Go");
+
+			// 메일 내용
+			String temporary = userService.searchPasswordChange(email);
+			message.setText("안녕하세요.\n 저희 클릭고 입니다. \n 임시비밀번호 : " + temporary); // 랜덤인 임시비밀번호를 생성
+
+			// send the message
+			Transport.send(message);
+			return 0;
+		} catch (MessagingException e) {
+			e.printStackTrace();
+			return -1;
 		}
-		
-		 // 이메일 중복체크
-		@PostMapping("/check-email")
-		public int checkEmail(@RequestBody User user) {
-			try {
-				User userEntity = userService.searchUserEmail(user.getEmail());
-				int result = (userEntity != null) ? 1 : -1;
-				return result;
-			} catch (Exception e) {
-				return -1;
-			}
+	}
+
+	// 아이디 중복체크
+	@PostMapping("/check-id")
+	public int checkId(@RequestBody User user) {
+		try {
+			int result = userService.findByUsername(user.getUsername());
+			return 1;
+		} catch (Exception e) {
+			return -1;
 		}
-	    
+	}
+
+	// 이메일 중복체크
+	@PostMapping("/check-email")
+	public int checkEmail(@RequestBody User user) {
+		try {
+			User userEntity = userService.searchUserEmail(user.getEmail());
+			int result = (userEntity != null) ? 1 : -1;
+			return result;
+		} catch (Exception e) {
+			return -1;
+		}
+	}
 
 }
