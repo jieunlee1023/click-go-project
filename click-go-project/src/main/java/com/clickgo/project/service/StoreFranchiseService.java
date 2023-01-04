@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.dto.res.RequestFileDto;
+import com.clickgo.project.dto.res.RequestApplyFileDto;
 import com.clickgo.project.entity.Image;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
@@ -44,7 +44,7 @@ public class StoreFranchiseService {
 	private String layoutFile;
 
 	@Transactional
-	public void apply(RequestFileDto fileDto, PrincipalDetails principalDetails) {
+	public void apply(RequestApplyFileDto fileDto, PrincipalDetails principalDetails) {
 		UUID uuid = UUID.randomUUID();
 
 		// TODO
@@ -87,7 +87,6 @@ public class StoreFranchiseService {
 		store.setStoreTotalRoomCount(storeFranchise.getStoreTotalRoomCount());
 		store.setPrice(storeFranchise.getPrice());
 		store.setUser(userRepository.findById(userId).get());
-		System.out.println(store);
 		storeRepository.save(store);
 		return store;
 	}

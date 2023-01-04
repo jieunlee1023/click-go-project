@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.dto.res.RequestFileDto;
+import com.clickgo.project.dto.res.RequestApplyFileDto;
 import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
@@ -38,9 +38,6 @@ public class StoreFranchiseController {
 	@Autowired
 	private CategoryService categoryService;
 
-	@Autowired
-	private ImageService imageService;
-
 	// 메시지 개수
 	int count;
 
@@ -58,13 +55,12 @@ public class StoreFranchiseController {
 	}
 
 	@PostMapping("/apply/upload")
-	public String franchiseApply(RequestFileDto fileDto, @AuthenticationPrincipal PrincipalDetails principalDetails,
+	public String franchiseApply(RequestApplyFileDto fileDto, @AuthenticationPrincipal PrincipalDetails principalDetails,
 			Model model) {
 		franchiseService.apply(fileDto, principalDetails);
 		franchiseMassageCount(model);
 		return "/storeFranchise/store-franchise-applyList";
 	}
-
 
 	// s w
 	@GetMapping({ "/store-franchise-list", "/store-franchise-list/search" })
@@ -84,14 +80,7 @@ public class StoreFranchiseController {
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
-		
-		storeList.forEach(t -> {
-			getImage(model, t.getId());
-		});
 
-		
-		
-		
 		model.addAttribute("storeSearch", storeList.getTotalElements());
 		model.addAttribute("storeList", storeList);
 		model.addAttribute("nowPage", nowPage);
@@ -99,8 +88,6 @@ public class StoreFranchiseController {
 		model.addAttribute("endPageNumber", endPageNumber);
 		model.addAttribute("pageNumbers", pageNumbers);
 		model.addAttribute("q", searchFtitle);
-		
-		
 
 		franchiseMassageCount(model);
 		return "/storeFranchise/store-franchise-list";
@@ -132,7 +119,4 @@ public class StoreFranchiseController {
 		model.addAttribute("waitMsg", waitMsg);
 	}
 
-	public void getImage(Model model, int storeId) {
-		model.addAttribute("image", imageService.findByStoreId(storeId).get(1).getImageUrl());
-	}
 }

@@ -12,7 +12,7 @@ import com.clickgo.project.model.enums.StoreFranchiseState;
 import lombok.Data;
 
 @Data
-public class RequestFileDto {
+public class RequestApplyFileDto {
 	
 //	private MultipartFile[] files; :여러개
 	private List<MultipartFile> file;

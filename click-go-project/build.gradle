@@ -40,6 +40,8 @@ dependencies {
     // 이메일 인증 라이브러리
     implementation group: 'javax.mail', name: 'mail', version: '1.4.7'
     // 이메일 인증 라이브러리
+    //이미지 여러개 드랍존
+    implementation 'org.webjars.npm:dropzone:5.9.3'
 	//추가 라이브러리 끝 ----------------------------------------------------------------------
 }
 

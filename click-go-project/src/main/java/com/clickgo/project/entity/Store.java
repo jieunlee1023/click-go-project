@@ -65,4 +65,5 @@ public class Store {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
+
 }

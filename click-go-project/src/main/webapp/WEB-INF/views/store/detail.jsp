@@ -43,74 +43,6 @@
 						<input type="hidden" id="storeId" value="${store.id }">
 						<button type="button" id="btn--time-check">예약 하기</button>
 					</div>
-					
-					
-					
-					
-					
-					
-						<form action="/storeFranchise/apply/upload" method="post"
-			enctype="multipart/form-data">
-			<div class="form-group ">
-				<div class="d-flex" style="font-size: 13px">
-					<select class=" custom-select mb-3" name="category" id="category"
-						required>
-						<option value="none" disabled="disabled" selected="selected">카테고리를
-							선택해주세요.</option>
-						<c:forEach var="category" items="${categories}">
-							<option value="${category}">${category}</option>
-						</c:forEach>
-					</select>
-				</div>
-			</div>
-
-			<div class="d-flex" id="store--licence--text">
-				<span class="d-flex mr-2" style="font-size: 13px">사업자 등록증</span>
-
-				<button type="button" data-toggle="tooltip" data-placement="right"
-					title="가맹점 신청 시 사업자 등록증은 필수 항목입니다." id="licence--que">?</button>
-
-			</div>
-
-			<div class="custom-file">
-				<input type="file" name="file" class="custom-file-input"
-					id="customFile" required="required" id="storeLicense"> <label
-					class="custom-file-label" for="customFile">업로드 할 파일을 선택해주세요</label>
-			</div>
-			<br> <br>
-			<div class="d-flex" id="store--licence--seat">
-				<span class="d-flex mr-2" style="font-size: 13px">좌석 배치도</span>
-
-				<button type="button" data-toggle="tooltip" data-placement="right"
-					title="가맹점 신청 시 좌석 배치도를 &nbsp; 올려주셔야 등록 승인 절차를  &nbsp; 진행합니다. (※ 예약시 필수 )"
-					id="seat--que">?</button>
-			</div>
-
-
-			<div class="custom-file">
-				<input type="file" name="file" class="custom-file-input"
-					id="customFile" required="required" id="storeLicense"> <label
-					class="custom-file-label" for="customFile">업로드 할 파일을 선택해주세요</label>
-			</div>
-
-			<br> <br>
-			<div class="d-flex justify-content-end">
-				<button type="submit" class="btn" id="franchise--apply">가맹점
-					등록하기</button>
-			</div>
-		</form>
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
-					
 
 
 					<div class=" d-flex media border m-3"
@@ -173,6 +105,7 @@
 											class="d-flex justify-content-center mr-1" name="seatNumber"
 											style="border: 1px solid black; width: 30px; height: 30px"
 											value="<%=start%>">
+											
 
 										<%
 										if (start == firstSpace) {
@@ -289,8 +222,11 @@
 							<button type="submit">예약</button>
 						</div>
 					</div>
+					
+					
+					
+					
 				</div>
-				<br>
 			</c:otherwise>
 		</c:choose>
 	</div>
