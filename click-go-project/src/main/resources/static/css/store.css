@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+#startDate, #endDate, #startTime, #endTime {
+	width: 180px;
+	margin-right: 5px;
+	text-align: center;
+	font-size: 15px;
+	border: 1px solid #6478ff;
+}
+
+#btn--time-check {
+	width: 100px;
+	height: 28px;
+	text-align: center;
+	border: none;
+	background-color: #6478ff;
+	color: white;
+	border-radius: 5px;
+}

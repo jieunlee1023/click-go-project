@@ -46,10 +46,14 @@
 <link href="/css/board.css" rel="stylesheet" type="text/css" />
 <link href="/css/storeFranchise.css" rel="stylesheet" type="text/css" />
 <link href="/css/mypage.css" rel="stylesheet" type="text/css" />
+<link href="/css/store.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="/css/fullpage.min.css">
 <link rel="stylesheet" href="/css/index.css">
 <script src="/js/fullpage.min.js"></script>
+
+<!-- 타이머  -->
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 
 </head>
 
@@ -151,3 +155,4 @@
 </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>

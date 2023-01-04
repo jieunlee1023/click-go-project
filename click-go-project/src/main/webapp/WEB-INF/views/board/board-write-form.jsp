@@ -44,9 +44,7 @@
 				<input class="form-check-input" type="checkbox" name="secret"
 					id="secret"> <label class="form-check-label">비밀글 설정</label>
 			</div>
-			<button type="submit" class="btn board--save mt-3">
-				글 작성
-			</button>
+			<button type="submit" class="btn board--save mt-3" id="btn--write">글 작성</button>
 		</div>
 	</form>
 </div>
@@ -58,10 +56,13 @@
 		height : 300,
 		
 	});
+	
 </script>
 
 <script type="text/javascript" src="/js/board.js"></script>
-<br><br><br>
+<br>
+<br>
+<br>
 <%@ include file="../layout/shortFooter.jsp"%>
 
 
