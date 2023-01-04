@@ -36,6 +36,11 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 			+ " WHERE S.id = :id "
 			, nativeQuery = true)
 	public List<Reservation> findByStoreId(@Param("id") int storeId);
+
+	@Query(value = " SELECT MAX(id) "
+								+ " FROM reservation "
+									, nativeQuery = true)
+	public int findLastPK();
 	
 }
 

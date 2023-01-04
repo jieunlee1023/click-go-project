@@ -2,15 +2,17 @@ package com.clickgo.project.dto.res.kakaoPay;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import javax.annotation.Generated;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonAnyGetter;
-import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -25,7 +27,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-//@Entity
+@Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "aid", "tid", "cid", "partner_order_id", "partner_user_id", "payment_method_type", "item_name",
 		"quantity", "amount", "created_at", "approved_at" })
@@ -34,62 +36,49 @@ public class KakaoPaymentHistory {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public int id;
+	private int id;
 	
 	@Column(nullable = false)
 	@JsonProperty("aid")
-	public String aid;
+	private String aid;
 	
 	@Column(nullable = false)
 	@JsonProperty("tid")
-	public String tid;
+	private String tid;
 
 	@Column(nullable = false)
 	@JsonProperty("cid")
-	public String cid;
+	private String cid;
 	
 	@Column(nullable = false)
 	@JsonProperty("partner_order_id")
-	public String partnerOrderId;
+	private String partnerOrderId;
 	
 	@Column(nullable = false)
 	@JsonProperty("partner_user_id")
-	public String partnerUserId;
+	private String partnerUserId;
 	
 	@Column(nullable = false)
 	@JsonProperty("payment_method_type")
-	public String paymentMethodType;
+	private String paymentMethodType;
 	
 	@Column(nullable = false)
 	@JsonProperty("item_name")
-	public String itemName;
+	private String itemName;
 	
 	@Column(nullable = false)
 	@JsonProperty("quantity")
-	public Integer quantity;
+	private Integer quantity;
 	
-	@Column(nullable = false)
 	@JsonProperty("amount")
-	public Amount amount;
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "amountId")
+	private Amount amount;
 	
-	@Column(nullable = false)
-	@JsonProperty("created_at")
-	public String createdAt;
+	private String createdAt;
 	
 	@Column(nullable = false)
 	@JsonProperty("approved_at")
-	public String approvedAt;
+	private String approvedAt;
 	
-	@JsonIgnore
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-	@JsonAnyGetter
-	public Map<String, Object> getAdditionalProperties() {
-		return this.additionalProperties;
-	}
-
-	@JsonAnySetter
-	public void setAdditionalProperty(String name, Object value) {
-		this.additionalProperties.put(name, value);
-	}
 }

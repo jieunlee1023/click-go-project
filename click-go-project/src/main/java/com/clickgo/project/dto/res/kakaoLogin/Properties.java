@@ -1,6 +1,5 @@
 
-package com.clickgo.project.dto.res.kakao_login;
-
+package com.clickgo.project.dto.res.kakaoLogin;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
@@ -13,30 +12,12 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({
-    "profile_nickname_needs_agreement",
-    "profile",
-    "has_email",
-    "email_needs_agreement",
-    "is_email_valid",
-    "is_email_verified",
-    "email"
+    "nickname"
 })
-public class KakaoAccount {
+public class Properties {
 
-    @JsonProperty("profile_nickname_needs_agreement")
-    public Boolean profileNicknameNeedsAgreement;
-    @JsonProperty("profile")
-    public Profile profile;
-    @JsonProperty("has_email")
-    public Boolean hasEmail;
-    @JsonProperty("email_needs_agreement")
-    public Boolean emailNeedsAgreement;
-    @JsonProperty("is_email_valid")
-    public Boolean isEmailValid;
-    @JsonProperty("is_email_verified")
-    public Boolean isEmailVerified;
-    @JsonProperty("email")
-    public String email;
+    @JsonProperty("nickname")
+    public String nickname;
     @JsonIgnore
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 

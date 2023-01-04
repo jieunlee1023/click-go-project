@@ -3,6 +3,12 @@ package com.clickgo.project.dto.res.kakaoPay;
 import java.util.HashMap;
 import java.util.Map;
 import javax.annotation.Generated;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,37 +16,47 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @ToString
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "total", "tax_free", "vat", "point", "discount", "green_deposit" })
 @Generated("jsonschema2pojo")
 public class Amount {
-
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	
+	@Column(nullable = false)
 	@JsonProperty("total")
-	public Integer total;
+	private Integer total;
+	
+	@Column(nullable = false)
 	@JsonProperty("tax_free")
-	public Integer taxFree;
+	private Integer taxFree;
+	
+	@Column(nullable = false)
 	@JsonProperty("vat")
-	public Integer vat;
+	private Integer vat;
+	
+	@Column(nullable = false)
 	@JsonProperty("point")
-	public Integer point;
+	private Integer point;
+	
+	@Column(nullable = false)
 	@JsonProperty("discount")
-	public Integer discount;
+	private Integer discount;
+	
+	@Column(nullable = false)
 	@JsonProperty("green_deposit")
-	public Integer greenDeposit;
-	@JsonIgnore
-	private Map<String, Object> additionalProperties = new HashMap<String, Object>();
-
-	@JsonAnyGetter
-	public Map<String, Object> getAdditionalProperties() {
-		return this.additionalProperties;
-	}
-
-	@JsonAnySetter
-	public void setAdditionalProperty(String name, Object value) {
-		this.additionalProperties.put(name, value);
-	}
-
+	private Integer greenDeposit;
+	
 }
