@@ -7,8 +7,6 @@
 	<h5>수정을 완료 했다면 아래의 수정 완료 버튼을 눌러보세요 !</h5>
 </div>
 <br>
-&nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
-&nbsp;&nbsp;&nbsp; &nbsp;
 <div class="d-flex-column justify-content-center">
 	<c:choose>
 		<c:when test="${empty store}">

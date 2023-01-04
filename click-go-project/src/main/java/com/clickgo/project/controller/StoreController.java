@@ -118,11 +118,13 @@ public class StoreController {
 
 		String nowDate = nowYear + "-" + nowMonth + "-" + nowDay;
 		String nowTime = nowHour + ":" + nowMinutes;
-		System.out.println(nowDate);
-		System.out.println(nowTime);
-		
+		String maxDate = nowYear + "-" + nowMonth + "-" + (Integer.parseInt(nowDay) + 7);
+		String nowTimeOnlyHour = (nowHour + 1) + ":" + 00;
+
 		model.addAttribute("nowDate", nowDate);
 		model.addAttribute("nowTime", nowTime);
+		model.addAttribute("maxDate", maxDate);
+		model.addAttribute("nowTimeOnlyHour", nowTimeOnlyHour);
 	}
 
 	public void getImage(Model model, int storeId) {

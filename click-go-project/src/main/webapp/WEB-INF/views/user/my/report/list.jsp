@@ -29,7 +29,7 @@
 						</div>
 
 					</c:when>
-
+					
 					<c:otherwise>
 						<c:forEach var="report" items="${reports.content}">
 							<div class="media border mt-3"
