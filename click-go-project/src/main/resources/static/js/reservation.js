@@ -4,6 +4,14 @@ let index = {
 		$("#btn--time-check").bind("click", () => {
 			this.timeCheck();
 		});
+		let size = $("#reservation-size").val();
+
+		for (var i = 1; i <= size; i++) {
+			let id = $(`#reservation-id-${i}`).val();
+			$("#btn--approve-reservation-" + i).bind("click", () => {
+				this.approve(id);
+			});
+		}
 	},
 	timeCheck: function() {
 		let storeId = $("#storeId").val();
@@ -22,11 +30,27 @@ let index = {
 		}).done(function(data) {
 			if (data.httpStatus == true) {
 				closeSeats(data.body);
+				addButton();
 			} else {
 				alert(data.body);
 			}
 		}).fail(function(error) {
 			alert("예상치 못한 오류가 발생하였습니다. 관리자에게 문의해주세요.");
+		});
+	},
+	approve: function(id) {
+		$.ajax({
+			type: 'GET',
+			url: `/api/reservation/approve/${id}`,
+		}).done(function(data) {
+			alert(data.body);
+			if (data.httpStatus) {
+				$(`#btn--approve-reservation-${id}`).remove();
+				$(`#btn--reject-reservation-${id}`).remove();
+				$(`#btn--reject-reservation-${id}`).remove();
+			}
+		}).fail(function(error) {
+			console.log(error);
 		});
 	}
 };
@@ -35,18 +59,25 @@ function closeSeats(closeSeats) {
 	let closeSeatsToMap = new Map(Object.entries(closeSeats));
 	let totalRoomCount = closeSeatsToMap.get("totalRoomCount");
 
-	console.log(totalRoomCount[0] + '번 시작');
 	for (let i = 0; i < totalRoomCount; i++) {
-		console.log(i);
 
 		$("#" + i).attr("disabled", null);
 		for (seat of closeSeatsToMap.get("seats")) {
-			console.log(seat);
 			if (seat == i) {
 				$("#" + i).attr("disabled", "disabled");
 			};
 		};
 	};
+};
+function addButton() {
+	let value = $("#btn--reservation").val();
+	if (value == null) {
+		let buttonElement = `	<button type="submit" id="btn--reservation">예약</button>
+										<br>
+										<span>예약 버튼을 누를 시 바로 결제화면으로 이동합니다.</span>`;
+		$("#add--button").prepend(buttonElement);
+	}
+
 };
 
 
