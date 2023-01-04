@@ -150,7 +150,7 @@
 										<% if (start == fours) { break; }%>
 										<% } %>
 									</div>
-									<br>
+									<br>g
 									<div class="d-flex mt-2">
 										<% for(start = fours + 1; start <= totalRoomCount; start++) { %>
 										<input type="checkbox" id="<%=start %>"

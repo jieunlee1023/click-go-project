@@ -32,6 +32,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.entity.User;
+import com.clickgo.project.model.enums.LoginType;
 import com.clickgo.project.service.UserService;
 
 import lombok.RequiredArgsConstructor;
@@ -95,9 +96,19 @@ public class UserApiController {
 
 	// 비밀번호 찾기
 	@PostMapping("/send-mail")
-	public ResponseDto<Integer> mailSend(@RequestBody User user) {
+	public ResponseDto<?> mailSend(@RequestBody User user) {
+		
 		User userEntity = userService.searchPassword(user.getUsername(), user.getEmail());
-
+		LoginType lognType;
+		try {
+			lognType = userEntity.getLoginType();
+		} catch (Exception e) {
+			lognType = LoginType.CLICKGO;
+		}
+		
+		if(lognType != LoginType.CLICKGO) {
+			return new ResponseDto<String>(false, new String("소셜회원은 아이디/비밀번호를 찾을 수 없습니다. 관리자에게 문의해주세요"));
+		}
 		return new ResponseDto<>(true, naverMailSend(userEntity.getEmail()));
 	}
 
