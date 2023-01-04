@@ -11,7 +11,7 @@
 <br>
 &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp; &nbsp; &nbsp;
 &nbsp;&nbsp;&nbsp; &nbsp;
-<form action="/reservation/1" method="post">
+<form action="/reservation/${store.id}?paymentType=KAKAO" method="post">
 	<div class="d-flex-column justify-content-center">
 		<c:choose>
 			<c:when test="${empty store}">
@@ -39,7 +39,7 @@
 							<input type="time" name="endTime" id="endTime"value="${nowTime}"min="${nowTime}">
 						</div>
 						<input type="hidden" id="storeId" value="${store.id }">
-						<button type="button" id="btn--time-check">예약 하기</button>
+						<button type="button" id="btn--time-check">시간 설정</button>
 					</div>
 					<div class="media border m-3"
 						style="width: 900px; height: 510px; border-radius: 15px;">
@@ -53,7 +53,7 @@
 									</div>
 									<div class="d-flex-column mr-4 mt-3 justify-content-end">
 										<p>지점 : ${store.storeAddress}</p>
-										<p>카테고리 : ${store.category}</p>
+										<p>카테고리 : ${store.category.id}</p>
 										<p>총 자릿수 : ${store.storeTotalRoomCount}</p>
 
 										<c:choose>
@@ -89,6 +89,7 @@
 							
 						%>
 
+						<div class="d-flex justify-content-between">
 							<div class="d-flex justify-content-center"
 								style="border: 1px solid black; width: 550px; height: 245px">
 								<div class=" ml-1 mt-4">
@@ -162,7 +163,9 @@
 									</div>
 								</div>
 							</div>
-							<button type="submit">예약</button>
+							<div class="d-flex-column justify-content-end" id="add--button">
+							</div>
+						</div>
 						</div>
 					</div>
 				</div>

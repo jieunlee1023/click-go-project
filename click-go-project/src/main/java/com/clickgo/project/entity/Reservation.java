@@ -4,6 +4,8 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,6 +16,7 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 
 import com.clickgo.project.model.enums.ApproveStatus;
+import com.clickgo.project.model.enums.PaymentType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import lombok.AllArgsConstructor;
@@ -32,9 +35,12 @@ public class Reservation {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@JsonIgnoreProperties
 	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private ApproveStatus approveStatus;
+
+	@Enumerated(EnumType.STRING)
+	private PaymentType paymentType;
 
 	@Column(nullable = false)
 	@CreationTimestamp

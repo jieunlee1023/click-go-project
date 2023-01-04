@@ -58,12 +58,11 @@ public class Store {
 
 	@CreationTimestamp
 	private Timestamp createDate;
-	
+
 	@Column(nullable = false)
 	private int price;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
-
 }
