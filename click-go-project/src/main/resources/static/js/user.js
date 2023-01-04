@@ -59,12 +59,11 @@ let index = {
 
 			}
 		}).fail(function(error) {
-			alert(error.responseText);
 
 			console.log("오류가 발생했습니다. 관리자에게 문의해주세요.");
 			Swal.fire({
 				icon: 'error',
-				text: '오류가 발생했습니다. 관리자에게 문의해주세요.',
+				text: error.responseText,
 			});
 		});
 

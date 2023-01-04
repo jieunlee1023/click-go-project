@@ -41,11 +41,11 @@ public class User {
 	private int id;
 
 	@Column(nullable = false, length = 100, unique = true)
-	@Size(max = 50, min = 2, message = "아이디는 5글자 이상을 입력해주세요")
+	@Size(max = 50, min = 2, message = "아이디는 최소 2글자 이상을 입력해주세요")
 	private String username;
 
 	@Column(nullable = false, length = 100)
-	@Size(max = 100, min = 5, message = "비밀번호는 5글자 이상 입력해주세요")
+	@Size(max = 100, min = 5, message = "비밀번호는 최소 5글자 입력해주세요")
 	private String password;
 
 	@Pattern(regexp = "^\\d{3}-\\d{4}-\\d{4}$",message = "휴대폰 형식에 맞춰주세요(ex.010-1234-5678)")
@@ -55,8 +55,8 @@ public class User {
 	@CreationTimestamp
 	private Timestamp createDate;
 
-	@Column(nullable = false,unique = true )
 	@Email(message = "이메일 형식에 맞춰주세요")
+	@Column(nullable = false, unique = true )
 	private String email;
 
 	@ColumnDefault(value = "0")

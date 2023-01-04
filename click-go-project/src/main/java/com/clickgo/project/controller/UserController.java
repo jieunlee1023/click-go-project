@@ -49,12 +49,10 @@ public class UserController {
 
 	@Value("${phoneNumber.key}")
 	private String phoneNumber;
-	
 
 	@GetMapping("/auth/login-form")
-	public String loginForm(@RequestParam(value = "error", required = false) String error, 
-				@RequestParam(value = "exception", required = false) String exception,
-				Model model) {
+	public String loginForm(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "exception", required = false) String exception, Model model) {
 		model.addAttribute("error", error);
 		model.addAttribute("exception", exception);
 		return "user/login-form";
@@ -69,12 +67,10 @@ public class UserController {
 	public String joinForm() {
 		return "user/join-form";
 	}
-	
+
 	@GetMapping("/auth/info-search")
-	public String userInfoSearchForm(@RequestParam(value = "error", required = false) String error, 
-			@RequestParam(value = "exception", required = false) String exception,
-			Model model) {
-		System.out.println("아이디 찾기 폼");
+	public String userInfoSearchForm(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "exception", required = false) String exception) {
 		return "/user/info-search-form";
 	}
 
@@ -231,19 +227,16 @@ public class UserController {
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		return "redirect:/";
 	}
-	
+
 	// 로그아웃
 	@GetMapping("/m-logout")
 	public String logout(HttpServletRequest req, HttpServletResponse res) {
 
-		
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); 
-		if(authentication != null) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication != null) {
 			new SecurityContextLogoutHandler().logout(req, res, authentication);
 		}
 		return "redirect:/";
 	}
 
-
-	
 }

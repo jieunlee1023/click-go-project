@@ -7,7 +7,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.clickgo.project.advice.NotFoundIdException;
 import com.clickgo.project.entity.DeleteUser;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
@@ -113,7 +112,7 @@ public class UserService {
 	@Transactional
 	public User searchUserEmail(String email)   {
 		return userRepository.findByEmail(email).orElseThrow(() -> {
-			return new NotFoundIdException("해당하는 이메일이 없습니다 다시확인해주세요");
+			return new IllegalArgumentException();
 		});
 	}
 
