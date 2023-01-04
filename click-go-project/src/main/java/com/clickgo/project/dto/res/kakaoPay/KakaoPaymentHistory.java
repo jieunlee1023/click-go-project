@@ -25,7 +25,7 @@ import lombok.ToString;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+//@Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "aid", "tid", "cid", "partner_order_id", "partner_user_id", "payment_method_type", "item_name",
 		"quantity", "amount", "created_at", "approved_at" })
