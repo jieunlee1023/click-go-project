@@ -134,11 +134,34 @@ public class UserApiController {
 
 			// send the message
 			Transport.send(message);
-			System.out.println("Success Message Send");
 			return 0;
 		} catch (MessagingException e) {
 			e.printStackTrace();
 			return -1;
 		}
 	}
+
+	// 아이디 중복체크
+	@PostMapping("/check-id")
+	public int checkId(@RequestBody User user) {
+		try {
+			int result = userService.findByUsername(user.getUsername());
+			return 1;
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+
+	// 이메일 중복체크
+	@PostMapping("/check-email")
+	public int checkEmail(@RequestBody User user) {
+		try {
+			User userEntity = userService.searchUserEmail(user.getEmail());
+			int result = (userEntity != null) ? 1 : -1;
+			return result;
+		} catch (Exception e) {
+			return -1;
+		}
+	}
+
 }

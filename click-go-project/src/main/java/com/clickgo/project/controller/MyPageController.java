@@ -34,8 +34,8 @@ public class MyPageController {
 	public String myPage(Model model) {
 		franchiseMassageCount(model);
 		return "/user/my/mypage";
-
 	}
+	
 
 	@GetMapping("/reservation-list")
 	public String reservationList(Model model,
@@ -78,6 +78,5 @@ public class MyPageController {
 		});
 		int waitMsg = allMsg.size()-franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
-
 	}
 }

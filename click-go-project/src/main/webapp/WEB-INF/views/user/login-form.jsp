@@ -11,9 +11,16 @@
 		<div class="container">
 			<form action="/auth/loginProc" method="post">
 				<div class="form-group ">
-				<c:if test="${error eq 'true' }">
-					<div class="alert alert-danger">${exception }</div>
-					</c:if>
+				 <c:choose>
+			        <c:when test="${error eq 'true'}">
+					<div class="alert alert-danger">${exception}</div>
+			        </c:when>         
+			        <c:otherwise>
+			        </c:otherwise>
+			    </c:choose>
+				<%-- <c:if test="${error eq 'true'}"> 
+					<div class="alert alert-danger">${exception}</div>
+					</c:if>--%>
 					<label for="username" class="d-flex m-0" >아이디</label> 
 					<input type="text" class="form-control" id="username"
 						name="username" value="minicar" required>
@@ -27,6 +34,9 @@
 				<div class="form-control d-flex justify-content-center" id="loginbutton">
 					<button type="submit" id="btn--login">로그인</button>
 				</div>
+				 <span>
+               
+            </span>
 			</form>
 
 			<div class="d-flex justify-content-between pt-2">

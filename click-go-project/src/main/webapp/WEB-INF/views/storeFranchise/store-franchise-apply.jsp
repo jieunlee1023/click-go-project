@@ -17,8 +17,9 @@
 			enctype="multipart/form-data">
 			<div class="form-group ">
 				<div class="d-flex" style="font-size: 13px">
-					<select class=" custom-select mb-3" name="category" id="category" required>
-						<option value="none" disabled="disabled" selected="selected"  >카테고리를
+					<select class=" custom-select mb-3" name="category" id="category"
+						required>
+						<option value="none" disabled="disabled" selected="selected">카테고리를
 							선택해주세요.</option>
 						<c:forEach var="category" items="${categories}">
 							<option value="${category}">${category}</option>
@@ -30,7 +31,7 @@
 
 
 			<div class="form-group ">
-				<label for="storeName" class="d-flex m-0" style="font-size: 13px" >가맹점명</label>
+				<label for="storeName" class="d-flex m-0" style="font-size: 13px">가맹점명</label>
 				<input type="text" class="form-control" id="storeName"
 					name="storeName" value="OX 피시방" required>
 			</div>
@@ -41,8 +42,9 @@
 			</div>
 
 			<div class="form-group ">
-				<label for="storeTotalRoomCount" class="d-flex m-0" style="font-size: 13px">가맹점
-					총 자릿 수</label> <input type="text" class="form-control" id="storeTotalRoomCount"
+				<label for="storeTotalRoomCount" class="d-flex m-0"
+					style="font-size: 13px">가맹점 총 자릿 수</label> <input type="text"
+					class="form-control" id="storeTotalRoomCount"
 					style="border-radius: 0px" name="storeTotalRoomCount" value="63">
 			</div>
 
@@ -62,8 +64,7 @@
 				<span class="d-flex mr-2" style="font-size: 13px">사업자 등록증</span>
 
 				<button type="button" data-toggle="tooltip" data-placement="right"
-					title="가맹점 신청 시 사업자 등록증은 필수 항목입니다." id="licence--que">
-					?</button>
+					title="가맹점 신청 시 사업자 등록증은 필수 항목입니다." id="licence--que">?</button>
 
 			</div>
 
@@ -77,8 +78,8 @@
 				<span class="d-flex mr-2" style="font-size: 13px">좌석 배치도</span>
 
 				<button type="button" data-toggle="tooltip" data-placement="right"
-					title="가맹점 신청 시 좌석 배치도를 &nbsp; 올려주셔야 등록 승인 절차를  &nbsp; 진행합니다. (※ 예약시 필수 )" id="seat--que">?
-				</button>
+					title="가맹점 신청 시 좌석 배치도를 &nbsp; 올려주셔야 등록 승인 절차를  &nbsp; 진행합니다. (※ 예약시 필수 )"
+					id="seat--que">?</button>
 			</div>
 
 
@@ -113,7 +114,11 @@
 
 	$(function() {
 		$('[data-toggle="tooltip"]').tooltip()
-	})
+	});
+	
+
+		
+
 </script>
 
 
