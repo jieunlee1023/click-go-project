@@ -46,6 +46,7 @@
 <link href="/css/board.css" rel="stylesheet" type="text/css" />
 <link href="/css/storeFranchise.css" rel="stylesheet" type="text/css" />
 <link href="/css/mypage.css" rel="stylesheet" type="text/css" />
+<link href="/css/admin.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="/css/fullpage.min.css">
 <link rel="stylesheet" href="/css/index.css">
@@ -114,7 +115,7 @@
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
 								</ul>
 						</li>
-						<li><a class="nav-link" href="/admin/admin-mypage">관리자</a></li>
+						<li><a class="nav-link" href="/admin/admin-main">관리자</a></li>
 						<li><a class="nav-link" href="/logout">로그아웃</a></li>
 			        </ul>
 			    </div>

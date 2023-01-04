@@ -14,9 +14,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.service.StoreFranchiseService;
+import com.clickgo.project.service.StoreService;
 import com.clickgo.project.service.UserService;
 
 @Controller
@@ -27,12 +29,17 @@ public class AdminController {
 	private UserService userService;
 
 	@Autowired
+	private StoreService storeService;
+	
+	@Autowired
 	private StoreFranchiseService franchiseService;
+	
+	
 
-	@GetMapping("/admin-mypage")
+	@GetMapping("/admin-main")
 	public String adminPage(Model model) {
 		franchiseMassageCount(model);
-		return "admin/admin-mypage";
+		return "admin/admin-main";
 
 	}
 
@@ -84,8 +91,35 @@ public class AdminController {
 		return "admin/admin-user";
 	}
 
-	@GetMapping("/admin-store")
-	public String adminFranchise() {
+	@GetMapping({"/admin-store", "/store-search"})
+	public String adminStoreInfo(@RequestParam(required = false) String q, Model model,
+			@PageableDefault(size = 3, sort = "id", direction = Direction.ASC) Pageable pageable) {
+		String searchStoreName = q == null ? "" : q;
+		
+//		Page<Store> stores = storeService.getStoreAllList(pageable);
+		Page<Store> stores = storeService.searchStoreList(searchStoreName, pageable);
+		
+		int PAGENATION_BLOCK_COUNT = 3;
+		
+		int nowPage = stores.getPageable().getPageNumber() + 1;
+		
+		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
+		int endPageNumber = Math.min(nowPage + startPageNumber, stores.getTotalPages());
+		
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for(int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+	}
+		
+		model.addAttribute("stores", stores);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPageNumber", startPageNumber);
+		model.addAttribute("endPageNumber", endPageNumber);
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("q", searchStoreName);
+		
+		franchiseMassageCount(model);
+		
 		return "admin/admin-store";
 	}
 
@@ -93,6 +127,16 @@ public class AdminController {
 	public String adminAsk() {
 		return "admin/admin-ask";
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
