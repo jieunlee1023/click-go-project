@@ -11,12 +11,15 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.clickgo.project.entity.OneOnOne;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
+import com.clickgo.project.service.OneOnOneService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 import com.clickgo.project.service.UserService;
@@ -32,7 +35,11 @@ public class AdminController {
 	private StoreService storeService;
 	
 	@Autowired
+	private OneOnOneService oneOnOneService;
+	
+	@Autowired
 	private StoreFranchiseService franchiseService;
+	
 	
 	
 
@@ -123,10 +130,12 @@ public class AdminController {
 		return "admin/admin-store";
 	}
 
-	@GetMapping("/admin-ask")
+	@GetMapping("/admin-answer")
 	public String adminAsk() {
-		return "admin/admin-ask";
+		return "admin/admin-answer";
 	}
+	
+	
 	
 	
 	

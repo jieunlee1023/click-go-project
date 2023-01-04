@@ -82,6 +82,7 @@
 									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
 									<li><a class="dropdown-item" href="/view-more/about-us" >회사 소개</a></li>
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
+									<li><a class="dropdown-item" href="/view-more/one-on-one">1:1 문의</a></li>
 								</ul>
 						</li>
 						<li><a class="nav-link" href="/auth/login-form">로그인</a></li>
@@ -113,6 +114,7 @@
 									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
 									<li><a class="dropdown-item" href="/view-more/about-us">회사 소개</a></li>
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
+									<li><a class="dropdown-item" href="/view-more/one-on-one">1:1 문의</a></li>
 								</ul>
 						</li>
 						<li><a class="nav-link" href="/admin/admin-main">관리자</a></li>
@@ -139,6 +141,7 @@
 									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
 									<li><a class="dropdown-item" href="/view-more/about-us">회사 소개</a></li>
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
+									<li><a class="dropdown-item" href="/view-more/one-on-one">1:1 문의</a></li>
 								</ul>
 						</li>
 						<li><a class="nav-link" href="/mypage">내 정보</a></li>
