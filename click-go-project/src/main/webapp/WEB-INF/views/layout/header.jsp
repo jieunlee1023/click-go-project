@@ -40,10 +40,19 @@
 
 <!-- 폰트 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://fonts.gstatic.com">
 <link
 	href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap"
 	rel="stylesheet">
+
+<!-- 드랍다운 -->
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<link rel="stylesheet"
+	href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css"
+	type="text/css" />
+<link rel='stylesheet'
+	href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css' />
+
 
 <!-- CSS 연결 -->
 <link href="/css/common.css" rel="stylesheet" type="text/css" />
@@ -53,11 +62,16 @@
 <link href="/css/board.css" rel="stylesheet" type="text/css" />
 <link href="/css/storeFranchise.css" rel="stylesheet" type="text/css" />
 <link href="/css/mypage.css" rel="stylesheet" type="text/css" />
+<link href="/css/store.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="/css/fullpage.min.css">
 <link rel="stylesheet" href="/css/index.css">
 <script src="/js/fullpage.min.js"></script>
 
+
+<!-- 타이머  -->
+<link rel="stylesheet"
+	href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
 </head>
 
 <body>
@@ -92,11 +106,13 @@
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관
 											및 정책</a></li>
 								</ul></li>
-							<li><a class="nav-link" href="/auth/login-form">로그인</a></li>
+							<li><a class="nav-link" href="/mypage">내 정보</a></li>
+							<li><a class="nav-link" href="/logout">로그아웃</a></li>
 						</ul>
 					</div>
-				</c:when>
 
+				</c:when>
+	
 				<c:when test="${principal.user.role eq 'ADMIN'}">
 					<div class="nav--list">
 						<ul id="nav--item">
@@ -162,7 +178,6 @@
 							<li><a class="nav-link" href="/logout">로그아웃</a></li>
 						</ul>
 					</div>
-
 				</c:otherwise>
 			</c:choose>
 		</div>

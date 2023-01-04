@@ -1,9 +1,11 @@
 
 let boardIndex = {
 	init: function() {
+		/*
 		$("#btn--write").bind("click", () => {
 			this.write();
 		});
+		*/
 
 		$("#btn--update").bind("click", () => {
 			this.update();
@@ -42,11 +44,20 @@ let boardIndex = {
 		}).done(function(data) {
 			console.log(data);
 			if (data.httpStatus == true) {
-				alert("글쓰기 성공");
-				location.href = "/board/board-list";
+				Swal.fire({
+					icon: 'success',
+					text: '게시글이 작성되었습니다.',
+				}).then(function() {
+					location.href = "/board/board-list";
+				});
 			}
 		}).fail(function(error) {
-			alert("글 등록 실패" + error.responseJSON.message);
+			Swal.fire({
+				icon: 'success',
+				text: '게시글이 작성을 실패하였습니다.',
+			}).then(function() {
+				location.href = "/board/board-list";
+			});
 		});
 	},
 
@@ -66,8 +77,12 @@ let boardIndex = {
 			dataType: "json"
 		}).done(function(data) {
 			if (data.httpStatus == true) {
-				alert("글 수정이 완료됐습니다");
-				location.href = "/board/board-list"
+				Swal.fire({
+					icon: 'success',
+					text: '게시글이 수정이 완료되었습니다.',
+				}).then(function() {
+					location.href = "/board/board-list";
+				});
 			}
 		}).fail(function(error) {
 			alert("글 수정 실패" + error.responseJSON.message);
@@ -82,11 +97,18 @@ let boardIndex = {
 			url: "/api/board/" + id
 		}).done(function(data) {
 			if (data.httpStatus == true) {
-				alert("글 삭제 완료");
-				location.href = "/board/board-list"
+				Swal.fire({
+					icon: 'success',
+					text: '게시글이 삭제가 완료되었습니다.',
+				}).then(function() {
+					location.href = "/board/board-list";
+				});
 			}
 		}).fail(function(error) {
-			alert("글 삭제 실패 " + error.responseJSON.message);
+			Swal.fire({
+				icon: 'error',
+				text: '게시글이 삭제를 실패하였습니다.',
+			});
 		});
 	},
 
@@ -96,14 +118,14 @@ let boardIndex = {
 			boardId: $("#board-id").val(),
 			content: $("#reply--content").val()
 		};
-		
-		
+
+
 		var checkBoxArray = new Array();
 		$('input:checkbox[name=secret]:checked').each(function() {
 			checkBoxArray.push(this.value);
 		});
-		
-		
+
+
 		$.ajax({
 			type: "POST",
 			url: "/api/board/" + replyData.boardId + "/reply",
@@ -116,9 +138,8 @@ let boardIndex = {
 				alert("댓글 등록 성공");
 				console.log(data.body);
 				location.href = "/board/" + replyData.boardId;
-
-
 			}
+
 		}).fail(function(error) {
 			console.log(error);
 			alert("리플 등록 실패");
@@ -135,11 +156,20 @@ let boardIndex = {
 			dataType: "json"
 		}).done(function(resData) {
 			if (resData.httpStatus == true) {
-				alert("댓글 삭제 성공");
-				location.href = "/board/" + boardId;
+				Swal.fire({
+					icon: 'success',
+					text: '댓글 삭제 성공!',
+				}).then(function() {
+					location.href = "/board/" + boardId;
+				});
 			}
 		}).fail(function(error) {
-			alert("댓삭제실패" + error.responseJSON.message);
+			Swal.fire({
+				icon: 'error',
+				text: '댓글 삭제 실패!',
+			}).then(function() {
+				location.href = "/board/" + boardId;
+			});
 		});
 	}
 

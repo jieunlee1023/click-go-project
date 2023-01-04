@@ -6,7 +6,6 @@
 	<div id="view-more-title">
 		<div>🌟 매장 관리</div>
 	</div>
-	<span style="color: #6478ff">: 이용자들이 보는 가게의 화면을 꾸며보세요 !</span>
 	<hr>
 	<br>
 </div>
@@ -29,5 +28,5 @@
 		</c:otherwise>
 	</c:choose>
 </div>
-<br>
+<br><br><br>
 <%@ include file="../../../layout/footer.jsp"%>

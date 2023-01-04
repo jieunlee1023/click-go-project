@@ -5,7 +5,7 @@
 <div class="container" id="mypage">
 	<input type="hidden" value="${principal.user.id}" id="user-id">
 
-	<div class="d-flexr" id="view-more-title" style="align-items: center;">
+	<div class="d-flex" id="view-more-title" style="align-items: center;">
 		<div>💻 관리자 페이지</div>
 	</div>
 </div>

@@ -111,7 +111,7 @@ input:focus {
 }
 
 /* 글 디테일*/
-#btn--back, #btn--update--css, #btn--delete {
+#btn--back, #btn--update,#btn--update--css, #btn--delete {
 	background-color: #6478ff;
 	color: white;
 	margin-right: 5px;
