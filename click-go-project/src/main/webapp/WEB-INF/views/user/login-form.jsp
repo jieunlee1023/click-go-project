@@ -21,7 +21,7 @@
 				<div class="form-group ">
 					<label for="password" class="d-flex m-0" >비밀번호</label>
 					<input type="password" class="form-control" id="password"
-						name="password" value="123" required >
+						name="password" value="12345" required >
 				</div>
 				<br>
 				<div class="form-control d-flex justify-content-center" id="loginbutton">

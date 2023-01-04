@@ -21,4 +21,10 @@ public class ImageService {
 	public List<Image> findByStoreId(int id) {
 		return imageRepository.findByStoreId(id);
 	}
+
+	public Image findById(int imageId) {
+		return imageRepository.findById(imageId).orElseThrow(() -> {
+			return new IllegalArgumentException("없다 !");
+		});
+	}
 }

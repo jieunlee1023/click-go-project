@@ -30,7 +30,6 @@ let index = {
    approve: function(userId, userName, franchiseId, category, storeName, storeTel, storeAddress, licenseImageUrl, layoutImageUrl, storeTotalRoomCount, price) {
       let data = {
          id: franchiseId,
-         categoryId: category,
          storeName: storeName,
          storeAddress: storeAddress,
          storeTEL: storeTel,
@@ -40,14 +39,12 @@ let index = {
          storeTotalRoomCount: storeTotalRoomCount,
          price: price,
       }
-
       $.ajax({
          type: 'POST',
-         url: '/api/store-franchise/approve/' + data.id + "/" + data.userId,
+         url: `/api/store-franchise/approve/${data.id}/${data.userId}?category=${category}`,
          data: JSON.stringify(data),
          contentType: "application/json; charset=UTF-8",
          dataType: "json",
-
       }).done(function(data) {
          if (data.httpStatus == true) {
             alert("가맹점 승인이 완료되었습니다.");

@@ -34,6 +34,8 @@ import com.clickgo.project.service.StoreService;
 @RequestMapping("/store")
 public class StoreController {
 
+	String imageUrl;
+
 	@Autowired
 	private StoreFranchiseService franchiseService;
 
@@ -118,14 +120,11 @@ public class StoreController {
 
 		String nowDate = nowYear + "-" + nowMonth + "-" + nowDay;
 		String nowTime = nowHour + ":" + nowMinutes;
-		System.out.println(nowDate);
-		System.out.println(nowTime);
-		
+
 		model.addAttribute("nowDate", nowDate);
 		model.addAttribute("nowTime", nowTime);
 	}
 
 	public void getImage(Model model, int storeId) {
-		model.addAttribute("image", imageService.findByStoreId(storeId).get(1).getImageUrl());
 	}
 }

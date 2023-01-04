@@ -55,8 +55,6 @@ public class StoreFranchiseService {
 		Path seatLayoutFilePath = Paths.get(layoutFile + seatLayoutFilename);
 
 		try {
-			System.out.println(businessLicenseFilename);
-			System.out.println(seatLayoutFilename);
 
 			Files.write(businessLicenseFilePath, fileDto.getFile().get(0).getBytes());
 			Files.write(seatLayoutFilePath, fileDto.getFile().get(1).getBytes());
@@ -89,7 +87,7 @@ public class StoreFranchiseService {
 		store.setStoreTotalRoomCount(storeFranchise.getStoreTotalRoomCount());
 		store.setPrice(storeFranchise.getPrice());
 		store.setUser(userRepository.findById(userId).get());
-
+		System.out.println(store);
 		storeRepository.save(store);
 		return store;
 	}

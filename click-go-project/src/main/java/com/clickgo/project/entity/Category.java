@@ -31,7 +31,4 @@ public class Category {
 	@Enumerated(EnumType.STRING)
 	private StoreCategory id;
 
-	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties
-	private List<StoreFranchise> StoreFranchise;
 }

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.User;
+import com.clickgo.project.model.enums.ApproveStatus;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.repository.IReservationRepository;
 
@@ -38,7 +39,16 @@ public class ReservationService {
 		reservationRepository.save(reservation);
 	}
 
+	@Transactional
 	public List<Reservation> findByStoreId(int storeId) {
 		return reservationRepository.findByStoreId(storeId);
+	}
+
+	@Transactional
+	public void approve(int id) {
+		Reservation reservationEntity = reservationRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("시도하시려는 예약이 존재하지 않습니다.");
+		});
+		reservationEntity.setApproveStatus(ApproveStatus.APPROVED);
 	}
 }

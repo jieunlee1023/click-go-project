@@ -11,7 +11,6 @@
 
 	<div class="container">
 
-
 		<input type="hidden" value="${principal.user.id}" id="principalUser">
 
 		<form action="/storeFranchise/apply/upload" method="post"

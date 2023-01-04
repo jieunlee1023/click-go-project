@@ -74,27 +74,45 @@
 							<br>
 							<br>
 							<br>
-							<h1>현재 예약하신 내역이 존재하지 않습니다.</h1>
+							<h1>현재 예약받은 내역이 존재하지 않습니다.</h1>
 						</c:when>
 
 						<c:otherwise>
+								<input type="hidden" value="${reservations.content.size()}" id="reservation-size">
 							<c:forEach var="reservation" items="${reservations.content}">
+								<input type="hidden" value="${reservation.id}" id="reservation-id-${reservation.id}">
 								<div class="media border mt-3"
 									style="width: 700px; height: 430px; border-radius: 15px;">
 									<div class="d-flex-column">
-										<img src="../image/about-us/pc_room_m.jpg" alt="가게 사진"
+										<img src="${reservation.store}" alt="가게 사진"
 											style="width: 700px; height: 300px; border-radius: 15px;">
 										<div class="media-body">
 											<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
 												<div class="d-flex justify-content-between pl-3 pt-3 pr-3">
 													<h5 class="" style="font-weight: bold;">${reservation.store.storeName}</h5>
-													<p class="mr-3 ">${reservation.approveStatus}</p>
+													<p class="mr-3 " id="approve--status-${reservation.id}">${reservation.approveStatus}</p>
 												</div>
-												<div class="d-flex-column pl-3 ">
-													<span>${reservation.reservationTime}</span>
-													<div class="d-flex justify-content-between">
-														<span>${reservation.price}원</span> 
-														<span class="mr-4 md-5">${reservation.user.username}님의 발자취 보러가기</span>
+												<div class="d-flex pl-3 justify-content-between">
+													<div class="d-flex-column pl-3">
+														<div>${reservation.reservationTime}</div>
+														<div>${reservation.price}원</div>
+														<br>
+														<div>예약 시간</div>
+														<div>${reservation.reservationDate}</div>
+														<div>${reservation.reservationTime}</div>
+														<br>
+														<div>손님이 예약하신 자리 : ${reservation.reservationSeat}</div>
+														<br>
+														<div>종료 시간</div>
+														<div>${reservation.endDate}</div>
+														<div>${reservation.endTime}</div>
+														<br>
+														<div class="mr-4 md-5">${reservation.user.username}님의
+															발자취 보러가기</div>
+													</div>
+													<div class="d-flex-column pl-3">
+														<button type="button" id="btn--approve-reservation-${reservation.id}">동의</button>
+														<button type="button" id="btn--reject-reservation-${reservation.id}">거절</button>
 													</div>
 												</div>
 											</div>
@@ -108,9 +126,7 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	<br>
-	<br>
-	<br>
+	<br> <br> <br>
 	<div>
 		<ul class="pagination justify-content-center">
 			<c:set var="isDisabled" value="disabled"></c:set>
@@ -145,4 +161,5 @@
 		</ul>
 	</div>
 </div>
+<script type="text/javascript" src="/js/reservation.js"></script>
 <%@ include file="../../layout/footer.jsp"%>
