@@ -26,7 +26,8 @@ let index = {
 	},
 
 	save: function() {
-		let passwordCheck = $("#password").val();
+		let passwordCheck = $("#password-check").val();
+		
 		let data = {
 			username: $("#username").val(),
 			password: $("#password").val(),
@@ -39,6 +40,19 @@ let index = {
 				icon: 'warning',
 				text: '비밀번호를 확인해주세요!',
 			});
+				return false;
+		}else if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{5,12}$/.test(data.password)){
+			Swal.fire({
+				icon: 'warning',
+				text: '숫자+영문자+특수문자 조합으로 5 ~ 12자리 이상 사용해야 합니다.',
+			});
+			return false;
+		}else if (!/^[a-zA-Z]*$/.test(data.username)) {
+			Swal.fire({
+				icon: 'warning',
+				text: '아이디는 영문으로만 가능합니다.',
+			});
+			return false;
 		}
 		$.ajax({
 			type: 'post',
@@ -48,25 +62,24 @@ let index = {
 			dataType: "json"
 		}).done(function(data) {
 			console.log(data);
+
 			if (data.httpStatus == true) {
 				alert(data.body);
 				location.href = "/";
-			} else {
+			}
+			else {
 				Swal.fire({
 					icon: 'error',
 					text: '회원가입에 실패하셨습니다. 형식을 맞춰주세요.',
 				});
-
 			}
 		}).fail(function(error) {
-
 			console.log("오류가 발생했습니다. 관리자에게 문의해주세요.");
 			Swal.fire({
 				icon: 'error',
 				text: error.responseText,
 			});
 		});
-
 	},
 	update: function() {
 		let passwordCheck = $("#new--pwd-check").val();
@@ -187,6 +200,14 @@ let index = {
 			contentType: "application/json; charset=UTF-8",
 			dataType: "json"
 		}).done(function(data) {
+			if (data.httpStatus == false) {
+				Swal.fire({
+					icon: 'error',
+					text: data.body,
+				}).then(function() {
+					location.href = "/auth/login-form";
+				});
+			}
 			if (data.httpStatus == true) {
 				Swal.fire({
 					icon: 'success',

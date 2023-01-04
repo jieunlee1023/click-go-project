@@ -110,7 +110,7 @@ public class UserController {
 		KakaoAccount account = kakaoDataResponse.getBody().kakaoAccount;
 
 		User kakaoUser = User.builder().username(account.profile.nickname + "_" + kakaoDataResponse.getBody().id)
-				.email(account.email).password(clickGoKey).loginType(LoginType.KAKAO).email("a@nave.com")
+				.email("kakao@email").password(clickGoKey).loginType(LoginType.KAKAO)
 				.phoneNumber(phoneNumber).build();
 
 		User originUser = userService.searchUserName(kakaoUser.getUsername());
@@ -214,7 +214,8 @@ public class UserController {
 				"https://www.googleapis.com/oauth2/v1/userinfo", HttpMethod.GET, request, GoogleUserDto.class);
 
 		GoogleUserDto account = googleUserInfo.getBody();
-		User googleUser = User.builder().username(account.id).email("").loginType(LoginType.GOOGLE)
+		System.out.println(account);
+		User googleUser = User.builder().username(account.id).email("google@gamil").loginType(LoginType.GOOGLE)
 				.phoneNumber(phoneNumber).password(clickGoKey).build();
 		User orginUser = userService.searchUserName(googleUser.getUsername());
 
