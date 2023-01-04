@@ -14,16 +14,19 @@
 				</h4>
 			</c:forEach>
 		</div>
-		<a href="/store/map" class="d-flex justify-content-end mr-4">지도로
-			보기</a> <br> <br>
+		<br> <br>
 		<div class="d-flex justify-content-center">
 			<div class="d-flex-column">
-
 				<c:forEach var="store" items="${stores.content}">
+					<input type="hidden" id="store-size"
+						value="${stores.content.size()}">
 					<%@ include file="../common/store.jsp"%>
 				</c:forEach>
 			</div>
 		</div>
 	</div>
 </div>
+
+
+<script type="text/javascript" src="/js/store.js"></script>
 <%@ include file="../layout/footer.jsp"%>

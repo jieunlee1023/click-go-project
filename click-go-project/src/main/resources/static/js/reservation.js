@@ -1,17 +1,19 @@
 
 let index = {
 	init: function() {
+		let size = $("#reservation-size").val();
+		let address = $("#store-address").val();
+		let storeName = $("#store-name").val();
 		$("#btn--time-check").bind("click", () => {
 			this.timeCheck();
 		});
-		let size = $("#reservation-size").val();
-
 		for (var i = 1; i <= size; i++) {
 			let id = $(`#reservation-id-${i}`).val();
 			$("#btn--approve-reservation-" + i).bind("click", () => {
 				this.approve(id);
 			});
-		}
+		};
+		addMap(address, storeName);
 	},
 	timeCheck: function() {
 		let storeId = $("#storeId").val();
@@ -77,9 +79,37 @@ function addButton() {
 										<span>예약 버튼을 누를 시 바로 결제화면으로 이동합니다.</span>`;
 		$("#add--button").prepend(buttonElement);
 	}
-
 };
 
+function addMap(storeAddress, storeName) {
+	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+		mapOption = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+			level: 3 // 지도의 확대 레벨
+		};
+
+	var map = new kakao.maps.Map(mapContainer, mapOption);
+
+	var geocoder = new kakao.maps.services.Geocoder();
+
+	geocoder.addressSearch(storeAddress, function(result, status) {
+
+		if (status === kakao.maps.services.Status.OK) {
+			var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+
+			var marker = new kakao.maps.Marker({
+				map: map,
+				position: coords
+			});
+
+			var infowindow = new kakao.maps.InfoWindow({
+				content: `<div style="width:150px;text-align:center;padding:6px 0;">${storeName}</div>`
+			});
+			infowindow.open(map, marker);
+			map.setCenter(coords);
+		}
+	});
+};
 
 index.init();
 
