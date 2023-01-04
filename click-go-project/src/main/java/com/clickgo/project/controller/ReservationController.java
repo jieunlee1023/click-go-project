@@ -1,14 +1,20 @@
 package com.clickgo.project.controller;
 
+import java.util.List;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,24 +30,37 @@ import com.clickgo.project.dto.res.kakaoPay.KakaoPaymentDto;
 import com.clickgo.project.dto.res.kakaoPay.KakaoPaymentHistory;
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.Store;
+import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.model.enums.ApproveStatus;
 import com.clickgo.project.model.enums.PaymentType;
+import com.clickgo.project.service.AmountService;
+import com.clickgo.project.service.KakaoPaymentHistoryService;
 import com.clickgo.project.service.ReservationService;
+import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 
 @Controller
 @RequestMapping("/reservation")
 public class ReservationController {
 
-	private static String partnerOrderId;
-	private static String partnerUserId;
-	private static String tId;
+	private String partnerOrderId;
+	private String partnerUserId;
+	private String tId;
 
 	@Autowired
 	private ReservationService reservationService;
 
 	@Autowired
 	private StoreService storeService;
+
+	@Autowired
+	private KakaoPaymentHistoryService kakaoPaymentHistoryService;
+
+	@Autowired
+	private AmountService amountService;
+
+	@Autowired
+	private StoreFranchiseService franchiseService;
 
 	@PostMapping("/{storeId}")
 	public String reservation(@RequestParam(required = false) String paymentType,
@@ -50,6 +69,7 @@ public class ReservationController {
 			@RequestParam String endDate, @AuthenticationPrincipal PrincipalDetails principalDetails)
 			throws InterruptedException {
 		Store storeEntity = storeService.findById(storeId);
+
 		int endHour = 0;
 		int endMinute = 0;
 		Reservation reservationEntity = null;
@@ -122,7 +142,6 @@ public class ReservationController {
 					reservationEntity.setEndDate(endYear + "-" + endMonth + "-" + endDay);
 					// 카카오 페이 결제
 					reservationService.save(reservationEntity);
-					System.out.println("디비 저장");
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -130,14 +149,26 @@ public class ReservationController {
 			if (paymentType.equals(PaymentType.KAKAO.toString())) {
 				reservationEntity.setPaymentType(PaymentType.KAKAO);
 				return kakaoPayReady(reservationEntity, storeEntity, seatNumber);
+			} else if (paymentType.equals(PaymentType.NAVER.toString())) {
+				
 			}
 			return "redirect:/store/detail/" + storeId;
 		}
 		return "redirect:/store/detail/" + storeId;
 	}
 
-	public static String kakaoPayReady(Reservation reservation, Store storeEntity, Integer[] seatNumber) {
-		System.out.println("결제 준비");
+	@GetMapping("/list")
+	public String reservationList(Model model,
+			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		Page<Reservation> reservations = reservationService.searchBoard(principalDetails.getUser(), pageable);
+
+		franchiseMassageCount(model);
+		model.addAttribute("reservations", reservations);
+		return "/user/my/reservation/list";
+	}
+
+	public String kakaoPayReady(Reservation reservation, Store storeEntity, Integer[] seatNumber) {
 		Object objOrderId = reservation.getId();
 		partnerOrderId = objOrderId.toString();
 
@@ -172,8 +203,8 @@ public class ReservationController {
 		params.add("total_amount", totalPrice);
 		params.add("tax_free_amount", "50");
 		params.add("approval_url", "http://localhost:7777/reservation/approve/kakao");
-		params.add("cancel_url", "http://localhost:7777/store/detail/" + storeId);
-		params.add("fail_url", "http://localhost:7777/store/detail/" + storeId);
+		params.add("cancel_url", "http://localhost:7777/reservation/cancel/" + seatNumber.length );
+		params.add("fail_url", "http://localhost:7777/reservation/cancel/" + seatNumber.length );
 
 		HttpEntity<MultiValueMap<String, String>> requestKakao = new HttpEntity<>(params, httpHeaders);
 
@@ -187,7 +218,7 @@ public class ReservationController {
 
 	@GetMapping("/approve/kakao")
 	@ResponseBody
-	private static String kakaoPayApprove(@RequestParam(name = "pg_token") String pgToken) {
+	private String kakaoPayApprove(@RequestParam(name = "pg_token") String pgToken) {
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.add("Authorization", "KakaoAK 1c9e66dbc0a2e55b9b2e3016e90a8b17");
@@ -205,9 +236,32 @@ public class ReservationController {
 		ResponseEntity<KakaoPaymentHistory> responseKakao = restTemplate.exchange(
 				"https://kapi.kakao.com/v1/payment/approve", HttpMethod.POST, requestKakao, KakaoPaymentHistory.class);
 
-		KakaoPaymentHistory approveDto = responseKakao.getBody();
+		amountService.save(responseKakao.getBody().getAmount());
+		kakaoPaymentHistoryService.save(responseKakao.getBody());
+		return "redirect:/reservations/list";
+	}
+	
+	@GetMapping("/cancel/{seatNumber}")
+	public String cancel(@PathVariable int seatNumber) {
+		int lastPK = reservationService.findLastPK();
+		for (int i = 0; i < seatNumber; i++) {
+			int cancelReservation = lastPK - i;
+			reservationService.delete(cancelReservation);
+		}
+		return "redirect:/store/main";
+	}
 
-		System.out.println(approveDto.toString());
-		return "redirect:/user/my/reservations";
+	public void franchiseMassageCount(Model model) {
+		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
+		model.addAttribute("message", franchiseMessages);
+
+		List<StoreFranchise> allMsg = franchiseService.getMessageList();
+		franchiseMessages.forEach(t -> {
+			if (t.getState().toString().equals("WAIT")) {
+				allMsg.add(t);
+			}
+		});
+		int waitMsg = allMsg.size() - franchiseMessages.size();
+		model.addAttribute("waitMsg", waitMsg);
 	}
 }

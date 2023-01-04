@@ -1,4 +1,3 @@
-
 <%@page import="java.net.URLEncoder"%>
 <%@page import="java.math.BigInteger"%>
 <%@page import="java.security.SecureRandom"%>
@@ -6,43 +5,42 @@
 	pageEncoding="UTF-8"%>
 
 <%@ include file="../layout/header.jsp"%>
+
 <div class="login--form">
 	<div class="container d-flex justify-content-center" id="login--main">
 		<div class="container">
 			<form action="/auth/loginProc" method="post">
 				<div class="form-group ">
-				 <c:choose>
-			        <c:when test="${error eq 'true'}">
-					<div class="alert alert-danger">${exception}</div>
-			        </c:when>         
-			        <c:otherwise>
-			        </c:otherwise>
-			    </c:choose>
-				<%-- <c:if test="${error eq 'true'}"> 
+					<c:choose>
+						<c:when test="${error eq 'true'}">
+							<div class="alert alert-danger">${exception}</div>
+						</c:when>
+						<c:otherwise>
+						</c:otherwise>
+					</c:choose>
+					<%-- <c:if test="${error eq 'true'}"> 
 					<div class="alert alert-danger">${exception}</div>
 					</c:if>--%>
-					<label for="username" class="d-flex m-0" >아이디</label> 
-					<input type="text" class="form-control" id="username"
-						name="username" value="minicar" required>
+					<label for="username" class="d-flex m-0">아이디</label> <input
+						type="text" class="form-control" id="username" name="username"
+						value="minicar" required>
 				</div>
 				<div class="form-group ">
-					<label for="password" class="d-flex m-0" >비밀번호</label>
-					<input type="password" class="form-control" id="password"
-						name="password" value="11111" required >
+					<label for="password" class="d-flex m-0">비밀번호</label> <input
+						type="password" class="form-control" id="password" name="password"
+						value="11111" required>
 				</div>
 				<br>
-				<div class="form-control d-flex justify-content-center" id="loginbutton">
+				<div class="form-control d-flex justify-content-center"
+					id="loginbutton">
 					<button type="submit" id="btn--login">로그인</button>
 				</div>
-				 <span>
-               
-            </span>
+				<span> </span>
 			</form>
 
 			<div class="d-flex justify-content-between pt-2">
-				<a id="id-infosearch-btn"
-					href="/auth/info-search">아이디/비밀번호 찾기</a> <a id="signin-btn"
-				" href="/auth/join-form">회원가입</a>
+				<a id="id-infosearch-btn" href="/auth/info-search">아이디/비밀번호 찾기</a> <a
+					id="signin-btn" href="/auth/join-form">회원가입</a>
 			</div>
 			<br>
 			<div class="d-flex justify-content-center">
@@ -78,5 +76,8 @@
 		</div>
 	</div>
 </div>
-<br><br><br><br>
+<br>
+<br>
+<br>
+<br>
 <%@ include file="../layout/shortFooter.jsp"%>

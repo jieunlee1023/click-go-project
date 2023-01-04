@@ -128,14 +128,14 @@
 <br>
 
 <script>
-	$(".custom-file-input").bind(
-			"change",
-			function() {
-				console.log("test code:" + $(this).val());
-				var fileName = $(this).val().split("\\").pop();
-				$(this).siblings(".custom-file-label").addClass("selected")
-						.html(fileName);
-			});
+$(".custom-file-input").bind(
+		"change",
+		function() {
+			console.log("test code:" + $(this).val());
+			var fileName = $(this).val().split("\\").pop();
+			$(this).siblings(".custom-file-label").addClass("selected")
+					.html(fileName);
+		});
 
 	$(function() {
 		$('[data-toggle="tooltip"]').tooltip()

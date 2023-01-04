@@ -1,15 +1,17 @@
 package com.clickgo.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Required;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestParam;
 
-import com.clickgo.project.advice.NotFoundIdException;
 import com.clickgo.project.entity.DeleteUser;
 import com.clickgo.project.entity.User;
+import com.clickgo.project.model.enums.LoginType;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.repository.IDeleteUserRepository;
 import com.clickgo.project.repository.IUserRepository;
@@ -31,13 +33,15 @@ public class UserService {
 		});
 		return 1;
 	}
-
 	@Transactional
 	public boolean signUp(User user) {
 		try {
+			if(user.getLoginType() == null) {
+				user.setLoginType(LoginType.CLICKGO);
+			}
 			String rawPw = encoder.encode(user.getPassword());
-			user.setPassword(rawPw);
 			user.setRole(RoleType.GEUST);
+			user.setPassword(rawPw);
 			userRepository.save(user);
 			return true;
 		} catch (Exception e) {
@@ -86,45 +90,39 @@ public class UserService {
 		}
 		return userEntity;
 	}
-	
+
 	@Transactional
 	public void deleteUser(int userId, int requestUserId) {
 		User userEntity = userRepository.findById(userId).orElseThrow(() -> {
 			return new IllegalArgumentException("찾을 수 없는 회원입니다.");
 		});
 		new DeleteUser();
-		deleteUserRepository.save(DeleteUser
-				.builder()
-				.username(userEntity.getUsername())
-				.password(userEntity.getPassword())
-				.deleteDate(userEntity.getCreateDate())
-				.email(userEntity.getEmail())
-				.loginType(userEntity.getLoginType())
-				.phoneNumber(userEntity.getPhoneNumber())
-				.role(userEntity.getRole())
-				.build());
+		deleteUserRepository.save(DeleteUser.builder().username(userEntity.getUsername())
+				.password(userEntity.getPassword()).deleteDate(userEntity.getCreateDate()).email(userEntity.getEmail())
+				.loginType(userEntity.getLoginType()).phoneNumber(userEntity.getPhoneNumber())
+				.role(userEntity.getRole()).build());
 		try {
 			userRepository.deleteById(userId);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 	}
+
 	@Transactional
-	public User searchUserEmail(String email)   {
+	public User searchUserEmail(String email) {
 		return userRepository.findByEmail(email).orElseThrow(() -> {
-			return new NotFoundIdException("해당하는 이메일이 없습니다 다시확인해주세요");
+			return new IllegalArgumentException();
 		});
 	}
 
 	@Transactional
 	public User searchPassword(String username, String email) {
-		return userRepository.findByPassword(username,email).orElseThrow(() -> {
+		return userRepository.findByPassword(username, email).orElseThrow(() -> {
 			return new IllegalArgumentException("아이디와 이메일이 일치하지 않습니다. 다시 확인해주세요");
 		});
 	}
-	
-	
+
 	// 임시비밀번호로 DB저장
 	@Transactional
 	public String searchPasswordChange(String email) {
@@ -133,43 +131,41 @@ public class UserService {
 		});
 		String rawPassword = "";
 		if (userEntity.getLoginType() == null || userEntity.getLoginType().equals("")) {
-			
+
 			rawPassword = getTempPassword();
 			String encPassword = encoder.encode(rawPassword);
 
 			userEntity.setPassword(encPassword);
-			
+
 		}
 		return rawPassword;
 	}
-	
+
 	// 임시비밀번호 생성
-    public String getTempPassword(){
-        char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
-                'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
+	public String getTempPassword() {
+		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F',
+				'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' };
 
-        String str = "";
+		String str = "";
 
-        // 문자 배열 길이의 값을 랜덤으로 10개를 뽑아 구문을 작성함
-        int idx = 0;
-        for (int i = 0; i < 10; i++) {
-            idx = (int) (charSet.length * Math.random());
-            str += charSet[idx];
-        }
-        return str;
-    }
-    
- // 아이디 중복 검사
-    public User checkID(String username) { 
-    	User userEntity = userRepository.findByUsername(username).orElseThrow(() -> {
-    		return new IllegalArgumentException("테스트");
-    	});
+		// 문자 배열 길이의 값을 랜덤으로 10개를 뽑아 구문을 작성함
+		int idx = 0;
+		for (int i = 0; i < 10; i++) {
+			idx = (int) (charSet.length * Math.random());
+			str += charSet[idx];
+		}
+		return str;
+	}
+
+	// 아이디 중복 검사
+	public User checkID(String username) {
+		User userEntity = userRepository.findByUsername(username).orElseThrow(() -> {
+			return new IllegalArgumentException("테스트");
+		});
 		return userEntity;
-    }
-    
+	}
 
-
-    @Transactional
+	@Transactional
 	public Page<User> searchUserInfo(String q, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return userRepository.findByUsernameContaining(q, pageable);

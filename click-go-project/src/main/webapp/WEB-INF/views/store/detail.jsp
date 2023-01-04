@@ -105,7 +105,7 @@
 											class="d-flex justify-content-center mr-1" name="seatNumber"
 											style="border: 1px solid black; width: 30px; height: 30px"
 											value="<%=start%>">
-											
+
 
 										<%
 										if (start == firstSpace) {
@@ -202,7 +202,7 @@
 										}
 										%>
 									</div>
-									<br>
+									<br>g
 									<div class="d-flex mt-2">
 										<%
 										for (start = fours + 1; start <= totalRoomCount; start++) {
@@ -220,52 +220,43 @@
 								</div>
 							</div>
 							<button type="submit">예약</button>
+							<div class="d-flex-column justify-content-end" id="add--button">
+							</div>
 						</div>
+						<br> <br> <input type="hidden"
+							value="${store.storeAddress}" id="store-address"> <input
+							type="hidden" value="${store.storeName}" id="store-name">
+						<div id="map" style="width: 700px; height: 350px;"></div>
 					</div>
-					
-					
-					
-					
 				</div>
-			</c:otherwise>
-		</c:choose>
 	</div>
-	<br>
+	</c:otherwise>
+	</c:choose>
+	</div>
 </form>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript">
-$('document').ready(function () {
-	$('input.timepicker').timepicker({
-            timeFormat: 'HH:mm',
-            interval: 10,
-            startTime: '${nowTimeOnlyHour}',
-            dynamic: false,
-            dropdown: true,
-            scrollbar: true
-        });
-    });
+	$('document').ready(function() {
+		$('input.timepicker').timepicker({
+			timeFormat : 'HH:mm',
+			interval : 10,
+			startTime : '${nowTimeOnlyHour}',
+			dynamic : false,
+			dropdown : true,
+			scrollbar : true
+		});
+	});
 </script>
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 <%@ include file="../layout/footer.jsp"%>
