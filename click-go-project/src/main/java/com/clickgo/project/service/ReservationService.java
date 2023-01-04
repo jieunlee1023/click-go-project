@@ -1,5 +1,6 @@
 package com.clickgo.project.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +51,15 @@ public class ReservationService {
 			return new IllegalArgumentException("시도하시려는 예약이 존재하지 않습니다.");
 		});
 		reservationEntity.setApproveStatus(ApproveStatus.APPROVED);
+	}
+
+	@Transactional
+	public int findLastPK() {
+		return reservationRepository.findLastPK();
+	}
+
+	@Transactional
+	public void delete(int cancelReservation) {
+		reservationRepository.deleteById(cancelReservation);
 	}
 }
