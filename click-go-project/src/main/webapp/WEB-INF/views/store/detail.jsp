@@ -255,6 +255,7 @@
 			dropdown : true,
 			scrollbar : true
 		});
+		$()
 	});
 </script>
 
