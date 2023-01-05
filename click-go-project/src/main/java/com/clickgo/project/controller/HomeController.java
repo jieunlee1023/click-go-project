@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.entity.StoreFranchise;
+import com.clickgo.project.model.mydate.MyDate;
 import com.clickgo.project.service.StoreFranchiseService;
 
 @Controller
