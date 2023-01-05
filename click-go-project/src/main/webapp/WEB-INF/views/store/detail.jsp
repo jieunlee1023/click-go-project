@@ -12,7 +12,7 @@
 </div>
 <br>
 
-<form action="/reservation/1" method="post">
+<form action="/reservation/${store.id}?paymentType=KAKAO" method="post">
 	<div class="d-flex-column justify-content-center">
 		<c:choose>
 			<c:when test="${empty store}">
@@ -41,9 +41,8 @@
 								value="시간을 선택해주세요." min="${nowTime}">
 						</div>
 						<input type="hidden" id="storeId" value="${store.id }">
-						<button type="button" id="btn--time-check">예약 하기</button>
+						<button type="submit" id="btn--time-check">예약 하기</button>
 					</div>
-
 
 					<div class=" d-flex media border m-3"
 						style="width: 800px; height: 510px; border-radius: 15px;">
@@ -202,7 +201,7 @@
 										}
 										%>
 									</div>
-									<br>g
+									<br>
 									<div class="d-flex mt-2">
 										<%
 										for (start = fours + 1; start <= totalRoomCount; start++) {
@@ -219,24 +218,20 @@
 									</div>
 								</div>
 							</div>
-							<button type="submit">예약</button>
-							<div class="d-flex-column justify-content-end" id="add--button">
-							</div>
 						</div>
-						<br> <br> <input type="hidden"
-							value="${store.storeAddress}" id="store-address"> <input
-							type="hidden" value="${store.storeName}" id="store-name">
-						<div id="map" style="width: 700px; height: 350px;"></div>
+						<input type="hidden" value="${store.storeAddress}"
+							id="store-address"> <input type="hidden"
+							value="${store.storeName}" id="store-name">
 					</div>
+					<div>
+						<br>
+					</div>
+					<div id="map" style="width: 700px; height: 350px;"></div>
 				</div>
-	</div>
-	</c:otherwise>
-	</c:choose>
+			</c:otherwise>
+		</c:choose>
 	</div>
 </form>
-<br>
-<br>
-<br>
 <br>
 <br>
 <br>
@@ -247,13 +242,28 @@
 <script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript">
 	$('document').ready(function() {
-		$('input.timepicker').timepicker({
+		$('#startTime').timepicker({
 			timeFormat : 'HH:mm',
 			interval : 10,
 			startTime : '${nowTimeOnlyHour}',
 			dynamic : false,
 			dropdown : true,
-			scrollbar : true
+			scrollbar : true,
+
+			change : function(time) {
+				var element = $(this), text;
+				var timepicker = element.timepicker();
+				text = timepicker.format(time);
+				timeCheck();
+			}
+		});
+		$('#endTime').timepicker({
+			timeFormat : 'HH:mm',
+			interval : 10,
+			startTime : '${nowTimeOnlyHour}',
+			dynamic : false,
+			dropdown : true,
+			scrollbar : true,
 		});
 	});
 </script>
