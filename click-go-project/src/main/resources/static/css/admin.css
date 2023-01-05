@@ -1,0 +1,24 @@
+@charset "UTF-8";
+
+/* 관리자 페이지 c s s */
+#admin-store {
+	border: 1px solid #bcbcbc;
+}
+
+#list-header>div {
+	border: 1px solid #bcbcbc;
+	width: 50vw;
+}
+
+#list-header>div>p {
+	text-align: center;
+}
+
+#list-body-heart>div {
+	border: 1px solid #bcbcbc;
+	width: 14vw;
+}
+
+#list-body-heart>div>p {
+	text-align: center;
+}
