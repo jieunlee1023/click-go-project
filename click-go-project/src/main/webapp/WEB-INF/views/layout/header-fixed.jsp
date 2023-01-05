@@ -88,7 +88,7 @@
 						<li id="more--view"> <a class="nav-link" href="#" >더보기</a>
 								<ul id="nave--moreview--item"> 
 									<li><a class="dropdown-item" href="/view-more/notice-list" >공지사항</a> </li>
-									<li><a class="dropdown-item" href="/board/board-list">게시판</a></li>
+									<li><a class="dropdown-item" href="/board/list">게시판</a></li>
 									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
 									<li><a class="dropdown-item" href="/view-more/about-us" >회사 소개</a></li>
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
@@ -121,13 +121,13 @@
 						<li id="more--view"> <a class="nav-link" href="#" >더보기</a>
 								<ul id="nave--moreview--item"> 
 									<li><a class="dropdown-item" href="/view-more/notice-list" >공지사항</a> </li>
-									<li><a class="dropdown-item" href="/board/board-list">게시판</a></li>
+									<li><a class="dropdown-item" href="/board/list">게시판</a></li>
 									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
 									<li><a class="dropdown-item" href="/view-more/about-us">회사 소개</a></li>
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
 								</ul>
 						</li>
-						<li><a class="nav-link" href="/admin/admin-main">관리자</a></li>
+						<li><a class="nav-link" href="/admin/main">관리자</a></li>
 						<li><a class="nav-link" href="/logout">로그아웃</a></li>
 			        </ul>
 			    </div>
@@ -147,7 +147,7 @@
 						<li id="more--view"> <a class="nav-link" href="#" >더보기</a>
 								<ul id="nave--moreview--item"> 
 									<li><a class="dropdown-item" href="/view-more/notice-list" >공지사항</a> </li>
-									<li><a class="dropdown-item" href="/board/board-list">게시판</a></li>
+									<li><a class="dropdown-item" href="/board/list">게시판</a></li>
 									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
 									<li><a class="dropdown-item" href="/view-more/about-us">회사 소개</a></li>
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
@@ -165,5 +165,3 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
-
-
