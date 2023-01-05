@@ -10,14 +10,14 @@
 	</div>
 </div>
 <br>
-<div class="container d-flex justify-content-start"
+<div class="container d-flex justify-content-between"
 	style="flex-wrap: wrap;">
 	<div class="btn-wrapper">
 		<div class="btn-wrapper__container">
 			<div class="btn-inner">
 				<a href="/admin/admin-user" class="mypage-btn"> <img
 					src="/image/mypage/user_update.png" width="50px"> <br> <br>
-					<span>회원 조회</span> <br>
+					<span>회원 관리</span> <br>
 				</a>
 			</div>
 		</div>
@@ -28,7 +28,7 @@
 			<div class="btn-inner">
 				<a href="/admin/admin-store" class="mypage-btn"> <img
 					src="/image/mypage/store.png" width="60px"> <br> <br>
-					<span>가맹점 조회</span> <br>
+					<span>가맹점 관리</span> <br>
 				</a>
 			</div>
 		</div>
@@ -49,7 +49,7 @@
 	<div class="btn-wrapper">
 		<div class="btn-wrapper__container">
 			<div class="btn-inner">
-				<a href="/admin/admin-ask" class="mypage-btn"> <img
+				<a href="/admin/admin-answer" class="mypage-btn"> <img
 					src="/image/mypage/review.png" width="50px"> <br> <br>
 					<span>1:1 문의</span> <br>
 				</a>
@@ -62,7 +62,7 @@
 			<div class="btn-inner">
 				<a href="/admin/admin-report" class="mypage-btn"> <img
 					src="/image/mypage/report.png" width="50px"> <br> <br>
-					<span>신고 조회</span> <br>
+					<span>신고 관리</span> <br>
 				</a>
 			</div>
 		</div>
@@ -73,7 +73,7 @@
 			<div class="btn-inner">
 				<a href="/admin/admin-sales" class="mypage-btn"> <img
 					src="/image/mypage/sales.png" width="50px"> <br> <br>
-					<span>매출 조회</span> <br>
+					<span>매출 관리</span> <br>
 				</a>
 			</div>
 		</div>
