@@ -36,7 +36,8 @@
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9e1456a9ac9148a20acaf98282066ab1&libraries=services"></script>
 <script type="text/javascript"
 	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9e1456a9ac9148a20acaf98282066ab1"></script>
-
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 
 <!-- 폰트 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -88,62 +89,70 @@
 				</div>
 			</div>
 
-		<c:choose>
-			<c:when test="${empty principal}">
-		
-				<div class="nav--list">
-			        <ul id="nav--item">
-			            <li><a class="nav-link" href="/">홈</a></li>
-			            <li><a class="nav-link" href="/store/main">상점</a></li>
-						<li id="more--view"> 
-							<a class="nav-link" href="#" >더보기</a>
-								<ul id="nave--moreview--item"> 
-									<li><a class="dropdown-item" href="/view-more/notice-list" >공지사항</a> </li>
-									<li><a class="dropdown-item" href="/board/board-list">게시판</a></li>
-									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
-									<li><a class="dropdown-item" href="/view-more/about-us" >회사 소개</a></li>
-									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
-									<li><a class="dropdown-item" href="/view-more/one-on-one">1:1 문의</a></li>
-								</ul>
-						</li>
-						<li><a class="nav-link" href="/auth/login-form">로그인</a></li>
-			        </ul>
-			    </div>
-			</c:when>
+			<c:choose>
+				<c:when test="${empty principal}">
 
-			<c:when test="${principal.user.role eq 'ADMIN'}">
-				<div class="nav--list">
-			        <ul id="nav--item">
-			       		 <li>
-							<form action="/storeFranchise/store-franchise-message" method="get">
-							    <div class="nav-btn justify-content-bottom" id="notification"
-							        style="position: relative; margin: 0px">
-							        <button type="submit" id="btn--msg">
-							            <span id="msg--icon">💌</span>
-							            <span class="note-num" id="msg--count">${waitMsg}</span>
-							        </button>
-							    </div>
-							</form>
-						<li>
-			            <li><a class="nav-link" href="/">홈</a></li>
-			            <li><a class="nav-link" href="/store/main">상점</a></li>
-			            <li><a class="nav-link" href="/storeFranchise/store-franchise-list" >가맹점 목록</a>	</li>
-						<li id="more--view"> <a class="nav-link" href="#" >더보기</a>
-								<ul id="nave--moreview--item"> 
-									<li><a class="dropdown-item" href="/view-more/notice-list" >공지사항</a> </li>
+					<div class="nav--list">
+						<ul id="nav--item">
+							<li><a class="nav-link" href="/">홈</a></li>
+							<li><a class="nav-link" href="/store/main">상점</a></li>
+							<li id="more--view"><a class="nav-link" href="#">더보기</a>
+								<ul id="nave--moreview--item">
+									<li><a class="dropdown-item" href="/view-more/notice-list">공지사항</a>
+									</li>
 									<li><a class="dropdown-item" href="/board/board-list">게시판</a></li>
-									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
-									<li><a class="dropdown-item" href="/view-more/about-us">회사 소개</a></li>
-									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
-								</ul>
-						</li>
-						<li><a class="nav-link" href="/admin/admin-main">관리자</a></li>
-						<li><a class="nav-link" href="/logout">로그아웃</a></li>
-			        </ul>
-			    </div>
-			</c:when>
-			
-	
+									<li><a class="dropdown-item"
+										href="/view-more/question-form/1">자주 묻는 질문</a></li>
+									<li><a class="dropdown-item" href="/view-more/about-us">회사
+											소개</a></li>
+									<li><a class="dropdown-item" href="/view-more/terms-list">약관
+											및 정책</a></li>
+									<li><a class="dropdown-item" href="/view-more/one-on-one">1:1
+											문의</a></li>
+								</ul></li>
+							<li><a class="nav-link" href="/auth/login-form">로그인</a></li>
+						</ul>
+					</div>
+				</c:when>
+
+				<c:when test="${principal.user.role eq 'ADMIN'}">
+					<div class="nav--list">
+						<ul id="nav--item">
+							<li>
+								<form action="/storeFranchise/store-franchise-message"
+									method="get">
+									<div class="nav-btn justify-content-bottom" id="notification"
+										style="position: relative; margin: 0px">
+										<button type="submit" id="btn--msg">
+											<span id="msg--icon">💌</span> <span class="note-num"
+												id="msg--count">${waitMsg}</span>
+										</button>
+									</div>
+								</form>
+							<li>
+							<li><a class="nav-link" href="/">홈</a></li>
+							<li><a class="nav-link" href="/store/main">상점</a></li>
+							<li><a class="nav-link"
+								href="/storeFranchise/store-franchise-list">가맹점 목록</a></li>
+							<li id="more--view"><a class="nav-link" href="#">더보기</a>
+								<ul id="nave--moreview--item">
+									<li><a class="dropdown-item" href="/view-more/notice-list">공지사항</a>
+									</li>
+									<li><a class="dropdown-item" href="/board/board-list">게시판</a></li>
+									<li><a class="dropdown-item"
+										href="/view-more/question-form/1">자주 묻는 질문</a></li>
+									<li><a class="dropdown-item" href="/view-more/about-us">회사
+											소개</a></li>
+									<li><a class="dropdown-item" href="/view-more/terms-list">약관
+											및 정책</a></li>
+								</ul></li>
+							<li><a class="nav-link" href="/admin/admin-main">관리자</a></li>
+							<li><a class="nav-link" href="/logout">로그아웃</a></li>
+						</ul>
+					</div>
+				</c:when>
+
+
 				<c:when test="${principal.user.role eq 'ADMIN'}">
 					<div class="nav--list">
 						<ul id="nav--item">
