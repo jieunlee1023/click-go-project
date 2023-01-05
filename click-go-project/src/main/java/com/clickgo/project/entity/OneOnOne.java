@@ -31,7 +31,8 @@ public class OneOnOne {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	
+	@Column(nullable = false)
+	private String title;
 
 	@Lob
 	@Column(nullable = false)

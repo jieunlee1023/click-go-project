@@ -43,29 +43,28 @@ public class AdminController {
 	
 	
 
-	@GetMapping("/admin-main")
+	@GetMapping("/main")
 	public String adminPage(Model model) {
 		franchiseMassageCount(model);
-		return "admin/admin-main";
-
+		return "admin/main";
 	}
 
-	@GetMapping("/admin-sales")
+	@GetMapping("/sales")
 	public String adminSales() {
-		return "admin/admin-sales";
+		return "admin/sales";
 	}
 
-	@GetMapping("/admin-reservation")
+	@GetMapping("/reservation")
 	public String adminreservation() {
-		return "admin/admin-reservation";
+		return "admin/reservation";
 	}
 
-	@GetMapping("/admin-report")
+	@GetMapping("/report")
 	public String adminReport() {
-		return "admin/admin-report";
+		return "admin/report";
 	}
 
-	@GetMapping({"/admin-user", "/user-search"})
+	@GetMapping({"/user", "/user-search"})
 	public String adminUserInfo(@RequestParam(required = false) String q, Model model,
 			@PageableDefault(size = 10, sort = "id", direction = Direction.ASC) Pageable pageable) {
 		
@@ -95,10 +94,10 @@ public class AdminController {
 		model.addAttribute("q", searchUserInfo);
 		
 		franchiseMassageCount(model);
-		return "admin/admin-user";
+		return "admin/user";
 	}
 
-	@GetMapping({"/admin-store", "/store-search"})
+	@GetMapping({"/store", "/store-search"})
 	public String adminStoreInfo(@RequestParam(required = false) String q, Model model,
 			@PageableDefault(size = 3, sort = "id", direction = Direction.ASC) Pageable pageable) {
 		String searchStoreName = q == null ? "" : q;
@@ -127,12 +126,16 @@ public class AdminController {
 		
 		franchiseMassageCount(model);
 		
-		return "admin/admin-store";
+		return "admin/store";
 	}
 
-	@GetMapping()
-	public String oneOnOneAsk() {
-		return "admin/admin-answer";
+	@GetMapping("/answer")
+	public String oneOnOneAsk(Model model) {
+		
+		List<OneOnOne> ooos = oneOnOneService.getContentList();
+		model.addAttribute("ooos", ooos);
+		
+		return "admin/answer";
 	}
 	
 	

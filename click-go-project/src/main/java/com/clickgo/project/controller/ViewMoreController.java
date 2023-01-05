@@ -81,17 +81,20 @@ public class ViewMoreController {
 	@PostMapping("/one-on-one/save")
 	public String oneOnoneWrite(OneOnOne requestOoo,
 			@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
-		
-		oneOnOneService.writeOOO(requestOoo, principalDetails.getUser());
+		System.out.println("요긴?");
+		oneOnOneService.writeOoo(requestOoo, principalDetails.getUser());
 		
 		int userId = requestOoo.getUser().getId();
+		String title = requestOoo.getTitle();
 		List<OneOnOne> contents = oneOnOneService.getContentList();
-
+System.out.println("여기오냐");
 		//이거하는중
 		model.addAttribute("userId", userId);
+		model.addAttribute("title", title);
 		model.addAttribute("contents", contents);
 		
-		return "admin/admin-answer";
+		// a d m i n - answer에서 받기
+		return "redirect:/view-more/one-on-one";
 	}
 
 	

@@ -3,6 +3,8 @@ package com.clickgo.project.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.clickgo.project.entity.OneOnOne;
@@ -15,7 +17,8 @@ public class OneOnOneService {
 	@Autowired
 	private IOneOnOneRepository iOneOnOneRepository;
 
-	public void writeOOO(OneOnOne requestOoo, User user) {
+	public void writeOoo(OneOnOne requestOoo, User user) {
+		requestOoo.setTitle(requestOoo.getTitle());
 		requestOoo.setContent(requestOoo.getContent());
 		requestOoo.setUser(user);
 		iOneOnOneRepository.save(requestOoo);

@@ -99,7 +99,7 @@
 							<a class="nav-link" href="#" >더보기</a>
 								<ul id="nave--moreview--item"> 
 									<li><a class="dropdown-item" href="/view-more/notice-list" >공지사항</a> </li>
-									<li><a class="dropdown-item" href="/board/board-list">게시판</a></li>
+									<li><a class="dropdown-item" href="/board/list">게시판</a></li>
 									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
 									<li><a class="dropdown-item" href="/view-more/about-us" >회사 소개</a></li>
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
@@ -131,13 +131,13 @@
 						<li id="more--view"> <a class="nav-link" href="#" >더보기</a>
 								<ul id="nave--moreview--item"> 
 									<li><a class="dropdown-item" href="/view-more/notice-list" >공지사항</a> </li>
-									<li><a class="dropdown-item" href="/board/board-list">게시판</a></li>
+									<li><a class="dropdown-item" href="/board/list">게시판</a></li>
 									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
 									<li><a class="dropdown-item" href="/view-more/about-us">회사 소개</a></li>
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
 								</ul>
 						</li>
-						<li><a class="nav-link" href="/admin/admin-main">관리자</a></li>
+						<li><a class="nav-link" href="/admin/main">관리자</a></li>
 						<li><a class="nav-link" href="/logout">로그아웃</a></li>
 			        </ul>
 			    </div>
@@ -167,7 +167,7 @@
 								<ul id="nave--moreview--item">
 									<li><a class="dropdown-item" href="/view-more/notice-list">공지사항</a>
 									</li>
-									<li><a class="dropdown-item" href="/board/board-list">게시판</a></li>
+									<li><a class="dropdown-item" href="/board/list">게시판</a></li>
 									<li><a class="dropdown-item"
 										href="/view-more/question-form/1">자주 묻는 질문</a></li>
 									<li><a class="dropdown-item" href="/view-more/about-us">회사
@@ -175,7 +175,7 @@
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관
 											및 정책</a></li>
 								</ul></li>
-							<li><a class="nav-link" href="/admin/admin-mypage">관리자</a></li>
+							<li><a class="nav-link" href="/admin/mypage">관리자</a></li>
 							<li><a class="nav-link" href="/logout">로그아웃</a></li>
 						</ul>
 					</div>
@@ -197,7 +197,7 @@
 								<ul id="nave--moreview--item">
 									<li><a class="dropdown-item" href="/view-more/notice-list">공지사항</a>
 									</li>
-									<li><a class="dropdown-item" href="/board/board-list">게시판</a></li>
+									<li><a class="dropdown-item" href="/board/list">게시판</a></li>
 									<li><a class="dropdown-item"
 										href="/view-more/question-form/1">자주 묻는 질문</a></li>
 									<li><a class="dropdown-item" href="/view-more/about-us">회사

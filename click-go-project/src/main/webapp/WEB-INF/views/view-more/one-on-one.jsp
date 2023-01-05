@@ -9,56 +9,57 @@
 	<br>
 
 
-	<div class="d-flex" id="ooo-body" style="background-color: pink">
-		<div class="container" id="tab-menu">
-			<div id="tab-btn" class="d-flex">
-				<ul>
-					<li class="active"><a href="#">나의 문의 내역</a></li>
-					<li class="active"><a href="#">새새새문의</a></li>
-				</ul>
-			</div>
-			<div id="tab-cont">
-				<div id="tab-cont-1">
-					<div>
-						<%-- <c:if test="${principal.user.id eq userId }">
-							<div>
-								<c:forEach var="content" items="${contents }">
+
+	<div class="container" id="tab-menu">
+		<div id="tab-btn" class="d-flex">
+			<ul>
+				<li class="active"><a href="#" style="text-decoration: none;">나의 문의 내역</a></li>
+				<li class="active"><a href="#" style="text-decoration: none;">새 문의 작성</a></li>
+			</ul>
+		</div>
+		<div id="tab-cont">
+			<div id="tab-cont-1">
+				<div>
+					<%-- <c:if test="${principal.user.id eq userId }">
+						<div>
+							<c:forEach var="content" items="${contents }">
 										하는중이거 
 									<div>${content.content }</div>
-								</c:forEach>
-							</div>
-						</c:if> --%>
-					</div>
+
+							</c:forEach>
+						</div>
+					</c:if> --%>
 				</div>
+			</div>
 
+			<div id="tab-cont-2">
+				<div>
+					<form action="/view-more/one-on-one/save" method="post">
+						<input type="hidden" id="id" value="${principal.user.id }">
+						<div>
+							<p>클릭고 이용 중 불편하신 점을 문의주시면 최대한 빠른 시일내에 답변 드리겠습니다.</p>
+						</div>
+						<section class="text_wrap">
+							<b>뭐가문제야?</b> <br>
+							<textarea rows="" cols="" name="title"></textarea>
+							<br> <b>문의내용</b>
 
-
-				<div id="tab-cont-2">
-					<div>
-						<form action="/view-more/one-on-one/save" method="post">
-							<input type="hidden" id="id" value="${principal.user.id }">
 							<div>
-								<p>클릭고 이용 중 불편하신 점을 문의주시면 최대한 빠른 시일내에 답변 드리겠습니다.</p>
+								<textarea name="content" id="questionTextarea"></textarea>
+								<ul class="placeholder_txt" style="display: block;">
+									<li>문의하실 내용을 10자 이상 입력해 주세요.</li>
+									<li>문의하시는 제휴점 이름과 예약정보를 남겨주시면 보다 빠른 상담이 가능합니다.</li>
+									<li>문의 내용 작성 시 개인정보가 입력되지 않도록 주의 부탁드립니다.</li>
+								</ul>
 							</div>
-							<section class="text_wrap">
-								<b>문의내용</b>
-								<div>
-									<textarea name="content" id="questionTextarea"></textarea>
-									<ul class="placeholder_txt" style="display: block;">
-										<li>문의하실 내용을 10자 이상 입력해 주세요.</li>
-										<li>문의하시는 제휴점 이름과 예약정보를 남겨주시면 보다 빠른 상담이 가능합니다.</li>
-										<li>문의 내용 작성 시 개인정보가 입력되지 않도록 주의 부탁드립니다.</li>
-									</ul>
-								</div>
-							</section>
-							<button class="btn btn-light" type="submit">작성 완료</button>
-						</form>
-					</div>
+						</section>
+						<button class="btn btn-light" type="submit">작성 완료</button>
+					</form>
 				</div>
 			</div>
 		</div>
-
 	</div>
+
 
 
 </div>
