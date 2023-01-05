@@ -11,12 +11,18 @@
 	</div>
 	
 	<div id="answer-body" style="background-color: pink">
-		<h1>여긴바디더</h1>
-		<c:forEach var="ooo" items="">
+		<c:if test="${principal.user.id eq userId }">
+							<div>
+								<c:forEach var="content" items="${contents }">
+										하는중이거 
+									<div>${content.content }</div>
+
+								</c:forEach>
+							</div>
+						</c:if>
 		<div class="d-flex justify-content-center">
 			<p>zz</p>
 		</div>
-		</c:forEach>
 	</div>
 
 </div>

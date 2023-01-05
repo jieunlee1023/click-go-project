@@ -130,8 +130,8 @@ public class AdminController {
 		return "admin/admin-store";
 	}
 
-	@GetMapping("/admin-answer")
-	public String adminAsk() {
+	@GetMapping()
+	public String oneOnOneAsk() {
 		return "admin/admin-answer";
 	}
 	

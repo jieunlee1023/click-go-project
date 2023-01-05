@@ -34,7 +34,6 @@
 				class="form-control content">
 				${board.content }
 			</textarea>
-
 		</div>
 
 

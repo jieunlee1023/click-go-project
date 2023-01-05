@@ -91,7 +91,7 @@ public class ViewMoreController {
 		model.addAttribute("userId", userId);
 		model.addAttribute("contents", contents);
 		
-		return "view-more/one-on-one";
+		return "admin/admin-answer";
 	}
 
 	
