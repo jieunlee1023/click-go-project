@@ -4,25 +4,24 @@ let index = {
 		let size = $("#reservation-size").val();
 		let address = $("#store-address").val();
 		let storeName = $("#store-name").val();
-		for (var i = 1; i <= size; i++) {
-			let id = $(`#reservation-id-${i}`).val();
-			$("#btn--approve-reservation-" + i).bind("click", () => {
-				this.approve(id);
+		for (let i = 0; i <= size; i++) {
+			$("#btn--approve-" + i).bind("click", () => {
+				this.approve(i);
 			});
 		};
 		addMap(address, storeName);
 	},
 
-	approve: function(id) {
+	approve: function(i) {
 		$.ajax({
 			type: 'GET',
-			url: `/api/reservation/approve/${id}`,
+			url: `/api/reservation/approve/${i}`,
 		}).done(function(data) {
-			alert(data.body);
 			if (data.httpStatus) {
-				$(`#btn--approve-reservation-${id}`).remove();
-				$(`#btn--reject-reservation-${id}`).remove();
-				$(`#btn--reject-reservation-${id}`).remove();
+				alert(data.body);
+				$(`#btn--approve-${i}`).remove();
+				$(`#btn--reject-${i}`).remove();
+				$(`#status-${i}`).text('APPROVED');
 			}
 		}).fail(function(error) {
 			console.log(error);
@@ -70,6 +69,7 @@ function closeSeats(closeSeats) {
 		};
 	};
 };
+
 
 function addMap(storeAddress, storeName) {
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
