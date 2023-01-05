@@ -49,12 +49,10 @@ public class UserController {
 
 	@Value("${phoneNumber.key}")
 	private String phoneNumber;
-	
 
 	@GetMapping("/auth/login-form")
-	public String loginForm(@RequestParam(value = "error", required = false) String error, 
-				@RequestParam(value = "exception", required = false) String exception,
-				Model model) {
+	public String loginForm(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "exception", required = false) String exception, Model model) {
 		model.addAttribute("error", error);
 		model.addAttribute("exception", exception);
 		return "user/login-form";
@@ -69,12 +67,10 @@ public class UserController {
 	public String joinForm() {
 		return "user/join-form";
 	}
-	
+
 	@GetMapping("/auth/info-search")
-	public String userInfoSearchForm(@RequestParam(value = "error", required = false) String error, 
-			@RequestParam(value = "exception", required = false) String exception,
-			Model model) {
-		System.out.println("아이디 찾기 폼");
+	public String userInfoSearchForm(@RequestParam(value = "error", required = false) String error,
+			@RequestParam(value = "exception", required = false) String exception) {
 		return "/user/info-search-form";
 	}
 
@@ -114,7 +110,7 @@ public class UserController {
 		KakaoAccount account = kakaoDataResponse.getBody().kakaoAccount;
 
 		User kakaoUser = User.builder().username(account.profile.nickname + "_" + kakaoDataResponse.getBody().id)
-				.email(account.email).password(clickGoKey).loginType(LoginType.KAKAO).email("a@nave.com")
+				.email("kakao@email").password(clickGoKey).loginType(LoginType.KAKAO)
 				.phoneNumber(phoneNumber).build();
 
 		User originUser = userService.searchUserName(kakaoUser.getUsername());
@@ -218,7 +214,8 @@ public class UserController {
 				"https://www.googleapis.com/oauth2/v1/userinfo", HttpMethod.GET, request, GoogleUserDto.class);
 
 		GoogleUserDto account = googleUserInfo.getBody();
-		User googleUser = User.builder().username(account.id).email("").loginType(LoginType.GOOGLE)
+		System.out.println(account);
+		User googleUser = User.builder().username(account.id).email("google@gamil").loginType(LoginType.GOOGLE)
 				.phoneNumber(phoneNumber).password(clickGoKey).build();
 		User orginUser = userService.searchUserName(googleUser.getUsername());
 
@@ -231,19 +228,16 @@ public class UserController {
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		return "redirect:/";
 	}
-	
+
 	// 로그아웃
 	@GetMapping("/m-logout")
 	public String logout(HttpServletRequest req, HttpServletResponse res) {
 
-		
-		Authentication authentication = SecurityContextHolder.getContext().getAuthentication(); 
-		if(authentication != null) {
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		if (authentication != null) {
 			new SecurityContextLogoutHandler().logout(req, res, authentication);
 		}
 		return "redirect:/";
 	}
 
-
-	
 }

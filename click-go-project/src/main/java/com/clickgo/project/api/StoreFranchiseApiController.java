@@ -42,18 +42,7 @@ public class StoreFranchiseApiController {
 				storeFranchise.setCategory(t);
 			}
 		});
-		Store storeEntity = franchiseService.changeStateApproveAndAddStore(id, userId, storeFranchise, store);
-
-		Image licenseImageUrl = new Image();
-		licenseImageUrl.setImageUrl(storeFranchise.getLicenseImageUrl());
-		licenseImageUrl.setStore(storeEntity);
-
-		Image layoutImageUrl = new Image();
-		layoutImageUrl.setImageUrl(storeFranchise.getLayoutImageUrl());
-		layoutImageUrl.setStore(storeEntity);
-
-		imageService.save(licenseImageUrl);
-		imageService.save(layoutImageUrl);
+		 franchiseService.changeStateApproveAndAddStore(id, userId, storeFranchise, store);
 		return new ResponseDto<>(true, "승인완료!");
 	}
 

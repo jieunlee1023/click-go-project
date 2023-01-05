@@ -1,6 +1,5 @@
 package com.clickgo.project.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -27,7 +26,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.dto.res.kakaoPay.Amount;
 import com.clickgo.project.dto.res.kakaoPay.KakaoPaymentDto;
 import com.clickgo.project.dto.res.kakaoPay.KakaoPaymentHistory;
 import com.clickgo.project.entity.Reservation;
@@ -35,7 +33,6 @@ import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.model.enums.ApproveStatus;
 import com.clickgo.project.model.enums.PaymentType;
-import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.service.AmountService;
 import com.clickgo.project.service.KakaoPaymentHistoryService;
 import com.clickgo.project.service.ReservationService;

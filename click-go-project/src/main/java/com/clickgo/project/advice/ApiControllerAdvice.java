@@ -1,5 +1,6 @@
 package com.clickgo.project.advice;
 
+import java.io.Console;
 import java.util.HashMap;
 
 import org.springframework.http.HttpStatus;
@@ -9,8 +10,12 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.client.HttpServerErrorException;
+
+import lombok.extern.slf4j.Slf4j;
 
 @RestControllerAdvice
+@Slf4j
 public class ApiControllerAdvice {
 	String fieldName;
 	String message;
@@ -29,27 +34,16 @@ public class ApiControllerAdvice {
 	@ExceptionHandler(value = MethodArgumentNotValidException.class)
 	public ResponseEntity<?> methodArgumentNotValidException(MethodArgumentNotValidException e) {
 		HashMap<String, String> cusErrorMap = new HashMap<>();
-
+		System.err.println("메소드 에러");
 		// name과 age 둘 다 잘못들어왔다면,
 		e.getBindingResult().getAllErrors().forEach(e2 -> {
 			FieldError fieldError = (FieldError) e2;
 			fieldName = fieldError.getField();
 			message = fieldError.getDefaultMessage();
-
+			System.out.println(fieldError.getField());
 			cusErrorMap.put(fieldName, message);
 
 		});
-		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
-
-	}
-	
-	@ExceptionHandler(value = NotFoundIdException.class)
-	public ResponseEntity<?> notFoundIdException(NotFoundIdException e) {
-		System.out.println("머리아프다");
-			
-			System.err.println(e.getMessage());
-			System.out.println(e.getStackTrace().toString());
-			// name과 age 둘 다 잘못들어왔다면,
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
 
 	}

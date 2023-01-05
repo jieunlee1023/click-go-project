@@ -37,7 +37,7 @@
 
 					<div class="franchise--main">
 						<div id="franchise--main--img">
-							<img alt="가맹점 가게 사진" src="${image}"
+							<img alt="가맹점 가게 사진" src="${mainImgUrl}"
 								style="width: 300px; height: 300px;">
 						</div>
 

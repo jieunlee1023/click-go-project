@@ -31,5 +31,10 @@ function validateForm() {
 	}
 </script>
 
+<!-- alert창  -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+<!-- 타이머  -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
 </body>
 </html>
