@@ -31,7 +31,8 @@ public class OneOnOne {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	
+	@Column(nullable = false)
+	private String title;
 
 	@Lob
 	@Column(nullable = false)
@@ -40,6 +41,10 @@ public class OneOnOne {
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private User user;
+	
+	@Lob
+	@Column(nullable = true)
+	private String answer;
 
 	@Column(nullable = false)
 	@CreationTimestamp

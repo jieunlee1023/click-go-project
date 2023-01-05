@@ -38,10 +38,10 @@ public class BoardController {
 			@AuthenticationPrincipal PrincipalDetails details) {
 
 		boardService.write(secret, csBoard, details.getUser());
-		return "redirect:/board/board-list";
+		return "redirect:/board/list";
 	}
 
-	@GetMapping({ "/board/board-list", "/board/search" })
+	@GetMapping({ "/board/list", "/board/search" })
 	public String board(@RequestParam(required = false) String q, Model model,
 			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchTitle = q == null ? "" : q;
@@ -71,21 +71,21 @@ public class BoardController {
 
 //		model.addAttribute("boards1",boards1);
 		franchiseMassageCount(model);
-		return "board/board-list";
+		return "board/list";
 	}
 
-	@GetMapping("/board/board-write-form")
+	@GetMapping("/board/form")
 	public String board(@RequestParam(required = false) String pageName, Model model) {
 		model.addAttribute("nowPage", pageName);
 		franchiseMassageCount(model);
-		return "board/board-write-form";
+		return "board/write-form";
 	}
 
 	@GetMapping("/board/{id}")
 	public String showDetail(@PathVariable int id, Model model) {
 		model.addAttribute("board", boardService.boardDetail(id));
 		franchiseMassageCount(model);
-		return "board/board-detail";
+		return "board/detail";
 	}
 	// s w 비밀댓글
 	@PostMapping("/board/{boardId}/reply")
@@ -99,7 +99,7 @@ public class BoardController {
 	public String updateForm(@PathVariable(name = "id") int boardId, Model model) {
 		model.addAttribute("board", boardService.boardDetail(boardId));
 		franchiseMassageCount(model);
-		return "board/board-update-form";
+		return "board/update-form";
 	}
 
 	public void franchiseMassageCount(Model model) {

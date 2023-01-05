@@ -11,7 +11,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -40,29 +40,28 @@ public class AdminController {
 	@Autowired
 	private StoreFranchiseService franchiseService;
 
-	@GetMapping("/admin-main")
+	@GetMapping("/main")
 	public String adminPage(Model model) {
 		franchiseMassageCount(model);
-		return "admin/admin-main";
-
+		return "admin/main";
 	}
 
-	@GetMapping("/admin-sales")
+	@GetMapping("/sales")
 	public String adminSales() {
-		return "admin/admin-sales";
+		return "admin/sales";
 	}
 
-	@GetMapping("/admin-reservation")
+	@GetMapping("/reservation")
 	public String adminreservation() {
-		return "admin/admin-reservation";
+		return "admin/reservation";
 	}
 
-	@GetMapping("/admin-report")
+	@GetMapping("/report")
 	public String adminReport() {
-		return "admin/admin-report";
+		return "admin/report";
 	}
 
-	@GetMapping({ "/admin-user", "/user-search" })
+	@GetMapping({"/user", "/user-search"})
 	public String adminUserInfo(@RequestParam(required = false) String q, Model model,
 			@PageableDefault(size = 10, sort = "id", direction = Direction.ASC) Pageable pageable) {
 
@@ -90,10 +89,10 @@ public class AdminController {
 		model.addAttribute("q", searchUserInfo);
 
 		franchiseMassageCount(model);
-		return "admin/admin-user";
+		return "admin/user";
 	}
 
-	@GetMapping({ "/admin-store", "/store-search" })
+	@GetMapping({"/store", "/store-search"})
 	public String adminStoreInfo(@RequestParam(required = false) String q, Model model,
 			@PageableDefault(size = 3, sort = "id", direction = Direction.ASC) Pageable pageable) {
 		String searchStoreName = q == null ? "" : q;
@@ -121,14 +120,26 @@ public class AdminController {
 		model.addAttribute("q", searchStoreName);
 
 		franchiseMassageCount(model);
+		
+		return "admin/store";
 
-		return "admin/admin-store";
 	}
 
-	@GetMapping()
-	public String oneOnOneAsk() {
-		return "admin/admin-answer";
+	@GetMapping("/answer")
+	public String oneOnOneAsk(Model model) {
+		List<OneOnOne> ooos = oneOnOneService.getContentList();
+		model.addAttribute("ooos", ooos);
+		return "admin/answer";
 	}
+	
+	// s w
+		@GetMapping("/answer/{id}")
+		public String showAnswer(@PathVariable int id, Model model) {
+			model.addAttribute("ooos", oneOnOneService.oooAnswer(id));
+// 어드민 1:1 안뜸.. 
+			return "view-more/one-on-one-answer";
+		}	
+	
 
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();

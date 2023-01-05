@@ -1,18 +1,19 @@
 package com.clickgo.project.dto.res;
 
-import java.util.List;
-
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.clickgo.project.entity.Image;
 import com.clickgo.project.entity.Store;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class RequestUpdateFileDto {
 	
-	private List<MultipartFile> file;
+	private MultipartFile[] files;
 	private String uuid; //고유한 파일 이름을 만들기 위한 변수
 
 
