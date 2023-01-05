@@ -22,7 +22,7 @@ import com.clickgo.project.service.StoreFranchiseService;
 @Controller
 @RequestMapping("/view-more")
 public class ViewMoreController {
-	
+
 	@Autowired
 	private OneOnOneService oneOnOneService;
 
@@ -70,34 +70,41 @@ public class ViewMoreController {
 		franchiseMassageCount(model);
 		return "view-more/terms-list";
 	}
-	
+
 	// s w
-	@GetMapping({"/one-on-one", "/one-on-one/{id}"})
+	@GetMapping("/one-on-one")
 	public String oneOnone(Model model) {
+		List<OneOnOne> ooos = oneOnOneService.getContentList();
+		model.addAttribute("ooos", ooos);
+
 		franchiseMassageCount(model);
 		return "view-more/one-on-one";
 	}
-	
-	@PostMapping("/one-on-one/save")
-	public String oneOnoneWrite(OneOnOne requestOoo,
-			@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
-		System.out.println("요긴?");
+
+	// s w
+	@GetMapping("/one-on-one/{id}")
+	public String showAnswer(@PathVariable int id, Model model) {
+		model.addAttribute("oooAnswer", oneOnOneService.oooAnswer(id));
+
+		return "view-more/one-on-one-answer";
+	}
+
+	// s w
+	@PostMapping({ "/one-on-one", "/one-on-one/save" })
+	public String oneOnoneWrite(OneOnOne requestOoo, @AuthenticationPrincipal PrincipalDetails principalDetails,
+			Model model) {
 		oneOnOneService.writeOoo(requestOoo, principalDetails.getUser());
-		
+
 		int userId = requestOoo.getUser().getId();
 		String title = requestOoo.getTitle();
 		List<OneOnOne> contents = oneOnOneService.getContentList();
-System.out.println("여기오냐");
-		//이거하는중
+		// 이거하는중
 		model.addAttribute("userId", userId);
 		model.addAttribute("title", title);
 		model.addAttribute("contents", contents);
-		
+
 		// a d m i n - answer에서 받기
 		return "redirect:/view-more/one-on-one";
 	}
-
-	
-	
 
 }

@@ -22,11 +22,11 @@
 				<div>
 					<h1>user아이디: ${ooo.user.id }</h1>
 					<h1>ooo아이디: ${ooo.id }</h1>
-					<h1>제목이: ${ooo.title }</h1>
-					<h1>컨텐트: ${ooo.content }</h1>
+					<h1>문의제목: a태그해야함 ${ooo.title }</h1>
+					<h1>문의내용: ${ooo.content }</h1>
 				</div>
 			</c:forEach>
-		
+		이거하는중 0105
 		</div>
 		<div class="d-flex justify-content-center"></div>
 	</div>

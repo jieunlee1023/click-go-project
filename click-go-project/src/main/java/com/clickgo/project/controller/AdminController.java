@@ -11,6 +11,7 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -131,13 +132,18 @@ public class AdminController {
 
 	@GetMapping("/answer")
 	public String oneOnOneAsk(Model model) {
-		
 		List<OneOnOne> ooos = oneOnOneService.getContentList();
 		model.addAttribute("ooos", ooos);
-		
 		return "admin/answer";
 	}
 	
+	// s w
+		@GetMapping("/answer/{id}")
+		public String showAnswer(@PathVariable int id, Model model) {
+			model.addAttribute("ooos", oneOnOneService.oooAnswer(id));
+// 어드민 1:1 안뜸.. 
+			return "view-more/one-on-one-answer";
+		}	
 	
 
 	public void franchiseMassageCount(Model model) {

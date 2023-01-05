@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.clickgo.project.entity.OneOnOne;
 import com.clickgo.project.entity.User;
@@ -26,6 +27,13 @@ public class OneOnOneService {
 
 	public List<OneOnOne> getContentList() {
 		return iOneOnOneRepository.findAll();
+	}
+
+	@Transactional
+	public Object oooAnswer(int id) {
+		return iOneOnOneRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("해당글 없음");
+		});
 	}
 
 }

@@ -20,15 +20,18 @@
 		<div id="tab-cont">
 			<div id="tab-cont-1">
 				<div>
-					<%-- <c:if test="${principal.user.id eq userId }">
-						<div>
-							<c:forEach var="content" items="${contents }">
-										하는중이거 
-									<div>${content.content }</div>
+						<c:forEach var="ooo" items="${ooos }">
+							<c:if test="${principal.user.id eq ooo.user.id }">
+								<div>
+									<p>user이름: ${ooo.user.username }</p>
+									<p>user아이디: ${ooo.user.id }</p>
+									<p>ooo아이디: ${ooo.id }</p>
+									<a href="/view-more/one-on-one/${ooo.id }">제목이: ${ooo.title }</a>
+									<p>컨텐트: ${ooo.content }</p>
+								</div>
 
-							</c:forEach>
-						</div>
-					</c:if> --%>
+							</c:if>
+						</c:forEach>
 				</div>
 			</div>
 
