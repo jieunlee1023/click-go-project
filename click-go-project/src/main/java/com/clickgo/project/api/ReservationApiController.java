@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import org.hibernate.internal.build.AllowSysOut;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +19,7 @@ import com.clickgo.project.dto.res.ReservationDateDto;
 import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.Store;
+import com.clickgo.project.model.mydate.MyDate;
 import com.clickgo.project.service.ReservationService;
 import com.clickgo.project.service.StoreService;
 
@@ -48,13 +48,13 @@ public class ReservationApiController {
 		int startMonth = Integer.parseInt(reservationDateTokenizer.nextToken());
 		int startDay = Integer.parseInt(reservationDateTokenizer.nextToken());
 
-		Date date = new Date();
+		MyDate myDate = new MyDate();
 
-		int nowYear = (date.getYear() + 1900);
-		int nowMonth = (date.getMonth() + 1);
-		int nowDay = date.getDate();
-		int nowHour = date.getHours();
-		int nowMinutes = date.getMinutes();
+		int nowYear = myDate.getNowYear();
+		int nowMonth = myDate.getNowMonth();
+		int nowDay = myDate.getNowDay();
+		int nowHour = myDate.getNowHour();
+		int nowMinutes = myDate.getNowMinutes();
 
 		if (startYear >= nowYear && startMonth >= nowMonth && startDay >= nowDay) {
 			if (startHour >= nowHour) {

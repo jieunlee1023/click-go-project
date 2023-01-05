@@ -69,88 +69,99 @@ public class ReservationController {
 			@RequestParam String endDate, @AuthenticationPrincipal PrincipalDetails principalDetails)
 			throws InterruptedException {
 		Store storeEntity = storeService.findById(storeId);
-
 		int endHour = 0;
 		int endMinute = 0;
+		int startYear = 0;
+		int startMonth = 0;
+		int startDay = 0;
+		int endYear = 0;
+		int endMonth = 0;
+		int endDay = 0;
+		int startHour = 0;
+		int startMinute = 0;
 		Reservation reservationEntity = null;
 
 		StringTokenizer startDateTokenizer = new StringTokenizer(startDate, "-");
-		int startYear = Integer.parseInt(startDateTokenizer.nextToken());
-		int startMonth = Integer.parseInt(startDateTokenizer.nextToken());
-		int startDay = Integer.parseInt(startDateTokenizer.nextToken());
+		startYear = Integer.parseInt(startDateTokenizer.nextToken());
+		startMonth = Integer.parseInt(startDateTokenizer.nextToken());
+		startDay = Integer.parseInt(startDateTokenizer.nextToken());
 
 		StringTokenizer endDateTokenizer = new StringTokenizer(endDate, "-");
-		int endYear = Integer.parseInt(endDateTokenizer.nextToken());
-		int endMonth = Integer.parseInt(endDateTokenizer.nextToken());
-		int endDay = Integer.parseInt(endDateTokenizer.nextToken());
+		endYear = Integer.parseInt(endDateTokenizer.nextToken());
+		endMonth = Integer.parseInt(endDateTokenizer.nextToken());
+		endDay = Integer.parseInt(endDateTokenizer.nextToken());
 
 		StringTokenizer startTimeTokenizer = new StringTokenizer(startTime, ":");
-		int startHour = Integer.parseInt(startTimeTokenizer.nextToken());
-		int startMinute = Integer.parseInt(startTimeTokenizer.nextToken());
+		try {
+			startHour = Integer.parseInt(startTimeTokenizer.nextToken());
+			startMinute = Integer.parseInt(startTimeTokenizer.nextToken());
+		} catch (Exception e) {
+			System.err.println("중복 제거");
+			StringTokenizer deduplication = new StringTokenizer(startTimeTokenizer.nextToken(), ",");
+			startMinute = Integer.parseInt(deduplication.nextToken());
+		}
 
 		if (endTime != "" || endTime != null) {
 			StringTokenizer endTimeTokenizer = new StringTokenizer(endTime, ":");
-			endHour = Integer.parseInt(endTimeTokenizer.nextToken());
-			endMinute = Integer.parseInt(endTimeTokenizer.nextToken());
+			try {
+				endHour = Integer.parseInt(endTimeTokenizer.nextToken());
+				endMinute = Integer.parseInt(endTimeTokenizer.nextToken());
+			} catch (Exception e) {
+				System.err.println("중복 제거");
+				StringTokenizer deduplication = new StringTokenizer(endTimeTokenizer.nextToken(), ",");
+				endMinute = Integer.parseInt(deduplication.nextToken());
+			}
 		}
 
 		if (seatNumber != null) {
-			try {
-				for (int i = 0; i < seatNumber.length; i++) {
-					reservationEntity = new Reservation();
-					if (endHour == 0 || endMinute == 0) {
-						reservationEntity.setPrice(storeEntity.getPrice());
-					} else {
-						if (startHour == endHour) {
-							int minute = (endMinute - startMinute) / 10;
+			for (int i = 0; i < seatNumber.length; i++) {
+				reservationEntity = new Reservation();
+				if (startHour == endHour) {
+					int minute = (endMinute - startMinute) / 10;
+					reservationEntity.setPrice((storeEntity.getPrice() * minute));
+				} else if (startHour < endHour) {
+					int minuteToHour = ((endHour - startHour) * 60);
+					if (startMinute > endMinute) {
+						if (startMinute - endMinute == 10) {
+							int minute = (minuteToHour - 10) / 10;
 							reservationEntity.setPrice((storeEntity.getPrice() * minute));
-						} else if (startHour < endHour) {
-							int minuteToHour = ((endHour - startHour) * 6);
-							if (startMinute > endMinute) {
-								if (startMinute - endMinute == 10) {
-									int minute = (50 + minuteToHour) / 10;
-									reservationEntity.setPrice((storeEntity.getPrice() * minute));
-								} else if (startMinute - endMinute == 20) {
-									int minute = (40 + minuteToHour) / 10;
-									reservationEntity.setPrice((storeEntity.getPrice() * minute));
-								} else if (startMinute - endMinute == 30) {
-									int minute = (30 + minuteToHour) / 10;
-									reservationEntity.setPrice((storeEntity.getPrice() * minute));
-								} else if (startMinute - endMinute == 40) {
-									int minute = (20 + minuteToHour) / 10;
-									reservationEntity.setPrice((storeEntity.getPrice() * minute));
-								} else if (startMinute - endMinute == 50) {
-									int minute = (10 + minuteToHour) / 10;
-									reservationEntity.setPrice((storeEntity.getPrice() * minute));
-								}
-							} else if (startMinute == endMinute) {
-								int minute = minuteToHour;
-								reservationEntity.setPrice((storeEntity.getPrice() * minute));
-							} else {
-								int minute = (endMinute - startMinute + minuteToHour) / 10;
-								reservationEntity.setPrice((storeEntity.getPrice() * minute));
-							}
+						} else if (startMinute - endMinute == 20) {
+							int minute = (minuteToHour - 20) / 10;
+							reservationEntity.setPrice((storeEntity.getPrice() * minute));
+						} else if (startMinute - endMinute == 30) {
+							int minute = (minuteToHour - 30) / 10;
+							reservationEntity.setPrice((storeEntity.getPrice() * minute));
+						} else if (startMinute - endMinute == 40) {
+							int minute = (minuteToHour - 40) / 10;
+							reservationEntity.setPrice((storeEntity.getPrice() * minute));
+						} else if (startMinute - endMinute == 50) {
+							int minute = (minuteToHour - 50) / 10;
+							reservationEntity.setPrice((storeEntity.getPrice() * minute));
 						}
+					} else if (startMinute == endMinute) {
+						int minute = minuteToHour;
+						reservationEntity.setPrice((storeEntity.getPrice() * minute) / 10);
+					} else {
+						int minute = ((endMinute - startMinute) + minuteToHour) / 10;
+						reservationEntity.setPrice((storeEntity.getPrice() * minute));
 					}
-					reservationEntity.setApproveStatus(ApproveStatus.WATING);
-					reservationEntity.setReservationSeat(seatNumber[i]);
-					reservationEntity.setUser(principalDetails.getUser());
-					reservationEntity.setStore(storeEntity);
-					reservationEntity.setReservationTime(startHour + ":" + startMinute);
-					reservationEntity.setEndTime(endHour + ":" + endMinute);
-					reservationEntity.setReservationDate(startYear + "-" + startMonth + "-" + startDay);
-					reservationEntity.setEndDate(endYear + "-" + endMonth + "-" + endDay);
-					// 카카오 페이 결제
-					reservationService.save(reservationEntity);
 				}
-			} catch (Exception e) {
-				e.printStackTrace();
+				reservationEntity.setApproveStatus(ApproveStatus.WATING);
+				reservationEntity.setReservationSeat(seatNumber[i]);
+				reservationEntity.setUser(principalDetails.getUser());
+				reservationEntity.setStore(storeEntity);
+				reservationEntity.setReservationTime(startHour + ":" + startMinute);
+				reservationEntity.setEndTime(endHour + ":" + endMinute);
+				reservationEntity.setReservationDate(startYear + "-" + startMonth + "-" + startDay);
+				reservationEntity.setEndDate(endYear + "-" + endMonth + "-" + endDay);
+				// 카카오 페이 결제
+				reservationService.save(reservationEntity);
 			}
 			if (paymentType.equals(PaymentType.KAKAO.toString())) {
 				reservationEntity.setPaymentType(PaymentType.KAKAO);
 				return kakaoPayReady(reservationEntity, storeEntity, seatNumber);
 			} else if (paymentType.equals(PaymentType.NAVER.toString())) {
-				
+
 			}
 			return "redirect:/store/detail/" + storeId;
 		}
@@ -182,9 +193,6 @@ public class ReservationController {
 
 		Object objTotalPrice = (reservation.getPrice() * seatNumber.length);
 		String totalPrice = objTotalPrice.toString();
-		System.out.println(reservation.getPrice());
-		System.out.println(seatNumber.length);
-		System.out.println(totalPrice);
 
 		Object test = storeEntity.getId();
 		String storeId = test.toString();
@@ -203,8 +211,8 @@ public class ReservationController {
 		params.add("total_amount", totalPrice);
 		params.add("tax_free_amount", "50");
 		params.add("approval_url", "http://localhost:7777/reservation/approve/kakao");
-		params.add("cancel_url", "http://localhost:7777/reservation/cancel/" + seatNumber.length );
-		params.add("fail_url", "http://localhost:7777/reservation/cancel/" + seatNumber.length );
+		params.add("cancel_url", "http://localhost:7777/reservation/cancel/" + seatNumber.length);
+		params.add("fail_url", "http://localhost:7777/reservation/cancel/" + seatNumber.length);
 
 		HttpEntity<MultiValueMap<String, String>> requestKakao = new HttpEntity<>(params, httpHeaders);
 
@@ -240,7 +248,7 @@ public class ReservationController {
 		kakaoPaymentHistoryService.save(responseKakao.getBody());
 		return "redirect:/reservations/list";
 	}
-	
+
 	@GetMapping("/cancel/{seatNumber}")
 	public String cancel(@PathVariable int seatNumber) {
 		int lastPK = reservationService.findLastPK();
