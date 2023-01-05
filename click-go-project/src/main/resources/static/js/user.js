@@ -48,7 +48,7 @@ let index = {
 				text: '숫자+영문자+특수문자 조합으로 5 ~ 12자리 이상 사용해야 합니다.',
 			});
 			return false;
-		}else if (!/^[a-z|A-Z]+$/.test(username)) {
+		}else if (!/^[a-z|A-Z|0-9]+$/.test(username)) {
 			Swal.fire({
 				icon: 'warning',
 				text: '아이디는 영문으로만 가능합니다.',
@@ -65,7 +65,11 @@ let index = {
 			console.log(data);
 
 			if (data.httpStatus == true) {
-				alert(data.body);
+				Swal.fire({
+					icon: 'error',
+					text: data.body,
+				});
+				setTimeout(() => 3000);
 				location.href = "/";
 			}
 			else {
@@ -110,7 +114,10 @@ let index = {
 			}).done(function(data) {
 				console.log(data);
 				if (data.httpStatus == true) {
-					alert(data.body);
+					Swal.fire({
+						icon: 'error',
+						text:  data.body,
+					});
 					location.href = "/";
 				} else {
 					Swal.fire({

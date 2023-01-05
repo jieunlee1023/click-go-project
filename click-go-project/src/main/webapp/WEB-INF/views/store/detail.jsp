@@ -202,7 +202,7 @@
 										}
 										%>
 									</div>
-									<br>g
+									<br>
 									<div class="d-flex mt-2">
 										<%
 										for (start = fours + 1; start <= totalRoomCount; start++) {
