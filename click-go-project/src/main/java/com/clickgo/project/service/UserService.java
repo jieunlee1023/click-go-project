@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.entity.DeleteUser;
+import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.LoginType;
 import com.clickgo.project.model.enums.RoleType;
@@ -170,4 +171,6 @@ public class UserService {
 		// TODO Auto-generated method stub
 		return userRepository.findByUsernameContaining(q, pageable);
 	}
+	
+	
 }

@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.User;
 
 public interface IUserRepository extends JpaRepository<User, Integer> {
@@ -23,5 +24,8 @@ public interface IUserRepository extends JpaRepository<User, Integer> {
 	// 승원
 	Page<User> findByUsernameContaining(String q, Pageable pageable);
 
+	
+	
+	
 
 }

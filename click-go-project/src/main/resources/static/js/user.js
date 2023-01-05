@@ -65,11 +65,7 @@ let index = {
 			console.log(data);
 
 			if (data.httpStatus == true) {
-				Swal.fire({
-					icon: 'error',
-					text: data.body,
-				});
-				setTimeout(() => 3000);
+				alert(data.body);
 				location.href = "/";
 			}
 			else {

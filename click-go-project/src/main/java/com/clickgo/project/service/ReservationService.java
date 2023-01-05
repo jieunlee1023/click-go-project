@@ -62,4 +62,10 @@ public class ReservationService {
 	public void delete(int cancelReservation) {
 		reservationRepository.deleteById(cancelReservation);
 	}
+	
+	// 매출 통계
+	@Transactional
+	public Page<Reservation> salesReport(Pageable pageable) {
+		return reservationRepository.findBySales(pageable);
+	}
 }
