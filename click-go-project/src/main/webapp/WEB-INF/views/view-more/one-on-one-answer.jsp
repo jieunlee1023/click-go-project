@@ -10,7 +10,7 @@
 
 		<div>
 			<p>문의하신 제목 :</p>
-			<p> >>>${oooAnswer.title }</p>
+			<p>>>>${oooAnswer.title }</p>
 		</div>
 
 		<div>
@@ -18,32 +18,47 @@
 			<p>>>> ${oooAnswer.content }</p>
 		</div>
 
-이거하는중 01-05
+		이거하는중 01-05
 		<div>
 			<p>문의하신 내용의 답변입니다</p>
 		</div>
-		<div> >>> ${oooAnswer.answer }</div>
 	</div>
 
-	<div id="ooo-body"></div>
+	<div id="ooo-body">
 
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
+		<div id="accordion">
+			<div class="card">
+				<div class="card-header">
+					<a class="card-link" data-toggle="collapse" href="#collapseOne"> Collapsible Group Item #1 </a>
+				</div>
+				<div id="collapseOne" class="collapse show" data-parent="#accordion">
+					<div class="card-body">
+						sadadad
+					
+					</div>
+				</div>
+			</div>
 
 
 
+		</div>
 
-<%@ include file="../layout/footer.jsp"%>
+	</div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<%@ include file="../layout/footer.jsp"%>

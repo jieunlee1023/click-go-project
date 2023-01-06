@@ -10,7 +10,7 @@
 
 		<!-- 글쓰기버튼 -->
 		<div>
-			<form class="form-inline" action="/board/form">
+			<form class="form-inline" action="/board/write-form" method="get">
 				<button type="submit" class="btn" id="btn--write">글쓰기</button>
 			</form>
 		</div>

@@ -25,25 +25,22 @@ import lombok.ToString;
 @Builder
 @Entity
 @ToString
-public class OneOnOne {
+public class OneOnOneAnswer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(nullable = false)
-	private String title;
-
 	@Lob
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private String content;
-
+	
 	@ManyToOne
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "adminId")
 	private User user;
 	
 	@Column(nullable = false)
 	@CreationTimestamp
-	private Timestamp createDate;
-
+	private Timestamp timestamp;
+	
 }

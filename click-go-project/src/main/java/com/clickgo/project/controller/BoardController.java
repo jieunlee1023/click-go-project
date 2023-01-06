@@ -87,6 +87,7 @@ public class BoardController {
 		franchiseMassageCount(model);
 		return "board/detail";
 	}
+	
 	// s w 비밀댓글
 	@PostMapping("/board/{boardId}/reply")
 	public String replySave(@PathVariable int boardId, CsReply requestReply,
