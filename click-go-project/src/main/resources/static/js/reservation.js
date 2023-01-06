@@ -8,20 +8,53 @@ let index = {
 			$("#btn--approve-" + i).bind("click", () => {
 				this.approve(i);
 			});
+			$("#btn--reject-" + i).bind("click", () => {
+				this.reject(i);
+			});
+			$("#btn--report-" + i).bind("click", () => {
+				this.report(i);
+			});
 		};
 		addMap(address, storeName);
 	},
 
-	approve: function(i) {
+	approve: function(id) {
 		$.ajax({
 			type: 'GET',
-			url: `/api/reservation/approve/${i}`,
+			url: `/api/reservation/approve/${id}`,
 		}).done(function(data) {
 			if (data.httpStatus) {
 				alert(data.body);
-				$(`#btn--approve-${i}`).remove();
-				$(`#btn--reject-${i}`).remove();
-				$(`#status-${i}`).text('APPROVED');
+				$(`#btn--approve-${id}`).remove();
+				$(`#btn--reject-${id}`).remove();
+				$(`#status-${id}`).text('APPROVED');
+			}
+		}).fail(function(error) {
+			console.log(error);
+		});
+	},
+	reject: function(id) {
+		$.ajax({
+			type: 'GET',
+			url: `/api/reservation/reject/${id}`,
+		}).done(function(data) {
+			if (data.httpStatus) {
+				alert(data.body);
+				$(`#btn--approve-${id}`).remove();
+				$(`#btn--reject-${id}`).remove();
+				$(`#status-${id}`).text('REJECT');
+			}
+		}).fail(function(error) {
+			console.log(error);
+		});
+	},
+	report: function(id) {
+		$.ajax({
+			type: 'GET',
+			url: `/api/report/${id}`,
+		}).done(function(data) {
+			if (data.httpStatus) {
+				alert(data.body);
 			}
 		}).fail(function(error) {
 			console.log(error);

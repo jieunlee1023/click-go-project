@@ -18,7 +18,7 @@ public class KakaoPaymentHistoryService {
 		kakaoPaymentHistoryRepository.save(body);
 	}
 
-	public KakaoPaymentHistory findByReservationId(int storeId) {
-		return kakaoPaymentHistoryRepository.findByReservationId(storeId);
+	public KakaoPaymentHistory findByReservationId(int reservationId) {
+		return kakaoPaymentHistoryRepository.findByReservationId(reservationId);
 	}
 }

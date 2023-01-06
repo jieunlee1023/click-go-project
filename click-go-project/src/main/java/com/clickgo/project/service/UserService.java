@@ -170,4 +170,9 @@ public class UserService {
 		// TODO Auto-generated method stub
 		return userRepository.findByUsernameContaining(q, pageable);
 	}
+	public User findById(int id) {
+		return userRepository.findById(id).orElseThrow(() -> 	{
+			return new IllegalArgumentException("찾으시는 유저가 존재하지 않습니다.");
+		});
+	}
 }
