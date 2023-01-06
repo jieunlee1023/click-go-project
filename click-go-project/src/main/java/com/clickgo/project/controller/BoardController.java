@@ -14,10 +14,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.entity.CsBoard;
 import com.clickgo.project.entity.CsReply;
 import com.clickgo.project.entity.StoreFranchise;
@@ -25,6 +25,7 @@ import com.clickgo.project.service.BoardService;
 import com.clickgo.project.service.StoreFranchiseService;
 
 @Controller
+@RequestMapping("/board")
 public class BoardController {
 
 	@Autowired
@@ -33,7 +34,7 @@ public class BoardController {
 	@Autowired
 	private StoreFranchiseService franchiseService;
 
-	@PostMapping("/board/save")
+	@PostMapping("/save")
 	public String boardSave(@RequestParam(value = "secret", required = false) String[] secret, CsBoard csBoard,
 			@AuthenticationPrincipal PrincipalDetails details) {
 
@@ -41,7 +42,7 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 
-	@GetMapping({ "/board/list", "/board/search" })
+	@GetMapping({ "/list", "/search" })
 	public String board(@RequestParam(required = false) String q, Model model,
 			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchTitle = q == null ? "" : q;
@@ -73,15 +74,15 @@ public class BoardController {
 		franchiseMassageCount(model);
 		return "board/list";
 	}
-
-	@GetMapping("/board/form")
+	// 글쓰기
+	@GetMapping("/write-form")
 	public String board(@RequestParam(required = false) String pageName, Model model) {
 		model.addAttribute("nowPage", pageName);
 		franchiseMassageCount(model);
 		return "board/write-form";
 	}
 
-	@GetMapping("/board/{id}")
+	@GetMapping("/{id}")
 	public String showDetail(@PathVariable int id, Model model) {
 		model.addAttribute("board", boardService.boardDetail(id));
 		franchiseMassageCount(model);
@@ -89,14 +90,14 @@ public class BoardController {
 	}
 	
 	// s w 비밀댓글
-	@PostMapping("/board/{boardId}/reply")
+	@PostMapping("/{boardId}/reply")
 	public String replySave(@PathVariable int boardId, CsReply requestReply,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		boardService.writeReply(boardId, requestReply, principalDetails.getUser());
 		return "redirect:";
 	}
 	
-	@GetMapping("/board/{id}/update-form")
+	@GetMapping("/{id}/update-form")
 	public String updateForm(@PathVariable(name = "id") int boardId, Model model) {
 		model.addAttribute("board", boardService.boardDetail(boardId));
 		franchiseMassageCount(model);
