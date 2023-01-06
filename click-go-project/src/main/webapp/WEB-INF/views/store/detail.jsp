@@ -53,6 +53,7 @@
 								<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
 									<div class="d-flex justify-content-between pl-3 pt-3 pr-3">
 										<h5 class="" style="font-weight: bold;">${store.storeName}</h5>
+										<input type="button" id="btn--wish-list" value="위시리스트 추가하기">
 									</div>
 									<div class="d-flex-column mr-4 mt-3 justify-content-end">
 										<p>지점 : ${store.storeAddress}</p>
@@ -100,7 +101,6 @@
 <br>
 <br>
 <br>
-<script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript">
 	$('document').ready(function() {
 		$('#startTime').timepicker({
@@ -130,5 +130,6 @@
 	});
 </script>
 
-
+<script type="text/javascript" src="/js/reservation.js"></script>
+<script type="text/javascript" src="/js/wish-list.js"></script>
 <%@ include file="../layout/footer.jsp"%>
