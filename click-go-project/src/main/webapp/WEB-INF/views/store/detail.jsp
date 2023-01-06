@@ -79,6 +79,21 @@
 								<c:when test="${store.category.id eq 'PC방' }">
 									<%@ include file="../layout/pc-room.jsp"%>
 								</c:when>
+								<c:when test="${store.category.id eq '노래방' }">
+									<%@ include file="../layout/singing-room.jsp"%>
+								</c:when>
+								<c:when test="${store.category.id eq '당구장' }">
+									<%@ include file="../layout/billiard-room.jsp"%>
+								</c:when>
+								<c:when test="${store.category.id eq '동전노래방' }">
+									<%@ include file="../layout/coin-singing-room.jsp"%>
+								</c:when>
+								<c:when test="${store.category.id eq '볼링장' }">
+									<%@ include file="../layout/bowling-club.jsp"%>
+								</c:when>
+								<c:when test="${store.category.id eq '스크린야구장' }">
+									<%@ include file="../layout/screen-ballpark.jsp"%>
+								</c:when>
 							</c:choose>
 						</div>
 						<input type="hidden" value="${store.storeAddress}"
@@ -88,6 +103,7 @@
 					<div>
 						<br>
 					</div>
+					<br> <br> <br> <br> <br> <br> <br>
 					<div id="map" style="width: 700px; height: 350px;"></div>
 				</div>
 			</c:otherwise>
@@ -101,6 +117,8 @@
 <br>
 <br>
 <br>
+<script type="text/javascript" src="/js/reservation.js"></script>
+>>>>>>> feature-mini
 <script type="text/javascript">
 	$('document').ready(function() {
 		$('#startTime').timepicker({

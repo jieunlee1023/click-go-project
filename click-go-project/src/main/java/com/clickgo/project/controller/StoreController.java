@@ -95,7 +95,13 @@ public class StoreController {
 		if (principalDetails == null) {
 			principalDetails = new PrincipalDetails(new User().builder().role(RoleType.GEUST).build());
 		}
-
+		int totalRoomCount = storeEntity.getStoreTotalRoomCount();
+		if (storeEntity.getCategory().getId().equals(StoreCategory.PC방)
+				|| storeEntity.getCategory().getId().equals(StoreCategory.동전노래방)) {
+			originLayout(totalRoomCount, model);
+		} else {
+			otherLayout(totalRoomCount, model);
+		}
 		getNowDateAndTime(model);
 		getImage(model, id);
 		RoleType role = principalDetails.getUser().getRole();
@@ -125,5 +131,29 @@ public class StoreController {
 	}
 
 	public void getImage(Model model, int storeId) {
+	}
+
+	public void originLayout(int roomCount, Model model) {
+		int standard = 6;
+		int space = 6;
+
+		model.addAttribute("totalRoomCount", roomCount);
+
+		model.addAttribute("standard", standard);
+		model.addAttribute("space", space);
+
+		model.addAttribute("firstSpace", space);
+		model.addAttribute("secondSpace", (space * 3));
+		model.addAttribute("thirdSpace", (space * 5));
+		model.addAttribute("foursSpace", (space * 7));
+
+		model.addAttribute("firstStandard", (standard * 2));
+		model.addAttribute("secondStandard", (standard * 4));
+		model.addAttribute("thirdStandard", (standard * 6));
+		model.addAttribute("foursStandard", (standard * 8));
+	}
+
+	public void otherLayout(int roomCount, Model model) {
+		model.addAttribute("totalRoomCount", roomCount);
 	}
 }
