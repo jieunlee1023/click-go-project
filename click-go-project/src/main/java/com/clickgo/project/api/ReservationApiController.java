@@ -108,9 +108,9 @@ public class ReservationApiController {
 	public ResponseDto<?> approve(@PathVariable int id) {
 		try {
 			reservationService.approve(id);
-			return new ResponseDto<>(true, "예약 성공 !");
+			return new ResponseDto<>(true, "승인 성공 !");
 		} catch (Exception e) {
-			return new ResponseDto<>(false, "예약 실패 !");
+			return new ResponseDto<>(false, "승인 실패 !");
 		}
 	}
 }

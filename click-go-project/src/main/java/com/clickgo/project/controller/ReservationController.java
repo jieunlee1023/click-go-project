@@ -155,10 +155,12 @@ public class ReservationController {
 				reservationEntity.setReservationDate(startYear + "-" + startMonth + "-" + startDay);
 				reservationEntity.setEndDate(endYear + "-" + endMonth + "-" + endDay);
 				// 카카오 페이 결제
+				if (paymentType.equals(PaymentType.KAKAO.toString())) {
+					reservationEntity.setPaymentType(PaymentType.KAKAO);
+				}
 				reservationService.save(reservationEntity);
 			}
 			if (paymentType.equals(PaymentType.KAKAO.toString())) {
-				reservationEntity.setPaymentType(PaymentType.KAKAO);
 				return kakaoPayReady(reservationEntity, storeEntity, seatNumber);
 			} else if (paymentType.equals(PaymentType.NAVER.toString())) {
 
@@ -173,7 +175,7 @@ public class ReservationController {
 			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Page<Reservation> reservations = reservationService.searchBoard(principalDetails.getUser(), pageable);
-
+		model.addAttribute("lastId", reservations.getContent().get(0).getId());
 		franchiseMassageCount(model);
 		model.addAttribute("reservations", reservations);
 		return "/user/my/reservation/list";
@@ -225,7 +227,6 @@ public class ReservationController {
 	}
 
 	@GetMapping("/approve/kakao")
-	@ResponseBody
 	private String kakaoPayApprove(@RequestParam(name = "pg_token") String pgToken) {
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders httpHeaders = new HttpHeaders();
@@ -246,7 +247,7 @@ public class ReservationController {
 
 		amountService.save(responseKakao.getBody().getAmount());
 		kakaoPaymentHistoryService.save(responseKakao.getBody());
-		return "redirect:/reservations/list";
+		return "redirect:/reservation/list";
 	}
 
 	@GetMapping("/cancel/{seatNumber}")
