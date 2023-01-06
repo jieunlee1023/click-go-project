@@ -17,3 +17,84 @@
 	color: white;
 	border-radius: 5px;
 }
+
+.store-detail-main-img {
+	display:inline-flex;
+	text-align: center;
+}
+
+#store-detail-img {
+	width:90%;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 15px;
+	margin: 10px;
+}
+
+.store--seat--drawing {
+	width: 60%;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	border: 1px solid black;
+	padding: 20px;
+	background-color: rgb(255, 255, 255, 0.5);
+	display: flex;
+}
+
+.store-detail-tel {
+	font-size: 20px;
+}
+
+.store-detail-update {
+	background-color: #6478ff;
+	border-radius: 5px;
+	height: 35px;
+	padding: 5px;
+	margin-left: 20px;
+}
+
+.store-detail-update a {
+	text-decoration: none;
+	color: white;
+}
+
+.store-main {
+	height: 100%;
+}
+
+#store-in-btn {
+	width: 100%;
+}
+
+#store-img {
+	width: 100%;
+	height: 50%;
+	object-fit: cover;
+	border: 3px solid black;
+	border-radius: 10px;
+	opacity: 1;
+}
+
+.store-main-address {
+	font-size: 15px;
+	margin: 0;
+	padding: 0;
+}
+
+#store-main-btn {
+	border: none;
+	background-color: transparent;
+}
+#store-in-btn{
+	width:100px;
+	height:50px;
+	margin-left: 30px;
+	padding: 10px;
+	text-decoration: none;
+	text-align: center;
+	border-radius: 10px;
+	background-color: #6478ff;
+	color: white;
+	
+}

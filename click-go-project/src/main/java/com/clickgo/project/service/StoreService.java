@@ -72,8 +72,6 @@ public class StoreService {
 		UUID uuid = UUID.randomUUID();
 		
 		for (int i = 0; i < fileDto.getFiles().length; i++) {
-			System.out.println(fileDto.getFiles()[i].getOriginalFilename());
-			System.out.println(fileDto.getFiles()[i].getContentType());
 			
 			String StoreImageFilename = uuid + "_" +fileDto.getFiles()[i].getOriginalFilename() ;
 			Path StoreImageLicenseFilePath = Paths.get(storeImageFile + StoreImageFilename);

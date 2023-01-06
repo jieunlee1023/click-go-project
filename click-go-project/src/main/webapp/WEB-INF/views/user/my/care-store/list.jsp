@@ -14,9 +14,6 @@
 	<c:choose>
 		<c:when test="${empty stores}">
 			<br>
-			<br>
-			<br>
-			<br>
 			<div class="container d-flex">
 				<h2 class="" style="font-weight: bold;">엥.. 관리자에게 문의해주세요.</h2>
 			</div>
