@@ -28,7 +28,7 @@
 				<div class="form-group ">
 					<label for="password" class="d-flex m-0">비밀번호</label> <input
 						type="password" class="form-control" id="password" name="password"
-						value="11111" required>
+						value="asd123!!" required>
 				</div>
 				<br>
 				<div class="form-control d-flex justify-content-center"

@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.clickgo.project.dto.res.kakaoPay.KakaoPaymentHistory;
 import com.clickgo.project.model.enums.ApproveStatus;
 import com.clickgo.project.model.enums.PaymentType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -41,7 +42,7 @@ public class Reservation {
 
 	@Enumerated(EnumType.STRING)
 	private PaymentType paymentType;
-
+	
 	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp createDate;
@@ -66,7 +67,6 @@ public class Reservation {
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
 
-	@JsonIgnoreProperties
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId", nullable = false)
 	private Store store;

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../../layout/header.jsp"%>
+
+
 <br>
 <div class="container" id="store-update">
 	<div id="view-more-title">
@@ -67,7 +69,7 @@
 						</div>
 
 						<input type="number" class="form-control" id="totalSeatCount"
-							name="totalSeatCount" value="${store.storeTotalRoomCount}">
+							 name="storeTotalRoomCount" value="${store.storeTotalRoomCount}">
 
 					</div>
 
@@ -88,11 +90,16 @@
 					<div class="d-flex" id="store--licence--text">
 						<span class="d-flex mr-2" style="font-size: 13px">매장 사진</span>
 					</div>
+					
+					<div id='image_preview'>
+									<label class="input-file-button" for="btnAtt">업로드</label> <input
+										type='file' name="files" id='btnAtt' multiple
+										style='display: none;' maxlength="2"> <br>
+									<div id='att_zone'
+										data-placeholder='파일을 첨부 하려면 파일 선택 버튼을 클릭하거나 파일을 드래그앤드롭 하세요'></div>
+								</div>
 
-
-					<input name="files" type="file" multiple>
-
-
+				
 					<c:forEach var="image" items="${images}">
 						<c:if test="${store.id eq image.store.id}">
 							<img src="http://localhost:7777/storeImage/${image.imageUrl}"
@@ -101,8 +108,9 @@
 					</c:forEach>
 
 					<br> <br>
-					<div class="d-flex justify-content-end"></div>
-					<button type="submit" class="btn" id="carestore--update--detail">수정완료!</button>
+					<div class="d-flex justify-content-end">
+						<button type="submit" class="btn" id="franchise--apply">수정완료!</button>
+					</div>
 				</form>
 
 			</div>
@@ -129,6 +137,6 @@
 	});
 </script>
 
-<!--   <script type="text/javascript" src="/js/dropZone.js"></script> -->
-
+<script type="text/javascript" src="/js/dragAndDrop.js"></script>
+<script type="text/javascript" src="/js/mypage.js"></script>
 <%@ include file="../../../layout/footer.jsp"%>

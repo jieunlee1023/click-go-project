@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.clickgo.project.entity.Reservation;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -37,11 +38,11 @@ public class KakaoPaymentHistory {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(nullable = false)
 	@JsonProperty("aid")
 	private String aid;
-	
+
 	@Column(nullable = false)
 	@JsonProperty("tid")
 	private String tid;
@@ -49,36 +50,40 @@ public class KakaoPaymentHistory {
 	@Column(nullable = false)
 	@JsonProperty("cid")
 	private String cid;
-	
+
 	@Column(nullable = false)
 	@JsonProperty("partner_order_id")
 	private String partnerOrderId;
-	
+
 	@Column(nullable = false)
 	@JsonProperty("partner_user_id")
 	private String partnerUserId;
-	
+
 	@Column(nullable = false)
 	@JsonProperty("payment_method_type")
 	private String paymentMethodType;
-	
+
 	@Column(nullable = false)
 	@JsonProperty("item_name")
 	private String itemName;
-	
+
 	@Column(nullable = false)
 	@JsonProperty("quantity")
 	private Integer quantity;
-	
+
 	@JsonProperty("amount")
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "amountId")
 	private Amount amount;
-	
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "reservationId")
+	private Reservation reservation;
+
 	private String createdAt;
-	
+
 	@Column(nullable = false)
 	@JsonProperty("approved_at")
 	private String approvedAt;
-	
+
 }

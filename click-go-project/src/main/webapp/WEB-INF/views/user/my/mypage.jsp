@@ -81,7 +81,7 @@
 			<div class="btn-wrapper">
 				<div class="btn-wrapper__container">
 					<div class="btn-inner">
-						<a href="/report/report-list/0" class="mypage-btn"> <img
+						<a href="/report/list/0" class="mypage-btn"> <img
 							src="/image/mypage/report.png" width="50px"> <br> <br>
 							<span>신고 내역</span> <br> <span id="mypage-mini-title">신고
 								절차 진행을<br> 확인 하실 수 있습니다.
@@ -176,7 +176,7 @@
 			<div class="btn-wrapper">
 				<div class="btn-wrapper__container">
 					<div class="btn-inner">
-						<a href="/report/report-list/0" class="mypage-btn"> <img
+						<a href="/report/list/0" class="mypage-btn"> <img
 							src="/image/mypage/report.png" width="50px"> <br> <br>
 							<span>신고 내역</span> <br> <span id="mypage-mini-title">신고
 								절차 진행을<br> 확인 하실 수 있습니다.

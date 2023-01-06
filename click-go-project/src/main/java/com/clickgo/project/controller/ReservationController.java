@@ -46,6 +46,7 @@ public class ReservationController {
 	private String partnerOrderId;
 	private String partnerUserId;
 	private String tId;
+	private Reservation reservation;
 
 	@Autowired
 	private ReservationService reservationService;
@@ -158,6 +159,7 @@ public class ReservationController {
 				if (paymentType.equals(PaymentType.KAKAO.toString())) {
 					reservationEntity.setPaymentType(PaymentType.KAKAO);
 				}
+				reservation = reservationEntity;
 				reservationService.save(reservationEntity);
 			}
 			if (paymentType.equals(PaymentType.KAKAO.toString())) {
@@ -196,8 +198,8 @@ public class ReservationController {
 		Object objTotalPrice = (reservation.getPrice() * seatNumber.length);
 		String totalPrice = objTotalPrice.toString();
 
-		Object test = storeEntity.getId();
-		String storeId = test.toString();
+		Object objStoreId = storeEntity.getId();
+		String storeId = objStoreId.toString();
 
 		RestTemplate restTemplate = new RestTemplate();
 		HttpHeaders httpHeaders = new HttpHeaders();
@@ -245,8 +247,11 @@ public class ReservationController {
 		ResponseEntity<KakaoPaymentHistory> responseKakao = restTemplate.exchange(
 				"https://kapi.kakao.com/v1/payment/approve", HttpMethod.POST, requestKakao, KakaoPaymentHistory.class);
 
+		KakaoPaymentHistory kakaoPaymentHistory = responseKakao.getBody();
+		kakaoPaymentHistory.setReservation(reservation);
+		
 		amountService.save(responseKakao.getBody().getAmount());
-		kakaoPaymentHistoryService.save(responseKakao.getBody());
+		kakaoPaymentHistoryService.save(kakaoPaymentHistory);
 		return "redirect:/reservation/list";
 	}
 

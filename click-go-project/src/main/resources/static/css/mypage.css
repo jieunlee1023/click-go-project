@@ -65,3 +65,30 @@
 #mypage-mini-title {
 	font-size: 12px;
 }
+
+#att_zone {
+	min-height: 150px;
+	padding: 10px;
+	border: 3px solid #fff;
+	border-radius: 5px; background-color : white;
+	margin-top: 5px;
+	background-color: white
+}
+
+#att_zone:empty:before {
+	content: attr(data-placeholder);
+	color: #999;
+	font-size: .9em;
+}
+
+#att_zone::file-selector-button {
+	display: none;
+}
+
+.input-file-button{
+  padding: 5px 20px;
+  background-color:#6478ff;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+}
