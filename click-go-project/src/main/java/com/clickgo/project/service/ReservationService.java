@@ -62,4 +62,19 @@ public class ReservationService {
 	public void delete(int cancelReservation) {
 		reservationRepository.deleteById(cancelReservation);
 	}
+
+	@Transactional
+	public Reservation findById(int reservationId) {
+		return reservationRepository.findById(reservationId).orElseThrow(() -> {
+			return new IllegalArgumentException("예약 번호를 찾을 수 없습니다.");
+		});
+	}
+
+	@Transactional
+	public void reject(int id) {
+		Reservation reservation = reservationRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("시도하시려는 예약이 존재하지 않습니다.");
+		});
+		reservation.setApproveStatus(ApproveStatus.REJECT);
+	}
 }

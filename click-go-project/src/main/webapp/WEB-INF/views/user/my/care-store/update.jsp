@@ -69,7 +69,7 @@
 						</div>
 
 						<input type="number" class="form-control" id="totalSeatCount"
-							name="totalSeatCount" value="${store.storeTotalRoomCount}">
+							 name="storeTotalRoomCount" value="${store.storeTotalRoomCount}">
 
 					</div>
 

@@ -11,7 +11,6 @@
 	<br>
 	<c:choose>
 		<c:when test="${principal.user.role eq 'GEUST'}">
-
 			<div class="container">
 				<c:choose>
 					<c:when test="${empty reservations.content}">
@@ -36,6 +35,11 @@
 											<div class="d-flex justify-content-between pl-3 pt-3 pr-3">
 												<h3 class="" style="font-weight: bold;">${reservation.store.storeName}</h3>
 												<h5 class="mr-3 m-1">${reservation.approveStatus}</h5>
+												<c:if test="${reservation.approveStatus eq 'APPROVED'}">
+													<form action="/report/${reservation.id}">
+														<input type="submit" value="가게 신고하기">
+													</form>
+												</c:if>
 											</div>
 											<div class="d-flex-column pl-3 mt-3">
 												<span>${reservation.reservationTime}</span>
@@ -81,6 +85,11 @@
 											<div class="d-flex justify-content-between pl-3 pt-3 pr-3">
 												<h5 class="" style="font-weight: bold;">${reservation.store.storeName}</h5>
 												<p class="mr-3 " id="status-${reservation.id}">${reservation.approveStatus}</p>
+												<c:if test="${reservation.approveStatus eq 'APPROVED'}">
+													<form action="/report/${reservation.id}">
+														<input type="submit" value="손님 신고하기">
+													</form>
+												</c:if>
 											</div>
 											<div class="d-flex-column pl-3 ">
 												<div>
@@ -114,9 +123,12 @@
 													<span>${reservation.user.username}님의 발자취 보러가기</span>
 												</div>
 											</div>
-											${reservation.id} <input type="button"
-												id="btn--approve-${reservation.id}" value="승인"> <input
-												type="button" id="btn--reject-${reservation.id}" value="거절">
+											<c:if test="${reservation.approveStatus eq 'WATING'}">
+												<input type="button" id="btn--approve-${reservation.id}"
+													value="승인">
+												<input type="button" id="btn--reject-${reservation.id}"
+													value="거절">
+											</c:if>
 										</div>
 									</div>
 								</div>

@@ -284,7 +284,6 @@
 <br>
 <br>
 <br>
-<script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript">
 	$('document').ready(function() {
 		$('#startTime').timepicker({
@@ -315,4 +314,6 @@
 </script>
 
 <script type="text/javascript" src="/js/store.js"></script>
+<script type="text/javascript" src="/js/reservation.js"></script>
+<script type="text/javascript" src="/js/wish-list.js"></script>
 <%@ include file="../layout/footer.jsp"%>
