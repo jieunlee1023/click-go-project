@@ -36,11 +36,15 @@ public class OneOnOneAnswer {
 	private String content;
 	
 	@ManyToOne
-	@JoinColumn(name = "adminId")
+	@JoinColumn(name = "userId")
 	private User user;
 	
 	@Column(nullable = false)
 	@CreationTimestamp
-	private Timestamp timestamp;
+	private Timestamp createDate;
+	
+	@ManyToOne
+	@JoinColumn(name = "oooId")
+	private OneOnOne ooo;
 	
 }
