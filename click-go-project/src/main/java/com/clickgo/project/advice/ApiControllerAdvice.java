@@ -1,16 +1,13 @@
 package com.clickgo.project.advice;
 
-import java.io.Console;
 import java.util.HashMap;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.client.HttpServerErrorException;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -51,9 +48,6 @@ public class ApiControllerAdvice {
 	
 	@ExceptionHandler(value = IllegalArgumentException.class)
 	public ResponseEntity<?> illegalArgumentException(IllegalArgumentException e) {
-
-			System.out.println("여기");
-		// name과 age 둘 다 잘못들어왔다면,
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
 
 	}

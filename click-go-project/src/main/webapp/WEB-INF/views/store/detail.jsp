@@ -2,114 +2,158 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <br>
+
 <div class="container" id="store-update">
 	<div id="view-more-title">
 		<div>🌟 매장 관리</div>
 	</div>
-	<span style="color: #6478ff">: 이용자들이 보는 가게의 화면을 꾸며보세요 !</span>
+	<c:if test="${store.user.id eq principal.user.id}">
+		<span style="color: #6478ff">: 이용자에게 보는 가게의 화면 입니다.</span>
+		<span style="color: #6478ff">아래 수정버튼을 눌러 정보나 이미지를 변경해보세요!</span>
+	</c:if>
 	<hr>
 	<br>
 </div>
 <br>
 
-<form action="/reservation/${store.id}?paymentType=KAKAO" method="post">
-	<div class="d-flex-column justify-content-center">
+<div class="container">
+	<form action="/reservation/${store.id}?paymentType=KAKAO" method="post">
 		<c:choose>
 			<c:when test="${empty store}">
 				<br>
 				<div class="container d-flex">
-					<h2 class="" style="font-weight: bold;">엥.. 관리자에게 문의해주세요.</h2>
+					<h1 class="" style="font-weight: bold;">엥.. 관리자에게 문의해주세요.</h1>
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class="container">
-					<div class="d-flex justify-content-center">
-						<div>
-							<input type="date" name="startDate" id="startDate"
-								value="${nowDate}" min="${nowDate}" max="${maxDate}">
-						</div>
-						<div>
-							<input type="date" name="endDate" id="endDate" value="${nowDate}"
-								min="${nowDate}" max="${maxDate}">
-						</div>
-						<div>
-							<input type="text" class="timepicker" name="startTime"
-								id="startTime" value="시간을 선택해주세요." min="${nowTime}">
-						</div>
-						<div>
-							<input type="text" class="timepicker" name="endTime" id="endTime"
-								value="시간을 선택해주세요." min="${nowTime}">
-						</div>
-						<input type="hidden" id="storeId" value="${store.id }">
-						<button type="submit" id="btn--time-check">예약 하기</button>
-					</div>
-
-					<div class=" d-flex media border m-3"
-						style="width: 800px; height: 510px; border-radius: 15px;">
-						<div class="d-flex-column">
-							<img src="${image}" alt="가게 사진"
-								style="width: 900px; height: 400px; border-radius: 15px;">
-							<div class="media-body md-5">
-								<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-									<div class="d-flex justify-content-between pl-3 pt-3 pr-3">
-										<h5 class="" style="font-weight: bold;">${store.storeName}</h5>
-										<input type="button" id="btn--wish-list" value="위시리스트 추가하기">
-									</div>
-									<div class="d-flex-column mr-4 mt-3 justify-content-end">
-										<p>지점 : ${store.storeAddress}</p>
-										<p>카테고리 : ${store.category.id}</p>
-										<p>총 자릿수 : ${store.storeTotalRoomCount}</p>
-
-										<c:choose>
-											<c:when test="${empty store.storeTEL}">
-												<p>가게 연락처는 등록 되지 않았어요 ㅠㅠ</p>
-											</c:when>
-											<c:otherwise>
-												<p>가게 연락처 : ${store.storeTEL}</p>
-											</c:otherwise>
-										</c:choose>
-
-										<c:if test="${role eq 'HOST'}">
-											<a href="/care-store/update/${store.id}">수정</a>
-										</c:if>
-									</div>
-								</div>
-							</div>
+				<div class=" justify-content-center ">
+					<div>
+						<div class="d-flex" style="align-items: flex-end;">
 							<c:choose>
 								<c:when test="${store.category.id eq 'PC방' }">
-									<%@ include file="../layout/pc-room.jsp"%>
+									<h1 class="" style="font-weight: bold;">💻
+										${store.storeName}</h1>
 								</c:when>
 								<c:when test="${store.category.id eq '노래방' }">
-									<%@ include file="../layout/singing-room.jsp"%>
-								</c:when>
-								<c:when test="${store.category.id eq '당구장' }">
-									<%@ include file="../layout/billiard-room.jsp"%>
+									<h1 class="" style="font-weight: bold;">🎤
+										${store.storeName}</h1>
 								</c:when>
 								<c:when test="${store.category.id eq '동전노래방' }">
-									<%@ include file="../layout/coin-singing-room.jsp"%>
+									<h1 class="" style="font-weight: bold;">🎵
+										${store.storeName}</h1>
+								</c:when>
+								<c:when test="${store.category.id eq '당구장' }">
+									<h1 class="" style="font-weight: bold;">🎱
+										${store.storeName}</h1>
 								</c:when>
 								<c:when test="${store.category.id eq '볼링장' }">
-									<%@ include file="../layout/bowling-club.jsp"%>
+									<h1 class="" style="font-weight: bold;">🎳
+										${store.storeName}</h1>
 								</c:when>
 								<c:when test="${store.category.id eq '스크린야구장' }">
-									<%@ include file="../layout/screen-ballpark.jsp"%>
+									<h1 class="" style="font-weight: bold;">⚾
+										${store.storeName}</h1>
 								</c:when>
+
 							</c:choose>
+
+							<c:if test="${store.user.id eq principal.user.id}">
+								<div class="store-detail-update">
+									<a href="/care-store/update/${store.id}">수정하기</a>
+								</div>
+							</c:if>
 						</div>
+					</div>
+
+
+					<c:choose>
+						<c:when test="${empty store.storeTEL}">
+							<p class="store-detail-tel">📞 : 현재 가게 연락처는 등록 되지 않았어요 ㅠㅠ</p>
+						</c:when>
+						<c:otherwise>
+							<p class="store-detail-tel">📞 : ${store.storeTEL}</p>
+						</c:otherwise>
+					</c:choose>
+					<div class="justify-content-center">
+						<div class="d-flex justify-content-center">
+							<div>
+								<input type="date" name="startDate" id="startDate"
+									value="${nowDate}" min="${nowDate}" max="${maxDate}">
+							</div>
+							<div>
+								<input type="date" name="endDate" id="endDate"
+									value="${nowDate}" min="${nowDate}" max="${maxDate}">
+							</div>
+							<div>
+								<input type="text" class="timepicker" name="startTime"
+									id="startTime" value="시간을 선택해주세요." min="${nowTime}">
+							</div>
+							<div>
+								<input type="text" class="timepicker" name="endTime"
+									id="endTime" value="시간을 선택해주세요." min="${nowTime}">
+							</div>
+							<input type="hidden" id="storeId" value="${store.id }">
+							<button type="submit" id="btn--time-check">예약 하기</button>
+						</div>
+
+						<c:choose>
+							<c:when test="${store.category.id eq 'PC방' }">
+								<%@ include file="../layout/pc-room.jsp"%>
+							</c:when>
+							<c:when test="${store.category.id eq '노래방' }">
+								<%@ include file="../layout/singing-room.jsp"%>
+							</c:when>
+							<c:when test="${store.category.id eq '당구장' }">
+								<%@ include file="../layout/billiard-room.jsp"%>
+							</c:when>
+							<c:when test="${store.category.id eq '동전노래방' }">
+								<%@ include file="../layout/coin-singing-room.jsp"%>
+							</c:when>
+							<c:when test="${store.category.id eq '볼링장' }">
+								<%@ include file="../layout/bowling-club.jsp"%>
+							</c:when>
+							<c:when test="${store.category.id eq '스크린야구장' }">
+								<%@ include file="../layout/screen-ballpark.jsp"%>
+							</c:when>
+						</c:choose>
+
+						<br>
+						<div class="d-flex justify-content-center">
+							<c:forEach var="image" items="${images}">
+								<c:if test="${image.store.id eq store.id }">
+
+									<div class="store-detail-main-img">
+										<img src="http://localhost:7777/storeImage/${image.imageUrl}"
+											alt="가게 사진" id="store-detail-img">
+
+									</div>
+								</c:if>
+							</c:forEach>
+						</div>
+					</div>
+				</div>
+				<div class="">
+					<div class="d-flex  justify-content-center">
+						<div class="d-flex mr-4 mt-5 ">
+							<p>📍 위치 : ${store.storeAddress}</p>
+						</div>
+
 						<input type="hidden" value="${store.storeAddress}"
 							id="store-address"> <input type="hidden"
 							value="${store.storeName}" id="store-name">
 					</div>
-					<div>
-						<br>
+					<div class="d-flex justify-content-center">
+						<div id="map"
+							style="width: 80%; height: 300px; justify-content: center"></div>
 					</div>
 					<br> <br> <br> <br> <br> <br> <br>
 					<div id="map" style="width: 700px; height: 350px;"></div>
 				</div>
+
 			</c:otherwise>
 		</c:choose>
-	</div>
-</form>
+	</form>
+</div>
 <br>
 <br>
 <br>
@@ -118,7 +162,6 @@
 <br>
 <br>
 <script type="text/javascript" src="/js/reservation.js"></script>
->>>>>>> feature-mini
 <script type="text/javascript">
 	$('document').ready(function() {
 		$('#startTime').timepicker({
@@ -148,6 +191,7 @@
 	});
 </script>
 
+<script type="text/javascript" src="/js/store.js"></script>
 <script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript" src="/js/wish-list.js"></script>
 <%@ include file="../layout/footer.jsp"%>

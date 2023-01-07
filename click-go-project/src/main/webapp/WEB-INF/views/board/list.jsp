@@ -10,7 +10,7 @@
 
 		<!-- 글쓰기버튼 -->
 		<div>
-			<form class="form-inline" action="/board/form">
+			<form class="form-inline" action="/board/write-form" method="get">
 				<button type="submit" class="btn" id="btn--write">글쓰기</button>
 			</form>
 		</div>
@@ -58,7 +58,7 @@
 						</div>
 						<div class="col-lg-board-list-item">
 							<a id="board--title" href="/board/${board.id }"> <img
-								src="/image/secret.png" width="15px"> 비밀글입니다
+								src="/image/secret.png" width="15px"> ${board.title}
 							</a>
 						</div>
 						<div class="col-lg-board-list-item">

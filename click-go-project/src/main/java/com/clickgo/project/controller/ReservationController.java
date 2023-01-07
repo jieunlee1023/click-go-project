@@ -177,9 +177,12 @@ public class ReservationController {
 			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Page<Reservation> reservations = reservationService.searchBoard(principalDetails.getUser(), pageable);
-		model.addAttribute("lastId", reservations.getContent().get(0).getId());
-		franchiseMassageCount(model);
-		model.addAttribute("reservations", reservations);
+		
+		if(reservations.getContent().get(0) != null) {
+			model.addAttribute("lastId", reservations.getContent().get(0).getId());
+			franchiseMassageCount(model);
+			model.addAttribute("reservations", reservations);
+		}
 		return "/user/my/reservation/list";
 	}
 

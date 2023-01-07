@@ -1,15 +1,10 @@
 package com.clickgo.project.controller;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,9 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.RequestUpdateFileDto;
@@ -44,6 +36,10 @@ public class CareStoreController {
 	public String careStroeList(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		List<Store> stores = storeService.findAllByUserId(principalDetails.getUser().getId());
 		model.addAttribute("stores", stores);
+
+		List<Image> image = imageRepository.findAll();
+		model.addAttribute("images", image);
+
 		return "/user/my/care-store/list";
 	}
 
@@ -60,7 +56,6 @@ public class CareStoreController {
 		return "/user/my/care-store/update";
 	}
 
-
 	@PostMapping("/detail/update")
 	public String updateCareStoreDetail(RequestUpdateFileDto fileDto, Store store,
 			@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
@@ -71,8 +66,8 @@ public class CareStoreController {
 			e.printStackTrace();
 		}
 		List<Image> image = imageRepository.findAll();
-		model.addAttribute("images", image);
 
+		model.addAttribute("images", image);
 		return "/user/my/care-store/update";
 	}
 

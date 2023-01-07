@@ -25,8 +25,8 @@ import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.enums.StoreCategory;
+import com.clickgo.project.repository.IImageRepository;
 import com.clickgo.project.service.CategoryService;
-import com.clickgo.project.service.ImageService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 
@@ -46,7 +46,7 @@ public class StoreController {
 	private CategoryService categoryService;
 
 	@Autowired
-	private ImageService imageService;
+	private IImageRepository iImageRepository;
 
 	private Page<Store> stores;
 
@@ -63,9 +63,6 @@ public class StoreController {
 		} else {
 			stores = storeService.findAllByStoreCategory(pageName, pageable);
 		}
-		stores.forEach(t -> {
-			getImage(model, t.getId());
-		});
 		model.addAttribute("nowPage", pageName);
 		model.addAttribute("categories", categories);
 		model.addAttribute("stores", stores);
@@ -103,10 +100,14 @@ public class StoreController {
 			otherLayout(totalRoomCount, model);
 		}
 		getNowDateAndTime(model);
-		getImage(model, id);
 		RoleType role = principalDetails.getUser().getRole();
+
 		model.addAttribute("store", storeEntity);
 		model.addAttribute("role", role);
+
+		List<Image> image = iImageRepository.findAll();
+		model.addAttribute("images", image);
+
 		return "/store/detail";
 	}
 
@@ -128,9 +129,6 @@ public class StoreController {
 		model.addAttribute("nowTime", nowTime);
 		model.addAttribute("maxDate", maxDate);
 		model.addAttribute("nowTimeOnlyHour", nowTimeOnlyHour);
-	}
-
-	public void getImage(Model model, int storeId) {
 	}
 
 	public void originLayout(int roomCount, Model model) {

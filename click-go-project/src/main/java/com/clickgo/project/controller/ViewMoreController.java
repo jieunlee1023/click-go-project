@@ -1,6 +1,5 @@
 package com.clickgo.project.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.OneOnOne;
+import com.clickgo.project.entity.OneOnOneAnswer;
 import com.clickgo.project.entity.StoreFranchise;
+import com.clickgo.project.service.OneOnOneAnswerService;
 import com.clickgo.project.service.OneOnOneService;
 import com.clickgo.project.service.StoreFranchiseService;
 
@@ -25,6 +26,9 @@ public class ViewMoreController {
 
 	@Autowired
 	private OneOnOneService oneOnOneService;
+	
+	@Autowired
+	private OneOnOneAnswerService oneOnOneAnswerService;
 
 	@Autowired
 	private StoreFranchiseService franchiseService;
@@ -74,7 +78,7 @@ public class ViewMoreController {
 	// s w
 	@GetMapping("/one-on-one")
 	public String oneOnone(Model model) {
-		List<OneOnOne> ooos = oneOnOneService.getContentList();
+		List<OneOnOne> ooos = oneOnOneService.getOooList();
 		model.addAttribute("ooos", ooos);
 
 		franchiseMassageCount(model);
@@ -84,9 +88,15 @@ public class ViewMoreController {
 	// s w
 	@GetMapping("/one-on-one/{id}")
 	public String showAnswer(@PathVariable int id, Model model) {
-		model.addAttribute("oooAnswer", oneOnOneService.oooAnswer(id));
-
-		return "view-more/one-on-one-answer";
+		
+		List<OneOnOne> oooList = oneOnOneService.getOooList();
+		List<OneOnOneAnswer>oooaList = oneOnOneAnswerService.getAnswerList();
+		
+		OneOnOne oneOnOneEntity = oneOnOneService.findById(id);
+		model.addAttribute("ooo", oneOnOneEntity);
+		model.addAttribute("oooList", oooList);
+		model.addAttribute("oooaList", oooaList);
+		return "admin/one-on-one-answer";
 	}
 
 	// s w
@@ -97,13 +107,11 @@ public class ViewMoreController {
 
 		int userId = requestOoo.getUser().getId();
 		String title = requestOoo.getTitle();
-		List<OneOnOne> contents = oneOnOneService.getContentList();
-		// 이거하는중
+		List<OneOnOne> contents = oneOnOneService.getOooList();
 		model.addAttribute("userId", userId);
 		model.addAttribute("title", title);
 		model.addAttribute("contents", contents);
 
-		// a d m i n - answer에서 받기
 		return "redirect:/view-more/one-on-one";
 	}
 

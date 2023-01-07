@@ -44,6 +44,7 @@ let index = {
 				$(`#btn--reject-${id}`).remove();
 				$(`#status-${id}`).text('REJECT');
 			}
+			alert("zz");
 		}).fail(function(error) {
 			console.log(error);
 		});

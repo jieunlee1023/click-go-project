@@ -9,8 +9,10 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.clickgo.project.entity.OneOnOne;
+import com.clickgo.project.entity.OneOnOneAnswer;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.repository.IOneOnOneRepository;
+import com.clickgo.project.repository.iOneOnOneAnswerRepository;
 
 @Service
 public class OneOnOneService {
@@ -25,15 +27,23 @@ public class OneOnOneService {
 		iOneOnOneRepository.save(requestOoo);
 	}
 
-	public List<OneOnOne> getContentList() {
-		return iOneOnOneRepository.findAll();
-	}
 
 	@Transactional
-	public Object oooAnswer(int id) {
+	public OneOnOne oooAnswer(int id) {
 		return iOneOnOneRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당글 없음");
 		});
+	}
+
+	public OneOnOne findById(int oooId) {
+		return iOneOnOneRepository.findById(oooId).orElseThrow(() -> {
+			return new IllegalArgumentException("없음..");
+		});
+	}
+
+	public List<OneOnOne> getOooList() {
+		// TODO Auto-generated method stub
+		return iOneOnOneRepository.findAll();
 	}
 
 }
