@@ -7,8 +7,10 @@
 	<div id="view-more-title">
 		<div>🌟 매장 관리</div>
 	</div>
-	<span style="color: #6478ff">: 이용자에게 보는 가게의 화면 입니다.</span> <span
-		style="color: #6478ff">아래 수정버튼을 눌러 정보나 이미지를 변경해보세요!</span>
+	<c:if test="${store.user.id eq principal.user.id}">
+		<span style="color: #6478ff">: 이용자에게 보는 가게의 화면 입니다.</span>
+		<span style="color: #6478ff">아래 수정버튼을 눌러 정보나 이미지를 변경해보세요!</span>
+	</c:if>
 	<hr>
 	<br>
 </div>
@@ -24,90 +26,88 @@
 				</div>
 			</c:when>
 			<c:otherwise>
-				<div class="container d-flex">
-					<div class=" justify-content-center ">
-						<div>
-							<div class="d-flex" style="align-items: flex-end;">
-								<c:choose>
-									<c:when test="${store.category.id eq 'PC방' }">
-										<h1 class="" style="font-weight: bold;">💻
-											${store.storeName}</h1>
-									</c:when>
-									<c:when test="${store.category.id eq '노래방' }">
-										<h1 class="" style="font-weight: bold;">🎤
-											${store.storeName}</h1>
-									</c:when>
-									<c:when test="${store.category.id eq '동전노래방' }">
-										<h1 class="" style="font-weight: bold;">🎵
-											${store.storeName}</h1>
-									</c:when>
-									<c:when test="${store.category.id eq '당구장' }">
-										<h1 class="" style="font-weight: bold;">🎱
-											${store.storeName}</h1>
-									</c:when>
-									<c:when test="${store.category.id eq '볼링장' }">
-										<h1 class="" style="font-weight: bold;">🎳
-											${store.storeName}</h1>
-									</c:when>
-									<c:when test="${store.category.id eq '스크린야구장' }">
-										<h1 class="" style="font-weight: bold;">⚾
-											${store.storeName}</h1>
-									</c:when>
-								</c:choose>
+				<div class=" justify-content-center ">
+					<div>
+						<div class="d-flex" style="align-items: flex-end;">
+							<c:choose>
+								<c:when test="${store.category.id eq 'PC방' }">
+									<h1 class="" style="font-weight: bold;">💻
+										${store.storeName}</h1>
+								</c:when>
+								<c:when test="${store.category.id eq '노래방' }">
+									<h1 class="" style="font-weight: bold;">🎤
+										${store.storeName}</h1>
+								</c:when>
+								<c:when test="${store.category.id eq '동전노래방' }">
+									<h1 class="" style="font-weight: bold;">🎵
+										${store.storeName}</h1>
+								</c:when>
+								<c:when test="${store.category.id eq '당구장' }">
+									<h1 class="" style="font-weight: bold;">🎱
+										${store.storeName}</h1>
+								</c:when>
+								<c:when test="${store.category.id eq '볼링장' }">
+									<h1 class="" style="font-weight: bold;">🎳
+										${store.storeName}</h1>
+								</c:when>
+								<c:when test="${store.category.id eq '스크린야구장' }">
+									<h1 class="" style="font-weight: bold;">⚾
+										${store.storeName}</h1>
+								</c:when>
+							</c:choose>
 
-								<c:if test="${role eq 'HOST'}">
-									<div class="store-detail-update">
-										<a href="/care-store/update/${store.id}">수정하기</a>
-									</div>
-								</c:if>
+							<c:if test="${store.user.id eq principal.user.id}">
+								<div class="store-detail-update">
+									<a href="/care-store/update/${store.id}">수정하기</a>
+								</div>
+							</c:if>
+						</div>
+					</div>
+
+
+					<c:choose>
+						<c:when test="${empty store.storeTEL}">
+							<p class="store-detail-tel">📞 : 현재 가게 연락처는 등록 되지 않았어요 ㅠㅠ</p>
+						</c:when>
+						<c:otherwise>
+							<p class="store-detail-tel">📞 : ${store.storeTEL}</p>
+						</c:otherwise>
+					</c:choose>
+					<div class="justify-content-center">
+						<div class="d-flex justify-content-center">
+							<div>
+								<input type="date" name="startDate" id="startDate"
+									value="${nowDate}" min="${nowDate}" max="${maxDate}">
 							</div>
+							<div>
+								<input type="date" name="endDate" id="endDate"
+									value="${nowDate}" min="${nowDate}" max="${maxDate}">
+							</div>
+							<div>
+								<input type="text" class="timepicker" name="startTime"
+									id="startTime" value="시간을 선택해주세요." min="${nowTime}">
+							</div>
+							<div>
+								<input type="text" class="timepicker" name="endTime"
+									id="endTime" value="시간을 선택해주세요." min="${nowTime}">
+							</div>
+							<input type="hidden" id="storeId" value="${store.id }">
+							<button type="submit" id="btn--time-check">예약 하기</button>
 						</div>
 
 
-						<c:choose>
-							<c:when test="${empty store.storeTEL}">
-								<p class="store-detail-tel">📞 :  현재 가게 연락처는 등록 되지 않았어요 ㅠㅠ</p>
-							</c:when>
-							<c:otherwise>
-								<p class="store-detail-tel">📞 : ${store.storeTEL}</p>
-							</c:otherwise>
-						</c:choose>
-						<div class="justify-content-center">
-							<div class="d-flex justify-content-center">
-								<div>
-									<input type="date" name="startDate" id="startDate"
-										value="${nowDate}" min="${nowDate}" max="${maxDate}">
-								</div>
-								<div>
-									<input type="date" name="endDate" id="endDate"
-										value="${nowDate}" min="${nowDate}" max="${maxDate}">
-								</div>
-								<div>
-									<input type="text" class="timepicker" name="startTime"
-										id="startTime" value="시간을 선택해주세요." min="${nowTime}">
-								</div>
-								<div>
-									<input type="text" class="timepicker" name="endTime"
-										id="endTime" value="시간을 선택해주세요." min="${nowTime}">
-								</div>
-								<input type="hidden" id="storeId" value="${store.id }">
-								<button type="submit" id="btn--time-check">예약 하기</button>
-							</div>
+						<br>
+						<div class="d-flex justify-content-center">
+							<c:forEach var="image" items="${images}">
+								<c:if test="${image.store.id eq store.id }">
 
+									<div class="store-detail-main-img">
+										<img src="http://localhost:7777/storeImage/${image.imageUrl}"
+											alt="가게 사진" id="store-detail-img">
 
-							<br>
-							<div class="d-flex justify-content-center">
-								<c:forEach var="image" items="${images}">
-									<c:if test="${image.store.id eq store.id }">
-
-										<div class="store-detail-main-img">
-											<img src="http://localhost:7777/storeImage/${image.imageUrl}"
-												alt="가게 사진" id="store-detail-img">
-
-										</div>
-									</c:if>
-								</c:forEach>
-							</div>
+									</div>
+								</c:if>
+							</c:forEach>
 						</div>
 					</div>
 				</div>

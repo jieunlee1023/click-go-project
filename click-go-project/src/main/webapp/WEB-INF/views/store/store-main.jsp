@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <br>
+
+<div class="container">
+
 <div class="d-flex justify-content-center">
 	<div>
 		<div class="main_link d-flex ">
@@ -26,7 +29,10 @@
 		</div>
 	</div>
 </div>
+</div>
+<script type="text/javascript">
 
+</script>
 
 <script type="text/javascript" src="/js/store.js"></script>
 <%@ include file="../layout/footer.jsp"%>
