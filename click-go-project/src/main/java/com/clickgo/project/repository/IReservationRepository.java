@@ -41,6 +41,15 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 								+ " FROM reservation "
 									, nativeQuery = true)
 	public int findLastPK();
+
+	@Query(value = " SELECT A.* "
+								+ " FROM reservation AS A "
+								+ " JOIN store AS S "
+								+ " ON S.id = A.storeId "
+								+ " WHERE S.id = :id "
+								+ " AND NOT approveStatus = 'REJECT' "
+								, nativeQuery = true)
+	public List<Reservation> findByStoreIdAndNotReject(int storeId);
 	
 }
 

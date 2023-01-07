@@ -54,6 +54,7 @@
 									<h1 class="" style="font-weight: bold;">⚾
 										${store.storeName}</h1>
 								</c:when>
+
 							</c:choose>
 
 							<c:if test="${store.user.id eq principal.user.id}">
@@ -95,6 +96,26 @@
 							<button type="submit" id="btn--time-check">예약 하기</button>
 						</div>
 
+						<c:choose>
+							<c:when test="${store.category.id eq 'PC방' }">
+								<%@ include file="../layout/pc-room.jsp"%>
+							</c:when>
+							<c:when test="${store.category.id eq '노래방' }">
+								<%@ include file="../layout/singing-room.jsp"%>
+							</c:when>
+							<c:when test="${store.category.id eq '당구장' }">
+								<%@ include file="../layout/billiard-room.jsp"%>
+							</c:when>
+							<c:when test="${store.category.id eq '동전노래방' }">
+								<%@ include file="../layout/coin-singing-room.jsp"%>
+							</c:when>
+							<c:when test="${store.category.id eq '볼링장' }">
+								<%@ include file="../layout/bowling-club.jsp"%>
+							</c:when>
+							<c:when test="${store.category.id eq '스크린야구장' }">
+								<%@ include file="../layout/screen-ballpark.jsp"%>
+							</c:when>
+						</c:choose>
 
 						<br>
 						<div class="d-flex justify-content-center">
@@ -108,150 +129,6 @@
 									</div>
 								</c:if>
 							</c:forEach>
-						</div>
-					</div>
-				</div>
-
-				<%
-				int start = 1;
-				int standard = 6;
-				int space = 6;
-
-				int firstSpace = space;
-				int secondSpace = (space * 3);
-				int thirdSpace = (space * 5);
-				int foursSpace = (space * 7);
-
-				int first = (standard * 2);
-				int second = (standard * 4);
-				int third = (standard * 6);
-				int fours = (standard * 8);
-				int totalRoomCount = 63;
-				%>
-				<div class="d-flex justify-content-center mt-5">
-					<div class="store--seat--drawing">
-						<div class=" ml-1">
-
-							<div class="d-flex ml-5">
-								<%
-								for (start = 1; start < totalRoomCount; start++) {
-								%>
-								<input type="checkbox" id="<%=start%>"
-									class="d-flex justify-content-center mr-1" name="seatNumber"
-									style="border: 1px solid black; width: 30px; height: 30px"
-									value="<%=start%>">
-
-
-								<%
-								if (start == firstSpace) {
-								%>
-								&nbsp; &nbsp; &nbsp;
-								<%
-								}
-								%>
-								<%
-								if (start == first) {
-									break;
-								}
-								%>
-
-								<%
-								}
-								%>
-							</div>
-							<div class="d-flex ml-5 mt-1">
-								<%
-								for (start = first + 1; start < totalRoomCount; start++) {
-								%>
-								<input type="checkbox" id="<%=start%>"
-									class="d-flex justify-content-center mr-1" name="seatNumber"
-									style="border: 1px solid black; width: 30px; height: 30px"
-									value="<%=start%>">
-
-								<%
-								if (start == secondSpace) {
-								%>
-								&nbsp; &nbsp; &nbsp;
-								<%
-								}
-								%>
-								<%
-								if (start == second) {
-									break;
-								}
-								%>
-								<%
-								}
-								%>
-							</div>
-							<br>
-							<div class="d-flex ml-5">
-								<%
-								for (start = second + 1; start < totalRoomCount; start++) {
-								%>
-								<input type="checkbox" id="<%=start%>"
-									class="d-flex justify-content-center mr-1" name="seatNumber"
-									style="border: 1px solid black; width: 30px; height: 30px"
-									value="<%=start%>">
-
-								<%
-								if (start == thirdSpace) {
-								%>
-								&nbsp; &nbsp; &nbsp;
-								<%
-								}
-								%>
-								<%
-								if (start == third) {
-									break;
-								}
-								%>
-
-								<%
-								}
-								%>
-							</div>
-
-							<div class="d-flex ml-5 mt-1">
-								<%
-								for (start = third + 1; start < totalRoomCount; start++) {
-								%>
-								<input type="checkbox" id="<%=start%>"
-									class="d-flex justify-content-center mr-1" name="seatNumber"
-									style="border: 1px solid black; width: 30px; height: 30px"
-									value="<%=start%>">
-
-								<%
-								if (start == foursSpace) {
-								%>
-								&nbsp; &nbsp; &nbsp;
-								<%
-								}
-								%>
-								<%
-								if (start == fours) {
-									break;
-								}
-								%>
-								<%
-								}
-								%>
-							</div>
-							<br>
-							<div class="d-flex mt-2">
-								<%
-								for (start = fours + 1; start <= totalRoomCount; start++) {
-								%>
-								<input type="checkbox" id="<%=start%>"
-									class="d-flex justify-content-center mr-1 disabled"
-									name="seatNumber"
-									style="border: 1px solid black; width: 30px; height: 30px"
-									value="<%=start%>">
-
-								<%
-								}
-								%>
-							</div>
 						</div>
 					</div>
 				</div>
@@ -269,9 +146,9 @@
 						<div id="map"
 							style="width: 80%; height: 300px; justify-content: center"></div>
 					</div>
+					<br> <br> <br> <br> <br> <br> <br>
+					<div id="map" style="width: 700px; height: 350px;"></div>
 				</div>
-
-
 
 			</c:otherwise>
 		</c:choose>
@@ -284,6 +161,7 @@
 <br>
 <br>
 <br>
+<script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript">
 	$('document').ready(function() {
 		$('#startTime').timepicker({
