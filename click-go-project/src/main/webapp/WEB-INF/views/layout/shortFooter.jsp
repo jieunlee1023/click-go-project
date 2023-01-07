@@ -6,8 +6,8 @@
 
 		<div>
 			<br><br><br>
-			<div style="color: white"> Copyright © 2022. CLICK-GO </div>
-			<div style="color: white"> All pictures cannot be copied without permission.</div>
+			<div style="color: black"> Copyright © 2022. CLICK-GO </div>
+			<div style="color: black"> All pictures cannot be copied without permission.</div>
 		</div>
 	</div>
 </footer>

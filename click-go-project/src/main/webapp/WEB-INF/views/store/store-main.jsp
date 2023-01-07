@@ -5,34 +5,44 @@
 
 <div class="container">
 
-<div class="d-flex justify-content-center">
-	<div>
-		<div class="main_link d-flex ">
-			<h4 class="m-5">
-				<a href="/store/main">전체 보기</a>
-			</h4>
+
+	<nav class="mynav">
+		<ul>
+			<li><a href="/store/main">전체 보기</a></li>
+
 			<c:forEach var="category" items="${categories}">
-				<h4 class="m-5">
-					<a href="/store/main?pageName=${category}">${category}</a>
-				</h4>
+				<a href="/store/main?pageName=${category}">${category}</a>
 			</c:forEach>
-		</div>
-		<br> <br>
-		<div class="d-flex justify-content-center">
-			<div class="d-flex-column">
-				<c:forEach var="store" items="${stores.content}">
-					<input type="hidden" id="store-size"
-						value="${stores.content.size()}">
-					<%@ include file="../common/store.jsp"%>
-				</c:forEach>
-			</div>
+
+		</ul>
+	</nav>
+
+<div class="search--container">
+  <form >
+    <div class="finder">
+      <div class="finder__outer">
+        <div class="finder__inner">
+          <div class="finder__icon" ref="icon"></div>
+          <input class="finder__input" type="text" name="q" />
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+
+
+
+	<div class="d-flex justify-content-center">
+		<div class="d-flex-column">
+			<c:forEach var="store" items="${stores.content}">
+				<input type="hidden" id="store-size"
+					value="${stores.content.size()}">
+				<%@ include file="../common/store.jsp"%>
+			</c:forEach>
 		</div>
 	</div>
 </div>
-</div>
-<script type="text/javascript">
 
-</script>
 
 <script type="text/javascript" src="/js/store.js"></script>
 <%@ include file="../layout/footer.jsp"%>

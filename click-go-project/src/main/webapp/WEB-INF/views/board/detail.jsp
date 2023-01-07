@@ -106,6 +106,6 @@
 <br>
 <br>
 <script type="text/javascript" src="/js/board.js"></script>
-
+<br><br>
 <%@ include file="../layout/footer.jsp"%>
 
