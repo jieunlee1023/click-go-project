@@ -16,7 +16,7 @@ spring:
     password: qwe123!
   
   jpa:
-    open-in-view: true 
+    open-in-view: true
     hibernate: 
       ddl-auto: update
       naming:

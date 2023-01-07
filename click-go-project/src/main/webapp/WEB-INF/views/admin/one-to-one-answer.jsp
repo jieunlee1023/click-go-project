@@ -10,29 +10,31 @@
 
 	<div>
 		<p>문의하신 제목 :</p>
-		<p>제목>>>${ooo.title }</p>
+		<p>제목>>>${oneToOneAskEntity.title }</p>
 	</div>
 
 	<div>
 		<p>문의하신 내용 :</p>
-		<p>내용 >>> ${ooo.content }</p>
+		<p>내용 >>> ${oneToOneAskEntity.content }</p>
 	</div>
-	<div>
-		<form action="/admin/one-on-one-answer" method="post">
-			<input type="hidden" value="${ooo.id}" name="oooId"> <input type="hidden" value="${principal.user.id }" name="adminId">
+	<div> 
+	<!-- 01.07 여기까지했음 POST 버튼 보내기 성공해야함 -->
+		<form action="/admin/one-to-one-answer" method="post">
+			<input type="hidden" value="${answerList.id}" name="askId"> 
+			<input type="hidden" value="${principal.user.id }" name="adminId">
 			<c:if test="${principal.user.role eq 'ADMIN' }">
 				<textarea name="content" rows="5" cols="5">
-					${adminContent }
+					${answerContent }
 			</textarea>
 				<button type="submit">삥뽕</button>
 			</c:if>
 
 
-			<c:forEach var="oooa" items="${oooaList }">
-				<c:if test="${ooo.id eq oooa.ooo.id }">
+			<c:forEach var="otoanswerlist" items="${answerList }">
+				<%-- <c:if test="${ooo.id eq otoanswerlist.ooo.id }"> --%>
 
-					<div>답변 : : : : ${oooa.content }</div>
-				</c:if>
+					<div>답변 : : : : ${answerList.content }</div>
+				<%-- </c:if> --%>
 			</c:forEach>
 		</form>
 

@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.entity.OneOnOne;
-import com.clickgo.project.entity.OneOnOneAnswer;
+import com.clickgo.project.entity.OneToOneAsk;
+import com.clickgo.project.entity.OneToOneAnswer;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
-import com.clickgo.project.service.OneOnOneAnswerService;
-import com.clickgo.project.service.OneOnOneService;
+import com.clickgo.project.service.OneToOneAnswerService;
+import com.clickgo.project.service.OneToOneAskService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 import com.clickgo.project.service.UserService;
@@ -41,10 +41,10 @@ public class AdminController {
 	private StoreService storeService;
 
 	@Autowired
-	private OneOnOneService oneOnOneService;
+	private OneToOneAskService oneToOneAskService;
 
 	@Autowired
-	private OneOnOneAnswerService oneOnOneAnswerService;
+	private OneToOneAnswerService oneToOneAnswerService;
 
 	@Autowired
 	private StoreFranchiseService franchiseService;
@@ -134,43 +134,44 @@ public class AdminController {
 
 	}
 
-	@GetMapping("/answer-list")
+	@GetMapping("/one-to-one-list")
 	public String oneOnOneAsk(Model model) {
-		List<OneOnOne> ooos = oneOnOneService.getOooList();
-		model.addAttribute("ooos", ooos);
-		return "admin/answer-list";
+		List<OneToOneAsk> oneToOneAksList = oneToOneAskService.getOneToOneAskList();
+		model.addAttribute("oneToOneAksList", oneToOneAksList);
+		return "admin/one-to-one-list";
 	}
 
 	// s w
-	@GetMapping("/one-on-one-answer/{id}")
-	public String showAnswer(@PathVariable int id, Model model) {
+	@GetMapping({"/one-to-one-answer/{oneToOneAskId}"})
+	public String showOnToOneAnswer(@PathVariable int oneToOneAskId, Model model) {
 
-		List<OneOnOne> oooList = oneOnOneService.getOooList();
-		List<OneOnOneAnswer> oooaList = oneOnOneAnswerService.getAnswerList();
-		OneOnOne oneOnOneEntity = oneOnOneService.findById(id);
-		model.addAttribute("ooo", oneOnOneEntity);
-		model.addAttribute("oooList", oooList);
-		model.addAttribute("oooaList", oooaList);
-
-		return "admin/one-on-one-answer";
+		List<OneToOneAsk> oneToOneAskList = oneToOneAskService.getOneToOneAskList();
+		List<OneToOneAnswer> oneToOneAnswerList = oneToOneAnswerService.getAnswerList();
+		OneToOneAsk oneToOneAskEntity = oneToOneAskService.findByOneToOneAskId(oneToOneAskId);
+		
+		model.addAttribute("oneToOneAskEntity", oneToOneAskEntity);
+		model.addAttribute("oneToOneAskList", oneToOneAskList);
+		model.addAttribute("oneToOneAnswerList", oneToOneAnswerList);
+		return "admin/one-to-one-answer";
 	}
 
 	//
-	@PostMapping("/one-on-one-answer")
-	public String saveAnswer(@RequestParam int oooId, OneOnOneAnswer oooAnswer,
+	@PostMapping("/one-to-one-answer")
+	public String saveAnswer(@RequestParam int askId, OneToOneAnswer AnswerEntity,
 			@AuthenticationPrincipal PrincipalDetails details, Model model) {
-		OneOnOne oneOnOneEntity = oneOnOneService.findById(oooId);
-		oneOnOneAnswerService.writeAnswer(oneOnOneEntity, oooAnswer, details.getUser());
+		OneToOneAsk askEntity = oneToOneAskService.findByOneToOneAskId(askId);
+		oneToOneAnswerService.writeAnswer(askEntity, AnswerEntity, details.getUser());
 
-		int adminId = oooAnswer.getUser().getId();
-		String adminContent = oooAnswer.getContent();
+		int answerAdminId = AnswerEntity.getUser().getId();
+		String answerContent = AnswerEntity.getContent();
 
-		List<OneOnOneAnswer> answerList = oneOnOneAnswerService.getAnswerList();
-		model.addAttribute("adminId", adminId);
-		model.addAttribute("adminContent", adminContent);
+		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
+		
+		model.addAttribute("answerAdminId", answerAdminId);
+		model.addAttribute("answerContent", answerContent);
 		model.addAttribute("answerList", answerList);
 
-		return "redirect:/admin/answer-list";
+		return "redirect:/admin/one-to-one-list";
 	}
 
 	public void franchiseMassageCount(Model model) {

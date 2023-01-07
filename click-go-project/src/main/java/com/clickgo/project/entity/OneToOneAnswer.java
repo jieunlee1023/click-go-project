@@ -25,7 +25,7 @@ import lombok.ToString;
 @Builder
 @Entity
 @ToString
-public class OneOnOneAnswer {
+public class OneToOneAnswer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,7 +44,7 @@ public class OneOnOneAnswer {
 	private Timestamp createDate;
 	
 	@ManyToOne
-	@JoinColumn(name = "oooId")
-	private OneOnOne ooo;
+	@JoinColumn(name = "oneToOneAskId")
+	private OneToOneAsk oneToOneAsk;
 	
 }

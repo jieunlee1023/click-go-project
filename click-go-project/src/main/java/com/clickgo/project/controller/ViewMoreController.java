@@ -13,11 +13,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.entity.OneOnOne;
-import com.clickgo.project.entity.OneOnOneAnswer;
+import com.clickgo.project.entity.OneToOneAsk;
+import com.clickgo.project.entity.OneToOneAnswer;
 import com.clickgo.project.entity.StoreFranchise;
-import com.clickgo.project.service.OneOnOneAnswerService;
-import com.clickgo.project.service.OneOnOneService;
+import com.clickgo.project.service.OneToOneAnswerService;
+import com.clickgo.project.service.OneToOneAskService;
 import com.clickgo.project.service.StoreFranchiseService;
 
 @Controller
@@ -25,10 +25,10 @@ import com.clickgo.project.service.StoreFranchiseService;
 public class ViewMoreController {
 
 	@Autowired
-	private OneOnOneService oneOnOneService;
+	private OneToOneAskService oneToOneAskService;
 	
 	@Autowired
-	private OneOnOneAnswerService oneOnOneAnswerService;
+	private OneToOneAnswerService oneToOneAnswerService;
 
 	@Autowired
 	private StoreFranchiseService franchiseService;
@@ -76,43 +76,43 @@ public class ViewMoreController {
 	}
 
 	// s w
-	@GetMapping("/one-on-one")
-	public String oneOnone(Model model) {
-		List<OneOnOne> ooos = oneOnOneService.getOooList();
-		model.addAttribute("ooos", ooos);
+	@GetMapping("/one-to-one-ask")
+	public String oneToOneAskList(Model model) {
+		List<OneToOneAsk> onetoOneAskList = oneToOneAskService.getOneToOneAskList();
+		model.addAttribute("onetoOneAskList", onetoOneAskList);
 
 		franchiseMassageCount(model);
-		return "view-more/one-on-one";
+		return "view-more/one-to-one-ask";
 	}
 
-	// s w
-	@GetMapping("/one-on-one/{id}")
+	// AdminController ->    showOnToOneAnswer == showAnswer
+ 	@GetMapping("/one-to-one-ask/{id}")
 	public String showAnswer(@PathVariable int id, Model model) {
 		
-		List<OneOnOne> oooList = oneOnOneService.getOooList();
-		List<OneOnOneAnswer>oooaList = oneOnOneAnswerService.getAnswerList();
+		List<OneToOneAsk> oneToOneAskList = oneToOneAskService.getOneToOneAskList();
+		List<OneToOneAnswer>oneToOneAnswerList = oneToOneAnswerService.getAnswerList();
 		
-		OneOnOne oneOnOneEntity = oneOnOneService.findById(id);
-		model.addAttribute("ooo", oneOnOneEntity);
-		model.addAttribute("oooList", oooList);
-		model.addAttribute("oooaList", oooaList);
+		OneToOneAsk oneToOneAskEntity = oneToOneAskService.findByOneToOneAskId(id);
+		model.addAttribute("oneToOneAskEntity", oneToOneAskEntity);
+		model.addAttribute("oneToOneAskList", oneToOneAskList);
+		model.addAttribute("oneToOneAnswerList", oneToOneAnswerList);
 		return "admin/one-on-one-answer";
 	}
 
 	// s w
-	@PostMapping({ "/one-on-one", "/one-on-one/save" })
-	public String oneOnoneWrite(OneOnOne requestOoo, @AuthenticationPrincipal PrincipalDetails principalDetails,
+	@PostMapping("/one-to-one-ask/save")
+	public String oneToOneWrite(OneToOneAsk reqOneToOneAsk, @AuthenticationPrincipal PrincipalDetails principalDetails,
 			Model model) {
-		oneOnOneService.writeOoo(requestOoo, principalDetails.getUser());
+		oneToOneAskService.writeOneToOneAsk(reqOneToOneAsk, principalDetails.getUser());
 
-		int userId = requestOoo.getUser().getId();
-		String title = requestOoo.getTitle();
-		List<OneOnOne> contents = oneOnOneService.getOooList();
+		int userId = reqOneToOneAsk.getUser().getId();
+		String title = reqOneToOneAsk.getTitle();
+		List<OneToOneAsk> contents = oneToOneAskService.getOneToOneAskList();
 		model.addAttribute("userId", userId);
 		model.addAttribute("title", title);
 		model.addAttribute("contents", contents);
 
-		return "redirect:/view-more/one-on-one";
+		return "redirect:/view-more/one-to-one-ask";
 	}
 
 }

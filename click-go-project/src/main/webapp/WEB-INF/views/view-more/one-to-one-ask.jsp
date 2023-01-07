@@ -20,24 +20,24 @@
 		<div id="tab-cont">
 			<div id="tab-cont-1">
 				<div>
-						<c:forEach var="ooo" items="${ooos }">
-							<c:if test="${principal.user.id eq ooo.user.id }">
-								<div>
-									<p>user이름: ${ooo.user.username }</p>
-									<p>user아이디: ${ooo.user.id }</p>
-									<p>ooo아이디: ${ooo.id }</p>
-									<a href="/view-more/one-on-one/${ooo.id }">제목이: ${ooo.title }</a>
-									<p>컨텐트: ${ooo.content }</p>
-								</div>
+					<c:forEach var="otoask" items="${onetoOneAskList }">
+						<c:if test="${principal.user.id eq otoask.user.id }">
+							<div>
+								<p>user이름: ${otoask.user.username }</p>
+								<p>user아이디: ${otoask.user.id }</p>
+								<p>ooo아이디: ${otoask.id }</p>
+								<a href="/view-more/one-to-one-ask/${otoask.id }">제목이: ${otoask.title }</a>
+								<p>컨텐트: ${otoask.content }</p>
+							</div>
 
-							</c:if>
-						</c:forEach>
+						</c:if>
+					</c:forEach>
 				</div>
 			</div>
 
 			<div id="tab-cont-2">
 				<div>
-					<form action="/view-more/one-on-one/save" method="post">
+					<form action="/view-more/one-to-one-ask/save" method="post">
 						<input type="hidden" id="id" value="${principal.user.id }">
 						<div>
 							<p>클릭고 이용 중 불편하신 점을 문의주시면 최대한 빠른 시일내에 답변 드리겠습니다.</p>
@@ -48,7 +48,7 @@
 							<br> <b>문의내용</b>
 
 							<div>
-								<textarea name="content" id="questionTextarea"></textarea>
+								<textarea name=content id="questionTextarea"></textarea>
 								<ul class="placeholder_txt" style="display: block;">
 									<li>문의하실 내용을 10자 이상 입력해 주세요.</li>
 									<li>문의하시는 제휴점 이름과 예약정보를 남겨주시면 보다 빠른 상담이 가능합니다.</li>
