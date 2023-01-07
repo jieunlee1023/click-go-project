@@ -93,12 +93,7 @@ public class StoreController {
 			principalDetails = new PrincipalDetails(new User().builder().role(RoleType.GEUST).build());
 		}
 		int totalRoomCount = storeEntity.getStoreTotalRoomCount();
-		if (storeEntity.getCategory().getId().equals(StoreCategory.PC방)
-				|| storeEntity.getCategory().getId().equals(StoreCategory.동전노래방)) {
-			originLayout(totalRoomCount, model);
-		} else {
-			otherLayout(totalRoomCount, model);
-		}
+		originLayout(totalRoomCount, model);
 		getNowDateAndTime(model);
 		RoleType role = principalDetails.getUser().getRole();
 
@@ -132,9 +127,11 @@ public class StoreController {
 	}
 
 	public void originLayout(int roomCount, Model model) {
+		int onlyOneSpace = ((roomCount / 2) + 1);
 		int standard = 6;
 		int space = 6;
 
+		model.addAttribute("onlyOneSpace", onlyOneSpace);
 		model.addAttribute("totalRoomCount", roomCount);
 
 		model.addAttribute("standard", standard);
@@ -151,7 +148,4 @@ public class StoreController {
 		model.addAttribute("foursStandard", (standard * 8));
 	}
 
-	public void otherLayout(int roomCount, Model model) {
-		model.addAttribute("totalRoomCount", roomCount);
-	}
 }
