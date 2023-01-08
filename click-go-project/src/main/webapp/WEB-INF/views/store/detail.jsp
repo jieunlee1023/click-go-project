@@ -8,8 +8,8 @@
 		<div>🌟 매장 관리</div>
 	</div>
 	<c:if test="${store.user.id eq principal.user.id}">
-		<span style="color: #6478ff">: 이용자에게 보는 가게의 화면 입니다.</span>
-		<span style="color: #6478ff">아래 수정버튼을 눌러 정보나 이미지를 변경해보세요!</span>
+		<span style="color: black">: 이용자에게 보는 가게의 화면 입니다.</span>
+		<span style="color: black">아래 수정버튼을 눌러 정보나 이미지를 변경해보세요!</span>
 	</c:if>
 	<hr>
 	<br>
@@ -95,7 +95,8 @@
 							<input type="hidden" id="storeId" value="${store.id }">
 							<button type="submit" id="btn--time-check">예약 하기</button>
 						</div>
-
+						<br>
+						<br>
 						<c:choose>
 							<c:when test="${store.category.id eq 'PC방' }">
 								<%@ include file="../layout/pc-room.jsp"%>
@@ -146,21 +147,13 @@
 						<div id="map"
 							style="width: 80%; height: 300px; justify-content: center"></div>
 					</div>
-					<br> <br> <br> <br> <br> <br> <br>
-					<div id="map" style="width: 700px; height: 350px;"></div>
 				</div>
 
 			</c:otherwise>
 		</c:choose>
 	</form>
 </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+<br><br><br>
 <script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript">
 	$('document').ready(function() {

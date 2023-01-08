@@ -8,7 +8,7 @@
 	<div id="view-more-title">
 		<div>✨ 매장 설정하기</div>
 	</div>
-	<span style="color: #6478ff">: 수정 후 아래의 수정 완료 버튼을 눌러보세요 !</span>
+	<span style="color: black">: 수정 후 아래의 수정 완료 버튼을 눌러보세요 !</span>
 	<hr>
 	<br>
 </div>

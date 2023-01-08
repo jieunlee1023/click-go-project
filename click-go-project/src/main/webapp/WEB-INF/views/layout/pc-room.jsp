@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<div class="d-flex-column">
+<div class="d-flex justify-content-center">
 
 	<c:set var="done_loop" value="false" />
 

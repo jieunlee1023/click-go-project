@@ -19,9 +19,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.RequestApplyFileDto;
 import com.clickgo.project.entity.Category;
+import com.clickgo.project.entity.Image;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.model.enums.StoreCategory;
+import com.clickgo.project.repository.IImageRepository;
 import com.clickgo.project.service.CategoryService;
 import com.clickgo.project.service.ImageService;
 import com.clickgo.project.service.StoreFranchiseService;
@@ -37,7 +39,8 @@ public class StoreFranchiseController {
 	private StoreService storeService;
 	@Autowired
 	private CategoryService categoryService;
-
+	@Autowired
+	private IImageRepository iImageRepository;
 	// 메시지 개수
 	int count;
 
@@ -80,6 +83,9 @@ public class StoreFranchiseController {
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
+		
+		List<Image> images = iImageRepository.findStoreImage();
+		model.addAttribute("images", images);
 
 		model.addAttribute("storeSearch", storeList.getTotalElements());
 		model.addAttribute("storeList", storeList);

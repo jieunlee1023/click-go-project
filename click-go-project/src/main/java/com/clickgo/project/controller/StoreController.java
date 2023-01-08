@@ -2,6 +2,7 @@ package com.clickgo.project.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,25 +64,15 @@ public class StoreController {
 		} else {
 			stores = storeService.findAllByStoreCategory(pageName, pageable);
 		}
+
+		List<Image> images = iImageRepository.findStoreImage();
+
+		model.addAttribute("images", images);
 		model.addAttribute("nowPage", pageName);
 		model.addAttribute("categories", categories);
 		model.addAttribute("stores", stores);
 		franchiseMassageCount(model);
 		return "store/store-main";
-	}
-
-	public void franchiseMassageCount(Model model) {
-		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
-		model.addAttribute("message", franchiseMessages);
-
-		List<StoreFranchise> allMsg = franchiseService.getMessageList();
-		franchiseMessages.forEach(t -> {
-			if (t.getState().toString().equals("WAIT")) {
-				allMsg.add(t);
-			}
-		});
-		int waitMsg = allMsg.size() - franchiseMessages.size();
-		model.addAttribute("waitMsg", waitMsg);
 	}
 
 	@GetMapping("/detail/{id}")
@@ -104,9 +95,13 @@ public class StoreController {
 
 		model.addAttribute("store", storeEntity);
 		model.addAttribute("role", role);
-
 		List<Image> image = iImageRepository.findAll();
-		model.addAttribute("images", image);
+		for (int i = 0; i < image.size(); i++) {
+			if (storeEntity.getId() == image.get(i).getStore().getId() && image.size() > 5) {
+				break;
+			}
+			model.addAttribute("images", image);
+		}
 
 		return "/store/detail";
 	}
@@ -153,5 +148,19 @@ public class StoreController {
 
 	public void otherLayout(int roomCount, Model model) {
 		model.addAttribute("totalRoomCount", roomCount);
+	}
+
+	public void franchiseMassageCount(Model model) {
+		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
+		model.addAttribute("message", franchiseMessages);
+
+		List<StoreFranchise> allMsg = franchiseService.getMessageList();
+		franchiseMessages.forEach(t -> {
+			if (t.getState().toString().equals("WAIT")) {
+				allMsg.add(t);
+			}
+		});
+		int waitMsg = allMsg.size() - franchiseMessages.size();
+		model.addAttribute("waitMsg", waitMsg);
 	}
 }

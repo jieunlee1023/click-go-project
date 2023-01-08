@@ -6,7 +6,8 @@
 }
 
 .section {
-	color: white;
+	color: black;
+	font-weight:bold;
 	padding-top: 150px;
 }
 
@@ -17,7 +18,7 @@
 }
 
 #fp-nav ul li a span {
-	background-color: #fff;
+	background-color: black;
 }
 
 #franchise-btn {
