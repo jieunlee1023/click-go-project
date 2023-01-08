@@ -23,11 +23,12 @@
 						</div>
 					</c:when>
 					<c:otherwise>
-						
-							<c:forEach var="reservation" items="${reservations.content}">
+
+						<c:forEach var="reservation" items="${reservations.content}">
 							<div class="d-flex justify-content-between">
 								<h2 class="" style="font-weight: bold; position: absolute;">🎮
-									${reservation.store.storeName}</h2><br>
+									${reservation.store.storeName}</h2>
+								<br>
 							</div>
 							<div style="text-align: right;">
 								<c:choose>
@@ -81,11 +82,11 @@
 							</div>
 							<hr>
 						</c:forEach>
-						
-						
-						
-						
-						
+
+
+
+
+
 
 					</c:otherwise>
 				</c:choose>

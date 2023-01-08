@@ -39,11 +39,10 @@ let index = {
 			url: `/api/reservation/reject/${id}`,
 		}).done(function(data) {
 			if (data.httpStatus) {
-				alert(data.body);
 				$(`#btn--approve-${id}`).remove();
 				$(`#btn--reject-${id}`).remove();
-				$(`#status-${id}`).text('REJECT');
 			}
+			alert(data.body);
 		}).fail(function(error) {
 			console.log(error);
 		});

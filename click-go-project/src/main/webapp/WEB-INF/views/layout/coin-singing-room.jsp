@@ -4,8 +4,8 @@
 
 	<c:set var="done_loop" value="false" />
 
-	<div class="d-flex justify-content-center"
-		style="border: 1px solid black; width: 550px; height: 245px">
+		<div class="d-flex flex-grow-1 justify-content-center "
+		style="border: 1px solid black;">
 		<div class=" ml-1 mt-4">
 
 			<div class="d-flex ml-4">

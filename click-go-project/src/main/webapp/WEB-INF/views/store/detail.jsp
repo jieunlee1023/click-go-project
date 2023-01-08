@@ -17,7 +17,7 @@
 <br>
 
 <div class="container">
-	<form action="/reservation/${store.id}?paymentType=KAKAO" method="post">
+	<form action="/reservation/${store.id}" method="post">
 		<c:choose>
 			<c:when test="${empty store}">
 				<br>
@@ -95,8 +95,7 @@
 							<input type="hidden" id="storeId" value="${store.id }">
 							<button type="submit" id="btn--time-check">예약 하기</button>
 						</div>
-						<br>
-						<br>
+						<br> <br>
 						<c:choose>
 							<c:when test="${store.category.id eq 'PC방' }">
 								<%@ include file="../layout/pc-room.jsp"%>
@@ -153,7 +152,9 @@
 		</c:choose>
 	</form>
 </div>
-<br><br><br>
+<br>
+<br>
+<br>
 <script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript">
 	$('document').ready(function() {
