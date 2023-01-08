@@ -19,15 +19,20 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 								, nativeQuery = true)
 	public Page<Reservation> findByReservation(int id, Pageable pageable);
 	 
-	@Query(value = " SELECT A.* "
-			+ " FROM reservation AS A "
-			+ " JOIN store AS S "
-			+ " ON S.id = A.storeId "
-			+ " JOIN user AS U "
-			+ " ON U.id = S.userId "
-			+ " WHERE S.userId = :id "
+	@Query(value = " SELECT * "
+			+ "FROM reservation "
+			+ "WHERE id IN (SELECT MAX(r.id) "
+									+ " FROM reservation AS r "
+									+ " JOIN store AS s "
+									+ " ON r.storeId = s.id "
+									+ " WHERE s.userId = ?1 "
+									+ " GROUP BY r.userId "
+														+ " , r.reservationTime "
+														+ " , r.reservationDate "
+														+ " , r.endTime "
+														+ " , r.endDate) "
 			, nativeQuery = true)
-	public  Page<Reservation> findByHostReservation1(@Param("id") int id, Pageable pageable);
+	public  Page<Reservation> findByHostReservation1(int id, Pageable pageable);
 
 	@Query(value = " SELECT A.* "
 			+ " FROM reservation AS A "

@@ -35,9 +35,12 @@
 											<div class="d-flex justify-content-between pl-3 pt-3 pr-3">
 												<h3 class="" style="font-weight: bold;">${reservation.store.storeName}</h3>
 												<h5 class="mr-3 m-1">${reservation.approveStatus}</h5>
-												<c:if test="${reservation.approveStatus eq 'APPROVED'}">
+												<c:if test="${reservation.approveStatus eq 'APPROVED' && reservation.approveStatus eq 'REJECT'}">
 													<form action="/report/${reservation.id}">
 														<input type="submit" value="가게 신고하기">
+													</form>
+													<form action="/review/${reservation.id}">
+														<input type="submit" value="리뷰 달기">
 													</form>
 												</c:if>
 											</div>

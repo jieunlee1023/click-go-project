@@ -17,7 +17,7 @@
 <br>
 
 <div class="container">
-	<form action="/reservation/${store.id}?paymentType=KAKAO" method="post">
+	<form action="/reservation/${store.id}" method="post">
 		<c:choose>
 			<c:when test="${empty store}">
 				<br>
@@ -146,7 +146,7 @@
 						<div id="map"
 							style="width: 80%; height: 300px; justify-content: center"></div>
 					</div>
-					<br> <br> <br> <br> <br> <br> <br>
+					<br> <br> <br> <br>
 					<div id="map" style="width: 700px; height: 350px;"></div>
 				</div>
 
