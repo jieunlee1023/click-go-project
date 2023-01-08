@@ -37,8 +37,15 @@
 
 					<div class="franchise--main">
 						<div id="franchise--main--img">
-							<img alt="가맹점 가게 사진" src="${mainImgUrl}"
-								style="width: 300px; height: 300px;">
+						<c:forEach
+						var="image" items="${images }" varStatus="status">
+						<c:if test="${store.id eq  image.store.id}">
+							<img 
+								src="http://localhost:7777/storeImage/${image.imageUrl}"
+								style="width: 100%; height: 280px;"
+								>
+						</c:if>
+					</c:forEach>
 						</div>
 
 						<div class="franchise--main--text">

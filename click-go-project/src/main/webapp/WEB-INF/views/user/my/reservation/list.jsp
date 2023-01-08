@@ -25,33 +25,68 @@
 					<c:otherwise>
 
 						<c:forEach var="reservation" items="${reservations.content}">
-							<div class="media border mt-3"
-								style="width: 500px; height: 350px; border-radius: 15px;">
-								<div class="d-flex-column">
-									<img src="../image/about-us/pc_room_m.jpg" alt="가게 사진"
-										style="width: 500px; height: 200px; border-radius: 15px;">
-									<div class="media-body">
-										<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-											<div class="d-flex justify-content-between pl-3 pt-3 pr-3">
-												<h3 class="" style="font-weight: bold;">${reservation.store.storeName}</h3>
-												<h5 class="mr-3 m-1">${reservation.approveStatus}</h5>
-												<c:if test="${reservation.approveStatus eq 'APPROVED'}">
-													<form action="/report/${reservation.id}">
-														<input type="submit" value="가게 신고하기">
-													</form>
-												</c:if>
-											</div>
-											<div class="d-flex-column pl-3 mt-3">
-												<span>${reservation.reservationTime}</span>
-												<div class="d-flex">
-													<span>${reservation.price}</span>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
+							<div class="d-flex justify-content-between">
+								<h2 class="" style="font-weight: bold; position: absolute;">🎮
+									${reservation.store.storeName}</h2>
+								<br>
 							</div>
+							<div style="text-align: right;">
+								<c:choose>
+									<c:when test="${reservation.approveStatus eq  'APPROVED'}">
+										<input type="submit" id="status-${reservation.id}"
+											value="${reservation.approveStatus}" readonly
+											style="margin-bottom: 5px; border: none; background-color: blue; color: white;">
+										<form action="/report/${reservation.id}">
+											<input type="submit" value="가게 신고하기">
+										</form>
+									</c:when>
+									<c:when test="${reservation.approveStatus eq  'WATING'}">
+										<input type="submit" id="status-${reservation.id}"
+											value="${reservation.approveStatus}" readonly
+											style="margin-bottom: 5px; border: none; background-color: orange; color: white;">
+									</c:when>
+									<c:otherwise>
+										<input type="submit" id="status-${reservation.id}"
+											value="${reservation.approveStatus}" readonly
+											style="margin-bottom: 5px; border: none; background-color: red; color: white;">
+									</c:otherwise>
+
+								</c:choose>
+							</div>
+							<div class="d-flex-column pl-3 ">
+								<div>
+									<span>* 결제 금액 : ${reservation.price}원</span>
+								</div>
+								<c:choose>
+									<c:when
+										test="${reservation.reservationDate == reservation.endDate}">
+										<div>
+											<span>* 예약일 : ${reservation.reservationDate}</span>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div>
+											<span>* 예약일 : ${reservation.reservationDate} ~
+												${reservation.endDate}</span>
+										</div>
+									</c:otherwise>
+								</c:choose>
+								<div>
+									<span>* 예약 시간 : ${reservation.reservationTime} ~
+										${reservation.endTime}</span>
+								</div>
+								<div>
+									<span>* 예약석 : ${reservation.reservationSeat}번 자리</span>
+								</div>
+
+							</div>
+							<hr>
 						</c:forEach>
+
+
+
+
+
 
 					</c:otherwise>
 				</c:choose>
@@ -75,64 +110,69 @@
 
 					<c:otherwise>
 						<c:forEach var="reservation" items="${reservations.content}">
-							<div class="media border mt-3"
-								style="width: 700px; height: 430px; border-radius: 15px;">
-								<div class="d-flex-column">
-									<img src="../image/about-us/pc_room_m.jpg" alt="가게 사진"
-										style="width: 700px; height: 300px; border-radius: 15px;">
-									<div class="media-body">
-										<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-											<div class="d-flex justify-content-between pl-3 pt-3 pr-3">
-												<h5 class="" style="font-weight: bold;">${reservation.store.storeName}</h5>
-												<p class="mr-3 " id="status-${reservation.id}">${reservation.approveStatus}</p>
-												<c:if test="${reservation.approveStatus eq 'APPROVED'}">
-													<form action="/report/${reservation.id}">
-														<input type="submit" value="손님 신고하기">
-													</form>
-												</c:if>
-											</div>
-											<div class="d-flex-column pl-3 ">
-												<div>
-													<span>${reservation.reservationTime}</span>
-												</div>
-												<div>
-													<span>${reservation.price}원</span>
-												</div>
-												<c:choose>
-													<c:when
-														test="${reservation.reservationDate == reservation.endDate}">
-														<div>
-															<span>${reservation.reservationDate}</span>
-														</div>
-													</c:when>
-													<c:otherwise>
-														<div>
-															<span>${reservation.reservationDate} ~
-																${reservation.endDate}</span>
-														</div>
-													</c:otherwise>
-												</c:choose>
-												<div>
-													<span>${reservation.reservationTime} ~
-														${reservation.endTime}</span>
-												</div>
-												<div>
-													<span>${reservation.reservationSeat}번 자리</span>
-												</div>
-												<div>
-													<span>${reservation.user.username}님의 발자취 보러가기</span>
-												</div>
-											</div>
-											<c:if test="${reservation.approveStatus eq 'WATING'}">
-												<input type="button" id="btn--approve-${reservation.id}"
-													value="승인">
-												<input type="button" id="btn--reject-${reservation.id}"
-													value="거절">
-											</c:if>
-										</div>
-									</div>
-								</div>
+							<div class="d-flex justify-content-between">
+								<h2 class="" style="font-weight: bold; position: absolute;">🎮
+									${reservation.store.storeName}</h2>
 							</div>
+							<div style="text-align: right;">
+								<c:choose>
+									<c:when test="${reservation.approveStatus eq  'APPROVED'}">
+										<input type="submit" id="status-${reservation.id}"
+											value="${reservation.approveStatus}" readonly
+											style="margin-bottom: 5px; border: none; background-color: blue; color: white;">
+										<form action="/report/${reservation.id}">
+											<input type="submit" value="손님 신고하기">
+										</form>
+									</c:when>
+									<c:when test="${reservation.approveStatus eq  'WATING'}">
+										<input type="submit" id="status-${reservation.id}"
+											value="${reservation.approveStatus}" readonly
+											style="margin-bottom: 5px; border: none; background-color: orange; color: white;">
+										<form>
+											<input type="button" id="btn--approve-${reservation.id}"
+												value="승인"> <input type="button"
+												id="btn--reject-${reservation.id}" value="거절">
+										</form>
+									</c:when>
+									<c:otherwise>
+										<input type="submit" id="status-${reservation.id}"
+											value="${reservation.approveStatus}" readonly
+											style="margin-bottom: 5px; border: none; background-color: red; color: white;">
+									</c:otherwise>
+
+								</c:choose>
+							</div>
+							<div class="d-flex-column pl-3 ">
+								<div>
+									<span>* 예약자: ${reservation.user.username}</span>
+								</div>
+								<div>
+									<span>* 결제 금액 : ${reservation.price}원</span>
+								</div>
+								<c:choose>
+									<c:when
+										test="${reservation.reservationDate == reservation.endDate}">
+										<div>
+											<span>* 예약일 : ${reservation.reservationDate}</span>
+										</div>
+									</c:when>
+									<c:otherwise>
+										<div>
+											<span>* 예약일 : ${reservation.reservationDate} ~
+												${reservation.endDate}</span>
+										</div>
+									</c:otherwise>
+								</c:choose>
+								<div>
+									<span>* 예약 시간 : ${reservation.reservationTime} ~
+										${reservation.endTime}</span>
+								</div>
+								<div>
+									<span>* 예약석 : ${reservation.reservationSeat}번 자리</span>
+								</div>
+
+							</div>
+							<hr>
 						</c:forEach>
 						<input type="hidden" id="reservation-size" value="${lastId}">
 					</c:otherwise>

@@ -41,6 +41,11 @@
 	margin: 0px;
 }
 
+.login--img{
+	border: 2px dotted black;
+	border-radius: 1000px;
+}
+
 /*아이디 중복 체크 버튼*/
 #overlappedID {background-color: GhostWhite; width: 15%; height: 40px;}
 .olmessagef {color: red; font-style: Italic;}

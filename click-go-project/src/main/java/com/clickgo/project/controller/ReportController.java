@@ -59,11 +59,14 @@ public class ReportController {
 			@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable(required = false) int myList) {
 		Page<Report> reports = null;
 		if (principalDetails.getUser().getRole().equals(RoleType.GEUST)) {
+			System.out.println("유저가 가게에 한 신고");
 			reports = reportService.findByUserIdToSTORE(principalDetails.getUser().getId(), pageable);
 		} else if (principalDetails.getUser().getRole().equals(RoleType.HOST)) {
 			if (myList == 1) {
+				System.out.println("가게가 한 신고");
 				reports = reportService.findByUserIdToUSER(principalDetails.getUser().getId(), pageable);
 			} else {
+				System.out.println("유저가  한 신고");
 				reports = reportService.findByUserIdToSTORE(principalDetails.getUser().getId(), pageable);
 			}
 		}

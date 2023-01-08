@@ -11,7 +11,7 @@ public interface IKakaoPaymentHistoryRepository extends JpaRepository<KakaoPayme
 
 	@Query(value = " SELECT * "
 								+ " FROM kakaopaymenthistory "
-								+ " WHERE partnerOrderId = ?1 "
+								+ " WHERE reservationId = ?1 "
 								, nativeQuery = true)
 	KakaoPaymentHistory findByReservationId(int reservationId);
 }

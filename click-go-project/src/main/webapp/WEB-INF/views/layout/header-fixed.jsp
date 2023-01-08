@@ -44,6 +44,7 @@
 <link href="/css/mypage.css" rel="stylesheet" type="text/css" />
 <link href="/css/admin.css" rel="stylesheet" type="text/css" />
 <link href="/css/store.css" rel="stylesheet" type="text/css" />
+<link href="/css/store-main.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="/css/fullpage.min.css">
 <link rel="stylesheet" href="/css/index.css">

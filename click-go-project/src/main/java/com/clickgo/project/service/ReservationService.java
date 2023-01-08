@@ -77,4 +77,8 @@ public class ReservationService {
 		});
 		reservation.setApproveStatus(ApproveStatus.REJECT);
 	}
+
+	public List<Reservation> findByStoreIdAndNotReject(int storeId) {
+		return reservationRepository.findByStoreIdAndNotReject(storeId);
+	}
 }

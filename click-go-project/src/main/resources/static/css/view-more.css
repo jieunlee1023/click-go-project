@@ -4,8 +4,8 @@
 	margin-top: 20px;
 	font-size: 50px;
 	display: flex;
-	margin-bottom:10px;
-	color:#6478ff;
+	margin-bottom: 10px;
+	color: black;
 }
 
 /*회사 소개*/
@@ -16,10 +16,9 @@
 
 #about-us-service {
 	font-size: 20px;
-	border: solid 5px #6478ff;
+	border: solid 5px black;
 	border-radius: 10px;
 	text-align: center;
-	background-color: rgb(255,255,255,0.5);
 }
 
 .about-us-date {
@@ -39,7 +38,7 @@
 }
 
 .que:first-child {
-	border-top: 1px solid white;
+	border-top: 1px solid black;
 }
 
 .que {
@@ -47,7 +46,7 @@
 	padding: 17px 0;
 	cursor: pointer;
 	font-size: 14px;
-	border-bottom: 1px dotted white;
+	border-bottom: 1px dotted black;
 }
 
 .que::before {
@@ -67,7 +66,7 @@
 	overflow: hidden;
 	font-size: 14px;
 	padding: 27px 0;
-	background-color: rgba(255, 255, 255, 0.2);
+	background-color: rgba(0, 0, 0, 0.1);
 }
 
 .anw::before {
@@ -90,7 +89,7 @@
 #tab-menu {
 	width: 100%;
 	position: absolute;
-	background-color: #9ab4ff;
+	background-color: rgb(0, 0, 0, 0.3);
 	padding: 20px;
 	border-radius: 20px;
 }
@@ -110,29 +109,38 @@
 
 #tab-btn li a {
 	display: block;
-	color: #fff;
+	color: rgb(0, 0, 0, 0.5);
 	padding: 15px 20px;
 	font-weight: bold;
+	text-decoration: none;
 }
 
 #tab-btn li.active a {
-	border-bottom: 3px solid #6478ff;
-	color: #6478ff;
+	border-bottom: 3px solid black;
+	color: black;
+	text-decoration: none;
 }
 
 #tab-cont {
 	width: 100%;
-	background: rgb(255,255,255,0.7);
+	background: rgb(255, 255, 255, 0.7);
 	padding: 20px;
 	box-sizing: border-box;
 	border-radius: 10px;
 }
 
 /* 자주묻는 질문  */
-.card {
-	background: #b4c8ff;
-	border-radius: none;
-}
-.terms-1{
+
+.terms-1 {
 	font-weight: lighter;
+}
+
+#accordion>.card {
+	background: rgb(0, 0, 0, 0.2);
+	border: none;
+}
+
+.card-header>a {
+	color: black;
+	text-decoration: none;
 }

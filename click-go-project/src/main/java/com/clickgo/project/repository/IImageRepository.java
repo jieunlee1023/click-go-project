@@ -14,4 +14,10 @@ public interface IImageRepository extends JpaRepository<Image, Integer>{
 								+ " WHERE storeId = ?1 "
 								, nativeQuery = true)
 	List<Image> findByStoreId(int id);
+
+	
+	@Query(value = " SELECT *  "
+			+ " FROM image "
+			+ " GROUP BY storeId; ", nativeQuery = true)
+	List<Image> findStoreImage();
 }

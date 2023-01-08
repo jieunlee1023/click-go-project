@@ -2,6 +2,7 @@ package com.clickgo.project.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,6 @@ import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.repository.IImageRepository;
 import com.clickgo.project.service.CategoryService;
-import com.clickgo.project.service.ImageService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 
@@ -64,25 +64,15 @@ public class StoreController {
 		} else {
 			stores = storeService.findAllByStoreCategory(pageName, pageable);
 		}
+
+		List<Image> images = iImageRepository.findStoreImage();
+
+		model.addAttribute("images", images);
 		model.addAttribute("nowPage", pageName);
 		model.addAttribute("categories", categories);
 		model.addAttribute("stores", stores);
 		franchiseMassageCount(model);
 		return "store/store-main";
-	}
-
-	public void franchiseMassageCount(Model model) {
-		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
-		model.addAttribute("message", franchiseMessages);
-
-		List<StoreFranchise> allMsg = franchiseService.getMessageList();
-		franchiseMessages.forEach(t -> {
-			if (t.getState().toString().equals("WAIT")) {
-				allMsg.add(t);
-			}
-		});
-		int waitMsg = allMsg.size() - franchiseMessages.size();
-		model.addAttribute("waitMsg", waitMsg);
 	}
 
 	@GetMapping("/detail/{id}")
@@ -93,15 +83,21 @@ public class StoreController {
 		if (principalDetails == null) {
 			principalDetails = new PrincipalDetails(new User().builder().role(RoleType.GEUST).build());
 		}
+		int totalRoomCount = storeEntity.getStoreTotalRoomCount();
+		originLayout(totalRoomCount, model);
 		getNowDateAndTime(model);
 		RoleType role = principalDetails.getUser().getRole();
 
 		model.addAttribute("store", storeEntity);
 		model.addAttribute("role", role);
-		
 		List<Image> image = iImageRepository.findAll();
-		model.addAttribute("images", image);
-		
+		for (int i = 0; i < image.size(); i++) {
+			if (storeEntity.getId() == image.get(i).getStore().getId() && image.size() > 5) {
+				break;
+			}
+			model.addAttribute("images", image);
+		}
+
 		return "/store/detail";
 	}
 
@@ -125,4 +121,43 @@ public class StoreController {
 		model.addAttribute("nowTimeOnlyHour", nowTimeOnlyHour);
 	}
 
+	public void originLayout(int roomCount, Model model) {
+		int onlyOneSpace = ((roomCount / 2) + 1);
+		int standard = 6;
+		int space = 6;
+
+		model.addAttribute("onlyOneSpace", onlyOneSpace);
+		model.addAttribute("totalRoomCount", roomCount);
+
+		model.addAttribute("standard", standard);
+		model.addAttribute("space", space);
+
+		model.addAttribute("firstSpace", space);
+		model.addAttribute("secondSpace", (space * 3));
+		model.addAttribute("thirdSpace", (space * 5));
+		model.addAttribute("foursSpace", (space * 7));
+
+		model.addAttribute("firstStandard", (standard * 2));
+		model.addAttribute("secondStandard", (standard * 4));
+		model.addAttribute("thirdStandard", (standard * 6));
+		model.addAttribute("foursStandard", (standard * 8));
+	}
+
+	public void otherLayout(int roomCount, Model model) {
+		model.addAttribute("totalRoomCount", roomCount);
+	}
+
+	public void franchiseMassageCount(Model model) {
+		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
+		model.addAttribute("message", franchiseMessages);
+
+		List<StoreFranchise> allMsg = franchiseService.getMessageList();
+		franchiseMessages.forEach(t -> {
+			if (t.getState().toString().equals("WAIT")) {
+				allMsg.add(t);
+			}
+		});
+		int waitMsg = allMsg.size() - franchiseMessages.size();
+		model.addAttribute("waitMsg", waitMsg);
+	}
 }

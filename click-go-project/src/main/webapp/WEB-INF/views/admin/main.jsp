@@ -80,7 +80,10 @@
 	</div>
 </div>
 
-<br><br><br><br>
+<br>
+<br>
+<br>
+<br>
 <script src="/js/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>
 

@@ -15,30 +15,19 @@
 	<input type="hidden" id="userId" value="${user.id}"> <input
 		type="hidden" id="storeId" value="${store.id}">
 
-	<h3>신고</h3>
+
+	<div id="view-more-title">
+		<div>📛 신고하기</div>
+	</div>
+	<hr>
 	<h5>회원님의 신고가 보다 양질의 서비스를 만듭니다.</h5>
-	<br> <br>
-
-	<c:if test="${role eq 'HOST'}">
-		<h5>${user.username}님이받으신신고내역</h5>
-		<c:choose>
-			<c:when test="${empty user.reportCount}">
-				<h5>아직 받으신 신고가 없으신 손님이세요.</h5>
-			</c:when>
-			<c:otherwise>
-				<h5>신고 누적 : ${user.reportCount}</h5>
-			</c:otherwise>
-		</c:choose>
-	</c:if>
-
-	<br>
 
 
 	<c:choose>
 		<c:when test="${role eq 'HOST'}">
 			<br>
 			<div class="form-group-board">
-				<label for="username">작성자</label> <input type="text" name="username"
+				<label for="username">가맹점명</label> <input type="text" name="username"
 					id="username" class="form-control" value="${store.storeName}"
 					readonly="readonly">
 			</div>
@@ -75,9 +64,8 @@
 		</c:otherwise>
 	</c:choose>
 
-	<div class="d-flex justify-content-between mb-5 ">
-		<button type="button" class="btn board--save mt-3" id="btn--save">글
-			작성</button>
+	<div class="d-flex justify-content-end mt-3 ">
+		<button type="button" class="btn" id="btn--save">신고하기</button>
 	</div>
 </div>
 

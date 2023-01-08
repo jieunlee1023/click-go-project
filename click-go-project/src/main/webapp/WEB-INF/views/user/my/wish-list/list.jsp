@@ -7,7 +7,7 @@
 		<div>💖 즐겨찾기</div>
 		<br>
 	</div>
-	<span style="color: #6478ff">: 자주 가는 곳을 등록하시면 더욱 편하게 예약을 하실 수
+	<span style="color: black">: 자주 가는 곳을 등록하시면 더욱 편하게 예약을 하실 수
 		있습니다.</span> <br>
 	<hr>
 	<div class="d-flex-column justify-content-center ml-5">
