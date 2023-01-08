@@ -78,26 +78,26 @@ public class ViewMoreController {
 	// s w
 	@GetMapping("/one-to-one-ask")
 	public String oneToOneAskList(Model model) {
-		List<OneToOneAsk> onetoOneAskList = oneToOneAskService.getOneToOneAskList();
-		model.addAttribute("onetoOneAskList", onetoOneAskList);
+		List<OneToOneAsk> askList = oneToOneAskService.getOneToOneAskList();
+		model.addAttribute("askList", askList);
 
 		franchiseMassageCount(model);
 		return "view-more/one-to-one-ask";
 	}
 
-	// AdminController ->    showOnToOneAnswer == showAnswer
- 	@GetMapping("/one-to-one-ask/{id}")
-	public String showAnswer(@PathVariable int id, Model model) {
-		
-		List<OneToOneAsk> oneToOneAskList = oneToOneAskService.getOneToOneAskList();
-		List<OneToOneAnswer>oneToOneAnswerList = oneToOneAnswerService.getAnswerList();
-		
-		OneToOneAsk oneToOneAskEntity = oneToOneAskService.findByOneToOneAskId(id);
-		model.addAttribute("oneToOneAskEntity", oneToOneAskEntity);
-		model.addAttribute("oneToOneAskList", oneToOneAskList);
-		model.addAttribute("oneToOneAnswerList", oneToOneAnswerList);
-		return "admin/one-on-one-answer";
-	}
+//	// AdminController ->    showOnToOneAnswer == showAnswer
+// 	@GetMapping("/one-to-one-ask/{id}")
+//	public String showAnswer(@PathVariable int id, Model model) {
+//		
+//		List<OneToOneAsk> oneToOneAskList = oneToOneAskService.getOneToOneAskList();
+//		List<OneToOneAnswer>oneToOneAnswerList = oneToOneAnswerService.getAnswerList();
+//		
+//		OneToOneAsk oneToOneAskEntity = oneToOneAskService.findByOneToOneAskId(id);
+//		model.addAttribute("oneToOneAskEntity", oneToOneAskEntity);
+//		model.addAttribute("oneToOneAskList", oneToOneAskList);
+//		model.addAttribute("oneToOneAnswerList", oneToOneAnswerList);
+//		return "admin/one-on-one-answer";
+//	}
 
 	// s w
 	@PostMapping("/one-to-one-ask/save")

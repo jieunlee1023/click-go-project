@@ -19,19 +19,41 @@
 		</div>
 		<div id="tab-cont">
 			<div id="tab-cont-1">
-				<div>
-					<c:forEach var="otoask" items="${onetoOneAskList }">
-						<c:if test="${principal.user.id eq otoask.user.id }">
-							<div>
-								<p>user이름: ${otoask.user.username }</p>
-								<p>user아이디: ${otoask.user.id }</p>
-								<p>ooo아이디: ${otoask.id }</p>
-								<a href="/view-more/one-to-one-ask/${otoask.id }">제목이: ${otoask.title }</a>
-								<p>컨텐트: ${otoask.content }</p>
-							</div>
-
-						</c:if>
-					</c:forEach>
+				<div class="d-flex flex-column">
+					<div class="row border-bottom p-3">
+						<div class="col-2 d-flex justify-content-center">
+							<span>접수번호</span>
+						</div>
+						<div class="col">
+							<span class="col">제목</span>
+						</div>
+						<div class="col">
+							<span>답변여부</span>
+						</div>
+						<div class="col">
+							<span>작성시간</span>
+						</div>
+					</div>
+					<div class="d-flex flex-column">
+						<c:forEach var="askList" items="${askList }">
+							<c:if test="${principal.user.id eq askList.user.id }">
+								<div class="row border-bottom p-3">
+									<div class="col-2 d-flex justify-content-center">
+										<span>${askList.id }</span>
+									</div>
+									<div class="col-2" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 200px;">
+										<a style="text-decoration: none; color: gray;" href="/admin/one-to-one-answer/${askList.id }">${askList.title }</a>
+									</div>
+									<div class="col d-flex justify-content-center">
+										<span>답변여부</span>
+									</div>
+									<div class="col">
+										<span>${askList.createDate }</span>
+									</div>
+								</div>
+							</c:if>
+						</c:forEach>
+					</div>
 				</div>
 			</div>
 
@@ -39,24 +61,29 @@
 				<div>
 					<form action="/view-more/one-to-one-ask/save" method="post">
 						<input type="hidden" id="id" value="${principal.user.id }">
-						<div>
-							<p>클릭고 이용 중 불편하신 점을 문의주시면 최대한 빠른 시일내에 답변 드리겠습니다.</p>
-						</div>
-						<section class="text_wrap">
-							<b>뭐가문제야?</b> <br>
-							<textarea rows="" cols="" name="title"></textarea>
-							<br> <b>문의내용</b>
-
-							<div>
-								<textarea name=content id="questionTextarea"></textarea>
-								<ul class="placeholder_txt" style="display: block;">
+						<div class="d-flex flex-column">
+							<div class="pb-5">
+								<h4>클릭고 이용 중 불편하신 점을 문의주시면 최대한 빠른 시일내에 답변 드리겠습니다.</h4>
+							</div>
+							<div class="d-flex flex-column pb-5">
+								<h5>제목</h5>
+								<textarea name="title" rows="1" cols=""></textarea>
+							</div>
+							<div class="d-flex flex-column pb-5">
+								<h5>문의내용</h5>
+								<textarea name="content" rows="5" cols=""></textarea>
+							</div>
+							<div class="d-flex flex-column pb-5">
+								<ul>
 									<li>문의하실 내용을 10자 이상 입력해 주세요.</li>
 									<li>문의하시는 제휴점 이름과 예약정보를 남겨주시면 보다 빠른 상담이 가능합니다.</li>
 									<li>문의 내용 작성 시 개인정보가 입력되지 않도록 주의 부탁드립니다.</li>
 								</ul>
 							</div>
-						</section>
-						<button class="btn btn-light" type="submit">작성 완료</button>
+							<div class="d-flex justify-content-center">
+								<button class="btn btn-light" type="submit">작성 완료</button>
+							</div>
+						</div>
 					</form>
 				</div>
 			</div>

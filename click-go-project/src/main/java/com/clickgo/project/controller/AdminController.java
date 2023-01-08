@@ -136,22 +136,22 @@ public class AdminController {
 
 	@GetMapping("/one-to-one-list")
 	public String oneOnOneAsk(Model model) {
-		List<OneToOneAsk> oneToOneAksList = oneToOneAskService.getOneToOneAskList();
-		model.addAttribute("oneToOneAksList", oneToOneAksList);
+		List<OneToOneAsk> askList = oneToOneAskService.getOneToOneAskList();
+		model.addAttribute("askList", askList);
 		return "admin/one-to-one-list";
 	}
 
 	// s w
-	@GetMapping({"/one-to-one-answer/{oneToOneAskId}"})
-	public String showOnToOneAnswer(@PathVariable int oneToOneAskId, Model model) {
+	@GetMapping("/one-to-one-answer/{id}")
+	public String showOnToOneAnswer(@PathVariable int id, Model model) {
 
-		List<OneToOneAsk> oneToOneAskList = oneToOneAskService.getOneToOneAskList();
-		List<OneToOneAnswer> oneToOneAnswerList = oneToOneAnswerService.getAnswerList();
-		OneToOneAsk oneToOneAskEntity = oneToOneAskService.findByOneToOneAskId(oneToOneAskId);
-		
-		model.addAttribute("oneToOneAskEntity", oneToOneAskEntity);
-		model.addAttribute("oneToOneAskList", oneToOneAskList);
-		model.addAttribute("oneToOneAnswerList", oneToOneAnswerList);
+		List<OneToOneAsk> askList = oneToOneAskService.getOneToOneAskList();
+		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
+		OneToOneAsk askEntity = oneToOneAskService.findByOneToOneAskId(id);
+
+		model.addAttribute("askEntity", askEntity);
+		model.addAttribute("askList", askList);
+		model.addAttribute("answerList", answerList);
 		return "admin/one-to-one-answer";
 	}
 
@@ -161,12 +161,11 @@ public class AdminController {
 			@AuthenticationPrincipal PrincipalDetails details, Model model) {
 		OneToOneAsk askEntity = oneToOneAskService.findByOneToOneAskId(askId);
 		oneToOneAnswerService.writeAnswer(askEntity, AnswerEntity, details.getUser());
+		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
 
 		int answerAdminId = AnswerEntity.getUser().getId();
 		String answerContent = AnswerEntity.getContent();
 
-		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
-		
 		model.addAttribute("answerAdminId", answerAdminId);
 		model.addAttribute("answerContent", answerContent);
 		model.addAttribute("answerList", answerList);

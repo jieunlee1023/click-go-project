@@ -32,7 +32,7 @@ public class OneToOneAnswer {
 	private int id;
 	
 	@Lob
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String content;
 	
 	@ManyToOne
