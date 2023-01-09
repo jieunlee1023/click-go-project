@@ -5,6 +5,9 @@
 
 
 <div class="container">
+	<div class="d-flex justify-content-end">
+		<a id="btn--back" class="btn"  href="./main">돌아가기</a>
+	</div>
 
 	<div class="progress">
 		<div class="progress-bar bg-success" style="width: 40%">Free Space</div>

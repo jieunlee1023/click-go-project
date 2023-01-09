@@ -5,8 +5,11 @@
 
 
 
-
-
+<div class="container border">
+	<div class="d-flex justify-content-end">
+		<a id="btn--back" class="btn" href="./main">돌아가기</a>
+	</div>
+</div>
 
 
 

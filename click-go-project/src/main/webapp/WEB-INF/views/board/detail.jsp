@@ -3,8 +3,8 @@
 
 <div class="container">
 
-	<div class="d-flex justify-content-start mt-5">
-		<button id="btn--back" class="btn " onclick="history.back();">←</button>
+	<div class="d-flex justify-content-end mt-5">
+		<a id="btn--back" class="btn" href="/board/list">뒤로가기</a>
 		<c:if test="${board.user.id == principal.user.id }">
 			<a class="btn" id="btn--update--css" href="/board/${board.id }/update-form">수정</a>
 			<button type="button" class="btn" id="btn--delete">삭제</button>
@@ -14,19 +14,19 @@
 	<div class="d-flex justify-content-start">
 		<div class="board--detail--top">
 			<div>
-				<input type="hidden" id="board-id" value="${board.id }"> 글 번호 :<span> ${board.id } </span>
+				<input type="hidden" id="board-id" value="${board.id }">글 번호&nbsp;:&nbsp;<span> ${board.id }</span>
 			</div>
 			<div>
-				글 작성자 : <span> ${board.user.username }</span>
+				<span>글 작성자&nbsp;:&nbsp;${board.user.username }</span>
 			</div>
 			<div class="d-flex justify-content-start">
-				등록시간 : <span> ${board.createDate }</span>
+				<span>등록시간&nbsp;:&nbsp;${board.createDate }</span>
 			</div>
 		</div>
 	</div>
 	<br>
 	<div class="container" id="board--deatil--title">
-		<h5>제목 : ${board.title }</h5>
+		<h3>${board.title }</h3>
 	</div>
 
 	<div class="container" id="board--deatil--content">
@@ -37,7 +37,7 @@
 	<br> <br>
 	<form action="/board/${board.id }/reply" method="post">
 		<div class="board--detail--card">
-			<div class="card-header">💬</div>
+			<div class="card-header">🗨️</div>
 
 			<ul class="list-group" id="reply--box">
 
@@ -48,38 +48,53 @@
 							<c:when test="${reply.user.id eq principal.user.id || principal.user.role eq 'ADMIN' }">
 
 								<li class="list-group-item" id="reply--${reply.id }">
-									<div class="d-flex justify-content-start p-0">
-										<p class="ml-3">
-											↪ <small id="small--item">&nbsp;${reply.user.username }&nbsp; (${reply.createDate })&nbsp; : ${reply.content }</small>
-										</p>
-
-										<div>
-											<button type="button" class="mr-4" id="btn-reply-delete" onclick="boardIndex.replyDelete(${board.id}, ${reply.id });">삭제</button>
+									<div class="d-flex justify-content-between ml-3 border-bottom" id="reply-row">
+										<div class="reply-nick">
+											<span>&nbsp; ↪&nbsp;${reply.user.username } </span>
+										</div>
+										<div class="col ml-5">
+											<p>&nbsp;${reply.content }</p>
+										</div>
+										<div class="d-flex justify-content-end mr-3">
+											<span>&nbsp;${reply.createDate }</span>
+										</div>
+										<div class="d-flex justify-content-end mr-3">
+											<div>
+												<button type="button" class="mr-4" id="btn-reply-delete" onclick="boardIndex.replyDelete(${board.id}, ${reply.id });">✖</button>
+											</div>
 										</div>
 									</div>
 								</li>
 							</c:when>
 
 							<c:otherwise>
-								<p class="ml-3">
-									↪ <small id="small--item"><img src="/image/secret.png" width="15px">비밀댓글입니다</small>
-								</p>
+								<div class="d-flex flex-start ml-2 border-bottom" id="reply-row">
+									<span>&nbsp; ↪ &nbsp;<img src="/image/secret.png" width="15px">&nbsp;비밀댓글 입니다.
+									</span>
+
+								</div>
 							</c:otherwise>
 						</c:choose>
 					</c:if>
 
 					<c:if test="${reply.secret == false }">
 						<li class="list-group-item" id="reply--${reply.id }">
-							<div class="d-flex justify-content-start p-0">
-								<p class="ml-3">
-									↪ <small id="small--item">&nbsp;${reply.user.username }&nbsp; (${reply.createDate })&nbsp; : ${reply.content }</small>
-								</p>
-
-								<div>
-									<c:if test="${reply.user.id eq principal.user.id }">
-										<button type="button" class="mr-4" id="btn-reply-delete" onclick="boardIndex.replyDelete(${board.id}, ${reply.id });">삭제</button>
-
-									</c:if>
+							<div class="d-flex justify-content-between ml-3 border-bottom" id="reply-row">
+								<div class="reply-nick">
+									<span> ↪&nbsp;&nbsp;${reply.user.username } </span>
+								</div>
+								<div class="col ml-5">
+									<p>&nbsp;${reply.content }</p>
+								</div>
+								<div class="d-flex justify-content-end mr-3">
+									<span>&nbsp;${reply.createDate }</span>
+								</div>
+								<div class="d-flex justify-content-end mr-3">
+									<div>
+										<c:if test="${reply.user.id eq principal.user.id }">
+											<button type="button" class="mr-4" id="btn-reply-delete" onclick="boardIndex.replyDelete(${board.id}, ${reply.id });">✖</button>
+										</c:if>
+									</div>
 								</div>
 							</div>
 						</li>
@@ -88,16 +103,14 @@
 			</ul>
 		</div>
 		<div class="card" id="card--body">
-
-
 			<div class="card-body d-flex justify-content-center">
-
-				<input type="text" id="reply--content" name="content">
-				<div class="form-check form-check-inline ml-3 ">
-					<input class="form-check-input" type="checkbox" name="secret"
-						id="secret"> <label class="form-check-label">🔒</label>
+				<label>✏️</label> <input type="text" id="reply--content" name="content">
+				<div class="d-flex ">
+					<div class="form-check form-check-inline ml-3 ">
+						<label class="form-check-label">🔒</label> <input class="form-check-input" type="checkbox" name="secret" id="secret">
+					</div>
+					<button type="submit" class="btn" id="btn-reply-save">댓글 작성</button>
 				</div>
-			<button type="submit" class="" id="btn-reply-save">등록</button>
 			</div>
 
 		</div>
@@ -106,6 +119,9 @@
 <br>
 <br>
 <script type="text/javascript" src="/js/board.js"></script>
-<br><br>
+<br>
+<br>
+
+
 <%@ include file="../layout/footer.jsp"%>
 

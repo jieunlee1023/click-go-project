@@ -7,13 +7,12 @@
 
 <div class="container">
 	<div id="answer-header">
-		<h1>답변할리스트</h1>
+		<h1>1:1&nbsp;문의글&nbsp;목록</h1>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-
+	<div class="d-flex justify-content-end">
+		<a id="btn--back" class="btn" href="./main">돌아가기</a>
+	</div>
+	<br> <br> <br> <br>
 	<div id="answer-body">
 		<div class="d-flex flex-column">
 
@@ -21,20 +20,20 @@
 				<thead>
 					<tr>
 						<th>문의접수번호</th>
-						<th>유저닉네임</th>
+						<th>답변여부</th>
 						<th>제목</th>
-						<th>문의내용</th>
-						<th>문의한아이디의고유번호</th>
+						<th>유저닉네임</th>
+						<th>문의시간</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="askList" items="${askList }">
 						<tr>
 							<td>${askList.id }</td>
-							<td>${askList.user.username }</td>
+							<td>답변여부</td>
 							<td><a href="/admin/one-to-one-answer/${askList.id}">${askList.title }</a></td>
-							<td>${askList.content }</td>
-							<td>${askList.user.id }</td>
+							<td>${askList.user.username }</td>
+							<td>${askList.createDate }</td>
 						</tr>
 					</c:forEach>
 				</tbody>

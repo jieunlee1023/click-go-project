@@ -3,15 +3,17 @@
 
 
 
-
 <div class="container" id="admin-store">
+	<div class="d-flex justify-content-end">
+		<a id="btn--back" class="btn" href="./main">돌아가기</a>
+	</div>
 
 	<div class="d-flex justify-content-center" id="admin-header" style="background-color: orange">
-		<h1>이와하라가가니</h1>
+		<h1>가맹점</h1>
 	</div>
 	<div class="d-flex justify-content-end">
 		<form action="/admin/store-search" method="get">
-			<input type="text" placeholder="검색할거야?ㅎ" name="q" value="${q }" id="">
+			<input type="text" placeholder="검색어를입력해주세요" name="q" value="${q }" id="">
 			<button class="btn" type="submit">검색하기</button>
 		</form>
 	</div>
