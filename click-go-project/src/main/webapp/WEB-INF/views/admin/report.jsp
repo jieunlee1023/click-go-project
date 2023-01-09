@@ -12,50 +12,58 @@
 		</div>
 
 	</div>
-	<hr>
 </div>
 
 
 <div class="container">
-	<div class="d-flex border-bottom" id="report--admin--header">
-		<div id="report--admin--number">번호</div>
-		<div id="report--admin--title">제목</div>
-		<div id="report--admin--type">신고타입</div>
-		<div id="report--admin--store">가맹점</div>
-		<div id="report--admin--client">이용자</div>
-		<div id="report--admin--status">답변 여부</div>
-	</div>
+	<table class="table" id="answer-list-table">
+		<thead>
+			<tr style="text-align: center;">
+				<th>고유번호</th>
+				<th>제목</th>
+				<th>신고타입</th>
+				<th>가맹점명</th>
+				<th>이용자</th>
+				<th>답변 여부</th>
+			</tr>
+		</thead>
+		<tbody>
 
-	<c:forEach var="report" items="${reports.content}">
-		<div class="d-flex  border-bottom" id="report--admin--list">
-			<div id="report--admin--number">${report.id}</div>
-			<a id="report--admin--title" href="/report/detail/${report.id}">${report.title}
-			</a>
-			<c:choose>
-				<c:when test="${report.reportType eq 'USER'}">
-					<div style="color: blue;" id="report--admin--type">유저신고</div>
-				</c:when>
-				<c:otherwise>
-					<div style="color: red;" id="report--admin--type">가맹점신고</div>
-				</c:otherwise>
-			</c:choose>
+			<c:forEach var="report" items="${reports.content}">
+				<tr style="text-align: center;">
+					<td><p>${report.id}</p></td>
+					<td><p>
+							<a id="report--title" href="/report/detail/${report.id}">
+								${report.title} </a>
+						</p></td>
 
-			<div id="report--admin--store">id: ${report.store.id },
-				${report.store.storeName}</div>
-			<div id="report--admin--client">id: ${report.user.id },
-				${report.user.username}</div>
-			<c:choose>
-				<c:when test="${report.approveStatus eq 'COMPLETED'}">
-					<div style="color: grey;" id="report--admin--status">${report.approveStatus}</div>
-				</c:when>
-				<c:otherwise>
-					<div style="color: orange;" id="report--admin--status">${report.approveStatus}</div>
-				</c:otherwise>
-			</c:choose>
+					<c:choose>
+						<c:when test="${report.reportType eq 'USER'}">
+							<td style="color: blue;" id="report--admin--type"><p>유저신고</p></td>
+						</c:when>
+						<c:otherwise>
+							<td style="color: red;" id="report--admin--type"><p>가맹점신고</p></td>
+						</c:otherwise>
+					</c:choose>
+
+					<td><p>id: ${report.store.id }, ${report.store.storeName}</p></td>
+					<td><p>id: ${report.user.id }, ${report.user.username}</p></td>
+
+					<c:choose>
+						<c:when test="${report.approveStatus eq 'COMPLETED'}">
+							<td style="color: grey;" id="report--status"><p>${report.approveStatus}</p></td>
+						</c:when>
+						<c:otherwise>
+							<td style="color: orange;" id="report--status"><p>${report.approveStatus}</p></td>
+						</c:otherwise>
+					</c:choose>
+
+				</tr>
+			</c:forEach>
+		</tbody>
+	</table>
 
 
-		</div>
-	</c:forEach>
 	<br> <br> <br>
 	<div class="d-flex justify-content-center">
 		<ul class="pagination">
@@ -87,9 +95,8 @@
 	</div>
 
 	<br>
+
 </div>
-
-
 
 
 <script src="/js/user.js"></script>
