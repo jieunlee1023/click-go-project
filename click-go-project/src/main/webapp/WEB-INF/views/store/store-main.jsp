@@ -17,11 +17,6 @@
 		</ul>
 	</nav>
 	
-	
-	
-	
-	
-
 
 	<div class="search--container">
 		<form>
@@ -55,6 +50,7 @@
 					<div class="main--card--text">
 						<h1 id="main--card--text--h1">${store.storeName}</h1>
 						<span>📍 ${store.storeAddress}</span>
+						<span>⭐ 리뷰평점!!</span>
 					</div>
 				</a>
 			</div>
