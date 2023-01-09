@@ -134,10 +134,33 @@ public class AdminController {
 
 	}
 
-	@GetMapping("/one-to-one-list")
-	public String oneOnOneAsk(Model model) {
-		List<OneToOneAsk> askList = oneToOneAskService.getOneToOneAskList();
-		model.addAttribute("askList", askList);
+	@GetMapping({ "/one-to-one-list", "/one-to-one-search" })
+	public String oneToOneList(@RequestParam(required = false) String q, Model model,
+			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		String searchTitle = q == null ? "" : q;
+
+//		List<OneToOneAsk> askList = oneToOneAskService.getOneToOneAskList();
+		Page<OneToOneAsk> askPage = oneToOneAskService.searchAsk(searchTitle, pageable);
+
+		int PAGENATION_BLOCK_COUNT = 10;
+
+		int nowPage = askPage.getPageable().getPageNumber() + 1;
+
+		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
+		int endPageNumber = Math.min(nowPage + startPageNumber, askPage.getTotalPages());
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+
+		model.addAttribute("askPage", askPage);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPageNumber", startPageNumber);
+		model.addAttribute("endPageNumber", endPageNumber);
+		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("q", searchTitle);
+
 		return "admin/one-to-one-list";
 	}
 
