@@ -96,6 +96,8 @@ public class AdminController {
 
 	@GetMapping("/reservation")
 	public String adminreservation(Model model) {
+		List<Reservation> reservations = reservationService.findAll();
+		model.addAttribute("reservations", reservations);
 		franchiseMassageCount(model);
 		return "admin/reservation";
 	}
@@ -194,6 +196,7 @@ public class AdminController {
 		String searchTitle = q == null ? "" : q;
 
 		Page<OneToOneAsk> askPage = oneToOneAskService.searchAsk(searchTitle, pageable);
+		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
 
 		int PAGENATION_BLOCK_COUNT = 10;
 
@@ -214,6 +217,8 @@ public class AdminController {
 		model.addAttribute("pageNumbers", pageNumbers);
 		model.addAttribute("q", searchTitle);
 
+		model.addAttribute("answerList", answerList);
+
 		return "admin/one-to-one-list";
 	}
 
@@ -231,12 +236,11 @@ public class AdminController {
 		return "admin/one-to-one-answer";
 	}
 
-	//
 	@PostMapping("/one-to-one-answer")
 	public String saveAnswer(@RequestParam int askId, OneToOneAnswer AnswerEntity,
 			@AuthenticationPrincipal PrincipalDetails details, Model model) {
 		OneToOneAsk askEntity = oneToOneAskService.findByOneToOneAskId(askId);
-		oneToOneAnswerService.writeAnswer(askEntity, AnswerEntity, details.getUser());
+		oneToOneAnswerService.writeAnswer(askId, askEntity, AnswerEntity, details.getUser());
 		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
 
 		int answerAdminId = AnswerEntity.getUser().getId();

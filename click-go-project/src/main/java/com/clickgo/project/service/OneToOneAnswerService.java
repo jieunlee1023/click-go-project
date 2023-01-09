@@ -1,6 +1,7 @@
 package com.clickgo.project.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,29 +10,30 @@ import org.springframework.transaction.annotation.Transactional;
 import com.clickgo.project.entity.OneToOneAsk;
 import com.clickgo.project.entity.OneToOneAnswer;
 import com.clickgo.project.entity.User;
-import com.clickgo.project.repository.iOneToOneAnswerRepository;
+import com.clickgo.project.repository.IOneToOneAnswerRepository;
+import com.clickgo.project.repository.IOneToOneAskRepository;
 
 @Service
 public class OneToOneAnswerService {
 
 	@Autowired
-	private iOneToOneAnswerRepository iOneToOneAnswerRepository;
+	private IOneToOneAnswerRepository iOneToOneAnswerRepository;
 	
-	
-//	이거하는중 01-06 wlsWK제ㅐ발 
+	@Autowired
+	private IOneToOneAskRepository iOneToOneAskRepository;
+
 	@Transactional
-	public void writeAnswer(OneToOneAsk reqOneToOneAskEntity, OneToOneAnswer reqOneToOneAnswerEntity, User user) {
+	public void writeAnswer(int askId, OneToOneAsk reqOneToOneAskEntity, OneToOneAnswer reqOneToOneAnswerEntity, User user) {
+		Optional<OneToOneAsk> oneToOneAskEntity = iOneToOneAskRepository.findById(askId);
+		oneToOneAskEntity.get().setAnswer(true);
 		reqOneToOneAnswerEntity.setOneToOneAsk(reqOneToOneAskEntity);
 		reqOneToOneAnswerEntity.setContent(reqOneToOneAnswerEntity.getContent());
 		reqOneToOneAnswerEntity.setUser(user);
 		iOneToOneAnswerRepository.save(reqOneToOneAnswerEntity);
-	} 
-//이거하는중 01-06 wlsWK제ㅐ발 
-
+	}
 
 	@Transactional
 	public List<OneToOneAnswer> getAnswerList() {
-		// TODO Auto-generated method stub
 		return iOneToOneAnswerRepository.findAll();
 	}
 }

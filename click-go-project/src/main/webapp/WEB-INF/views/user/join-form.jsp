@@ -41,7 +41,7 @@
 			<br>
 			<div class="form-control d-flex justify-content-center"
 				id="joinbutton">
-				<button type="button" id="btn--save" class="d-flex">회원가입</button>
+				<button type="button" id="btn--save" class="d-flex" style="background-color: transparent;">회원가입</button>
 			</div>
 		</div>
 	</div>

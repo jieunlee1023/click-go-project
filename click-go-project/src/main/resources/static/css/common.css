@@ -44,14 +44,15 @@ footer {
 	top: 0px;
 	width: 100%;
 	position: fixed;
-	padding-top: 100px;
+	padding-top: 300px;
 	display: flex;
 	justify-content: center;
+	align-items: flex-end;
 }
 
 #footer--scroll {
 	position: absolute;
-	transform: translateY(1000%);
+	transform: translateY(1300%);
 	top: 20px;
 	animation: bounce .3s ease infinite alternate;
 	font-size: 80px;
@@ -70,6 +71,10 @@ footer {
 	display: inline-flex;
 }
 
+#nav--item {
+	padding-top: 100px;
+}
+
 .nav--list {
 	display: inline-flex;
 	float: right;
@@ -82,7 +87,7 @@ footer {
 }
 
 .nav--list li {
-	font-size: 20px;
+	font-size: 22px;
 	float: left;
 	float: left;
 }
@@ -100,7 +105,7 @@ footer {
 }
 
 .nav--list ul li:hover a {
-	color: rgb(0,0,0,0.5);
+	color: rgb(0, 0, 0, 0.5);
 	text-decoration: none;
 }
 
@@ -139,6 +144,7 @@ footer {
 	background-color: white;
 	box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px
 		rgba(0, 0, 0, 0.22);
+	z-index: 999;
 }
 
 #btn--msg {
@@ -180,4 +186,35 @@ footer {
 #page--no--select {
 	color: black;
 	border: none;
+}
+
+@media ( max-width : 991px) {
+	#wrapper {
+		display: flex;
+		justify-content: center;
+	}
+	.nav--list li {
+		font-size: 18px;
+	}
+	#main--item {
+		padding-top: 50px;
+	}
+	#main--text {
+		margin-top: 20px;
+	}
+	#main--img>img, #main--img2>img, #main--img3>img, #main--img4>img,
+		#main--img5>img {
+		width: 0;
+	}
+}
+
+@media ( max-width : 770px) {
+	#nav--item {
+		align-items: flex-start;
+		padding-top: 50px;
+		padding-right: 0px;
+	}
+	.nav--list li {
+		font-size: 15px;
+	}
 }

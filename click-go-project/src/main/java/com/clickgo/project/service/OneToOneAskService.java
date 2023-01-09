@@ -12,7 +12,7 @@ import com.clickgo.project.entity.OneToOneAsk;
 import com.clickgo.project.entity.OneToOneAnswer;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.repository.IOneToOneAskRepository;
-import com.clickgo.project.repository.iOneToOneAnswerRepository;
+import com.clickgo.project.repository.IOneToOneAnswerRepository;
 
 @Service
 public class OneToOneAskService {
@@ -24,6 +24,7 @@ public class OneToOneAskService {
 		reqOneToOneAskEntity.setTitle(reqOneToOneAskEntity.getTitle());
 		reqOneToOneAskEntity.setContent(reqOneToOneAskEntity.getContent());
 		reqOneToOneAskEntity.setUser(user);
+		reqOneToOneAskEntity.setAnswer(false);
 		iOneToOneAskRepository.save(reqOneToOneAskEntity);
 	}
 
