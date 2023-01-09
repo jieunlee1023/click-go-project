@@ -18,11 +18,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Review;
 import com.clickgo.project.entity.ReviewReply;
+import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.service.ReviewReplyService;
 import com.clickgo.project.service.ReviewService;
 import com.clickgo.project.service.StoreFranchiseService;
+import com.clickgo.project.service.StoreService;
 
 @Controller
 @RequestMapping("/review")
@@ -36,6 +38,9 @@ public class ReviewController {
 
 	@Autowired
 	private ReviewReplyService reviewReplyService;
+
+	@Autowired
+	private StoreService storeService;
 
 	@GetMapping({ "", "/" })
 	public String reviewList(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails,
@@ -73,6 +78,13 @@ public class ReviewController {
 		model.addAttribute("reviewReply", reviewReplyEntity);
 		model.addAttribute("role", userEntity.getRole());
 		return "/user/my/review/detail";
+	}
+
+	@GetMapping("/{storeId}")
+	public String saveReview(@PathVariable int storeId, Model model) {
+		Store storeEntity = storeService.findById(storeId);
+		model.addAttribute("store", storeEntity);
+		return "/user/my/review/save-form";
 	}
 
 	public void franchiseMassageCount(Model model) {

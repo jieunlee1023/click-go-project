@@ -16,7 +16,7 @@ public interface IReportRepository extends JpaRepository<Report, Integer> {
 
 	// GEUST가 받은 신고
 	// 즉, STORE가 GEUST에게 한 신고 내역
-	@Query(value = " SELECT * FROM Report WHERE storeId = ?1 AND reportType = 'USER' ", nativeQuery = true)
+	@Query(value = " SELECT r.* FROM Report AS r JOIN store AS s ON r.storeId = s.id WHERE s.userId = ?1 AND r.reportType = 'USER' ", nativeQuery = true)
 	Page<Report> findByUserIdToUSER(int userId, Pageable pageable);
 
 	// STORE가 받은 신고
@@ -27,4 +27,13 @@ public interface IReportRepository extends JpaRepository<Report, Integer> {
 								+ " AND reportType = 'STORE' "
 								, nativeQuery = true)
 	Page<Report> findByUserIdToSTORE(int id, Pageable pageable);
+
+	@Query(value = " SELECT r.* "
+								+ " FROM report AS r "
+								+ " JOIN store AS s "
+								+ " ON r.storeId = s.id "
+								+ " WHERE s.userId = ?1 "
+								+ " AND r.reportType = 'STORE' "
+								, nativeQuery = true)
+	Page<Report> findByStoreIdToSTORE(int userId, Pageable pageable);
 }

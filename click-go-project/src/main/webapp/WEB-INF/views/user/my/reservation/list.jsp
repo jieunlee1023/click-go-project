@@ -39,6 +39,9 @@
 										<form action="/report/${reservation.id}">
 											<input type="submit" value="가게 신고하기">
 										</form>
+										<form action="/review/${reservation.store.id}">
+											<input type="submit" value="리뷰 작성하기">
+										</form>
 									</c:when>
 									<c:when test="${reservation.approveStatus eq  'WATING'}">
 										<input type="submit" id="status-${reservation.id}"
@@ -84,11 +87,6 @@
 							</div>
 							<hr>
 						</c:forEach>
-
-
-
-
-
 
 					</c:otherwise>
 				</c:choose>

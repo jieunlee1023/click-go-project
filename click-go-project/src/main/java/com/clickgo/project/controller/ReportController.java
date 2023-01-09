@@ -55,19 +55,16 @@ public class ReportController {
 
 	@GetMapping("/list/{myList}")
 	public String reportList(Model model,
-			@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable(required = false) int myList) {
 		Page<Report> reports = null;
 		if (principalDetails.getUser().getRole().equals(RoleType.GEUST)) {
-			System.out.println("유저가 가게에 한 신고");
 			reports = reportService.findByUserIdToSTORE(principalDetails.getUser().getId(), pageable);
 		} else if (principalDetails.getUser().getRole().equals(RoleType.HOST)) {
 			if (myList == 1) {
-				System.out.println("가게가 한 신고");
-				reports = reportService.findByUserIdToUSER(principalDetails.getUser().getId(), pageable);
+				reports = reportService.findByStoreIdToSTORE(principalDetails.getUser().getId(), pageable);
 			} else {
-				System.out.println("유저가  한 신고");
-				reports = reportService.findByUserIdToSTORE(principalDetails.getUser().getId(), pageable);
+				reports = reportService.findByUserIdToUSER(principalDetails.getUser().getId(), pageable);
 			}
 		}
 
@@ -94,7 +91,7 @@ public class ReportController {
 	}
 
 	@GetMapping("/{reservationId}")
-	public String reportDetail(@PathVariable int reservationId,
+	public String saveReport(@PathVariable int reservationId,
 			@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
 		Reservation reservationEntity = reservationService.findById(reservationId);
 		RoleType role = principalDetails.getUser().getRole();
@@ -106,6 +103,14 @@ public class ReportController {
 		model.addAttribute("role", role);
 		franchiseMassageCount(model);
 		return "user/my/report/save-form";
+	}
+
+	@GetMapping("/detail/{reportId}")
+	public String detail(@PathVariable int reportId, Model model) {
+		Report reportEntity = reportService.findById(reportId);
+		System.out.println(reportEntity);
+		model.addAttribute("report", reportEntity);
+		return "/user/my/report/detail";
 	}
 
 	public void franchiseMassageCount(Model model) {
@@ -120,6 +125,5 @@ public class ReportController {
 		});
 		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
-
 	}
 }

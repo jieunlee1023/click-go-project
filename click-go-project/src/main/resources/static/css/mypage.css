@@ -77,9 +77,26 @@
 }
 
 .report-list {
-	color: grey;
+	color: black;
 	margin-left: 5px;
-	border: 2px solid grey;
+	border: 2px solid black;
 	padding: 5px;
 	border-radius: 5px;
+}
+
+#report--header, #report--list {
+	text-align: center;
+}
+
+#report--number, #report--title, #report--storeName, #report--status {
+	width: 25%;
+	margin-bottom: 5px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#report--title {
+	text-decoration: none;
+	color: black;
 }

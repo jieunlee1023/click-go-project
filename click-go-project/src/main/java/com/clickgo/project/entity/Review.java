@@ -56,7 +56,4 @@ public class Review {
 	@JoinColumn(name = "storeId", nullable = false)
 	private Store store;
 
-	@Enumerated(EnumType.STRING)
-	private ReviewType reviewType;
-	
 }

@@ -1,8 +1,5 @@
 let index = {
 	init: function() {
-		$("#btn--naverpay").bind("click", () => {
-			this.naverpay();
-		});
 		$("#btn--kakaopay").bind("click", () => {
 			this.kakaopay();
 		});
@@ -29,15 +26,15 @@ let index = {
 			dataType: "json"
 		}).done(function(data) {
 			if (data.httpStatus) {
-			alert("카카오페이로 결제가 진행됩니다.");
-			location.href = data.body;
+				alert("카카오페이로 결제가 진행됩니다.");
+				location.href = data.body;
 			} else {
-			alert("결제에 실패 했습니다. 관리자에게 문의해주세요.");
+				alert("결제에 실패 했습니다. 관리자에게 문의해주세요.");
 			}
 		}).fail(function(error) {
 			alert("오류가 발생했습니다. 관리자에게 문의해주세요.");
 		});
-	}
+	},
 }
 
 index.init();

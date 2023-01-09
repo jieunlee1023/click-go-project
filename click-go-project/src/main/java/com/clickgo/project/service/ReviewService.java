@@ -32,4 +32,8 @@ public class ReviewService {
 			return new IllegalArgumentException("찾으시는 리뷰가 존재하지 않습니다.");
 		});
 	}
+
+	public void save(Review review) {
+		reviewRepository.save(review);
+	}
 }
