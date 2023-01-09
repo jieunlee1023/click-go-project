@@ -64,7 +64,6 @@ public class StoreController {
 		} else {
 			stores = storeService.findAllByStoreCategory(pageName, pageable);
 		}
-
 		List<Image> images = iImageRepository.findStoreImage();
 
 		model.addAttribute("images", images);

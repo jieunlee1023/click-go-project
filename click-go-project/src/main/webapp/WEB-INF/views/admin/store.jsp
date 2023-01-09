@@ -1,47 +1,53 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 
-
-
-<div class="container mb-5" id="">
-	<div class="d-flex justify-content-end">
-		<a id="btn--back" class="btn" href="./main">돌아가기</a>
+<br>
+<div class="container" id="">
+	<div id="view-more-title">
+		<div>
+			🌞 가맹점 관리 <a id="btn--back" class="btn" href="./main">돌아가기</a>
+		</div>
 	</div>
+	<hr>
+</div>
 
-	<div class="d-flex justify-content-center" id="">
-		<h1>가맹점 관리</h1>
-	</div>
-	<div class="d-flex justify-content-end">
-		<form action="/admin/store-search" method="get">
-			<input type="text" placeholder="검색어를입력해주세요" name="q" value="${q }" id="">
-			<button class="btn" type="submit">검색하기</button>
+<div class="container">
+
+	<div class="input-group mb-3 justify-content-end">
+		<form action="/admin/store-search" method="get" class="form-inline">
+			<input type="text" class="form-control" placeholder="USER 검색하기"
+				name="q" value="${q }">
+			<div class="input-group-append ml-2">
+				<button type="submit" class="btn" id="search--franchise">검색</button>
+			</div>
 		</form>
 	</div>
+
 
 	<div class="d-flex flex-column" id="admin-store-section">
 		<div class="table-responsive-sm">
 			<table class="table" id="answer-list-table">
 				<thead>
-					<tr>
-						<th>id</th>
-						<th>userid</th>
-						<th>storename</th>
-						<th>price</th>
-						<th>storeaddress</th>
-						<th>방개수</th>
+					<tr style="text-align: center;">
+						<th>가맹점 ID</th>
+						<th>이용자 ID</th>
+						<th>가맹점명</th>
+						<th>이용가격</th>
+						<th>주소</th>
+						<th>좌석수</th>
 						<th>전화번호</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="store" items="${stores.content }">
-						<tr>
+						<tr style="text-align: center;">
 							<td>${store.id }</td>
 							<td>${store.user.id }</td>
 							<td>${store.storeName }</td>
 							<td>${store.price }</td>
 							<td>${store.storeAddress }</td>
 							<td>${store.storeTotalRoomCount }</td>
-							<td style="width: 10%">${store.storeTEL }</td>
+							<td >${store.storeTEL }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -78,20 +84,6 @@
 <br>
 <br>
 <br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

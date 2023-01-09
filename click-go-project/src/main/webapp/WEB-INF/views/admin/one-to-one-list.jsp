@@ -1,33 +1,38 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 
 
-
-
-
-<div class="container mb-5">
-	<div id="answer-header">
-		<h1>1:1&nbsp;문의글&nbsp;목록</h1>
-
-		<div class="d-flex justify-content-end">
-			<a id="btn--back" class="btn" href="./main">돌아가기</a>
+<br>
+<div class="container" id="">
+	<div id="view-more-title">
+		<div>
+			👥 1:1 문의 <a id="btn--back" class="btn" href="./main">돌아가기</a>
 		</div>
-		<!-- 검색 -->
 	</div>
-	<br> <br>
+	<hr>
+</div>
 
-	<div class="d-flex justify-content-end m-5">
-		<form action="/admin/one-to-one-search" class="" method="get">
-			<input type="text" class="" placeholder="검색어를 입력하세요." name="q" value="${q }" id="board--search--input">
-			<button class="btn" id="board--search--btn" type="submit">검색</button>
+
+<div class="container">
+
+	<div class="input-group mb-3 justify-content-end">
+		<form action="/admin/one-to-one-search" method="get"
+			class="form-inline">
+			<input type="text" class="" placeholder="검색어를 입력하세요." name="q"
+				value="${q }" id="board--search--input">
+			<div class="input-group-append ml-2">
+				<button class="btn" id="board--search--btn" type="submit">검색</button>
+			</div>
 		</form>
 	</div>
+
 	<div id="answer-body">
 		<div class="d-flex flex-column">
 
 			<table class="table" id="answer-list-table">
 				<thead>
-					<tr>
+					<tr style="text-align: center;">
 						<th>문의접수번호</th>
 						<th>답변여부</th>
 						<th>제목</th>
@@ -37,7 +42,7 @@
 				</thead>
 				<tbody>
 					<c:forEach var="asklist" items="${askPage.content }">
-						<tr>
+						<tr style="text-align: center;">
 							<td>${asklist.id }</td>
 							<td>
 							<c:if test=""></c:if>
@@ -55,59 +60,37 @@
 	</div>
 
 
-
 	<div class="m-5">
-		<ul class="pagination justify-content-center" style="border-radius: 0px;">
+		<ul class="pagination justify-content-center"
+			style="border-radius: 0px;">
 			<c:set var="isDisabled" value="disabled"></c:set>
 			<c:set var="isNotDisabled" value=""></c:set>
-			<li class="page-item ${askPage.first ? isDisabled : isNotDisabled } "><a class="page-link" href="?page=${askPage.number - 1 }"
+			<li class="page-item ${askPage.first ? isDisabled : isNotDisabled } "><a
+				class="page-link" href="?page=${askPage.number - 1 }"
 				id="page--previous">이전</a></li>
 			<c:forEach var="num" items="${pageNumbers }">
 				<c:choose>
 					<c:when test="${nowPage eq num }">
-						<li class="page-item"><a class="page-link" href="?q=${q }&page=${num - 1 }" id="page--select">${num }</a></li>
+						<li class="page-item"><a class="page-link"
+							href="?q=${q }&page=${num - 1 }" id="page--select">${num }</a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="page-item"><a class="page-link" id="page--no--select" href="?q=${q }&page=${num - 1 }">${num }</a></li>
+						<li class="page-item"><a class="page-link"
+							id="page--no--select" href="?q=${q }&page=${num - 1 }">${num }</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
 
-			<li class="page-item ${askPage.last ? isDisabled : isNotDisabled }"><a class="page-link" href="?page=${askPage.number + 1 }" id="page--next">다음</a></li>
+			<li class="page-item ${askPage.last ? isDisabled : isNotDisabled }"><a
+				class="page-link" href="?page=${askPage.number + 1 }"
+				id="page--next">다음</a></li>
 
 		</ul>
 	</div>
 
 
-
-
-
-
-
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<br><br>
 
 
 <script src="/js/user.js"></script>

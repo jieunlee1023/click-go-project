@@ -71,15 +71,14 @@
 	<div class="btn-wrapper">
 		<div class="btn-wrapper__container">
 			<div class="btn-inner">
-				<a href="/admin/sales" class="mypage-btn"> <img
+				<a href="/admin/chart" class="mypage-btn"> <img
 					src="/image/mypage/sales.png" width="50px"> <br> <br>
-					<span>매출 관리</span> <br>
+					<span>통계 보기</span> <br>
 				</a>
 			</div>
 		</div>
 	</div>
 </div>
-
 <br>
 <br>
 <br>

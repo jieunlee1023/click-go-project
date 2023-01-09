@@ -51,5 +51,4 @@ public class OneToOneAskService {
 	public Page<OneToOneAsk> searchAsk(String q, Pageable pageable) {
 		return iOneToOneAskRepository.findByTitleContaining(q, pageable);
 	}
-
 }

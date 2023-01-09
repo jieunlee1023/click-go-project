@@ -19,10 +19,8 @@ public class ReviewService {
 	public Page<Review> findByuserId(User user, Pageable pageable) {
 		int userId = user.getId();
 		if (user.getRole() == RoleType.GEUST) {
-			System.out.println("손님");
 			return reviewRepository.findByUserId(userId, pageable);
 		} else {
-			System.out.println("사장님");
 			return reviewRepository.findByStoreUserId(userId, pageable);
 		}
 	}
