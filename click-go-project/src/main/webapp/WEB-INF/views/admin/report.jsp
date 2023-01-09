@@ -7,7 +7,10 @@
 <br>
 <div class="container" id="reservation">
 	<div id="view-more-title">
-		<div>🔔 전체 신고 내역</div>
+		<div>
+			🔔 전체 신고 내역 <a id="btn--back" class="btn" href="./main">돌아가기</a>
+		</div>
+
 	</div>
 	<hr>
 </div>

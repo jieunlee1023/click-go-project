@@ -81,7 +81,7 @@ let boardIndex = {
 					icon: 'success',
 					text: '게시글이 수정이 완료되었습니다.',
 				}).then(function() {
-					location.href = "/board/board-list";
+					location.href = "/board/list";
 				});
 			}
 		}).fail(function(error) {
@@ -101,7 +101,7 @@ let boardIndex = {
 					icon: 'success',
 					text: '게시글이 삭제가 완료되었습니다.',
 				}).then(function() {
-					location.href = "/board/board-list";
+					location.href = "/board/list";
 				});
 			}
 		}).fail(function(error) {

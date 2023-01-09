@@ -5,11 +5,11 @@
 <br>
 <div class="container" id="reservation">
 	<div id="view-more-title">
-		<div>👨‍💻 회원 관리</div>
+		<div>
+			👨‍💻 회원 관리 <a id="btn--back" class="btn" href="./main">돌아가기</a>
+		</div>
 	</div>
-	<hr>
 </div>
-
 
 <div class="container">
 	<div class="input-group mb-3 justify-content-end">
@@ -67,8 +67,8 @@
 									id="admin-user-report-btn-plus"
 									onclick="admin.plus(${user.id});">➕</button>
 								<c:if test="${user.reportCount  >= 5}">
-								<br>
-									<a href="#" style="color:red;">탈퇴시키기</a>
+									<br>
+									<a href="#" style="color: red;">탈퇴시키기</a>
 								</c:if>
 							</c:if></td>
 						<td>${user.point }</td>
@@ -79,39 +79,40 @@
 
 		<br> <br>
 
+
+
+		<br> <br>
+
 		<div class="d-flex justify-content-center">
 			<ul class="pagination" style="border-radius: 0px">
 				<c:set var="isDisabled" value="disabled"></c:set>
 				<c:set var="isNotDisabled" value=""></c:set>
 				<li class="page-item ${users.first ? isDisabled : isNotDisabled }"><a
-					class="page-link" href="?page=${users.number - 1 }">이전</a></li>
+					class="page-link" href="?page=${users.number - 1 }"
+					id="page--previous">이전</a></li>
 
 				<c:forEach var="num" items="${pageNumbers }">
 					<c:choose>
 						<c:when test="${nowPage eq num }">
 							<li class="psge-item"><a class="page-link"
-								href="?q=${q }&page=${num - 1 }">${num } </a></li>
+								href="?q=${q }&page=${num - 1 }" id="page--select">${num } </a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item"><a class="page-link"
-								href="?q=${q }&page=${num - 1 }">${num }</a></li>
+								id="page--no--select" href="?q=${q }&page=${num - 1 }">${num }</a></li>
 						</c:otherwise>
 					</c:choose>
 				</c:forEach>
 				<li class="page-item ${users.last ? isDisabled : isNotDisabled }"><a
-					class="page-link" href="?page=${users.number + 1 }">다음</a></li>
+					class="page-link" href="?page=${users.number + 1 }" id="page--next">다음</a></li>
 			</ul>
 
 		</div>
-
+		<script src="/js/admin.js"></script>
 	</div>
-	<script src="/js/admin.js"></script>
-</div>
-<br>
-<br>
+	<br>
+	</div>
 
-<script src="/js/user.js"></script>
+	<script src="/js/user.js"></script>
 
-<%@ include file="../layout/footer.jsp"%>
-
-
+	<%@ include file="../layout/footer.jsp"%>

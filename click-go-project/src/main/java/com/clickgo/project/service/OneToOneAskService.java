@@ -27,14 +27,13 @@ public class OneToOneAskService {
 		iOneToOneAskRepository.save(reqOneToOneAskEntity);
 	}
 
-
 	@Transactional
 	public OneToOneAsk oneToOneAskContent(int id) {
 		return iOneToOneAskRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("해당글 없음");
 		});
 	}
-	
+
 	@Transactional
 	public OneToOneAsk findByOneToOneAskId(int oneToOneAskId) {
 		return iOneToOneAskRepository.findById(oneToOneAskId).orElseThrow(() -> {
@@ -48,4 +47,8 @@ public class OneToOneAskService {
 		return iOneToOneAskRepository.findAll();
 	}
 
+	@Transactional
+	public Page<OneToOneAsk> searchAsk(String q, Pageable pageable) {
+		return iOneToOneAskRepository.findByTitleContaining(q, pageable);
+	}
 }
