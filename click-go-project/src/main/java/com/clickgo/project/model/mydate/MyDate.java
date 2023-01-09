@@ -34,4 +34,8 @@ public class MyDate {
 	public String getTime() {
 		return nowHour + ":" + nowMinutes;
 	}
+
+	public String getYearAndMonth() {
+		return nowYear + "-" + nowMonth;
+	}
 }
