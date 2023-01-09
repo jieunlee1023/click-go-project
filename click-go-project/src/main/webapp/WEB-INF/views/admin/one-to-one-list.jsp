@@ -2,32 +2,34 @@
 <%@ include file="../layout/header.jsp"%>
 
 
-
-
-
-<div class="container mb-5">
-	<div id="answer-header">
-		<h1>1:1&nbsp;문의글&nbsp;목록</h1>
-
-		<div class="d-flex justify-content-end">
-			<a id="btn--back" class="btn" href="./main">돌아가기</a>
+<br>
+<div class="container" id="">
+	<div id="view-more-title">
+		<div>
+			👥 1:1 문의 <a id="btn--back" class="btn" href="./main">돌아가기</a>
 		</div>
-		<!-- 검색 -->
 	</div>
-	<br> <br>
+	<hr>
+</div>
 
-	<div class="d-flex justify-content-end m-5">
-		<form action="/admin/one-to-one-search" class="" method="get">
+
+<div class="container">
+
+	<div class="input-group mb-3 justify-content-end">
+		<form action="/admin/one-to-one-search" method="get" class="form-inline">
 			<input type="text" class="" placeholder="검색어를 입력하세요." name="q" value="${q }" id="board--search--input">
-			<button class="btn" id="board--search--btn" type="submit">검색</button>
+			<div class="input-group-append ml-2">
+				<button class="btn" id="board--search--btn" type="submit">검색</button>
+			</div>
 		</form>
 	</div>
+
 	<div id="answer-body">
 		<div class="d-flex flex-column">
 
 			<table class="table" id="answer-list-table">
 				<thead>
-					<tr>
+					<tr style="text-align: center;">
 						<th>문의접수번호</th>
 						<th>답변여부</th>
 						<th>제목</th>
@@ -37,9 +39,12 @@
 				</thead>
 				<tbody>
 					<c:forEach var="asklist" items="${askPage.content }">
-						<tr>
+						<tr style="text-align: center;">
 							<td>${asklist.id }</td>
-							<td>답변여부</td>
+							<td><c:choose>
+									<c:when test="${asklist.answer eq '0'}">답변 대기</c:when>
+									<c:otherwise>답변 완료</c:otherwise>
+								</c:choose></td>
 							<td><a href="/admin/one-to-one-answer/${asklist.id}">${asklist.title }</a></td>
 							<td>${asklist.user.username }</td>
 							<td>${asklist.createDate }</td>
@@ -50,7 +55,6 @@
 		</div>
 		<div class="d-flex justify-content-center"></div>
 	</div>
-
 
 
 	<div class="m-5">
@@ -76,35 +80,9 @@
 	</div>
 
 
-
-
-
-
-
-
-
-
-
-
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<br>
+<br>
 
 
 <script src="/js/user.js"></script>

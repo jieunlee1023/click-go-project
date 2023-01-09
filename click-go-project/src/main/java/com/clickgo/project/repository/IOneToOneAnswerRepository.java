@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.clickgo.project.entity.OneToOneAnswer;
 
-public interface iOneToOneAnswerRepository extends JpaRepository<OneToOneAnswer, Integer>{
+public interface IOneToOneAnswerRepository extends JpaRepository<OneToOneAnswer, Integer>{
 
 }

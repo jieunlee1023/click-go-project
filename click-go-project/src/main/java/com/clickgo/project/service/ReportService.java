@@ -54,7 +54,6 @@ public class ReportService {
 		Report reportEntity = reportRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("존재하지 않는 신고글입니다.");
 		});
-		reportEntity.setApproveStatus(ApproveStatus.COMPLETED);
 		return reportEntity;
 	}
 

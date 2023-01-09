@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -30,7 +32,7 @@ public class OneToOneAsk {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(nullable = false)
 	private String title;
 
@@ -41,9 +43,12 @@ public class OneToOneAsk {
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private User user;
-	
+
 	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp createDate;
+
+	@Column(nullable = false)
+	private boolean answer;
 
 }

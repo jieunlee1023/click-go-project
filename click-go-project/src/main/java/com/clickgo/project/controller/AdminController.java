@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.OneToOneAnswer;
 import com.clickgo.project.entity.OneToOneAsk;
+import com.clickgo.project.entity.Report;
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
@@ -29,6 +30,7 @@ import com.clickgo.project.model.chart.MySales;
 import com.clickgo.project.model.chart.Sales;
 import com.clickgo.project.service.OneToOneAnswerService;
 import com.clickgo.project.service.OneToOneAskService;
+import com.clickgo.project.service.ReportReplyService;
 import com.clickgo.project.service.ReservationService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
@@ -56,12 +58,21 @@ public class AdminController {
 	private StoreFranchiseService franchiseService;
 
 	@Autowired
+	private ReportReplyService replyService;
+
+	@Autowired
 	private ReservationService reservationService;
 
 	@GetMapping("/main")
 	public String adminPage(Model model) {
 		franchiseMassageCount(model);
 		return "admin/main";
+	}
+
+	@GetMapping("/sales")
+	public String adminSales(Model model) {
+		franchiseMassageCount(model);
+		return "admin/sales";
 	}
 
 	@GetMapping("/chart")
@@ -87,17 +98,38 @@ public class AdminController {
 	public String adminreservation(Model model) {
 		List<Reservation> reservations = reservationService.findAll();
 		model.addAttribute("reservations", reservations);
+		franchiseMassageCount(model);
 		return "admin/reservation";
 	}
 
 	@GetMapping("/report")
-	public String adminReport() {
+	public String adminReport(Model model,
+			@PageableDefault(size = 50, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		Page<Report> reports = replyService.findAllReport(pageable);
+		if (reports != null) {
+
+			int PAGENATION_BLOCK_COUNT = 3;
+			int nowPage = reports.getNumber() + 1;
+			int startPage = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
+			int endPage = Math.min(nowPage + PAGENATION_BLOCK_COUNT, reports.getTotalPages());
+			List<Integer> pageNumbers = new ArrayList<>();
+
+			for (int i = startPage; i <= endPage; i++) {
+				pageNumbers.add(i);
+			}
+			model.addAttribute("reports", reports);
+			model.addAttribute("pageNumbers", pageNumbers);
+			model.addAttribute("nowPage", nowPage);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+		}
+		franchiseMassageCount(model);
 		return "admin/report";
 	}
 
 	@GetMapping({ "/user", "/user-search" })
 	public String adminUserInfo(@RequestParam(required = false) String q, Model model,
-			@PageableDefault(size = 10, sort = "id", direction = Direction.ASC) Pageable pageable) {
+			@PageableDefault(size = 20, sort = "id", direction = Direction.ASC) Pageable pageable) {
 
 		String searchUserInfo = q == null ? "" : q;
 		Page<User> users = userService.searchUserInfo(searchUserInfo, pageable);
@@ -164,6 +196,7 @@ public class AdminController {
 		String searchTitle = q == null ? "" : q;
 
 		Page<OneToOneAsk> askPage = oneToOneAskService.searchAsk(searchTitle, pageable);
+		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
 
 		int PAGENATION_BLOCK_COUNT = 10;
 
@@ -184,6 +217,8 @@ public class AdminController {
 		model.addAttribute("pageNumbers", pageNumbers);
 		model.addAttribute("q", searchTitle);
 
+		model.addAttribute("answerList", answerList);
+
 		return "admin/one-to-one-list";
 	}
 
@@ -201,12 +236,11 @@ public class AdminController {
 		return "admin/one-to-one-answer";
 	}
 
-	//
 	@PostMapping("/one-to-one-answer")
 	public String saveAnswer(@RequestParam int askId, OneToOneAnswer AnswerEntity,
 			@AuthenticationPrincipal PrincipalDetails details, Model model) {
 		OneToOneAsk askEntity = oneToOneAskService.findByOneToOneAskId(askId);
-		oneToOneAnswerService.writeAnswer(askEntity, AnswerEntity, details.getUser());
+		oneToOneAnswerService.writeAnswer(askId, askEntity, AnswerEntity, details.getUser());
 		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
 
 		int answerAdminId = AnswerEntity.getUser().getId();
