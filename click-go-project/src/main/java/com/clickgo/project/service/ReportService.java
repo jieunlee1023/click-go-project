@@ -61,7 +61,6 @@ public class ReportService {
 	public void saveToGEUST(Report report, Store store, User user) {
 		report.setStore(store);
 		report.setUser(user);
-		report.setReportType(ReportType.USER);
 		report.setApproveStatus(ApproveStatus.WATING);
 		reportRepository.save(report);
 	}
@@ -69,7 +68,6 @@ public class ReportService {
 	public void saveToSTORE(Report report, Store store, User user) {
 		report.setStore(store);
 		report.setUser(user);
-		report.setReportType(ReportType.STORE);
 		report.setApproveStatus(ApproveStatus.WATING);
 		reportRepository.save(report);
 	}

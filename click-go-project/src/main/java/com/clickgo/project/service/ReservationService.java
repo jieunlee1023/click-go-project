@@ -133,4 +133,8 @@ public class ReservationService {
 		MyDate myDate = new MyDate();
 		return reservationRepository.findAllGroupByCategoryIdWhenThisYear(myDate.getNowYear());
 	}
+
+	public List<Reservation> findAll() {
+		return reservationRepository.findAll();
+	}
 }

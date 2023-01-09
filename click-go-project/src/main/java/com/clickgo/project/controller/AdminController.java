@@ -84,7 +84,9 @@ public class AdminController {
 	}
 
 	@GetMapping("/reservation")
-	public String adminreservation() {
+	public String adminreservation(Model model) {
+		List<Reservation> reservations = reservationService.findAll();
+		model.addAttribute("reservations", reservations);
 		return "admin/reservation";
 	}
 
