@@ -27,4 +27,13 @@ public interface IReportRepository extends JpaRepository<Report, Integer> {
 								+ " AND reportType = 'STORE' "
 								, nativeQuery = true)
 	Page<Report> findByUserIdToSTORE(int id, Pageable pageable);
+
+	@Query(value = " SELECT r.* "
+								+ " FROM report AS r "
+								+ " JOIN store AS s "
+								+ " ON r.storeId = s.id "
+								+ " WHERE s.userId = ?1 "
+								+ " AND r.reportType = 'STORE' "
+								, nativeQuery = true)
+	Page<Report> findByStoreIdToSTORE(int userId, Pageable pageable);
 }

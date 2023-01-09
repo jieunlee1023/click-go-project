@@ -58,23 +58,19 @@
 		<ul class="pagination" style="border-radius: 0px">
 			<c:set var="isDisabled" value="disabled"></c:set>
 			<c:set var="isNotDisabled" value=""></c:set>
-			<li class="page-item ${users.first ? isDisabled : isNotDisabled }"><a class="page-link" href="?page=${users.number - 1 }"
-				style="color: white; background-color: #6478ff; border: none;">이전</a></li>
+			<li class="page-item ${users.first ? isDisabled : isNotDisabled }"><a class="page-link" href="?page=${users.number - 1 }" id="page--previous">이전</a></li>
 
 			<c:forEach var="num" items="${pageNumbers }">
 				<c:choose>
 					<c:when test="${nowPage eq num }">
-						<li class="psge-item"><a class="page-link" href="?q=${q }&page=${num - 1 }" style="color: white; background-color: #6478ff; border: none">${num }
-						</a></li>
+						<li class="psge-item"><a class="page-link" href="?q=${q }&page=${num - 1 }" id="page--select">${num } </a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="page-item"><a class="page-link" style="color: #96bbff; background-color: #6478ff; border: none;"
-							href="?q=${q }&page=${num - 1 }">${num }</a></li>
+						<li class="page-item"><a class="page-link" id="page--no--select" href="?q=${q }&page=${num - 1 }">${num }</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
-			<li class="page-item ${users.last ? isDisabled : isNotDisabled }"><a class="page-link" href="?page=${users.number + 1 }"
-				style="color: white; background-color: #6478ff; border: none;">다음</a></li>
+			<li class="page-item ${users.last ? isDisabled : isNotDisabled }"><a class="page-link" href="?page=${users.number + 1 }" id="page--next">다음</a></li>
 		</ul>
 
 	</div>

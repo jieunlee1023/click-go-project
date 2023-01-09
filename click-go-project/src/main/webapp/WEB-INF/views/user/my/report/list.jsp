@@ -27,7 +27,6 @@
 								<br> <br> <br>
 							</div>
 						</div>
-
 					</c:when>
 					
 					<c:otherwise>
@@ -59,7 +58,7 @@
 							<br>
 							<div class="d-flex-column">
 								<div class="m-4">
-									<a href="/report/report-list/1">내 가게가 받은 신고 내역 보기</a>
+									<a href="/report/list/1">내 가게가 받은 신고 내역 보기</a>
 								</div>
 							</div>
 						</div>
@@ -71,7 +70,7 @@
 							<br>
 							<div class="d-flex-column">
 								<div class="m-4">
-									<a href="/report/report-list/0">내가 보낸 신고 내역 보기</a>
+									<a href="/report/list/0">내가 보낸 신고 내역 보기</a>
 								</div>
 							</div>
 						</div>

@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+#star a {
+	text-decoration: none;
+	color: gray;
+}
+
+#star a.on {
+	color: yellow;
+}
