@@ -39,7 +39,10 @@
 					<c:forEach var="asklist" items="${askPage.content }">
 						<tr>
 							<td>${asklist.id }</td>
-							<td>답변여부</td>
+							<td>
+							<c:if test=""></c:if>
+							
+							</td>
 							<td><a href="/admin/one-to-one-answer/${asklist.id}">${asklist.title }</a></td>
 							<td>${asklist.user.username }</td>
 							<td>${asklist.createDate }</td>

@@ -30,7 +30,7 @@ public class OneToOneAsk {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Column(nullable = false)
 	private String title;
 
@@ -41,7 +41,10 @@ public class OneToOneAsk {
 	@ManyToOne
 	@JoinColumn(name = "userId")
 	private User user;
-	
+
+//	@Column(nullable = true)
+//	private OneToOneAnswer oneToOneAnswer;
+
 	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp createDate;
