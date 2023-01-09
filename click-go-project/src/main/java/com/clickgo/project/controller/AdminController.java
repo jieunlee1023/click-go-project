@@ -162,6 +162,7 @@ public class AdminController {
 		String searchTitle = q == null ? "" : q;
 
 		Page<OneToOneAsk> askPage = oneToOneAskService.searchAsk(searchTitle, pageable);
+
 		int PAGENATION_BLOCK_COUNT = 10;
 
 		int nowPage = askPage.getPageable().getPageNumber() + 1;
