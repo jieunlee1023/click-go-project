@@ -52,6 +52,5 @@
 			</c:otherwise>
 		</c:choose>
 	</div>
-	
 </div>
 <%@ include file="../../../layout/footer.jsp"%>

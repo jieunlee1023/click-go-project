@@ -32,6 +32,12 @@ public class ReportService {
 		return reportRepository.findByUserIdToSTORE(userId, pageable);
 	}
 
+	@Transactional
+	public Page<Report> findByStoreIdToSTORE(int userId, Pageable pageable) {
+		return reportRepository.findByStoreIdToSTORE(userId, pageable);
+	}
+
+	@Transactional
 	public Page<Report> findByUserIdToUSER(int id, Pageable pageable) {
 		return reportRepository.findByUserIdToUSER(id, pageable);
 	}
