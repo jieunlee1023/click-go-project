@@ -22,11 +22,11 @@
 }
 
 #franchise-btn {
-	display: inline-flex;
 	position: fixed;
 	float: right;
 	top: 0%;
 	right: 0%;
+	z-index: 999;
 }
 #main--item{
 	margin-top: 60px;

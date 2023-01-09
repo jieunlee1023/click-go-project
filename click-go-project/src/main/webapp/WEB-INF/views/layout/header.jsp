@@ -72,13 +72,16 @@
 </head>
 
 <body>
+
+
 	<div id="header">
 		<div class="container ">
 			<div id='wrapper'>
 
 				<div id="logo">
 
-					<a class="navbar-brand" href="/" style="color: black"> <img src="/image/logo.png" alt="click-go-logo" style="width: 150px"></a>
+					<a class="navbar-brand" href="/" style="color: black"> 
+					<img src="/image/logo.png" alt="click-go-logo" style="width: 200px"></a>
 
 				</div>
 			</div>
