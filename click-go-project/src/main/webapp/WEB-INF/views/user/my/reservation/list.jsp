@@ -46,9 +46,11 @@
 											style="margin-bottom: 5px; border: none; background-color: orange; color: white;">
 									</c:when>
 									<c:otherwise>
+										<br>
 										<input type="submit" id="status-${reservation.id}"
 											value="${reservation.approveStatus}" readonly
 											style="margin-bottom: 5px; border: none; background-color: red; color: white;">
+
 									</c:otherwise>
 
 								</c:choose>
@@ -135,9 +137,11 @@
 										</form>
 									</c:when>
 									<c:otherwise>
+										<br>
 										<input type="submit" id="status-${reservation.id}"
 											value="${reservation.approveStatus}" readonly
 											style="margin-bottom: 5px; border: none; background-color: red; color: white;">
+
 									</c:otherwise>
 
 								</c:choose>
