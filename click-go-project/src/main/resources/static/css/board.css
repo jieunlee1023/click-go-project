@@ -2,16 +2,21 @@
 
 /* 글쓰는 form */
 .board--save {
-	background-color: #6478ff;
-	color: white;
+	background-color: rgb(0, 0, 0, 0.5);
+	color: black;
 }
 
 .form-group-board>label {
-	color: white;
+	color: black;
 }
 
 .form-check-label {
-	color: white;
+	color: black;
+	margin-top: 5px;
+}
+
+#secret {
+	margin-top: 7px;
 }
 
 /*글 수정 form*/
@@ -26,36 +31,31 @@
 	margin-bottom: 15px;
 }
 
-#btn--write {
-	background-color: #6478ff;
-	color: white;
+#btn--write , #board--search--btn ,  #btn--save{
+	background-color: rgb(0, 0, 0, 0.1);
+	color: black;
 }
 
 #board--search--input {
 	border: none;
 	padding: 5px;
 	background-color: transparent;
-	border-bottom: 2px solid #6478ff;
+	border-bottom: 2px solid   rgb(0, 0, 0, 0.5);;
 }
 
 input::placeholder {
-	color: white;
+	color: rgb(0, 0, 0, 0.5);
 }
 
 input:focus {
 	outline: none;
 }
 
-#board--search--btn {
-	background-color: #6478ff;
-	color: white;
-}
-
 #board--list--main--title {
 	display: flex;
 	padding-top: 2px;
 	justify-content: space-around;
-	background-color: rgb(255, 255, 255, 0.6);
+	background-color: rgb(0, 0, 0, 0.05);
 	border-top-left-radius: 10px;
 	border-top-right-radius: 10px;
 }
@@ -64,7 +64,7 @@ input:focus {
 	font-weight: bold;
 	width: 150px;
 	text-align: center;
-	color: #6478ff;
+	color: black;
 	font-size: 18px;
 }
 
@@ -111,9 +111,9 @@ input:focus {
 }
 
 /* 글 디테일*/
-#btn--back, #btn--update,#btn--update--css, #btn--delete {
-	background-color: #6478ff;
-	color: white;
+#btn--back, #btn--update, #btn--update--css, #btn--delete {
+	background-color: rgb(0, 0, 0, 0.1);
+	color: black;
 	margin-right: 5px;
 }
 
@@ -124,11 +124,11 @@ input:focus {
 #board--deatil--title {
 	margin-top: 20px;
 	margin-bottom: 20px;
-	border-bottom: 1px dotted white;
+	border-bottom: 1px dotted black;
 }
 
 #board--deatil--content {
-	background-color: rgb(255, 255, 255, 0.5);
+	background-color: rgb(0, 0, 0, 0.05);
 	border-radius: 10px;
 	height: 300px;
 	padding: 20px;
@@ -153,12 +153,12 @@ input:focus {
 
 .board--detail--card {
 	border-radius: 0px;
-	background-color: rgb(255, 255, 255, 0.5);
+	background-color: rgb(0, 0, 0, 0.1);
 }
 
 #card--body {
 	border-radius: 0px;
-	background-color: rgb(255, 255, 255, 0.5);
+	background-color: rgb(0, 0, 0, 0.05);
 }
 
 .card-body {
@@ -166,8 +166,8 @@ input:focus {
 }
 
 #btn-reply-save {
-	color: white;
-	background-color: #6478ff;
+	color: black;
+	background-color: rgb(0, 0, 0, 0.2);
 	font-size: 11px;
 	border: none;
 	border-radius: 3px;
@@ -183,15 +183,9 @@ input:focus {
 	margin-left: 5px;
 }
 
-.board--list--main--main {
-	background-color: rgb(255, 255, 255, 0.3);
-}
+
 
 .card-header {
 	border-radius: 0px;
-	background-color: rgb(255, 255, 255, 0.5);
-}
-
-.card-block {
 	background-color: rgb(255, 255, 255, 0.5);
 }

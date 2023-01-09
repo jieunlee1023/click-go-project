@@ -15,7 +15,7 @@
 			<button type="button" id="btn--search-id" class="d-flex widt">아이디 찾기</button>
 		</div>
 		<br><br>
-		<hr width="300px;" color="white">
+		<hr>
 		<br><br>
 		<div id="search--text">[ 비밀번호 찾기 ]</div>
 			<br>

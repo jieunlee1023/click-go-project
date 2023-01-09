@@ -10,10 +10,13 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
+import lombok.ToString;
+
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonPropertyOrder({ "tid", "tms_result", "next_redirect_app_url", "next_redirect_mobile_url", "next_redirect_pc_url",
 		"android_app_scheme", "ios_app_scheme", "created_at" })
 @Generated("jsonschema2pojo")
+@ToString
 public class KakaoPaymentDto {
 
 	@JsonProperty("tid")

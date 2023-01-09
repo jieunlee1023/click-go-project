@@ -9,7 +9,6 @@
 		</div>
 		<br>
 
-		<hr>
 
 		<div class="d-flex justify-content-center">
 

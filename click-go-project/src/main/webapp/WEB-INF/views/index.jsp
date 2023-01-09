@@ -98,7 +98,7 @@
 			{
 				fixedElements: '#header-fixed',
 				licenseKey : 'gplv3-license',
-				sectionsColor : [ '#b4c8ff', '#b4c8ff', '#b4c8ff', '#b4c8ff','#b4c8ff','#b4c8ff'  ],
+				sectionsColor : [ '#fff', '#fff', '#fff', '#fff','#fff','#fff'  ],
 				navigation : true,
 				scrollingSpeed : 1000,
 

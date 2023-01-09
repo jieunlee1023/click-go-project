@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.clickgo.project.entity.LikeStore;
+import com.clickgo.project.entity.Store;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.repository.IWishListRepository;
 
 @Service
@@ -23,5 +25,12 @@ public class WishListService {
 		}
 		System.out.println("여기 들어옴 fucking");
 		return wishRepository.findByCategory(userId, kategory, pageable);
+	}
+
+	public void save(Store storeEntity, User userEntity) {
+		LikeStore likeStore = new LikeStore();
+		likeStore.setStore(storeEntity);
+		likeStore.setUser(userEntity);
+		wishRepository.save(likeStore);
 	}
 }

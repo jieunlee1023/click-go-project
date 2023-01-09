@@ -4,10 +4,15 @@ let index = {
 		let size = $("#reservation-size").val();
 		let address = $("#store-address").val();
 		let storeName = $("#store-name").val();
-		for (var i = 1; i <= size; i++) {
-			let id = $(`#reservation-id-${i}`).val();
-			$("#btn--approve-reservation-" + i).bind("click", () => {
-				this.approve(id);
+		for (let i = 0; i <= size; i++) {
+			$("#btn--approve-" + i).bind("click", () => {
+				this.approve(i);
+			});
+			$("#btn--reject-" + i).bind("click", () => {
+				this.reject(i);
+			});
+			$("#btn--report-" + i).bind("click", () => {
+				this.report(i);
 			});
 		};
 		addMap(address, storeName);
@@ -18,11 +23,37 @@ let index = {
 			type: 'GET',
 			url: `/api/reservation/approve/${id}`,
 		}).done(function(data) {
-			alert(data.body);
 			if (data.httpStatus) {
-				$(`#btn--approve-reservation-${id}`).remove();
-				$(`#btn--reject-reservation-${id}`).remove();
-				$(`#btn--reject-reservation-${id}`).remove();
+				alert(data.body);
+				$(`#btn--approve-${id}`).remove();
+				$(`#btn--reject-${id}`).remove();
+				$(`#status-${id}`).text('APPROVED');
+			}
+		}).fail(function(error) {
+			console.log(error);
+		});
+	},
+	reject: function(id) {
+		$.ajax({
+			type: 'GET',
+			url: `/api/reservation/reject/${id}`,
+		}).done(function(data) {
+			if (data.httpStatus) {
+				$(`#btn--approve-${id}`).remove();
+				$(`#btn--reject-${id}`).remove();
+			}
+			alert(data.body);
+		}).fail(function(error) {
+			console.log(error);
+		});
+	},
+	report: function(id) {
+		$.ajax({
+			type: 'GET',
+			url: `/api/report/${id}`,
+		}).done(function(data) {
+			if (data.httpStatus) {
+				alert(data.body);
 			}
 		}).fail(function(error) {
 			console.log(error);
@@ -70,6 +101,7 @@ function closeSeats(closeSeats) {
 		};
 	};
 };
+
 
 function addMap(storeAddress, storeName) {
 	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 

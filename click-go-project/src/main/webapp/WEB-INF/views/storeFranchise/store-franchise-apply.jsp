@@ -28,26 +28,27 @@
 				</div>
 			</div>
 
-
-
 			<div class="form-group ">
 				<label for="storeName" class="d-flex m-0" style="font-size: 13px">가맹점명</label>
 				<input type="text" class="form-control" id="storeName"
 					name="storeName" value="OX 피시방" required>
 			</div>
-			<div class="form-group ">
-				<label for="storeAddress" class="d-flex m-0" style="font-size: 13px">가맹점
-					주소</label> <input type="text" class="form-control" id="storeAddress"
-					style="border-radius: 0px" name="storeAddress" value="부산광역시 진구">
-			</div>
 
+			<label for="storeAddress" class="d-flex m-0" style="font-size: 13px">가맹점 주소</label> 
+			<input type="text" class="form-control" id="postcode"style="border-radius: 0px" placeholder="우편번호"> 
+			<input type="button" class="form-control" onclick="index.searchAddress()" value="우편번호 찾기"> 
+				<br>
+			<input type="text" class="form-control" id="roadAddress" style="border-radius: 0px" placeholder="도로명주소" name="storeAddress"> 
+				<input type="text" class="form-control" id="jibunAddress" style="border-radius: 0px" placeholder="지번주소"> 
+				 <input type="text" class="form-control" id="detailAddress" style="border-radius: 0px"placeholder="손님들이 방문하기 위해 상세주소를 입력해주세요 !!">
+<span id="guide" style="color:#999;display:none"></span>
+			<br>
 			<div class="form-group ">
 				<label for="storeTotalRoomCount" class="d-flex m-0"
 					style="font-size: 13px">가맹점 총 자릿 수</label> <input type="text"
 					class="form-control" id="storeTotalRoomCount"
 					style="border-radius: 0px" name="storeTotalRoomCount" value="63">
 			</div>
-
 			<div class="form-group ">
 				<label for="storeTEL" class="d-flex m-0" style="font-size: 13px">가맹점
 					번호</label> <input type="text" class="form-control" id="storeTEL"
@@ -115,8 +116,6 @@
 	$(function() {
 		$('[data-toggle="tooltip"]').tooltip()
 	});
-		
-
 </script>
 
 
