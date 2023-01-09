@@ -2,17 +2,17 @@
 <%@ include file="../layout/header.jsp"%>
 
 
+<br>
+<div class="container" id="">
+	<div id="view-more-title">
+		<div>
+			👤 1:1 문의 답변 <a id="btn--back" class="btn" href="./main">돌아가기</a>
+		</div>
+	</div>
+	<hr>
+</div>
 
 <div class="container">
-	<div id="answer-header">
-		<h1>1:1 문의 답변 페이지&nbsp;📌</h1>
-	</div>
-	<div class="d-flex justify-content-end">
-		<a id="btn--back" class="btn" href="../one-to-one-list">돌아가기</a>
-	</div>
-	<br> <br> <br> <br>
-
-
 	<div class="d-flex flex-column border">
 		<form action="/admin/one-to-one-answer" method="post">
 			<input type="hidden" value="${askEntity.id}" name="askId"> <input type="hidden" value="${principal.user.id }" name="userId">

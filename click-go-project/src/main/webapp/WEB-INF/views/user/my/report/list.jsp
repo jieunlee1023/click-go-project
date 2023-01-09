@@ -6,10 +6,7 @@
 	<div id="view-more-title">
 		<div>🔔 신고 내역</div>
 	</div>
-	<hr>
 </div>
-
-
 
 
 <c:choose>
@@ -29,31 +26,47 @@
 				</c:when>
 
 				<c:otherwise>
-					<div class="container">
-						<div class="d-flex border-bottom" id="report--header">
-							<div id="report--number">번호</div>
-							<div id="report--title">제목</div>
-							<div id="report--storeName">가맹점명</div>
-							<div id="report--status">관리자 댓글</div>
-						</div>
-						<c:forEach var="report" items="${reports.content}">
-							<div class="d-flex  border-bottom" id="report--list">
-								<div id="report--number">${report.id}</div>
-								<a id="report--title" href="/report/detail/${report.id}">
-									${report.title} </a>
-								<div id="report--storeName">${report.store.storeName}</div>
-								<c:choose>
-									<c:when test="${report.approveStatus eq 'COMPLETED'}">
-										<div style="color: grey;" id="report--status">${report.approveStatus}</div>
-									</c:when>
-									<c:otherwise>
-										<div style="color: orange;" id="report--status">${report.approveStatus}</div>
-									</c:otherwise>
-								</c:choose>
 
-							</div>
-						</c:forEach>
+
+					<div class="container">
+						<table class="table" id="answer-list-table">
+							<thead>
+								<tr style="text-align: center;">
+									<th>고유번호</th>
+									<th>제목</th>
+									<th>가맹점명</th>
+									<th>관리자 댓글</th>
+								</tr>
+							</thead>
+							<tbody>
+
+								<c:forEach var="report" items="${reports.content}">
+									<tr style="text-align: center;">
+										<td><p>${report.id}</p></td>
+										<td><p>
+												<a id="report--title" href="/report/detail/${report.id}">
+													${report.title} </a>
+											</p></td>
+										<td><p>${report.store.storeName}</p></td>
+										<c:choose>
+											<c:when test="${report.approveStatus eq 'COMPLETED'}">
+
+												<td style="color: grey;" id="report--status"><p>${report.approveStatus}</p></td>
+											</c:when>
+											<c:otherwise>
+												<td style="color: orange;" id="report--status"><p>${report.approveStatus}</p></td>
+											</c:otherwise>
+										</c:choose>
+
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
 					</div>
+
+
+
+
 				</c:otherwise>
 			</c:choose>
 		</div>
@@ -84,31 +97,42 @@
 			</c:when>
 			<c:otherwise>
 				<div class="container">
-					<div class="d-flex border-bottom" id="report--header">
-						<div id="report--number">번호</div>
-						<div id="report--title">제목</div>
-						<div id="report--storeName">신고</div>
-						<div id="report--status">관리자 댓글</div>
-					</div>
-					<c:forEach var="report" items="${reports.content}">
-						<div class="d-flex  border-bottom" id="report--list">
-							<div id="report--number">${report.id}</div>
-							<a id="report--title" href="/report/detail/${report.id}">
-								${report.title} </a>
-							<div id="report--storeName">${report.user.username}</div>
-							<c:choose>
-								<c:when test="${report.approveStatus eq 'COMPLETED'}">
-									<div style="color: grey;" id="report--status">${report.approveStatus}</div>
-								</c:when>
-								<c:otherwise>
-									<div style="color: orange;" id="report--status">${report.approveStatus}</div>
-								</c:otherwise>
-							</c:choose>
+					<table class="table" id="answer-list-table">
+						<thead>
+							<tr style="text-align: center;">
+								<th>고유번호</th>
+								<th>제목</th>
+								<th>가맹점명</th>
+								<th>관리자 댓글</th>
+							</tr>
+						</thead>
+						<tbody>
 
-						</div>
-					</c:forEach>
 
+							<c:forEach var="report" items="${reports.content}">
+								<tr style="text-align: center;">
+									<td><p>${report.id}</p></td>
+									<td><p>
+											<a id="report--title" href="/report/detail/${report.id}">
+												${report.title} </a>
+										</p></td>
+									<td><p>${report.store.storeName}</p></td>
+									<c:choose>
+										<c:when test="${report.approveStatus eq 'COMPLETED'}">
+
+											<td style="color: grey;" id="report--status"><p>${report.approveStatus}</p></td>
+										</c:when>
+										<c:otherwise>
+											<td style="color: orange;" id="report--status"><p>${report.approveStatus}</p></td>
+										</c:otherwise>
+									</c:choose>
+
+								</tr>
+							</c:forEach>
+						</tbody>
+					</table>
 				</div>
+
 			</c:otherwise>
 		</c:choose>
 	</c:otherwise>
