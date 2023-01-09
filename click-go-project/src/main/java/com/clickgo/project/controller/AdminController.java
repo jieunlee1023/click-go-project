@@ -19,13 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.entity.OneOnOne;
-import com.clickgo.project.entity.OneOnOneAnswer;
+import com.clickgo.project.entity.OneToOneAsk;
+import com.clickgo.project.entity.OneToOneAnswer;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
-import com.clickgo.project.service.OneOnOneAnswerService;
-import com.clickgo.project.service.OneOnOneService;
+import com.clickgo.project.service.OneToOneAnswerService;
+import com.clickgo.project.service.OneToOneAskService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 import com.clickgo.project.service.UserService;
@@ -41,10 +41,10 @@ public class AdminController {
 	private StoreService storeService;
 
 	@Autowired
-	private OneOnOneService oneOnOneService;
+	private OneToOneAskService oneToOneAskService;
 
 	@Autowired
-	private OneOnOneAnswerService oneOnOneAnswerService;
+	private OneToOneAnswerService oneToOneAnswerService;
 
 	@Autowired
 	private StoreFranchiseService franchiseService;
@@ -134,43 +134,43 @@ public class AdminController {
 
 	}
 
-	@GetMapping("/answer-list")
+	@GetMapping("/one-to-one-list")
 	public String oneOnOneAsk(Model model) {
-		List<OneOnOne> ooos = oneOnOneService.getOooList();
-		model.addAttribute("ooos", ooos);
-		return "admin/answer-list";
+		List<OneToOneAsk> askList = oneToOneAskService.getOneToOneAskList();
+		model.addAttribute("askList", askList);
+		return "admin/one-to-one-list";
 	}
 
 	// s w
-	@GetMapping("/one-on-one-answer/{id}")
-	public String showAnswer(@PathVariable int id, Model model) {
+	@GetMapping("/one-to-one-answer/{id}")
+	public String showOnToOneAnswer(@PathVariable int id, Model model) {
 
-		List<OneOnOne> oooList = oneOnOneService.getOooList();
-		List<OneOnOneAnswer> oooaList = oneOnOneAnswerService.getAnswerList();
-		OneOnOne oneOnOneEntity = oneOnOneService.findById(id);
-		model.addAttribute("ooo", oneOnOneEntity);
-		model.addAttribute("oooList", oooList);
-		model.addAttribute("oooaList", oooaList);
+		List<OneToOneAsk> askList = oneToOneAskService.getOneToOneAskList();
+		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
+		OneToOneAsk askEntity = oneToOneAskService.findByOneToOneAskId(id);
 
-		return "admin/one-on-one-answer";
+		model.addAttribute("askEntity", askEntity);
+		model.addAttribute("askList", askList);
+		model.addAttribute("answerList", answerList);
+		return "admin/one-to-one-answer";
 	}
 
 	//
-	@PostMapping("/one-on-one-answer")
-	public String saveAnswer(@RequestParam int oooId, OneOnOneAnswer oooAnswer,
+	@PostMapping("/one-to-one-answer")
+	public String saveAnswer(@RequestParam int askId, OneToOneAnswer AnswerEntity,
 			@AuthenticationPrincipal PrincipalDetails details, Model model) {
-		OneOnOne oneOnOneEntity = oneOnOneService.findById(oooId);
-		oneOnOneAnswerService.writeAnswer(oneOnOneEntity, oooAnswer, details.getUser());
+		OneToOneAsk askEntity = oneToOneAskService.findByOneToOneAskId(askId);
+		oneToOneAnswerService.writeAnswer(askEntity, AnswerEntity, details.getUser());
+		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
 
-		int adminId = oooAnswer.getUser().getId();
-		String adminContent = oooAnswer.getContent();
+		int answerAdminId = AnswerEntity.getUser().getId();
+		String answerContent = AnswerEntity.getContent();
 
-		List<OneOnOneAnswer> answerList = oneOnOneAnswerService.getAnswerList();
-		model.addAttribute("adminId", adminId);
-		model.addAttribute("adminContent", adminContent);
+		model.addAttribute("answerAdminId", answerAdminId);
+		model.addAttribute("answerContent", answerContent);
 		model.addAttribute("answerList", answerList);
 
-		return "redirect:/admin/answer-list";
+		return "redirect:/admin/one-to-one-list";
 	}
 
 	public void franchiseMassageCount(Model model) {

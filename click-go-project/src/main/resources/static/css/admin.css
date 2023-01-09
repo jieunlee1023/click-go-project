@@ -22,3 +22,36 @@
 #list-body-heart>div>p {
 	text-align: center;
 }
+
+#answer-list-table>tbody>tr>td {
+	color: gray;
+	width: 10px;
+	max-width: 10px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	height: 20px;
+}
+
+#answer-list-table>tbody>tr>td>a {
+	text-decoration: none;
+	color: gray;
+}
+
+#answer-box {
+	margin: 100px;
+	display: block;
+	color: black;
+	width: 700px;
+	font-size: 20px;
+	font-weight: bolder !important;
+	text-overflow: ellipsis;
+	white-space: normal;
+	line-height: 1.2;
+	/*        height: 4.8em;*/
+	text-align: left;
+	word-wrap: break-word;
+	display: -webkit-box;
+	/*        -webkit-line-clamp: 3 ;*/
+	-webkit-box-orient: vertical;
+}

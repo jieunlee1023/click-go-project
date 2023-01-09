@@ -25,7 +25,7 @@ import lombok.ToString;
 @Builder
 @Entity
 @ToString
-public class OneOnOne {
+public class OneToOneAsk {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

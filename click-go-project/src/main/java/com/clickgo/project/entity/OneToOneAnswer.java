@@ -25,14 +25,14 @@ import lombok.ToString;
 @Builder
 @Entity
 @ToString
-public class OneOnOneAnswer {
+public class OneToOneAnswer {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	@Lob
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String content;
 	
 	@ManyToOne
@@ -44,7 +44,7 @@ public class OneOnOneAnswer {
 	private Timestamp createDate;
 	
 	@ManyToOne
-	@JoinColumn(name = "oooId")
-	private OneOnOne ooo;
+	@JoinColumn(name = "oneToOneAskId")
+	private OneToOneAsk oneToOneAsk;
 	
 }

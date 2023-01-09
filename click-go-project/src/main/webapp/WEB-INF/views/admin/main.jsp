@@ -49,7 +49,7 @@
 	<div class="btn-wrapper">
 		<div class="btn-wrapper__container">
 			<div class="btn-inner">
-				<a href="/admin/answer-list" class="mypage-btn"> <img
+				<a href="/admin/one-to-one-list" class="mypage-btn"> <img
 					src="/image/mypage/review.png" width="50px"> <br> <br>
 					<span>1:1 문의</span> <br>
 				</a>
