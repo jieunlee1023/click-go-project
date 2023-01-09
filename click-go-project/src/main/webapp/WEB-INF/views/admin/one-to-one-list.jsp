@@ -5,7 +5,7 @@
 
 
 
-<div class="container">
+<div class="container mb-5">
 	<div id="answer-header">
 		<h1>1:1&nbsp;문의글&nbsp;목록</h1>
 	</div>
@@ -13,6 +13,7 @@
 		<a id="btn--back" class="btn" href="./main">돌아가기</a>
 	</div>
 	<br> <br> <br> <br>
+
 	<div id="answer-body">
 		<div class="d-flex flex-column">
 

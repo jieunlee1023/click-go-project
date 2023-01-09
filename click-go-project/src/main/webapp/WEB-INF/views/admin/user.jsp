@@ -27,7 +27,6 @@
 				<thead>
 					<tr>
 						<th>고유번호</th>
-						<th>답변여부</th>
 						<th>유저네임</th>
 						<th>전화번호</th>
 						<th>e-mail</th>
@@ -38,7 +37,6 @@
 					<c:forEach var="user" items="${users.content }">
 						<tr>
 							<td><p>${user.id }</p></td>
-							<td><p>답변여부</p></td>
 							<td><p class="" style="width: 200px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${user.username }</p></td>
 							<td><p>${user.phoneNumber }</p></td>
 							<td><p>${user.email }</p></td>
