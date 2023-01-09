@@ -1,6 +1,5 @@
 package com.clickgo.project.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +12,13 @@ import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.ApproveStatus;
 import com.clickgo.project.model.enums.RoleType;
+import com.clickgo.project.model.mydate.MyDate;
 import com.clickgo.project.repository.IReservationRepository;
 
 @Service
 public class ReservationService {
+
+	private int sales;
 
 	@Autowired
 	private IReservationRepository reservationRepository;
@@ -80,5 +82,55 @@ public class ReservationService {
 
 	public List<Reservation> findByStoreIdAndNotReject(int storeId) {
 		return reservationRepository.findByStoreIdAndNotReject(storeId);
+	}
+
+	public int findTodaySalesByStoreId(int storeId) {
+		MyDate myDate = new MyDate();
+		sales = 0;
+		List<Reservation> reservations = reservationRepository.findTodaySalesByStoreId(storeId, myDate.getToday());
+		reservations.forEach(reservation -> {
+			sales += reservation.getPrice();
+		});
+		return sales;
+	}
+
+	public int findMonthSalesByStoreId(int storeId) {
+		MyDate myDate = new MyDate();
+		sales = 0;
+		List<Reservation> reservations = reservationRepository.findMonthSalesByStoreId(storeId,
+				myDate.getYearAndMonth());
+		reservations.forEach(reservation -> {
+			sales += reservation.getPrice();
+		});
+		return sales;
+	}
+
+	public int findYearSalesByStoreId(int storeId) {
+		MyDate myDate = new MyDate();
+		sales = 0;
+		List<Reservation> reservations = reservationRepository.findYearSalesByStoreId(storeId, myDate.getNowYear());
+		reservations.forEach(reservation -> {
+			sales += reservation.getPrice();
+		});
+		return sales;
+	}
+
+	public List<Reservation> findAllOfMonthNotReject() {
+		return reservationRepository.findAllOfMonthNotReject();
+	}
+
+	public List<Reservation> findAllGroupByCategoryIdWhenToday() {
+		MyDate myDate = new MyDate();
+		return reservationRepository.findAllGroupByCategoryIdWhenToday(myDate.getToday());
+	}
+
+	public List<Reservation> findAllGroupByCategoryIdWhenThisMonth() {
+		MyDate myDate = new MyDate();
+		return reservationRepository.findAllGroupByCategoryIdWhenThisMonth(myDate.getYearAndMonth());
+	}
+
+	public List<Reservation> findAllGroupByCategoryIdWhenThisYear() {
+		MyDate myDate = new MyDate();
+		return reservationRepository.findAllGroupByCategoryIdWhenThisYear(myDate.getNowYear());
 	}
 }
