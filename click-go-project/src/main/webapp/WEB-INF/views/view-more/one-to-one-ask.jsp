@@ -3,6 +3,7 @@
 
 
 <div class="container" id="terms" style="height: 100vh">
+
 	<div id="view-more-title">
 		<div>📝 1:1 문의</div>
 	</div>
