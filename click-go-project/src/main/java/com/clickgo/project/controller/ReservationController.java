@@ -1,5 +1,6 @@
 package com.clickgo.project.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -8,33 +9,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.dto.res.kakaoPay.KakaoPaymentDto;
-import com.clickgo.project.dto.res.kakaoPay.KakaoPaymentHistory;
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.model.enums.ApproveStatus;
-import com.clickgo.project.model.enums.PaymentType;
-import com.clickgo.project.service.AmountService;
-import com.clickgo.project.service.KakaoPaymentHistoryService;
 import com.clickgo.project.service.ReservationService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
@@ -43,21 +31,11 @@ import com.clickgo.project.service.StoreService;
 @RequestMapping("/reservation")
 public class ReservationController {
 
-	private String partnerOrderId;
-	private String partnerUserId;
-	private String tId;
-
 	@Autowired
 	private ReservationService reservationService;
 
 	@Autowired
 	private StoreService storeService;
-
-	@Autowired
-	private KakaoPaymentHistoryService kakaoPaymentHistoryService;
-
-	@Autowired
-	private AmountService amountService;
 
 	@Autowired
 	private StoreFranchiseService franchiseService;
@@ -66,7 +44,7 @@ public class ReservationController {
 	public String reservation(@RequestParam(required = false) String paymentType,
 			@RequestParam(required = false) Integer[] seatNumber, @PathVariable int storeId,
 			@RequestParam String startTime, @RequestParam String endTime, @RequestParam String startDate,
-			@RequestParam String endDate, @AuthenticationPrincipal PrincipalDetails principalDetails)
+			@RequestParam String endDate, @AuthenticationPrincipal PrincipalDetails principalDetails, Model model)
 			throws InterruptedException {
 		Store storeEntity = storeService.findById(storeId);
 		int endHour = 0;
@@ -113,6 +91,7 @@ public class ReservationController {
 			}
 		}
 
+		List<Reservation> reservations = new ArrayList<>();
 		if (seatNumber != null) {
 			for (int i = 0; i < seatNumber.length; i++) {
 				reservationEntity = new Reservation();
@@ -154,16 +133,12 @@ public class ReservationController {
 				reservationEntity.setEndTime(endHour + ":" + endMinute);
 				reservationEntity.setReservationDate(startYear + "-" + startMonth + "-" + startDay);
 				reservationEntity.setEndDate(endYear + "-" + endMonth + "-" + endDay);
-				// 카카오 페이 결제
-				reservationService.save(reservationEntity);
+				reservations.add(reservationEntity);
+				model.addAttribute("reservationEntity", reservationEntity);
 			}
-			if (paymentType.equals(PaymentType.KAKAO.toString())) {
-				reservationEntity.setPaymentType(PaymentType.KAKAO);
-				return kakaoPayReady(reservationEntity, storeEntity, seatNumber);
-			} else if (paymentType.equals(PaymentType.NAVER.toString())) {
-
-			}
-			return "redirect:/store/detail/" + storeId;
+			model.addAttribute("reservations", reservations);
+			model.addAttribute("store", storeEntity);
+			return "/store/payment";
 		}
 		return "redirect:/store/detail/" + storeId;
 	}
@@ -173,80 +148,12 @@ public class ReservationController {
 			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Page<Reservation> reservations = reservationService.searchBoard(principalDetails.getUser(), pageable);
-
-		franchiseMassageCount(model);
-		model.addAttribute("reservations", reservations);
+		if (reservations.getContent().get(0) != null) {
+			franchiseMassageCount(model);
+			model.addAttribute("lastId", reservations.getContent().get(0).getId());
+			model.addAttribute("reservations", reservations);
+		}
 		return "/user/my/reservation/list";
-	}
-
-	public String kakaoPayReady(Reservation reservation, Store storeEntity, Integer[] seatNumber) {
-		Object objOrderId = reservation.getId();
-		partnerOrderId = objOrderId.toString();
-
-		Object objUserId = storeEntity.getId();
-		partnerUserId = objUserId.toString();
-
-		String itemName = storeEntity.getCategory().getId().toString();
-
-		Object objQuantity = seatNumber.length;
-		String quantity = objQuantity.toString();
-
-		Object objTotalPrice = (reservation.getPrice() * seatNumber.length);
-		String totalPrice = objTotalPrice.toString();
-
-		Object test = storeEntity.getId();
-		String storeId = test.toString();
-
-		RestTemplate restTemplate = new RestTemplate();
-		HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.add("Authorization", "KakaoAK 1c9e66dbc0a2e55b9b2e3016e90a8b17");
-		httpHeaders.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-
-		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-		params.add("cid", "TC0ONETIME");
-		params.add("partner_order_id", partnerOrderId);
-		params.add("partner_user_id", partnerUserId);
-		params.add("item_name", itemName);
-		params.add("quantity", quantity);
-		params.add("total_amount", totalPrice);
-		params.add("tax_free_amount", "50");
-		params.add("approval_url", "http://localhost:7777/reservation/approve/kakao");
-		params.add("cancel_url", "http://localhost:7777/reservation/cancel/" + seatNumber.length);
-		params.add("fail_url", "http://localhost:7777/reservation/cancel/" + seatNumber.length);
-
-		HttpEntity<MultiValueMap<String, String>> requestKakao = new HttpEntity<>(params, httpHeaders);
-
-		ResponseEntity<KakaoPaymentDto> responseKakao = restTemplate.exchange("https://kapi.kakao.com/v1/payment/ready",
-				HttpMethod.POST, requestKakao, KakaoPaymentDto.class);
-		KakaoPaymentDto kakaoPaymentDto = responseKakao.getBody();
-
-		tId = kakaoPaymentDto.tid;
-		return "redirect:" + kakaoPaymentDto.nextRedirectPcUrl;
-	}
-
-	@GetMapping("/approve/kakao")
-	@ResponseBody
-	private String kakaoPayApprove(@RequestParam(name = "pg_token") String pgToken) {
-		RestTemplate restTemplate = new RestTemplate();
-		HttpHeaders httpHeaders = new HttpHeaders();
-		httpHeaders.add("Authorization", "KakaoAK 1c9e66dbc0a2e55b9b2e3016e90a8b17");
-		httpHeaders.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-
-		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
-		params.add("cid", "TC0ONETIME");
-		params.add("tid", tId);
-		params.add("partner_order_id", partnerOrderId);
-		params.add("partner_user_id", partnerUserId);
-		params.add("pg_token", pgToken);
-
-		HttpEntity<MultiValueMap<String, String>> requestKakao = new HttpEntity<>(params, httpHeaders);
-
-		ResponseEntity<KakaoPaymentHistory> responseKakao = restTemplate.exchange(
-				"https://kapi.kakao.com/v1/payment/approve", HttpMethod.POST, requestKakao, KakaoPaymentHistory.class);
-
-		amountService.save(responseKakao.getBody().getAmount());
-		kakaoPaymentHistoryService.save(responseKakao.getBody());
-		return "redirect:/reservations/list";
 	}
 
 	@GetMapping("/cancel/{seatNumber}")

@@ -34,10 +34,11 @@ public class UserService {
 		});
 		return 1;
 	}
+
 	@Transactional
 	public boolean signUp(User user) {
 		try {
-			if(user.getLoginType() == null) {
+			if (user.getLoginType() == null) {
 				user.setLoginType(LoginType.CLICKGO);
 			}
 			String rawPw = encoder.encode(user.getPassword());
@@ -171,6 +172,10 @@ public class UserService {
 		// TODO Auto-generated method stub
 		return userRepository.findByUsernameContaining(q, pageable);
 	}
-	
-	
+
+	public User findById(int id) {
+		return userRepository.findById(id).orElseThrow(() -> {
+			return new IllegalArgumentException("찾으시는 유저가 존재하지 않습니다.");
+		});
+	}
 }

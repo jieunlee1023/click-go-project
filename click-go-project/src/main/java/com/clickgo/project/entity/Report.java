@@ -54,18 +54,11 @@ public class Report {
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId")
-	@JsonBackReference
 	private User user;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId")
-	@JsonBackReference
 	private Store store;
-
-	@Column(nullable = false)
-	@OneToMany(mappedBy = "report", fetch = FetchType.LAZY, cascade = CascadeType.REMOVE)
-	@JsonIgnoreProperties
-	private List<ReportReply> reportReply;
 
 	@Enumerated(EnumType.STRING)
 	private ApproveStatus approveStatus;

@@ -28,7 +28,7 @@
 				<div class="form-group ">
 					<label for="password" class="d-flex m-0">비밀번호</label> <input
 						type="password" class="form-control" id="password" name="password"
-						value="11111" required>
+						value="asd123!!" required>
 				</div>
 				<br>
 				<div class="form-control d-flex justify-content-center"
@@ -54,14 +54,14 @@
 				?response_type=code
 				&client_id=BvSSlS3rTAUDe0wev5Qa&state=<%=state%>
 				&redirect_uri=<%=redirectURI%>">
-					<img alt="네이버로그인" src="/image/naver_login.png" width="70"
+					<img class="login--img" alt="네이버로그인" src="/image/naver_login.png" width="70"
 					height="70">
 				</a> <a class="d-flex m-2"
 					href="https://kauth.kakao.com/oauth/authorize
 				?client_id=cfa26e4df221d547437be19dcc30de42
 				&redirect_uri=http://localhost:7777/auth/kakao/callback
 				&response_type=code">
-					<img alt="카카오로그인" src="/image/kakao_login.png" width="70"
+					<img class="login--img" alt="카카오로그인" src="/image/kakao_login.png" width="70"
 					height="70">
 				</a> <a class="d-flex m-2"
 					href="https://accounts.google.com/o/oauth2/v2/auth
@@ -69,7 +69,7 @@
 						&redirect_uri=http://localhost:7777/api/google/callback
 						&response_type=code
 						&scope=https://www.googleapis.com/auth/userinfo.profile">
-					<img alt="구글로그인" src="/image/google_login.png" width="70"
+					<img class="login--img" alt="구글로그인" src="/image/google_login.png" width="70"
 					height="70">
 				</a>
 			</div>

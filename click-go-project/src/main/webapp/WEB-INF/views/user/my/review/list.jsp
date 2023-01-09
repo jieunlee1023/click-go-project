@@ -22,7 +22,7 @@
 							<div id="franchise--none">
 								<br>
 								<div>현재 작성하신 리뷰가 존재하지 않습니다.</div>
-								<span style="color: #6478ff; font-size: 15px;">"${principal.user.username}""님의
+								<span style="color: black; font-size: 15px;">"${principal.user.username}""님의
 									리뷰는 click-go와 가맹점 개선에 큰 힘이 됩니다</span> <br> <br> <br> <br>
 							</div>
 						</div>
@@ -61,7 +61,7 @@
 							<div id="franchise--none">
 								<br>
 								<div>현재 작성하신 리뷰가 존재하지 않습니다.</div>
-								<span style="color: #6478ff; font-size: 15px;"> click-go는
+								<span style="color: black; font-size: 15px;"> click-go는
 									가맹점주님의 성공을 위해 최선을 다 할 것입니다.</span> <br> <br> <br> <br>
 							</div>
 						</div>

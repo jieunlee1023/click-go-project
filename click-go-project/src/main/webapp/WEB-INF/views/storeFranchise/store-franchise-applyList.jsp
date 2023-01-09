@@ -87,7 +87,7 @@
 							</div>
 							<div style="width: 100px; height: 50px;">${msg.applyDate}</div>
 							<div
-								style="width: 100px; height: 50px; text-align: center; color: yellow;">
+								style="width: 100px; height: 50px; text-align: center; color: orange;">
 								<p>${msg.state}</p>
 							</div>
 							<small style="width: 100px; height: 50px;">${msg.rejectReason}</small>

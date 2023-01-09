@@ -19,11 +19,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Report;
 import com.clickgo.project.entity.ReportReply;
+import com.clickgo.project.entity.Reservation;
+import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.service.ReportReplyService;
 import com.clickgo.project.service.ReportService;
+import com.clickgo.project.service.ReservationService;
 import com.clickgo.project.service.StoreFranchiseService;
+import com.clickgo.project.service.StoreService;
+import com.clickgo.project.service.UserService;
 
 @Controller
 @RequestMapping("/report")
@@ -38,17 +44,29 @@ public class ReportController {
 	@Autowired
 	private ReportReplyService reportReplyService;
 
-		@GetMapping("/report-list/{myList}")
-		public String reportList(Model model,
-				@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable,
-				@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable(required = false) int myList) {
+	@Autowired
+	private ReservationService reservationService;
+
+	@Autowired
+	private StoreService storeService;
+
+	@Autowired
+	private UserService userService;
+
+	@GetMapping("/list/{myList}")
+	public String reportList(Model model,
+			@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable(required = false) int myList) {
 		Page<Report> reports = null;
 		if (principalDetails.getUser().getRole().equals(RoleType.GEUST)) {
-			reports = reportService.findByUserIdToUSER(principalDetails.getUser().getId(), pageable);
+			System.out.println("유저가 가게에 한 신고");
+			reports = reportService.findByUserIdToSTORE(principalDetails.getUser().getId(), pageable);
 		} else if (principalDetails.getUser().getRole().equals(RoleType.HOST)) {
 			if (myList == 1) {
+				System.out.println("가게가 한 신고");
 				reports = reportService.findByUserIdToUSER(principalDetails.getUser().getId(), pageable);
 			} else {
+				System.out.println("유저가  한 신고");
 				reports = reportService.findByUserIdToSTORE(principalDetails.getUser().getId(), pageable);
 			}
 		}
@@ -71,39 +89,36 @@ public class ReportController {
 			model.addAttribute("startPage", startPage);
 			model.addAttribute("endPage", endPage);
 		}
-		System.out.println(reports.getContent());
 		franchiseMassageCount(model);
 		return "/user/my/report/list";
 	}
 
-	@GetMapping("/detail/{id}")
-	public String reportDetail(@PathVariable int id, @AuthenticationPrincipal PrincipalDetails principalDetails,
-			Model model) {
-		System.out.println(id);
-		System.out.println(principalDetails.getUser().getId());
-		Report reportEntity = reportService.findByIdAndUserId(id);
-		ReportReply reportReplyEntity = reportReplyService.findByReportId(reportEntity.getId());
-		if (reportReplyEntity != null) {
-			reportService.findById(reportEntity.getId());
-		}
-		model.addAttribute("report", reportEntity);
-		model.addAttribute("reportReply", reportReplyEntity);
+	@GetMapping("/{reservationId}")
+	public String reportDetail(@PathVariable int reservationId,
+			@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
+		Reservation reservationEntity = reservationService.findById(reservationId);
+		RoleType role = principalDetails.getUser().getRole();
+		Store storeEntity = storeService.findById(reservationEntity.getStore().getId());
+		User userEntity = userService.findById(reservationEntity.getUser().getId());
+		model.addAttribute("store", storeEntity);
+		model.addAttribute("user", userEntity);
+		model.addAttribute("reservationId", reservationEntity.getId());
+		model.addAttribute("role", role);
 		franchiseMassageCount(model);
-		return "user/my/report/detail";
+		return "user/my/report/save-form";
 	}
 
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
 		model.addAttribute("message", franchiseMessages);
-		
 
 		List<StoreFranchise> allMsg = franchiseService.getMessageList();
-		franchiseMessages.forEach(t->{
+		franchiseMessages.forEach(t -> {
 			if (t.getState().toString().equals("WAIT")) {
 				allMsg.add(t);
 			}
 		});
-		int waitMsg = allMsg.size()-franchiseMessages.size();
+		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
 
 	}

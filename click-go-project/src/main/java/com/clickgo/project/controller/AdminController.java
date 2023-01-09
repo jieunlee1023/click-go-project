@@ -8,18 +8,24 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.clickgo.project.entity.OneOnOne;
+import com.clickgo.project.auth.PrincipalDetails;
+import com.clickgo.project.entity.OneToOneAsk;
+import com.clickgo.project.entity.OneToOneAnswer;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
-import com.clickgo.project.service.OneOnOneService;
+import com.clickgo.project.service.OneToOneAnswerService;
+import com.clickgo.project.service.OneToOneAskService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 import com.clickgo.project.service.UserService;
@@ -35,34 +41,36 @@ public class AdminController {
 	private StoreService storeService;
 
 	@Autowired
-	private OneOnOneService oneOnOneService;
+	private OneToOneAskService oneToOneAskService;
+
+	@Autowired
+	private OneToOneAnswerService oneToOneAnswerService;
 
 	@Autowired
 	private StoreFranchiseService franchiseService;
 
-	@GetMapping("/admin-main")
+	@GetMapping("/main")
 	public String adminPage(Model model) {
 		franchiseMassageCount(model);
-		return "admin/admin-main";
-
+		return "admin/main";
 	}
 
-	@GetMapping("/admin-sales")
+	@GetMapping("/sales")
 	public String adminSales() {
-		return "admin/admin-sales";
+		return "admin/sales";
 	}
 
-	@GetMapping("/admin-reservation")
+	@GetMapping("/reservation")
 	public String adminreservation() {
-		return "admin/admin-reservation";
+		return "admin/reservation";
 	}
 
-	@GetMapping("/admin-report")
+	@GetMapping("/report")
 	public String adminReport() {
-		return "admin/admin-report";
+		return "admin/report";
 	}
 
-	@GetMapping({ "/admin-user", "/user-search" })
+	@GetMapping({ "/user", "/user-search" })
 	public String adminUserInfo(@RequestParam(required = false) String q, Model model,
 			@PageableDefault(size = 10, sort = "id", direction = Direction.ASC) Pageable pageable) {
 
@@ -90,10 +98,10 @@ public class AdminController {
 		model.addAttribute("q", searchUserInfo);
 
 		franchiseMassageCount(model);
-		return "admin/admin-user";
+		return "admin/user";
 	}
 
-	@GetMapping({ "/admin-store", "/store-search" })
+	@GetMapping({ "/store", "/store-search" })
 	public String adminStoreInfo(@RequestParam(required = false) String q, Model model,
 			@PageableDefault(size = 3, sort = "id", direction = Direction.ASC) Pageable pageable) {
 		String searchStoreName = q == null ? "" : q;
@@ -122,12 +130,47 @@ public class AdminController {
 
 		franchiseMassageCount(model);
 
-		return "admin/admin-store";
+		return "admin/store";
+
 	}
 
-	@GetMapping()
-	public String oneOnOneAsk() {
-		return "admin/admin-answer";
+	@GetMapping("/one-to-one-list")
+	public String oneOnOneAsk(Model model) {
+		List<OneToOneAsk> askList = oneToOneAskService.getOneToOneAskList();
+		model.addAttribute("askList", askList);
+		return "admin/one-to-one-list";
+	}
+
+	// s w
+	@GetMapping("/one-to-one-answer/{id}")
+	public String showOnToOneAnswer(@PathVariable int id, Model model) {
+
+		List<OneToOneAsk> askList = oneToOneAskService.getOneToOneAskList();
+		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
+		OneToOneAsk askEntity = oneToOneAskService.findByOneToOneAskId(id);
+
+		model.addAttribute("askEntity", askEntity);
+		model.addAttribute("askList", askList);
+		model.addAttribute("answerList", answerList);
+		return "admin/one-to-one-answer";
+	}
+
+	//
+	@PostMapping("/one-to-one-answer")
+	public String saveAnswer(@RequestParam int askId, OneToOneAnswer AnswerEntity,
+			@AuthenticationPrincipal PrincipalDetails details, Model model) {
+		OneToOneAsk askEntity = oneToOneAskService.findByOneToOneAskId(askId);
+		oneToOneAnswerService.writeAnswer(askEntity, AnswerEntity, details.getUser());
+		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
+
+		int answerAdminId = AnswerEntity.getUser().getId();
+		String answerContent = AnswerEntity.getContent();
+
+		model.addAttribute("answerAdminId", answerAdminId);
+		model.addAttribute("answerContent", answerContent);
+		model.addAttribute("answerList", answerList);
+
+		return "redirect:/admin/one-to-one-list";
 	}
 
 	public void franchiseMassageCount(Model model) {

@@ -1,17 +1,18 @@
 package com.clickgo.project.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.RequestUpdateFileDto;
@@ -22,6 +23,7 @@ import com.clickgo.project.service.StoreService;
 
 @Controller
 @RequestMapping("/care-store")
+@CrossOrigin
 public class CareStoreController {
 
 	@Autowired
@@ -34,6 +36,10 @@ public class CareStoreController {
 	public String careStroeList(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
 		List<Store> stores = storeService.findAllByUserId(principalDetails.getUser().getId());
 		model.addAttribute("stores", stores);
+
+		List<Image> image = imageRepository.findAll();
+		model.addAttribute("images", image);
+
 		return "/user/my/care-store/list";
 	}
 
@@ -51,12 +57,14 @@ public class CareStoreController {
 	}
 
 	@PostMapping("/detail/update")
-	@ResponseBody
-	public String updateCareStoreDetail(MultipartHttpServletRequest files, 
-			RequestUpdateFileDto fileDto, 
-			Store store,
+	public String updateCareStoreDetail(RequestUpdateFileDto fileDto, Store store,
 			@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
-		storeService.update(files,fileDto, store, principalDetails.getUser().getId());
+
+		try {
+			storeService.update(fileDto, store, principalDetails.getUser().getId());
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 		List<Image> image = imageRepository.findAll();
 
 		model.addAttribute("images", image);
