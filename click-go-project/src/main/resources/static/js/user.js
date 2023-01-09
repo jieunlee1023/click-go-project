@@ -1,4 +1,3 @@
-
 let index = {
 	init: function() {
 		$("#btn--save").bind("click", () => {

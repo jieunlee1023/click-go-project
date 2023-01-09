@@ -27,8 +27,15 @@
 		<c:when test="${role eq 'HOST'}">
 			<br>
 			<div class="form-group-board">
-				<label for="username">가맹점명</label> <input type="text" name="username"
+				<label for="username">가맹점명</label> 
+				<input type="text" name="username"
 					id="username" class="form-control" value="${store.storeName}"
+					readonly="readonly">
+			</div>
+			<div class="form-group-board">
+				<label for="username">신고할 대상</label> 
+				<input type="text" name="username"
+					id="username" class="form-control" value="${store.user.username}"
 					readonly="readonly">
 			</div>
 			<div class="form-group-board">
@@ -73,7 +80,7 @@
 	$('.content').summernote({
 		placeholder : '내용을 입력해주세요',
 		tabsize : 2,
-		height : 300,
+		height : 400,
 	});
 </script>
 

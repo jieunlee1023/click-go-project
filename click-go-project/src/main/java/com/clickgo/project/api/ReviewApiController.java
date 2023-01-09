@@ -31,20 +31,7 @@ public class ReviewApiController {
 	@Autowired
 	private StoreService storeService;
 
-	@PostMapping("/save/{storeId}")
-	public ResponseDto<?> save(@RequestBody Review review, @PathVariable int storeId,
-			@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		try {
-			Store storeEntity = storeService.findById(storeId);
-			review.setStore(storeEntity);
-			review.setUser(principalDetails.getUser());
-			reviewService.save(review);
-			return new ResponseDto<>(true, "작성 되었습니다.");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return new ResponseDto<>(false, "작성에 실패하였습니다.");
-	}
+
 
 	@PostMapping("/reply/save/{id}")
 	public ResponseDto<?> saveReviewReply(@PathVariable int id, @RequestBody ReviewReply reviewReply,

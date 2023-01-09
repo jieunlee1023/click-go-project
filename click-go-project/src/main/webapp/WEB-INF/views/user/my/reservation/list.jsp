@@ -28,7 +28,6 @@
 							<div class="d-flex justify-content-between">
 								<h2 class="" style="font-weight: bold; position: absolute;">🎮
 									${reservation.store.storeName}</h2>
-								<br>
 							</div>
 							<div style="text-align: right;">
 								<c:choose>
@@ -36,12 +35,16 @@
 										<input type="submit" id="status-${reservation.id}"
 											value="${reservation.approveStatus}" readonly
 											style="margin-bottom: 5px; border: none; background-color: blue; color: white;">
+										<div class="d-flex justify-content-end">
 										<form action="/report/${reservation.id}">
-											<input type="submit" value="가게 신고하기">
+											<input type="submit" value="⛔" 
+											style="border: none; background-color: transparent;">
 										</form>
 										<form action="/review/${reservation.store.id}">
-											<input type="submit" value="리뷰 작성하기">
+											<input type="submit" value="📝" 
+											style="border: none; background-color: transparent;">
 										</form>
+										</div>
 									</c:when>
 									<c:when test="${reservation.approveStatus eq  'WATING'}">
 										<input type="submit" id="status-${reservation.id}"
@@ -121,7 +124,8 @@
 											value="${reservation.approveStatus}" readonly
 											style="margin-bottom: 5px; border: none; background-color: blue; color: white;">
 										<form action="/report/${reservation.id}">
-											<input type="submit" value="손님 신고하기">
+											<input type="submit" value="⛔"
+											style="border: none; background-color: transparent;">
 										</form>
 									</c:when>
 									<c:when test="${reservation.approveStatus eq  'WATING'}">

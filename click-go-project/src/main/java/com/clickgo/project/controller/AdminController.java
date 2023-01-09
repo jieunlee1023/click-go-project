@@ -14,18 +14,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
-import com.clickgo.project.entity.OneToOneAsk;
 import com.clickgo.project.entity.OneToOneAnswer;
+import com.clickgo.project.entity.OneToOneAsk;
+import com.clickgo.project.entity.Report;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
+import com.clickgo.project.repository.IReportRepository;
 import com.clickgo.project.service.OneToOneAnswerService;
 import com.clickgo.project.service.OneToOneAskService;
+import com.clickgo.project.service.ReportReplyService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 import com.clickgo.project.service.UserService;
@@ -49,6 +51,9 @@ public class AdminController {
 	@Autowired
 	private StoreFranchiseService franchiseService;
 
+	@Autowired
+	private ReportReplyService replyService;
+
 	@GetMapping("/main")
 	public String adminPage(Model model) {
 		franchiseMassageCount(model);
@@ -56,23 +61,45 @@ public class AdminController {
 	}
 
 	@GetMapping("/sales")
-	public String adminSales() {
+	public String adminSales(Model model) {
+		franchiseMassageCount(model);
 		return "admin/sales";
 	}
 
 	@GetMapping("/reservation")
-	public String adminreservation() {
+	public String adminreservation(Model model) {
+		franchiseMassageCount(model);
 		return "admin/reservation";
 	}
 
 	@GetMapping("/report")
-	public String adminReport() {
+	public String adminReport(Model model,
+			@PageableDefault(size = 50, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		Page<Report> reports = replyService.findAllReport(pageable);
+		if (reports != null) {
+
+			int PAGENATION_BLOCK_COUNT = 3;
+			int nowPage = reports.getNumber() + 1;
+			int startPage = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
+			int endPage = Math.min(nowPage + PAGENATION_BLOCK_COUNT, reports.getTotalPages());
+			List<Integer> pageNumbers = new ArrayList<>();
+
+			for (int i = startPage; i <= endPage; i++) {
+				pageNumbers.add(i);
+			}
+			model.addAttribute("reports", reports);
+			model.addAttribute("pageNumbers", pageNumbers);
+			model.addAttribute("nowPage", nowPage);
+			model.addAttribute("startPage", startPage);
+			model.addAttribute("endPage", endPage);
+		}
+		franchiseMassageCount(model);
 		return "admin/report";
 	}
 
 	@GetMapping({ "/user", "/user-search" })
 	public String adminUserInfo(@RequestParam(required = false) String q, Model model,
-			@PageableDefault(size = 10, sort = "id", direction = Direction.ASC) Pageable pageable) {
+			@PageableDefault(size = 20, sort = "id", direction = Direction.ASC) Pageable pageable) {
 
 		String searchUserInfo = q == null ? "" : q;
 //		Page<User> users = userService.getUserList(pageable);

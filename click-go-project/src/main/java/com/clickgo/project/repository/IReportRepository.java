@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.clickgo.project.entity.Report;
+import com.clickgo.project.entity.ReportReply;
 
 public interface IReportRepository extends JpaRepository<Report, Integer> {
 
@@ -36,4 +37,5 @@ public interface IReportRepository extends JpaRepository<Report, Integer> {
 								+ " AND r.reportType = 'STORE' "
 								, nativeQuery = true)
 	Page<Report> findByStoreIdToSTORE(int userId, Pageable pageable);
+
 }
