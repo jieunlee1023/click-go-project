@@ -85,20 +85,6 @@ public class ViewMoreController {
 		return "view-more/one-to-one-ask";
 	}
 
-//	// AdminController ->    showOnToOneAnswer == showAnswer
-// 	@GetMapping("/one-to-one-ask/{id}")
-//	public String showAnswer(@PathVariable int id, Model model) {
-//		
-//		List<OneToOneAsk> oneToOneAskList = oneToOneAskService.getOneToOneAskList();
-//		List<OneToOneAnswer>oneToOneAnswerList = oneToOneAnswerService.getAnswerList();
-//		
-//		OneToOneAsk oneToOneAskEntity = oneToOneAskService.findByOneToOneAskId(id);
-//		model.addAttribute("oneToOneAskEntity", oneToOneAskEntity);
-//		model.addAttribute("oneToOneAskList", oneToOneAskList);
-//		model.addAttribute("oneToOneAnswerList", oneToOneAnswerList);
-//		return "admin/one-on-one-answer";
-//	}
-
 	// s w
 	@PostMapping("/one-to-one-ask/save")
 	public String oneToOneWrite(OneToOneAsk reqOneToOneAsk, @AuthenticationPrincipal PrincipalDetails principalDetails,

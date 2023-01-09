@@ -46,7 +46,14 @@
 										<a style="text-decoration: none; color: gray;" href="/admin/one-to-one-answer/${askList.id }">${askList.title }</a>
 									</div>
 									<div class="col d-flex justify-content-center">
-										<span>답변여부</span>
+										<span>
+											<c:choose>
+												<c:when test="${askList.answer eq '0' }">
+													답변 대기
+												</c:when>
+												<c:otherwise>답변 완료</c:otherwise>
+											</c:choose>
+										</span>
 									</div>
 									<div class="col">
 										<span>${askList.createDate }</span>
