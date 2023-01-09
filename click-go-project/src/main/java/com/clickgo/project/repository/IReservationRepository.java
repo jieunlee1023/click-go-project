@@ -1,7 +1,6 @@
 package com.clickgo.project.repository;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import com.clickgo.project.entity.Reservation;
 
 public interface IReservationRepository extends JpaRepository<Reservation, Integer> {
+	
 
 	@Query(value = " SELECT "
 								+ " * "
@@ -43,12 +43,17 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 									, nativeQuery = true)
 	public int findLastPK();
 	
+	@Query(value = " SELECT A.* "
+			+ " FROM reservation AS A "
+			+ " JOIN store AS S "
+			+ " ON S.id = A.storeId "
+			+ " WHERE S.id = :id "
+			+ " AND approveStatus = 'APPROVED' "
+			, nativeQuery = true)
+	public List<Reservation> findByStoreIdAndApprove(@Param("id") int storeId);
 	
 	
-	@Query(value = " SELECT s.storeName, SUM(r.price )FROM store AS s "
-			+ " JOIN reservation AS r "
-			+ " ON s.id = r.storeId "
-			+ " GROUP BY storeName ")
-	Page<Reservation> findBySales(Pageable pageable);
+	
+	 
 }
 

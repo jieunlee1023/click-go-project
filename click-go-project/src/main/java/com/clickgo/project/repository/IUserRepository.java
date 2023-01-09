@@ -21,7 +21,6 @@ public interface IUserRepository extends JpaRepository<User, Integer> {
 	@Query(value = " select * from user where username = ?1 and email = ?2 ", nativeQuery = true)
 	Optional<User> findByPassword(String username, String email);
 
-	// 승원
 	Page<User> findByUsernameContaining(String q, Pageable pageable);
 
 	

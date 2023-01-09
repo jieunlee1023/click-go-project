@@ -1,6 +1,5 @@
 package com.clickgo.project.service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,6 +45,11 @@ public class ReservationService {
 	}
 
 	@Transactional
+	public List<Reservation> findByStoreIdAndApprove(int storeId) {
+		return reservationRepository.findByStoreIdAndApprove(storeId);
+	}
+
+	@Transactional
 	public void approve(int id) {
 		Reservation reservationEntity = reservationRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("시도하시려는 예약이 존재하지 않습니다.");
@@ -63,9 +67,5 @@ public class ReservationService {
 		reservationRepository.deleteById(cancelReservation);
 	}
 	
-	// 매출 통계
-	@Transactional
-	public Page<Reservation> salesReport(Pageable pageable) {
-		return reservationRepository.findBySales(pageable);
-	}
+
 }

@@ -38,7 +38,7 @@ public class StoreService {
 
 	@Value("${phoneNumber.key}")
 	private String phoneNumber;
-	
+
 	@Value("${storeImageFile.path}")
 	private String storeImageFile;
 
@@ -65,29 +65,28 @@ public class StoreService {
 			return new IllegalArgumentException("수정하시려는 가맹점을 찾을 수 없습니다.");
 		});
 
-		//File updateFile = new File(storeImageFile);
-		Iterator<String> iterator = files.getFileNames(); 
+		// File updateFile = new File(storeImageFile);
+		Iterator<String> iterator = files.getFileNames();
 		MultipartFile multipartFile = null;
 		while (iterator.hasNext()) {
 			String uploadFileName = iterator.next();
-			multipartFile= files.getFile(uploadFileName);
+			multipartFile = files.getFile(uploadFileName);
 			String originalFilename = multipartFile.getOriginalFilename();
-			System.out.println("originalFilename>>>"+originalFilename);
+			System.out.println("originalFilename>>>" + originalFilename);
 			UUID uuid = UUID.randomUUID();
-			
+
 			String StoreImageFilename = uuid + "_" + originalFilename;
 			Path StoreImageLicenseFilePath = Paths.get(storeImageFile + StoreImageFilename);
-			
+
 			try {
 				Files.write(StoreImageLicenseFilePath, originalFilename.getBytes());
 				Image image = fileDto.toEntitiy(StoreImageFilename, storeEntity);
 				imageRepository.save(image);
-				
+
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		
 
 		if (storeEntity.getUser().getId() == userId) {
 			storeEntity.setStoreTEL(store.getStoreTEL());
@@ -109,6 +108,10 @@ public class StoreService {
 	@Transactional
 	public Page<Store> searchStoreList(String q, Pageable pageable) {
 		return storeRepository.findByStoreNameContaining(q, pageable);
+	}
+
+	public List<Store> findAll() {
+		return storeRepository.findAll();
 	}
 
 }
