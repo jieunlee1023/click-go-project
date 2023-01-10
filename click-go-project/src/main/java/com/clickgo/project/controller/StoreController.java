@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.Image;
+import com.clickgo.project.entity.Review;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
@@ -29,6 +30,7 @@ import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.repository.IImageRepository;
 import com.clickgo.project.repository.IStoreRepository;
 import com.clickgo.project.service.CategoryService;
+import com.clickgo.project.service.ReviewService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 
@@ -48,8 +50,11 @@ public class StoreController {
 	private CategoryService categoryService;
 
 	@Autowired
+	private ReviewService reviewService;
+
+	@Autowired
 	private IImageRepository iImageRepository;
-	
+
 	@Autowired
 	private IStoreRepository iStoreRepository;
 
@@ -78,10 +83,11 @@ public class StoreController {
 		return "store/store-main";
 	}
 
-	@GetMapping("/detail/{id}")
-	public String detail(@PathVariable int id, Model model,
+	@GetMapping("/detail/{storeId}")
+	public String detail(@PathVariable int storeId, Model model,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		Store storeEntity = storeService.findById(id);
+		Store storeEntity = storeService.findById(storeId);
+		List<Review> reviewList = reviewService.findByStoreId(storeEntity.getId());
 		// 비로그인 회원 접속 시 임시 RoleType을 GEUST로 지정
 		if (principalDetails == null) {
 			principalDetails = new PrincipalDetails(new User().builder().role(RoleType.GEUST).build());
@@ -90,7 +96,7 @@ public class StoreController {
 		originLayout(totalRoomCount, model);
 		getNowDateAndTime(model);
 		RoleType role = principalDetails.getUser().getRole();
-
+		
 		model.addAttribute("store", storeEntity);
 		model.addAttribute("role", role);
 		List<Store> storeList = iStoreRepository.findAll();
@@ -101,6 +107,7 @@ public class StoreController {
 			}
 			model.addAttribute("images", image);
 		}
+		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("storeList", storeList);
 		return "/store/detail";
 	}

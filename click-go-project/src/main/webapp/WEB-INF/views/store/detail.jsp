@@ -56,8 +56,8 @@
 								</c:when>
 
 							</c:choose>
-							<span style="color: red; font-size: 40px; margin-left: 10px;" 
-									onclick="wishList.like();" id="store--wish--like">♡</span>
+							<span style="color: red; font-size: 40px; margin-left: 10px;"
+								onclick="wishList.like();" id="store--wish--like">♡</span>
 							<c:if test="${store.user.id eq principal.user.id}">
 								<div class="store-detail-update">
 									<a href="/care-store/update/${store.id}">수정하기</a>
@@ -156,6 +156,20 @@
 <br>
 <br>
 <div style="background-color: blue; height: 250px;">리뷰 목록</div>
+<c:forEach var="review" items="${reviewList }">
+	<tr style="text-align: center;">
+		별점
+		<c:choose>
+			<c:when test="${review.starScore eq '1' }">⭐</c:when>
+			<c:when test="${review.starScore eq '2' }">⭐⭐</c:when>
+			<c:when test="${review.starScore eq '3' }">⭐⭐⭐</c:when>
+			<c:when test="${review.starScore eq '4' }">⭐⭐⭐⭐</c:when>
+			<c:when test="${review.starScore eq '5' }">⭐⭐⭐⭐⭐</c:when>
+		</c:choose>
+		<td><p>${review.content}</p></td>
+		<td style="color: grey;" id="report--status"><p>${review.user.username}님</p></td>
+	</tr>
+</c:forEach>
 <div style="background-color: red;">
 	<div>이런곳은 어때요?</div>
 	<c:forEach var="storeListItem" items="${storeList }">
@@ -204,14 +218,13 @@
 			scrollbar : true,
 		});
 	});
-	
-	let wishList ={
-			like : function(){
-				alert('하트눌러짐');
-				$("#store--wish--like").html("♥");
-			}
-		};
 
+	let wishList = {
+		like : function() {
+			alert('하트눌러짐');
+			$("#store--wish--like").html("♥");
+		}
+	};
 </script>
 
 <script type="text/javascript" src="/js/store.js"></script>
