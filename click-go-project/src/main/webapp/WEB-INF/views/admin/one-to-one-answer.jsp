@@ -6,7 +6,14 @@
 <div class="container mb-5" id="">
 	<div id="view-more-title">
 		<div>
-			👤 1:1 문의 답변 <a id="btn--back" class="btn" href="/admin/one-to-one-list">돌아가기</a>
+			<c:choose>
+				<c:when test="${principal.user.role eq 'ADMIN' }">
+				👤 1:1 문의 답변 <a id="btn--back" class="btn" href="/admin/one-to-one-list">돌아가기</a>
+				</c:when>
+				<c:otherwise>
+					<button class="btn" id="btn--back" onclick="history.back();">돌아가기</button>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	<hr>
@@ -15,7 +22,7 @@
 
 
 <form action="/admin/one-to-one-answer" method="post">
-	<input type="hidden" value="${askEntity.id}" name="askId"> <input type="hidden" value="${principal.user.id }" name="userId">
+	<input type="hidden" value="${askEntity.id}" name="askId" required="required"> <input type="hidden" value="${principal.user.id }" name="userId" required="required">
 	<div class="container">
 		<div class="card">
 			<div class="card-header bg-light text-dark">
@@ -53,7 +60,7 @@
 	<div class="container">
 		<c:if test="${principal.user.role eq 'ADMIN' }">
 			<div class="d-flex flex-column border">
-				<textarea name="content" rows="5" cols="10"></textarea>
+				<textarea name="content" rows="5" cols="10" required="required"></textarea>
 				<div class="d-flex justify-content-center">
 					<button type="submit" id="btn" class="btn">답변하기</button>
 				</div>
@@ -72,7 +79,7 @@
 					<span>문의번호 : ${askEntity.id }</span> <span>문의자 : ${askEntity.user.username }</span>
 					<hr>
 					<div>
-						<h5 class="d-flex justify-content-center">${askEntity.title }&nbsp;의 대한 답변</h5>
+						<h5 class="d-flex justify-content-center">${askEntity.title }&nbsp;의대한답변</h5>
 					</div>
 				</div>
 			</div>

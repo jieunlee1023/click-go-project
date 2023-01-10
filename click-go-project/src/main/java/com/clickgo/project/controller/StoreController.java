@@ -49,31 +49,39 @@ public class StoreController {
 
 	@Autowired
 	private IImageRepository iImageRepository;
-	
+
 	@Autowired
 	private IStoreRepository iStoreRepository;
 
 	private Page<Store> stores;
 
-	@GetMapping("/main")
+	@GetMapping({ "/main", "/search" })
 	public String store(@RequestParam(required = false) String pageName, Model model,
 			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable) {
+
+		String searchStoreName = pageName == null ? "" : pageName;
+
 		List<StoreCategory> categories = new ArrayList<>();
 		List<Category> categoryEntitys = categoryService.findAll();
 		categoryEntitys.forEach(t -> {
 			categories.add(t.getId());
 		});
+
 		if (pageName == null) {
 			stores = storeService.getStoreAllList(pageable);
 		} else {
 			stores = storeService.findAllByStoreCategory(pageName, pageable);
 		}
+
 		List<Image> images = iImageRepository.findStoreImage();
 
 		model.addAttribute("images", images);
 		model.addAttribute("nowPage", pageName);
 		model.addAttribute("categories", categories);
 		model.addAttribute("stores", stores);
+
+		model.addAttribute("searchStoreName", searchStoreName);
+
 		franchiseMassageCount(model);
 		return "store/store-main";
 	}

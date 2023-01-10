@@ -42,7 +42,7 @@
 						<tr style="text-align: center;">
 							<td>${asklist.id }</td>
 							<td><c:choose>
-									<c:when test="${asklist.answer eq '0'}"><span class="badge badge-warning">답변대기중</span></c:when>
+									<c:when test="${asklist.answer eq '0'}"><span class="badge badge-warning">답변대기</span></c:when>
 									<c:otherwise><span class="badge badge-success">답변완료</span></c:otherwise>
 								</c:choose></td>
 							<td><a href="/admin/one-to-one-answer/${asklist.id}">${asklist.title }</a></td>

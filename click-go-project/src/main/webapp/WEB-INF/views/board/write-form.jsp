@@ -15,7 +15,7 @@
 
 <div class="container">
 	<form action="/board/save" method="POST">
-		<input type="hidden" id="id" value="${principal.user.id }">
+		<input type="hidden" id="id" value="${principal.user.id }" required="required">
 
 		<div class="form-group-board">
 			<label for="username">작성자</label> <input type="text" name="username"
@@ -25,13 +25,13 @@
 		<br>
 		<div class="form-group-board">
 			<label for="content">제목</label> <input type="text" name="title"
-				id="title" class="form-control" value="${board.title }">
+				id="title" class="form-control" value="${board.title }" required="required">
 		</div>
 
 		<div class="form-group-board">
 			<label for="content">내용</label>
 			<textarea name="content" id="content" rows="5"
-				class="form-control content">
+				class="form-control content" required="required">
 				${board.content }
 			</textarea>
 		</div>
