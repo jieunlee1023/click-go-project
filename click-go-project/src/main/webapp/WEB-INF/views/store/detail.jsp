@@ -177,11 +177,9 @@
 		<c:if test="${storeListItem != store }">
 			<c:forEach var="image" items="${images}">
 				<c:if test="${image.store.id eq storeListItem.id }">
-
 					<div class="store-detail-main-img">
 						<img src="http://localhost:7777/storeImage/${image.imageUrl}"
 							alt="가게 사진" id="store-detail-img">
-
 					</div>
 				</c:if>
 			</c:forEach>

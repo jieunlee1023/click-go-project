@@ -1,5 +1,6 @@
 package com.clickgo.project.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,5 +40,9 @@ public class ReviewService {
 
 	public List<Review> findByStoreId(int storeId) {
 		return reviewRepository.findByStoreId(storeId);
+	}
+
+	public Review findAvgStarScoreByStoreId(int storeId) {
+		return reviewRepository.findAvgStarScoreByStoreId(storeId);
 	}
 }

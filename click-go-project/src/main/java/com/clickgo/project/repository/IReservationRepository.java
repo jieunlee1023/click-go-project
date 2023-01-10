@@ -81,7 +81,7 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 								, nativeQuery = true) 
 	public List<Reservation> findAllOfMonthNotReject();
 
-	@Query(value = " SELECT * "
+	@Query(value = " SELECT SUM(r.price) AS price, r.* "
 								+ " FROM reservation AS r "
 								+ " JOIN store AS s "
 								+ " ON r.storeId = s.id "
@@ -92,7 +92,7 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 								, nativeQuery = true) 
 	public List<Reservation> findAllGroupByCategoryIdWhenToday(String today);
 
-	@Query(value = " SELECT r.*, SUM(r.price) AS price "
+	@Query(value = " SELECT SUM(r.price) AS price, r.*  "
 								+ " FROM reservation AS r "
 								+ " JOIN store AS s "
 								+ " ON r.storeId = s.id "
@@ -103,7 +103,7 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 								, nativeQuery = true) 
 	public List<Reservation> findAllGroupByCategoryIdWhenThisMonth(String yearAndMonth);
 
-	@Query(value = " SELECT r.* "
+	@Query(value = " SELECT SUM(r.price) AS price, r.* "
 								+ " FROM reservation AS r "
 								+ " JOIN store AS s "
 								+ " ON r.storeId = s.id "

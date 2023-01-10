@@ -32,4 +32,10 @@ public interface IReviewRepository extends JpaRepository<Review, Integer> {
 								+ " WHERE storeId = ?1 "
 								, nativeQuery = true)
 	List<Review> findByStoreId(int storeId);
+
+	@Query(value = " SELECT FORMAT(AVG(r.starScore), 0) AS starScore, r.* "
+								+ " FROM review AS r "
+								+ " WHERE r.storeId = ?1 "
+								, nativeQuery = true)
+	Review findAvgStarScoreByStoreId(int storeId);
 }

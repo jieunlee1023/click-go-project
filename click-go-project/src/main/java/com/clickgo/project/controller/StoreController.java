@@ -2,8 +2,10 @@ package com.clickgo.project.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -63,7 +65,9 @@ public class StoreController {
 	@GetMapping("/main")
 	public String store(@RequestParam(required = false) String pageName, Model model,
 			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		Map<Integer, Integer> starScoreMap = new HashMap<>();
 		List<StoreCategory> categories = new ArrayList<>();
+		List<Review> reviews = new ArrayList<>();
 		List<Category> categoryEntitys = categoryService.findAll();
 		categoryEntitys.forEach(t -> {
 			categories.add(t.getId());
@@ -73,8 +77,16 @@ public class StoreController {
 		} else {
 			stores = storeService.findAllByStoreCategory(pageName, pageable);
 		}
+		stores.forEach(store -> {
+			reviews.add(reviewService.findAvgStarScoreByStoreId(store.getId()));
+		});
+		reviews.forEach(review -> {
+			if (review != null) {
+				starScoreMap.put(review.getStore().getId(), review.getStarScore());
+			}
+		});
 		List<Image> images = iImageRepository.findStoreImage();
-
+		model.addAttribute("starScoreMap", starScoreMap);
 		model.addAttribute("images", images);
 		model.addAttribute("nowPage", pageName);
 		model.addAttribute("categories", categories);
@@ -96,7 +108,7 @@ public class StoreController {
 		originLayout(totalRoomCount, model);
 		getNowDateAndTime(model);
 		RoleType role = principalDetails.getUser().getRole();
-		
+
 		model.addAttribute("store", storeEntity);
 		model.addAttribute("role", role);
 		List<Store> storeList = iStoreRepository.findAll();
