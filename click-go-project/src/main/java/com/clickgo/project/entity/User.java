@@ -42,12 +42,9 @@ public class User {
 
 	@Column(nullable = false, length = 100, unique = true)
 	@Size(max = 50, min = 2, message = "아이디는 최소 2글자 이상을 입력해주세요")
-//	@Pattern(regexp = "^[a-zA-Z0-9]*$", message = "한글로 아이디를 생성할 수 없습니다.")
 	private String username;
 
 	@Column(nullable = false, length = 100)
-//	@Pattern(regexp = "^.*(?=^.{8,15}$)(?=.*\\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$", message = "비번 패턴")
-//	@Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[$@!%*#?&])[a-z0-9$@!%*#?&]{5,}$")
 	private String password;
 
 	@Pattern(regexp = "^\\d{3}-\\d{4}-\\d{4}$",message = "휴대폰 형식에 맞춰주세요(ex.010-1234-5678)")

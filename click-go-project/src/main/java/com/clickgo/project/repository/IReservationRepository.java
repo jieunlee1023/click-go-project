@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.clickgo.project.entity.Reservation;
+import com.clickgo.project.model.chart.AWeekStoreSales;
 
 public interface IReservationRepository extends JpaRepository<Reservation, Integer> {
 	
@@ -113,4 +114,21 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 								+ " GROUP BY s.categoryId "
 								, nativeQuery = true) 
 	public List<Reservation> findAllGroupByCategoryIdWhenThisYear(int nowYear);
+
+	@Query(value = " SELECT SUM(r.price) AS price, r.* "
+								+ " FROM reservation AS r "
+								+ " WHERE r.storeId = ?1 "
+								+ " AND r.approveStatus != 'REJECT' "
+								+ " AND r.reservationDate > ?2 "
+								+ " GROUP BY r.reservationDate "
+								, nativeQuery = true)
+	public  List<Reservation> findWeekSalesByStoreId(int storeId, String aWeekAgo);
+
+	@Query(value = " SELECT SUM(r.price) AS price, r.* "
+								+ " FROM reservation AS r "
+								+ " WHERE r.reservationDate = ?3 "
+								+ " AND r.storeId = ?1 "
+								+ " AND reservationTime LIKE %?2%"
+								, nativeQuery = true)
+	public Reservation findHourSalesByStoreId(int storeId, String hour, String today);
 }

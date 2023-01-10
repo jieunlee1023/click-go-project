@@ -1,5 +1,6 @@
 package com.clickgo.project.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.User;
+import com.clickgo.project.model.chart.AWeekStoreSales;
+import com.clickgo.project.model.chart.TodayStoreSales;
 import com.clickgo.project.model.enums.ApproveStatus;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.mydate.MyDate;
@@ -85,10 +88,12 @@ public class ReservationService {
 		reservation.setApproveStatus(ApproveStatus.REJECT);
 	}
 
+	@Transactional
 	public List<Reservation> findByStoreIdAndNotReject(int storeId) {
 		return reservationRepository.findByStoreIdAndNotReject(storeId);
 	}
 
+	@Transactional
 	public int findTodaySalesByStoreId(int storeId) {
 		MyDate myDate = new MyDate();
 		sales = 0;
@@ -99,6 +104,7 @@ public class ReservationService {
 		return sales;
 	}
 
+	@Transactional
 	public int findMonthSalesByStoreId(int storeId) {
 		MyDate myDate = new MyDate();
 		sales = 0;
@@ -110,6 +116,7 @@ public class ReservationService {
 		return sales;
 	}
 
+	@Transactional
 	public int findYearSalesByStoreId(int storeId) {
 		MyDate myDate = new MyDate();
 		sales = 0;
@@ -120,26 +127,63 @@ public class ReservationService {
 		return sales;
 	}
 
+	@Transactional
 	public List<Reservation> findAllOfMonthNotReject() {
 		return reservationRepository.findAllOfMonthNotReject();
 	}
 
+	@Transactional
 	public List<Reservation> findAllGroupByCategoryIdWhenToday() {
 		MyDate myDate = new MyDate();
 		return reservationRepository.findAllGroupByCategoryIdWhenToday(myDate.getToday());
 	}
 
+	@Transactional
 	public List<Reservation> findAllGroupByCategoryIdWhenThisMonth() {
 		MyDate myDate = new MyDate();
 		return reservationRepository.findAllGroupByCategoryIdWhenThisMonth(myDate.getYearAndMonth());
 	}
 
+	@Transactional
 	public List<Reservation> findAllGroupByCategoryIdWhenThisYear() {
 		MyDate myDate = new MyDate();
 		return reservationRepository.findAllGroupByCategoryIdWhenThisYear(myDate.getNowYear());
 	}
 
+	@Transactional
 	public List<Reservation> findAll() {
 		return reservationRepository.findAll();
+	}
+
+	@Transactional
+	public List<Reservation> findWeekSalesByStoreId(int storeId) {
+		MyDate myDate = new MyDate();
+		String aWeekAgo = myDate.getAWeekAgo();
+		return reservationRepository.findWeekSalesByStoreId(storeId, aWeekAgo);
+	}
+
+	@Transactional
+	public List<TodayStoreSales> findHourSalesByStoreId(int storeId) {
+		List<TodayStoreSales> storeSales = new ArrayList<>();
+		MyDate myDate = new MyDate();
+		String today = myDate.getToday();
+		TodayStoreSales sales = null;
+		Object objHour = null;
+		String strHour = null;
+		for (int hour = 1; hour <= myDate.getNowHour(); hour++) {
+			Reservation reservationEntity = reservationRepository.findHourSalesByStoreId(storeId, hour + ":", today);
+			if (reservationEntity != null) {
+				objHour = hour;
+				strHour = objHour.toString();
+				sales = new TodayStoreSales(strHour, reservationEntity.getPrice());
+				storeSales.add(sales);
+			} else {
+				objHour = hour;
+				strHour = objHour.toString();
+				sales = new TodayStoreSales(strHour, 0);
+				storeSales.add(sales);
+			}
+		}
+		return storeSales;
 	}
 }
