@@ -73,7 +73,7 @@
 					<li id="more--view"><a class="nav-link" href="#">카테고리별</a>
 						<ul id="nave--moreview--item">
 							<li><a class="dropdown-item" href="/admin/chart/category/sales/today">오늘의 통계</a></li>
-							<li><a class="dropdown-item" href="admin/chart/category/sales/this-month">이번달의 통계</a></li>
+							<li><a class="dropdown-item" href="/admin/chart/category/sales/this-month">이번달의 통계</a></li>
 							<li><a class="dropdown-item" href="/admin/chart/category/sales/this-year">올해의 통계</a></li>
 						</ul></li>
 					</ul>
