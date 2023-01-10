@@ -13,70 +13,46 @@
 <div class="container d-flex justify-content-between"
 	style="flex-wrap: wrap;">
 	<div class="btn-wrapper">
-		<div class="btn-wrapper__container">
-			<div class="btn-inner">
-				<a href="/admin/user" class="mypage-btn"> <img
-					src="/image/mypage/user_update.png" width="50px"> <br> <br>
-					<span>회원 관리</span> <br>
-				</a>
-			</div>
-		</div>
+		<a href="/admin/user" class="btn2"><img style="margin-top: 60px;"
+			src="/image/mypage/user_update.png" width="80px"><br> <span>회원
+				관리</span>
+		</a>
 	</div>
 
 	<div class="btn-wrapper">
-		<div class="btn-wrapper__container">
-			<div class="btn-inner">
-				<a href="/admin/store" class="mypage-btn"> <img
-					src="/image/mypage/store.png" width="60px"> <br> <br>
-					<span>가맹점 관리</span> <br>
-				</a>
-			</div>
-		</div>
+		<a href="/admin/store" class="btn2"> <img style="margin-top: 60px;"
+			src="/image/mypage/store.png" width="80px"><br> <span>가맹점
+				관리</span>
+		</a>
 	</div>
 
 
 	<div class="btn-wrapper">
-		<div class="btn-wrapper__container">
-			<div class="btn-inner">
-				<a href="/admin/reservation" class="mypage-btn"> <img
-					src="/image/mypage/reservation.png" width="50px"> <br> <br>
-					<span>예약 조회</span> <br>
-				</a>
-			</div>
-		</div>
+		<a href="/admin/reservation" class="btn2"> <img style="margin-top: 60px;"
+			src="/image/mypage/reservation.png" width="80px"><br> <span>예약
+				조회</span>
+		</a>
 	</div>
 
 	<div class="btn-wrapper">
-		<div class="btn-wrapper__container">
-			<div class="btn-inner">
-				<a href="/admin/one-to-one-list" class="mypage-btn"> <img
-					src="/image/mypage/review.png" width="50px"> <br> <br>
-					<span>1:1 문의</span> <br>
-				</a>
-			</div>
-		</div>
+		<a href="/admin/one-to-one-list" class="btn2"> <img style="margin-top: 60px;"
+			src="/image/mypage/review.png" width="80px"><br> <span>1:1
+				문의</span>
+		</a>
 	</div>
 
 	<div class="btn-wrapper">
-		<div class="btn-wrapper__container">
-			<div class="btn-inner">
-				<a href="/admin/report" class="mypage-btn"> <img
-					src="/image/mypage/report.png" width="50px"> <br> <br>
-					<span>신고 관리</span> <br>
-				</a>
-			</div>
-		</div>
+		<a href="/admin/report" class="btn2"> <img style="margin-top: 60px;"
+			src="/image/mypage/report.png" width="80px"><br> <span>신고
+				관리</span>
+		</a>
 	</div>
 
 	<div class="btn-wrapper">
-		<div class="btn-wrapper__container">
-			<div class="btn-inner">
-				<a href="/admin/chart" class="mypage-btn"> <img
-					src="/image/mypage/sales.png" width="50px"> <br> <br>
-					<span>통계 보기</span> <br>
-				</a>
-			</div>
-		</div>
+		<a href="/admin/chart" class="btn2"> <img style="margin-top: 60px;"
+			src="/image/mypage/sales.png" width="80px"><br> <span>통계
+				보기</span>
+		</a>
 	</div>
 </div>
 <br>
