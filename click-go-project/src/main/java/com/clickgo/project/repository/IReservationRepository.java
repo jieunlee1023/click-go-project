@@ -77,7 +77,7 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 								, nativeQuery = true) 
 	public List<Reservation> findAllGroupByCategoryIdWhenToday(String today);
 
-	@Query(value = " SELECT * "
+	@Query(value = " SELECT r.* "
 								+ " FROM reservation AS r "
 								+ " JOIN store AS s "
 								+ " ON r.storeId = s.id "
@@ -88,7 +88,7 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 								, nativeQuery = true) 
 	public List<Reservation> findAllGroupByCategoryIdWhenThisMonth(String yearAndMonth);
 
-	@Query(value = " SELECT * "
+	@Query(value = " SELECT r.* "
 								+ " FROM reservation AS r "
 								+ " JOIN store AS s "
 								+ " ON r.storeId = s.id "
