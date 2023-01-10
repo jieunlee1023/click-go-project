@@ -1,114 +1,52 @@
 
 let boardIndex = {
 	init: function() {
-		/*
-		$("#btn--write").bind("click", () => {
-			this.write();
-		});
-		*/
-
 		$("#btn--update").bind("click", () => {
 			this.update();
 		});
 		$("#btn--delete").bind("click", () => {
 			this.deleteById();
 		});
-		/*
-		$("#btn-reply-save").bind("click", () => {
-			this.replySave();
-		});
-		*/
 	},
 
-	write: function() {
-		//let xCheckTitle = XSSCheck($("#title").val());
-		//let token = $("meta[name='_csrf']").attr("content");
-		//let csrfHeader = $("meta[name='_csrf_header']").attr("content");
-
-		let data = {
-			content: $("#content").val(),
-			title: $("#title").val()
-		};
-
-		var checkBoxArray = new Array();
-		$('input:checkbox[name=secret]:checked').each(function() {
-			checkBoxArray.push(this.value);
-		});
-
-		$.ajax({
-			type: "POST",
-			url: "/api/board",
-			contentType: "application/json; charset=utf-8",
-			data: JSON.stringify(data),
-			dataType: "json"
-		}).done(function(data) {
-			console.log(data);
-			if (data.httpStatus == true) {
-				Swal.fire({
-					icon: 'success',
-					text: '게시글이 작성되었습니다.',
-				}).then(function() {
-					location.href = "/board/board-list";
-				});
-			}
-		}).fail(function(error) {
-			Swal.fire({
-				icon: 'success',
-				text: '게시글이 작성을 실패하였습니다.',
-			}).then(function() {
-				location.href = "/board/board-list";
-			});
-		});
-	},
-
-	update: function() {
-		let boardId = $("#board-id").attr("data-id");
-
-		let data = {
-			title: $("#title").val(),
-			content: $("#content").val()
-		}
-
-		$.ajax({
-			type: "PUT",
-			url: "/api/board/" + boardId,
-			data: JSON.stringify(data),
-			contentType: "application/json; charset=utf-8",
-			dataType: "json"
-		}).done(function(data) {
-			if (data.httpStatus == true) {
-				Swal.fire({
-					icon: 'success',
-					text: '게시글이 수정이 완료되었습니다.',
-				}).then(function() {
-					location.href = "/board/board-list";
-				});
-			}
-		}).fail(function(error) {
-			alert("글 수정 실패" + error.responseJSON.message);
-		});
-	},
+// write 필요없으면 지워주세요
+	
 
 	deleteById: function() {
 		let id = $("#board-id").val();
 
-		$.ajax({
-			type: "DELETE",
-			url: "/api/board/" + id
-		}).done(function(data) {
-			if (data.httpStatus == true) {
-				Swal.fire({
-					icon: 'success',
-					text: '게시글이 삭제가 완료되었습니다.',
-				}).then(function() {
-					location.href = "/board/board-list";
+		Swal.fire({
+			title: '정말로 삭제 하시겠습니까?',
+			text: '다시 되돌릴 수 없습니다. 신중하세요.',
+			icon: 'warning',
+
+			showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+			confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+			cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+			confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+			cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+		}).then(result => {
+			if (result.isConfirmed) {
+				$.ajax({
+					type: "DELETE",
+					url: "/api/board/" + id
+				}).done(function(data) {
+					if (data.httpStatus == true) {
+						Swal.fire({
+							icon: 'success',
+							text: '게시글이 삭제가 완료되었습니다.',
+						}).then(function() {
+							location.href = "/board/list";
+						});
+					}
+				}).fail(function(error) {
+					Swal.fire({
+						icon: 'error',
+						text: '게시글이 삭제를 실패하였습니다.',
+					});
 				});
-			}
-		}).fail(function(error) {
-			Swal.fire({
-				icon: 'error',
-				text: '게시글이 삭제를 실패하였습니다.',
-			});
+
+			} else if (result.isDismissed) { }
 		});
 	},
 
@@ -147,10 +85,7 @@ let boardIndex = {
 	},
 
 	replyDelete: function(boardId, replyId) {
-
-
 		$.ajax({
-
 			type: "DELETE",
 			url: `/api/board/${boardId}/reply/${replyId}`,
 			dataType: "json"
@@ -172,6 +107,7 @@ let boardIndex = {
 			});
 		});
 	}
+
 
 
 

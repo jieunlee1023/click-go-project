@@ -56,7 +56,7 @@ public class UserApiController {
 	@PostMapping("/sign-up")
 	public ResponseDto<?> signUp(@Valid @RequestBody User user, Model model) {
 		boolean success = userService.signUp(user);
-		return new ResponseDto<>(success, user.getUsername() + "님 회원가입을 진심으로 축하드립니다. ");
+		return new ResponseDto<>(success, user.getUsername() + "님 회원가입을 진심으로 축하드립니다.");
 	}
 
 	@PostMapping("/update")

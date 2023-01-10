@@ -38,17 +38,17 @@ let index = {
 		};
 		if (password != passwordCheck) {
 			Swal.fire({
-				icon: 'warning',
+				icon: 'error',
 				text: '비밀번호를 확인해주세요!',
 			});
-				return false;
-		}else if(!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{5,12}$/.test(password)){
+			return false;
+		} else if (!/^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{5,12}$/.test(password)) {
 			Swal.fire({
-				icon: 'warning',
+				icon: 'error',
 				text: '숫자+영문자+특수문자 조합으로 5 ~ 12자리 이상 사용해야 합니다.',
 			});
 			return false;
-		}else if (!/^[a-z|A-Z|0-9]+$/.test(username)) {
+		} else if (!/^[a-z|A-Z|0-9]+$/.test(username)) {
 			Swal.fire({
 				icon: 'warning',
 				text: '아이디는 영문으로만 가능합니다.',
@@ -62,11 +62,13 @@ let index = {
 			contentType: "application/json; charset=UTF-8",
 			dataType: "json"
 		}).done(function(data) {
-			console.log(data);
-
 			if (data.httpStatus == true) {
-				alert(data.body);
-				location.href = "/";
+				Swal.fire({
+					icon: 'success',
+					text: data.body,
+				}).then(function() {
+					location.href = "/";
+				});
 			}
 			else {
 				Swal.fire({
@@ -76,13 +78,9 @@ let index = {
 
 			}
 		}).fail(function(error) {
-			alert(error.responseText);
-			console.log("오류가 발생했습니다. 관리자에게 문의해주세요.");
-
-			console.log("오류가 발생했습니다. 관리자에게 문의해주세요.");
 			Swal.fire({
-				icon: 'error',
-				text: error.responseText,
+				icon: 'warning',
+				text: '입력하신 정보가 형식에 맞지않습니다 다시 확인하여 주세요',
 			});
 		});
 	},
@@ -97,7 +95,7 @@ let index = {
 		};
 		if (data.password != passwordCheck) {
 			Swal.fire({
-				icon: 'warning',
+				icon: 'error',
 				text: '비밀번호를 확인해주세요!',
 			});
 		} else {
@@ -111,13 +109,14 @@ let index = {
 				console.log(data);
 				if (data.httpStatus == true) {
 					Swal.fire({
-						icon: 'error',
-						text:  data.body,
+						icon: 'success',
+						text: data.body,
+					}).then(function() {
+						location.href = "/";
 					});
-					location.href = "/";
 				} else {
 					Swal.fire({
-						icon: 'error',
+						icon: 'warning',
 						text: '회원 정보 수정에 실패하셨습니다. 형식을 맞춰주세요.',
 					});
 				}
@@ -141,29 +140,47 @@ let index = {
 			role: $("#role").val()
 		};
 
+		Swal.fire({
+			title: '정말로 그렇게 하시겠습니까?',
+			text: '다시 되돌릴 수 없습니다. 신중하세요.',
+			icon: 'warning',
 
-
-		if (confirm('정말 회원탈퇴를 하시겠습니까?')) {
-
-			$.ajax({
-				type: 'DELETE',
-				url: '/api/user/delete/' + id,
-				data: JSON.stringify(data),
-			}).done(function(data) {
-				if (data.httpStatus == true) {
-					alert("회원탈퇴가 되었습니다.")
-					location.href = "/";
-				} else {
-					alert("회원탈퇴에 실패하셨습니다.");
-				}
-			}).fail(function(error) {
-				console.log(error);
-				Swal.fire({
-					icon: 'error',
-					text: '오류가 발생했습니다. 관리자에게 문의해주세요.',
+			showCancelButton: true, // cancel버튼 보이기. 기본은 원래 없음
+			confirmButtonColor: '#3085d6', // confrim 버튼 색깔 지정
+			cancelButtonColor: '#d33', // cancel 버튼 색깔 지정
+			confirmButtonText: '승인', // confirm 버튼 텍스트 지정
+			cancelButtonText: '취소', // cancel 버튼 텍스트 지정
+		}).then(result => {
+			// 만약 Promise리턴을 받으면,
+			if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+				$.ajax({
+					type: 'DELETE',
+					url: '/api/user/delete/' + id,
+					data: JSON.stringify(data),
+				}).done(function(data) {
+					if (data.httpStatus == true) {
+						Swal.fire({
+							confirmButtonText: '확인',
+							icon: 'success',
+							text: '회원탈퇴가 되었습니다.',
+						}).then(function() {
+							location.href = "/";
+						});
+					} else {
+						Swal.fire({
+							icon: 'warning',
+							text: '회원탈퇴에 실패하셨습니다.',
+						});
+					}
+				}).fail(function(error) {
+					Swal.fire({
+						icon: 'warning',
+						text: '오류가 발생했습니다. 관리자에게 문의해주세요.',
+					});
 				});
-			});
-		}
+			} else if (result.isDismissed) {}
+		});
+
 	},
 
 	searchId: function() {
@@ -188,7 +205,7 @@ let index = {
 		}).fail(function(error) {
 			console.log(error);
 			Swal.fire({
-				icon: 'error',
+				icon: 'warning',
 				text: '해당하는 이메일이 없습니다 다시 확인해주세요',
 			});
 		});
@@ -210,7 +227,7 @@ let index = {
 		}).done(function(data) {
 			if (data.httpStatus == false) {
 				Swal.fire({
-					icon: 'error',
+					icon: 'success',
 					text: data.body,
 				}).then(function() {
 					location.href = "/auth/login-form";

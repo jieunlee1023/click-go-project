@@ -79,10 +79,18 @@ function timeCheck() {
 		if (data.httpStatus == true) {
 			closeSeats(data.body);
 		} else {
-			alert(data.body);
+			Swal.fire({
+				icon: 'error',
+				text: data.body,
+			});
 		}
 	}).fail(function(error) {
-		alert("예상치 못한 오류가 발생하였습니다. 관리자에게 문의해주세요.");
+		Swal.fire({
+				icon: 'warning',
+				text: '예상치 못한 오류가 발생하였습니다. 관리자에게 문의해주세요.',
+			});
+
+		
 	});
 };
 
