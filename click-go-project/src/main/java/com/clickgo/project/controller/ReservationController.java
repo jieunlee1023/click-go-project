@@ -148,7 +148,7 @@ public class ReservationController {
 			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Page<Reservation> reservations = reservationService.searchBoard(principalDetails.getUser(), pageable);
-		if (reservations.getContent().get(0) != null) {
+		if (!reservations.getContent().isEmpty()) {
 			franchiseMassageCount(model);
 			model.addAttribute("lastId", reservations.getContent().get(0).getId());
 			model.addAttribute("reservations", reservations);

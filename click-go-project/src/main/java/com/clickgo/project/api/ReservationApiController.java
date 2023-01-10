@@ -78,7 +78,6 @@ public class ReservationApiController {
 		int startDay = Integer.parseInt(reservationDateTokenizer.nextToken());
 
 		MyDate myDate = new MyDate();
-
 		int nowYear = myDate.getNowYear();
 		int nowMonth = myDate.getNowMonth();
 		int nowDay = myDate.getNowDay();

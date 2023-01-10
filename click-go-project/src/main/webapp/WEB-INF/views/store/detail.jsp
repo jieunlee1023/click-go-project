@@ -203,7 +203,6 @@
 			dropdown : true,
 			scrollbar : true,
 		});
-		$()
 	});
 	
 	let wishList ={

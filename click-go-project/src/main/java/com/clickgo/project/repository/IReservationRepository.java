@@ -77,7 +77,7 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 								, nativeQuery = true) 
 	public List<Reservation> findAllGroupByCategoryIdWhenToday(String today);
 
-	@Query(value = " SELECT r.* "
+	@Query(value = " SELECT r.*, SUM(r.price) AS price "
 								+ " FROM reservation AS r "
 								+ " JOIN store AS s "
 								+ " ON r.storeId = s.id "

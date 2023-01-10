@@ -121,19 +121,16 @@ public class ReservationService {
 
 	public List<Reservation> findAllGroupByCategoryIdWhenToday() {
 		MyDate myDate = new MyDate();
-		System.out.println(myDate.getToday());
 		return reservationRepository.findAllGroupByCategoryIdWhenToday(myDate.getToday());
 	}
 
 	public List<Reservation> findAllGroupByCategoryIdWhenThisMonth() {
 		MyDate myDate = new MyDate();
-		System.out.println(myDate.getYearAndMonth());
 		return reservationRepository.findAllGroupByCategoryIdWhenThisMonth(myDate.getYearAndMonth());
 	}
 
 	public List<Reservation> findAllGroupByCategoryIdWhenThisYear() {
 		MyDate myDate = new MyDate();
-		System.out.println(myDate.getNowYear());
 		return reservationRepository.findAllGroupByCategoryIdWhenThisYear(myDate.getNowYear());
 	}
 

@@ -1,5 +1,5 @@
 
-let index = {
+let reservationIndex = {
 	init: function() {
 		let size = $("#reservation-size").val();
 		let address = $("#store-address").val();
@@ -133,5 +133,5 @@ function addMap(storeAddress, storeName) {
 	});
 };
 
-index.init();
+reservationIndex.init();
 
