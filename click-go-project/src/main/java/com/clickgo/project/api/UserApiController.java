@@ -23,11 +23,13 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.ResponseDto;
@@ -54,7 +56,7 @@ public class UserApiController {
 	@PostMapping("/sign-up")
 	public ResponseDto<?> signUp(@Valid @RequestBody User user, Model model) {
 		boolean success = userService.signUp(user);
-		return new ResponseDto<>(success, user.getUsername() + "님 회원가입을 진심으로 축하드립니다. ");
+		return new ResponseDto<>(success, user.getUsername() + "님 회원가입을 진심으로 축하드립니다.");
 	}
 
 	@PostMapping("/update")
@@ -174,5 +176,7 @@ public class UserApiController {
 			return -1;
 		}
 	}
+	
+
 
 }

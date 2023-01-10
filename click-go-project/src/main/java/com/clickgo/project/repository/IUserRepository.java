@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.User;
 
 public interface IUserRepository extends JpaRepository<User, Integer> {
@@ -20,8 +21,10 @@ public interface IUserRepository extends JpaRepository<User, Integer> {
 	@Query(value = " select * from user where username = ?1 and email = ?2 ", nativeQuery = true)
 	Optional<User> findByPassword(String username, String email);
 
-	// 승원
 	Page<User> findByUsernameContaining(String q, Pageable pageable);
 
+	
+	
+	
 
 }

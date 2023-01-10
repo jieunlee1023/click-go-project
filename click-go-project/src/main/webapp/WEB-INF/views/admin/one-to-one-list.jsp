@@ -14,15 +14,17 @@
 
 
 <div class="container">
-
-	<div class="input-group mb-3 justify-content-end">
+	
+		<div class="input-group mb-3 justify-content-end">
 		<form action="/admin/one-to-one-search" method="get" class="form-inline">
-			<input type="text" class="" placeholder="검색어를 입력하세요." name="q" value="${q }" id="board--search--input">
+			<input type="text" class="form-control" placeholder="검색어를 입력하세요."
+				name="q" value="${q }">
 			<div class="input-group-append ml-2">
-				<button class="btn" id="board--search--btn" type="submit">검색</button>
+				<button type="submit" class="btn" id="board--search--btn">검색</button>
 			</div>
 		</form>
 	</div>
+	
 
 	<div id="answer-body">
 		<div class="d-flex flex-column">

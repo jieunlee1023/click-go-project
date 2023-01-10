@@ -1,13 +1,10 @@
 package com.clickgo.project.service;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,8 +14,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.clickgo.project.dto.res.RequestUpdateFileDto;
 import com.clickgo.project.entity.Image;
@@ -106,6 +101,7 @@ public class StoreService {
 	public Page<Store> searchStoreList(String q, Pageable pageable) {
 		return storeRepository.findByStoreNameContaining(q, pageable);
 	}
+
 
 	public List<Store> findAll() {
 		return storeRepository.findAll();

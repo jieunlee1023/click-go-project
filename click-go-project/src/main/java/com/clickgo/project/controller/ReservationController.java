@@ -152,6 +152,7 @@ public class ReservationController {
 			franchiseMassageCount(model);
 			model.addAttribute("lastId", reservations.getContent().get(0).getId());
 			model.addAttribute("reservations", reservations);
+			System.out.println(reservations.getTotalElements());
 		}
 		return "/user/my/reservation/list";
 	}

@@ -52,7 +52,7 @@ footer {
 
 #footer--scroll {
 	position: absolute;
-	transform: translateY(1300%);
+	transform: translateY(1200%);
 	top: 20px;
 	animation: bounce .3s ease infinite alternate;
 	font-size: 80px;

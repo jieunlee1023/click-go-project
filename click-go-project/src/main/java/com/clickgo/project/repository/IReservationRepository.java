@@ -11,6 +11,7 @@ import org.springframework.data.repository.query.Param;
 import com.clickgo.project.entity.Reservation;
 
 public interface IReservationRepository extends JpaRepository<Reservation, Integer> {
+	
 
 	@Query(value = " SELECT " + " * " + " FROM reservation " + " WHERE userId = ?1 ", nativeQuery = true)
 	public Page<Reservation> findByReservation(int id, Pageable pageable);
@@ -31,6 +32,20 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 	@Query(value = " SELECT A.* " + " FROM reservation AS A " + " JOIN store AS S " + " ON S.id = A.storeId "
 			+ " WHERE S.id = :id " + " AND NOT approveStatus = 'REJECT' ", nativeQuery = true)
 	public List<Reservation> findByStoreIdAndNotReject(int storeId);
+	
+	@Query(value = " SELECT A.* "
+			+ " FROM reservation AS A "
+			+ " JOIN store AS S "
+			+ " ON S.id = A.storeId "
+			+ " WHERE S.id = :id "
+			+ " AND approveStatus = 'APPROVED' "
+			, nativeQuery = true)
+	public List<Reservation> findByStoreIdAndApprove(@Param("id") int storeId);
+	
+	
+	
+	 
+
 
 	@Query(value = " SELECT * "
 								+ " FROM reservation "

@@ -14,7 +14,7 @@
 <br>
 
 <div class="container">
-	<form action="/board/save" method="POST">
+	<form action="/board/save" method="POST" id="boardWrite">
 		<input type="hidden" id="id" value="${principal.user.id }">
 
 		<div class="form-group-board">
@@ -43,7 +43,8 @@
 				<input class="form-check-input" type="checkbox" name="secret"
 					id="secret"> <label class="form-check-label">비밀글 설정</label>
 			</div>
-			<button type="submit" class="btn board--save mt-3" id="btn--write">글 작성</button>
+			<button type="button" class="btn board--save mt-3" id="btn--write"
+				onclick="boardWrite();">글 작성</button>
 		</div>
 	</form>
 </div>
@@ -55,6 +56,25 @@
 		height : 300,
 	});
 	
+	 function boardWrite() {
+		    const form = document.getElementById('boardWrite');
+		    const data = new FormData(form);
+		    fetch(form.action, {
+		      method: form.method,
+		      body: data
+		    }).then(response => {
+		      if (response.status == 200) {
+		    	  Swal.fire({
+						icon: 'success',
+						text: '게시글 작성에 성공하셨습니다.',
+					}).then(function() {
+						location.href = "/board/list";
+					});
+		      } else {
+		        alert('글 작성 실패');
+		      }
+		    });
+		  }
 </script>
 
 <script type="text/javascript" src="/js/board.js"></script>
