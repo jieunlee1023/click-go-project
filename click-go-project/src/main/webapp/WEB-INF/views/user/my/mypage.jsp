@@ -42,7 +42,7 @@
 				</span>
 				</a>
 			</div>
-</div>
+		</div>
 		<div class="container d-flex justify-content-center"
 			style="flex-wrap: wrap;">
 
@@ -56,7 +56,7 @@
 				</a>
 			</div>
 
-			
+
 			<div class="btn-wrapper">
 				<a href="/review/" class="btn2"> <img style="margin-top: 40px;"
 					src="/image/mypage/review.png" width="80px"> <br> <span>리뷰
