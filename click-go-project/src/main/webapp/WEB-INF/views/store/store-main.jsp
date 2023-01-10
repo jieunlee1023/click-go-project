@@ -37,9 +37,9 @@
 
 	<div class="band">
 		<c:forEach var="store" items="${stores.content }">
-
 			<div class="item-2">
-				<a href="/store/detail/${store.id}" class="main--card" style="	text-decoration: none;"> 
+				<a href="/store/detail/${store.id}" class="main--card" style="	text-decoration: none;"
+						rel="pulse-grow" id="hover-shadow"> 
 				<c:forEach
 						var="image" items="${images }" varStatus="status">
 						<c:if test="${store.id eq  image.store.id}">

@@ -57,8 +57,11 @@
 
 
 						<c:choose>
-							<c:when test="${likeStoresEntity.likeStore eq false || empty likeStoresEntity}">
-								<button type="button" id="store--wish--emptyheart"
+							<c:when
+								test="${likeStoresEntity.likeStore eq false || empty likeStoresEntity}">
+								<button type="button" id="store--wish--emptyheart" 
+									data-toggle="tooltip" data-placement="right"
+									title="하트를 클릭하여 위시리스트를 등록해보세요!" 
 									data-like-btn='emptyHeartBtn'>♡</button>
 							</c:when>
 							<c:otherwise>
@@ -66,6 +69,9 @@
 									data-like-btn='heartBtn'>♥</button>
 							</c:otherwise>
 						</c:choose>
+
+
+
 
 						<c:forEach var="likeStore" items="${likeStores}">
 							<c:if
@@ -225,7 +231,10 @@
 			dropdown : true,
 			scrollbar : true,
 		});
-		$()
+	});
+
+	$(function() {
+		$('[data-toggle="tooltip"]').tooltip()
 	});
 </script>
 

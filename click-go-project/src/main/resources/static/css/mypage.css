@@ -247,3 +247,39 @@
 	height: 25px;
 	margin-right: 10px;
 }
+
+/*위시리스트*/
+.wishlist {
+	display: flex;
+}
+
+.wishlist--main {
+	display: inline-block;
+	width: 31%;
+	text-align: center;
+	margin: 10px;
+	padding: 20px;
+}
+
+#wishlist--btn :hover {
+	background-color: rgb(0, 0, 0, 0.2);
+}
+
+#wishlist--btn-a {
+	border: 2px dotted black;
+	border-radius: 20px;
+	margin: 10px;
+	padding: 8px;
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+}
+
+#wishList--delete--btn {
+	background-color: rgb(0, 0, 0, 0.02);
+	border: 1px solid rgb(0, 0, 0, 0.2);
+	width: 40px;
+	height: 40px;
+	margin: -20px;
+	font-size: 18px;
+}
