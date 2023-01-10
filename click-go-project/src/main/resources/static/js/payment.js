@@ -4,6 +4,7 @@ let index = {
 			this.kakaopay();
 		});
 	},
+	
 	kakaopay: function() {
 		let reservatinoCount = $("#reservationCount").val();
 		let seats = new Array();
@@ -26,13 +27,23 @@ let index = {
 			dataType: "json"
 		}).done(function(data) {
 			if (data.httpStatus) {
-				alert("카카오페이로 결제가 진행됩니다.");
+				Swal.fire({
+					icon: 'success',
+					text: '카카오페이로 결제가 진행됩니다.',
+				}).then(function() {
 				location.href = data.body;
+				});
 			} else {
-				alert("결제에 실패 했습니다. 관리자에게 문의해주세요.");
-			}
+				Swal.fire({
+					icon: 'warning',
+					text: '결제에 실패 했습니다. 관리자에게 문의해주세요.',
+				});
+			} 
 		}).fail(function(error) {
-			alert("오류가 발생했습니다. 관리자에게 문의해주세요.");
+			Swal.fire({
+					icon: 'warning',
+					text: '결제에 실패 했습니다. 관리자에게 문의해주세요.',
+				});
 		});
 	},
 }

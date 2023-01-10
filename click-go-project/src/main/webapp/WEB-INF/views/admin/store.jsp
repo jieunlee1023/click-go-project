@@ -15,7 +15,7 @@
 
 	<div class="input-group mb-3 justify-content-end">
 		<form action="/admin/store-search" method="get" class="form-inline">
-			<input type="text" class="form-control" placeholder="USER 검색하기"
+			<input type="text" class="form-control" placeholder="가맹점 검색하기"
 				name="q" value="${q }">
 			<div class="input-group-append ml-2">
 				<button type="submit" class="btn" id="search--franchise">검색</button>

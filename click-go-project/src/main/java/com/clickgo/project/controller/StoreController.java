@@ -2,8 +2,9 @@ package com.clickgo.project.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,14 +22,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.Image;
+import com.clickgo.project.entity.LikeStore;
+import com.clickgo.project.entity.Review;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.enums.StoreCategory;
+import com.clickgo.project.model.mydate.MyDate;
 import com.clickgo.project.repository.IImageRepository;
+import com.clickgo.project.repository.ILikeStoreRepository;
 import com.clickgo.project.repository.IStoreRepository;
 import com.clickgo.project.service.CategoryService;
+import com.clickgo.project.service.ReviewService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
 
@@ -48,10 +54,16 @@ public class StoreController {
 	private CategoryService categoryService;
 
 	@Autowired
+	private ReviewService reviewService;
+
+	@Autowired
 	private IImageRepository iImageRepository;
 
 	@Autowired
 	private IStoreRepository iStoreRepository;
+
+	@Autowired
+	private ILikeStoreRepository likeStoreRepository;
 
 	private Page<Store> stores;
 
@@ -59,9 +71,10 @@ public class StoreController {
 	public String store(@RequestParam(required = false) String pageName, Model model,
 			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable) {
 
-		String searchStoreName = pageName == null ? "" : pageName;
 
+		Map<Integer, Integer> starScoreMap = new HashMap<>();
 		List<StoreCategory> categories = new ArrayList<>();
+		List<Review> reviews = new ArrayList<>();
 		List<Category> categoryEntitys = categoryService.findAll();
 		categoryEntitys.forEach(t -> {
 			categories.add(t.getId());
@@ -73,23 +86,31 @@ public class StoreController {
 			stores = storeService.findAllByStoreCategory(pageName, pageable);
 		}
 
+		stores.forEach(store -> {
+			reviews.add(reviewService.findAvgStarScoreByStoreId(store.getId()));
+		});
+		reviews.forEach(review -> {
+			if (review != null) {
+				starScoreMap.put(review.getStore().getId(), review.getStarScore());
+			}
+		});
 		List<Image> images = iImageRepository.findStoreImage();
-
+		model.addAttribute("starScoreMap", starScoreMap);
 		model.addAttribute("images", images);
 		model.addAttribute("nowPage", pageName);
 		model.addAttribute("categories", categories);
 		model.addAttribute("stores", stores);
 
-		model.addAttribute("searchStoreName", searchStoreName);
 
 		franchiseMassageCount(model);
 		return "store/store-main";
 	}
 
-	@GetMapping("/detail/{id}")
-	public String detail(@PathVariable int id, Model model,
+	@GetMapping("/detail/{storeId}")
+	public String detail(@PathVariable int storeId, Model model,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		Store storeEntity = storeService.findById(id);
+		Store storeEntity = storeService.findById(storeId);
+		List<Review> reviewList = reviewService.findByStoreId(storeEntity.getId());
 		// 비로그인 회원 접속 시 임시 RoleType을 GEUST로 지정
 		if (principalDetails == null) {
 			principalDetails = new PrincipalDetails(new User().builder().role(RoleType.GEUST).build());
@@ -109,18 +130,35 @@ public class StoreController {
 			}
 			model.addAttribute("images", image);
 		}
+
+		List<LikeStore> likeStores = likeStoreRepository.findAll();
+
+		LikeStore likeStoresEntity = likeStoreRepository.findByUserIdAndStoreId(storeId,
+				principalDetails.getUser().getId());
+
+		model.addAttribute("likeStoresEntity", likeStoresEntity);
+		model.addAttribute("likeStores", likeStores);
+		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("storeList", storeList);
+
 		return "/store/detail";
 	}
 
 	private void getNowDateAndTime(Model model) {
 		Date date = new Date();
-
 		int nowYear = (date.getYear() + 1900);
 		String nowMonth = "0" + (date.getMonth() + 1);
-		String nowDay = "0" + date.getDate();
+		String nowDay = date.getDate() + "";
 		int nowHour = date.getHours();
 		int nowMinutes = date.getMinutes();
+
+		if (nowMinutes < 10) {
+			nowMinutes = 10;
+		} else if (nowMinutes / 10 == 0) {
+			nowMinutes = date.getMinutes();
+		} else if (nowMinutes % 10 != 0) {
+			nowMinutes = (nowMinutes / 10 + 1) * 10;
+		}
 
 		String nowDate = nowYear + "-" + nowMonth + "-" + nowDay;
 		String nowTime = nowHour + ":" + nowMinutes;

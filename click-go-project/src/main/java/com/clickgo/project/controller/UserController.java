@@ -200,7 +200,6 @@ public class UserController {
 				HttpMethod.POST, requestGoogle, GoogleToken.class);
 		GoogleToken googleToken = response.getBody();
 
-		///////////////////////////////////////////////////////////////
 		String accessToken = googleToken.accessToken;
 		String tokenType = googleToken.tokenType;
 
@@ -214,7 +213,6 @@ public class UserController {
 				"https://www.googleapis.com/oauth2/v1/userinfo", HttpMethod.GET, request, GoogleUserDto.class);
 
 		GoogleUserDto account = googleUserInfo.getBody();
-		System.out.println(account);
 		User googleUser = User.builder().username(account.id).email("google@gamil").loginType(LoginType.GOOGLE)
 				.phoneNumber(phoneNumber).password(clickGoKey).build();
 		User orginUser = userService.searchUserName(googleUser.getUsername());
@@ -239,5 +237,8 @@ public class UserController {
 		}
 		return "redirect:/";
 	}
+	
+
+	
 
 }

@@ -16,7 +16,7 @@
 
 		</ul>
 	</nav>
-	
+
 
 	<div class="search--container">
 		<form>
@@ -37,11 +37,10 @@
 
 	<div class="band">
 		<c:forEach var="store" items="${stores.content }">
-
 			<div class="item-2">
-				<a href="/store/detail/${store.id}" class="main--card" style="	text-decoration: none;"> 
-				<c:forEach
-						var="image" items="${images }" varStatus="status">
+				<a href="/store/detail/${store.id}" class="main--card"
+					style="text-decoration: none;" rel="pulse-grow" id="hover-shadow">
+					<c:forEach var="image" items="${images }" varStatus="status">
 						<c:if test="${store.id eq  image.store.id}">
 							<img class="thumb"
 								src="http://localhost:7777/storeImage/${image.imageUrl}">
@@ -50,18 +49,28 @@
 					<div class="main--card--text">
 						<h1 id="main--card--text--h1">${store.storeName}</h1>
 						<span>📍 ${store.storeAddress}</span>
-						<span>⭐ 리뷰평점!!</span>
+						<c:set var="a" value="${starScoreMap.get(store.id)}"></c:set>
+						<c:out value="${a}"></c:out>
+						<c:if test="${a eq 1}">⭐</c:if>
+						<c:if test="${a eq 2}">⭐⭐</c:if>
+						<c:if test="${a eq 3}">⭐⭐⭐</c:if>
+						<c:if test="${a eq 4}">⭐⭐⭐⭐</c:if>
+						<c:if test="${a eq 5}">⭐⭐⭐⭐⭐</c:if>
 					</div>
 				</a>
 			</div>
-
 		</c:forEach>
 	</div>
 
 </div>
 <br>
 <br>
-<br><br><br>
+<br>
+<br>
+<br>
 
+
+
+<script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript" src="/js/store.js"></script>
 <%@ include file="../layout/footer.jsp"%>

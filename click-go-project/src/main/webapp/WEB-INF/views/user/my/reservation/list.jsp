@@ -9,6 +9,7 @@
 	</div>
 	<hr>
 	<br>
+
 	<c:choose>
 		<c:when test="${principal.user.role eq 'GEUST'}">
 			<div class="container">
@@ -22,7 +23,7 @@
 							</div>
 						</div>
 					</c:when>
-					
+
 					<c:otherwise>
 						<c:forEach var="reservation" items="${reservations.content}">
 							<div class="d-flex justify-content-between">
@@ -44,22 +45,19 @@
 												</div>
 												<input type="submit" id="status-${reservation.id}"
 													value="${reservation.approveStatus}" readonly
-													style="margin-bottom: 5px; border: none;  height:25px; 
-													background-color: blue; color: white;">
+													style="margin-bottom: 5px; border: none; height: 25px; background-color: blue; color: white;">
 											</div>
 										</c:when>
 										<c:when test="${reservation.approveStatus eq  'WATING'}">
 											<input type="submit" id="status-${reservation.id}"
 												value="${reservation.approveStatus}" readonly
-												style="margin-bottom: 5px; border: none;  height:25px; 
-												background-color: orange; color: white;">
+												style="margin-bottom: 5px; border: none; height: 25px; background-color: orange; color: white;">
 										</c:when>
 										<c:otherwise>
 											<br>
 											<input type="submit" id="status-${reservation.id}"
 												value="${reservation.approveStatus}" readonly
-												style="margin-bottom: 5px; border: none;  height:25px; 
-												background-color: red; color: white;">
+												style="margin-bottom: 5px; border: none; height: 25px; background-color: red; color: white;">
 
 										</c:otherwise>
 									</c:choose>
@@ -98,10 +96,10 @@
 								</table>
 								<br>
 							</div>
-							
+
 						</c:forEach>
 					</c:otherwise>
-					
+
 				</c:choose>
 
 			</div>
@@ -115,7 +113,7 @@
 						<div class="d-flex justify-content-center">
 							<div id="franchise--none">
 								<br> <br>
-								<div>현재 예약하신 내역이 존재하지 않습니다.</div>
+								<div>예약 내역이 존재하지 않습니다.</div>
 								<br> <br> <br>
 							</div>
 						</div>
@@ -123,6 +121,7 @@
 
 					<c:otherwise>
 						<c:forEach var="reservation" items="${reservations.content}">
+
 							<div class="d-flex justify-content-between">
 								<h2 class="" style="font-weight: bold;">🎮
 									${reservation.store.storeName}</h2>
@@ -130,7 +129,7 @@
 									<c:choose>
 										<c:when test="${reservation.approveStatus eq  'APPROVED'}">
 											<div class="">
-												<div class="d-flex justify-content-end">
+												<div class="d-flex justify-content-end">S
 													<form action="/report/${reservation.id}">
 														<input type="submit" value="⛔"
 															style="border: none; background-color: transparent;">
@@ -142,9 +141,16 @@
 											</div>
 										</c:when>
 										<c:when test="${reservation.approveStatus eq  'WATING'}">
+											<button class="btn--reservaion-a" type="button"
+												id="btn--approve-${reservation.id }">승인</button>
+											<button class="btn--reservaion-r" type="button"
+												id="btn--reject-${reservation.id }">거절</button>
+
 											<input type="submit" id="status-${reservation.id}"
 												value="${reservation.approveStatus}" readonly
 												style="margin-bottom: 5px; border: none; height: 25px; background-color: orange; color: white;">
+
+
 										</c:when>
 										<c:otherwise>
 											<br>
@@ -154,6 +160,8 @@
 
 										</c:otherwise>
 									</c:choose>
+									<input type="hidden" id="reservation-size"
+										value="${allReservations}">
 								</div>
 							</div>
 
@@ -191,13 +199,8 @@
 								</table>
 								<br>
 							</div>
-
-
 						</c:forEach>
-
 					</c:otherwise>
-
-
 				</c:choose>
 			</div>
 		</c:otherwise>

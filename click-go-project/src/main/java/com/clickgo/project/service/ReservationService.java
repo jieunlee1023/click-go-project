@@ -48,6 +48,11 @@ public class ReservationService {
 	}
 
 	@Transactional
+	public List<Reservation> findByStoreIdAndApprove(int storeId) {
+		return reservationRepository.findByStoreIdAndApprove(storeId);
+	}
+
+	@Transactional
 	public void approve(int id) {
 		Reservation reservationEntity = reservationRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("시도하시려는 예약이 존재하지 않습니다.");
@@ -121,19 +126,16 @@ public class ReservationService {
 
 	public List<Reservation> findAllGroupByCategoryIdWhenToday() {
 		MyDate myDate = new MyDate();
-		System.out.println(myDate.getToday());
 		return reservationRepository.findAllGroupByCategoryIdWhenToday(myDate.getToday());
 	}
 
 	public List<Reservation> findAllGroupByCategoryIdWhenThisMonth() {
 		MyDate myDate = new MyDate();
-		System.out.println(myDate.getYearAndMonth());
 		return reservationRepository.findAllGroupByCategoryIdWhenThisMonth(myDate.getYearAndMonth());
 	}
 
 	public List<Reservation> findAllGroupByCategoryIdWhenThisYear() {
 		MyDate myDate = new MyDate();
-		System.out.println(myDate.getNowYear());
 		return reservationRepository.findAllGroupByCategoryIdWhenThisYear(myDate.getNowYear());
 	}
 

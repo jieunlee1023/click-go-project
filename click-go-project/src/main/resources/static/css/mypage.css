@@ -20,7 +20,6 @@
 }
 
 /*마이페이지 버튼*/
-
 .btn2 {
 	position: relative;
 	display: inline-block;
@@ -108,10 +107,9 @@
 	transition-delay: 0.4s;
 }
 
-#mypage-mini-title{
+#mypage-mini-title {
 	font-size: 12px;
 }
-
 
 #att_zone {
 	min-height: 150px;
@@ -229,4 +227,59 @@
 #admin--report--btn {
 	border: none;
 	background-color: rgb(0, 0, 0, 0.2);
+}
+
+/*예약*/
+.btn--reservaion-a {
+	background-color: blue;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	height: 25px;
+	margin-right: 5px;
+}
+
+.btn--reservaion-r {
+	background-color: red;
+	border: none;
+	border-radius: 5px;
+	color: white;
+	height: 25px;
+	margin-right: 10px;
+}
+
+/*위시리스트*/
+.wishlist {
+	display: flex;
+}
+
+.wishlist--main {
+	display: inline-block;
+	width: 31%;
+	text-align: center;
+	margin: 10px;
+	padding: 20px;
+}
+
+#wishlist--btn :hover {
+	background-color: rgb(0, 0, 0, 0.2);
+}
+
+#wishlist--btn-a {
+	border: 2px dotted black;
+	border-radius: 20px;
+	margin: 10px;
+	padding: 8px;
+	display: inline-block;
+	text-decoration: none;
+	color: black;
+}
+
+#wishList--delete--btn {
+	background-color: rgb(0, 0, 0, 0.02);
+	border: 1px solid rgb(0, 0, 0, 0.2);
+	width: 40px;
+	height: 40px;
+	margin: -20px;
+	font-size: 18px;
 }
