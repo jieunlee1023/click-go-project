@@ -228,6 +228,12 @@ public class ReservationApiController {
 	public ResponseDto<?> approve(@PathVariable int reservationId) {
 		try {
 			reservationService.approve(reservationId);
+			KakaoPaymentHistory kakaoPaymentHistoryEntity = kakaoPaymentHistoryService
+					.findByReservationId(reservationId);
+			int reservationCount = kakaoPaymentHistoryEntity.getQuantity();
+			for (int i = 0; i < reservationCount; i++) {
+				reservationService.reject(reservationId - i);
+			}
 			return new ResponseDto<>(true, "승인 성공 !");
 		} catch (Exception e) {
 			return new ResponseDto<>(false, "승인 실패 !");
@@ -237,7 +243,6 @@ public class ReservationApiController {
 	@GetMapping("/reject/{reservationId}")
 	public ResponseDto<?> reject(@PathVariable int reservationId) {
 		try {
-			System.out.println(reservationId + "!");
 			KakaoPaymentHistory kakaoPaymentHistoryEntity = kakaoPaymentHistoryService
 					.findByReservationId(reservationId);
 			String tid = kakaoPaymentHistoryEntity.getTid();

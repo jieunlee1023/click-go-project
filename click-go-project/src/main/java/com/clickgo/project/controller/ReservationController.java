@@ -147,12 +147,13 @@ public class ReservationController {
 	public String reservationList(Model model,
 			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		List<Reservation> allReservations = reservationService.findAll();
 		Page<Reservation> reservations = reservationService.searchBoard(principalDetails.getUser(), pageable);
 		if (!reservations.getContent().isEmpty()) {
 			franchiseMassageCount(model);
 			model.addAttribute("lastId", reservations.getContent().get(0).getId());
 			model.addAttribute("reservations", reservations);
-			System.out.println(reservations.getTotalElements());
+			model.addAttribute("allReservations", allReservations.size());
 		}
 		return "/user/my/reservation/list";
 	}

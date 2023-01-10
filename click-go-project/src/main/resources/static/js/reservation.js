@@ -1,11 +1,10 @@
 
 let reservationIndex = {
 	init: function() {
-		let size = $("#reservation-size").val();
+		let size = ($("#reservation-size").val());
 		let address = $("#store-address").val();
 		let storeName = $("#store-name").val();
 		for (let i = 0; i <= size; i++) {
-			console.log(i);
 			$("#btn--approve-" + i).bind("click", () => {
 				this.approve(i);
 			});
