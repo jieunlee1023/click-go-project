@@ -38,8 +38,6 @@ let index = {
 					icon: 'warning',
 					text: '결제에 실패 했습니다. 관리자에게 문의해주세요.',
 				});
-				//alert("카카오페이로 결제가 진행됩니다.");
-				//location.href = data.body;
 			} 
 		}).fail(function(error) {
 			Swal.fire({
