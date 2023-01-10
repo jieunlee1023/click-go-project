@@ -1,5 +1,8 @@
 package com.clickgo.project.entity;
 
+import java.util.Optional;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -24,6 +27,9 @@ public class LikeStore {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@Column(nullable = false)
+	private boolean likeStore;
+
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "storeId", nullable = false)
 	private Store store;
@@ -31,4 +37,5 @@ public class LikeStore {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
+
 }

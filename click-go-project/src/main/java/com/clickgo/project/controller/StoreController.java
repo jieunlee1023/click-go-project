@@ -2,7 +2,6 @@ package com.clickgo.project.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,12 +20,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.Image;
+import com.clickgo.project.entity.LikeStore;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.repository.IImageRepository;
+import com.clickgo.project.repository.ILikeStoreRepository;
 import com.clickgo.project.repository.IStoreRepository;
 import com.clickgo.project.service.CategoryService;
 import com.clickgo.project.service.StoreFranchiseService;
@@ -52,6 +53,9 @@ public class StoreController {
 	
 	@Autowired
 	private IStoreRepository iStoreRepository;
+	
+	@Autowired
+	private ILikeStoreRepository likeStoreRepository;
 
 	private Page<Store> stores;
 
@@ -101,7 +105,15 @@ public class StoreController {
 			}
 			model.addAttribute("images", image);
 		}
+		
+		List<LikeStore> likeStores = likeStoreRepository.findAll();
+		
+		LikeStore likeStoresEntity= likeStoreRepository.findByUserIdAndStoreId(id, principalDetails.getUser().getId());
+		
+		model.addAttribute("likeStoresEntity", likeStoresEntity);
+		model.addAttribute("likeStores", likeStores);
 		model.addAttribute("storeList", storeList);
+		
 		return "/store/detail";
 	}
 
