@@ -5,6 +5,7 @@ let index = {
 		let address = $("#store-address").val();
 		let storeName = $("#store-name").val();
 		for (let i = 0; i <= size; i++) {
+			console.log(i);
 			$("#btn--approve-" + i).bind("click", () => {
 				this.approve(i);
 			});
