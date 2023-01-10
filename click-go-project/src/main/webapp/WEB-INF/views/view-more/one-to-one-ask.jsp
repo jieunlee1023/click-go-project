@@ -11,7 +11,7 @@
 
 
 
-	<div class="container" id="tab-menu">
+	<div class="container mt-5" id="tab-menu">
 		<div id="tab-btn" class="d-flex">
 			<ul>
 				<li class="active"><a href="#" style="text-decoration: none;">나의 문의 내역</a></li>
@@ -20,49 +20,32 @@
 		</div>
 		<div id="tab-cont">
 			<div id="tab-cont-1">
-				<div class="d-flex flex-column">
-					<div class="row border-bottom p-3">
-						<div class="col-2 d-flex justify-content-center">
-							<span>접수번호</span>
-						</div>
-						<div class="col">
-							<span class="col">제목</span>
-						</div>
-						<div class="col">
-							<span>답변여부</span>
-						</div>
-						<div class="col">
-							<span>작성시간</span>
-						</div>
-					</div>
-					<div class="d-flex flex-column">
+				<table class="table" id="answer-list-table">
+					<thead>
+						<tr style="text-align: center;">
+							<th>접수번호</th>
+							<th>문의제목</th>
+							<th>답변여부</th>
+							<th>작성시간</th>
+						</tr>
+					</thead>
+					<tbody>
 						<c:forEach var="askList" items="${askList }">
-							<c:if test="${principal.user.id eq askList.user.id }">
-								<div class="row border-bottom p-3">
-									<div class="col-2 d-flex justify-content-center">
-										<span>${askList.id }</span>
-									</div>
-									<div class="col-2" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis; max-width: 200px;">
-										<a style="text-decoration: none; color: gray;" href="/admin/one-to-one-answer/${askList.id }">${askList.title }</a>
-									</div>
-									<div class="col d-flex justify-content-center">
-										<span>
-											<c:choose>
-												<c:when test="${askList.answer eq '0' }">
-													답변 대기
+							<tr style="text-align: center;">
+								<td>${askList.id }</td>
+								<td><a style="text-decoration: none; color: gray;" href="/admin/one-to-one-answer/${askList.id }">${askList.title }</a></td>
+								<td><c:choose>
+										<c:when test="${askList.answer eq '0' }">
+													<span class="badge badge-warning">답변대기중</span>
 												</c:when>
-												<c:otherwise>답변 완료</c:otherwise>
-											</c:choose>
-										</span>
-									</div>
-									<div class="col">
-										<span>${askList.createDate }</span>
-									</div>
-								</div>
-							</c:if>
+										<c:otherwise><span class="badge badge-success">답변완료</span></c:otherwise>
+									</c:choose></td>
+								<td>${askList.createDate }</td>
+							</tr>
 						</c:forEach>
-					</div>
-				</div>
+					</tbody>
+				</table>
+
 			</div>
 
 			<div id="tab-cont-2">
