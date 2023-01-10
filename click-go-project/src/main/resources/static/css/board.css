@@ -31,7 +31,7 @@
 	margin-bottom: 15px;
 }
 
-#btn--write , #board--search--btn ,  #btn--save{
+#btn--write, #board--search--btn, #btn--save {
 	background-color: rgb(0, 0, 0, 0.1);
 	color: black;
 }
@@ -40,7 +40,7 @@
 	border: none;
 	padding: 5px;
 	background-color: transparent;
-	border-bottom: 2px solid   rgb(0, 0, 0, 0.5);;
+	border-bottom: 2px solid rgb(0, 0, 0, 0.5);;
 }
 
 input::placeholder {
@@ -168,7 +168,7 @@ input:focus {
 #btn-reply-save {
 	color: black;
 	background-color: rgb(0, 0, 0, 0.2);
-	font-size: 11px;
+	font-size: 14px;
 	border: none;
 	border-radius: 3px;
 	padding: 0px 10px;
@@ -183,9 +183,23 @@ input:focus {
 	margin-left: 5px;
 }
 
-
-
 .card-header {
 	border-radius: 0px;
 	background-color: rgb(255, 255, 255, 0.5);
+}
+
+#reply-row {
+	height: 30px;
+	text-align: left;
+	margin: 8px;
+	font-size: 14px;
+}
+
+.reply-nick {
+	color: black;
+	width: 120px;
+	max-width: 120px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }

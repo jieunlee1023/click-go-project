@@ -45,6 +45,7 @@
 <link href="/css/admin.css" rel="stylesheet" type="text/css" />
 <link href="/css/store.css" rel="stylesheet" type="text/css" />
 <link href="/css/store-main.css" rel="stylesheet" type="text/css" />
+<link href="/css/review.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="/css/fullpage.min.css">
 <link rel="stylesheet" href="/css/index.css">
@@ -60,10 +61,10 @@
 	<div id="header-fixed">
 		<div class="container ">
 			<div id='wrapper'>
-
 				<div id="logo">
 
-					<a class="navbar-brand" href="/" style="color: black"> <img src="/image/logo.png" alt="click-go-logo" style="width: 150px"></a>
+					<a class="navbar-brand" href="/" style="color: black"> 
+					<img src="/image/logo.png" alt="click-go-logo" style="width: 200px"></a>
 
 				</div>
 			</div>

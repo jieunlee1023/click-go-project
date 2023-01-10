@@ -2,6 +2,7 @@ package com.clickgo.project.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -13,10 +14,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
+import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.entity.Report;
 import com.clickgo.project.entity.ReportReply;
 import com.clickgo.project.entity.Reservation;
@@ -24,6 +27,7 @@ import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
+import com.clickgo.project.repository.IReportReplyRepository;
 import com.clickgo.project.service.ReportReplyService;
 import com.clickgo.project.service.ReportService;
 import com.clickgo.project.service.ReservationService;
@@ -53,21 +57,21 @@ public class ReportController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private IReportReplyRepository reportReplyRepository;
+
 	@GetMapping("/list/{myList}")
 	public String reportList(Model model,
-			@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@PageableDefault(size = 50, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable(required = false) int myList) {
 		Page<Report> reports = null;
 		if (principalDetails.getUser().getRole().equals(RoleType.GEUST)) {
-			System.out.println("유저가 가게에 한 신고");
 			reports = reportService.findByUserIdToSTORE(principalDetails.getUser().getId(), pageable);
 		} else if (principalDetails.getUser().getRole().equals(RoleType.HOST)) {
 			if (myList == 1) {
-				System.out.println("가게가 한 신고");
-				reports = reportService.findByUserIdToUSER(principalDetails.getUser().getId(), pageable);
+				reports = reportService.findByStoreIdToSTORE(principalDetails.getUser().getId(), pageable);
 			} else {
-				System.out.println("유저가  한 신고");
-				reports = reportService.findByUserIdToSTORE(principalDetails.getUser().getId(), pageable);
+				reports = reportService.findByUserIdToUSER(principalDetails.getUser().getId(), pageable);
 			}
 		}
 
@@ -94,7 +98,7 @@ public class ReportController {
 	}
 
 	@GetMapping("/{reservationId}")
-	public String reportDetail(@PathVariable int reservationId,
+	public String saveReport(@PathVariable int reservationId,
 			@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
 		Reservation reservationEntity = reservationService.findById(reservationId);
 		RoleType role = principalDetails.getUser().getRole();
@@ -106,6 +110,24 @@ public class ReportController {
 		model.addAttribute("role", role);
 		franchiseMassageCount(model);
 		return "user/my/report/save-form";
+	}
+
+	@GetMapping("/detail/{reportId}")
+	public String detail(@PathVariable int reportId, Model model) {
+		Report reportEntity = reportService.findById(reportId);
+		model.addAttribute("report", reportEntity);
+		
+		List<ReportReply> reportReplys = reportReplyRepository.findAll();
+		model.addAttribute("reportReplys", reportReplys);
+		franchiseMassageCount(model);
+		return "/user/my/report/detail";
+	}
+
+	@PostMapping("/reply/save")
+	public String reportReplySave(@RequestParam Report reportId, ReportReply reportReply, Model model) {
+		reportReplyService.saveReply(reportId, reportReply);
+		franchiseMassageCount(model);
+		return "redirect:/admin/report";
 	}
 
 	public void franchiseMassageCount(Model model) {
@@ -120,6 +142,5 @@ public class ReportController {
 		});
 		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
-
 	}
 }

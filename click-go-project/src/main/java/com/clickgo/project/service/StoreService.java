@@ -102,4 +102,8 @@ public class StoreService {
 		return storeRepository.findByStoreNameContaining(q, pageable);
 	}
 
+
+	public List<Store> findAll() {
+		return storeRepository.findAll();
+	}
 }

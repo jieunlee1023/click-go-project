@@ -1,6 +1,7 @@
 package com.clickgo.project.entity;
 
 import java.sql.Timestamp;
+import java.util.Optional;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -40,10 +41,6 @@ public class ReportReply {
 	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp createDate;
-
-//	@OneToOne
-//	@JoinColumn(name = "userId")
-//	private User user;
 
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "reportId")

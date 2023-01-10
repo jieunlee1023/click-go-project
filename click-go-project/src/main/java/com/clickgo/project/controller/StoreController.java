@@ -27,6 +27,7 @@ import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.repository.IImageRepository;
+import com.clickgo.project.repository.IStoreRepository;
 import com.clickgo.project.service.CategoryService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
@@ -48,6 +49,9 @@ public class StoreController {
 
 	@Autowired
 	private IImageRepository iImageRepository;
+	
+	@Autowired
+	private IStoreRepository iStoreRepository;
 
 	private Page<Store> stores;
 
@@ -64,7 +68,6 @@ public class StoreController {
 		} else {
 			stores = storeService.findAllByStoreCategory(pageName, pageable);
 		}
-
 		List<Image> images = iImageRepository.findStoreImage();
 
 		model.addAttribute("images", images);
@@ -90,6 +93,7 @@ public class StoreController {
 
 		model.addAttribute("store", storeEntity);
 		model.addAttribute("role", role);
+		List<Store> storeList = iStoreRepository.findAll();
 		List<Image> image = iImageRepository.findAll();
 		for (int i = 0; i < image.size(); i++) {
 			if (storeEntity.getId() == image.get(i).getStore().getId() && image.size() > 5) {
@@ -97,7 +101,7 @@ public class StoreController {
 			}
 			model.addAttribute("images", image);
 		}
-
+		model.addAttribute("storeList", storeList);
 		return "/store/detail";
 	}
 

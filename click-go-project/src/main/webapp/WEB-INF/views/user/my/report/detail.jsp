@@ -1,57 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../../layout/header.jsp"%>
-<div class="container d-flex-column justify-content-end">
 
-	<div class="media border mt-3"
-		style="width: 1000px; height: 70px; border-radius: 15px;">
-		<div class="media-body">
-			<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-				<div class="d-flex justify-content-between pl-3 pt-3 pr-3">
-					<h3 class="" style="font-weight: bold;">${report.title}</h3>
-				</div>
-			</div>
-		</div>
+<br>
+<div class="container" id="reservation">
+	<div id="view-more-title">
+		<div>⛔ 신고 관리</div>
 	</div>
-	<div class="media border mt-3"
-		style="width: 1000px; height: 350px; border-radius: 15px;">
-		<div class="media-body">
-			<div class="d-flex-column ml-3 mr-2 md-2 mt-1">
-				<div class="d-flex justify-content-between pl-3 pt-3 pr-3">
-					<p class="mr-3 m-1">${report.content}</p>
-				</div>
-			</div>
-		</div>
+	<hr>
+</div>
+
+
+<div class="container">
+	<div class="media border mt-3" style="width: 100%; height: 50px;">
+		<div id="report-detail-title">제목 : ${report.title}</div>
+	</div>
+	<div class="media border mt-3" style="width: 100%; height: 300px;">
+		<div class="mr-3 m-1">${report.content}</div>
 	</div>
 	<br>
 	<div class="card">
-		<c:choose>
-			<c:when test="${empty reportReply}">
-				<div class="card-header">관리자의 답변</div>
-				<ul class="list-group" id="reply--box">
-					<li class="list-group-item d-flex justify-content-between">
-						<div>빠른 시일 내로 답변 드리겠습니다. 감사합니다.</div>
-						<div class="d-flex">
-							<div>작성자 :
-								&nbsp;관리자&nbsp;&nbsp;&nbsp;</div>
-						</div>
-					</li>
-				</ul>
-			</c:when>
-			<c:otherwise>
-				<div class="card-header">관리자의 답변</div>
-				<ul class="list-group" id="reply--box">
-					<li class="list-group-item d-flex justify-content-between">
-						<div>${reportReply.content}</div>
-						<div class="d-flex">
-							<div>작성자 :
-								&nbsp;${reportReply.user.username}&nbsp;&nbsp;&nbsp;</div>
-						</div>
-					</li>
-				</ul>
-			</c:otherwise>
-		</c:choose>
+		<div class="card-header">📌</div>
+		<c:forEach var="reportReply" items="${reportReplys }">
+			<c:if test="${report.id eq reportReply.report.id }">
+
+				<div class="d-flex justify-content-between ml-3 mr-3 mb-1 mt-1">
+					<div>↪ 답변 : ${reportReply.content}</div>
+					<div>작성자 : 관리자</div>
+				</div>
+
+			</c:if>
+		</c:forEach>
+
+		<c:if test="${principal.user.role eq 'ADMIN' }">
+			<form action="/report/reply/save" method="post">
+				<input type="hidden" value="${report.id }" name="reportId">
+				<div class="d-flex justify-content-between border-top">
+					<input class="m-2" id="admin--input" type="text"
+						placeholder="답변을 남겨주세요." name="content">
+					<button type="submit" id="admin--report--btn">발송하기</button>
+				</div>
+			</form>
+
+		</c:if>
 	</div>
-	
+	<c:if test="${principal.user.role eq 'ADMIN' }">
+		<div class="d-flex justify-content-end">
+			<a href="/admin/user" style="text-decoration: none; color: red;">신고 설정하기</a>
+		</div>
+	</c:if>
 </div>
+<br>
+<br>
+<br>
 <%@ include file="../../../layout/footer.jsp"%>

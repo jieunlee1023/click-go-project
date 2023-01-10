@@ -19,10 +19,8 @@ public class ReviewService {
 	public Page<Review> findByuserId(User user, Pageable pageable) {
 		int userId = user.getId();
 		if (user.getRole() == RoleType.GEUST) {
-			System.out.println("손님");
 			return reviewRepository.findByUserId(userId, pageable);
 		} else {
-			System.out.println("사장님");
 			return reviewRepository.findByStoreUserId(userId, pageable);
 		}
 	}
@@ -31,5 +29,9 @@ public class ReviewService {
 		return reviewRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("찾으시는 리뷰가 존재하지 않습니다.");
 		});
+	}
+
+	public void save(Review review) {
+		reviewRepository.save(review);
 	}
 }

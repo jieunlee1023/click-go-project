@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<script src="https://nsp.pay.naver.com/sdk/js/naverpay.min.js"></script>
 <div class="d-flex justify-content-center">
 	<div class=" d-flex media border m-3"
 		style="width: 800px; height: 510px; border-radius: 15px;">
@@ -31,7 +30,6 @@
 						</div>
 
 						<c:forEach var="reservation" items="${reservations}">
-							<!-- TODO -->
 							<div>
 								예약 하신 자리 : <span
 									id="reservationSeat-${reservations.indexOf(reservation)}">${reservation.reservationSeat}</span>번
@@ -52,36 +50,12 @@
 						<input type="hidden" id="storeId" value="${store.id}"> <input
 							type="hidden" id="reservationCount"
 							value="${reservations.size()}"> <input type="button"
-							id="btn--naverpay" value="네이버페이"> <input type="button"
-							id="btn--kakaopay" value="카카오페이"> <input type="button"
-							id="naverPayBtn" value="네이버페이 결제 버튼">
+							id="btn--kakaopay" value="카카오페이">
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
-
-<script>
-	var oPay = Naver.Pay.create({
-		"mode" : "production", // development or production
-		"clientId" : "BvSSlS3rTAUDe0wev5Qa" // clientId
-	});
-
-	//직접 만드신 네이버페이 결제버튼에 click Event를 할당하세요
-	var elNaverPayBtn = document.getElementById("naverPayBtn");
-
-	elNaverPayBtn.addEventListener("click", function() {
-		oPay.open({
-			"merchantUserKey" : "uhjzmVB5cj",
-			"merchantPayKey" : "3",
-			"productName" : "마우스",
-			"totalPayAmount" : "1000",
-			"taxScopeAmount" : "10",
-			"taxExScopeAmount" : "0",
-			"returnUrl" : "http://localhost:7777/"
-		});
-	});
-</script>
 <script type="text/javascript" src="/js/payment.js"></script>
 <%@ include file="../layout/footer.jsp"%>

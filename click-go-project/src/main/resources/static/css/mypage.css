@@ -14,41 +14,104 @@
 }
 
 .btn-wrapper {
-	width: 30%;
+	width: 31%;
+	margin-bottom: 40px;
 	margin: 10px;
 }
 
-.btn-inner {
-	border-radius: 20px;
-	display: flex;
-	justify-content: center;
-	font-size: 18px;
-	border: 2px dotted black;
-	background-color:rgb(0,0,0,0.1);
-	color: black;
-	text-align: center;
-	align-items: center;
-}
+/*마이페이지 버튼*/
 
-.mypage-btn {
-	padding:50px;
+.btn2 {
+	position: relative;
+	display: inline-block;
 	width: 100%;
-	height:250px;
-	color: black;
-	border-radius: 20px;
+	height: 250px;
+	text-align: center;
+	text-decoration: none;
+	color: #444;
+	font-size: 20px;
+	font-weight: bold;
+	background: #f4f4f4;
+	box-shadow: 0px 10px 0 -5px #c6c6c6;
+	transition: all 0.3s;
+	cursor: pointer;
+}
+
+.btn2:hover {
+	color: #fff;
+	background-color: grey;
+	letter-spacing: 2px;
+	box-shadow: none;
+	transform: translateY(5px);
 	text-decoration: none;
 }
 
-.btn-wrapper__container :hover {
-	background-color: rgb(0, 0, 0, 0.3);
-	color: white;
-	text-decoration: none;
+/* btn2 */
+.btn2 span::after, .btn2 span::before, .btn2::after, .btn2::before {
+	content: "";
+	position: absolute;
+	transition: all 0.2s;
+	background-color: grey;
 }
 
+.btn2::before {
+	height: 2px;
+	width: 0;
+	top: 0;
+	left: 0;
+	transition-delay: 0.4s;
+}
 
-#mypage-mini-title {
+.btn2::after {
+	width: 2px;
+	height: 0;
+	top: 0;
+	right: 0;
+	transition-delay: 0.2s;
+}
+
+.btn2 span::before {
+	height: 2px;
+	width: 0;
+	bottom: 0;
+	right: 0;
+	transition-delay: 0.4s;
+}
+
+.btn2 span::after {
+	width: 2px;
+	height: 0;
+	bottom: 0;
+	left: 0;
+	transition-delay: 0.2s;
+}
+
+.btn2:hover span::before, .btn2:hover::before {
+	width: 100%;
+	transition: all 0.2s;
+}
+
+.btn2:hover span::after, .btn2:hover::after {
+	height: 100%;
+	transition: all 0.2s;
+}
+
+.btn2:hover::after {
+	transition-delay: 0.2s;
+}
+
+.btn2:hover span::after {
+	transition-delay: 0.2s;
+}
+
+.btn2:hover {
+	transition-delay: 0.4s;
+}
+
+#mypage-mini-title{
 	font-size: 12px;
 }
+
 
 #att_zone {
 	min-height: 150px;
@@ -75,4 +138,95 @@
 	border-radius: 4px;
 	color: white;
 	cursor: pointer;
+}
+
+/* 신고 */
+.report-list {
+	color: black;
+	margin-left: 5px;
+	border: 2px solid black;
+	padding: 5px;
+	border-radius: 5px;
+}
+
+#report--header, #report--list, #report--admin--header,
+	#report--admin--list {
+	justify-content: center;
+	text-align: center;
+}
+
+#report--header, #report--admin--header {
+	font-size: 18px;
+}
+
+#report--number {
+	width: 15%;
+	margin-bottom: 8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#report--title {
+	width: 35%;
+	margin-bottom: 8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#report--storeName, #report--status {
+	width: 25%;
+	margin-bottom: 8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#report--title, #report--admin--title {
+	text-decoration: none;
+	color: black;
+}
+
+/* 신고 detail  */
+#report-detail-title {
+	font-size: 25px;
+	font-weight: bold;
+	margin-top: 5px;
+	margin-left: 10px;
+}
+
+#report--admin--number {
+	width: 10%;
+	margin-bottom: 8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#report--admin--title {
+	width: 22%;
+	margin-bottom: 8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#report--admin--type, #report--admin--store, #report--admin--client,
+	#report--admin--status {
+	width: 16%;
+	margin-bottom: 8px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+#admin--input {
+	border: none;
+	margin-left: 15px;
+}
+
+#admin--report--btn {
+	border: none;
+	background-color: rgb(0, 0, 0, 0.2);
 }

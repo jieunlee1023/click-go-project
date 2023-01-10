@@ -60,6 +60,7 @@
 <link href="/css/admin.css" rel="stylesheet" type="text/css" />
 <link href="/css/store.css" rel="stylesheet" type="text/css" />
 <link href="/css/store-main.css" rel="stylesheet" type="text/css" />
+<link href="/css/review.css" rel="stylesheet" type="text/css" />
 
 <link rel="stylesheet" href="/css/fullpage.min.css">
 <link rel="stylesheet" href="/css/index.css">
@@ -71,13 +72,16 @@
 </head>
 
 <body>
+
+
 	<div id="header">
 		<div class="container ">
 			<div id='wrapper'>
 
 				<div id="logo">
 
-					<a class="navbar-brand" href="/" style="color: black"> <img src="/image/logo.png" alt="click-go-logo" style="width: 150px"></a>
+					<a class="navbar-brand" href="/" style="color: black"> 
+					<img src="/image/logo.png" alt="click-go-logo" style="width: 200px"></a>
 
 				</div>
 			</div>
@@ -96,7 +100,6 @@
 									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
 									<li><a class="dropdown-item" href="/view-more/about-us">회사 소개</a></li>
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
-									<li><a class="dropdown-item" href="/view-more/one-to-one-ask">1:1 문의</a></li>
 								</ul></li>
 							<li><a class="nav-link" href="/auth/login-form">로그인</a></li>
 						</ul>

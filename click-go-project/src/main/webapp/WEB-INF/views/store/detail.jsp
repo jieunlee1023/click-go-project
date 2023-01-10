@@ -4,10 +4,10 @@
 <br>
 
 <div class="container" id="store-update">
-	<div id="view-more-title">
-		<div>🌟 매장 관리</div>
-	</div>
 	<c:if test="${store.user.id eq principal.user.id}">
+		<div id="view-more-title">
+			<div>🌟 매장 관리</div>
+		</div>
 		<span style="color: black">: 이용자에게 보는 가게의 화면 입니다.</span>
 		<span style="color: black">아래 수정버튼을 눌러 정보나 이미지를 변경해보세요!</span>
 	</c:if>
@@ -56,7 +56,8 @@
 								</c:when>
 
 							</c:choose>
-
+							<span style="color: red; font-size: 40px; margin-left: 10px;" 
+									onclick="wishList.like();" id="store--wish--like">♡</span>
 							<c:if test="${store.user.id eq principal.user.id}">
 								<div class="store-detail-update">
 									<a href="/care-store/update/${store.id}">수정하기</a>
@@ -154,6 +155,27 @@
 </div>
 <br>
 <br>
+<div style="background-color: blue; height: 250px;">리뷰 목록</div>
+<div style="background-color: red;">
+	<div>이런곳은 어때요?</div>
+	<c:forEach var="storeListItem" items="${storeList }">
+		<c:if test="${storeListItem != store }">
+			<c:forEach var="image" items="${images}">
+				<c:if test="${image.store.id eq storeListItem.id }">
+
+					<div class="store-detail-main-img">
+						<img src="http://localhost:7777/storeImage/${image.imageUrl}"
+							alt="가게 사진" id="store-detail-img">
+
+					</div>
+				</c:if>
+			</c:forEach>
+			<div>${storeListItem.storeName}</div>
+		</c:if>
+	</c:forEach>
+</div>
+<br>
+<br>
 <br>
 <script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript">
@@ -183,6 +205,14 @@
 		});
 		$()
 	});
+	
+	let wishList ={
+			like : function(){
+				alert('하트눌러짐');
+				$("#store--wish--like").html("♥");
+			}
+		};
+
 </script>
 
 <script type="text/javascript" src="/js/store.js"></script>

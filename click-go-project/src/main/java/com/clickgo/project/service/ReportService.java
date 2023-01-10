@@ -32,6 +32,12 @@ public class ReportService {
 		return reportRepository.findByUserIdToSTORE(userId, pageable);
 	}
 
+	@Transactional
+	public Page<Report> findByStoreIdToSTORE(int userId, Pageable pageable) {
+		return reportRepository.findByStoreIdToSTORE(userId, pageable);
+	}
+
+	@Transactional
 	public Page<Report> findByUserIdToUSER(int id, Pageable pageable) {
 		return reportRepository.findByUserIdToUSER(id, pageable);
 	}
@@ -48,14 +54,12 @@ public class ReportService {
 		Report reportEntity = reportRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("존재하지 않는 신고글입니다.");
 		});
-		reportEntity.setApproveStatus(ApproveStatus.COMPLETED);
 		return reportEntity;
 	}
 
 	public void saveToGEUST(Report report, Store store, User user) {
 		report.setStore(store);
 		report.setUser(user);
-		report.setReportType(ReportType.USER);
 		report.setApproveStatus(ApproveStatus.WATING);
 		reportRepository.save(report);
 	}
@@ -63,7 +67,6 @@ public class ReportService {
 	public void saveToSTORE(Report report, Store store, User user) {
 		report.setStore(store);
 		report.setUser(user);
-		report.setReportType(ReportType.STORE);
 		report.setApproveStatus(ApproveStatus.WATING);
 		reportRepository.save(report);
 	}

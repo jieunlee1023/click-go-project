@@ -3,15 +3,16 @@
 
 
 <div class="container">
+	<div class="d-flex justify-content-end">
+		<a id="btn--back" class="btn" href="./main">돌아가기</a>
+	</div>
 	<div class="d-flex justify-content-center">
 		<h1>밍밍컴퍼니 &nbsp;매출현황</h1>
 	</div>
-	<br>
-	<br>
-	<br>
+	<br> <br> <br>
 
 	<div class="d-flex flex-column">
-	
+
 		<div class="row">
 			<div class="col-sm-4" style="background-color: b4c8ff;">
 				<div class="d-flex justify-content-center">
@@ -24,9 +25,9 @@
 				</div>
 			</div>
 		</div>
-		
+
 		<br>
-		
+
 		<div class="row">
 			<div class="col-sm-4" style="background-color: b4c8ff;">
 				<div class="d-flex justify-content-center">
@@ -39,16 +40,14 @@
 				</div>
 			</div>
 		</div>
-		
-		
-		
-		
-		<div>
-			
-		</div>
-		
-		
-		
+
+
+
+
+		<div></div>
+
+
+
 	</div>
 
 </div>

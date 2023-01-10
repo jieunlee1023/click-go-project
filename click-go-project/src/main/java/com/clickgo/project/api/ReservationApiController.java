@@ -220,7 +220,7 @@ public class ReservationApiController {
 
 		amountService.save(responseKakao.getBody().getAmount());
 		kakaoPaymentHistoryService.save(kakaoPaymentHistory);
-		
+
 		ModelAndView view = new ModelAndView("redirect:/reservation/list");
 		return view;
 	}
@@ -263,7 +263,7 @@ public class ReservationApiController {
 			ResponseEntity<KakaoPaymentRejectDto> responseReject = restTemplate.exchange(
 					"https://kapi.kakao.com/v1/payment/cancel", HttpMethod.POST, requestReject,
 					KakaoPaymentRejectDto.class);
-			
+
 			int reservationCount = kakaoPaymentHistoryEntity.getQuantity();
 			for (int i = 0; i < reservationCount; i++) {
 				reservationService.reject(reservationId - i);

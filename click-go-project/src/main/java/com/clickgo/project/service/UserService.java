@@ -178,4 +178,26 @@ public class UserService {
 			return new IllegalArgumentException("찾으시는 유저가 존재하지 않습니다.");
 		});
 	}
+
+	@Transactional
+	public boolean updateReportCountPlus(User user) {
+		User userEntity = userRepository.findById(user.getId()).orElseThrow(()->{
+			return new IllegalArgumentException ("해당 유저를 찾을 수 없습니다.");
+		});
+		userEntity.setReportCount(user.getReportCount() + 1);
+		return true;
+	}
+	
+	@Transactional
+	public boolean updateReportCountMinus(User user) {
+		User userEntity = userRepository.findById(user.getId()).orElseThrow(()->{
+			return new IllegalArgumentException ("해당 유저를 찾을 수 없습니다.");
+		});
+		if (user.getReportCount() > 0) {
+			userEntity.setReportCount(user.getReportCount() - 1);
+			return true;
+		} else {
+			return false;
+		}
+	}
 }

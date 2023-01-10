@@ -12,12 +12,14 @@ import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.entity.Review;
 import com.clickgo.project.entity.ReviewReply;
+import com.clickgo.project.entity.Store;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.service.ReviewReplyService;
 import com.clickgo.project.service.ReviewService;
+import com.clickgo.project.service.StoreService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/review")
 public class ReviewApiController {
 
 	@Autowired
@@ -26,7 +28,12 @@ public class ReviewApiController {
 	@Autowired
 	private ReviewService reviewService;
 
-	@PostMapping("/review-reply/save/{id}")
+	@Autowired
+	private StoreService storeService;
+
+
+
+	@PostMapping("/reply/save/{id}")
 	public ResponseDto<?> saveReviewReply(@PathVariable int id, @RequestBody ReviewReply reviewReply,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Review reviewEntity = reviewService.findById(id);

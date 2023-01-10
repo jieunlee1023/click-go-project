@@ -17,7 +17,7 @@
 #loginbutton :hover, #joinbutton  :hover, #search-id :hover, 
 #search-pw :hover,
 	#btn--update:hover {
-	color: #6478ff;
+	color: grey;
 }
 
 #btn--login, #btn--save, #btn--search-id, #btn--search-pw, #btn--update
@@ -33,7 +33,7 @@
 }
 
 #id-infosearch-btn:hover, #signin-btn:hover {
-	color: #6478ff;
+	color: grey;
 }
 
 #search--text {
@@ -42,8 +42,8 @@
 }
 
 .login--img{
-	border: 2px dotted black;
 	border-radius: 1000px;
+	border: 2.5px solid black; 
 }
 
 /*아이디 중복 체크 버튼*/
