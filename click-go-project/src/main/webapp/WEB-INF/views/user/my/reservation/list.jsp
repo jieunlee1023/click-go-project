@@ -161,7 +161,7 @@
 										</c:otherwise>
 									</c:choose>
 									<input type="hidden" id="reservation-size"
-										value="${reservations.content.size()}">
+										value="${allReservations}">
 								</div>
 							</div>
 

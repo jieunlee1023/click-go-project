@@ -59,28 +59,15 @@
 						<c:choose>
 							<c:when
 								test="${likeStoresEntity.likeStore eq false || empty likeStoresEntity}">
-								<button type="button" id="store--wish--emptyheart" 
+								<button type="button" id="store--wish--emptyheart"
 									data-toggle="tooltip" data-placement="right"
-									title="하트를 클릭하여 위시리스트를 등록해보세요!" 
-									data-like-btn='emptyHeartBtn'>♡</button>
+									title="하트를 클릭하여 위시리스트를 등록해보세요!" data-like-btn='emptyHeartBtn'>♡</button>
 							</c:when>
 							<c:otherwise>
 								<button type="button" id="store--wish--heart"
 									data-like-btn='heartBtn'>♥</button>
 							</c:otherwise>
 						</c:choose>
-
-
-
-
-						<c:forEach var="likeStore" items="${likeStores}">
-							<c:if
-								test="${
-								likeStore.user.id eq principal.user.id && likeStore.store.id eq store.id}">
-								<input type="hidden" value="${likeStore.id }" id="likeStoreId">
-							</c:if>
-						</c:forEach>
-
 
 						<input type="hidden" value="${store.id }" id="storeId">
 						<c:if test="${store.user.id eq principal.user.id}">
@@ -114,7 +101,7 @@
 							</div>
 							<div>
 								<input type="text" class="timepicker" name="startTime"
-									id="startTime" value="시간을 선택해주세요." min="${nowTime}">
+									id="startTime" value="${nowTime}" min="${nowTime}">
 							</div>
 							<div>
 								<input type="text" class="timepicker" name="endTime"
@@ -181,20 +168,37 @@
 	</c:choose>
 
 </div>
+
+
 <br>
 <br>
 <div style="background-color: blue; height: 250px;">리뷰 목록</div>
+<c:forEach var="review" items="${reviewList }">
+	<tr style="text-align: center;">
+		<td>
+			<p>별점</p>
+		</td>
+		<c:choose>
+			<c:when test="${review.starScore eq '1' }">⭐</c:when>
+			<c:when test="${review.starScore eq '2' }">⭐⭐</c:when>
+			<c:when test="${review.starScore eq '3' }">⭐⭐⭐</c:when>
+			<c:when test="${review.starScore eq '4' }">⭐⭐⭐⭐</c:when>
+			<c:when test="${review.starScore eq '5' }">⭐⭐⭐⭐⭐</c:when>
+		</c:choose>
+		<td><p>${review.content}</p></td>
+		<td style="color: grey;" id="report--status"><p>${review.user.username}님</p></td>
+	</tr>
+	<div style="border: solid;"></div>
+</c:forEach>
 <div style="background-color: red;">
 	<div>이런곳은 어때요?</div>
 	<c:forEach var="storeListItem" items="${storeList }">
 		<c:if test="${storeListItem != store }">
 			<c:forEach var="image" items="${images}">
 				<c:if test="${image.store.id eq storeListItem.id }">
-
 					<div class="store-detail-main-img">
 						<img src="http://localhost:7777/storeImage/${image.imageUrl}"
 							alt="가게 사진" id="store-detail-img">
-
 					</div>
 				</c:if>
 			</c:forEach>
@@ -211,7 +215,7 @@
 		$('#startTime').timepicker({
 			timeFormat : 'HH:mm',
 			interval : 10,
-			startTime : '${nowTimeOnlyHour}',
+			startTime : '${nowTime}',
 			dynamic : false,
 			dropdown : true,
 			scrollbar : true,
@@ -226,16 +230,27 @@
 		$('#endTime').timepicker({
 			timeFormat : 'HH:mm',
 			interval : 10,
-			startTime : '${nowTimeOnlyHour}',
+			startTime : '${nowTime}',
 			dynamic : false,
 			dropdown : true,
 			scrollbar : true,
+
+			change : function(time) {
+				var element = $(this), text;
+				var timepicker = element.timepicker();
+				text = timepicker.format(time);
+				timeCheck();
+			}
 		});
 	});
 
 	$(function() {
 		$('[data-toggle="tooltip"]').tooltip()
 	});
+	
+	$(this).ready(function(){
+		timeCheck();
+	})
 </script>
 
 <script type="text/javascript" src="/js/store.js"></script>

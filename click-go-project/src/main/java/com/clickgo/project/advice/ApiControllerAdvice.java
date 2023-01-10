@@ -23,6 +23,7 @@ public class ApiControllerAdvice {
 		System.out.println("--------------------------------------------");
 		System.out.println("에러이름:" + e.getClass().getName());
 		System.out.println("메시지:" + e.getLocalizedMessage());
+		System.out.println("메시지:" + e.getMessage());
 		System.out.println("--------------------------------------------");
 
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("");

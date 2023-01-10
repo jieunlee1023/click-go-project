@@ -28,7 +28,7 @@
 		data.addRows(list);
 
 		var options = {
-			'title' : '가게들의 이번 달 매출 (원)',
+			'title' : '가게들의 이번 달 매출',
 			'width' : 1000,
 			'is3D' : true,
 			'height' : 1000

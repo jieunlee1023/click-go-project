@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../layout/header.jsp"%>
-<!-- ☞ -->
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
@@ -18,7 +17,6 @@
 			help.push(myData[i].month, myData[i].price);
 			list.push(help);
 		}; 
-		console.log(list);
 		
         var data = google.visualization.arrayToDataTable(list);
         var options = {
@@ -43,6 +41,16 @@
 
 	<div class="d-flex justify-content-center">
 		<div class="d-flex flex-column">
+		<div class="">
+			<div>
+				<input type="date" name="startDate" id="startDate"
+				value="${nowDate}" min="2022-12-25" max="${maxDate}">
+			</div>
+			<div>
+				<input type="date" name="endDate" id="endDate"
+				value="${nowDate}" min="2022-12-25" max="${maxDate}">
+			</div>
+		</div>
 		<div class="d-flex">
 				<div class="d-flex justify-content-center">
 				<div class="nav--list">

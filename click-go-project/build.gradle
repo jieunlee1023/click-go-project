@@ -39,9 +39,10 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation:2.7.5'
     // 이메일 인증 라이브러리
     implementation group: 'javax.mail', name: 'mail', version: '1.4.7'
-    // 이메일 인증 라이브러리
     //이미지 여러개 드랍존
     implementation 'org.webjars.npm:dropzone:5.9.3'
+    // qlrm 라이브러리
+    implementation group: 'org.qlrm', name: 'qlrm', version: '3.0.1'
 	//추가 라이브러리 끝 ----------------------------------------------------------------------
 }
 
