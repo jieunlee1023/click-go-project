@@ -3,6 +3,9 @@
 <%@ include file="../layout/header.jsp"%>
 <br>
 
+
+
+
 <div class="container" id="store-update">
 	<c:if test="${store.user.id eq principal.user.id}">
 		<div id="view-more-title">
@@ -56,8 +59,8 @@
 								</c:when>
 
 							</c:choose>
-							<span style="color: red; font-size: 40px; margin-left: 10px;" 
-									onclick="wishList.like();" id="store--wish--like">♡</span>
+							<span style="color: red; font-size: 40px; margin-left: 10px;"
+								onclick="wishList.like();" id="store--wish--like">♡</span>
 							<c:if test="${store.user.id eq principal.user.id}">
 								<div class="store-detail-update">
 									<a href="/care-store/update/${store.id}">수정하기</a>
@@ -156,24 +159,38 @@
 <br>
 <br>
 <div style="background-color: blue; height: 250px;">리뷰 목록</div>
-<div style="background-color: red;">
-	<div>이런곳은 어때요?</div>
-	<c:forEach var="storeListItem" items="${storeList }">
-		<c:if test="${storeListItem != store }">
-			<c:forEach var="image" items="${images}">
-				<c:if test="${image.store.id eq storeListItem.id }">
+<div>이런곳은 어때요?</div>
 
+
+
+
+<div class="d-flex flex-row justify-content-around">
+	<c:forEach var="storeListItem" items="${storeList }" varStatus="i">
+		<c:if test="${i.index < 5 && storeListItem != store }">
+		<%-- 	<c:forEach var="image" items="${images}">
+				<c:if test="${image.store.id eq storeListItem.id }">
 					<div class="store-detail-main-img">
 						<img src="http://localhost:7777/storeImage/${image.imageUrl}"
 							alt="가게 사진" id="store-detail-img">
-
 					</div>
 				</c:if>
-			</c:forEach>
-			<div>${storeListItem.storeName}</div>
+			</c:forEach> --%>
+			<div>
+			<div>
+			</div>
+				<div>
+					<a class="other-store-name" href="/store/detail/${storeListItem.id}">${storeListItem.storeName}</a>
+				</div>
+				<div style="width: 12em; height: 12em;">
+					<img class="other-store-img"  src="http://localhost:7777/storeImage/${image.imageUrl}"
+						style="width: 100%; height: 100%">
+				</div>
+			</div>
+
 		</c:if>
 	</c:forEach>
 </div>
+
 <br>
 <br>
 <br>
@@ -205,15 +222,18 @@
 		});
 		$()
 	});
-	
-	let wishList ={
-			like : function(){
-				alert('하트눌러짐');
-				$("#store--wish--like").html("♥");
-			}
-		};
 
+	let wishList = {
+		like : function() {
+			alert('하트눌러짐');
+			$("#store--wish--like").html("♥");
+		}
+	};
 </script>
+
+
+
+
 
 <script type="text/javascript" src="/js/store.js"></script>
 <script type="text/javascript" src="/js/reservation.js"></script>
