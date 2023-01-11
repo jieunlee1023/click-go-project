@@ -104,7 +104,7 @@
 		</div>
 		<div class="card" id="card--body">
 			<div class="card-body d-flex justify-content-center">
-				<label>✏️</label> <input type="text" id="reply--content" name="content">
+				<label>✏️</label> <input type="text" id="reply--content" name="content" required="required">
 				<div class="d-flex ">
 					<div class="form-check form-check-inline ml-3 ">
 						<label class="form-check-label">🔒</label> <input class="form-check-input" type="checkbox" name="secret" id="secret">

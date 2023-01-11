@@ -22,4 +22,5 @@ public class StoreApiController {
 		Store storeEntity = storeService.findById(storeId);
 		return new ResponseDto<>(true, storeEntity.getStoreAddress());
 	}
+
 }

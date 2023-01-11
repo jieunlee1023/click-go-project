@@ -1,11 +1,11 @@
 
-let index = {
+
+let reservationIndex = {
 	init: function() {
-		let size = $("#reservation-size").val();
+		let size = ($("#reservation-size").val());
 		let address = $("#store-address").val();
 		let storeName = $("#store-name").val();
 		for (let i = 0; i <= size; i++) {
-			console.log(i);
 			$("#btn--approve-" + i).bind("click", () => {
 				this.approve(i);
 			});
@@ -62,14 +62,39 @@ let index = {
 	}
 };
 
+reservationIndex.init();
+
 function timeCheck() {
-	let storeId = $("#storeId").val();
-	let data = {
-		startTime: $("#startTime").val(),
-		endTime: $("#endTime").val(),
-		startDate: $("#startDate").val(),
-		endDate: $("#endDate").val()
-	};
+	let storeId;
+	let data;
+
+	if ($("#startDate").val() == '' || $("#endDate").val() == '') {
+		Swal.fire({
+			icon: 'error',
+			text: "날짜 입력 후 시간을 선택해주세요!",
+		});
+
+
+		storeId = $("#storeId").val();
+		data = {
+			startTime: $("#startTime").val(),
+			endTime: $("#endTime").val(),
+			startDate: $("#startDate").val(),
+			endDate: $("#endDate").val()
+		};
+		return;
+		
+	} else {
+		storeId = $("#storeId").val();
+		data = {
+			startTime: $("#startTime").val(),
+			endTime: $("#endTime").val(),
+			startDate: $("#startDate").val(),
+			endDate: $("#endDate").val()
+		};
+	}
+
+
 	$.ajax({
 		type: 'post',
 		url: `/api/reservation/time-check/${storeId}`,
@@ -86,12 +111,13 @@ function timeCheck() {
 			});
 		}
 	}).fail(function(error) {
+		console.log(error);
 		Swal.fire({
-				icon: 'warning',
-				text: '예상치 못한 오류가 발생하였습니다. 관리자에게 문의해주세요.',
-			});
+			icon: 'warning',
+			text: '예상치 못한 오류가 발생하였습니다. 관리자에게 문의해주세요.',
+		});
 
-		
+
 	});
 };
 
@@ -103,7 +129,6 @@ function closeSeats(closeSeats) {
 
 		$("#" + i).attr("disabled", null);
 		for (seat of closeSeatsToMap.get("seats")) {
-			console.log(seat);
 			if (seat == i) {
 				$("#" + i).attr("disabled", "disabled");
 			};
@@ -142,5 +167,5 @@ function addMap(storeAddress, storeName) {
 	});
 };
 
-index.init();
+
 

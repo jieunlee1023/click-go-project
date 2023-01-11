@@ -2,8 +2,9 @@ package com.clickgo.project.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -21,16 +22,27 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.Image;
+import com.clickgo.project.entity.LikeStore;
+import com.clickgo.project.entity.Reservation;
+import com.clickgo.project.entity.Review;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
+import com.clickgo.project.model.chart.AWeekStoreSales;
+import com.clickgo.project.model.chart.TodayStoreSales;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.enums.StoreCategory;
+import com.clickgo.project.model.mydate.MyDate;
 import com.clickgo.project.repository.IImageRepository;
+import com.clickgo.project.repository.ILikeStoreRepository;
 import com.clickgo.project.repository.IStoreRepository;
 import com.clickgo.project.service.CategoryService;
+import com.clickgo.project.service.ReservationService;
+import com.clickgo.project.service.ReviewService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping("/store")
@@ -48,40 +60,64 @@ public class StoreController {
 	private CategoryService categoryService;
 
 	@Autowired
+	private ReviewService reviewService;
+
+	@Autowired
+	private ReservationService reservationService;
+
+	@Autowired
 	private IImageRepository iImageRepository;
-	
+
 	@Autowired
 	private IStoreRepository iStoreRepository;
 
+	@Autowired
+	private ILikeStoreRepository likeStoreRepository;
+
 	private Page<Store> stores;
 
-	@GetMapping("/main")
+	@GetMapping({ "/main", "/search" })
 	public String store(@RequestParam(required = false) String pageName, Model model,
 			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable) {
+
+		Map<Integer, Integer> starScoreMap = new HashMap<>();
 		List<StoreCategory> categories = new ArrayList<>();
+		List<Review> reviews = new ArrayList<>();
 		List<Category> categoryEntitys = categoryService.findAll();
 		categoryEntitys.forEach(t -> {
 			categories.add(t.getId());
 		});
+
 		if (pageName == null) {
 			stores = storeService.getStoreAllList(pageable);
 		} else {
 			stores = storeService.findAllByStoreCategory(pageName, pageable);
 		}
-		List<Image> images = iImageRepository.findStoreImage();
 
+		stores.forEach(store -> {
+			reviews.add(reviewService.findAvgStarScoreByStoreId(store.getId()));
+		});
+		reviews.forEach(review -> {
+			if (review != null) {
+				starScoreMap.put(review.getStore().getId(), review.getStarScore());
+			}
+		});
+		List<Image> images = iImageRepository.findStoreImage();
+		model.addAttribute("starScoreMap", starScoreMap);
 		model.addAttribute("images", images);
 		model.addAttribute("nowPage", pageName);
 		model.addAttribute("categories", categories);
 		model.addAttribute("stores", stores);
+
 		franchiseMassageCount(model);
 		return "store/store-main";
 	}
 
-	@GetMapping("/detail/{id}")
-	public String detail(@PathVariable int id, Model model,
+	@GetMapping("/detail/{storeId}")
+	public String detail(@PathVariable int storeId, Model model,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		Store storeEntity = storeService.findById(id);
+		Store storeEntity = storeService.findById(storeId);
+		List<Review> reviewList = reviewService.findByStoreId(storeEntity.getId());
 		// 비로그인 회원 접속 시 임시 RoleType을 GEUST로 지정
 		if (principalDetails == null) {
 			principalDetails = new PrincipalDetails(new User().builder().role(RoleType.GEUST).build());
@@ -101,28 +137,48 @@ public class StoreController {
 			}
 			model.addAttribute("images", image);
 		}
+
+		List<LikeStore> likeStores = likeStoreRepository.findAll();
+
+		LikeStore likeStoresEntity = likeStoreRepository.findByUserIdAndStoreId(storeId,
+				principalDetails.getUser().getId());
+
+		model.addAttribute("likeStoresEntity", likeStoresEntity);
+		model.addAttribute("likeStores", likeStores);
+		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("storeList", storeList);
+
 		return "/store/detail";
 	}
 
 	private void getNowDateAndTime(Model model) {
-		Date date = new Date();
+		MyDate myDate = new MyDate();
 
+		String today = myDate.getNowYear() + "-" + (myDate.getNowMonth() < 10 ? "0" : "") + myDate.getNowMonth() + "-"
+				+ myDate.getNowDay();
+		Date date = new Date();
 		int nowYear = (date.getYear() + 1900);
 		String nowMonth = "0" + (date.getMonth() + 1);
-		String nowDay = "0" + date.getDate();
+		String nowDay = date.getDate() + "";
 		int nowHour = date.getHours();
 		int nowMinutes = date.getMinutes();
 
+		if (nowMinutes < 10) {
+			nowMinutes = 10;
+		} else if (nowMinutes / 10 == 0) {
+			nowMinutes = date.getMinutes();
+		} else if (nowMinutes % 10 != 0) {
+			nowMinutes = (nowMinutes / 10 + 1) * 10;
+		}
+
+		String maxDate = myDate.getYearAndMonth() + "-" + myDate.getNowDay() + 7;
 		String nowDate = nowYear + "-" + nowMonth + "-" + nowDay;
 		String nowTime = nowHour + ":" + nowMinutes;
-		String maxDate = nowYear + "-" + nowMonth + "-" + (Integer.parseInt(nowDay) + 7);
 		String nowTimeOnlyHour = (nowHour + 1) + ":" + 00;
 
-		model.addAttribute("nowDate", nowDate);
-		model.addAttribute("nowTime", nowTime);
+		model.addAttribute("nowDate", today);
+		model.addAttribute("nowTime", myDate.getTime()); 
 		model.addAttribute("maxDate", maxDate);
-		model.addAttribute("nowTimeOnlyHour", nowTimeOnlyHour);
 	}
 
 	public void originLayout(int roomCount, Model model) {
@@ -163,5 +219,40 @@ public class StoreController {
 		});
 		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
+	}
+
+	@GetMapping("/chart/week")
+	public String salesWeekChart(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
+		List<Store> stores = storeService.findAllByUserId(principalDetails.getUser().getId());
+		List<AWeekStoreSales> storeSalesList = new ArrayList<>();
+		List<Reservation> reservations = reservationService.findWeekSalesByStoreId(stores.get(0).getId());
+		reservations.forEach(reservation -> {
+			AWeekStoreSales storeSales = new AWeekStoreSales(reservation.getReservationDate(), reservation.getPrice());
+			storeSalesList.add(storeSales);
+		});
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			String strStoreSales = objectMapper.writeValueAsString(storeSalesList);
+			model.addAttribute("strStoreSales", strStoreSales);
+			return "/user/my/chart/week";
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return "/";
+	}
+
+	@GetMapping("/chart/today")
+	public String salesTodayChart(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
+		List<Store> stores = storeService.findAllByUserId(principalDetails.getUser().getId());
+		List<TodayStoreSales> storeSalesList = reservationService.findHourSalesByStoreId(stores.get(0).getId());
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			String strStoreSales = objectMapper.writeValueAsString(storeSalesList);
+			model.addAttribute("strStoreSales", strStoreSales);
+			return "/user/my/chart/today";
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return "/";
 	}
 }
