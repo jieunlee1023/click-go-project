@@ -14,9 +14,10 @@
 
 
 <div class="container">
-	
-		<div class="input-group mb-3 justify-content-end">
-		<form action="/admin/one-to-one-search" method="get" class="form-inline">
+
+	<div class="input-group mb-3 justify-content-end">
+		<form action="/admin/one-to-one-search" method="get"
+			class="form-inline">
 			<input type="text" class="form-control" placeholder="검색어를 입력하세요."
 				name="q" value="${q }">
 			<div class="input-group-append ml-2">
@@ -24,7 +25,7 @@
 			</div>
 		</form>
 	</div>
-	
+
 
 	<div id="answer-body">
 		<div class="d-flex flex-column">

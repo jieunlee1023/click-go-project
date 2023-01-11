@@ -1,66 +1,91 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ include file="../layout/header.jsp"%>
+<%@ include file="../layout/admin-layout.jsp"%>
 
-<div class="container" id="mypage">
-	<input type="hidden" value="${principal.user.id}" id="user-id">
+<main class="container main">
+	<div class="responsive-wrapper">
 
-	<div class="d-flex" id="view-more-title" style="align-items: center;">
-		<div>💻 관리자 페이지</div>
+		<div class="content">
+			<div class="content-panel">
+				<div class="vertical-tabs">
+					<a href="/admin/main" class="active">👤 My</a> 
+					<a href="/admin/private/team">👥 Team</a>
+					<a href="/admin/private/plan">📅 Plan</a>
+					<a href="/admin/private/repository">📂 Repository</a> 
+				</div>
+			</div>
+			<div class="content-main">
+				<form action="/admin/private/profile/${principal.user.id }"
+					method="post" enctype="multipart/form-data">
+					<div class="admin-main-profile">
+						<c:choose>
+							<c:when test="${ empty adminEntity.profileUrl }">
+								<img src="/image/profile.png" />
+							</c:when>
+							<c:otherwise>
+								<img src="http://localhost:7777/admin/${adminEntity.profileUrl}" />
+							</c:otherwise>
+						</c:choose>
+					</div>
+					<div class="admin-main-my">
+
+						<input type="text" class="form-control" placeholder="닉네임을 입력해주세요!"
+							name="nickName" value="${adminEntity.nickName}"><br>
+					</div>
+					<div class="admin-main-my">
+						<input type="text" class="form-control"
+							value="${principal.user.phoneNumber }" readonly>
+					</div>
+					<div class="admin-main-my">
+						<input type="text" class="form-control"
+							value="${principal.user.email }" readonly>
+					</div>
+					<div class="admin-main-my">
+						<div class="custom-file" id="admin-main-my-image-input">
+							<input type="file" name="file" class="custom-file-input">
+							<label class="custom-file-label" for="customFile">업로드 할
+								프로필 이미지를 선택해주세요</label>
+						</div>
+					</div>
+					<div class="admin-main-my">
+						<input type="text" class="form-control"
+							placeholder="블로그 링크를 남겨주세요!" name="blogLink"
+							value="${adminEntity.blogLink}">
+					</div>
+					<div class="admin-main-my">
+						<input type="text" class="form-control"
+							placeholder="간단한 소개글을 쓸 수 있어요!" name="myInfo"
+							value="${adminEntity.myInfo}">
+					</div>
+					<div class="admin-main-my">
+						<button class="">저장하기</button>
+					</div>
+
+				</form>
+			</div>
+		</div>
 	</div>
-</div>
-<br>
-<div class="container d-flex justify-content-between"
-	style="flex-wrap: wrap;">
-	<div class="btn-wrapper">
-		<a href="/admin/user" class="btn2"><img style="margin-top: 60px;"
-			src="/image/mypage/user_update.png" width="80px"><br> <span>회원
-				관리</span>
-		</a>
-	</div>
+</main>
+<script>
+	$(".custom-file-input").bind(
+			"change",
+			function() {
+				console.log("test code:" + $(this).val());
+				var fileName = $(this).val().split("\\").pop();
+				$(this).siblings(".custom-file-label").addClass("selected")
+						.html(fileName);
+			});
+</script>
 
-	<div class="btn-wrapper">
-		<a href="/admin/store" class="btn2"> <img style="margin-top: 60px;"
-			src="/image/mypage/store.png" width="80px"><br> <span>가맹점
-				관리</span>
-		</a>
-	</div>
-
-
-	<div class="btn-wrapper">
-		<a href="/admin/reservation" class="btn2"> <img style="margin-top: 60px;"
-			src="/image/mypage/reservation.png" width="80px"><br> <span>예약
-				조회</span>
-		</a>
-	</div>
-
-	<div class="btn-wrapper">
-		<a href="/admin/one-to-one-list" class="btn2"> <img style="margin-top: 60px;"
-			src="/image/mypage/review.png" width="80px"><br> <span>1:1
-				문의</span>
-		</a>
-	</div>
-
-	<div class="btn-wrapper">
-		<a href="/admin/report" class="btn2"> <img style="margin-top: 60px;"
-			src="/image/mypage/report.png" width="80px"><br> <span>신고
-				관리</span>
-		</a>
-	</div>
-
-	<div class="btn-wrapper">
-		<a href="/admin/chart" class="btn2"> <img style="margin-top: 60px;"
-			src="/image/mypage/sales.png" width="80px"><br> <span>통계
-				보기</span>
-		</a>
-	</div>
-</div>
-<br>
-<br>
-<br>
-<br>
 <script src="/js/user.js"></script>
+<br>
+<br>
+<br>
 <%@ include file="../layout/footer.jsp"%>
+
+
+
+
 
 
 
