@@ -106,13 +106,11 @@
 							</div>
 							<div>
 								<input type="text" class="timepicker" name="endTime"
-									id="endTime" value="${nowTime}" min="${nowTime}">
 									id="endTime" value="${nowTimeOnlyHour}"
 									min="${nowTimeOnlyHour}">
 							</div>
 							<input type="hidden" id="storeId" value="${store.id }">
-							<button type="submit" id="btn--time-check"
-								>예약 하기</button>
+							<button type="submit" id="btn--time-check">예약 하기</button>
 						</div>
 						<br> <br>
 						<c:choose>
@@ -177,7 +175,7 @@
 <br>
 <br>
 <span id="test style"
- onclick="if(plain.style.display=='none') {
+	onclick="if(plain.style.display=='none') {
 		 plain.style.display=''; test.innerText = '리뷰 접기'
 		 } else {
 			 plain.style.display = 'none';
@@ -306,8 +304,6 @@
 			      }
 			    });
 			  } */
-		
-	
 </script>
 
 <script type="text/javascript" src="/js/store.js"></script>
