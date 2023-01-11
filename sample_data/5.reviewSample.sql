@@ -643,7 +643,7 @@ insert into review(content, createDate, starScore, storeId, userId)
 values('content 10', now(), 0, 10, 67);
 
 insert into review(content, createDate, starScore, storeId, userId)
-values('content 11', now(), 0, 0, 67);
+values('content 11', now(), 0, 22, 67);
 
 insert into review(content, createDate, starScore, storeId, userId)
 values('content 12', now(), 0, 1, 67);
@@ -817,7 +817,7 @@ insert into review(content, createDate, starScore, storeId, userId)
 values('content 8', now(), 3, 5, 72);
 
 insert into review(content, createDate, starScore, storeId, userId)
-values('content 9', now(), 0, 0, 72);
+values('content 9', now(), 0, 22, 72);
 
 insert into review(content, createDate, starScore, storeId, userId)
 values('content 10', now(), 0, 25, 72);
@@ -937,7 +937,7 @@ insert into review(content, createDate, starScore, storeId, userId)
 values('content 12', now(), 2, 27, 75);
 
 insert into review(content, createDate, starScore, storeId, userId)
-values('content 1', now(), 0, 0, 76);
+values('content 1', now(), 0, 22, 76);
 
 insert into review(content, createDate, starScore, storeId, userId)
 values('content 2', now(), 4, 27, 76);
@@ -1165,7 +1165,7 @@ insert into review(content, createDate, starScore, storeId, userId)
 values('content 4', now(), 1, 22, 82);
 
 insert into review(content, createDate, starScore, storeId, userId)
-values('content 5', now(), 1, 0, 82);
+values('content 5', now(), 1, 22, 82);
 
 insert into review(content, createDate, starScore, storeId, userId)
 values('content 6', now(), 3, 1, 82);
@@ -3028,6 +3028,7 @@ values('content 12', now(), 4, 36, 45);
 
 insert into review(content, createDate, starScore, storeId, userId)
 values('content 7', now(), 4, 36, 56);
+
 
 insert into review(content, createDate, starScore, storeId, userId)
 values('content 8', now(), 0, 36, 78);

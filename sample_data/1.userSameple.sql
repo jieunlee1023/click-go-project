@@ -1,4 +1,4 @@
- select * from user;
+
  
 insert into user(username, email, createDate, password, phoneNumber, role, loginType)
 values('user', '팀장님 이메일', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-5653-8645', 'ADMIN', 'CLICKGO');

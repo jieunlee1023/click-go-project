@@ -88,7 +88,8 @@
 					</c:otherwise>
 				</c:choose>
 
-				<form action="/reservation/${store.id}" method="post">
+				<form action="/reservation/${store.id}" method="post"
+					id="doReservation">
 					<div class="justify-content-center">
 						<div class="d-flex justify-content-center">
 							<div>
@@ -174,7 +175,7 @@
 <br>
 <br>
 <span id="test style"
- onclick="if(plain.style.display=='none') {
+	onclick="if(plain.style.display=='none') {
 		 plain.style.display=''; test.innerText = '리뷰 접기'
 		 } else {
 			 plain.style.display = 'none';
@@ -263,6 +264,46 @@
 	$(this).ready(function() {
 		timeCheck();
 	})
+	// 예약 등록 실패시(보류 불필요시삭제 - 지훈)
+	/* function doReservation() {
+	
+		const form = document.getElementById('doReservation');
+		    const data = new FormData(form);
+				  console.log('시작 날짜 '+data.get('startDate'));
+				  console.log('끝나는 날짜 '+data.get('endDate'));
+				  console.log('시작 시간 '+data.get('startTime'));
+				  console.log('끝나는 시간 '+data.get('endTime'));
+				  console.log('자리 '+data.get('seatNumber'));
+				  
+		    fetch(form.action, {
+		      method: form.method,
+		      body: data,
+		    }).then(response => {
+			      if (response.status == 200) {
+			    	 	if(data.get('startDate') == null || data.get('endDate') == null) {
+			    	 		alert('날짜 ㄱㄱ');
+			    	 		return false;
+			    	 		console.log(data.get('endTime'));
+			    	 	}else if (data.get('startTime') == null || data.get('endTime') == null){
+			    	 		alert('시간')
+			    	 		return false;
+			    	 	}else if(data.get('seatNumber') == null) {
+			    	 		alert('자리')
+		    				console.log(data);
+			    	 		return false;
+			    	 	}else {
+			    	 		 Swal.fire({
+									icon: 'success',
+									text: '예약완료.',
+								}).then(function() {
+									location.href = "/reservation/3";
+								});
+			    	 	}
+			      } else {
+			        alert('글 작성 실패');
+			      }
+			    });
+			  } */
 </script>
 
 <script type="text/javascript" src="/js/store.js"></script>

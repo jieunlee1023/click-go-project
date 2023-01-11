@@ -47,14 +47,27 @@ let index = {
 			dataType: "json",
 		}).done(function(data) {
 			if (data.httpStatus == true) {
-				alert("가맹점 승인이 완료되었습니다.");
-				location.href = "/storeFranchise/store-franchise-message";
+				Swal.fire({
+					icon: 'success',
+					text: '가맹점 승인이 완료되었습니다.',
+				}).then(function() {
+					location.href = "/storeFranchise/store-franchise-message";
+				});
 			} else {
-				alert("실패");
+				Swal.fire({
+					icon: 'error',
+					text: '가맹점 승인에 실패했습니다 관리자에게 문의해주세요',
+				}).then(function() {
+					location.href = "/storeFranchise/store-franchise-message";
+				});
 			}
 		}).fail(function(error) {
-			console.log(error);
-			alert("오.류가 발생했습니다");
+			Swal.fire({
+				icon: 'error',
+				text: '오류가 발생했습니다',
+			}).then(function() {
+				location.href = "/storeFranchise/store-franchise-message";
+			});
 		});
 
 	},
@@ -74,14 +87,23 @@ let index = {
 			contentType: "application/json; charset=UTF-8",
 		}).done(function(data) {
 			if (data.httpStatus == true) {
-				alert("가맹점 승인이 거절 되었습니다!");
-				location.href = "/storeFranchise/store-franchise-message";
+				Swal.fire({
+					icon: 'success',
+					text: '가맹점 승인이 거절 되었습니다!',
+				}).then(function() {
+					location.href = "/storeFranchise/store-franchise-message";
+				});
 			} else {
-				alert("실패");
+				Swal.fire({
+					icon: 'error',
+					text: '내부적인 오류로 인하여 승인거절에 실패했습니다 다시 확인하여 주세요!',
+				});
 			}
 		}).fail(function(error) {
-			console.log(error);
-			alert("오류가 발생했습니다.");
+			Swal.fire({
+				icon: 'error',
+				text: '내부적인 오류로 인하여 승인거절에 실패했습니다 다시 확인하여 주세요!',
+			});
 		});
 	},
 	searchAddress: function() {

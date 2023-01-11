@@ -31,6 +31,11 @@
 	margin: 10px;
 }
 
+#other-store{
+	width: 30px;
+	height: 30px;
+}
+
 .store--seat--drawing {
 	width: 60%;
 	display: flex;
@@ -170,3 +175,9 @@
   animation-iteration-count: infinite;
   animation-direction: alternate;
 }
+
+.other-store-name {
+	font-size: 20px;
+	
+}
+

@@ -51,6 +51,7 @@
 		tabsize : 2,
 		height : 300,
 	});
+	
 
 	function boardWrite() {
 		Swal.fire({
