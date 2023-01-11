@@ -43,7 +43,7 @@
 				<input class="form-check-input" type="checkbox" name="secret"
 					id="secret"> <label class="form-check-label">비밀글 설정</label>
 			</div>
-			<button type="button" class="btn board--save mt-3" id="btn--write"
+			<button type="submit" class="btn board--save mt-3" id="btn--write"
 				onclick="boardWrite();">글 작성</button>
 		</div>
 	</form>

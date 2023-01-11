@@ -63,7 +63,7 @@
 							<p id="board--user--name">${board.user.username }</p>
 						</div>
 						<div class="col-lg-board-list-item">
-							<p id="board--user--name">${board.view }</p>
+							<p id="board--user--name">${board.count }</p>
 						</div>
 						<div class="col-lg-board-list-item">
 							<p id="board--date">${board.createDate }</p>
@@ -108,7 +108,7 @@
 					<p id="board--user--name">${board.user.username }</p>
 				</div>
 				<div class="col-lg-board-list-item">
-					<p id="board--user--name">조회수</p>
+					<p id="board--user--name">${board.count }</p>
 				</div>
 				<div class="col-lg-board-list-item">
 					<p id="board--date">${board.createDate }</p>
