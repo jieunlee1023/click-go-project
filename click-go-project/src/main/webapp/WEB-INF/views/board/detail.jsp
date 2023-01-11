@@ -22,6 +22,10 @@
 			<div class="d-flex justify-content-start">
 				<span>등록시간&nbsp;:&nbsp;${board.createDate }</span>
 			</div>
+			<div class="d-flex justify-content-start">
+			
+				<span>조회수&nbsp;:&nbsp;${board.count }</span>
+			</div>
 		</div>
 	</div>
 	<br>
@@ -36,11 +40,11 @@
 	<div class="d-flex justify-content-end"></div>
 	<br> <br>
 	<form action="/board/${board.id }/reply" method="post">
+	
 		<div class="board--detail--card">
 			<div class="card-header">🗨️</div>
 
 			<ul class="list-group" id="reply--box">
-
 
 				<c:forEach var="reply" items="${board.csReply }">
 					<c:if test="${reply.secret == true }">
@@ -112,7 +116,6 @@
 					<button type="submit" class="btn" id="btn-reply-save">댓글 작성</button>
 				</div>
 			</div>
-
 		</div>
 	</form>
 </div>

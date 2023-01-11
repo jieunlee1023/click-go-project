@@ -2,7 +2,6 @@ package com.clickgo.project.controller;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +56,7 @@ public class StoreController {
 
 	@GetMapping({ "/main", "/search" })
 	public String store(@RequestParam(required = false) String pageName, Model model,
-			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 
 		String searchStoreName = pageName == null ? "" : pageName;
 
