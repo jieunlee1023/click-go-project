@@ -62,7 +62,7 @@ public class ReportController {
 
 	@GetMapping("/list/{myList}")
 	public String reportList(Model model,
-			@PageableDefault(size = 50, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@PageableDefault(size = 1000, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails, @PathVariable(required = false) int myList) {
 		Page<Report> reports = null;
 		if (principalDetails.getUser().getRole().equals(RoleType.GEUST)) {
