@@ -163,7 +163,6 @@ public class ReservationService {
 	public List<Reservation> findWeekSalesByStoreId(int storeId) {
 		MyDate myDate = new MyDate();
 		String aWeekAgo = myDate.getAWeekAgo();
-		System.out.println(aWeekAgo);
 		return reservationRepository.findWeekSalesByStoreId(storeId, aWeekAgo);
 	}
 

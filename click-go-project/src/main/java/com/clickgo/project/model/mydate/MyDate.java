@@ -28,11 +28,11 @@ public class MyDate {
 	}
 
 	public String getToday() {
-//		if (nowDay < 11) {
-//			return nowYear + "-0" + nowMonth + "-0" + nowDay;
-//		} else {
-			return nowYear + "-" + nowMonth + "-" + nowDay;
-//		}
+		if (nowDay < 10) {
+			return nowYear + "-0" + nowMonth + "-0" + nowDay;
+		} else {
+			return nowYear + "-0" + nowMonth + "-" + nowDay;
+		}
 	}
 
 	public String getTime() {
@@ -40,17 +40,20 @@ public class MyDate {
 	}
 
 	public String getYearAndMonth() {
+		if (nowMonth < 10) {
+			return nowYear + "-0" + nowMonth;
+		}
 		return nowYear + "-" + nowMonth;
 	}
 
 	public String getAWeekAgo() {
-		if (nowDay < 11) {
+		if (nowDay < 10) {
 			if (nowDay < 7) {
-				return nowYear + "-0" + nowMonth + "-0" + nowDay;
+				return nowYear + "-0" + nowMonth + "-" + nowDay;
 			}
 			return nowYear + "-0" + nowMonth + "-0" + (nowDay - 7);
 		} else {
-			return nowYear + "-0" + nowMonth + "-" + (nowDay - 7);
+			return nowYear + "-0" + nowMonth + "-0" + (nowDay - 7);
 		}
 	}
 }
