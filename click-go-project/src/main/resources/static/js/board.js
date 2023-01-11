@@ -9,7 +9,7 @@ let boardIndex = {
 		});
 	},
 
-// write 필요없으면 지워주세요
+
 	
 
 	deleteById: function() {

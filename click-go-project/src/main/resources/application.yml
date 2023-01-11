@@ -35,10 +35,6 @@ spring:
       enabled: true
       max-file-size: 20MB
 
-     
- 
-
-
 click_go:
   key: 85135f3c6bfe9df1735f8806f045ae73cece7219f7840d8e7e9297a7f846b48a
   
@@ -53,6 +49,9 @@ layoutFile:
   
 storeImageFile:
   path: C:\click-go-project\images\storeImage\
+  
+AdminImageFile:
+  path: C:\click-go-project\images\admin\
 
 mail:
   id: whwlgns42@naver.com

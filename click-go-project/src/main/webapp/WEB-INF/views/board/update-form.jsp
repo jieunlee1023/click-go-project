@@ -7,7 +7,7 @@
 
 
 <div class="container">
-	<form action="" >
+	<form>
 		<input type="hidden" id="id" value="${principal.user.id }">
 
 		<div class="form-group-board" id="board--update--id">
@@ -37,7 +37,7 @@
 			<div class="form-check form-check-inline">
 				<input class="form-check-input" type="checkbox" name="secret" id="secret"> <label class="form-check-label">비밀글 설정</label>
 			</div>
-			<button type="button" id="btn--update" class="btn board--save mt-3">수정하기</button>
+			<button type="submit" id="btn--update" class="btn board--save mt-3">수정하기</button>
 		</div>
 	</form>
 </div>
@@ -51,10 +51,7 @@
 </script>
 
 <script type="text/javascript" src="/js/board.js">
-	
 </script>
-
-
 
 <%@ include file="../layout/footer.jsp"%>
 
