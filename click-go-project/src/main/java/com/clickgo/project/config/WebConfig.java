@@ -18,6 +18,10 @@ public class WebConfig implements WebMvcConfigurer{
 	@Value("${storeImageFile.path}")
 	private String storeImageFileFolder;
 	
+
+	@Value("${AdminImageFile.path}")
+	private String profileFileFolder;
+	
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 		WebMvcConfigurer.super.addResourceHandlers(registry);
@@ -36,6 +40,12 @@ public class WebConfig implements WebMvcConfigurer{
 		
 		registry.addResourceHandler("/storeImage/**")
 		.addResourceLocations("file:///"+storeImageFileFolder)
+		.setCachePeriod(60*10*6)
+		.resourceChain(true)
+		.addResolver(new PathResourceResolver());
+		
+		registry.addResourceHandler("/admin/**")
+		.addResourceLocations("file:///"+profileFileFolder)
 		.setCachePeriod(60*10*6)
 		.resourceChain(true)
 		.addResolver(new PathResourceResolver());

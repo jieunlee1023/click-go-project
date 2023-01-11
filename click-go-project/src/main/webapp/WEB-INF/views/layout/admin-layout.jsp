@@ -73,85 +73,74 @@
 
 <body>
 
-
-	<div id="header">
-		<div class="container ">
-			<div id='wrapper'>
-
-				<div id="logo">
-
-					<a class="navbar-brand" href="/" style="color: black"> 
-					<img src="/image/logo.png" alt="click-go-logo" style="width: 200px"></a>
-
-				</div>
+<header class="header">
+  
+  <div class="container">
+    <div class="header-content responsive-wrapper">
+      <div class="header-logo">
+			<a class="navbar-brand" href="/" style="color: black"> 
+			<img src="/image/favicon.png" alt="로고" style="width: 40px"></a>
+      </div>
+      <div class="header-navigation">
+        <nav class="header-navigation-links">
+         <a  href="/">홈</a>
+          <a href="/store/main">상점</a>
+          <a href="/board/list">게시판</a>
+          <a href="/admin/main">관리자</a>
+          <a href="/logout">로그아웃</a>
+        </nav>
+        <div class="header-navigation-actions">
+        <form action="/storeFranchise/store-franchise-message" method="get">
+			<div class="nav-btn justify-content-bottom" id="notification" style="position: relative; margin: 0px">
+				<button type="submit" id="btn--msg">
+						<span id="msg--icon">💌</span> <span class="note-num" id="msg--count">${waitMsg}</span>
+				</button>
 			</div>
-
-			<c:choose>
-				<c:when test="${empty principal}">
-
-					<div class="nav--list">
-						<ul id="nav--item">
-							<li><a class="nav-link" href="/">홈</a></li>
-							<li><a class="nav-link" href="/store/main">상점</a></li>
-							<li id="more--view"><a class="nav-link" href="#">더보기</a>
-								<ul id="nave--moreview--item">
-									<li><a class="dropdown-item" href="/view-more/notice-list">공지사항</a></li>
-									<li><a class="dropdown-item" href="/board/list">게시판</a></li>
-									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
-									<li><a class="dropdown-item" href="/view-more/about-us">회사 소개</a></li>
-									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
-								</ul></li>
-							<li><a class="nav-link" href="/auth/login-form">로그인</a></li>
-						</ul>
-					</div>
+		</form>
+          <a href="#" class="avatar">
+            <c:choose>
+				<c:when test="${ empty adminEntity.profileUrl }">
+					<img src="/image/profile.png" />
 				</c:when>
-
-
-				<c:when test="${principal.user.role eq 'ADMIN'}">
-					<div class="nav--list">
-						<ul id="nav--item">
-							<li><a class="nav-link" href="/">홈</a></li>
-							<li><a class="nav-link" href="/store/main">상점</a></li>
-							<li><a class="nav-link" href="/storeFranchise/store-franchise-list">가맹점 목록</a></li>
-							<li id="more--view"><a class="nav-link" href="#">더보기</a>
-								<ul id="nave--moreview--item">
-									<li><a class="dropdown-item" href="/view-more/notice-list">공지사항</a></li>
-									<li><a class="dropdown-item" href="/board/list">게시판</a></li>
-									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
-									<li><a class="dropdown-item" href="/view-more/about-us">회사 소개</a></li>
-									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
-								</ul></li>
-							<li><a class="nav-link" href="/admin/main">관리자</a></li>
-							<li><a class="nav-link" href="/logout">로그아웃</a></li>
-						</ul>
-					</div>
-				</c:when>
-
-				<c:otherwise>
-					<div class="nav--list">
-						<ul id="nav--item">
-							<li><a class="nav-link" href="/">홈</a></li>
-							<li><a class="nav-link" href="/store/main">상점</a></li>
-							<li id="more--view"><a class="nav-link" href="#">가맹점</a>
-								<ul id="nave--moreview--item">
-									<li><a class="nav-link" href="/storeFranchise/store-franchise-apply">가맹점 신청</a></li>
-									<li><a class="nav-link" href="/storeFranchise/store-franchise-applyList">가맹점 신청목록</a></li>
-								</ul></li>
-							<li id="more--view"><a class="nav-link" href="#">더보기</a>
-								<ul id="nave--moreview--item">
-									<li><a class="dropdown-item" href="/view-more/notice-list">공지사항</a></li>
-									<li><a class="dropdown-item" href="/board/list">게시판</a></li>
-									<li><a class="dropdown-item" href="/view-more/question-form/1">자주 묻는 질문</a></li>
-									<li><a class="dropdown-item" href="/view-more/about-us">회사 소개</a></li>
-									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
-									<li><a class="dropdown-item" href="/view-more/one-to-one-ask">1:1 문의</a></li>
-								</ul></li>
-							<li><a class="nav-link" href="/mypage">내 정보</a></li>
-							<li><a class="nav-link" href="/logout">로그아웃</a></li>
-						</ul>
-					</div>
+				<c:otherwise>			
+			 	 	<img src="http://localhost:7777/admin/${adminEntity.profileUrl}" />
 				</c:otherwise>
 			</c:choose>
-		</div>
+          </a>
+          
+        </div>
+      </div>
+      <a href="#" class="button">
+        <i class="ph-list-bold"></i>
+        <span>Menu</span>
+      </a>
+    </div>
+    </div>
+  </header>
+  
+  
+  <main class="container main">
+    <div class="responsive-wrapper">
+      <div class="main-header">
+        <h1>💻 관리자 페이지</h1>
+        <div class="search">
+          <input type="text" placeholder="Search" />
+          <button type="submit">
+            <i class="ph-magnifying-glass-bold"></i>
+          </button>
+        </div>
+        
+        
+        
+      </div>
+      <div class="horizontal-tabs">
+       <a href="/admin/user" ><span>회원관리</span></a>
+        <a href="/admin/store" > <span>가맹점관리</span></a>
+        <a href="/admin/reservation" > <span>예약조회</span></a>
+        <a href="/admin/one-to-one-list" > <span>1:1문의</span></a>
+        <a href="/admin/report" ><span>신고관리</span></a>
+        <a href="/admin/chart"><span>통계보기</span></a>
+      </div>
 	</div>
+</main>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

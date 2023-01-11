@@ -53,6 +53,9 @@ layoutFile:
   
 storeImageFile:
   path: C:\click-go-project\images\storeImage\
+  
+AdminImageFile:
+  path: C:\click-go-project\images\admin\
 
 mail:
   id: whwlgns42@naver.com
