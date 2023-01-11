@@ -49,6 +49,10 @@ public class ReservationService {
 	public List<Reservation> findByStoreId(int storeId) {
 		return reservationRepository.findByStoreId(storeId);
 	}
+	
+	public List<Reservation> findSeatByStoreId(int storeId) {
+		return reservationRepository.findSeatByStoreId(storeId);
+	}
 
 	@Transactional
 	public List<Reservation> findByStoreIdAndApprove(int storeId) {
@@ -159,7 +163,6 @@ public class ReservationService {
 	public List<Reservation> findWeekSalesByStoreId(int storeId) {
 		MyDate myDate = new MyDate();
 		String aWeekAgo = myDate.getAWeekAgo();
-		System.out.println(aWeekAgo);
 		return reservationRepository.findWeekSalesByStoreId(storeId, aWeekAgo);
 	}
 

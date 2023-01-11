@@ -73,17 +73,7 @@ function timeCheck() {
 			icon: 'error',
 			text: "날짜 입력 후 시간을 선택해주세요!",
 		});
-
-
-		storeId = $("#storeId").val();
-		data = {
-			startTime: $("#startTime").val(),
-			endTime: $("#endTime").val(),
-			startDate: $("#startDate").val(),
-			endDate: $("#endDate").val()
-		};
 		return;
-		
 	} else {
 		storeId = $("#storeId").val();
 		data = {
@@ -93,7 +83,6 @@ function timeCheck() {
 			endDate: $("#endDate").val()
 		};
 	}
-
 
 	$.ajax({
 		type: 'post',
@@ -111,20 +100,16 @@ function timeCheck() {
 			});
 		}
 	}).fail(function(error) {
-		console.log(error);
 		Swal.fire({
 			icon: 'warning',
 			text: '예상치 못한 오류가 발생하였습니다. 관리자에게 문의해주세요.',
 		});
-
-
 	});
 };
 
 function closeSeats(closeSeats) {
 	let closeSeatsToMap = new Map(Object.entries(closeSeats));
 	let totalRoomCount = closeSeatsToMap.get("totalRoomCount");
-	console.log('자리 닫힘');
 	for (let i = 0; i < totalRoomCount; i++) {
 
 		$("#" + i).attr("disabled", null);

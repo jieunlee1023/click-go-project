@@ -154,8 +154,6 @@ public class StoreController {
 	private void getNowDateAndTime(Model model) {
 		MyDate myDate = new MyDate();
 
-		String today = myDate.getNowYear() + "-" + (myDate.getNowMonth() < 10 ? "0" : "") + myDate.getNowMonth() + "-"
-				+ myDate.getNowDay();
 		Date date = new Date();
 		int nowYear = (date.getYear() + 1900);
 		String nowMonth = "0" + (date.getMonth() + 1);
@@ -163,6 +161,7 @@ public class StoreController {
 		int nowHour = date.getHours();
 		int nowMinutes = date.getMinutes();
 
+		nowMinutes = 49;
 		if (nowMinutes < 10) {
 			nowMinutes = 10;
 		} else if (nowMinutes / 10 == 0) {
@@ -171,14 +170,15 @@ public class StoreController {
 			nowMinutes = (nowMinutes / 10 + 1) * 10;
 		}
 
-		String maxDate = myDate.getYearAndMonth() + "-" + myDate.getNowDay() + 7;
 		String nowDate = nowYear + "-" + nowMonth + "-" + nowDay;
-		String nowTime = nowHour + ":" + nowMinutes;
-		String nowTimeOnlyHour = (nowHour + 1) + ":" + 00;
+        String nowTime = nowHour + ":" + nowMinutes;
+        String maxDate = nowYear + "-" + nowMonth + "-" + (Integer.parseInt(nowDay) + 7);
+        String nowTimeOnlyHour = (nowHour + 1) + ":" + 00;
 
-		model.addAttribute("nowDate", today);
-		model.addAttribute("nowTime", myDate.getTime()); 
-		model.addAttribute("maxDate", maxDate);
+        model.addAttribute("nowDate", nowDate);
+        model.addAttribute("nowTime", nowTime);
+        model.addAttribute("maxDate", maxDate);
+        model.addAttribute("nowTimeOnlyHour", nowTimeOnlyHour);
 	}
 
 	public void originLayout(int roomCount, Model model) {
@@ -227,6 +227,7 @@ public class StoreController {
 		List<AWeekStoreSales> storeSalesList = new ArrayList<>();
 		List<Reservation> reservations = reservationService.findWeekSalesByStoreId(stores.get(0).getId());
 		reservations.forEach(reservation -> {
+			System.out.println(reservation);
 			AWeekStoreSales storeSales = new AWeekStoreSales(reservation.getReservationDate(), reservation.getPrice());
 			storeSalesList.add(storeSales);
 		});
