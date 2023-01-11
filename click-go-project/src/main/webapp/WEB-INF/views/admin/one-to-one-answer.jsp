@@ -3,151 +3,118 @@
 
 
 <br>
-<div class="container" id="">
+<div class="container mb-5" id="">
 	<div id="view-more-title">
 		<div>
-			👤 1:1 문의 답변 <a id="btn--back" class="btn" href="./main">돌아가기</a>
+			<c:choose>
+				<c:when test="${principal.user.role eq 'ADMIN' }">
+				👤 1:1 문의 답변 <a id="btn--back" class="btn" href="/admin/one-to-one-list">돌아가기</a>
+				</c:when>
+				<c:otherwise>
+					<button class="btn" id="btn--back" onclick="history.back();">돌아가기</button>
+				</c:otherwise>
+			</c:choose>
 		</div>
 	</div>
 	<hr>
 </div>
 
-<div class="container">
-	<div class="d-flex flex-column border">
-		<form action="/admin/one-to-one-answer" method="post">
-			<input type="hidden" value="${askEntity.id}" name="askId"> <input type="hidden" value="${principal.user.id }" name="userId">
-			<div class="media p-3">
-				<!-- <img src="/image/favicon.png" class="align-self-start mr-3" style="width: 60px"> -->
-				<div class="media-body">
-					<div class="p-3 border-bottom">
-						<h5 class="d-flex justify-content-center">1:1 문의하신 글입니다</h5>
-					</div>
-					<div class="p-3 border-bottom">
-						<p>${askEntity.title }</p>
-					</div>
-					<div class="p-3 border-bottom">
-						<span>${askEntity.content }</span>
+
+
+<form action="/admin/one-to-one-answer" method="post">
+	<input type="hidden" value="${askEntity.id}" name="askId" required="required"> <input type="hidden" value="${principal.user.id }" name="userId" required="required">
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-light text-dark">
+				<div class="d-flex flex-column">
+					<span>No.${askEntity.id }</span> <span>${askEntity.user.username }</span>
+					<hr>
+					<div>
+						<h5 class="d-flex justify-content-center">&nbsp;${askEntity.title }</h5>
 					</div>
 				</div>
 			</div>
-			<div class="border-top border-bottom p-3" style="height: 60px">
-				<h5 class="d-flex justify-content-center">1:1 답변입니다</h5>
-			</div>
-
-			<!-- Media bottom -->
-			<div class="media p-3">
-				<img src="/image/favicon.png" class="align-self-end mr-3" style="width: 60px">
-				<div class="media-body">
-					<div class="p-3 border-bottom">
-						<span>안녕하세요. 문의해주신 내용 잘 확인하였습니다 </span>
-					</div>
-					<div class="p-3 border-bottom">
-						<c:forEach var="answerlist" items="${answerList }">
-							<c:if test="${askEntity.id eq answerlist.oneToOneAsk.id }">
-								<span>${answerlist.content }</span>
-							</c:if>
-						</c:forEach>
-					</div>
-				</div>
-			</div>
-			<c:if test="${principal.user.role eq 'ADMIN' }">
-				<div class="d-flex flex-column border">
-					<textarea name="content" rows="5" cols="10"></textarea>
-					<div class="d-flex justify-content-center">
-						<button type="submit" id="btn" class="btn">답변하기</button>
-					</div>
-				</div>
-			</c:if>
-		</form>
-	</div>
-
-
-
-
-
-	<%-- <form action="/admin/one-to-one-answer" method="post">
-		<input type="hidden" value="${askEntity.id}" name="askId"> <input type="hidden" value="${principal.user.id }" name="userId">
-		<div class="d-flex media border p-5">
-			<img src="/image/admin/bul2.png" alt="John Doe" class="mr-3 mt-3 rounded-circle" style="width: 80px;">
-			<div class="media-body p-2">
-				<div class="d-flex border-bottom m-2" id="answer-box">
-					<h3>${askEntity.title }</h3>
-				</div>
-				<div class="d-flex m-4 border-bottom" id="answer-box">
-					<h4>${askEntity.content }</h4>
-				</div>
-				<br> <br>
-				<div style="height: 50px;" class="border-top"></div>
-
-				<div class="d-flex flex-column media p-3">
-					<img src="/image/admin/bul4.png" alt="Jane Doe" class="mr-3 mt-3 rounded-circle" style="width: 60px;">
-					<div class="media-body p-2">
-						<div class="d-flex border-bottom">
-							<h3>문의하신 내용의 답변입니다</h3>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-2 border-right">
+						<div class="d-flex justify-content-center">
+							<img alt="" src="/image/q.png" style="width: 30%;">
 						</div>
-						<c:forEach var="answerlist" items="${answerList }">
-							<c:if test="${askEntity.id eq answerlist.oneToOneAsk.id }">
-								<div class="m-4 border-bottom" id="answer-box">
-									<h3>${answerlist.content }</h3>
-								</div>
-							</c:if>
-						</c:forEach>
-
 					</div>
+					<div class="col-9 pl-3">
+						<span>아래는 고객님이 문의하신 내용입니다.</span><br>
+						<hr>
+						<div class="card img-fluid " style="width: 100%; border: none;">
+							<div class="d-flex justify-content-center">
+								<img class="card-img-top" src="/image/logo.png" alt="Card image" style="width: 50%; opacity: 0.1;">
+							</div>
+							<div class="card-img-overlay">${askEntity.content }</div>
+						</div>
+					</div>
+
 				</div>
 			</div>
 		</div>
-		<br> <br>
+	</div>
+	<br> <br> <br>
+	<div class="container">
 		<c:if test="${principal.user.role eq 'ADMIN' }">
 			<div class="d-flex flex-column border">
-				<textarea name="content" rows="5" cols="10"></textarea>
-				<div>
-					<button type="submit">답변하기</button>
+				<textarea name="content" rows="5" cols="10" required="required"></textarea>
+				<div class="d-flex justify-content-center">
+					<button type="submit" id="btn" class="btn">답변하기</button>
 				</div>
 			</div>
 		</c:if>
-	</form>
-
-
-	<br> <br> <br> <br> --%>
-	<%-- <div>
-		<p>문의하신 제목 :</p>
-		<p>제목>>>${askEntity.title }</p>
 	</div>
+	<br> <br> <br>
 
-	<div>
-		<p>문의하신 내용 :</p>
-		<p>내용 >>> ${askEntity.content }</p>
+
+
+
+	<div class="container">
+		<div class="card">
+			<div class="card-header bg-light text-dark">
+				<div class="d-flex flex-column">
+					<span>문의번호 : ${askEntity.id }</span> <span>문의자 : ${askEntity.user.username }</span>
+					<hr>
+					<div>
+						<h5 class="d-flex justify-content-center">${askEntity.title }&nbsp;의대한답변</h5>
+					</div>
+				</div>
+			</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-2 border-right">
+						<div class="d-flex justify-content-center">
+							<img alt="" src="/image/favicon.png" style="width: 30%;">
+						</div>
+					</div>
+					<div class="col-9 pl-3">
+						<span>안녕하세요 클릭고 운영자입니다</span><br> <br> <span>아래는 문의하신 내용의 답변입니다</span>
+						<hr>
+						<div class="card img-fluid " style="width: 100%; border: none;">
+							<div class="d-flex justify-content-center">
+								<img class="card-img-top" src="/image/logo.png" alt="Card image" style="width: 50%; opacity: 0.1;">
+							</div>
+							<div class="card-img-overlay">
+								<c:forEach var="answerlist" items="${answerList }">
+									<c:if test="${askEntity.id eq answerlist.oneToOneAsk.id }">
+										<span>${answerlist.content }</span>
+									</c:if>
+								</c:forEach>
+							</div>
+						</div>
+						<hr>
+						<span>궁금한 사항이 있으시면 언제든지 문의해주시길 바랍니다</span> <br> <br> <span>감사합니다.</span>
+					</div>
+
+				</div>
+			</div>
+		</div>
 	</div>
-	<div>
-		<form action="/admin/one-to-one-answer" method="post">
-			<input type="hidden" value="${askEntity.id}" name="askId"> <input type="hidden" value="${principal.user.id }" name="userId">
-			<c:if test="${principal.user.role eq 'ADMIN' }">
-				<textarea name="content" rows="1" cols="6">
-			</textarea>
-				<button type="submit">삥뽕</button>
-			</c:if>
+</form>
 
-
-			<c:forEach var="answerlist" items="${answerList }">
-				<c:if test="${askEntity.id eq answerlist.oneToOneAsk.id }">
-					<div>답변 : : : : ${answerlist.content }</div>
-
-				</c:if>
-			</c:forEach>
-		</form>
-
-	</div> --%>
-
-
-
-
-</div>
-
-<br>
-<br>
-<br>
-<br>
 
 
 
@@ -155,6 +122,9 @@
 
 
 
+<br>
+<br>
+<br>
 
 
 

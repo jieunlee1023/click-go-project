@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
+import com.clickgo.project.entity.Image;
 import com.clickgo.project.entity.LikeStore;
 import com.clickgo.project.model.enums.StoreCategory;
+import com.clickgo.project.repository.IImageRepository;
 import com.clickgo.project.service.CategoryService;
 import com.clickgo.project.service.WishListService;
 
@@ -31,23 +33,38 @@ public class WishListController {
 
 	@Autowired
 	private WishListService wishListService;
+	
+	@Autowired
+	private IImageRepository iImageRepository;
 
 	@GetMapping({ "", "/" })
 	public String wishList(@RequestParam(required = false) String category, Model model,
-			@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@PageableDefault(size = 50, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		List<StoreCategory> categoryEntitys = new ArrayList<>();
 		List<Category> categories = categoryService.findAll();
 		categories.forEach(t -> {
 			categoryEntitys.add(t.getId());
 		});
+
+//		Page<LikeStore> likeStores = wishListService.findByCategory(principalDetails.getUser().getId(),
+//				category, pageable);
+
+		List<LikeStore> myLikeStoresList = new ArrayList<>();
+		List<LikeStore> likeStoresTotal = wishListService.findByUserId(principalDetails.getUser().getId());
+		likeStoresTotal.forEach(t -> {
+			if (t.isLikeStore() == true) {
+				myLikeStoresList.add(t);
+			}
+		});
 		
-		
-		Page<LikeStore> likeStores = wishListService.findByCategory(principalDetails.getUser().getId(),
-				category, pageable);
+		List<Image> images = iImageRepository.findStoreImage();
+		model.addAttribute("images", images);
 
 		model.addAttribute("categoryEntitys", categoryEntitys);
-		model.addAttribute("likeStores", likeStores);
+		model.addAttribute("likeStoresTotal", likeStoresTotal);
+		model.addAttribute("myLikeStoresList", myLikeStoresList);
+
 		return "user/my/wish-list/list";
 	}
 }

@@ -37,11 +37,10 @@
 
 	<div class="band">
 		<c:forEach var="store" items="${stores.content }">
-
 			<div class="item-2">
 				<a href="/store/detail/${store.id}" class="main--card"
-					style="text-decoration: none;"> <c:forEach var="image"
-						items="${images }" varStatus="status">
+					style="text-decoration: none;" rel="pulse-grow" id="hover-shadow">
+					<c:forEach var="image" items="${images }" varStatus="status">
 						<c:if test="${store.id eq  image.store.id}">
 							<img class="thumb"
 								src="http://localhost:7777/storeImage/${image.imageUrl}">
@@ -70,5 +69,8 @@
 <br>
 <br>
 
+
+
+<script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript" src="/js/store.js"></script>
 <%@ include file="../layout/footer.jsp"%>

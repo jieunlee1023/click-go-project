@@ -1,6 +1,7 @@
 package com.clickgo.project.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.Image;
+import com.clickgo.project.entity.LikeStore;
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.Review;
 import com.clickgo.project.entity.Store;
@@ -32,6 +34,7 @@ import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.model.mydate.MyDate;
 import com.clickgo.project.repository.IImageRepository;
+import com.clickgo.project.repository.ILikeStoreRepository;
 import com.clickgo.project.repository.IStoreRepository;
 import com.clickgo.project.service.CategoryService;
 import com.clickgo.project.service.ReservationService;
@@ -68,11 +71,15 @@ public class StoreController {
 	@Autowired
 	private IStoreRepository iStoreRepository;
 
+	@Autowired
+	private ILikeStoreRepository likeStoreRepository;
+
 	private Page<Store> stores;
 
-	@GetMapping("/main")
+	@GetMapping({ "/main", "/search" })
 	public String store(@RequestParam(required = false) String pageName, Model model,
 			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable) {
+
 		Map<Integer, Integer> starScoreMap = new HashMap<>();
 		List<StoreCategory> categories = new ArrayList<>();
 		List<Review> reviews = new ArrayList<>();
@@ -80,11 +87,13 @@ public class StoreController {
 		categoryEntitys.forEach(t -> {
 			categories.add(t.getId());
 		});
+
 		if (pageName == null) {
 			stores = storeService.getStoreAllList(pageable);
 		} else {
 			stores = storeService.findAllByStoreCategory(pageName, pageable);
 		}
+
 		stores.forEach(store -> {
 			reviews.add(reviewService.findAvgStarScoreByStoreId(store.getId()));
 		});
@@ -99,6 +108,7 @@ public class StoreController {
 		model.addAttribute("nowPage", pageName);
 		model.addAttribute("categories", categories);
 		model.addAttribute("stores", stores);
+
 		franchiseMassageCount(model);
 		return "store/store-main";
 	}
@@ -127,18 +137,44 @@ public class StoreController {
 			}
 			model.addAttribute("images", image);
 		}
+
+		List<LikeStore> likeStores = likeStoreRepository.findAll();
+
+		LikeStore likeStoresEntity = likeStoreRepository.findByUserIdAndStoreId(storeId,
+				principalDetails.getUser().getId());
+
+		model.addAttribute("likeStoresEntity", likeStoresEntity);
+		model.addAttribute("likeStores", likeStores);
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("storeList", storeList);
+
 		return "/store/detail";
 	}
 
 	private void getNowDateAndTime(Model model) {
 		MyDate myDate = new MyDate();
 
-		String maxDate = myDate.getYearAndMonth() + "-" + myDate.getNowDay() + 7;
-
 		String today = myDate.getNowYear() + "-" + (myDate.getNowMonth() < 10 ? "0" : "") + myDate.getNowMonth() + "-"
 				+ myDate.getNowDay();
+		Date date = new Date();
+		int nowYear = (date.getYear() + 1900);
+		String nowMonth = "0" + (date.getMonth() + 1);
+		String nowDay = date.getDate() + "";
+		int nowHour = date.getHours();
+		int nowMinutes = date.getMinutes();
+
+		if (nowMinutes < 10) {
+			nowMinutes = 10;
+		} else if (nowMinutes / 10 == 0) {
+			nowMinutes = date.getMinutes();
+		} else if (nowMinutes % 10 != 0) {
+			nowMinutes = (nowMinutes / 10 + 1) * 10;
+		}
+
+		String maxDate = myDate.getYearAndMonth() + "-" + myDate.getNowDay() + 7;
+		String nowDate = nowYear + "-" + nowMonth + "-" + nowDay;
+		String nowTime = nowHour + ":" + nowMinutes;
+		String nowTimeOnlyHour = (nowHour + 1) + ":" + 00;
 
 		model.addAttribute("nowDate", today);
 		model.addAttribute("nowTime", myDate.getTime());
