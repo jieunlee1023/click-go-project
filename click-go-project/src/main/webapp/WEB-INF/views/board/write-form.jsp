@@ -14,7 +14,7 @@
 <br>
 
 <div class="container">
-	<form action="/board/save" method="POST">
+	<form action="/board/save" method="POST" id="boardWrite">
 		<input type="hidden" id="id" value="${principal.user.id }" required="required">
 
 		<div class="form-group-board">
@@ -59,6 +59,8 @@
 	 function boardWrite() {
 		    const form = document.getElementById('boardWrite');
 		    const data = new FormData(form);
+		    console.log(form);
+		    console.log(data);
 		    fetch(form.action, {
 		      method: form.method,
 		      body: data
@@ -71,7 +73,12 @@
 						location.href = "/board/list";
 					});
 		      } else {
-		        alert('글 작성 실패');
+		        Swal.fire({
+					icon: 'success',
+					text: '게시글 작성에 실패하였습니다.',
+				}).then(function() {
+					location.href = "/board/list";
+				});
 		      }
 		    });
 		  }
