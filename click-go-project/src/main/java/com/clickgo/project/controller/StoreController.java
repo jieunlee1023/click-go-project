@@ -177,7 +177,7 @@ public class StoreController {
 		String nowTimeOnlyHour = (nowHour + 1) + ":" + 00;
 
 		model.addAttribute("nowDate", today);
-		model.addAttribute("nowTime", myDate.getTime());
+		model.addAttribute("nowTime", myDate.getTime()); 
 		model.addAttribute("maxDate", maxDate);
 	}
 
