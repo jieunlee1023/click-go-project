@@ -10,12 +10,14 @@
 	function drawChart() {
 
 		let myData = JSON.parse(`${strStoreSales}`);
+			console.log(myData);
 
 		let list = new Array();
 		list.push([ '일주일', '매출' ]);
 		for (var i = 0; i < myData.length; i++) {
 			let help = new Array();
 			help.push(myData[i].reservationDate, myData[i].price);
+			console.log(help);
 			list.push(help);
 		}
 		;

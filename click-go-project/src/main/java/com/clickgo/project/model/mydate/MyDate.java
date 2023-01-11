@@ -50,7 +50,7 @@ public class MyDate {
 			}
 			return nowYear + "-0" + nowMonth + "-0" + (nowDay - 7);
 		} else {
-			return nowYear + "-" + nowMonth + "-" + nowDay;
+			return nowYear + "-0" + nowMonth + "-" + (nowDay - 7);
 		}
 	}
 }
