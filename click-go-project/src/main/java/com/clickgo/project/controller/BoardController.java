@@ -47,15 +47,10 @@ public class BoardController {
 			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchTitle = q == null ? "" : q;
 
-//		CsBoard boards1 = boardService.searchBoard(searchTitle, pageable);
-
-//		Page<CsBoard> boards = boardService.getBoardList(pageable);
 		Page<CsBoard> boards = boardService.searchBoard(searchTitle, pageable);
 
 		int PAGENATION_BLOCK_COUNT = 10;
-
 		int nowPage = boards.getPageable().getPageNumber() + 1;
-
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
 		int endPageNumber = Math.min(nowPage + startPageNumber, boards.getTotalPages());
 
@@ -70,11 +65,11 @@ public class BoardController {
 		model.addAttribute("pageNumbers", pageNumbers);
 		model.addAttribute("q", searchTitle);
 
-//		model.addAttribute("boards1",boards1);
+		
 		franchiseMassageCount(model);
 		return "board/list";
 	}
-	// 글쓰기
+
 	@GetMapping("/write-form")
 	public String board(@RequestParam(required = false) String pageName, Model model) {
 		model.addAttribute("nowPage", pageName);

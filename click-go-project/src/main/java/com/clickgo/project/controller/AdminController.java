@@ -135,17 +135,13 @@ public class AdminController {
 		Page<User> users = userService.searchUserInfo(searchUserInfo, pageable);
 
 		int PAGENATION_BLOCK_COUNT = 10;
-
 		int nowPage = users.getPageable().getPageNumber() + 1;
-
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
 		int endPageNumber = Math.min(nowPage + startPageNumber, users.getTotalPages());
-
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
-
 		model.addAttribute("users", users);
 		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPageNumber", startPageNumber);
@@ -162,13 +158,10 @@ public class AdminController {
 			@PageableDefault(size = 3, sort = "id", direction = Direction.ASC) Pageable pageable) {
 		String searchStoreName = q == null ? "" : q;
 
-//		Page<Store> stores = storeService.getStoreAllList(pageable);
 		Page<Store> stores = storeService.searchStoreList(searchStoreName, pageable);
 
 		int PAGENATION_BLOCK_COUNT = 3;
-
 		int nowPage = stores.getPageable().getPageNumber() + 1;
-
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
 		int endPageNumber = Math.min(nowPage + startPageNumber, stores.getTotalPages());
 
@@ -185,9 +178,7 @@ public class AdminController {
 		model.addAttribute("q", searchStoreName);
 
 		franchiseMassageCount(model);
-
 		return "admin/store";
-
 	}
 
 	@GetMapping({ "/one-to-one-list", "/one-to-one-search" })
@@ -199,9 +190,7 @@ public class AdminController {
 		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
 
 		int PAGENATION_BLOCK_COUNT = 10;
-
 		int nowPage = askPage.getPageable().getPageNumber() + 1;
-
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
 		int endPageNumber = Math.min(nowPage + startPageNumber, askPage.getTotalPages());
 
@@ -216,7 +205,6 @@ public class AdminController {
 		model.addAttribute("endPageNumber", endPageNumber);
 		model.addAttribute("pageNumbers", pageNumbers);
 		model.addAttribute("q", searchTitle);
-
 		model.addAttribute("answerList", answerList);
 
 		return "admin/one-to-one-list";
@@ -256,7 +244,6 @@ public class AdminController {
 	public void franchiseMassageCount(Model model) {
 		List<StoreFranchise> franchiseMessages = franchiseService.getMessageList();
 		model.addAttribute("message", franchiseMessages);
-
 		List<StoreFranchise> allMsg = franchiseService.getMessageList();
 		franchiseMessages.forEach(t -> {
 			if (t.getState().toString().equals("WAIT")) {
@@ -271,7 +258,6 @@ public class AdminController {
 	public String todayStoreSalesChart(Model model) {
 		List<Store> stores = storeService.findAll();
 		List<Sales> todaySales = new ArrayList<>();
-
 		stores.forEach(store -> {
 			int todayTotalSales = reservationService.findTodaySalesByStoreId(store.getId());
 			if (todayTotalSales != 0) {
