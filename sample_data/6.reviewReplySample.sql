@@ -1,3 +1,5 @@
+
+
 insert into reviewreply(content, createDate, reviewId)
 values('reply_content_1', now(), 92);
 insert into reviewreply(content, createDate, reviewId)
@@ -85,7 +87,7 @@ values('reply_content_42', now(), 164);
 insert into reviewreply(content, createDate, reviewId)
 values('reply_content_43', now(), 434);
 insert into reviewreply(content, createDate, reviewId)
-values('reply_content_44', now(), 342);
+values('reply_content_44', now(), 343);
 insert into reviewreply(content, createDate, reviewId)
 values('reply_content_45', now(), 452);
 insert into reviewreply(content, createDate, reviewId)
@@ -389,7 +391,7 @@ values('reply_content_194', now(), 101);
 insert into reviewreply(content, createDate, reviewId)
 values('reply_content_195', now(), 464);
 insert into reviewreply(content, createDate, reviewId)
-values('reply_content_196', now(), 38);
+values('reply_content_196', now(), 381);
 insert into reviewreply(content, createDate, reviewId)
 values('reply_content_197', now(), 581);
 insert into reviewreply(content, createDate, reviewId)
