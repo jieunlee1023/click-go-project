@@ -1,21 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-
-
-
 <link
 	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css"
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
-
 <br>
 <br>
 
 <div class="container">
 	<form action="/board/save" method="POST">
-		<input type="hidden" id="id" value="${principal.user.id }" required="required">
+		<input type="hidden" id="id" value="${principal.user.id }"
+			required="required">
 
 		<div class="form-group-board">
 			<label for="username">작성자</label> <input type="text" name="username"
@@ -25,7 +22,8 @@
 		<br>
 		<div class="form-group-board">
 			<label for="content">제목</label> <input type="text" name="title"
-				id="title" class="form-control" value="${board.title }" required="required">
+				id="title" class="form-control" value="${board.title }"
+				required="required">
 		</div>
 
 		<div class="form-group-board">
@@ -36,15 +34,13 @@
 			</textarea>
 		</div>
 
-
-
 		<div class="d-flex justify-content-between mb-5 ">
 			<div class="form-check form-check-inline">
 				<input class="form-check-input" type="checkbox" name="secret"
 					id="secret"> <label class="form-check-label">비밀글 설정</label>
 			</div>
 			<button type="submit" class="btn board--save mt-3" id="btn--write"
-				onclick="boardWrite();">글 작성</button>
+				>글 작성</button>
 		</div>
 	</form>
 </div>
@@ -55,26 +51,15 @@
 		tabsize : 2,
 		height : 300,
 	});
-	
-	 function boardWrite() {
-		    const form = document.getElementById('boardWrite');
-		    const data = new FormData(form);
-		    fetch(form.action, {
-		      method: form.method,
-		      body: data
-		    }).then(response => {
-		      if (response.status == 200) {
-		    	  Swal.fire({
-						icon: 'success',
-						text: '게시글 작성에 성공하셨습니다.',
-					}).then(function() {
-						location.href = "/board/list";
-					});
-		      } else {
-		        alert('글 작성 실패');
-		      }
-		    });
-		  }
+
+	function boardWrite() {
+		Swal.fire({
+			icon : 'success',
+			text : '게시글 작성에 성공하셨습니다.',
+		}).then(function() {
+			location.href = "/board/list";
+		});
+	}
 </script>
 
 <script type="text/javascript" src="/js/board.js"></script>

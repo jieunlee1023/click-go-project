@@ -13,7 +13,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.clickgo.project.entity.CsBoard;
 import com.clickgo.project.entity.CsReply;
 import com.clickgo.project.entity.User;
-import com.clickgo.project.model.enums.BoardType;
 import com.clickgo.project.model.enums.SecretType;
 import com.clickgo.project.repository.IBoardRepository;
 import com.clickgo.project.repository.IReplyRepository;
@@ -32,12 +31,10 @@ public class BoardService {
 
 		if (secret != null) {
 			csBoard.setUser(user);
-			csBoard.setBoardType(BoardType.QUESTION);
 			csBoard.setSecretType(SecretType.PRIVATE);
 			iBoardRepository.save(csBoard);
 		} else {
 			csBoard.setUser(user);
-			csBoard.setBoardType(BoardType.QUESTION);
 			csBoard.setSecretType(SecretType.PUBLIC);
 			iBoardRepository.save(csBoard);
 		}
@@ -85,15 +82,15 @@ public class BoardService {
 		CsBoard board = iBoardRepository.findById(boardId).orElseThrow(() -> {
 			return new IllegalArgumentException("댓글 쓰기 실패");
 		});
-		
-		if(requestReply.isSecret() == true) {
+
+		if (requestReply.isSecret() == true) {
 			requestReply.setSecret(true);
-		}else {
+		} else {
 			requestReply.setSecret(false);
 		}
 		requestReply.setUser(user);
 		requestReply.setCsBoard(board);
-		iReplyRepository.save(requestReply);	
+		iReplyRepository.save(requestReply);
 		return true;
 	}
 

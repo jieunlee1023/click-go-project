@@ -20,11 +20,8 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.CreationTimestamp;
 
-import com.clickgo.project.model.enums.BoardType;
 import com.clickgo.project.model.enums.SecretType;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -48,10 +45,6 @@ public class CsBoard {
 	private List<CsReply> csReply;
 
 	@Column(nullable = false)
-	@Enumerated(EnumType.STRING)
-	private BoardType boardType;
-
-	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp createDate;
 
@@ -72,7 +65,5 @@ public class CsBoard {
 
 	@Column(columnDefinition = "integer default 0", nullable = false)
 	private int count;
-
-
 
 }

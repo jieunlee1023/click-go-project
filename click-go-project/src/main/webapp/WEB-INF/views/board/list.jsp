@@ -86,6 +86,9 @@
 							<p id="board--user--name">${board.user.username }</p>
 						</div>
 						<div class="col-lg-board-list-item">
+							<p id="board--user--name">${board.count }</p>
+						</div>
+						<div class="col-lg-board-list-item">
 							<p id="board--date">${board.createDate }</p>
 						</div>
 					</div>

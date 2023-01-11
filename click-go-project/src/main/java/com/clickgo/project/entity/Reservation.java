@@ -63,7 +63,7 @@ public class Reservation {
 	@Column(nullable = false)
 	private int price;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
 

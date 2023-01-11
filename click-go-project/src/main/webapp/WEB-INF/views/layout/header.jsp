@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 <link href="../image/favicon.png" rel="shortcut icon" type="image/x-icon">
 
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -110,15 +112,6 @@
 				<c:when test="${principal.user.role eq 'ADMIN'}">
 					<div class="nav--list">
 						<ul id="nav--item">
-							<li>
-								<form action="/storeFranchise/store-franchise-message" method="get">
-									<div class="nav-btn justify-content-bottom" id="notification" style="position: relative; margin: 0px">
-										<button type="submit" id="btn--msg">
-											<span id="msg--icon">💌</span> <span class="note-num" id="msg--count">${waitMsg}</span>
-										</button>
-									</div>
-								</form>
-							<li>
 							<li><a class="nav-link" href="/">홈</a></li>
 							<li><a class="nav-link" href="/store/main">상점</a></li>
 							<li><a class="nav-link" href="/storeFranchise/store-franchise-list">가맹점 목록</a></li>
@@ -164,3 +157,4 @@
 		</div>
 	</div>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+	

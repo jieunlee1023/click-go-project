@@ -23,10 +23,13 @@ import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.Image;
 import com.clickgo.project.entity.LikeStore;
+import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.Review;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
+import com.clickgo.project.model.chart.AWeekStoreSales;
+import com.clickgo.project.model.chart.TodayStoreSales;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.model.mydate.MyDate;
@@ -34,9 +37,12 @@ import com.clickgo.project.repository.IImageRepository;
 import com.clickgo.project.repository.ILikeStoreRepository;
 import com.clickgo.project.repository.IStoreRepository;
 import com.clickgo.project.service.CategoryService;
+import com.clickgo.project.service.ReservationService;
 import com.clickgo.project.service.ReviewService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Controller
 @RequestMapping("/store")
@@ -57,6 +63,9 @@ public class StoreController {
 	private ReviewService reviewService;
 
 	@Autowired
+	private ReservationService reservationService;
+
+	@Autowired
 	private IImageRepository iImageRepository;
 
 	@Autowired
@@ -70,7 +79,6 @@ public class StoreController {
 	@GetMapping({ "/main", "/search" })
 	public String store(@RequestParam(required = false) String pageName, Model model,
 			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
-
 
 		Map<Integer, Integer> starScoreMap = new HashMap<>();
 		List<StoreCategory> categories = new ArrayList<>();
@@ -100,7 +108,6 @@ public class StoreController {
 		model.addAttribute("nowPage", pageName);
 		model.addAttribute("categories", categories);
 		model.addAttribute("stores", stores);
-
 
 		franchiseMassageCount(model);
 		return "store/store-main";
@@ -145,6 +152,8 @@ public class StoreController {
 	}
 
 	private void getNowDateAndTime(Model model) {
+		MyDate myDate = new MyDate();
+
 		Date date = new Date();
 		int nowYear = (date.getYear() + 1900);
 		String nowMonth = "0" + (date.getMonth() + 1);
@@ -152,6 +161,7 @@ public class StoreController {
 		int nowHour = date.getHours();
 		int nowMinutes = date.getMinutes();
 
+		nowMinutes = 49;
 		if (nowMinutes < 10) {
 			nowMinutes = 10;
 		} else if (nowMinutes / 10 == 0) {
@@ -161,14 +171,14 @@ public class StoreController {
 		}
 
 		String nowDate = nowYear + "-" + nowMonth + "-" + nowDay;
-		String nowTime = nowHour + ":" + nowMinutes;
-		String maxDate = nowYear + "-" + nowMonth + "-" + (Integer.parseInt(nowDay) + 7);
-		String nowTimeOnlyHour = (nowHour + 1) + ":" + 00;
+        String nowTime = nowHour + ":" + nowMinutes;
+        String maxDate = nowYear + "-" + nowMonth + "-" + (Integer.parseInt(nowDay) + 7);
+        String nowTimeOnlyHour = (nowHour + 1) + ":" + 00;
 
-		model.addAttribute("nowDate", nowDate);
-		model.addAttribute("nowTime", nowTime);
-		model.addAttribute("maxDate", maxDate);
-		model.addAttribute("nowTimeOnlyHour", nowTimeOnlyHour);
+        model.addAttribute("nowDate", nowDate);
+        model.addAttribute("nowTime", nowTime);
+        model.addAttribute("maxDate", maxDate);
+        model.addAttribute("nowTimeOnlyHour", nowTimeOnlyHour);
 	}
 
 	public void originLayout(int roomCount, Model model) {
@@ -209,5 +219,41 @@ public class StoreController {
 		});
 		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
+	}
+
+	@GetMapping("/chart/week")
+	public String salesWeekChart(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
+		List<Store> stores = storeService.findAllByUserId(principalDetails.getUser().getId());
+		List<AWeekStoreSales> storeSalesList = new ArrayList<>();
+		List<Reservation> reservations = reservationService.findWeekSalesByStoreId(stores.get(0).getId());
+		reservations.forEach(reservation -> {
+			System.out.println(reservation);
+			AWeekStoreSales storeSales = new AWeekStoreSales(reservation.getReservationDate(), reservation.getPrice());
+			storeSalesList.add(storeSales);
+		});
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			String strStoreSales = objectMapper.writeValueAsString(storeSalesList);
+			model.addAttribute("strStoreSales", strStoreSales);
+			return "/user/my/chart/week";
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return "/";
+	}
+
+	@GetMapping("/chart/today")
+	public String salesTodayChart(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
+		List<Store> stores = storeService.findAllByUserId(principalDetails.getUser().getId());
+		List<TodayStoreSales> storeSalesList = reservationService.findHourSalesByStoreId(stores.get(0).getId());
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			String strStoreSales = objectMapper.writeValueAsString(storeSalesList);
+			model.addAttribute("strStoreSales", strStoreSales);
+			return "/user/my/chart/today";
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return "/";
 	}
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
+import com.clickgo.project.entity.Admin;
 import com.clickgo.project.entity.OneToOneAnswer;
 import com.clickgo.project.entity.OneToOneAsk;
 import com.clickgo.project.entity.Report;
@@ -28,6 +29,7 @@ import com.clickgo.project.entity.User;
 import com.clickgo.project.model.chart.CategorySales;
 import com.clickgo.project.model.chart.MySales;
 import com.clickgo.project.model.chart.Sales;
+import com.clickgo.project.service.AdminService;
 import com.clickgo.project.service.OneToOneAnswerService;
 import com.clickgo.project.service.OneToOneAskService;
 import com.clickgo.project.service.ReportReplyService;
@@ -63,8 +65,14 @@ public class AdminController {
 	@Autowired
 	private ReservationService reservationService;
 
+	@Autowired
+	private AdminService adminService;
+
 	@GetMapping("/main")
-	public String adminPage(Model model) {
+	public String adminPage(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+
+		Admin adminEntity = adminService.findByUserId(principalDetails.getUser().getId());
+		model.addAttribute("adminEntity", adminEntity);
 		franchiseMassageCount(model);
 		return "admin/main";
 	}

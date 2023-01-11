@@ -4,7 +4,7 @@
 <div class="d-flex justify-content-center">
 	<div class="d-flex  text-center ">
 
-		<div style="color:black">
+		<div style="color:black; font-size: 13px;">
 
 			<div>CS CENTER : CLICK_GO@GMAIL.COM</div>
 			<div>WEEKDAYS 9AM-6PM</div>

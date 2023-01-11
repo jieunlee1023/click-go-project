@@ -105,7 +105,8 @@
 							</div>
 							<div>
 								<input type="text" class="timepicker" name="endTime"
-									id="endTime" value="시간을 선택해주세요." min="${nowTime}">
+									id="endTime" value="${nowTimeOnlyHour}"
+									min="${nowTimeOnlyHour}">
 							</div>
 							<input type="hidden" id="storeId" value="${store.id }">
 							<button type="submit" id="btn--time-check">예약 하기</button>
@@ -172,24 +173,35 @@
 
 <br>
 <br>
-<div style="background-color: blue; height: 250px;">리뷰 목록</div>
-<c:forEach var="review" items="${reviewList }">
-	<tr style="text-align: center;">
-		<td>
-			<p>별점</p>
-		</td>
-		<c:choose>
-			<c:when test="${review.starScore eq '1' }">⭐</c:when>
-			<c:when test="${review.starScore eq '2' }">⭐⭐</c:when>
-			<c:when test="${review.starScore eq '3' }">⭐⭐⭐</c:when>
-			<c:when test="${review.starScore eq '4' }">⭐⭐⭐⭐</c:when>
-			<c:when test="${review.starScore eq '5' }">⭐⭐⭐⭐⭐</c:when>
-		</c:choose>
-		<td><p>${review.content}</p></td>
-		<td style="color: grey;" id="report--status"><p>${review.user.username}님</p></td>
-	</tr>
-	<div style="border: solid;"></div>
-</c:forEach>
+<span id="test style"
+ onclick="if(plain.style.display=='none') {
+		 plain.style.display=''; test.innerText = '리뷰 접기'
+		 } else {
+			 plain.style.display = 'none';
+			test.innerText = '➤ 리뷰 보기'
+		}">
+	리뷰 보기</span>
+<div id="plain" style="display: none">
+	<HR>
+	<c:forEach var="review" items="${reviewList }">
+		<tr style="text-align: center;">
+			<td>
+				<p>별점</p>
+			</td>
+			<c:choose>
+				<c:when test="${review.starScore eq '1' }">⭐</c:when>
+				<c:when test="${review.starScore eq '2' }">⭐⭐</c:when>
+				<c:when test="${review.starScore eq '3' }">⭐⭐⭐</c:when>
+				<c:when test="${review.starScore eq '4' }">⭐⭐⭐⭐</c:when>
+				<c:when test="${review.starScore eq '5' }">⭐⭐⭐⭐⭐</c:when>
+			</c:choose>
+			<td><p>${review.content}</p></td>
+			<td style="color: grey;" id="report--status"><p>${review.user.username}님</p></td>
+		</tr>
+		<div style="border: solid;"></div>
+	</c:forEach>
+	<HR>
+</div>
 <div style="background-color: red;">
 	<div>이런곳은 어때요?</div>
 	<c:forEach var="storeListItem" items="${storeList }">
@@ -247,8 +259,8 @@
 	$(function() {
 		$('[data-toggle="tooltip"]').tooltip()
 	});
-	
-	$(this).ready(function(){
+
+	$(this).ready(function() {
 		timeCheck();
 	})
 </script>

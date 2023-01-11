@@ -37,6 +37,8 @@ let boardIndex = {
 		});
 	},
 
+	
+
 	deleteById: function() {
 		let id = $("#board-id").val();
 

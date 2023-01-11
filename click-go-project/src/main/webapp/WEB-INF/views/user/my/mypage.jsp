@@ -151,14 +151,12 @@
 			</div>
 
 			<div class="btn-wrapper">
-				<a href="###" class="btn2"> <img style="margin-top: 40px;"
+				<a href="/store/chart/week" class="btn2"> <img style="margin-top: 40px;"
 					src="/image/mypage/sales.png" width="80px"> <br> <br>
 					<span>매출 내역</span> <br> <span id="mypage-mini-title">
 						가맹점의 매출을 확인해보세요! </span>
 				</a>
 			</div>
-
-
 		</div>
 
 	</c:otherwise>

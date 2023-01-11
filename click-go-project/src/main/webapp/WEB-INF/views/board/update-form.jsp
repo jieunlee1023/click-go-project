@@ -7,7 +7,7 @@
 
 
 <div class="container">
-	<form action="" >
+	<form>
 		<input type="hidden" id="id" value="${principal.user.id }">
 
 		<div class="form-group-board" id="board--update--id">
@@ -51,10 +51,7 @@
 </script>
 
 <script type="text/javascript" src="/js/board.js">
-	
 </script>
-
-
 
 <%@ include file="../layout/footer.jsp"%>
 

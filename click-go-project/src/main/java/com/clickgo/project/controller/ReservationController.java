@@ -48,7 +48,6 @@ public class ReservationController {
 			@RequestParam String endDate, @AuthenticationPrincipal PrincipalDetails principalDetails, Model model)
 			throws InterruptedException {
 		try {
-
 			Store storeEntity = storeService.findById(storeId);
 			int endHour = 0;
 			int endMinute = 0;
@@ -172,7 +171,7 @@ public class ReservationController {
 			franchiseMassageCount(model);
 			model.addAttribute("lastId", reservations.getContent().get(0).getId());
 			model.addAttribute("reservations", reservations);
-			model.addAttribute("allReservations", allReservations.size());
+			model.addAttribute("allReservations", allReservations.size()); 
 		}
 		return "/user/my/reservation/list";
 	}

@@ -47,7 +47,6 @@ public class StoreFranchiseService {
 	public void apply(RequestApplyFileDto fileDto, PrincipalDetails principalDetails) {
 		UUID uuid = UUID.randomUUID();
 
-		// TODO
 		String businessLicenseFilename = uuid + "_" + fileDto.getFile().get(0).getOriginalFilename();
 		String seatLayoutFilename = uuid + "_" + fileDto.getFile().get(1).getOriginalFilename();
 
