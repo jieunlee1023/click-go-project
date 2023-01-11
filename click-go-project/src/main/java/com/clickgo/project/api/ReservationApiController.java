@@ -89,11 +89,11 @@ public class ReservationApiController {
 				if (startHour >= nowHour) {
 
 					List<Integer> seats = new ArrayList<>();
-					List<Reservation> reservations = reservationService.findByStoreId(storeId);
+					List<Reservation> reservations = reservationService.findSeatByStoreId(storeId);
 					reservations.forEach(t -> {
 						StringTokenizer findReservationTimeTokenizer = new StringTokenizer(t.getEndTime(), ":");
 						int findHour = Integer.parseInt(findReservationTimeTokenizer.nextToken());
-						int findMinute = Integer.parseInt(findReservationTimeTokenizer.nextToken());
+						int findMinute = Integer.parseInt(findReservationTimeTokenizer.nextToken().trim());
 						int findSeat = t.getReservationSeat();
 
 						StringTokenizer findReservationDateTokenizer = new StringTokenizer(t.getEndDate(), "-");
@@ -130,7 +130,6 @@ public class ReservationApiController {
 					seatDisabled.put("totalRoomCount", totalRoomCounts);
 					return new ResponseDto<>(true, seatDisabled);
 				}
-
 			}
 		}
 		return new ResponseDto<>(false, "잘못된 선택입니다.");

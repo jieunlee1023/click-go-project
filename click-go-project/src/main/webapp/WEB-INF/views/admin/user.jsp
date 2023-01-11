@@ -23,7 +23,7 @@
 	</div>
 
 
-	<div class=" ">
+	<div class="">
 		<table class="table" id="answer-list-table">
 			<thead>
 				<tr style="text-align: center;">

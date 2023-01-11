@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import com.clickgo.project.entity.Reservation;
+import com.clickgo.project.model.chart.AWeekStoreSales;
 
 public interface IReservationRepository extends JpaRepository<Reservation, Integer> {
 	
@@ -41,11 +42,6 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 			+ " AND approveStatus = 'APPROVED' "
 			, nativeQuery = true)
 	public List<Reservation> findByStoreIdAndApprove(@Param("id") int storeId);
-	
-	
-	
-	 
-
 
 	@Query(value = " SELECT * "
 								+ " FROM reservation "
@@ -113,4 +109,28 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 								+ " GROUP BY s.categoryId "
 								, nativeQuery = true) 
 	public List<Reservation> findAllGroupByCategoryIdWhenThisYear(int nowYear);
+
+	@Query(value = " SELECT SUM(r.price) AS price, r.* "
+								+ " FROM reservation AS r "
+								+ " WHERE r.storeId = ?1 "
+								+ " AND r.approveStatus != 'REJECT' "
+								+ " AND r.reservationDate > ?2 "
+								+ " GROUP BY r.reservationDate "
+								, nativeQuery = true)
+	public  List<Reservation> findWeekSalesByStoreId(int storeId, String aWeekAgo);
+
+	@Query(value = " SELECT SUM(r.price) AS price, r.* "
+								+ " FROM reservation AS r "
+								+ " WHERE r.reservationDate = ?3 "
+								+ " AND r.storeId = ?1 "
+								+ " AND r.reservationTime LIKE %?2%"
+								, nativeQuery = true)
+	public Reservation findHourSalesByStoreId(int storeId, String hour, String today);
+
+	@Query(value = " SELECT A.* "
+								+ " FROM reservation AS A "
+								+ " JOIN store AS S "
+								+ " ON S.id = A.storeId "
+								+ " WHERE S.id = :id AND A.approveStatus != 'REJECT' ", nativeQuery = true)
+	public List<Reservation> findSeatByStoreId(@Param("id") int id);
 }
