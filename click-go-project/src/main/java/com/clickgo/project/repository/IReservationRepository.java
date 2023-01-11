@@ -42,11 +42,6 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 			+ " AND approveStatus = 'APPROVED' "
 			, nativeQuery = true)
 	public List<Reservation> findByStoreIdAndApprove(@Param("id") int storeId);
-	
-	
-	
-	 
-
 
 	@Query(value = " SELECT * "
 								+ " FROM reservation "
@@ -128,7 +123,14 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 								+ " FROM reservation AS r "
 								+ " WHERE r.reservationDate = ?3 "
 								+ " AND r.storeId = ?1 "
-								+ " AND reservationTime LIKE %?2%"
+								+ " AND r.reservationTime LIKE %?2%"
 								, nativeQuery = true)
 	public Reservation findHourSalesByStoreId(int storeId, String hour, String today);
+
+	@Query(value = " SELECT A.* "
+								+ " FROM reservation AS A "
+								+ " JOIN store AS S "
+								+ " ON S.id = A.storeId "
+								+ " WHERE S.id = :id AND A.approveStatus != 'REJECT' ", nativeQuery = true)
+	public List<Reservation> findSeatByStoreId(@Param("id") int id);
 }

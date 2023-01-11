@@ -73,17 +73,7 @@ function timeCheck() {
 			icon: 'error',
 			text: "날짜 입력 후 시간을 선택해주세요!",
 		});
-
-
-		storeId = $("#storeId").val();
-		data = {
-			startTime: $("#startTime").val(),
-			endTime: $("#endTime").val(),
-			startDate: $("#startDate").val(),
-			endDate: $("#endDate").val()
-		};
 		return;
-		
 	} else {
 		storeId = $("#storeId").val();
 		data = {
@@ -93,7 +83,7 @@ function timeCheck() {
 			endDate: $("#endDate").val()
 		};
 	}
-
+	console.log(data);
 
 	$.ajax({
 		type: 'post',
@@ -103,6 +93,7 @@ function timeCheck() {
 		dataType: "json"
 	}).done(function(data) {
 		if (data.httpStatus == true) {
+			console.log(data);
 			closeSeats(data.body);
 		} else {
 			Swal.fire({
@@ -116,8 +107,6 @@ function timeCheck() {
 			icon: 'warning',
 			text: '예상치 못한 오류가 발생하였습니다. 관리자에게 문의해주세요.',
 		});
-
-
 	});
 };
 

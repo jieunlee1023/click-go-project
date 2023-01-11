@@ -49,6 +49,10 @@ public class ReservationService {
 	public List<Reservation> findByStoreId(int storeId) {
 		return reservationRepository.findByStoreId(storeId);
 	}
+	
+	public List<Reservation> findSeatByStoreId(int storeId) {
+		return reservationRepository.findSeatByStoreId(storeId);
+	}
 
 	@Transactional
 	public List<Reservation> findByStoreIdAndApprove(int storeId) {

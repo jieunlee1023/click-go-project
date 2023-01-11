@@ -105,7 +105,7 @@
 							</div>
 							<div>
 								<input type="text" class="timepicker" name="endTime"
-									id="endTime" value="시간을 선택해주세요." min="${nowTime}">
+									id="endTime" value="${nowTimeOnlyHour}" min="${nowTimeOnlyHour}">
 							</div>
 							<input type="hidden" id="storeId" value="${store.id }">
 							<button type="submit" id="btn--time-check">예약 하기</button>
