@@ -63,8 +63,7 @@ public class CsBoard {
 	@JoinColumn(name = "userId", nullable = false)
 	private User user;
 
-	// sw
-	@ColumnDefault("0")
+	@Column(columnDefinition = "integer default 0", nullable = false)
 	private int count;
 
 }

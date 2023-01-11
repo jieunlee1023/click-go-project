@@ -42,6 +42,7 @@ public class ReservationController {
 	private StoreFranchiseService franchiseService;
 
 	@PostMapping("/{storeId}")
+	
 	public String reservation(@RequestParam(required = false) String paymentType,
 			@RequestParam(required = false) Integer[] seatNumber, @PathVariable int storeId,
 			@RequestParam String startTime, @RequestParam String endTime, @RequestParam String startDate,
@@ -160,6 +161,11 @@ public class ReservationController {
 		}
 		return "redirect:/store/detail/" + storeId;
 	}
+	
+	
+	
+	
+	
 
 	@GetMapping("/list")
 	public String reservationList(Model model,

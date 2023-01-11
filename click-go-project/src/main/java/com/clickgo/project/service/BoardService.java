@@ -1,5 +1,9 @@
 package com.clickgo.project.service;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,16 +25,15 @@ public class BoardService {
 
 	@Autowired
 	private IReplyRepository iReplyRepository;
+	
 
 	public boolean write(String[] secret, CsBoard csBoard, User user) {
 
 		if (secret != null) {
-			csBoard.setCount(0);
 			csBoard.setUser(user);
 			csBoard.setSecretType(SecretType.PRIVATE);
 			iBoardRepository.save(csBoard);
 		} else {
-			csBoard.setCount(0);
 			csBoard.setUser(user);
 			csBoard.setSecretType(SecretType.PUBLIC);
 			iBoardRepository.save(csBoard);
@@ -46,10 +49,14 @@ public class BoardService {
 
 	@Transactional
 	public CsBoard boardDetail(int boardId) {
-
-		return iBoardRepository.findById(boardId).orElseThrow(() -> {
+		
+//		return iBoardRepository.findById(boardId).orElseThrow(() -> {
+		CsBoard csBoardEntity = iBoardRepository.findById(boardId).orElseThrow(() -> {
 			return new IllegalArgumentException("해당 글을 찾을 수 없습니다");
 		});
+		
+		csBoardEntity.setCount(csBoardEntity.getCount() + 1);
+		return csBoardEntity;
 	}
 
 	@Transactional
@@ -112,7 +119,13 @@ public class BoardService {
 	// 서치 ..
 	@Transactional
 	public Page<CsBoard> searchBoard(String q, Pageable pageable) {
+		
 		return iBoardRepository.findByTitleContaining(q, pageable);
 	}
+	
+//	@Transactional
+//	public int updateView(int count) {
+//		return iBoardRepository.updateView(count);
+//	}
 
 }

@@ -9,6 +9,33 @@ let boardIndex = {
 		});
 	},
 
+		update: function() {
+		let id = $("#board-id").attr("data-id");
+
+		let data = {
+			title: $("#title").val(),
+			content: $("#content").val()
+		}
+
+		$.ajax({
+			type: "PUT",
+			url: "/api/board/" + id,
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json"
+		}).done(function(data) {
+			if (data.httpStatus == true) {
+				Swal.fire({
+					icon: 'success',
+					text: '게시글이 수정이 완료되었습니다.',
+				}).then(function() {
+					location.href = "/board/list";
+				});
+			}
+		}).fail(function(error) {
+			alert("글 수정 실패" + error.responseJSON.message);
+		});
+	},
 
 	
 

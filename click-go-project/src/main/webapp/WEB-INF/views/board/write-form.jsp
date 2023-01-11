@@ -40,7 +40,7 @@
 					id="secret"> <label class="form-check-label">비밀글 설정</label>
 			</div>
 			<button type="submit" class="btn board--save mt-3" id="btn--write"
-				onclick="boardWrite();">글 작성</button>
+				>글 작성</button>
 		</div>
 	</form>
 </div>
@@ -51,6 +51,7 @@
 		tabsize : 2,
 		height : 300,
 	});
+	
 
 	function boardWrite() {
 		Swal.fire({

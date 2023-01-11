@@ -235,7 +235,7 @@ public class ReservationApiController {
 					.findByReservationId(reservationId);
 			int reservationCount = kakaoPaymentHistoryEntity.getQuantity();
 			for (int i = 0; i < reservationCount; i++) {
-				reservationService.reject(reservationId - i);
+				reservationService.approve(reservationId - i);
 			}
 			return new ResponseDto<>(true, "승인 성공 !");
 		} catch (Exception e) {
