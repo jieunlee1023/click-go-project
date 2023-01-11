@@ -86,7 +86,6 @@
          <a  href="/">홈</a>
           <a href="/store/main">상점</a>
           <a href="/board/list">게시판</a>
-          <a href="/admin/main">관리자</a>
           <a href="/logout">로그아웃</a>
         </nav>
         <div class="header-navigation-actions">
@@ -97,7 +96,7 @@
 				</button>
 			</div>
 		</form>
-          <a href="#" class="avatar">
+          <a href="/admin/main" class="avatar">
             <c:choose>
 				<c:when test="${ empty adminEntity.profileUrl }">
 					<img src="/image/profile.png" />
