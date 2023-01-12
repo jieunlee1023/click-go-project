@@ -1,12 +1,17 @@
 package com.clickgo.project.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.service.UserService;
@@ -35,4 +40,15 @@ public class AdminApiController {
 		return new ResponseDto<>(success, "신고는 0이하로 줄일 수 없습니다.");
 	}
 
+	@PostMapping("/caution")
+	public ResponseDto<?> caution(@RequestBody User user) {
+		boolean success = userService.sendCaution(user);
+		return new ResponseDto<>(success, "고유번호 (" + user.getId() + ")님에게 경고를" + true + "로 설정했습니다.");
+	}
+
+	@GetMapping("/cancel-caution")
+	public ResponseDto<?> cancelCaution(@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		boolean success = userService.cancelCaution(principalDetails.getUser().getId());
+		return new ResponseDto<>(success, "/m-logout");
+	}
 }

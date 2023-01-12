@@ -70,4 +70,7 @@ public class User {
 
 	@ColumnDefault(value = "0")
 	private int point;
+	
+	@Column(nullable = true)
+	private boolean caution;
 }
