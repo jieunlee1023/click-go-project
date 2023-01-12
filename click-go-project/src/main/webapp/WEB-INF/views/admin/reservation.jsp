@@ -27,7 +27,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="reservation" items="${reservations}">
+			<c:forEach var="reservation" items="${reservation}">
 				<tr style="text-align: center;">
 					<td>${reservation.store.category.id }</td>
 					<td>${reservation.store.storeName}</td>
@@ -42,7 +42,28 @@
 			</c:forEach>
 		</tbody>
 	</table>
+	<div class="m-5">
+		<ul class="pagination justify-content-center" style="border-radius: 0px;">
+			<c:set var="isDisabled" value="disabled"></c:set>
+			<c:set var="isNotDisabled" value=""></c:set>
+			<li class="page-item ${reservations.first ? isDisabled : isNotDisabled } "><a class="page-link" href="?page=${reservations.number - 1 }"
+				id="page--previous">이전</a></li>
+			<c:forEach var="num" items="${pageNumbers }">
+				<c:choose>
+					<c:when test="${nowPage eq num }">
+						<li class="page-item"><a class="page-link" href="?q=${q }&page=${num - 1 }" id="page--select">${num }</a></li>
+					</c:when>
+					<c:otherwise>
+						<li class="page-item"><a class="page-link" id="page--no--select" href="?q=${q }&page=${num - 1 }">${num }</a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
 
+			<li class="page-item ${boards.last ? isDisabled : isNotDisabled }"><a class="page-link" href="?page=${reservations.number + 1 }"
+				id="page--next">다음</a></li>
+
+		</ul>
+	</div>
 
 </div>
 <br>

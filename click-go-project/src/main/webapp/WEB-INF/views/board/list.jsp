@@ -146,7 +146,7 @@
 			<li class="page-item ${boards.last ? isDisabled : isNotDisabled }"><a class="page-link" href="?page=${boards.number + 1 }" id="page--next">다음</a></li>
 
 		</ul>
-	</div>
+	</div >
 </div>
 
 
