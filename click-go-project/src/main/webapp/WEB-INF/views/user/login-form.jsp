@@ -22,13 +22,12 @@
 					<div class="alert alert-danger">${exception}</div>
 					</c:if>--%>
 					<label for="username" class="d-flex m-0">아이디</label> <input
-						type="text" class="form-control" id="username" name="username"
-						value="minicar" required>
+						type="text" class="form-control" id="username" name="username"/>
 				</div>
 				<div class="form-group ">
 					<label for="password" class="d-flex m-0">비밀번호</label> <input
 						type="password" class="form-control" id="password" name="password"
-						value="asd123!!" required>
+						value="qwe123!" required>
 				</div>
 				<br>
 				<div class="form-control d-flex justify-content-center"

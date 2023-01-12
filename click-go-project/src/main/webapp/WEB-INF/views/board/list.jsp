@@ -60,8 +60,9 @@
 							<p id="board--id">${board.id }</p>
 						</div>
 						<div class="col-lg-board-list-item">
-							<a id="board--title" href="/board/${board.id }"> <img
-								src="/image/secret.png" width="15px"> ${board.title}
+							<a id="board--title" href="/board/${board.id }">
+							 <img src="/image/secret.png" width="15px"> ${board.title}  ${board.csReply.size() }
+
 							</a>
 						</div>
 						<div class="col-lg-board-list-item">
@@ -119,7 +120,7 @@
 				</div>
 
 				<div class="col-lg-board-list-item">
-					<a id="board--title" href="/board/${board.id }">${board.title}</a>
+					<a id="board--title" href="/board/${board.id }">${board.title} (${board.csReply.size()}) </a>
 				</div>
 				<div class="col-lg-board-list-item">
 					<p id="board--user--name">${board.user.username }</p>

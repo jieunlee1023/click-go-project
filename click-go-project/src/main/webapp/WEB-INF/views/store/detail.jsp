@@ -56,6 +56,7 @@
 						</c:choose>
 
 
+							<input type="hidden" value="${likeStoresEntity.id }" id="likeStoreId">
 						<c:choose>
 							<c:when
 								test="${likeStoresEntity.likeStore eq false || empty likeStoresEntity}">

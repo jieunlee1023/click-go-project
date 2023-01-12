@@ -1,10 +1,27 @@
 select * from reservation;
 
+
+/*user1에대한 예약 정보!*/
+
+
+insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
+values('WATING', now(), '2023-01-01', '2023-01-01', '06:30', '07:30', 'KAKAO', 3000, 40,  7,  56);
+
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('REJECT', now(), '2023-01-01', '2023-01-01', '05:30', '07:30', 'KAKAO', 6000, 40,  1,  49);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-01', '2023-01-01', '06:30', '07:30', 'KAKAO', 3000, 40,  7,  56);
+values('APPROVED', now(), '2023-01-01', '2023-01-01', '05:30', '08:30', 'KAKAO', 9000, 40,  13,  63);
+
+
+
+
+
+insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
+values('REJECT', now(), '2023-01-01', '2023-01-01', '05:30', '07:30', 'KAKAO', 6000, 40,  1,  49);
+
+insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
+values('WATING', now(), '2023-01-01', '2023-01-01', '06:30', '07:30', 'KAKAO', 3000, 40,  7,  56);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-01', '2023-01-01', '05:30', '08:30', 'KAKAO', 9000, 40,  13,  63);
@@ -9342,7 +9359,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '12:40', '14:40', 'KAKAO', 12000, 39,  4,  50);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-02', '2023-01-02', '13:40', '14:40', 'KAKAO', 6000, 39,  10,  57);
+values('REJECT', now(), '2023-01-02', '2023-01-02', '13:40', '14:40', 'KAKAO', 6000, 39,  10,  57);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '12:40', '15:40', 'KAKAO', 18000, 39,  16,  64);
@@ -9360,7 +9377,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '13:30', '15:30', 'KAKAO', 12000, 40,  4,  51);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-02', '2023-01-02', '14:30', '15:30', 'KAKAO', 6000, 40,  10,  58);
+values('REJECT', now(), '2023-01-02', '2023-01-02', '14:30', '15:30', 'KAKAO', 6000, 40,  10,  58);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '13:30', '16:30', 'KAKAO', 18000, 40,  16,  65);
@@ -9378,7 +9395,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '14:20', '16:20', 'KAKAO', 12000, 41,  4,  52);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-02', '2023-01-02', '15:20', '16:20', 'KAKAO', 6000, 41,  10,  59);
+values('REJECT', now(), '2023-01-02', '2023-01-02', '15:20', '16:20', 'KAKAO', 6000, 41,  10,  59);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '14:20', '17:20', 'KAKAO', 18000, 41,  16,  66);
@@ -9393,7 +9410,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '14:20', '15:20', 'KAKAO', 6000, 41,  34,  85);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-02', '2023-01-02', '15:10', '17:10', 'KAKAO', 12000, 42,  4,  53);
+values('REJECT', now(), '2023-01-02', '2023-01-02', '15:10', '17:10', 'KAKAO', 12000, 42,  4,  53);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '16:10', '17:10', 'KAKAO', 6000, 42,  10,  60);
@@ -9414,7 +9431,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '16:50', '18:50', 'KAKAO', 12000, 43,  4,  54);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-02', '2023-01-02', '17:50', '18:50', 'KAKAO', 6000, 43,  10,  61);
+values('REJECT', now(), '2023-01-02', '2023-01-02', '17:50', '18:50', 'KAKAO', 6000, 43,  10,  61);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '16:50', '19:50', 'KAKAO', 18000, 43,  16,  68);
@@ -9429,7 +9446,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '16:50', '17:50', 'KAKAO', 6000, 43,  34,  87);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-02', '2023-01-02', '17:40', '19:40', 'KAKAO', 12000, 44,  4,  55);
+values('REJECT', now(), '2023-01-02', '2023-01-02', '17:40', '19:40', 'KAKAO', 12000, 44,  4,  55);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '18:40', '19:40', 'KAKAO', 6000, 44,  10,  62);
@@ -9447,13 +9464,13 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '17:40', '18:40', 'KAKAO', 6000, 44,  34,  88);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-02', '2023-01-02', '18:30', '20:30', 'KAKAO', 12000, 45,  4,  56);
+values('REJECT', now(), '2023-01-02', '2023-01-02', '18:30', '20:30', 'KAKAO', 12000, 45,  4,  56);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '19:30', '20:30', 'KAKAO', 6000, 45,  10,  63);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-02', '2023-01-02', '18:30', '21:30', 'KAKAO', 18000, 45,  16,  70);
+values('REJECT', now(), '2023-01-02', '2023-01-02', '18:30', '21:30', 'KAKAO', 18000, 45,  16,  70);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-02', '2023-01-02', '18:30', '20:30', 'KAKAO', 12000, 45,  22,  77);
@@ -17103,7 +17120,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '14:30', '15:30', 'KAKAO', 6000, 29,  10,  58);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '13:30', '16:30', 'KAKAO', 18000, 29,  16,  65);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '13:30', '16:30', 'KAKAO', 18000, 29,  16,  65);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '13:30', '15:30', 'KAKAO', 12000, 29,  22,  72);
@@ -17124,7 +17141,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '14:20', '17:20', 'KAKAO', 18000, 30,  16,  66);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '14:20', '16:20', 'KAKAO', 12000, 30,  22,  73);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '14:20', '16:20', 'KAKAO', 12000, 30,  22,  73);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '14:20', '16:20', 'KAKAO', 12000, 30,  28,  82);
@@ -17145,10 +17162,10 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '15:10', '17:10', 'KAKAO', 12000, 31,  22,  74);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '15:10', '17:10', 'KAKAO', 12000, 31,  28,  83);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '15:10', '17:10', 'KAKAO', 12000, 31,  28,  83);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '15:10', '16:10', 'KAKAO', 6000, 31,  34,  86);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '15:10', '16:10', 'KAKAO', 6000, 31,  34,  86);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '16:50', '18:50', 'KAKAO', 12000, 32,  4,  54);
@@ -17175,7 +17192,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '18:40', '19:40', 'KAKAO', 6000, 33,  10,  62);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '17:40', '20:40', 'KAKAO', 18000, 33,  16,  69);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '17:40', '20:40', 'KAKAO', 18000, 33,  16,  69);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '17:40', '19:40', 'KAKAO', 12000, 33,  22,  76);
@@ -17202,7 +17219,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '18:30', '20:30', 'KAKAO', 12000, 34,  28,  86);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '18:30', '19:30', 'KAKAO', 6000, 34,  34,  89);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '18:30', '19:30', 'KAKAO', 6000, 34,  34,  89);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '19:20', '21:20', 'KAKAO', 12000, 35,  4,  57);
@@ -17235,7 +17252,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '20:10', '22:10', 'KAKAO', 12000, 36,  22,  79);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '20:10', '22:10', 'KAKAO', 12000, 36,  28,  88);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '20:10', '22:10', 'KAKAO', 12000, 36,  28,  88);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '20:10', '21:10', 'KAKAO', 6000, 36,  34,  91);
@@ -17268,7 +17285,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '12:40', '15:40', 'KAKAO', 18000, 38,  16,  64);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '12:40', '14:40', 'KAKAO', 12000, 38,  22,  71);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '12:40', '14:40', 'KAKAO', 12000, 38,  22,  71);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '12:40', '14:40', 'KAKAO', 12000, 38,  28,  80);
@@ -17298,7 +17315,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '14:20', '16:20', 'KAKAO', 12000, 40,  4,  52);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '15:20', '16:20', 'KAKAO', 6000, 40,  10,  59);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '15:20', '16:20', 'KAKAO', 6000, 40,  10,  59);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '14:20', '17:20', 'KAKAO', 18000, 40,  16,  66);
@@ -17328,7 +17345,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '15:10', '17:10', 'KAKAO', 12000, 41,  28,  83);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '15:10', '16:10', 'KAKAO', 6000, 41,  34,  86);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '15:10', '16:10', 'KAKAO', 6000, 41,  34,  86);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '16:50', '18:50', 'KAKAO', 12000, 42,  4,  54);
@@ -17343,7 +17360,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '16:50', '18:50', 'KAKAO', 12000, 42,  22,  75);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '16:50', '18:50', 'KAKAO', 12000, 42,  28,  84);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '16:50', '18:50', 'KAKAO', 12000, 42,  28,  84);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '16:50', '17:50', 'KAKAO', 6000, 42,  34,  87);
@@ -17376,7 +17393,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '18:30', '21:30', 'KAKAO', 18000, 44,  16,  70);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '18:30', '20:30', 'KAKAO', 12000, 44,  22,  77);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '18:30', '20:30', 'KAKAO', 12000, 44,  22,  77);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '18:30', '20:30', 'KAKAO', 12000, 44,  28,  86);
@@ -17403,7 +17420,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '19:20', '20:20', 'KAKAO', 6000, 45,  34,  90);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '20:10', '22:10', 'KAKAO', 12000, 46,  4,  58);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '20:10', '22:10', 'KAKAO', 12000, 46,  4,  58);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '21:10', '22:10', 'KAKAO', 6000, 46,  10,  65);
@@ -17418,7 +17435,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '20:10', '22:10', 'KAKAO', 12000, 46,  28,  88);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '20:10', '21:10', 'KAKAO', 6000, 46,  34,  91);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '20:10', '21:10', 'KAKAO', 6000, 46,  34,  91);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '11:50', '13:50', 'KAKAO', 12000, 47,  4,  49);
@@ -17436,7 +17453,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '11:50', '13:50', 'KAKAO', 12000, 47,  28,  79);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '11:50', '12:50', 'KAKAO', 6000, 47,  34,  82);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '11:50', '12:50', 'KAKAO', 6000, 47,  34,  82);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '12:40', '14:40', 'KAKAO', 12000, 48,  4,  50);
@@ -17454,7 +17471,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '12:40', '14:40', 'KAKAO', 12000, 48,  28,  80);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '12:40', '13:40', 'KAKAO', 6000, 48,  34,  83);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '12:40', '13:40', 'KAKAO', 6000, 48,  34,  83);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '13:30', '15:30', 'KAKAO', 12000, 49,  4,  51);
@@ -17472,7 +17489,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '13:30', '15:30', 'KAKAO', 12000, 49,  28,  81);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '13:30', '14:30', 'KAKAO', 6000, 49,  34,  84);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '13:30', '14:30', 'KAKAO', 6000, 49,  34,  84);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '14:20', '16:20', 'KAKAO', 12000, 50,  4,  52);
@@ -17487,7 +17504,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '14:20', '16:20', 'KAKAO', 12000, 50,  22,  73);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '14:20', '16:20', 'KAKAO', 12000, 50,  28,  82);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '14:20', '16:20', 'KAKAO', 12000, 50,  28,  82);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '14:20', '15:20', 'KAKAO', 6000, 50,  34,  85);
@@ -17505,7 +17522,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '15:10', '17:10', 'KAKAO', 12000, 51,  22,  74);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '15:10', '17:10', 'KAKAO', 12000, 51,  28,  83);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '15:10', '17:10', 'KAKAO', 12000, 51,  28,  83);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '15:10', '16:10', 'KAKAO', 6000, 51,  34,  86);
@@ -17523,7 +17540,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '16:50', '18:50', 'KAKAO', 12000, 52,  22,  75);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '16:50', '18:50', 'KAKAO', 12000, 52,  28,  84);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '16:50', '18:50', 'KAKAO', 12000, 52,  28,  84);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '16:50', '17:50', 'KAKAO', 6000, 52,  34,  87);
@@ -17544,7 +17561,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '17:40', '19:40', 'KAKAO', 12000, 53,  28,  85);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '17:40', '18:40', 'KAKAO', 6000, 53,  34,  88);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '17:40', '18:40', 'KAKAO', 6000, 53,  34,  88);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '18:30', '20:30', 'KAKAO', 12000, 54,  4,  56);
@@ -17565,7 +17582,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '18:30', '19:30', 'KAKAO', 6000, 54,  34,  89);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '19:20', '21:20', 'KAKAO', 12000, 55,  4,  57);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '19:20', '21:20', 'KAKAO', 12000, 55,  4,  57);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '20:20', '21:20', 'KAKAO', 6000, 55,  10,  64);
@@ -17583,7 +17600,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '19:20', '20:20', 'KAKAO', 6000, 55,  34,  90);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '20:10', '22:10', 'KAKAO', 12000, 56,  4,  58);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '20:10', '22:10', 'KAKAO', 12000, 56,  4,  58);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '21:10', '22:10', 'KAKAO', 6000, 56,  10,  65);
@@ -17598,7 +17615,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '20:10', '22:10', 'KAKAO', 12000, 56,  28,  88);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '20:10', '21:10', 'KAKAO', 6000, 56,  34,  91);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '20:10', '21:10', 'KAKAO', 6000, 56,  34,  91);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '11:50', '13:50', 'KAKAO', 12000, 57,  4,  49);
@@ -17628,7 +17645,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '12:40', '15:40', 'KAKAO', 18000, 58,  16,  64);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '12:40', '14:40', 'KAKAO', 12000, 58,  22,  71);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '12:40', '14:40', 'KAKAO', 12000, 58,  22,  71);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '12:40', '14:40', 'KAKAO', 12000, 58,  28,  80);
@@ -17661,7 +17678,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '15:20', '16:20', 'KAKAO', 6000, 60,  10,  59);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '14:20', '17:20', 'KAKAO', 18000, 60,  16,  66);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '14:20', '17:20', 'KAKAO', 18000, 60,  16,  66);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '14:20', '16:20', 'KAKAO', 12000, 60,  22,  73);
@@ -17688,7 +17705,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '15:10', '17:10', 'KAKAO', 12000, 61,  28,  83);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '15:10', '16:10', 'KAKAO', 6000, 61,  34,  86);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '15:10', '16:10', 'KAKAO', 6000, 61,  34,  86);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '16:50', '18:50', 'KAKAO', 12000, 62,  4,  54);
@@ -17712,7 +17729,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '17:40', '19:40', 'KAKAO', 12000, 63,  4,  55);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-09', '2023-01-09', '18:40', '19:40', 'KAKAO', 6000, 63,  10,  62);
+values('REJECT', now(), '2023-01-09', '2023-01-09', '18:40', '19:40', 'KAKAO', 6000, 63,  10,  62);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-09', '2023-01-09', '17:40', '20:40', 'KAKAO', 18000, 63,  16,  69);
@@ -17742,7 +17759,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '05:30', '07:30', 'KAKAO', 12000, 8,  28,  74);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '05:30', '06:30', 'KAKAO', 6000, 8,  34,  79);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '05:30', '06:30', 'KAKAO', 6000, 8,  34,  79);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-10-10', '2023-01-10', '06:20', '08:20', 'KAKAO', 12000, 9,  4,  47);
@@ -17760,7 +17777,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '06:20', '08:20', 'KAKAO', 12000, 9,  28,  75);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '06:20', '07:20', 'KAKAO', 6000, 9,  34,  80);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '06:20', '07:20', 'KAKAO', 6000, 9,  34,  80);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '10:10', '12:10', 'KAKAO', 12000, 10,  4,  48);
@@ -17778,7 +17795,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '10:10', '12:10', 'KAKAO', 12000, 10,  28,  78);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '10:10', '11:10', 'KAKAO', 6000, 10,  34,  81);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '10:10', '11:10', 'KAKAO', 6000, 10,  34,  81);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '11:50', '13:50', 'KAKAO', 12000, 11,  4,  49);
@@ -17796,7 +17813,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '11:50', '13:50', 'KAKAO', 12000, 11,  28,  79);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '11:50', '12:50', 'KAKAO', 6000, 11,  34,  82);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '11:50', '12:50', 'KAKAO', 6000, 11,  34,  82);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '14:40', 'KAKAO', 12000, 12,  4,  50);
@@ -17829,7 +17846,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 13,  22,  72);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 13,  28,  81);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 13,  28,  81);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '14:30', 'KAKAO', 6000, 13,  34,  84);
@@ -17844,7 +17861,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '17:20', 'KAKAO', 18000, 14,  16,  66);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '16:20', 'KAKAO', 12000, 14,  22,  73);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '14:20', '16:20', 'KAKAO', 12000, 14,  22,  73);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '16:20', 'KAKAO', 12000, 14,  28,  82);
@@ -17862,7 +17879,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:10', '18:10', 'KAKAO', 18000, 15,  16,  67);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:10', '17:10', 'KAKAO', 12000, 15,  22,  74);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '15:10', '17:10', 'KAKAO', 12000, 15,  22,  74);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:10', '17:10', 'KAKAO', 12000, 15,  28,  83);
@@ -17880,7 +17897,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '19:50', 'KAKAO', 18000, 16,  16,  68);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 16,  22,  75);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 16,  22,  75);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 16,  28,  84);
@@ -17898,7 +17915,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '20:40', 'KAKAO', 18000, 17,  16,  69);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 17,  22,  76);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 17,  22,  76);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 17,  28,  85);
@@ -17916,7 +17933,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '21:30', 'KAKAO', 18000, 18,  16,  70);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 18,  22,  77);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 18,  22,  77);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 18,  28,  86);
@@ -17931,7 +17948,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:20', '21:20', 'KAKAO', 6000, 19,  10,  64);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '19:20', '22:20', 'KAKAO', 18000, 19,  16,  71);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '19:20', '22:20', 'KAKAO', 18000, 19,  16,  71);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '19:20', '21:20', 'KAKAO', 12000, 19,  22,  78);
@@ -17949,7 +17966,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '21:10', '22:10', 'KAKAO', 6000, 20,  10,  65);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '23:10', 'KAKAO', 18000, 20,  16,  72);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '20:10', '23:10', 'KAKAO', 18000, 20,  16,  72);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '22:10', 'KAKAO', 12000, 20,  22,  79);
@@ -17979,7 +17996,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '11:50', '12:50', 'KAKAO', 6000, 21,  34,  82);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '14:40', 'KAKAO', 12000, 22,  4,  50);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '12:40', '14:40', 'KAKAO', 12000, 22,  4,  50);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:40', '14:40', 'KAKAO', 6000, 22,  10,  57);
@@ -17994,7 +18011,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '14:40', 'KAKAO', 12000, 22,  28,  80);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '13:40', 'KAKAO', 6000, 22,  34,  83);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '12:40', '13:40', 'KAKAO', 6000, 22,  34,  83);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 23,  4,  51);
@@ -18009,7 +18026,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 23,  22,  72);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 23,  28,  81);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 23,  28,  81);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '14:30', 'KAKAO', 6000, 23,  34,  84);
@@ -18027,7 +18044,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '16:20', 'KAKAO', 12000, 24,  22,  73);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '16:20', 'KAKAO', 12000, 24,  28,  82);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '14:20', '16:20', 'KAKAO', 12000, 24,  28,  82);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '15:20', 'KAKAO', 6000, 24,  34,  85);
@@ -18042,7 +18059,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:10', '18:10', 'KAKAO', 18000, 25,  16,  67);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:10', '17:10', 'KAKAO', 12000, 25,  22,  74);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '15:10', '17:10', 'KAKAO', 12000, 25,  22,  74);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:10', '17:10', 'KAKAO', 12000, 25,  28,  83);
@@ -18057,7 +18074,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:50', '18:50', 'KAKAO', 6000, 26,  10,  61);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '19:50', 'KAKAO', 18000, 26,  16,  68);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '16:50', '19:50', 'KAKAO', 18000, 26,  16,  68);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 26,  22,  75);
@@ -18072,7 +18089,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 27,  4,  55);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:40', '19:40', 'KAKAO', 6000, 27,  10,  62);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '18:40', '19:40', 'KAKAO', 6000, 27,  10,  62);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '20:40', 'KAKAO', 18000, 27,  16,  69);
@@ -18102,7 +18119,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 28,  28,  86);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '19:30', 'KAKAO', 6000, 28,  34,  89);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '18:30', '19:30', 'KAKAO', 6000, 28,  34,  89);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '19:20', '21:20', 'KAKAO', 12000, 29,  4,  57);
@@ -18129,7 +18146,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '21:10', '22:10', 'KAKAO', 6000, 30,  10,  65);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '23:10', 'KAKAO', 18000, 30,  16,  72);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '20:10', '23:10', 'KAKAO', 18000, 30,  16,  72);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '22:10', 'KAKAO', 12000, 30,  22,  79);
@@ -18156,7 +18173,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '11:50', '13:50', 'KAKAO', 12000, 31,  28,  79);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '11:50', '12:50', 'KAKAO', 6000, 31,  34,  82);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '11:50', '12:50', 'KAKAO', 6000, 31,  34,  82);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '14:40', 'KAKAO', 12000, 32,  4,  50);
@@ -18183,7 +18200,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:30', '15:30', 'KAKAO', 6000, 33,  10,  58);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '16:30', 'KAKAO', 18000, 33,  16,  65);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '13:30', '16:30', 'KAKAO', 18000, 33,  16,  65);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 33,  22,  72);
@@ -18198,7 +18215,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '16:20', 'KAKAO', 12000, 34,  4,  52);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:20', '16:20', 'KAKAO', 6000, 34,  10,  59);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '15:20', '16:20', 'KAKAO', 6000, 34,  10,  59);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '17:20', 'KAKAO', 18000, 34,  16,  66);
@@ -18213,7 +18230,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '15:20', 'KAKAO', 6000, 34,  34,  85);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:10', '17:10', 'KAKAO', 12000, 35,  4,  53);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '15:10', '17:10', 'KAKAO', 12000, 35,  4,  53);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:10', '17:10', 'KAKAO', 6000, 35,  10,  60);
@@ -18231,7 +18248,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:10', '16:10', 'KAKAO', 6000, 35,  34,  86);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 36,  4,  54);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 36,  4,  54);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:50', '18:50', 'KAKAO', 6000, 36,  10,  61);
@@ -18252,10 +18269,10 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 37,  4,  55);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:40', '19:40', 'KAKAO', 6000, 37,  10,  62);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '18:40', '19:40', 'KAKAO', 6000, 37,  10,  62);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '20:40', 'KAKAO', 18000, 37,  16,  69);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '17:40', '20:40', 'KAKAO', 18000, 37,  16,  69);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 37,  22,  76);
@@ -18279,7 +18296,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 38,  22,  77);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 38,  28,  86);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 38,  28,  86);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '19:30', 'KAKAO', 6000, 38,  34,  89);
@@ -18294,7 +18311,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '19:20', '22:20', 'KAKAO', 18000, 39,  16,  71);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '19:20', '21:20', 'KAKAO', 12000, 39,  22,  78);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '19:20', '21:20', 'KAKAO', 12000, 39,  22,  78);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '19:20', '21:20', 'KAKAO', 12000, 39,  28,  87);
@@ -18312,7 +18329,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '23:10', 'KAKAO', 18000, 40,  16,  72);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '22:10', 'KAKAO', 12000, 40,  22,  79);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '20:10', '22:10', 'KAKAO', 12000, 40,  22,  79);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '22:10', 'KAKAO', 12000, 40,  28,  88);
@@ -18339,10 +18356,10 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '11:50', '12:50', 'KAKAO', 6000, 41,  34,  82);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '14:40', 'KAKAO', 12000, 42,  4,  50);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '12:40', '14:40', 'KAKAO', 12000, 42,  4,  50);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:40', '14:40', 'KAKAO', 6000, 42,  10,  57);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '13:40', '14:40', 'KAKAO', 6000, 42,  10,  57);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '15:40', 'KAKAO', 18000, 42,  16,  64);
@@ -18369,7 +18386,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 43,  22,  72);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 43,  28,  81);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 43,  28,  81);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '14:30', 'KAKAO', 6000, 43,  34,  84);
@@ -18384,7 +18401,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '17:20', 'KAKAO', 18000, 44,  16,  66);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '16:20', 'KAKAO', 12000, 44,  22,  73);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '14:20', '16:20', 'KAKAO', 12000, 44,  22,  73);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '16:20', 'KAKAO', 12000, 44,  28,  82);
@@ -18411,7 +18428,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:10', '16:10', 'KAKAO', 6000, 45,  34,  86);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 46,  4,  54);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 46,  4,  54);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:50', '18:50', 'KAKAO', 6000, 46,  10,  61);
@@ -18423,7 +18440,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 46,  22,  75);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 46,  28,  84);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 46,  28,  84);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '17:50', 'KAKAO', 6000, 46,  34,  87);
@@ -18438,13 +18455,13 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '20:40', 'KAKAO', 18000, 47,  16,  69);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 47,  22,  76);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 47,  22,  76);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 47,  28,  85);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '18:40', 'KAKAO', 6000, 47,  34,  88);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '17:40', '18:40', 'KAKAO', 6000, 47,  34,  88);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 48,  4,  56);
@@ -18459,7 +18476,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 48,  22,  77);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 48,  28,  86);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 48,  28,  86);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '19:30', 'KAKAO', 6000, 48,  34,  89);
@@ -18471,7 +18488,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:20', '21:20', 'KAKAO', 6000, 49,  10,  64);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '19:20', '22:20', 'KAKAO', 18000, 49,  16,  71);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '19:20', '22:20', 'KAKAO', 18000, 49,  16,  71);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '19:20', '21:20', 'KAKAO', 12000, 49,  22,  78);
@@ -18489,7 +18506,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '21:10', '22:10', 'KAKAO', 6000, 50,  10,  65);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '23:10', 'KAKAO', 18000, 50,  16,  72);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '20:10', '23:10', 'KAKAO', 18000, 50,  16,  72);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '22:10', 'KAKAO', 12000, 50,  22,  79);
@@ -18507,7 +18524,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:50', '13:50', 'KAKAO', 6000, 51,  10,  56);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '11:50', '14:50', 'KAKAO', 18000, 51,  16,  63);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '11:50', '14:50', 'KAKAO', 18000, 51,  16,  63);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '11:50', '13:50', 'KAKAO', 12000, 51,  22,  70);
@@ -18522,7 +18539,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '14:40', 'KAKAO', 12000, 52,  4,  50);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:40', '14:40', 'KAKAO', 6000, 52,  10,  57);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '13:40', '14:40', 'KAKAO', 6000, 52,  10,  57);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '15:40', 'KAKAO', 18000, 52,  16,  64);
@@ -18537,7 +18554,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '13:40', 'KAKAO', 6000, 52,  34,  83);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 53,  4,  51);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 53,  4,  51);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:30', '15:30', 'KAKAO', 6000, 53,  10,  58);
@@ -18555,7 +18572,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '14:30', 'KAKAO', 6000, 53,  34,  84);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '16:20', 'KAKAO', 12000, 54,  4,  52);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '14:20', '16:20', 'KAKAO', 12000, 54,  4,  52);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:20', '16:20', 'KAKAO', 6000, 54,  10,  59);
@@ -18573,7 +18590,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:20', '15:20', 'KAKAO', 6000, 54,  34,  85);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:10', '17:10', 'KAKAO', 12000, 55,  4,  53);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '15:10', '17:10', 'KAKAO', 12000, 55,  4,  53);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:10', '17:10', 'KAKAO', 6000, 55,  10,  60);
@@ -18591,7 +18608,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '15:10', '16:10', 'KAKAO', 6000, 55,  34,  86);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 56,  4,  54);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 56,  4,  54);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:50', '18:50', 'KAKAO', 6000, 56,  10,  61);
@@ -18603,13 +18620,13 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 56,  22,  75);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 56,  28,  84);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '16:50', '18:50', 'KAKAO', 12000, 56,  28,  84);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '16:50', '17:50', 'KAKAO', 6000, 56,  34,  87);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 57,  4,  55);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 57,  4,  55);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:40', '19:40', 'KAKAO', 6000, 57,  10,  62);
@@ -18621,10 +18638,10 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 57,  22,  76);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 57,  28,  85);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '17:40', '19:40', 'KAKAO', 12000, 57,  28,  85);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '17:40', '18:40', 'KAKAO', 6000, 57,  34,  88);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '17:40', '18:40', 'KAKAO', 6000, 57,  34,  88);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 58,  4,  56);
@@ -18636,7 +18653,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '21:30', 'KAKAO', 18000, 58,  16,  70);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 58,  22,  77);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 58,  22,  77);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '18:30', '20:30', 'KAKAO', 12000, 58,  28,  86);
@@ -18648,7 +18665,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '19:20', '21:20', 'KAKAO', 12000, 59,  4,  57);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:20', '21:20', 'KAKAO', 6000, 59,  10,  64);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '20:20', '21:20', 'KAKAO', 6000, 59,  10,  64);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '19:20', '22:20', 'KAKAO', 18000, 59,  16,  71);
@@ -18660,7 +18677,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '19:20', '21:20', 'KAKAO', 12000, 59,  28,  87);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '19:20', '20:20', 'KAKAO', 6000, 59,  34,  90);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '19:20', '20:20', 'KAKAO', 6000, 59,  34,  90);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '22:10', 'KAKAO', 12000, 60,  4,  58);
@@ -18675,7 +18692,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '22:10', 'KAKAO', 12000, 60,  22,  79);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '22:10', 'KAKAO', 12000, 60,  28,  88);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '20:10', '22:10', 'KAKAO', 12000, 60,  28,  88);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '20:10', '21:10', 'KAKAO', 6000, 60,  34,  91);
@@ -18696,7 +18713,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '11:50', '13:50', 'KAKAO', 12000, 61,  28,  79);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '11:50', '12:50', 'KAKAO', 6000, 61,  34,  82);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '11:50', '12:50', 'KAKAO', 6000, 61,  34,  82);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '14:40', 'KAKAO', 12000, 62,  4,  50);
@@ -18714,7 +18731,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '14:40', 'KAKAO', 12000, 62,  28,  80);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '12:40', '13:40', 'KAKAO', 6000, 62,  34,  83);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '12:40', '13:40', 'KAKAO', 6000, 62,  34,  83);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 63,  4,  51);
@@ -18723,7 +18740,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '14:30', '15:30', 'KAKAO', 6000, 63,  10,  58);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '16:30', 'KAKAO', 18000, 63,  16,  65);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '13:30', '16:30', 'KAKAO', 18000, 63,  16,  65);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 63,  22,  72);
@@ -18732,7 +18749,7 @@ insert into reservation(approveStatus, createDate, reservationDate, endDate, res
 values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '15:30', 'KAKAO', 12000, 63,  28,  81);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-10', '2023-01-10', '13:30', '14:30', 'KAKAO', 6000, 63,  34,  84);
+values('REJECT', now(), '2023-01-10', '2023-01-10', '13:30', '14:30', 'KAKAO', 6000, 63,  34,  84);
 
 
 
