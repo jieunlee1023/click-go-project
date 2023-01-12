@@ -28,10 +28,7 @@
 		data.addRows(list);
 
 		var options = {
-			'title' : '가게들의 이번 달 매출',
-			'width' : 1000,
 			'is3D' : true,
-			'height' : 1000
 		};
 
 		var chart = new google.visualization.PieChart(document
@@ -39,48 +36,42 @@
 		chart.draw(data, options);
 	}
 </script>
-<div class="container">
-	<div class="container m-5">
-		<h1>가게별 이번 달의 통계</h1>
-	</div>
-	<br> <br> <br> <br>
 
-	<div class="d-flex justify-content-center">
-		<div class="d-flex flex-column">
-			<div class="d-flex">
-				<div class="d-flex justify-content-center">
-					<div class="nav--list">
-						<ul id="nav--item">
-							<li id="more--view"><a class="nav-link" href="#">가게별</a>
-								<ul id="nave--moreview--item">
-									<li><a class="dropdown-item"
-										href="/admin/chart/store/sales/today">오늘의 통계</a></li>
-									<li><a class="dropdown-item"
-										href="/admin/chart/store/sales/this-month">이번달의 통계</a></li>
-									<li><a class="dropdown-item"
-										href="/admin/chart/store/sales/this-year">올해의 통계</a></li>
-								</ul></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<br> <br> <br>
-			<div class="d-flex">
-				<div class="d-flex justify-content-center">
-					<div class="nav--list">
-						<ul id="nav--item">
-							<li id="more--view"><a class="nav-link" href="#">카테고리별</a>
-								<ul id="nave--moreview--item">
-									<li><a class="dropdown-item" href="/admin/chart/category/sales/today">오늘의 통계</a></li>
-									<li><a class="dropdown-item" href="/admin/chart/category/sales/this-month">이번달의 통계</a></li>
-									<li><a class="dropdown-item" href="/admin/chart/category/sales/this-year">올해의 통계</a></li>
-								</ul></li>
-						</ul>
-					</div>
-				</div>
-			</div>
+<br>
+<div class="container" id="reservation">
+	<div id="view-more-title">
+		<div>
+			📉 가게별 월 매출
 		</div>
-		<div class="d-flex justify-content-between" id="chart--this-month"></div>
+		<br>
 	</div>
+	<hr>
+</div>
+<div class="container d-flex">
+	<div class="nav--list">
+		<ul>
+			<li id="more--view"><a class="nav-link" href="#">가게별</a>
+				<ul id="nave--moreview--item">
+					<li><a class="dropdown-item"
+						href="/admin/chart/store/sales/this-month">월 매출 통계</a></li>
+					<li><a class="dropdown-item"
+						href="/admin/chart/store/sales/this-year">연 매출 통계</a></li>
+				</ul></li>
+		</ul>
+	</div>
+	<div class="nav--list">
+		<ul>
+			<li id="more--view"><a class="nav-link" href="#">카테고리별</a>
+				<ul id="nave--moreview--item">
+					<li><a class="dropdown-item"
+						href="/admin/chart/category/sales/this-month">월 매출 통계</a></li>
+					<li><a class="dropdown-item"
+						href="/admin/chart/category/sales/this-year">연 매출 통계</a></li>
+				</ul></li>
+		</ul>
+	</div>
+</div>
+<div class="d-flex justify-content-center">
+	<div id="chart--this-month" style="width: 90%; height: 800px;"></div>
 </div>
 <%@ include file="../../../../layout/footer.jsp"%>

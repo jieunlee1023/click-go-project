@@ -123,10 +123,6 @@
       <div class="main-header">
         <h1>💻 관리자 페이지</h1>
         <div class="search">
-          <input type="text" placeholder="Search" />
-          <button type="submit">
-            <i class="ph-magnifying-glass-bold"></i>
-          </button>
         </div>
         
         
