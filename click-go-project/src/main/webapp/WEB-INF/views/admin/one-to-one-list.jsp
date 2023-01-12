@@ -50,7 +50,7 @@
 								</c:choose></td>
 							<td><a href="/admin/one-to-one-answer/${asklist.id}">${asklist.title }</a></td>
 							<td>${asklist.user.username }</td>
-							<td><fmt:formatDate value="${asklist.createDate }" pattern="yyyy-MM-dd hh시 mm분" /></td>
+							<td>${asklist.createDate }</td>
 						</tr>
 					</c:forEach>
 				</tbody>
