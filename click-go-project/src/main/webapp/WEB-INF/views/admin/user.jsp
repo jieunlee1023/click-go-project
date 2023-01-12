@@ -70,7 +70,7 @@
 									<br>
 									<a href="#" style="color: red;">탈퇴시키기</a>
 								</c:if>
-							</c:if></td>
+							</c:if></td> 
 						<td>${user.point }</td>
 					</tr>
 				</c:forEach>
