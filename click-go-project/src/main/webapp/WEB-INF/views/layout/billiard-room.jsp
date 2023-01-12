@@ -3,8 +3,7 @@
 <div class="d-flex-column">
 
 
-	<div class="d-flex flex-grow-1 justify-content-center "
-		style="border: 1px solid black;">
+	<div class="d-flex flex-grow-1 justify-content-center "">
 		<div class="d-flex-column ml-1 mt-4">
 
 			<c:set var="done_loop" value="false" />
