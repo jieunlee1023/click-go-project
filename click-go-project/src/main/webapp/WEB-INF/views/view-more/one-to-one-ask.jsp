@@ -33,19 +33,23 @@
 						</thead>
 						<tbody>
 							<c:forEach var="askList" items="${askList }">
-								<tr style="text-align: center;">
-									<td>${askList.id }</td>
-									<td><a style="text-decoration: none; color: gray;" href="/admin/one-to-one-answer/${askList.id }">${askList.title }</a></td>
-									<td><c:choose>
-											<c:when test="${askList.answer eq '0' }">
-												<span class="badge badge-warning">답변대기</span>
-											</c:when>
-											<c:otherwise>
-												<span class="badge badge-success">답변완료</span>
-											</c:otherwise>
-										</c:choose></td>
-									<td>${askList.createDate }</td>
-								</tr>
+								<c:choose>
+									<c:when test="${askList.user.id eq principal.user.id}">
+										<tr style="text-align: center;">
+											<td>${askList.id }</td>
+											<td><a style="text-decoration: none; color: gray;" href="/admin/one-to-one-answer/${askList.id }">${askList.title }</a></td>
+											<td><c:choose>
+													<c:when test="${askList.answer eq '0' }">
+														<span class="badge badge-warning">답변대기</span>
+													</c:when>
+													<c:otherwise>
+														<span class="badge badge-success">답변완료</span>
+													</c:otherwise>
+												</c:choose></td>
+											<td>${askList.createDate }</td>
+										</tr>
+									</c:when>
+								</c:choose>
 							</c:forEach>
 						</tbody>
 					</table>
