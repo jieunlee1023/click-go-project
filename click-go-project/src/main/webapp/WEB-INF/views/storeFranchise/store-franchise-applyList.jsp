@@ -85,7 +85,7 @@
 							<div style="width: 130px; height: 50px;">
 								<p>${msg.storeTEL}</p>
 							</div>
-							<div style="width: 100px; height: 50px;">${msg.applyDate}</div>
+							<div style="width: 100px; height: 50px;"><fmt:formatDate value="${msg.applyDate}" pattern="yyyy-MM-dd" /></div>
 							<div
 								style="width: 100px; height: 50px; text-align: center; color: orange;">
 								<p>${msg.state}</p>

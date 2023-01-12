@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-
 <div class="container">
 
 	<div class="d-flex justify-content-end mt-5">
@@ -18,9 +17,11 @@
 			</div>
 			<div>
 				<span>글 작성자&nbsp;:&nbsp;${board.user.username }</span>
+					
 			</div>
 			<div class="d-flex justify-content-start">
-				<span>등록시간&nbsp;:&nbsp;${board.createDate }</span>
+				<span>등록시간&nbsp;:&nbsp;<fmt:formatDate value="${board.createDate }" pattern="yyyy-MM-dd" /></span>
+				&nbsp;(<span id="time-ago"></span>
 			</div>
 			<div class="d-flex justify-content-start">
 			
@@ -60,7 +61,8 @@
 											<p>&nbsp;${reply.content }</p>
 										</div>
 										<div class="d-flex justify-content-end mr-3">
-											<span>&nbsp;${reply.createDate }</span>
+											<span>&nbsp;<fmt:formatDate value="${reply.createDate }" pattern="yyyy-MM-dd" /></span>
+											
 										</div>
 										<div class="d-flex justify-content-end mr-3">
 											<div>
@@ -91,7 +93,7 @@
 									<p>&nbsp;${reply.content }</p>
 								</div>
 								<div class="d-flex justify-content-end mr-3">
-									<span>&nbsp;${reply.createDate }</span>
+									<span>&nbsp;<fmt:formatDate value="${reply.createDate }" pattern="yyyy-MM-dd" /></span>
 								</div>
 								<div class="d-flex justify-content-end mr-3">
 									<div>
@@ -124,6 +126,8 @@
 <script type="text/javascript" src="/js/board.js"></script>
 <br>
 <br>
+
+
 
 
 <%@ include file="../layout/footer.jsp"%>
