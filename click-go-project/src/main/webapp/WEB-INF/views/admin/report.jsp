@@ -37,14 +37,14 @@
 								${report.title} </a>
 						</p></td>
 
-					<%-- 					<c:choose>
+					<c:choose>
 						<c:when test="${report.reportType eq 'USER'}">
 							<td style="color: blue;" id="report--admin--type"><p>유저신고</p></td>
 						</c:when>
 						<c:otherwise>
 							<td style="color: red;" id="report--admin--type"><p>가맹점신고</p></td>
 						</c:otherwise>
-					</c:choose> --%>
+					</c:choose> 
 
 					<td><p>id: ${report.store.id }, ${report.store.storeName}</p></td>
 					<td><p>id: ${report.user.id }, ${report.user.username}</p></td>

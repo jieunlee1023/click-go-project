@@ -7,13 +7,18 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.clickgo.project.entity.User;
+import com.clickgo.project.model.enums.RoleType;
 
 public class PrincipalDetails implements UserDetails {
 
 	private User user;
 
 	public PrincipalDetails(User user) {
-		this.user = user;
+		if (user.getRole() == RoleType.BLACKLIST) {
+			this.user = null;
+		} else {
+			this.user = user;
+		}
 	}
 
 	public void setUser(User user) {
@@ -35,7 +40,12 @@ public class PrincipalDetails implements UserDetails {
 
 	@Override
 	public String getPassword() {
+		try {
 		return user.getPassword();
+		} catch (Exception e) {
+			System.err.println("정지당한 유저의 접속 시도");
+		}
+		return null;
 	}
 
 	@Override

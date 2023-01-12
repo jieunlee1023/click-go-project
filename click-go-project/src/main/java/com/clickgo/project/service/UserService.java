@@ -1,19 +1,21 @@
 package com.clickgo.project.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Required;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 
+import com.clickgo.project.entity.Caution;
 import com.clickgo.project.entity.DeleteUser;
-import com.clickgo.project.entity.Reservation;
+import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.LoginType;
 import com.clickgo.project.model.enums.RoleType;
+import com.clickgo.project.model.mydate.MyDate;
 import com.clickgo.project.repository.IDeleteUserRepository;
 import com.clickgo.project.repository.IUserRepository;
 
@@ -26,6 +28,11 @@ public class UserService {
 	private BCryptPasswordEncoder encoder;
 	@Autowired
 	private IDeleteUserRepository deleteUserRepository;
+	@Autowired
+	private StoreService storeService;
+	@Autowired
+	private CautionService cautionService;
+	boolean flag;
 
 	@Transactional
 	public int findByUsername(String username) {
@@ -173,6 +180,7 @@ public class UserService {
 		return userRepository.findByUsernameContaining(q, pageable);
 	}
 
+	@Transactional
 	public User findById(int id) {
 		return userRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("찾으시는 유저가 존재하지 않습니다.");
@@ -181,17 +189,17 @@ public class UserService {
 
 	@Transactional
 	public boolean updateReportCountPlus(User user) {
-		User userEntity = userRepository.findById(user.getId()).orElseThrow(()->{
-			return new IllegalArgumentException ("해당 유저를 찾을 수 없습니다.");
+		User userEntity = userRepository.findById(user.getId()).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다.");
 		});
 		userEntity.setReportCount(user.getReportCount() + 1);
 		return true;
 	}
-	
+
 	@Transactional
 	public boolean updateReportCountMinus(User user) {
-		User userEntity = userRepository.findById(user.getId()).orElseThrow(()->{
-			return new IllegalArgumentException ("해당 유저를 찾을 수 없습니다.");
+		User userEntity = userRepository.findById(user.getId()).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다.");
 		});
 		if (user.getReportCount() > 0) {
 			userEntity.setReportCount(user.getReportCount() - 1);
@@ -199,5 +207,57 @@ public class UserService {
 		} else {
 			return false;
 		}
+	}
+
+	@Transactional
+	public boolean sendCaution(int userId, Caution caution) {
+		User userEntity = userRepository.findById(userId).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다.");
+		});
+		userEntity.setCautionStatus(true);
+		caution.setUser(userEntity);
+		cautionService.save(caution);
+		return true;
+	}
+
+	@Transactional
+	public boolean cancelCaution(int userId) {
+		User userEntity = userRepository.findById(userId).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다.");
+		});
+		if (userEntity.isCautionStatus()) {
+			userEntity.setCautionStatus(false);
+		}
+		return true;
+	}
+
+	@Transactional
+	public boolean blacklist(User user) {
+		User userEntity = userRepository.findById(user.getId()).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다.");
+		});
+		MyDate myDate = new MyDate();
+		userEntity.setRole(RoleType.BLACKLIST);
+		return true;
+	}
+
+	@Transactional
+	public boolean cancelBlacklist(User user) {
+		User userEntity = userRepository.findById(user.getId()).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다.");
+		});
+		List<Store> stores = storeService.findAll();
+		flag = true;
+		stores.forEach(store -> {
+			if (flag) {
+				if (store.getUser().getId() == userEntity.getId()) {
+					userEntity.setRole(RoleType.HOST);
+					flag = false;
+				} else {
+					userEntity.setRole(RoleType.GEUST);
+				}
+			}
+		});
+		return true;
 	}
 }

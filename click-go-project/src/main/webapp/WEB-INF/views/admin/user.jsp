@@ -9,6 +9,8 @@
 			👨‍💻 회원 관리 <a id="btn--back" class="btn" href="./main">돌아가기</a>
 		</div>
 	</div>
+	신고횟수가 3일 경우 user에게 경고창을 전송할 수 있습니다. <br> 신고횟수가 5일 경우 해당 user를 탈퇴시킬
+	수 있습니다.
 </div>
 
 <div class="container">
@@ -66,9 +68,22 @@
 								<button type="button" class="admin-user-report-btn"
 									id="admin-user-report-btn-plus"
 									onclick="admin.plus(${user.id});">➕</button>
-								<c:if test="${user.reportCount  >= 5}">
+								<c:if test="${user.reportCount  == 3 && user.cautionStatus == false}">
 									<br>
-									<a href="#" style="color: red;">탈퇴시키기</a>
+									<a href="#" style="color: red;"
+										onclick="admin.caution(${user.id});">경고 주기</a>
+								</c:if>
+								<c:if
+									test="${user.reportCount  >= 5}">
+									<br>
+									<c:if test="${user.role != 'BLACKLIST'}">
+										<a href="#" style="color: red;"
+											onclick="admin.blacklist(${user.id});">정지시키기</a>
+									</c:if>
+									<c:if test="${user.role == 'BLACKLIST'}">
+										<a href="#" style="color: red;"
+											onclick="admin.cancelBlacklist(${user.id});">정지풀기</a>
+									</c:if>
 								</c:if>
 							</c:if></td>
 						<td>${user.point }</td>
@@ -77,12 +92,9 @@
 			</tbody>
 		</table>
 
-		<br> <br>
-
-
-
-		<br> <br>
-
+		<br> <br> <br> <br>
+		<!--  1== true -->
+		<!--  0== false-->
 		<div class="d-flex justify-content-center">
 			<ul class="pagination" style="border-radius: 0px">
 				<c:set var="isDisabled" value="disabled"></c:set>
@@ -111,8 +123,8 @@
 		<script src="/js/admin.js"></script>
 	</div>
 	<br>
-	</div>
+</div>
 
-	<script src="/js/user.js"></script>
+<script src="/js/user.js"></script>
 
-	<%@ include file="../layout/footer.jsp"%>
+<%@ include file="../layout/footer.jsp"%>
