@@ -78,7 +78,7 @@ public class StoreController {
 
 	@GetMapping({ "/main", "/search" })
 	public String store(@RequestParam(required = false) String pageName, Model model,
-			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 20, sort = "id", direction = Direction.DESC) Pageable pageable) {
 
 		Map<Integer, Integer> starScoreMap = new HashMap<>();
 		List<StoreCategory> categories = new ArrayList<>();
