@@ -37,7 +37,6 @@ public class BoardController {
 	@PostMapping("/save")
 	public String boardSave(@RequestParam(value = "secret", required = false) String[] secret, CsBoard csBoard,
 			@AuthenticationPrincipal PrincipalDetails details) {
-
 		boardService.write(secret, csBoard, details.getUser());
 		return "redirect:/board/list";
 	}

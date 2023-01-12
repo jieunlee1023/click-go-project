@@ -49,6 +49,7 @@
 						</c:choose>
 
 
+							<input type="hidden" value="${likeStoresEntity.id }" id="likeStoreId">
 						<c:choose>
 							<c:when test="${likeStoresEntity.likeStore eq false || empty likeStoresEntity}">
 								<button type="button" id="store--wish--emptyheart" data-toggle="tooltip" data-placement="right" title="하트를 클릭하여 위시리스트를 등록해보세요!"

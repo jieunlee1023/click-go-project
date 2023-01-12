@@ -62,7 +62,7 @@ let likeStore = {
 		let data = {
 			likeStore: heartData,
 		}
-		if (likeStoreId == null) {
+		if (likeStoreId == '') {
 			likeStoreId = 0;
 		}
 

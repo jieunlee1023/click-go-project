@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
  
  insert into user(username, email, createDate, password, phoneNumber, role, loginType, caution)
  values('user', 'qwer123@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-5653-8645', 'ADMIN', 'CLICKGO', 0);
@@ -203,7 +204,12 @@ values('user99', 'qwer12399@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7C
 insert into user(username, email, createDate, password, phoneNumber, role, loginType, caution)
 values('user100', 'qwer123100@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-5653-8645', 'GEUST', 'CLICKGO', 1);
 =======
+=======
+
+
+>>>>>>> 01f8350da8d10ec95bd99b1180f94e6518cbb64d
  select * from user;
+
 
 /*ADMIN*/
 insert into user(username, email, createDate, password, phoneNumber, role, loginType)
@@ -229,7 +235,6 @@ values('admin7', '77777@kakao.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzC
 
 insert into user(username, email, createDate, password, phoneNumber, role, loginType)
 values('admin8', '66666@kakao.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-5678-1234', 'ADMIN', 'CLICKGO');
-
 
 
 /*HOST*/
@@ -332,6 +337,9 @@ values('host32', '32@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6
 
 
 /*GEUST*/
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('user1', '1000@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
+
 insert into user(username, email, createDate, password, phoneNumber, role, loginType)
 values('user33', '33@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
 
@@ -535,6 +543,9 @@ values('user99', '99@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6
 
 insert into user(username, email, createDate, password, phoneNumber, role, loginType)
 values('user100', '100@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
+<<<<<<< HEAD
 
 
 >>>>>>> 6a722090965adba2bbc27343074273b5c0e8a731
+=======
+>>>>>>> 01f8350da8d10ec95bd99b1180f94e6518cbb64d
