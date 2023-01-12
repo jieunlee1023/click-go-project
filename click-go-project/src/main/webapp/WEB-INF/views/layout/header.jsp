@@ -194,7 +194,7 @@
 		function caution() {
 		
 				Swal.fire({
-				title : '회원님께선 이 달의 진상으로 판별났습니다.',
+				title : '${caution.content}',
 				text : '반성하시고 계십니까?',
 				icon : 'error',
 
@@ -222,7 +222,7 @@
 		};
 		
 		$(this).ready(function() {
-		 	var cautionStatus = '${principal.user.caution}';
+		 	var cautionStatus = '${principal.user.cautionStatus}';
 			if (cautionStatus == 'true') {
 			caution();
 			}

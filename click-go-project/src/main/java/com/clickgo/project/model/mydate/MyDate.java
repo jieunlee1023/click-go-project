@@ -56,4 +56,33 @@ public class MyDate {
 			return nowYear + "-0" + nowMonth + "-0" + (nowDay - 7);
 		}
 	}
+
+	public String getAfterAWeek() {
+		nowDay += 7;
+		if (nowMonth < 10) {
+			if (nowDay <= 31) {
+
+				if (nowDay >= 10) {
+					return nowYear + "-0" + nowMonth + "-" + nowDay;
+				} else  {
+					return nowYear + "-0" + nowMonth + "-0" + nowDay;
+				}
+			} else {
+				nowDay -= 30;
+				return nowYear + "-0" + nowMonth + "-" + nowDay;
+			}
+		} else {
+			if (nowDay <= 31) {
+				
+				if (nowDay >= 10) {
+					return nowYear + "-" + nowMonth + "-" + nowDay;
+				} else  {
+					return nowYear + "-" + nowMonth + "-0" + nowDay;
+				}
+			} else {
+				nowDay -= 30;
+				return nowYear + "-" + nowMonth + "-" + nowDay;
+			}
+		}
+	}
 }

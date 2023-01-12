@@ -68,14 +68,22 @@
 								<button type="button" class="admin-user-report-btn"
 									id="admin-user-report-btn-plus"
 									onclick="admin.plus(${user.id});">➕</button>
-								<c:if test="${user.reportCount  == 3 && user.caution == false}">
+								<c:if test="${user.reportCount  == 3 && user.cautionStatus == false}">
 									<br>
 									<a href="#" style="color: red;"
 										onclick="admin.caution(${user.id});">경고 주기</a>
 								</c:if>
-								<c:if test="${user.reportCount  >= 5}">
+								<c:if
+									test="${user.reportCount  >= 5}">
 									<br>
-									<a href="#" style="color: red;">탈퇴시키기</a>
+									<c:if test="${user.role != 'BLACKLIST'}">
+										<a href="#" style="color: red;"
+											onclick="admin.blacklist(${user.id});">정지시키기</a>
+									</c:if>
+									<c:if test="${user.role == 'BLACKLIST'}">
+										<a href="#" style="color: red;"
+											onclick="admin.cancelBlacklist(${user.id});">정지풀기</a>
+									</c:if>
 								</c:if>
 							</c:if></td>
 						<td>${user.point }</td>
@@ -85,8 +93,8 @@
 		</table>
 
 		<br> <br> <br> <br>
-<!--  1== true -->
-<!--  0== false-->
+		<!--  1== true -->
+		<!--  0== false-->
 		<div class="d-flex justify-content-center">
 			<ul class="pagination" style="border-radius: 0px">
 				<c:set var="isDisabled" value="disabled"></c:set>

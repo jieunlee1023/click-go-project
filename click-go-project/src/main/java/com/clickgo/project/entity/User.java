@@ -6,9 +6,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -47,14 +50,14 @@ public class User {
 	@Column(nullable = false, length = 100)
 	private String password;
 
-	@Pattern(regexp = "^\\d{3}-\\d{4}-\\d{4}$",message = "휴대폰 형식에 맞춰주세요(ex.010-1234-5678)")
+	@Pattern(regexp = "^\\d{3}-\\d{4}-\\d{4}$", message = "휴대폰 형식에 맞춰주세요(ex.010-1234-5678)")
 	private String phoneNumber;
 
 	@Column(nullable = false)
 	@CreationTimestamp
 	private Timestamp createDate;
 
-	@Email()   	
+	@Email()
 	@Pattern(regexp = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$", message = "e-mail형식에 맞춰 입력해주세요")
 	@Column(nullable = false, unique = true)
 	private String email;
@@ -70,7 +73,8 @@ public class User {
 
 	@ColumnDefault(value = "0")
 	private int point;
-	
-	@Column(nullable = true)
-	private boolean caution;
+
+	@Column
+	private boolean cautionStatus;
+
 }

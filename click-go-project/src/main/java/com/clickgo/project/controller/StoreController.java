@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Category;
+import com.clickgo.project.entity.Caution;
 import com.clickgo.project.entity.Image;
 import com.clickgo.project.entity.LikeStore;
 import com.clickgo.project.entity.Reservation;
@@ -37,6 +38,7 @@ import com.clickgo.project.repository.IImageRepository;
 import com.clickgo.project.repository.ILikeStoreRepository;
 import com.clickgo.project.repository.IStoreRepository;
 import com.clickgo.project.service.CategoryService;
+import com.clickgo.project.service.CautionService;
 import com.clickgo.project.service.ReservationService;
 import com.clickgo.project.service.ReviewService;
 import com.clickgo.project.service.StoreFranchiseService;
@@ -74,11 +76,15 @@ public class StoreController {
 	@Autowired
 	private ILikeStoreRepository likeStoreRepository;
 
+	@Autowired
+	private CautionService cautionService;
+
 	private Page<Store> stores;
 
 	@GetMapping({ "/main", "/search" })
 	public String store(@RequestParam(required = false) String pageName, Model model,
-			@PageableDefault(size = 10000, sort = "id", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 10000, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 
 		Map<Integer, Integer> starScoreMap = new HashMap<>();
 		List<StoreCategory> categories = new ArrayList<>();
@@ -109,6 +115,10 @@ public class StoreController {
 		model.addAttribute("categories", categories);
 		model.addAttribute("stores", stores);
 
+		if (principalDetails != null) {
+			Caution cautionEntity = cautionService.findLastIdByUserId(principalDetails.getUser().getId());
+			model.addAttribute("caution", cautionEntity);
+		}
 		franchiseMassageCount(model);
 		return "store/store-main";
 	}
@@ -171,14 +181,14 @@ public class StoreController {
 		}
 
 		String nowDate = nowYear + "-" + nowMonth + "-" + nowDay;
-        String nowTime = nowHour + ":" + nowMinutes;
-        String maxDate = nowYear + "-" + nowMonth + "-" + (Integer.parseInt(nowDay) + 7);
-        String nowTimeOnlyHour = (nowHour + 1) + ":" + 00;
+		String nowTime = nowHour + ":" + nowMinutes;
+		String maxDate = nowYear + "-" + nowMonth + "-" + (Integer.parseInt(nowDay) + 7);
+		String nowTimeOnlyHour = (nowHour + 1) + ":" + 00;
 
-        model.addAttribute("nowDate", nowDate);
-        model.addAttribute("nowTime", nowTime);
-        model.addAttribute("maxDate", maxDate);
-        model.addAttribute("nowTimeOnlyHour", nowTimeOnlyHour);
+		model.addAttribute("nowDate", nowDate);
+		model.addAttribute("nowTime", nowTime);
+		model.addAttribute("maxDate", maxDate);
+		model.addAttribute("nowTimeOnlyHour", nowTimeOnlyHour);
 	}
 
 	public void originLayout(int roomCount, Model model) {
