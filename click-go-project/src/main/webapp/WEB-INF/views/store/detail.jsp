@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <br>
 
@@ -29,43 +28,34 @@
 					<div class="d-flex" style="align-items: flex-end;">
 						<c:choose>
 							<c:when test="${store.category.id eq 'PC방' }">
-								<h1 class="" style="font-weight: bold;">💻
-									${store.storeName}</h1>
+								<h1 class="" style="font-weight: bold;">💻 ${store.storeName}</h1>
 							</c:when>
 							<c:when test="${store.category.id eq '노래방' }">
-								<h1 class="" style="font-weight: bold;">🎤
-									${store.storeName}</h1>
+								<h1 class="" style="font-weight: bold;">🎤 ${store.storeName}</h1>
 							</c:when>
 							<c:when test="${store.category.id eq '동전노래방' }">
-								<h1 class="" style="font-weight: bold;">🎵
-									${store.storeName}</h1>
+								<h1 class="" style="font-weight: bold;">🎵 ${store.storeName}</h1>
 							</c:when>
 							<c:when test="${store.category.id eq '당구장' }">
-								<h1 class="" style="font-weight: bold;">🎱
-									${store.storeName}</h1>
+								<h1 class="" style="font-weight: bold;">🎱 ${store.storeName}</h1>
 							</c:when>
 							<c:when test="${store.category.id eq '볼링장' }">
-								<h1 class="" style="font-weight: bold;">🎳
-									${store.storeName}</h1>
+								<h1 class="" style="font-weight: bold;">🎳 ${store.storeName}</h1>
 							</c:when>
 							<c:when test="${store.category.id eq '스크린야구장' }">
-								<h1 class="" style="font-weight: bold;">⚾
-									${store.storeName}</h1>
+								<h1 class="" style="font-weight: bold;">⚾ ${store.storeName}</h1>
 							</c:when>
 
 						</c:choose>
 
 
 						<c:choose>
-							<c:when
-								test="${likeStoresEntity.likeStore eq false || empty likeStoresEntity}">
-								<button type="button" id="store--wish--emptyheart"
-									data-toggle="tooltip" data-placement="right"
-									title="하트를 클릭하여 위시리스트를 등록해보세요!" data-like-btn='emptyHeartBtn'>♡</button>
+							<c:when test="${likeStoresEntity.likeStore eq false || empty likeStoresEntity}">
+								<button type="button" id="store--wish--emptyheart" data-toggle="tooltip" data-placement="right" title="하트를 클릭하여 위시리스트를 등록해보세요!"
+									data-like-btn='emptyHeartBtn'>♡</button>
 							</c:when>
 							<c:otherwise>
-								<button type="button" id="store--wish--heart"
-									data-like-btn='heartBtn'>♥</button>
+								<button type="button" id="store--wish--heart" data-like-btn='heartBtn'>♥</button>
 							</c:otherwise>
 						</c:choose>
 
@@ -88,26 +78,20 @@
 					</c:otherwise>
 				</c:choose>
 
-				<form action="/reservation/${store.id}" method="post"
-					id="doReservation">
+				<form action="/reservation/${store.id}" method="post" id="doReservation">
 					<div class="justify-content-center">
 						<div class="d-flex justify-content-center">
 							<div>
-								<input type="date" name="startDate" id="startDate"
-									value="${nowDate}" min="${nowDate}" max="${maxDate}">
+								<input type="date" name="startDate" id="startDate" value="${nowDate}" min="${nowDate}" max="${maxDate}">
 							</div>
 							<div>
-								<input type="date" name="endDate" id="endDate"
-									value="${nowDate}" min="${nowDate}" max="${maxDate}">
+								<input type="date" name="endDate" id="endDate" value="${nowDate}" min="${nowDate}" max="${maxDate}">
 							</div>
 							<div>
-								<input type="text" class="timepicker" name="startTime"
-									id="startTime" value="${nowTime}" min="${nowTime}">
+								<input type="text" class="timepicker" name="startTime" id="startTime" value="${nowTime}" min="${nowTime}">
 							</div>
 							<div>
-								<input type="text" class="timepicker" name="endTime"
-									id="endTime" value="${nowTimeOnlyHour}"
-									min="${nowTimeOnlyHour}">
+								<input type="text" class="timepicker" name="endTime" id="endTime" value="${nowTimeOnlyHour}" min="${nowTimeOnlyHour}">
 							</div>
 							<input type="hidden" id="storeId" value="${store.id }">
 							<button type="submit" id="btn--time-check">예약 하기</button>
@@ -140,8 +124,7 @@
 								<c:if test="${image.store.id eq store.id }">
 
 									<div class="store-detail-main-img">
-										<img src="http://localhost:7777/storeImage/${image.imageUrl}"
-											alt="가게 사진" id="store-detail-img">
+										<img src="http://localhost:7777/storeImage/${image.imageUrl}" alt="가게 사진" id="store-detail-img">
 
 									</div>
 								</c:if>
@@ -156,13 +139,10 @@
 						<p>📍 위치 : ${store.storeAddress}</p>
 					</div>
 
-					<input type="hidden" value="${store.storeAddress}"
-						id="store-address"> <input type="hidden"
-						value="${store.storeName}" id="store-name">
+					<input type="hidden" value="${store.storeAddress}" id="store-address"> <input type="hidden" value="${store.storeName}" id="store-name">
 				</div>
 				<div class="d-flex justify-content-center">
-					<div id="map"
-						style="width: 80%; height: 300px; justify-content: center"></div>
+					<div id="map" style="width: 80%; height: 300px; justify-content: center"></div>
 				</div>
 			</div>
 
@@ -174,21 +154,71 @@
 
 <br>
 <br>
-<span id="test style"
-	onclick="if(plain.style.display=='none') {
+<div class="container">
+	<h4 id="test style"
+		onclick="if(plain.style.display=='none') {
 		 plain.style.display=''; test.innerText = '리뷰 접기'
 		 } else {
 			 plain.style.display = 'none';
 			test.innerText = '➤ 리뷰 보기'
 		}">
-	리뷰 보기</span>
-<div id="plain" style="display: none">
+		리뷰 보기</h4>
+</div>
+<hr>
+<div class="container" id="plain" style="display: none">
+	<div class="d-flex flex-column" style="background-color:">
+		<c:forEach var="review" items="${reviewList }">
+			<div class="m-2" id="" style="background-color:; width: 10%;">
+				<img alt="프로필" src="/image/profile.png" style="width: 50%; border-radius: 50%">
+			</div>
+			<div class="m-2" style="background-color:">
+				<div class="d-flex justify-content-start">
+					<c:choose>
+						<c:when test="${review.starScore eq '1' }">⭐</c:when>
+						<c:when test="${review.starScore eq '2' }">⭐⭐</c:when>
+						<c:when test="${review.starScore eq '3' }">⭐⭐⭐</c:when>
+						<c:when test="${review.starScore eq '4' }">⭐⭐⭐⭐</c:when>
+						<c:when test="${review.starScore eq '5' }">⭐⭐⭐⭐⭐</c:when>
+					</c:choose>
+				</div>
+				<div class="m-2">
+					<p>${review.user.username}님</p>
+				</div>
+				<hr>
+			</div>
+			<div class="m-2">
+				<p>${review.content}</p>
+			</div>
+			<hr>
+		</c:forEach>
+	</div>
+</div>
+
+
+
+<%-- <div id="plain" style="display: none">
+	<c:forEach var="review" items="${reviewList }">
+		<tr style="text-align: center;">
+			<c:choose>
+				<c:when test="${review.starScore eq '1' }">⭐</c:when>
+				<c:when test="${review.starScore eq '2' }">⭐⭐</c:when>
+				<c:when test="${review.starScore eq '3' }">⭐⭐⭐</c:when>
+				<c:when test="${review.starScore eq '4' }">⭐⭐⭐⭐</c:when>
+				<c:when test="${review.starScore eq '5' }">⭐⭐⭐⭐⭐</c:when>
+			</c:choose>
+			<td><p>${review.content}</p></td>
+			<td style="color: grey;" id="report--status"><p>${review.user.username}님</p></td>
+		</tr>
+		<div style="border: solid;"></div>
+	</c:forEach>
+</div> --%>
+
+
+
+<%-- <div id="plain" style="display: none">
 	<HR>
 	<c:forEach var="review" items="${reviewList }">
 		<tr style="text-align: center;">
-			<td>
-				<p>별점</p>
-			</td>
 			<c:choose>
 				<c:when test="${review.starScore eq '1' }">⭐</c:when>
 				<c:when test="${review.starScore eq '2' }">⭐⭐</c:when>
@@ -202,7 +232,11 @@
 		<div style="border: solid;"></div>
 	</c:forEach>
 	<HR>
-</div>
+</div> --%>
+
+
+
+
 <%-- <div style="background-color: red;">
 	<div>이런곳은 어때요?</div>
 	<c:forEach var="storeListItem" items="${storeList }">

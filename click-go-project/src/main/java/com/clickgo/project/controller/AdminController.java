@@ -217,7 +217,7 @@ public class AdminController {
 
 	@GetMapping({ "/one-to-one-list", "/one-to-one-search" })
 	public String oneToOneList(@RequestParam(required = false) String q, Model model,
-			@PageableDefault(size = 10, sort = "id", direction = Direction.ASC) Pageable pageable) {
+			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchTitle = q == null ? "" : q;
 
 		Page<OneToOneAsk> askPage = oneToOneAskService.searchAsk(searchTitle, pageable);
