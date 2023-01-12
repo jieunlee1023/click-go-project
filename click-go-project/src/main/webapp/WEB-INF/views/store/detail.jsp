@@ -174,13 +174,14 @@
 
 <br>
 <br>
-<span id="test style"
+ <!-- id값 test style에서 showReview바꿈 -->
+<span id="showReview"
 	onclick="if(plain.style.display=='none') {
 		 plain.style.display=''; test.innerText = '리뷰 접기'
 		 } else {
 			 plain.style.display = 'none';
 			test.innerText = '➤ 리뷰 보기'
-		}">
+		}" style="cursor: pointer;">
 	리뷰 보기</span>
 <div id="plain" style="display: none">
 	<HR>

@@ -44,7 +44,7 @@
 												<span class="badge badge-success">답변완료</span>
 											</c:otherwise>
 										</c:choose></td>
-									<td>${askList.createDate }</td>
+									<td><fmt:formatDate value="${askList.createDate }" pattern="yyyy-MM-dd hh시 mm분" /></td>
 								</tr>
 							</c:forEach>
 						</tbody>
