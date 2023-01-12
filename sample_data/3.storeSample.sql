@@ -1,25 +1,15 @@
 
+insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
+values (now(), 1000, '부산 부산진구 중앙대로680번가길 38 1층', 'CCY코인노래연습장', '055-255-6297', '63', '동전노래방', 9);
 
 insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
-values (now(), 300, '부산 부산진구 서면문화로5번길 6', '앤유PC 피시방', '055-255-6297', '63', 'PC방', 2);
+values (now(), 5000, '부산 부산진구 중앙대로680번가길 80', '볼스퀘어', '055-255-6297', '10', '볼링장', 10);
 
 insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
-values (now(), 2000, '부산 부산진구 중앙대로692번길 21', '아이팅 노래연습장', '055-255-6297', '10', '노래방', 3);
+values (now(), 5000, '부산 부산진구 중앙대로680번길 45-8 1층', '레전드히어로즈', '055-255-6297', '10', '스크린야구장', 11);
 
 insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
-values (now(), 1300, '부산 부산진구 서면로68번길 16 1층', '맥스당구장', '055-255-6297', '10', '당구장', 4);
-
-insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
-values (now(), 1000, '부산 부산진구 중앙대로680번가길 38 1층', 'CCY코인노래연습장', '055-255-6297', '63', '동전노래방', 5);
-
-insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
-values (now(), 5000, '부산 부산진구 중앙대로680번가길 80', '볼스퀘어', '055-255-6297', '10', '볼링장', 6);
-
-insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
-values (now(), 5000, '부산 부산진구 중앙대로680번길 45-8 1층', '레전드히어로즈', '055-255-6297', '10', '스크린야구장', 7);
-
-insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
-values (now(), 300, '부산 남구 용소로13번길 13 스카이빌딩 4층', '랑채 피시방', '055-255-6297', '63', 'PC방', 8);
+values (now(), 300, '부산 남구 용소로13번길 13 스카이빌딩 4층', '랑채 피시방', '055-255-6297', '63', 'PC방', 12);
 
 insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
 values (now(), 2000, '부산 부산진구 서전로10번길 61', '뮤즈 노래연습장', '055-255-6297', '10', '노래방', 9);
@@ -32,9 +22,6 @@ values (now(), 1000, '부산 부산진구 중앙대로680번가길 12 3층', '�
 
 insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
 values (now(), 5000, '부산 부산진구 중앙대로691번길 32 씨엔티빌딩 5층 501호', '킴스볼링앤펍', '055-255-6297', '10', '볼링장', 12);
-
-insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
-values (now(), 5000, '부산 남구 수영로 304 대승타워 7층', '리얼야구존', '055-255-6297', '10', '스크린야구장', 31);
 
 insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
 values (now(), 300, '부산 수영구 남천동로24번길 8 3층', 'OX 피시방', '055-255-6297', '63', 'PC방', 13);
@@ -91,6 +78,9 @@ insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTot
 values (now(), 5000, '부산 부산진구 가야대로 772', 'KMGM 리얼야구존', '055-255-6297', '10', '스크린야구장', 30);
 
 insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
+values (now(), 5000, '부산 남구 수영로 304 대승타워 7층', '리얼야구존', '055-255-6297', '10', '스크린야구장', 31);
+
+insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
 values (now(), 300, '부산 남구 수영로298번길 41', '루나틱하이 피시방', '055-255-6297', '63', 'PC방', 32);
 
 insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
@@ -107,4 +97,14 @@ values (now(), 5000, '부산 부산진구 중앙대로702번길 43 2층', '킴�
 
 insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
 values (now(), 5000, '부산 부산진구 신천대로62번길 77', '다함께 야구왕', '055-255-6297', '10', '스크린야구장', 37);
+
+insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
+values (now(), 300, '부산 부산진구 서면문화로5번길 6', '앤유PC 피시방', '055-255-6297', '63', 'PC방', 38);
+
+insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
+values (now(), 2000, '부산 부산진구 중앙대로692번길 21', '아이팅 노래연습장', '055-255-6297', '10', '노래방', 39);
+
+insert into store(createDate, price, storeAddress, storeName, storeTEL, storeTotalRoomCount, categoryId, userId)
+values (now(), 1300, '부산 부산진구 서면로68번길 16 1층', '맥스당구장', '055-255-6297', '10', '당구장', 40);
+
 
