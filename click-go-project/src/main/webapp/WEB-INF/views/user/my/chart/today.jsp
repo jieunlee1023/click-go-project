@@ -29,9 +29,6 @@
 			legend : {
 				position : 'bottom'
 			},
-			title : '하루 매출',
-			width : 1500,
-			height : 900
 		};
 
 		var chart = new google.visualization.LineChart(document
@@ -40,24 +37,28 @@
 		chart.draw(data, options);
 	}
 </script>
-<div class="container">
-	<div class="container m-5">
-		<h1>통계</h1>
-	</div>
-	<br> <br> <br> <br>
 
-	<div class="d-flex justify-content-center">
-		<div class="d-flex">
-			<div class="d-flex justify-content-center">
-				<a class="dropdown-item" href="/store/chart/today">오늘의 통계</a><a
-					class="dropdown-item" href="/store/chart/week/">일주일 통계</a>
-			</div>
-			<br> <br> <br>
-		</div>
+
+<br>
+<div class="container" id="reservation">
+	<div id="view-more-title">
+		<div>📈 매출 통계</div>
 	</div>
-	<div class="d-flex justify-content-center">
-		<div id="curve_chart"></div>
-	</div>
+		<span>가맹점주님의 번창을 기원합니다!</span>
+		<br>
+	<hr>
 </div>
+<div class="container d-flex">
+	<a class="" href="/store/chart/today" style="text-decoration: none; color: black; margin: 5px;">오늘의 통계</a>
+	<a
+		class="" href="/store/chart/week/"  style="text-decoration: none; color: black; margin: 5px;">일주일 통계</a>
+</div>
+<div class="d-flex justify-content-center">
+	<div id="curve_chart" style="width: 90%; height: 500px;"></div>
+</div>
+
+<br><br><br>
+
+
 
 <%@ include file="../../../layout/footer.jsp"%>
