@@ -135,6 +135,7 @@
 }
 #hover-shadow {
   display: inline-block;
+  width:100%;
   position: relative;
   transition-duration: 0.3s;
   transition-property: transform;
@@ -181,3 +182,6 @@
 	
 }
 
+.main--card--text span {
+	font-size: 12px;
+}

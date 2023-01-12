@@ -334,13 +334,13 @@
 	flex-grow: 1;
 }
 
-.card-grid {
-	display: grid;
-	grid-template-columns: repeat(1, 1fr);
-	-moz-column-gap: 1.5rem;
-	column-gap: 1.5rem;
-	row-gap: 1.5rem;
-}
+.CARD-GRID {
+	DISPLAY: GRID;
+	GRID-TEMPLATE-COLUMNS: REPEAT(1, 1FR);
+	-MOZ-COLUMN-GAP: 1.5REM;
+	COLUMN-GAP: 1.5REM;
+	ROW-GAP: 1.5REM;
+} 
 
 @media ( min-width : 600px) {
 	.card-grid {
@@ -362,13 +362,15 @@
 	display: flex;
 	flex-direction: column;
 }
-
+/* 
+썸머노트 충돌 버그 코드 확인후 지워주세요 (지훈)
 .card-header {
 	display: flex;
 	align-items: flex-start;
 	justify-content: space-between;
 	padding: 1.5rem 1.25rem 1rem 1.25rem;
 }
+
 
 .card-header div {
 	display: flex;
@@ -384,6 +386,7 @@
 	justify-content: center;
 }
 
+*/
 .card-header div span img {
 	max-height: 100%;
 }
