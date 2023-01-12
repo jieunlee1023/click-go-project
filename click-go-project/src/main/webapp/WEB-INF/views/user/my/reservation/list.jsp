@@ -129,7 +129,7 @@
 									<c:choose>
 										<c:when test="${reservation.approveStatus eq  'APPROVED'}">
 											<div class="">
-												<div class="d-flex justify-content-end">S
+												<div class="d-flex justify-content-end">
 													<form action="/report/${reservation.id}">
 														<input type="submit" value="⛔"
 															style="border: none; background-color: transparent;">

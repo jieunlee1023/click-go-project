@@ -2,8 +2,7 @@
 	pageEncoding="UTF-8"%>
 <div class="d-flex-column">
 
-		<div class="d-flex flex-grow-1 justify-content-center "
-		style="border: 1px solid black;">
+		<div class="d-flex flex-grow-1 justify-content-center ">
 		<div class=" ml-1 mt-4">
 
 			<div class="d-flex">

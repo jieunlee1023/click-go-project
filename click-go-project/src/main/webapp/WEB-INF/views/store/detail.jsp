@@ -203,7 +203,7 @@
 	</c:forEach>
 	<HR>
 </div>
-<div style="background-color: red;">
+<%-- <div style="background-color: red;">
 	<div>이런곳은 어때요?</div>
 	<c:forEach var="storeListItem" items="${storeList }">
 		<c:if test="${storeListItem != store }">
@@ -218,7 +218,7 @@
 			<div>${storeListItem.storeName}</div>
 		</c:if>
 	</c:forEach>
-</div>
+</div> --%>
 <br>
 <br>
 <br>
