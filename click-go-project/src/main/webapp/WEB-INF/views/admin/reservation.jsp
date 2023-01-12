@@ -36,8 +36,23 @@
 					<td>${reservation.endDate}</td>
 					<td>${reservation.reservationTime}~${reservation.endTime}</td>
 					<td>${reservation.reservationSeat}번자리</td>
+					
+					<c:choose>
+						<c:when test="${reservation.approveStatus eq 'APPROVED'}">
+							<td><input type="submit" id="status-${reservation.id}" value="${reservation.approveStatus}" readonly
+						style="margin-bottom: 5px; border: none; background-color: blue; color: white;"></td>
+						</c:when>
+						<c:when test="${reservation.approveStatus eq 'REJECT'}">
+							<td><input type="submit" id="status-${reservation.id}" value="${reservation.approveStatus}" readonly
+						style="margin-bottom: 5px; border: none; background-color: red; color: white;"></td>
+						</c:when>
+						<c:otherwise>
+						
 					<td><input type="submit" id="status-${reservation.id}" value="${reservation.approveStatus}" readonly
 						style="margin-bottom: 5px; border: none; background-color: orange; color: white;"></td>
+						</c:otherwise>
+					</c:choose>
+					
 				</tr>
 			</c:forEach>
 		</tbody>
