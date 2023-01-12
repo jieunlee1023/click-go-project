@@ -63,4 +63,7 @@ public class Report {
 	@Enumerated(EnumType.STRING)
 	private ApproveStatus approveStatus;
 
+	@Enumerated(EnumType.STRING)
+	private ReportType reportType;
+
 }
