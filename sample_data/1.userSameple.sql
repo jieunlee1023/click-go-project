@@ -1,8 +1,7 @@
-<<<<<<< HEAD
+
 
  select * from user;
-=======
->>>>>>> eb951466a52ae43baa3d0a5dd842c5e7999f3229
+
 
 /*ADMIN*/
 insert into user(username, email, createDate, password, phoneNumber, role, loginType)

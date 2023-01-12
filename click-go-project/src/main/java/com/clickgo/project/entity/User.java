@@ -74,7 +74,7 @@ public class User {
 	@ColumnDefault(value = "0")
 	private int point;
 
-	@Column
+	@ColumnDefault(value = "0")
 	private boolean cautionStatus;
 
 }

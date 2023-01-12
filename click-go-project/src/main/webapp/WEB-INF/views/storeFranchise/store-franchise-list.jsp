@@ -52,7 +52,7 @@
 							<input id="franchise--main--text--val"
 								value="[ 대표 ] ${store.user.username} "><br> <input
 								id="franchise--main--text--val"
-								value="[ 카테고리 ] ${store.category} "><br> <input
+								value="[ 카테고리 ] ${store.category.id} "><br> <input
 								id="franchise--main--text--val"
 								value="[ 가맹점명 ] ${store.storeName} "><br> <input
 								id="franchise--main--text--val"

@@ -5,13 +5,13 @@
 
 <div class="container">
 
-
+<br><br>
 	<nav class="mynav">
 		<ul>
-			<li><a href="/store/main">전체 보기</a></li>
+			<li><a href="/store/main" style="margin-right: 30px;">전체 보기</a></li>
 
 			<c:forEach var="category" items="${categories}">
-				<a href="/store/main?pageName=${category}">${category}</a>
+				<a style="margin-right: 30px;" href="/store/main?pageName=${category}">${category}</a>
 			</c:forEach>
 
 		</ul>
