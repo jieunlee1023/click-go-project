@@ -1,200 +1,42 @@
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '29', '80', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '27', '75', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '29', '63', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '27', '70', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '28', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '17', '78', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '17', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '1', '85', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '13', '91', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '2', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '3', '59', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '30', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '28', '45', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '16', '53', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '14', '62', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '16', '91', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '11', '60', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '23', '75', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '25', '41', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '18', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '19', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '7', '65', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '29', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '6', '80', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '4', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '13', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '23', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '31', '72', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '30', '42', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '19', '46', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '24', '54', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '30', '44', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '16', '42', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '1', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '10', '58', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '16', '48', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '24', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '2', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '29', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '30', '51', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '25', '36', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '13', '80', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '19', '60', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '22', '40', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '31', '86', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '22', '92', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '27', '54', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '31', '50', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '22', '88', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '5', '40', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '4', '89', 'STORE');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '18', '92', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '6', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '13', '80', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '14', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '13', '57', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '31', '69', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '22', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '15', '86', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '17', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '15', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '6', '49', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '24', '89', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '20', '40', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '1', '57', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '8', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '20', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '23', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '14', '60', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '3', '43', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '11', '55', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '23', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '18', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '2', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '12', '82', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '24', '69', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '30', '61', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '13', '38', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '2', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '12', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '6', '76', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '25', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '1', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '27', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '11', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '12', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '6', '93', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '7', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '6', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '12', '38', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '6', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '2', '63', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '23', '41', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '14', '36', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '13', '67', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '19', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '25', '50', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '13', '62', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '8', '82', 'USER');
-insert into report(approveStatus, content, createDate, title, storeId, userId, ReportType) 
-values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '24', '50', 'USER');
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '컵라면 먹으러 가는건데 한강 라면이;;', now(), '컵라면빠돌이입니다.', '1', '59');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '사람들이 안에서 담배펴요;; 비흡연자는 추천드리지 않아요.', now(), '담배;', '3', '60');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '일진들 ㅈㄴ 많음 ㅋㅋㅋ ㄹㅇ 질 떨어짐', now(), '관리자는 반드시 읽어주세요.', '4', '61');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '시설이 사진보다 좋지 않습니다. 바퀴벌레가 나왔어요.', now(), '여자친구랑 다녀온 곳입니다.', '1', '58');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '사장님이 불친절해요..', now(), '관리자는 반드시 읽어주세요...', '13', '63');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '두번 다시는 가고 싶지 않은 곳입니다.', now(), '읽어주세요.', '24', '68');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '가성비는 좋은데 사장님이 진짜 불친절해요;', now(), '소신 발언.', '12', '64');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '깡패만 모여 있음;;', now(), '진짜 무섭다.', '11', '78');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '아니 노래소리가 너무 커요;', now(), '고막 떨어질뻔.', '17', '88');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '도난 당했는데 cctv를 보여주지 않습니다.', now(), '반드시 읽어주세요.', '19', '48');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '매일 주던 야구르트를 이제 주지 않아요.. 이것도 신고 사유가 가능한가요?', now(), '관리자님...', '14', '51');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '그래도 꽤나 많이 지불한거 같은데 서비스가 엉망입니다.', now(), '두번 다시 가지 않을 가게 같네요.', '13', '53');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '말 한마디에 청냥 빚을 갚는다고 하는데... 장사 망할 징조가 보입니다.', now(), '처음 가봤는데요.', '13', '55');
+
+insert into report(approveStatus, content, createDate, title, storeId, userId) 
+values('WATING', '시설이 사진보다 좋지 않습니다. 바퀴벌레가 나왔어요.', now(), '여자친구랑 다녀온 곳입니다.', '1', '58');
+

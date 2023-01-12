@@ -18,19 +18,6 @@
 	</nav>
 
 
-	<div class="search--container">
-		<form>
-			<div class="finder">
-				<div class="finder__outer">
-					<div class="finder__inner">
-						<div class="finder__icon" ref="icon"></div>
-						<input class="finder__input" type="text" name="q" />
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
-
 	<br> <br> <input type="hidden" id="store-size"
 		value="${stores.content.size()}">
 	<div class="support-grid"></div>
@@ -47,10 +34,10 @@
 						</c:if>
 					</c:forEach>
 					<div class="main--card--text">
-						<h1 id="main--card--text--h1">${store.storeName}</h1>
+						<h2 id="main--card--text--h1">${store.storeName}</h2>
 						<span>📍 ${store.storeAddress}</span>
+						<br>
 						<c:set var="a" value="${starScoreMap.get(store.id)}"></c:set>
-						<c:out value="${a}"></c:out>
 						<c:if test="${a eq 1}">⭐</c:if>
 						<c:if test="${a eq 2}">⭐⭐</c:if>
 						<c:if test="${a eq 3}">⭐⭐⭐</c:if>

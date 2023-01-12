@@ -29,7 +29,6 @@ public class WishListApiController {
 	@PostMapping("/{likeStoreId}/{storeId}")
 	public ResponseDto<?> likeStore(@PathVariable int likeStoreId, @PathVariable int storeId,
 			@RequestBody LikeStore likeStore, @AuthenticationPrincipal PrincipalDetails details) {
-
 		if (details == null) {
 			return new ResponseDto<>(false, "위시리스트 기능은 로그인 후 이용가능합니다.");
 		} else {

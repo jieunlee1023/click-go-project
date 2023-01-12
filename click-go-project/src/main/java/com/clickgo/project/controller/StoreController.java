@@ -142,7 +142,7 @@ public class StoreController {
 
 		LikeStore likeStoresEntity = likeStoreRepository.findByUserIdAndStoreId(storeId,
 				principalDetails.getUser().getId());
-
+		
 		model.addAttribute("likeStoresEntity", likeStoresEntity);
 		model.addAttribute("likeStores", likeStores);
 		model.addAttribute("reviewList", reviewList);
