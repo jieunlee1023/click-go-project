@@ -25,7 +25,7 @@ import com.clickgo.project.service.ReservationService;
 
 @EnableScheduling
 @SpringBootApplication
-public class SchedulerApplication {
+public class ReservationScheduler {
 
 	@Autowired
 	private ReservationService reservationService;
