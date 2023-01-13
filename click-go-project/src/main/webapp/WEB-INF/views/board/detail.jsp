@@ -20,7 +20,8 @@
 				<span>글 작성자&nbsp;:&nbsp;${board.user.username }</span>
 			</div>
 			<div class="d-flex justify-content-start">
-				<span>등록시간&nbsp;:&nbsp;${board.createDate }</span>
+				<span>등록시간&nbsp;:&nbsp;<fmt:formatDate value="${board.createDate }" pattern="yyyy-MM-dd" /></span>
+				&nbsp;(<span id="time-ago"></span>
 			</div>
 			<div class="d-flex justify-content-start">
 			

@@ -29,6 +29,27 @@ function validateForm() {
 	    return false;
 	  }
 	}
+//언제 등록했는지 시간 확인
+var postTime = new Date("${board.createDate}");
+var currentTime = new Date();
+var diff = currentTime - postTime;
+var diffInSeconds = diff / 1000;
+var diffInMinutes = diffInSeconds / 60;
+var diffInHours = diffInMinutes / 60;
+var diffInDays = diffInHours / 24;
+var timeAgo;
+if (diffInSeconds < 60) {
+    timeAgo = "방금전)";
+} else if (diffInMinutes < 60) {
+    timeAgo = Math.round(diffInMinutes) + "분전)";
+} else if (diffInHours < 24) {
+    timeAgo = Math.round(diffInHours) + "시간전)";
+} else if(diffInDays < 1){
+    timeAgo = Math.round(diffInDays) + "일 전)";
+}
+if(timeAgo) {
+    document.getElementById("time-ago").innerHTML = timeAgo;
+}
 </script>
 
 <!-- alert창  -->
