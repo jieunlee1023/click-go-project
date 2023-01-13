@@ -43,7 +43,7 @@ public class ReservationScheduler {
 		MyDate myDate = new MyDate();
 		List<Reservation> reservations = reservationService.findAll();
 		reservations.forEach(reservation -> {
-			if (reservation.getApproveStatus() == ApproveStatus.WATING) {
+			if (reservation.getApproveStatus() == ApproveStatus.WATING) { 
 				StringTokenizer dateTokenizer = new StringTokenizer(reservation.getReservationDate(), "-");
 				String year = dateTokenizer.nextToken();
 				String month = dateTokenizer.nextToken();
@@ -55,6 +55,7 @@ public class ReservationScheduler {
 						String minutes = stringTokenizer.nextToken();
 						if (Integer.parseInt(hour) <= myDate.getNowHour()) {
 							if (Integer.parseInt(minutes) <= myDate.getNowMinutes()) {
+								System.out.println(reservation);
 								KakaoPaymentHistory kakaoPaymentHistoryEntity = kakaoPaymentHistoryService
 										.findByReservationId(reservation.getId());
 								if (kakaoPaymentHistoryEntity != null) {

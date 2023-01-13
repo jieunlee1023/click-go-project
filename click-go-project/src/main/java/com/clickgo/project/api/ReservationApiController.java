@@ -181,6 +181,7 @@ public class ReservationApiController {
 		tId = kakaoPaymentDto.tid;
 		int price = reservation.getPrice();
 		seats.forEach(seatNumber -> {
+			
 			Reservation reservationEntity = new Reservation();
 			reservationEntity.setApproveStatus(ApproveStatus.WATING);
 			reservationEntity.setPaymentType(PaymentType.KAKAO);

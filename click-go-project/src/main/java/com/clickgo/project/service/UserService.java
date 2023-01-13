@@ -139,7 +139,7 @@ public class UserService {
 			return new IllegalArgumentException("찾을 수 없는 회원입니다.");
 		});
 		String rawPassword = "";
-		if (userEntity.getLoginType() == null || userEntity.getLoginType().equals("")) {
+		if (userEntity.getLoginType().equals(LoginType.CLICKGO)) {
 
 			rawPassword = getTempPassword();
 			String encPassword = encoder.encode(rawPassword);
@@ -161,8 +161,11 @@ public class UserService {
 		int idx = 0;
 		for (int i = 0; i < 10; i++) {
 			idx = (int) (charSet.length * Math.random());
+			System.out.println(idx);
 			str += charSet[idx];
 		}
+		System.out.println("!!");
+		System.out.println(str);
 		return str;
 	}
 
