@@ -103,5 +103,4 @@
 
 
 <script type="text/javascript" src="/js/reservation.js"></script>
-<script type="text/javascript" src="/js/store.js"></script>
 <%@ include file="../layout/footer.jsp"%>

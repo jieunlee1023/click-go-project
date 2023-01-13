@@ -42,7 +42,7 @@
 							<p>Please update me if there is any correction. :)</p>
 						</div>
 						<div class="card-footer">
-							<a href="https://github.com/jieunlee1023/click-go-project" target="_blank">🖥️ View</a>
+							<a href="https://github.com/jieunlee1023/click-go-project/tree/developer" target="_blank">🖥️ View</a>
 						</div>
 					</article>
 

@@ -6,6 +6,7 @@ let wishList = {
 	},
 	save: function() {
 		let id = $("#storeId").val();
+
 		$.ajax({
 			type: 'GET',
 			url: `/api/like-store/save/${id}`,
@@ -20,6 +21,7 @@ let wishList = {
 	},
 	delete: function(myLikeStoreId) {
 		let id = myLikeStoreId;
+
 		$.ajax({
 			type: 'GET',
 			url: `/api/like-store/delete/${id}`,
@@ -74,10 +76,10 @@ let likeStore = {
 			dataType: "json"
 		}).done(function(data) {
 			if (data.httpStatus) {
-				if(data.body =='좋아요'){
-				location.href = '/wish-list';
+				if (data.body == '좋아요') {
+					location.href = '/wish-list';
 				} else {
-				location.href = `/store/detail/${storeId}`;
+					location.href = `/store/detail/${storeId}`;
 				}
 			} else if (data.httpStatus == false) {
 				Swal.fire({

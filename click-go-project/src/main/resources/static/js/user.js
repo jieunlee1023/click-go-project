@@ -54,6 +54,7 @@ let index = {
 			});
 			return false;
 		}
+
 		$.ajax({
 			type: 'post',
 			url: '/api/user/sign-up',
@@ -98,6 +99,7 @@ let index = {
 				text: '비밀번호를 확인해주세요!',
 			});
 		} else {
+
 			$.ajax({
 				type: 'post',
 				url: '/api/user/update',
@@ -152,6 +154,7 @@ let index = {
 		}).then(result => {
 			// 만약 Promise리턴을 받으면,
 			if (result.isConfirmed) { // 만약 모달창에서 confirm 버튼을 눌렀다면
+
 				$.ajax({
 					type: 'DELETE',
 					url: '/api/user/delete/' + id,
@@ -177,7 +180,7 @@ let index = {
 						text: '오류가 발생했습니다. 관리자에게 문의해주세요.',
 					});
 				});
-			} else if (result.isDismissed) {}
+			} else if (result.isDismissed) { }
 		});
 
 	},
@@ -254,6 +257,7 @@ let index = {
 		let data = {
 			username: $('#username').val()
 		}
+
 		$.ajax({
 			url: "/api/user/check-id",
 			type: "POST",

@@ -96,8 +96,3 @@ insert into csreply(content, createDate, secret, boardId, userId)
 values('안녕하세요!', now(), 1, 27, 72);
 
 
-
-
-
-
-

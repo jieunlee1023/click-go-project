@@ -30,24 +30,7 @@
 			<div class="anw">
 				<span>This is third answer.</span>
 			</div>
-			<div class="que" >
-				<span>클릭고 서비스 시작 안내</span>
-			</div>
-			<div class="anw">
-				<span>This is first answer.</span>
-			</div>
-			<div class="que">
-				<span>[안내] 서비스 점검 안내 (1월3일 03:00 ~ 05:00)</span>
-			</div>
-			<div class="anw">
-				<span>This is second answer.</span>
-			</div>
-			<div class="que">
-				<span>제 1차 Click-Go 응원하기 이벤트</span>
-			</div>
-			<div class="anw">
-				<span>This is third answer.</span>
-			</div>
+	
 		</div>
 	</div>
 </div>

@@ -55,7 +55,6 @@ public class ReservationScheduler {
 						String minutes = stringTokenizer.nextToken();
 						if (Integer.parseInt(hour) <= myDate.getNowHour()) {
 							if (Integer.parseInt(minutes) <= myDate.getNowMinutes()) {
-								System.out.println(reservation);
 								KakaoPaymentHistory kakaoPaymentHistoryEntity = kakaoPaymentHistoryService
 										.findByReservationId(reservation.getId());
 								if (kakaoPaymentHistoryEntity != null) {

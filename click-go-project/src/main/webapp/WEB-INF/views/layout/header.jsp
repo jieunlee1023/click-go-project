@@ -1,8 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://www.springframework.org/security/tags"
+	prefix="sec"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <sec:authorize access="isAuthenticated()">
 	<sec:authentication property="principal" var="principal" />
 </sec:authorize>
@@ -94,7 +95,6 @@
 
 <body>
 
-
 	<div id="header">
 		<div class="container ">
 			<div id='wrapper'>
@@ -150,7 +150,7 @@
 											및 정책</a></li>
 								</ul></li>
 							<li><a class="nav-link" href="/admin/main">관리자</a></li>
-							<li><a class="nav-link" href="/logout">로그아웃</a></li>
+							<li><a class="nav-link" href="/m-logout">로그아웃</a></li>
 						</ul>
 					</div>
 				</c:when>
@@ -181,7 +181,7 @@
 										href="/view-more/one-to-one-ask">1:1 문의</a></li>
 								</ul></li>
 							<li><a class="nav-link" href="/mypage">내 정보</a></li>
-							<li><a class="nav-link" href="/logout">로그아웃</a></li>
+							<li><a class="nav-link" href="/m-logout">로그아웃</a></li>
 						</ul>
 					</div>
 				</c:otherwise>

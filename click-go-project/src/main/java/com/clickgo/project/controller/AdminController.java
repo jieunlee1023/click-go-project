@@ -140,7 +140,7 @@ public class AdminController {
 
 	@GetMapping("/report")
 	public String adminReport(Model model,
-			@PageableDefault(size = 50, sort = "id", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		Page<Report> reports = replyService.findAllReport(pageable);
 		if (reports != null) {
 
@@ -165,12 +165,12 @@ public class AdminController {
 
 	@GetMapping({ "/user", "/user-search" })
 	public String adminUserInfo(@RequestParam(required = false) String q, Model model,
-			@PageableDefault(size = 20, sort = "id", direction = Direction.ASC) Pageable pageable) {
+			@PageableDefault(size = 10, sort = "id", direction = Direction.ASC) Pageable pageable) {
 
 		String searchUserInfo = q == null ? "" : q;
 		Page<User> users = userService.searchUserInfo(searchUserInfo, pageable);
 
-		int PAGENATION_BLOCK_COUNT = 10;
+		int PAGENATION_BLOCK_COUNT = 3;
 		int nowPage = users.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
 		int endPageNumber = Math.min(nowPage + PAGENATION_BLOCK_COUNT, users.getTotalPages());
@@ -191,7 +191,7 @@ public class AdminController {
 
 	@GetMapping({ "/store", "/store-search" })
 	public String adminStoreInfo(@RequestParam(required = false) String q, Model model,
-			@PageableDefault(size = 3, sort = "id", direction = Direction.ASC) Pageable pageable) {
+			@PageableDefault(size = 10, sort = "id", direction = Direction.ASC) Pageable pageable) {
 		String searchStoreName = q == null ? "" : q;
 
 		Page<Store> stores = storeService.searchStoreList(searchStoreName, pageable);
@@ -225,7 +225,7 @@ public class AdminController {
 		Page<OneToOneAsk> askPage = oneToOneAskService.searchAsk(searchTitle, pageable);
 		List<OneToOneAnswer> answerList = oneToOneAnswerService.getAnswerList();
 
-		int PAGENATION_BLOCK_COUNT = 10;
+		int PAGENATION_BLOCK_COUNT = 3;
 		int nowPage = askPage.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
 		int endPageNumber = Math.min(nowPage + PAGENATION_BLOCK_COUNT, askPage.getTotalPages());

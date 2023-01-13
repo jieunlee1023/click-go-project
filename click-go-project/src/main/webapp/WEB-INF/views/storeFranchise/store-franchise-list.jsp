@@ -42,7 +42,7 @@
 						<c:if test="${store.id eq  image.store.id}">
 							<img 
 								src="http://localhost:7777/storeImage/${image.imageUrl}"
-								style="width: 100%; height: 280px;"
+								style="width: 100%; height: 280px; border-radius: 10px;"
 								>
 						</c:if>
 					</c:forEach>

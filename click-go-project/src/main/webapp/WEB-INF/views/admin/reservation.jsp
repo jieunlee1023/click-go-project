@@ -40,16 +40,16 @@
 					<c:choose>
 						<c:when test="${reservation.approveStatus eq 'APPROVED'}">
 							<td><input type="submit" id="status-${reservation.id}" value="${reservation.approveStatus}" readonly
-						style="margin-bottom: 5px; border: none; background-color: blue; color: white;"></td>
+						style="margin-bottom: 5px; border: none; background-color: transparent ; color: blue;"></td>
 						</c:when>
 						<c:when test="${reservation.approveStatus eq 'REJECT'}">
 							<td><input type="submit" id="status-${reservation.id}" value="${reservation.approveStatus}" readonly
-						style="margin-bottom: 5px; border: none; background-color: red; color: white;"></td>
+						style="margin-bottom: 5px; border: none; background-color: transparent; color: red;"></td>
 						</c:when>
 						<c:otherwise>
 						
 					<td><input type="submit" id="status-${reservation.id}" value="${reservation.approveStatus}" readonly
-						style="margin-bottom: 5px; border: none; background-color: orange; color: white;"></td>
+						style="margin-bottom: 5px; border: none; background-color: transparent; color: orange;"></td>
 						</c:otherwise>
 					</c:choose>
 					
@@ -66,10 +66,10 @@
 			<c:forEach var="num" items="${pageNumbers }">
 				<c:choose>
 					<c:when test="${nowPage eq num }">
-						<li class="page-item"><a class="page-link" href="?q=${q }&page=${num - 1 }" id="page--select" style="color: red">${num }</a></li>
+						<li class="page-item"><a class="page-link" href="?q=${q }&page=${num - 1 }" id="page--select" >${num }</a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="page-item"><a class="page-link" id="page--no--select" href="?q=${q }&page=${num - 1 }" style="color: blue">${num }</a></li>
+						<li class="page-item"><a class="page-link" id="page--no--select" href="?q=${q }&page=${num - 1 }" >${num }</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>

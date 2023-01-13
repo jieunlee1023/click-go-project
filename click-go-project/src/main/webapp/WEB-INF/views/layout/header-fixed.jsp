@@ -13,7 +13,6 @@
 <meta charset="UTF-8">
 <!-- 자주 묻는 질문  -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <title>Click-go</title>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" />
@@ -57,7 +56,6 @@
 </head>
 
 <body>
-
 	<div id="header-fixed">
 		<div class="container ">
 			<div id='wrapper'>
@@ -104,7 +102,7 @@
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
 								</ul></li>
 							<li><a class="nav-link" href="/admin/main">관리자</a></li>
-							<li><a class="nav-link" href="/logout">로그아웃</a></li>
+														<li><a class="nav-link" href="/m-logout">로그아웃</a></li>
 						</ul>
 					</div>
 				</c:when>
@@ -129,7 +127,7 @@
 									<li><a class="dropdown-item" href="/view-more/one-to-one-ask">1:1 문의</a></li>
 								</ul></li>
 							<li><a class="nav-link" href="/mypage">내 정보</a></li>
-							<li><a class="nav-link" href="/logout">로그아웃</a></li>
+														<li><a class="nav-link" href="/m-logout">로그아웃</a></li>
 						</ul>
 					</div>
 

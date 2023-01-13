@@ -223,36 +223,6 @@
 	</div>
 </div>
 
-<div class="d-flex flex-column pr-5 pl-5" style="background-color:">
-
-	<c:forEach var="review" items="${reviewList }">
-		<div class="m-3">
-			<div class="mb-2" id="" style="background-color:; width: 10%;">
-				<img alt="프로필" src="/image/profile.png"
-					style="width: 50%; border-radius: 50%">
-			</div>
-			<div class="mb-2" style="background-color:">
-				<div class="mb-2">
-					<c:choose>
-						<c:when test="${review.starScore eq '1' }">⭐</c:when>
-						<c:when test="${review.starScore eq '2' }">⭐⭐</c:when>
-						<c:when test="${review.starScore eq '3' }">⭐⭐⭐</c:when>
-						<c:when test="${review.starScore eq '4' }">⭐⭐⭐⭐</c:when>
-						<c:when test="${review.starScore eq '5' }">⭐⭐⭐⭐⭐</c:when>
-					</c:choose>
-				</div>
-				<div class="mb-2">
-					<p>${review.user.username}님</p>
-				</div>
-				<hr>
-			</div>
-			<div class="mb-2">
-				<p>${review.content}</p>
-			</div>
-			<hr>
-		</div>
-	</c:forEach>
-</div>
 <br>
 <br>
 <br>
@@ -297,10 +267,10 @@
 
 	$(this).ready(function() {
 		timeCheck();
+		reservationIndex.addMap('${store.storeAddress}' , '${store.storeName}');
 	})
 </script>
 
-<script type="text/javascript" src="/js/store.js"></script>
 <script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript" src="/js/wish-list.js"></script>
 <%@ include file="../layout/footer.jsp"%>
