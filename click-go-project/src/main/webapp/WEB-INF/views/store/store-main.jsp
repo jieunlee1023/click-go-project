@@ -4,13 +4,6 @@
 <br>
 
 <div class="container">
-<!-- 검색 -->
-		<div class="">
-			<form action="/store/main?q=${q}" class="" method="get">
-				<input type="text" class="" placeholder="검색어를 입력하세요." name="q" value="${q }" id="board--search--input">
-				<button class="btn" id="board--search--btn" type="submit">검색</button>
-			</form>
-		</div>
 
 
 <br><br>
@@ -24,7 +17,19 @@
 
 		</ul>
 	</nav>
-
+	
+		<div class="input-group mb-3 justify-content-end">
+		<form action="/store/main?q=${q}"
+			class="form-inline" method="get">
+			<input type="text" class="form-control" placeholder="검색어를 입력하세요."
+				name="q" value="${q }">
+			<div class="input-group-append ml-2">
+				<button type="submit" class="btn" id="search--franchise">검색</button>
+			</div>
+		</form>
+	</div>
+	
+	
 
 	<br> <br> <input type="hidden" id="store-size"
 		value="${stores.content.size()}">
