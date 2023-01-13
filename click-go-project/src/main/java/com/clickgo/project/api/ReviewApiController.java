@@ -31,8 +31,6 @@ public class ReviewApiController {
 	@Autowired
 	private StoreService storeService;
 
-
-
 	@PostMapping("/reply/save/{id}")
 	public ResponseDto<?> saveReviewReply(@PathVariable int id, @RequestBody ReviewReply reviewReply,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {

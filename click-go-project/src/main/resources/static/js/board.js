@@ -9,7 +9,7 @@ let boardIndex = {
 		});
 	},
 
-		update: function() {
+	update: function() {
 		let id = $("#board-id").attr("data-id");
 
 		let data = {
@@ -37,7 +37,7 @@ let boardIndex = {
 		});
 	},
 
-	
+
 
 	deleteById: function() {
 		let id = $("#board-id").val();
@@ -54,6 +54,7 @@ let boardIndex = {
 			cancelButtonText: '취소', // cancel 버튼 텍스트 지정
 		}).then(result => {
 			if (result.isConfirmed) {
+
 				$.ajax({
 					type: "DELETE",
 					url: "/api/board/" + id
@@ -90,7 +91,6 @@ let boardIndex = {
 			checkBoxArray.push(this.value);
 		});
 
-
 		$.ajax({
 			type: "POST",
 			url: "/api/board/" + replyData.boardId + "/reply",
@@ -112,6 +112,7 @@ let boardIndex = {
 	},
 
 	replyDelete: function(boardId, replyId) {
+
 		$.ajax({
 			type: "DELETE",
 			url: `/api/board/${boardId}/reply/${replyId}`,

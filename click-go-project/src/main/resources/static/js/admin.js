@@ -73,6 +73,7 @@ let admin = {
 				let data = {
 					content: content
 				}
+
 				$.ajax({
 					type: 'post',
 					url: `/admin/caution/${id}`,
@@ -104,6 +105,7 @@ let admin = {
 			id: $(`#user--id-${id}`).text(),
 			reportCount: $(`#user--reportCount-${id}`).text(),
 		}
+
 		$.ajax({
 			type: 'post',
 			url: '/admin/blacklist',
@@ -132,6 +134,7 @@ let admin = {
 			id: $(`#user--id-${id}`).text(),
 			reportCount: $(`#user--reportCount-${id}`).text(),
 		}
+
 		$.ajax({
 			type: 'post',
 			url: '/admin/cancel-blacklist',

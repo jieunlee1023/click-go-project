@@ -50,7 +50,6 @@ public class ReviewController {
 		User user = principalDetails.getUser();
 		Page<Review> reviewList = reviewService.findByuserId(user, pageable);
 		if (reviewList != null) {
-
 			int PAGENATION_BLOCK_COUNT = 2;
 			int nowPage = reviewList.getNumber() + 1;
 			int startPage = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
@@ -71,7 +70,7 @@ public class ReviewController {
 	}
 
 	@PostMapping("/save/{storeId}")
-	public String save(@PathVariable int storeId, Review review, 
+	public String save(@PathVariable int storeId, Review review,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		try {
 			Store storeEntity = storeService.findById(storeId);
@@ -82,7 +81,7 @@ public class ReviewController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "/user/my/review/list";
+		return "redirect:/review/";
 	}
 
 	@GetMapping("/detail/{id}")

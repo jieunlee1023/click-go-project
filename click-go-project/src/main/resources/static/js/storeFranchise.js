@@ -39,6 +39,7 @@ let index = {
 			storeTotalRoomCount: storeTotalRoomCount,
 			price: price,
 		}
+
 		$.ajax({
 			type: 'POST',
 			url: `/api/store-franchise/approve/${data.id}/${data.userId}?category=${category}`,
@@ -80,6 +81,7 @@ let index = {
 			userId: userId,
 			rejectReason: rejectMsg,
 		}
+
 		$.ajax({
 			type: 'POST',
 			url: `/api/store-franchise/reject/${data.id}/${data.userId}`,

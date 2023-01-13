@@ -56,7 +56,7 @@
 							<p id="board--id">${board.id }</p>
 						</div>
 						<div class="col-lg-board-list-item">
-							<a id="board--title" href="/board/${board.id }"> <img src="/image/secret.png" width="15px"> ${board.title} ${board.csReply.size() }
+							<a id="board--title" href="/board/${board.id }"> <img src="/image/secret.png" width="15px"> ${board.title} (${board.csReply.size()}) 
 
 							</a>
 						</div>
@@ -172,7 +172,7 @@
 
 					</c:when>
 					<c:otherwise>
-						<li class="page-item"><a class="page-link" id="page--no--select" href="?q=${q }&page=${num }">${num }</a></li>
+						<li class="page-item"><a class="page-link" id="page--no--select" href="?q=${q }&page=${num -1 }">${num}</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>

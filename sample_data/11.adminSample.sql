@@ -1,17 +1,17 @@
-select * from admin;
+select * from user;
 
 
 insert into admin(blogLink, myInfo, nickName, profileUrl, userId)
 values('https://blog.naver.com/ji_euni' , '안녕하세요! 개발자 지은입니다 : ) 편하게 연락주세요!' , '지은' , 'adminImg1.png' , 1);
 
 insert into admin(blogLink, myInfo, nickName, profileUrl, userId)
-values('https://blog.naver.com/faker0331' , '문제가 있을 시, 아래 연락처로 연락주시면 처리해드릴게요!' , '승원' , 'adminImg2.png' , 2);
+values('https://blog.naver.com/faker0331' , '문제가 있을 시, 아래 연락처로 연락주시면 처리해드릴게요!' , '승원' , 'adminImg2.png' , 3);
 
 insert into admin(blogLink, myInfo, nickName, profileUrl, userId)
-values('https://zico8282.tistory.com/' , '★ 월,수,금은 자리를  비웁니다!' , '지훈' , 'adminImg5.png' , 3);
+values('https://zico8282.tistory.com/' , '★ 월,수,금은 자리를  비웁니다!' , '지훈' , 'adminImg5.png' , 4);
 
 insert into admin(blogLink, myInfo, nickName, profileUrl, userId)
-values('https://blog.naver.com/coding_player' , '오늘도 열심히! 파이팅! ' , '경민' , 'adminImg6.png' , 4);
+values('https://blog.naver.com/coding_player' , '오늘도 열심히! 파이팅! ' , '경민' , 'adminImg6.png' , 2);
 
 insert into admin(blogLink, myInfo, nickName, profileUrl, userId)
 values('https://blog.naver.com/tjdqls2s' , '메일로 연락주시면 빠르게 회신하겠습니다!' , '성빈' , 'adminImg7.png' , 5);

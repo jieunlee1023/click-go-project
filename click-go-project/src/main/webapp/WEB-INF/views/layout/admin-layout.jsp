@@ -72,7 +72,6 @@
 </head>
 
 <body>
-
 <header class="header">
   
   <div class="container">
@@ -86,7 +85,7 @@
          <a  href="/">홈</a>
           <a href="/store/main">상점</a>
           <a href="/board/list">게시판</a>
-          <a href="/logout">로그아웃</a>
+          <a href="/m-logout">로그아웃</a>
         </nav>
         <div class="header-navigation-actions">
         <form action="/storeFranchise/store-franchise-message" method="get">

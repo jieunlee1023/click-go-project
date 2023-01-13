@@ -13,6 +13,7 @@ let index = {
 			title: $("#title").val(),
 			content: $("#content").val(),
 		};
+
 		$.ajax({
 			type: 'post',
 			url: `/api/report/save/${storeId}/${userId}`,

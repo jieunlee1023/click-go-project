@@ -56,7 +56,6 @@
 								name="content" 
 						  		placeholder="리뷰 작성 시 포인트 100p 지급!!"></textarea>
 				</div>
-									
 		</div>
 
 	<div class="d-flex justify-content-end mt-3 ">
