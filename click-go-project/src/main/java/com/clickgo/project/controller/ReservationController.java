@@ -169,15 +169,32 @@ public class ReservationController {
 
 	@GetMapping("/list")
 	public String reservationList(Model model,
-			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		List<Reservation> allReservations = reservationService.findAll();
 		Page<Reservation> reservations = reservationService.searchBoard(principalDetails.getUser(), pageable);
+		
+		
+		int PAGENATION_BLOCK_COUNT = 10;
+		int nowPage = reservations.getPageable().getPageNumber() + 1;
+		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
+		int endPageNumber = Math.min(nowPage + startPageNumber, reservations.getTotalPages());
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+		
+		
 		if (!reservations.getContent().isEmpty()) {
 			franchiseMassageCount(model);
 			model.addAttribute("lastId", reservations.getContent().get(0).getId());
 			model.addAttribute("reservations", reservations);
 			model.addAttribute("allReservations", allReservations.size()); 
+			model.addAttribute("nowPage", nowPage);
+			model.addAttribute("startPageNumber", startPageNumber);
+			model.addAttribute("endPageNumber", endPageNumber);
+			model.addAttribute("pageNumbers", pageNumbers);
 		}
 		return "/user/my/reservation/list";
 	}

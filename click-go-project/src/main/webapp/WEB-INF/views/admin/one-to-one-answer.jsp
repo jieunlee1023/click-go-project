@@ -22,12 +22,13 @@
 
 
 <form action="/admin/one-to-one-answer" method="post">
-	<input type="hidden" value="${askEntity.id}" name="askId" required="required"> <input type="hidden" value="${principal.user.id }" name="userId" required="required">
+	<input type="hidden" value="${askEntity.id}" name="askId" required="required"> <input type="hidden" value="${principal.user.id }"
+		name="userId" required="required">
 	<div class="container">
 		<div class="card">
-			<div class="card-header bg-light text-dark">
+			<div class="container p-4 bg-light">
 				<div class="d-flex flex-column">
-					<span>No.${askEntity.id }</span> <span>${askEntity.user.username }</span>
+					<p>No.${askEntity.id }</p> <p>${askEntity.user.username }</p>
 					<hr>
 					<div>
 						<h5 class="d-flex justify-content-center">&nbsp;${askEntity.title }</h5>
@@ -74,13 +75,14 @@
 
 	<div class="container">
 		<div class="card">
-			<div class="card-header bg-light text-dark">
+			<div class="container p-4 bg-light">
 				<div class="d-flex flex-column">
-					<span>문의번호 : ${askEntity.id }</span> <span>문의자 : ${askEntity.user.username }</span>
-					<hr>
-					<div>
-						<h5 class="d-flex justify-content-center">${askEntity.title }&nbsp;의대한답변</h5>
-					</div>
+					<p>문의번호 : ${askEntity.id }</p>
+					<p>문의자 : ${askEntity.user.username }</p>
+				</div>
+				<hr>
+				<div class="d-flex justify-content-center">
+					<h5>${askEntity.title }&nbsp;의 대한 답변</h5>
 				</div>
 			</div>
 			<div class="card-body">
