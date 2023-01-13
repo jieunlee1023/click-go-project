@@ -77,7 +77,7 @@ public class StoreFranchiseController {
 		int nowPage = storeList.getPageable().getPageNumber() + 1;
 
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
-		int endPageNumber = Math.min(nowPage + startPageNumber, storeList.getTotalPages());
+		int endPageNumber = Math.min(nowPage + PAGENATION_BLOCK_COUNT, storeList.getTotalPages());
 
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {

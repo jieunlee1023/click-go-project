@@ -178,7 +178,7 @@ public class ReservationController {
 		int PAGENATION_BLOCK_COUNT = 10;
 		int nowPage = reservations.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
-		int endPageNumber = Math.min(nowPage + startPageNumber, reservations.getTotalPages());
+		int endPageNumber = Math.min(nowPage + PAGENATION_BLOCK_COUNT, reservations.getTotalPages());
 
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {

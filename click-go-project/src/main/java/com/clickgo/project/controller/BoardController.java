@@ -43,16 +43,15 @@ public class BoardController {
 
 	@GetMapping({ "/list", "/search" })
 	public String board(@RequestParam(required = false) String q, Model model,
-			@PageableDefault(size = 1, sort = "id", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchTitle = q == null ? "" : q;
 
 		Page<CsBoard> boards = boardService.searchBoard(searchTitle, pageable);
 
-		int PAGENATION_BLOCK_COUNT = 1;
+		int PAGENATION_BLOCK_COUNT = 2;
 		int nowPage = boards.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
-		int endPageNumber = Math.min(nowPage + startPageNumber, boards.getTotalPages());
-
+		int endPageNumber = Math.min(nowPage + PAGENATION_BLOCK_COUNT, boards.getTotalPages());
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
@@ -63,7 +62,8 @@ public class BoardController {
 		model.addAttribute("endPageNumber", endPageNumber);
 		model.addAttribute("pageNumbers", pageNumbers);
 		model.addAttribute("q", searchTitle);
-		
+//		model.addAttribute("endPage", end);
+
 		franchiseMassageCount(model);
 		return "board/list";
 	}
@@ -81,7 +81,7 @@ public class BoardController {
 		franchiseMassageCount(model);
 		return "board/detail";
 	}
-	
+
 	// s w 비밀댓글
 	@PostMapping("/{boardId}/reply")
 	public String replySave(@PathVariable int boardId, CsReply requestReply,
@@ -89,7 +89,7 @@ public class BoardController {
 		boardService.writeReply(boardId, requestReply, principalDetails.getUser());
 		return "redirect:";
 	}
-	
+
 	@GetMapping("/{id}/update-form")
 	public String updateForm(@PathVariable(name = "id") int boardId, Model model) {
 		model.addAttribute("board", boardService.boardDetail(boardId));
@@ -110,8 +110,5 @@ public class BoardController {
 		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
 	}
-	
-	
-	
 
 }

@@ -114,7 +114,7 @@ public class AdminController {
 		int PAGENATION_BLOCK_COUNT = 1;
 		int nowPage = reservations.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max((nowPage - PAGENATION_BLOCK_COUNT), + 1)  ;
-		int endPageNumber = Math.min(nowPage + startPageNumber, reservations.getTotalPages());
+		int endPageNumber = Math.min(nowPage + PAGENATION_BLOCK_COUNT, reservations.getTotalPages());
 		
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
@@ -171,7 +171,7 @@ public class AdminController {
 		int PAGENATION_BLOCK_COUNT = 10;
 		int nowPage = users.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
-		int endPageNumber = Math.min(nowPage + startPageNumber, users.getTotalPages());
+		int endPageNumber = Math.min(nowPage + PAGENATION_BLOCK_COUNT, users.getTotalPages());
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
@@ -197,7 +197,7 @@ public class AdminController {
 		int PAGENATION_BLOCK_COUNT = 3;
 		int nowPage = stores.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
-		int endPageNumber = Math.min(nowPage + startPageNumber, stores.getTotalPages());
+		int endPageNumber = Math.min(nowPage + PAGENATION_BLOCK_COUNT, stores.getTotalPages());
 
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
@@ -226,7 +226,7 @@ public class AdminController {
 		int PAGENATION_BLOCK_COUNT = 10;
 		int nowPage = askPage.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
-		int endPageNumber = Math.min(nowPage + startPageNumber, askPage.getTotalPages());
+		int endPageNumber = Math.min(nowPage + PAGENATION_BLOCK_COUNT, askPage.getTotalPages());
 
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {

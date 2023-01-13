@@ -83,7 +83,7 @@ public class StoreController {
 
 	@GetMapping({ "/main", "/search" })
 	public String store(@RequestParam(required = false) String q, @RequestParam(required = false) String pageName,
-			Model model, @PageableDefault(size = 20, sort = "id", direction = Direction.DESC) Pageable pageable,
+			Model model, @PageableDefault(size = 1, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		String searchName = q == null ? "" : q;
 		Map<Integer, Integer> starScoreMap = new HashMap<>();
@@ -112,7 +112,7 @@ public class StoreController {
 		int PAGENATION_BLOCK_COUNT = 20;
 		int nowPage = stores.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
-		int endPageNumber = Math.min(nowPage + startPageNumber, stores.getTotalPages());
+		int endPageNumber = Math.min(nowPage + PAGENATION_BLOCK_COUNT, stores.getTotalPages());
 
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
