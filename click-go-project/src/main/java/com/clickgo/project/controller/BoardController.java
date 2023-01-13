@@ -63,7 +63,6 @@ public class BoardController {
 		model.addAttribute("endPageNumber", endPageNumber);
 		model.addAttribute("pageNumbers", pageNumbers);
 		model.addAttribute("q", searchTitle);
-
 		
 		franchiseMassageCount(model);
 		return "board/list";

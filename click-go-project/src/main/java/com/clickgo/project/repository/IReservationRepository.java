@@ -133,4 +133,10 @@ public interface IReservationRepository extends JpaRepository<Reservation, Integ
 								+ " ON S.id = A.storeId "
 								+ " WHERE S.id = :id AND A.approveStatus != 'REJECT' ", nativeQuery = true)
 	public List<Reservation> findSeatByStoreId(@Param("id") int id);
+
+	
+	
+	
+	
+//	public Page<Reservation> findByStoreNameStoreId(String q, Pageable pageable);
 }

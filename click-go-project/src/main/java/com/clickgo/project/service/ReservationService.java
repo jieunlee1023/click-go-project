@@ -24,44 +24,44 @@ public class ReservationService {
 	private int sales;
 
 	@Autowired
-	private IReservationRepository reservationRepository;
+	private IReservationRepository ireservationRepository;
 
 	@Transactional
 	public Page<Reservation> searchBoard(User user, Pageable pageable) {
 		if (user.getRole().equals(RoleType.GEUST)) {
-			return reservationRepository.findByReservation(user.getId(), pageable);
+			return ireservationRepository.findByReservation(user.getId(), pageable);
 		} else {
-			return reservationRepository.findByHostReservation1(user.getId(), pageable);
+			return ireservationRepository.findByHostReservation1(user.getId(), pageable);
 		}
 	}
 
 	@Transactional
 	public Page<Reservation> searchAllBoard(Pageable pageable) {
-		return reservationRepository.findAll(pageable);
+		return ireservationRepository.findAll(pageable);
 	}
 
 	@Transactional
 	public void save(Reservation reservation) {
-		reservationRepository.save(reservation);
+		ireservationRepository.save(reservation);
 	}
 
 	@Transactional
 	public List<Reservation> findByStoreId(int storeId) {
-		return reservationRepository.findByStoreId(storeId);
+		return ireservationRepository.findByStoreId(storeId);
 	}
 	
 	public List<Reservation> findSeatByStoreId(int storeId) {
-		return reservationRepository.findSeatByStoreId(storeId);
+		return ireservationRepository.findSeatByStoreId(storeId);
 	}
 
 	@Transactional
 	public List<Reservation> findByStoreIdAndApprove(int storeId) {
-		return reservationRepository.findByStoreIdAndApprove(storeId);
+		return ireservationRepository.findByStoreIdAndApprove(storeId);
 	}
 
 	@Transactional
 	public void approve(int id) {
-		Reservation reservationEntity = reservationRepository.findById(id).orElseThrow(() -> {
+		Reservation reservationEntity = ireservationRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("시도하시려는 예약이 존재하지 않습니다.");
 		});
 		reservationEntity.setApproveStatus(ApproveStatus.APPROVED);
@@ -69,24 +69,24 @@ public class ReservationService {
 
 	@Transactional
 	public int findLastPK() {
-		return reservationRepository.findLastPK();
+		return ireservationRepository.findLastPK();
 	}
 
 	@Transactional
 	public void delete(int cancelReservation) {
-		reservationRepository.deleteById(cancelReservation);
+		ireservationRepository.deleteById(cancelReservation);
 	}
 
 	@Transactional
 	public Reservation findById(int reservationId) {
-		return reservationRepository.findById(reservationId).orElseThrow(() -> {
+		return ireservationRepository.findById(reservationId).orElseThrow(() -> {
 			return new IllegalArgumentException("예약 번호를 찾을 수 없습니다.");
 		});
 	}
 
 	@Transactional
 	public void reject(int id) {
-		Reservation reservation = reservationRepository.findById(id).orElseThrow(() -> {
+		Reservation reservation = ireservationRepository.findById(id).orElseThrow(() -> {
 			return new IllegalArgumentException("시도하시려는 예약이 존재하지 않습니다.");
 		});
 		reservation.setApproveStatus(ApproveStatus.REJECT);
@@ -94,14 +94,14 @@ public class ReservationService {
 
 	@Transactional
 	public List<Reservation> findByStoreIdAndNotReject(int storeId) {
-		return reservationRepository.findByStoreIdAndNotReject(storeId);
+		return ireservationRepository.findByStoreIdAndNotReject(storeId);
 	}
 
 	@Transactional
 	public int findTodaySalesByStoreId(int storeId) {
 		MyDate myDate = new MyDate();
 		sales = 0;
-		List<Reservation> reservations = reservationRepository.findTodaySalesByStoreId(storeId, myDate.getToday());
+		List<Reservation> reservations = ireservationRepository.findTodaySalesByStoreId(storeId, myDate.getToday());
 		reservations.forEach(reservation -> {
 			sales += reservation.getPrice();
 		});
@@ -112,7 +112,7 @@ public class ReservationService {
 	public int findMonthSalesByStoreId(int storeId) {
 		MyDate myDate = new MyDate();
 		sales = 0;
-		List<Reservation> reservations = reservationRepository.findMonthSalesByStoreId(storeId,
+		List<Reservation> reservations = ireservationRepository.findMonthSalesByStoreId(storeId,
 				myDate.getYearAndMonth());
 		reservations.forEach(reservation -> {
 			sales += reservation.getPrice();
@@ -124,7 +124,7 @@ public class ReservationService {
 	public int findYearSalesByStoreId(int storeId) {
 		MyDate myDate = new MyDate();
 		sales = 0;
-		List<Reservation> reservations = reservationRepository.findYearSalesByStoreId(storeId, myDate.getNowYear());
+		List<Reservation> reservations = ireservationRepository.findYearSalesByStoreId(storeId, myDate.getNowYear());
 		reservations.forEach(reservation -> {
 			sales += reservation.getPrice();
 		});
@@ -133,37 +133,42 @@ public class ReservationService {
 
 	@Transactional
 	public List<Reservation> findAllOfMonthNotReject() {
-		return reservationRepository.findAllOfMonthNotReject();
+		return ireservationRepository.findAllOfMonthNotReject();
 	}
 
 	@Transactional
 	public List<Reservation> findAllGroupByCategoryIdWhenToday() {
 		MyDate myDate = new MyDate();
-		return reservationRepository.findAllGroupByCategoryIdWhenToday(myDate.getToday());
+		return ireservationRepository.findAllGroupByCategoryIdWhenToday(myDate.getToday());
 	}
 
 	@Transactional
 	public List<Reservation> findAllGroupByCategoryIdWhenThisMonth() {
 		MyDate myDate = new MyDate();
-		return reservationRepository.findAllGroupByCategoryIdWhenThisMonth(myDate.getYearAndMonth());
+		return ireservationRepository.findAllGroupByCategoryIdWhenThisMonth(myDate.getYearAndMonth());
 	}
 
 	@Transactional
 	public List<Reservation> findAllGroupByCategoryIdWhenThisYear() {
 		MyDate myDate = new MyDate();
-		return reservationRepository.findAllGroupByCategoryIdWhenThisYear(myDate.getNowYear());
+		return ireservationRepository.findAllGroupByCategoryIdWhenThisYear(myDate.getNowYear());
 	}
 
 	@Transactional
+	public Page<Reservation> findAllPage(Pageable pageable) {
+		return ireservationRepository.findAll(pageable);
+	}
+	
+	@Transactional
 	public List<Reservation> findAll() {
-		return reservationRepository.findAll();
+		return ireservationRepository.findAll();
 	}
 
 	@Transactional
 	public List<Reservation> findWeekSalesByStoreId(int storeId) {
 		MyDate myDate = new MyDate();
 		String aWeekAgo = myDate.getAWeekAgo();
-		return reservationRepository.findWeekSalesByStoreId(storeId, aWeekAgo);
+		return ireservationRepository.findWeekSalesByStoreId(storeId, aWeekAgo);
 	}
 
 	@Transactional
@@ -175,7 +180,7 @@ public class ReservationService {
 		Object objHour = null;
 		String strHour = null;
 		for (int hour = 1; hour <= myDate.getNowHour(); hour++) {
-			Reservation reservationEntity = reservationRepository.findHourSalesByStoreId(storeId, hour + ":", today);
+			Reservation reservationEntity = ireservationRepository.findHourSalesByStoreId(storeId, hour + ":", today);
 			if (reservationEntity != null) {
 				objHour = hour;
 				strHour = objHour.toString();
@@ -190,4 +195,10 @@ public class ReservationService {
 		}
 		return storeSales;
 	}
+//	@Transactional
+//	public Page<Reservation> searchReservation(String q, Pageable pageable) {
+//		return ireservationRepository.findByStoreNameContaining(q, pageable);
+//	}
+
+	
 }

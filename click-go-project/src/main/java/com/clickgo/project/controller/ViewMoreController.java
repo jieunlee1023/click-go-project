@@ -61,21 +61,18 @@ public class ViewMoreController {
 		model.addAttribute("waitMsg", waitMsg);
 	}
 
-	// s w
 	@GetMapping("/notice-list")
 	public String noticeList(Model model) {
 		franchiseMassageCount(model);
 		return "view-more/notice-list";
 	}
 
-	// s w
 	@GetMapping("/terms-list")
 	public String termsList(Model model) {
 		franchiseMassageCount(model);
 		return "view-more/terms-list";
 	}
 
-	// s w
 	@GetMapping("/one-to-one-ask")
 	public String oneToOneAskList(Model model) {
 		List<OneToOneAsk> askList = oneToOneAskService.getOneToOneAskList();
@@ -85,7 +82,6 @@ public class ViewMoreController {
 		return "view-more/one-to-one-ask";
 	}
 
-	// s w
 	@PostMapping("/one-to-one-ask/save")
 	public String oneToOneWrite(OneToOneAsk reqOneToOneAsk, @AuthenticationPrincipal PrincipalDetails principalDetails,
 			Model model) {

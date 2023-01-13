@@ -103,9 +103,35 @@ public class AdminController {
 	}
 
 	@GetMapping("/reservation")
-	public String adminreservation(Model model) {
-		List<Reservation> reservations = reservationService.findAll();
+	public String adminreservation(@RequestParam(required = false) String q, Model model,
+			@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		String searchName = q == null ? "" : q;
+		
+//		List<Reservation> reservations = reservationService.findAll();
+		Page<Reservation> reservations = reservationService.findAllPage(pageable);
+		
+		int pageBlock = 5;
+		int PAGENATION_BLOCK_COUNT = 1;
+		int nowPage = reservations.getPageable().getPageNumber() + 1;
+		int startPageNumber = Math.max((nowPage - PAGENATION_BLOCK_COUNT), + 1)  ;
+		int endPageNumber = Math.min(nowPage + startPageNumber, reservations.getTotalPages());
+		
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+		List<Reservation> pageToListReservation = new ArrayList<>();
+		if(pageToListReservation != null && reservations.hasContent()) {
+			pageToListReservation = reservations.getContent();
+		}
+		
 		model.addAttribute("reservations", reservations);
+		model.addAttribute("reservation", pageToListReservation);
+		model.addAttribute("nowPage", nowPage);
+		model.addAttribute("startPageNumber", startPageNumber);
+		model.addAttribute("endPageNumber", endPageNumber);
+		model.addAttribute("pageNumbers", pageNumbers);
+//		model.addAttribute("q", searchName);
 		franchiseMassageCount(model);
 		return "admin/reservation";
 	}
@@ -218,7 +244,6 @@ public class AdminController {
 		return "admin/one-to-one-list";
 	}
 
-	// s w
 	@GetMapping("/one-to-one-answer/{id}")
 	public String showOnToOneAnswer(@PathVariable int id, Model model) {
 
