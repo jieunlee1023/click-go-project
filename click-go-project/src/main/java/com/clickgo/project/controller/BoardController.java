@@ -43,12 +43,12 @@ public class BoardController {
 
 	@GetMapping({ "/list", "/search" })
 	public String board(@RequestParam(required = false) String q, Model model,
-			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 1, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchTitle = q == null ? "" : q;
 
 		Page<CsBoard> boards = boardService.searchBoard(searchTitle, pageable);
 
-		int PAGENATION_BLOCK_COUNT = 10;
+		int PAGENATION_BLOCK_COUNT = 1;
 		int nowPage = boards.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
 		int endPageNumber = Math.min(nowPage + startPageNumber, boards.getTotalPages());
