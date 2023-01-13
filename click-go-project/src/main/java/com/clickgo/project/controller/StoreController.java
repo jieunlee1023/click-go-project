@@ -82,19 +82,10 @@ public class StoreController {
 	private Page<Store> stores;
 
 	@GetMapping({ "/main", "/search" })
-	public String store(@RequestParam(required = false) String q ,@RequestParam(required = false) String pageName, Model model,
-			@PageableDefault(size = 20, sort = "id", direction = Direction.DESC) Pageable pageable, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+	public String store(@RequestParam(required = false) String q, @RequestParam(required = false) String pageName,
+			Model model, @PageableDefault(size = 20, sort = "id", direction = Direction.DESC) Pageable pageable,
+			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		String searchName = q == null ? "" : q;
-		Page<Store> storess = storeService.searchStoreList(searchName, pageable);
-		int PAGENATION_BLOCK_COUNT = 20;
-		int nowPage = storess.getPageable().getPageNumber() + 1;
-		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
-		int endPageNumber = Math.min(nowPage + startPageNumber, storess.getTotalPages());
-		ArrayList<Integer> pageNumbers = new ArrayList<>();
-		for (int i = startPageNumber; i <= endPageNumber; i++) {
-			pageNumbers.add(i);
-		}
-		
 		Map<Integer, Integer> starScoreMap = new HashMap<>();
 		List<StoreCategory> categories = new ArrayList<>();
 		List<Review> reviews = new ArrayList<>();
@@ -104,9 +95,9 @@ public class StoreController {
 		});
 
 		if (pageName == null) {
-			stores = storeService.getStoreAllList(pageable);
+			stores = storeService.getStoreAllList(searchName, pageable);
 		} else {
-			stores = storeService.findAllByStoreCategory(pageName, pageable);
+			stores = storeService.findAllByStoreCategory(pageName, searchName, pageable);
 		}
 
 		stores.forEach(store -> {
@@ -117,15 +108,24 @@ public class StoreController {
 				starScoreMap.put(review.getStore().getId(), review.getStarScore());
 			}
 		});
+
+		int PAGENATION_BLOCK_COUNT = 20;
+		int nowPage = stores.getPageable().getPageNumber() + 1;
+		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
+		int endPageNumber = Math.min(nowPage + startPageNumber, stores.getTotalPages());
+
+		ArrayList<Integer> pageNumbers = new ArrayList<>();
+		for (int i = startPageNumber; i <= endPageNumber; i++) {
+			pageNumbers.add(i);
+		}
+
 		List<Image> images = iImageRepository.findStoreImage();
 		model.addAttribute("starScoreMap", starScoreMap);
 		model.addAttribute("images", images);
-		model.addAttribute("nowPage", pageName);
 		model.addAttribute("categories", categories);
 		model.addAttribute("stores", stores);
-		
-		model.addAttribute("storess", storess);
-		model.addAttribute("nowPage1", nowPage);
+
+		model.addAttribute("nowPage", nowPage);
 		model.addAttribute("startPageNumber", startPageNumber);
 		model.addAttribute("endPageNumber", endPageNumber);
 		model.addAttribute("pageNumbers", pageNumbers);
@@ -168,7 +168,7 @@ public class StoreController {
 
 		LikeStore likeStoresEntity = likeStoreRepository.findByUserIdAndStoreId(storeId,
 				principalDetails.getUser().getId());
-		
+
 		model.addAttribute("likeStoresEntity", likeStoresEntity);
 		model.addAttribute("likeStores", likeStores);
 		model.addAttribute("reviewList", reviewList);
