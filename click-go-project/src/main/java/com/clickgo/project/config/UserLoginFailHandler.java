@@ -31,8 +31,6 @@ public class UserLoginFailHandler extends SimpleUrlAuthenticationFailureHandler 
 		
 		String errorMessage;
 		
-		System.out.println(exception.getMessage());
-		System.out.println("===============================");
 		
 		if (exception instanceof BadCredentialsException ) {
 			errorMessage = "아이디 또는 비밀번호가 맞지 않습니다. 다시 한번 확인해주세요.";
@@ -45,7 +43,6 @@ public class UserLoginFailHandler extends SimpleUrlAuthenticationFailureHandler 
 		} else {
 			errorMessage = "알 수 없는 이유로 로그인에 실패하였습니다 관리자에게 문의하세요.";
 		}
-		System.out.println("444444444444" + errorMessage);
 		errorMessage = URLEncoder.encode(errorMessage, "UTF-8");// 한글 인코딩 깨지는 문제 방지
 		// 실패했을 때 파라미터에 붙여서 어디로 보낼 지 정한다 (보통 로그인페이지로)
 		setDefaultFailureUrl("/auth/login-form?error=true&exception=" + errorMessage);

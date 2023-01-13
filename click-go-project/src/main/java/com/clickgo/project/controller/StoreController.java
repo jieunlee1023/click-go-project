@@ -253,7 +253,6 @@ public class StoreController {
 		List<AWeekStoreSales> storeSalesList = new ArrayList<>();
 		List<Reservation> reservations = reservationService.findWeekSalesByStoreId(stores.get(0).getId());
 		reservations.forEach(reservation -> {
-			System.out.println(reservation);
 			AWeekStoreSales storeSales = new AWeekStoreSales(reservation.getReservationDate(), reservation.getPrice());
 			storeSalesList.add(storeSales);
 		});
