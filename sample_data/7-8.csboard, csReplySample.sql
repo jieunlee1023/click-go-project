@@ -99,58 +99,5 @@ values('안녕하세요!', now(), 1, 27, 72);
 
 
 
-insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);
-insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);
 
 
-
-insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);
-insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);insert into csboard(content, count, createDate, secretType, title, userId)
-values('예약은 어떤 절차로 이루어지나요 ?', 15, now(), 'PRIVATE', '문의 드립니다. : )', 12);
