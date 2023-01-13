@@ -297,11 +297,7 @@
 
 	$(this).ready(function() {
 		timeCheck();
-<<<<<<< HEAD
 	})
-=======
-	});
->>>>>>> dcf1912232a2813454b04ce07e3da7a734ef400b
 </script>
 
 <script type="text/javascript" src="/js/store.js"></script>

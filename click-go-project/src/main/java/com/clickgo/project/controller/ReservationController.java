@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -215,4 +217,5 @@ public class ReservationController {
 		int waitMsg = allMsg.size() - franchiseMessages.size();
 		model.addAttribute("waitMsg", waitMsg);
 	}
+	
 }
