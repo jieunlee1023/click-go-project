@@ -47,8 +47,8 @@ public class StoreService {
 	}
 
 	@Transactional
-	public Page<Store> getStoreAllList(Pageable pageable) {
-		return storeRepository.findAll(pageable);
+	public Page<Store> getStoreAllList(String q, Pageable pageable) {
+		return storeRepository.findByStoreNameContaining(q, pageable);
 	}
 
 	@Transactional
@@ -92,11 +92,10 @@ public class StoreService {
 		return true;
 	}
 
-	public Page<Store> findAllByStoreCategory(String pageName, Pageable pageable) {
-		return storeRepository.findAllByStoreCategory(pageName, pageable);
+	public Page<Store> findAllByStoreCategory(String pageName, String q, Pageable pageable) {
+		return storeRepository.findAllByStoreCategory(pageName, q, pageable);
 	}
 
-	// 검색
 	@Transactional
 	public Page<Store> searchStoreList(String q, Pageable pageable) {
 		return storeRepository.findByStoreNameContaining(q, pageable);

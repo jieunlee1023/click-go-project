@@ -1,4 +1,11 @@
 <<<<<<< HEAD
+
+
+ select * from user;
+
+
+=======
+<<<<<<< HEAD
 <<<<<<< HEAD
  
  insert into user(username, email, createDate, password, phoneNumber, role, loginType, caution)
@@ -210,6 +217,7 @@ values('user100', 'qwer123100@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew
 >>>>>>> 01f8350da8d10ec95bd99b1180f94e6518cbb64d
  select * from user;
 
+>>>>>>> developer
 
 /*ADMIN*/
 insert into user(username, email, createDate, password, phoneNumber, role, loginType)

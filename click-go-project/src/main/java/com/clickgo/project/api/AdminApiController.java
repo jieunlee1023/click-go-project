@@ -49,7 +49,6 @@ public class AdminApiController {
 
 	@GetMapping("/cancel-caution")
 	public ResponseDto<?> cancelCaution(@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		System.out.println(principalDetails.getUser());
 		boolean success = userService.cancelCaution(principalDetails.getUser().getId());
 		return new ResponseDto<>(success, "/m-logout");
 	}

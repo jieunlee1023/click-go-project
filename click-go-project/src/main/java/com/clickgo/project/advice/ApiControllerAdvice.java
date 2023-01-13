@@ -32,8 +32,6 @@ public class ApiControllerAdvice {
 	@ExceptionHandler(value = MethodArgumentNotValidException.class)
 	public ResponseEntity<?> methodArgumentNotValidException(MethodArgumentNotValidException e) {
 		HashMap<String, String> cusErrorMap = new HashMap<>();
-		System.err.println("메소드 에러");
-		// name과 age 둘 다 잘못들어왔다면,
 		e.getBindingResult().getAllErrors().forEach(e2 -> {
 			FieldError fieldError = (FieldError) e2;
 			fieldName = fieldError.getField();
@@ -45,8 +43,7 @@ public class ApiControllerAdvice {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);
 
 	}
-	
-	
+
 	@ExceptionHandler(value = IllegalArgumentException.class)
 	public ResponseEntity<?> illegalArgumentException(IllegalArgumentException e) {
 		return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(message);

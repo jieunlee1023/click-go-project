@@ -21,10 +21,14 @@ public interface IStoreRepository extends JpaRepository<Store, Integer>{
 	@Query(value = " SELECT * "
 			+ " FROM store "
 			+ " WHERE categoryId = ?1 "
+			+ " AND storename like %?2% "
 			, nativeQuery = true)
-	Page<Store> findAllByStoreCategory(String pageName, Pageable pageable);
+	Page<Store> findAllByStoreCategory(String pageName, String q, Pageable pageable);
 
-	// s w 검색
+	@Query(value = " SELECT * "
+								+ " FROM store "
+								+ " WHERE storename LIKE %?1% "
+								, nativeQuery = true)
 	Page<Store> findByStoreNameContaining(String q, Pageable pageable);
 
 

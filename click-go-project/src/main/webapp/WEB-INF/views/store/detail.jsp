@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <br>
 
@@ -28,35 +29,45 @@
 					<div class="d-flex" style="align-items: flex-end;">
 						<c:choose>
 							<c:when test="${store.category.id eq 'PC방' }">
-								<h1 class="" style="font-weight: bold;">💻 ${store.storeName}</h1>
+								<h1 class="" style="font-weight: bold;">💻
+									${store.storeName}</h1>
 							</c:when>
 							<c:when test="${store.category.id eq '노래방' }">
-								<h1 class="" style="font-weight: bold;">🎤 ${store.storeName}</h1>
+								<h1 class="" style="font-weight: bold;">🎤
+									${store.storeName}</h1>
 							</c:when>
 							<c:when test="${store.category.id eq '동전노래방' }">
-								<h1 class="" style="font-weight: bold;">🎵 ${store.storeName}</h1>
+								<h1 class="" style="font-weight: bold;">🎵
+									${store.storeName}</h1>
 							</c:when>
 							<c:when test="${store.category.id eq '당구장' }">
-								<h1 class="" style="font-weight: bold;">🎱 ${store.storeName}</h1>
+								<h1 class="" style="font-weight: bold;">🎱
+									${store.storeName}</h1>
 							</c:when>
 							<c:when test="${store.category.id eq '볼링장' }">
-								<h1 class="" style="font-weight: bold;">🎳 ${store.storeName}</h1>
+								<h1 class="" style="font-weight: bold;">🎳
+									${store.storeName}</h1>
 							</c:when>
 							<c:when test="${store.category.id eq '스크린야구장' }">
-								<h1 class="" style="font-weight: bold;">⚾ ${store.storeName}</h1>
+								<h1 class="" style="font-weight: bold;">⚾
+									${store.storeName}</h1>
 							</c:when>
 
 						</c:choose>
 
 
-							<input type="hidden" value="${likeStoresEntity.id }" id="likeStoreId">
+						<input type="hidden" value="${likeStoresEntity.id }"
+							id="likeStoreId">
 						<c:choose>
-							<c:when test="${likeStoresEntity.likeStore eq false || empty likeStoresEntity}">
-								<button type="button" id="store--wish--emptyheart" data-toggle="tooltip" data-placement="right" title="하트를 클릭하여 위시리스트를 등록해보세요!"
-									data-like-btn='emptyHeartBtn'>♡</button>
+							<c:when
+								test="${likeStoresEntity.likeStore eq false || empty likeStoresEntity}">
+								<button type="button" id="store--wish--emptyheart"
+									data-toggle="tooltip" data-placement="right"
+									title="하트를 클릭하여 위시리스트를 등록해보세요!" data-like-btn='emptyHeartBtn'>♡</button>
 							</c:when>
 							<c:otherwise>
-								<button type="button" id="store--wish--heart" data-like-btn='heartBtn'>♥</button>
+								<button type="button" id="store--wish--heart"
+									data-like-btn='heartBtn'>♥</button>
 							</c:otherwise>
 						</c:choose>
 
@@ -79,20 +90,26 @@
 					</c:otherwise>
 				</c:choose>
 
-				<form action="/reservation/${store.id}" method="post" id="doReservation">
+				<form action="/reservation/${store.id}" method="post"
+					id="doReservation">
 					<div class="justify-content-center">
 						<div class="d-flex justify-content-center">
 							<div>
-								<input type="date" name="startDate" id="startDate" value="${nowDate}" min="${nowDate}" max="${maxDate}">
+								<input type="date" name="startDate" id="startDate"
+									value="${nowDate}" min="${nowDate}" max="${maxDate}">
 							</div>
 							<div>
-								<input type="date" name="endDate" id="endDate" value="${nowDate}" min="${nowDate}" max="${maxDate}">
+								<input type="date" name="endDate" id="endDate"
+									value="${nowDate}" min="${nowDate}" max="${maxDate}">
 							</div>
 							<div>
-								<input type="text" class="timepicker" name="startTime" id="startTime" value="${nowTime}" min="${nowTime}">
+								<input type="text" class="timepicker" name="startTime"
+									id="startTime" value="${nowTime}" min="${nowTime}">
 							</div>
 							<div>
-								<input type="text" class="timepicker" name="endTime" id="endTime" value="${nowTimeOnlyHour}" min="${nowTimeOnlyHour}">
+								<input type="text" class="timepicker" name="endTime"
+									id="endTime" value="${nowTimeOnlyHour}"
+									min="${nowTimeOnlyHour}">
 							</div>
 							<input type="hidden" id="storeId" value="${store.id }">
 							<button type="submit" id="btn--time-check">예약 하기</button>
@@ -125,7 +142,8 @@
 								<c:if test="${image.store.id eq store.id }">
 
 									<div class="store-detail-main-img">
-										<img src="http://localhost:7777/storeImage/${image.imageUrl}" alt="가게 사진" id="store-detail-img">
+										<img src="http://localhost:7777/storeImage/${image.imageUrl}"
+											alt="가게 사진" id="store-detail-img">
 
 									</div>
 								</c:if>
@@ -140,10 +158,13 @@
 						<p>📍 위치 : ${store.storeAddress}</p>
 					</div>
 
-					<input type="hidden" value="${store.storeAddress}" id="store-address"> <input type="hidden" value="${store.storeName}" id="store-name">
+					<input type="hidden" value="${store.storeAddress}"
+						id="store-address"> <input type="hidden"
+						value="${store.storeName}" id="store-name">
 				</div>
 				<div class="d-flex justify-content-center">
-					<div id="map" style="width: 80%; height: 300px; justify-content: center"></div>
+					<div id="map"
+						style="width: 80%; height: 300px; justify-content: center"></div>
 				</div>
 			</div>
 
@@ -171,11 +192,12 @@
 
 	<div class="d-flex flex-column pr-2 pl-2" style="background-color:">
 
-			<c:forEach var="review" items="${reviewList }">
+		<c:forEach var="review" items="${reviewList }">
 			<div class="m-3">
 
 				<div class="mb-2" id="" style="background-color:; width: 10%;">
-					<img alt="프로필" src="/image/profile.png" style="width: 50%; border-radius: 50%">
+					<img alt="프로필" src="/image/profile.png"
+						style="width: 50%; border-radius: 50%">
 				</div>
 				<div class="mb-2" style="background-color:">
 					<div class="mb-2">
@@ -201,51 +223,85 @@
 	</div>
 </div>
 
+<div class="d-flex flex-column pr-5 pl-5" style="background-color:">
+
+	<c:forEach var="review" items="${reviewList }">
+		<div class="m-3">
+			<div class="mb-2" id="" style="background-color:; width: 10%;">
+				<img alt="프로필" src="/image/profile.png"
+					style="width: 50%; border-radius: 50%">
+			</div>
+			<div class="mb-2" style="background-color:">
+				<div class="mb-2">
+					<c:choose>
+						<c:when test="${review.starScore eq '1' }">⭐</c:when>
+						<c:when test="${review.starScore eq '2' }">⭐⭐</c:when>
+						<c:when test="${review.starScore eq '3' }">⭐⭐⭐</c:when>
+						<c:when test="${review.starScore eq '4' }">⭐⭐⭐⭐</c:when>
+						<c:when test="${review.starScore eq '5' }">⭐⭐⭐⭐⭐</c:when>
+					</c:choose>
+				</div>
+				<div class="mb-2">
+					<p>${review.user.username}님</p>
+				</div>
+				<hr>
+			</div>
+			<div class="mb-2">
+				<p>${review.content}</p>
+			</div>
+			<hr>
+		</div>
+	</c:forEach>
+</div>
 <br>
 <br>
 <br>
 <script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript">
-	$('document').ready(function() {
-		$('#startTime').timepicker({
-			timeFormat : 'HH:mm',
-			interval : 10,
-			startTime : '${nowTime}',
-			dynamic : false,
-			dropdown : true,
-			scrollbar : true,
+   $('document').ready(function() {
+      $('#startTime').timepicker({
+         timeFormat : 'HH:mm',
+         interval : 10,
+         startTime : '${nowTime}',
+         dynamic : false,
+         dropdown : true,
+         scrollbar : true,
 
-			change : function(time) {
-				var element = $(this), text;
-				var timepicker = element.timepicker();
-				text = timepicker.format(time);
-				timeCheck();
-			}
-		});
-		$('#endTime').timepicker({
-			timeFormat : 'HH:mm',
-			interval : 10,
-			startTime : '${nowTime}',
-			dynamic : false,
-			dropdown : true,
-			scrollbar : true,
+         change : function(time) {
+            var element = $(this), text;
+            var timepicker = element.timepicker();
+            text = timepicker.format(time);
+            timeCheck();
+         }
+      });
+      $('#endTime').timepicker({
+         timeFormat : 'HH:mm',
+         interval : 10,
+         startTime : '${nowTime}',
+         dynamic : false,
+         dropdown : true,
+         scrollbar : true,
 
-			change : function(time) {
-				var element = $(this), text;
-				var timepicker = element.timepicker();
-				text = timepicker.format(time);
-				timeCheck();
-			}
-		});
-	});
+         change : function(time) {
+            var element = $(this), text;
+            var timepicker = element.timepicker();
+            text = timepicker.format(time);
+            timeCheck();
+         }
+      });
+   });
 
-	$(function() {
-		$('[data-toggle="tooltip"]').tooltip()
-	});
+   $(function() {
+      $('[data-toggle="tooltip"]').tooltip()
+   });
 
 	$(this).ready(function() {
 		timeCheck();
+<<<<<<< HEAD
 	})
+=======
+	});
+>>>>>>> dcf1912232a2813454b04ce07e3da7a734ef400b
 </script>
 
 <script type="text/javascript" src="/js/store.js"></script>
