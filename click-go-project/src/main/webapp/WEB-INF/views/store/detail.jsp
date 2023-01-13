@@ -198,66 +198,6 @@
 		</c:forEach>
 	</div>
 </div>
-
-
-
-<%-- <div id="plain" style="display: none">
-	<c:forEach var="review" items="${reviewList }">
-		<tr style="text-align: center;">
-			<c:choose>
-				<c:when test="${review.starScore eq '1' }">⭐</c:when>
-				<c:when test="${review.starScore eq '2' }">⭐⭐</c:when>
-				<c:when test="${review.starScore eq '3' }">⭐⭐⭐</c:when>
-				<c:when test="${review.starScore eq '4' }">⭐⭐⭐⭐</c:when>
-				<c:when test="${review.starScore eq '5' }">⭐⭐⭐⭐⭐</c:when>
-			</c:choose>
-			<td><p>${review.content}</p></td>
-			<td style="color: grey;" id="report--status"><p>${review.user.username}님</p></td>
-		</tr>
-		<div style="border: solid;"></div>
-	</c:forEach>
-</div> --%>
-
-
-
-<%-- <div id="plain" style="display: none">
-	<HR>
-	<c:forEach var="review" items="${reviewList }">
-		<tr style="text-align: center;">
-			<c:choose>
-				<c:when test="${review.starScore eq '1' }">⭐</c:when>
-				<c:when test="${review.starScore eq '2' }">⭐⭐</c:when>
-				<c:when test="${review.starScore eq '3' }">⭐⭐⭐</c:when>
-				<c:when test="${review.starScore eq '4' }">⭐⭐⭐⭐</c:when>
-				<c:when test="${review.starScore eq '5' }">⭐⭐⭐⭐⭐</c:when>
-			</c:choose>
-			<td><p>${review.content}</p></td>
-			<td style="color: grey;" id="report--status"><p>${review.user.username}님</p></td>
-		</tr>
-		<div style="border: solid;"></div>
-	</c:forEach>
-	<HR>
-</div> --%>
-
-
-
-
-<%-- <div style="background-color: red;">
-	<div>이런곳은 어때요?</div>
-	<c:forEach var="storeListItem" items="${storeList }">
-		<c:if test="${storeListItem != store }">
-			<c:forEach var="image" items="${images}">
-				<c:if test="${image.store.id eq storeListItem.id }">
-					<div class="store-detail-main-img">
-						<img src="http://localhost:7777/storeImage/${image.imageUrl}"
-							alt="가게 사진" id="store-detail-img">
-					</div>
-				</c:if>
-			</c:forEach>
-			<div>${storeListItem.storeName}</div>
-		</c:if>
-	</c:forEach>
-</div> --%>
 <br>
 <br>
 <br>
@@ -303,46 +243,6 @@
 	$(this).ready(function() {
 		timeCheck();
 	})
-	// 예약 등록 실패시(보류 불필요시삭제 - 지훈)
-	/* function doReservation() {
-	
-		const form = document.getElementById('doReservation');
-		    const data = new FormData(form);
-				  console.log('시작 날짜 '+data.get('startDate'));
-				  console.log('끝나는 날짜 '+data.get('endDate'));
-				  console.log('시작 시간 '+data.get('startTime'));
-				  console.log('끝나는 시간 '+data.get('endTime'));
-				  console.log('자리 '+data.get('seatNumber'));
-				  
-		    fetch(form.action, {
-		      method: form.method,
-		      body: data,
-		    }).then(response => {
-			      if (response.status == 200) {
-			    	 	if(data.get('startDate') == null || data.get('endDate') == null) {
-			    	 		alert('날짜 ㄱㄱ');
-			    	 		return false;
-			    	 		console.log(data.get('endTime'));
-			    	 	}else if (data.get('startTime') == null || data.get('endTime') == null){
-			    	 		alert('시간')
-			    	 		return false;
-			    	 	}else if(data.get('seatNumber') == null) {
-			    	 		alert('자리')
-		    				console.log(data);
-			    	 		return false;
-			    	 	}else {
-			    	 		 Swal.fire({
-									icon: 'success',
-									text: '예약완료.',
-								}).then(function() {
-									location.href = "/reservation/3";
-								});
-			    	 	}
-			      } else {
-			        alert('글 작성 실패');
-			      }
-			    });
-			  } */
 </script>
 
 <script type="text/javascript" src="/js/store.js"></script>
