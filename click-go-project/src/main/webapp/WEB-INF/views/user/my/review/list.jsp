@@ -123,7 +123,7 @@
 											</c:choose>
 										</p></td>
 									<td><p>${review.user.username }</p></td>
-									<td><p>${review.createDate }</p></td>
+									<td><fmt:formatDate value="${review.createDate }" pattern="yyyy-MM-dd hh시 mm분" /></td>
 
 								</tr>
 							</c:forEach>
