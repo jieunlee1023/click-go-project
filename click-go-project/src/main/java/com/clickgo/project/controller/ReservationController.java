@@ -42,7 +42,7 @@ public class ReservationController {
 	private StoreFranchiseService franchiseService;
 
 	@PostMapping("/{storeId}")
-	
+
 	public String reservation(@RequestParam(required = false) String paymentType,
 			@RequestParam(required = false) Integer[] seatNumber, @PathVariable int storeId,
 			@RequestParam String startTime, @RequestParam String endTime, @RequestParam String startDate,
@@ -161,11 +161,6 @@ public class ReservationController {
 		}
 		return "redirect:/store/detail/" + storeId;
 	}
-	
-	
-	
-	
-	
 
 	@GetMapping("/list")
 	public String reservationList(Model model,
@@ -173,8 +168,7 @@ public class ReservationController {
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		List<Reservation> allReservations = reservationService.findAll();
 		Page<Reservation> reservations = reservationService.searchBoard(principalDetails.getUser(), pageable);
-		
-		
+
 		int PAGENATION_BLOCK_COUNT = 10;
 		int nowPage = reservations.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max(nowPage - PAGENATION_BLOCK_COUNT, 1);
@@ -184,13 +178,12 @@ public class ReservationController {
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
-		
-		
+
 		if (!reservations.getContent().isEmpty()) {
 			franchiseMassageCount(model);
 			model.addAttribute("lastId", reservations.getContent().get(0).getId());
 			model.addAttribute("reservations", reservations);
-			model.addAttribute("allReservations", allReservations.size()); 
+			model.addAttribute("allReservations", allReservations.size());
 			model.addAttribute("nowPage", nowPage);
 			model.addAttribute("startPageNumber", startPageNumber);
 			model.addAttribute("endPageNumber", endPageNumber);
