@@ -66,10 +66,10 @@
 			<c:forEach var="num" items="${pageNumbers }">
 				<c:choose>
 					<c:when test="${nowPage eq num }">
-						<li class="page-item"><a class="page-link" href="?q=${q }&page=${num - 1 }" id="page--select">${num }</a></li>
+						<li class="page-item"><a class="page-link" href="?q=${q }&page=${num - 1 }" id="page--select" style="color: red">${num }</a></li>
 					</c:when>
 					<c:otherwise>
-						<li class="page-item"><a class="page-link" id="page--no--select" href="?q=${q }&page=${num - 1 }">${num }</a></li>
+						<li class="page-item"><a class="page-link" id="page--no--select" href="?q=${q }&page=${num - 1 }" style="color: blue">${num }</a></li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>

@@ -104,22 +104,24 @@ public class AdminController {
 
 	@GetMapping("/reservation")
 	public String adminreservation(@RequestParam(required = false) String q, Model model,
-			@PageableDefault(size = 5, sort = "id", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchName = q == null ? "" : q;
 		
 //		List<Reservation> reservations = reservationService.findAll();
 		Page<Reservation> reservations = reservationService.findAllPage(pageable);
 		
 		int pageBlock = 5;
-		int PAGENATION_BLOCK_COUNT = 1;
+		int PAGENATION_BLOCK_COUNT = 5;
 		int nowPage = reservations.getPageable().getPageNumber() + 1;
 		int startPageNumber = Math.max((nowPage - PAGENATION_BLOCK_COUNT), + 1)  ;
-		int endPageNumber = Math.min(nowPage + startPageNumber, reservations.getTotalPages());
+		int endPageNumber = Math.min(nowPage + PAGENATION_BLOCK_COUNT, reservations.getTotalPages());
 		
 		ArrayList<Integer> pageNumbers = new ArrayList<>();
 		for (int i = startPageNumber; i <= endPageNumber; i++) {
 			pageNumbers.add(i);
 		}
+
+		
 		List<Reservation> pageToListReservation = new ArrayList<>();
 		if(pageToListReservation != null && reservations.hasContent()) {
 			pageToListReservation = reservations.getContent();
