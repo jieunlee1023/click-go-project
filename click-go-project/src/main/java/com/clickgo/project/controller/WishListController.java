@@ -47,9 +47,6 @@ public class WishListController {
 			categoryEntitys.add(t.getId());
 		});
 
-//		Page<LikeStore> likeStores = wishListService.findByCategory(principalDetails.getUser().getId(),
-//				category, pageable);
-
 		List<LikeStore> myLikeStoresList = new ArrayList<>();
 		List<LikeStore> likeStoresTotal = wishListService.findByUserId(principalDetails.getUser().getId());
 		likeStoresTotal.forEach(t -> {

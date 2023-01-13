@@ -240,9 +240,9 @@
       $('[data-toggle="tooltip"]').tooltip()
    });
 
-   $(this).ready(function() {
-      timeCheck();
-   })
+	$(this).ready(function() {
+		timeCheck();
+	});
 </script>
 
 <script type="text/javascript" src="/js/store.js"></script>
