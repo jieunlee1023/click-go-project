@@ -183,7 +183,7 @@ public class ReservationApiController {
 		seats.forEach(seatNumber -> {
 			
 			Reservation reservationEntity = new Reservation();
-			reservationEntity.setApproveStatus(ApproveStatus.WATING);
+			reservationEntity.setApproveStatus(ApproveStatus.WAITING);
 			reservationEntity.setPaymentType(PaymentType.KAKAO);
 			reservationEntity.setStore(storeEntity);
 			reservationEntity.setUser(principalDetails.getUser());

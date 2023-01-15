@@ -6,7 +6,7 @@
 	<div id="view-more-title">
 		<div>📝 리뷰 내역</div>
 	</div>
-		<span style="color: black"> 리뷰를 확인해보세요!</span>
+	<span style="color: black"> 리뷰를 확인해보세요!</span>
 	<hr>
 	<br>
 
@@ -48,8 +48,10 @@
 								<c:forEach var="review" items="${reviewList.content}">
 									<tr style="text-align: center;">
 										<td><p>${review.id }</p></td>
-										<td><p>
-												<a href="/review/detail/${review.id}" style="text-decoration: none; color: black;"> ${review.content }</a>
+										<td><p style="overflow: hidden; text-overflow: ellipsis;">
+												<a href="/review/detail/${review.id}"
+													style="text-decoration: none; color: black;">
+													${review.content }</a>
 											</p></td>
 										<td><p>${review.store.storeName }</p></td>
 										<td><p>
@@ -107,8 +109,10 @@
 							<c:forEach var="review" items="${reviewList.content}">
 								<tr style="text-align: center;">
 									<td><p>${review.id }</p></td>
-									<td><p>
-											<a href="/review/detail/${review.id}"  style="text-decoration: none; color: black;"> ${review.content }</a>
+									<td><p  style="overflow: hidden; text-overflow: ellipsis;">
+											<a href="/review/detail/${review.id}"
+												style="text-decoration: none; color: black;">
+												${review.content }</a>
 										</p></td>
 									<td><p>${review.store.storeName }</p></td>
 									<td><p>
@@ -123,7 +127,8 @@
 											</c:choose>
 										</p></td>
 									<td><p>${review.user.username }</p></td>
-									<td><fmt:formatDate value="${review.createDate }" pattern="yyyy-MM-dd hh시 mm분" /></td>
+									<td><fmt:formatDate value="${review.createDate }"
+											pattern="yyyy-MM-dd hh시 mm분" /></td>
 
 								</tr>
 							</c:forEach>
@@ -135,6 +140,8 @@
 	</c:otherwise>
 </c:choose>
 <br>
+<br>
+<br><br>
 <br>
 <br>
 <%@ include file="../../../layout/footer.jsp"%>

@@ -68,7 +68,7 @@ public class StoreFranchiseController {
 	// s w
 	@GetMapping({ "/store-franchise-list", "/store-franchise-list/search" })
 	public String franchiseList(@RequestParam(required = false) String q, Model model,
-			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 9, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		String searchFtitle = q == null ? "" : q;
 
 		Page<Store> storeList = storeService.searchStoreList(searchFtitle, pageable);

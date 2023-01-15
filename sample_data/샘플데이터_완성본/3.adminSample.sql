@@ -1,6 +1,4 @@
 
-
-
 insert into admin(blogLink, myInfo, nickName, profileUrl, userId)
 values('https://blog.naver.com/ji_euni' , '안녕하세요! 개발자 지은입니다 : ) 편하게 연락주세요!' , '지은' , 'adminImg1.png' , 1);
 

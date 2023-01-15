@@ -143,7 +143,7 @@ public class ReservationController {
 							reservationEntity.setPrice((storeEntity.getPrice() * minute));
 						}
 					}
-					reservationEntity.setApproveStatus(ApproveStatus.WATING);
+					reservationEntity.setApproveStatus(ApproveStatus.WAITING);
 					reservationEntity.setReservationSeat(seatNumber[i]);
 					reservationEntity.setUser(principalDetails.getUser());
 					reservationEntity.setStore(storeEntity);
