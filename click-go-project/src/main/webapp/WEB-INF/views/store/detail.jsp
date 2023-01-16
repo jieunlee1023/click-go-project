@@ -70,7 +70,7 @@
 									data-like-btn='heartBtn'>♥</button>
 							</c:otherwise>
 						</c:choose>
-
+						<a class="nav-link" href="#">메시지 보내기</a>
 						<input type="hidden" value="${store.id }" id="storeId">
 						<c:if test="${store.user.id eq principal.user.id}">
 							<div class="store-detail-update">
