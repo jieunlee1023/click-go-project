@@ -61,7 +61,7 @@ public class ReportService {
 		report.setStore(store);
 		report.setUser(user);
 		report.setReportType(ReportType.USER);
-		report.setApproveStatus(ApproveStatus.WATING);
+		report.setApproveStatus(ApproveStatus.WAITING);
 		reportRepository.save(report);
 	}
 
@@ -69,7 +69,7 @@ public class ReportService {
 		report.setStore(store);
 		report.setUser(user);
 		report.setReportType(ReportType.STORE);
-		report.setApproveStatus(ApproveStatus.WATING);
+		report.setApproveStatus(ApproveStatus.WAITING);
 		reportRepository.save(report);
 	}
 }

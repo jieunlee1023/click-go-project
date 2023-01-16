@@ -1,10 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
+<br>
+<br>
+<br>
+<div style="background-color: rgb(0, 0, 0, 0.05);">
+	<div class="container">
+	<br><br>
+	<div id="view-more-title" class=" d-flex justify-content-center">
+		<div>Find Id & Password</div>
+	</div>
+	<div class=" d-flex justify-content-center">
+	</div>
+</div>
+
+
 <div id="info-search--form">
 <div class="container d-flex justify-content-center" id="info-search--main">
 	<div class="container" id="info-search">
-		<div id="search--text">[ 아이디 찾기 ]</div>
+		<div id="search--text">🔎 아이디 찾기 </div>
 		<br>
 		<div class="form-group ">
 			<input type="text" class="form-control " id="email"
@@ -17,7 +31,7 @@
 		<br><br>
 		<hr>
 		<br><br>
-		<div id="search--text">[ 비밀번호 찾기 ]</div>
+		<div id="search--text">🔎 비밀번호 찾기 </div>
 			<br>
 		<div class="form-group">
 		<input type="text"
@@ -35,6 +49,6 @@
 	</div>
 </div>
 </div>
-
+</div>
 <script type="text/javascript" src="/js/user.js"></script>
 <%@ include file="../layout/shortFooter.jsp"%>

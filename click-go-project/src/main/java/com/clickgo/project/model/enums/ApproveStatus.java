@@ -1,5 +1,5 @@
 package com.clickgo.project.model.enums;
 
 public enum ApproveStatus {
-	WATING, APPROVED, COMPLETED, REJECT
+	WAITING, APPROVED, COMPLETED, REJECT
 }

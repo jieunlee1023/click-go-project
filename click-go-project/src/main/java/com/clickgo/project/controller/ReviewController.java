@@ -23,6 +23,7 @@ import com.clickgo.project.entity.ReviewReply;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
+import com.clickgo.project.repository.IReviewReplyRepository;
 import com.clickgo.project.service.ReviewReplyService;
 import com.clickgo.project.service.ReviewService;
 import com.clickgo.project.service.StoreFranchiseService;
@@ -41,12 +42,13 @@ public class ReviewController {
 	@Autowired
 	private ReviewReplyService reviewReplyService;
 
+
 	@Autowired
 	private StoreService storeService;
 
 	@GetMapping({ "", "/" })
 	public String reviewList(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails,
-			@PageableDefault(size = 100, sort = "id", direction = Direction.DESC) Pageable pageable) {
+			@PageableDefault(size = 10, sort = "id", direction = Direction.DESC) Pageable pageable) {
 		User user = principalDetails.getUser();
 		Page<Review> reviewList = reviewService.findByuserId(user, pageable);
 		if (reviewList != null) {
@@ -66,6 +68,8 @@ public class ReviewController {
 			model.addAttribute("endPage", endPage);
 		}
 		franchiseMassageCount(model);
+
+
 		return "/user/my/review/list";
 	}
 

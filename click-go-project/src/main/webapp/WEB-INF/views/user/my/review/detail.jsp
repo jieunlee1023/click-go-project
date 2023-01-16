@@ -75,4 +75,5 @@
 	</c:choose>
 </div>
 <script type="text/javascript" src="/js/review.js"></script>
+<br><br><br><br><br>
 <%@ include file="../../../layout/footer.jsp"%>
