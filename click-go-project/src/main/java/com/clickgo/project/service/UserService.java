@@ -161,11 +161,8 @@ public class UserService {
 		int idx = 0;
 		for (int i = 0; i < 10; i++) {
 			idx = (int) (charSet.length * Math.random());
-			System.out.println(idx);
 			str += charSet[idx];
 		}
-		System.out.println("!!");
-		System.out.println(str);
 		return str;
 	}
 
