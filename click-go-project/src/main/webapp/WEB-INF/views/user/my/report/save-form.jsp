@@ -35,7 +35,7 @@
 			<div class="form-group-board">
 				<label for="username">신고할 대상</label> 
 				<input type="text" name="username"
-					id="username" class="form-control" value="${store.user.username}"
+					id="username" class="form-control" value="${user.username}"
 					readonly="readonly">
 			</div>
 			<div class="form-group-board">

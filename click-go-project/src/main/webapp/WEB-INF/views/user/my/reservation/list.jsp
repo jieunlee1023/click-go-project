@@ -43,7 +43,7 @@
 													style="margin-bottom: 5px; border: none; height: 25px; background-color: blue; color: white;">
 											</div>
 										</c:when>
-										<c:when test="${reservation.approveStatus eq  'WATING'}">
+										<c:when test="${reservation.approveStatus eq  'WAITING'}">
 											<input type="submit" id="status-${reservation.id}" value="${reservation.approveStatus}" readonly
 												style="margin-bottom: 5px; border: none; height: 25px; background-color: orange; color: white;">
 										</c:when>
@@ -127,7 +127,7 @@
 													style="margin-bottom: 5px; border: none; height: 25px; background-color: blue; color: white;">
 											</div>
 										</c:when>
-										<c:when test="${reservation.approveStatus eq  'WATING'}">
+										<c:when test="${reservation.approveStatus eq  'WAITING'}">
 											<button class="btn--reservaion-a" type="button" id="btn--approve-${reservation.id}">승인</button>
 											<button class="btn--reservaion-r" type="button" id="btn--reject-${reservation.id }" >거절</button>
 

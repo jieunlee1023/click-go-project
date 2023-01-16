@@ -1,22 +1,6 @@
 select * from reservation;
 
 
-/*user1에대한 예약 정보!*/
-
-
-insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('WATING', now(), '2023-01-01', '2023-01-01', '06:30', '07:30', 'KAKAO', 3000, 40,  7,  56);
-
-insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('REJECT', now(), '2023-01-01', '2023-01-01', '05:30', '07:30', 'KAKAO', 6000, 40,  1,  49);
-
-insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
-values('APPROVED', now(), '2023-01-01', '2023-01-01', '05:30', '08:30', 'KAKAO', 9000, 40,  13,  63);
-
-
-
-
-
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, paymentType, price, reservationSeat, storeId, userId)
 values('REJECT', now(), '2023-01-01', '2023-01-01', '05:30', '07:30', 'KAKAO', 6000, 40,  1,  49);
 

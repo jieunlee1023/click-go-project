@@ -23,5 +23,5 @@ values(0, '주문은 어떻게 이루어지나요 ?', now(), '주문은 어떻�
 
 /*1:1 문의 답변*/
 
-insert into onetooneask(content, createDate, oneToOneAskId, userId)
+insert into onetooneanswer(content, createDate, oneToOneAskId, userId)
 values('안녕하세요 결제는 카카오페이를 이용하시면 됩니다 :)!', now(), 1, 1);

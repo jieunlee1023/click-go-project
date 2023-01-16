@@ -43,7 +43,7 @@ public class ReservationScheduler {
 		MyDate myDate = new MyDate();
 		List<Reservation> reservations = reservationService.findAll();
 		reservations.forEach(reservation -> {
-			if (reservation.getApproveStatus() == ApproveStatus.WATING) {
+			if (reservation.getApproveStatus() == ApproveStatus.WAITING) { 
 				StringTokenizer dateTokenizer = new StringTokenizer(reservation.getReservationDate(), "-");
 				String year = dateTokenizer.nextToken();
 				String month = dateTokenizer.nextToken();

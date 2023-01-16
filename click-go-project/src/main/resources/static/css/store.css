@@ -185,3 +185,8 @@
 .main--card--text span {
 	font-size: 12px;
 }
+
+.store-main-top{
+	width: 100%; 
+	height: 400px; 
+}

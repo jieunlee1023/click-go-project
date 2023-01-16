@@ -43,7 +43,7 @@
 				<br>
 				<div class="form-control d-flex justify-content-center color-"
 					id="joinbutton">
-					<button type="button" id="btn--update" class="d-flex">회원
+					<button type="button" id="btn--update" class="d-flex" style="background-color: transparent;">회원
 						정보 수정하기</button>
 				</div>
 			</c:when>
