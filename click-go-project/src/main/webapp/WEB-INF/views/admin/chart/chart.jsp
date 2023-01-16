@@ -77,6 +77,21 @@
 				</ul></li>
 		</ul>
 	</div>
+	<div class="nav--list">
+		<ul>
+			<li id="more--view"><a class="nav-link" href="#">가입현황</a>
+				<ul id="nave--moreview--item">
+					<li><a class="dropdown-item"
+						href="#">Host 월 통계</a></li>
+					<li><a class="dropdown-item"
+						href="#">Host 연 통계</a></li>
+					<li><a class="dropdown-item"
+						href="#">Guest 월 통계</a></li>
+					<li><a class="dropdown-item"
+						href="#">Guest 연 통계</a></li>
+				</ul></li>
+		</ul>
+	</div>
 </div>
 <div class="d-flex justify-content-center">
 <div id="chart_div" style="width: 90%; height: 800px;"></div>

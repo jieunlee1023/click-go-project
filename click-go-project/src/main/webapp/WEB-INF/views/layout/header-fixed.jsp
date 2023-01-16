@@ -73,6 +73,7 @@
 					<div class="nav--list">
 						<ul id="nav--item">
 							<li><a class="nav-link" href="/">홈</a></li>
+													<li><a class="nav-link" href="#">메시지</a></li>
 							<li><a class="nav-link" href="/store/main">상점</a></li>
 							<li id="more--view"><a class="nav-link" href="#">더보기</a>
 								<ul id="nave--moreview--item">
@@ -92,6 +93,7 @@
 					<div class="nav--list">
 						<ul id="nav--item">
 							<li><a class="nav-link" href="/">홈</a></li>
+													<li><a class="nav-link" href="#">메시지</a></li>
 							<li><a class="nav-link" href="/store/main">상점</a></li>
 							<li id="more--view"><a class="nav-link" href="#">더보기</a>
 								<ul id="nave--moreview--item">
@@ -111,6 +113,7 @@
 					<div class="nav--list">
 						<ul id="nav--item">
 							<li><a class="nav-link" href="/">홈</a></li>
+													<li><a class="nav-link" href="#">메시지</a></li>
 							<li><a class="nav-link" href="/store/main">상점</a></li>
 							<li id="more--view"><a class="nav-link" href="#">가맹점</a>
 								<ul id="nave--moreview--item">
