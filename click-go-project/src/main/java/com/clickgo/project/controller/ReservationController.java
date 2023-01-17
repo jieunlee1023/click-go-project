@@ -126,19 +126,19 @@ public class ReservationController {
 						if (startMinute > endMinute) {
 							if (startMinute - endMinute == 10) {
 								int minute = (minuteToHour - 10);
-								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+								reservationEntity.setPrice((storeEntity.getPrice() * minute)/10);
 							} else if (startMinute - endMinute == 20) {
 								int minute = (minuteToHour - 20);
-								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+								reservationEntity.setPrice((storeEntity.getPrice() * minute)/10);
 							} else if (startMinute - endMinute == 30) {
 								int minute = (minuteToHour - 30);
-								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+								reservationEntity.setPrice((storeEntity.getPrice() * minute)/10);
 							} else if (startMinute - endMinute == 40) {
 								int minute = (minuteToHour - 40);
-								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+								reservationEntity.setPrice((storeEntity.getPrice() * minute)/10);
 							} else if (startMinute - endMinute == 50) {
 								int minute = (minuteToHour - 50);
-								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+								reservationEntity.setPrice((storeEntity.getPrice() * minute)/10);
 							}
 						} else if (startMinute == endMinute) {
 							int minute = minuteToHour;
