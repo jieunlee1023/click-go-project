@@ -5,8 +5,23 @@
 
 <div class="container" id="reservation">
 
-	<div id="view-more-title">
-		<div>💳 예약 확인</div>
+	<div>
+		<div id="view-more-title">
+			<div>💳 예약 확인</div>
+		</div>
+		<div class="d-flex-column">
+		<c:if test="${user.point ne 0}">
+			<div class="d-flex justify-content-end">
+				<div class="d-flex justify-content-between">
+					<p>잔여 포인트 : ${user.point}P 사용</p>
+						<input class="d-flex form-check-input pr-3" type="checkbox" id="isUsePoint">
+				</div>
+			</div>
+		</c:if>
+				<div class="d-flex justify-content-end">
+					리뷰를 작성하고 포인트로 결제하세요 !
+				</div>
+		</div>
 	</div>
 	<hr>
 	<br>
@@ -45,7 +60,9 @@
 				<td><p>
 						<span id="price">${(reservationEntity.price) * reservations.size()}</span>원
 					</p></td>
-				<td><button style="border: none; background-color: transparent;" id="btn--kakaopay" value="카카오페이">
+				<td><button
+						style="border: none; background-color: transparent;"
+						id="btn--kakaopay" value="카카오페이">
 						<img src="/image/kakaopay.png" width="80px;">
 					</button></td>
 		</tbody>
@@ -55,7 +72,6 @@
 		type="hidden" id="reservationCount" value="${reservations.size()}">
 
 </div>
-
 <br>
 <br>
 <br>

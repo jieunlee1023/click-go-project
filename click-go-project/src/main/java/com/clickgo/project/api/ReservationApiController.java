@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
+import javax.persistence.criteria.CriteriaBuilder.In;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -40,11 +41,13 @@ import com.clickgo.project.service.AmountService;
 import com.clickgo.project.service.KakaoPaymentHistoryService;
 import com.clickgo.project.service.ReservationService;
 import com.clickgo.project.service.StoreService;
+import com.clickgo.project.service.UserService;
 
 @RestController
 @RequestMapping("/api/reservation")
 public class ReservationApiController {
 
+	private int price;
 	private String tId;
 	private String partnerOrderId;
 	private String partnerUserId;
@@ -61,6 +64,9 @@ public class ReservationApiController {
 
 	@Autowired
 	private AmountService amountService;
+
+	@Autowired
+	private UserService userService;
 
 	@PostMapping("/time-check/{storeId}")
 	public ResponseDto<?> timeCheck(@PathVariable int storeId, @RequestBody ReservationDateDto timeDto) {
@@ -118,7 +124,7 @@ public class ReservationApiController {
 								// 찾는 날 < 예약된 날
 							} else if (startDay < findDay) {
 								seats.add(findSeat);
-								
+
 							}
 							// 찾는 달 < 예약된 달
 						} else if (startMonth < findMonth) {
@@ -135,9 +141,9 @@ public class ReservationApiController {
 		return new ResponseDto<>(false, "잘못된 선택입니다.");
 	}
 
-	@PostMapping("/kakaopay/ready/{storeId}/{seats}")
+	@PostMapping("/kakaopay/ready/{storeId}/{seats}/{isUsePoint}")
 	public ResponseDto<?> kakaopayReady(@PathVariable List<Integer> seats, @PathVariable int storeId,
-			@RequestParam Map<String, String> reservationDate, @RequestBody Reservation reservation,
+			@PathVariable boolean isUsePoint, @RequestBody Reservation reservation,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		Store storeEntity = storeService.findById(storeId);
 		Object objOrderId = reservation.getId();
@@ -179,9 +185,16 @@ public class ReservationApiController {
 		KakaoPaymentDto kakaoPaymentDto = responseKakao.getBody();
 
 		tId = kakaoPaymentDto.tid;
-		int price = reservation.getPrice();
+		if (isUsePoint) {
+			Map<String, Integer> priceAndPoint = usePoint(reservation.getPrice(),
+					principalDetails.getUser().getPoint());
+			price = priceAndPoint.get("price");
+			int point = priceAndPoint.get("point");
+			userService.deductionPoint(principalDetails.getUser(), point);
+		} else {
+			price = reservation.getPrice();
+		}
 		seats.forEach(seatNumber -> {
-			
 			Reservation reservationEntity = new Reservation();
 			reservationEntity.setApproveStatus(ApproveStatus.WAITING);
 			reservationEntity.setPaymentType(PaymentType.KAKAO);
@@ -280,5 +293,17 @@ public class ReservationApiController {
 		} catch (Exception e) {
 			return new ResponseDto<>(false, "거절 실패 !");
 		}
+	}
+
+	private Map<String, Integer> usePoint(int price, int point) {
+		Map<String, Integer> map = new HashMap<>();
+		if (price >= point) {
+			map.put("price", (price - point));
+			map.put("point", 0);
+		} else {
+			map.put("price", 0);
+			map.put("point", (point - price));
+		}
+		return map;
 	}
 }

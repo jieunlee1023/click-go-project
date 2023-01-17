@@ -286,7 +286,6 @@
 			description : `최고의 인기를 끄는 ${store.storeName}`,
 			imageUrl : image,
 			link : {
-				// [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
 				mobileWebUrl : 'http://localhost:7777',
 				webUrl : 'http://localhost:7777',
 			},
@@ -299,8 +298,8 @@
 		buttons : [ {
 			title : '웹으로 보기',
 			link : {
-				mobileWebUrl : 'http://localhost:7777',
-				webUrl : 'http://localhost:7777',
+				mobileWebUrl : `http://localhost:7777/store/detail/${store.id}`,
+				webUrl : `http://localhost:7777/store/detail/${store.id}`,
 			},
 		}, ],
 	});

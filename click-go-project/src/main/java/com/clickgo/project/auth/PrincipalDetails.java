@@ -42,11 +42,10 @@ public class PrincipalDetails implements UserDetails {
 	@Override
 	public String getPassword() {
 		try {
-		return user.getPassword();
-		} catch (RememberMeAuthenticationException e) {
-			System.err.println("정지당한 유저의 접속 시도");
+			return user.getPassword();
+		} catch (Exception e) {
+			throw new RememberMeAuthenticationException("끄지라");
 		}
-		return null;
 	}
 
 	@Override

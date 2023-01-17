@@ -258,4 +258,13 @@ public class UserService {
 		});
 		return true;
 	}
+
+	@Transactional
+	public void deductionPoint(User user, int point) {
+		User userEntity = userRepository.findById(user.getId()).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다.");
+		});
+
+		userEntity.setPoint(point);
+	}
 }

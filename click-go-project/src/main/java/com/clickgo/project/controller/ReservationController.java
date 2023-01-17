@@ -154,6 +154,7 @@ public class ReservationController {
 					reservations.add(reservationEntity);
 					model.addAttribute("reservationEntity", reservationEntity);
 				}
+				model.addAttribute("user", principalDetails.getUser());
 				model.addAttribute("reservations", reservations);
 				model.addAttribute("store", storeEntity);
 				return "/store/payment";
