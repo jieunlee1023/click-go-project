@@ -142,8 +142,9 @@ public class ReservationApiController {
 
 	@PostMapping("/kakaopay/ready/{storeId}/{seats}/{isUsePoint}")
 	public ResponseDto<?> kakaopayReady(@PathVariable List<Integer> seats, @PathVariable int storeId,
-			@PathVariable boolean isUsePoint, @RequestBody Reservation reservation,
+			@PathVariable(required = false) boolean isUsePoint, @RequestBody Reservation reservation,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		System.out.println(isUsePoint);
 		User userEntity = userService.findById(principalDetails.getUser().getId());
 		Store storeEntity = storeService.findById(storeId);
 		Object objOrderId = reservation.getId();
@@ -165,7 +166,20 @@ public class ReservationApiController {
 
 		httpHeaders.add("Authorization", "KakaoAK 1c9e66dbc0a2e55b9b2e3016e90a8b17");
 		httpHeaders.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		if (isUsePoint) {
+			Map<String, Integer> priceAndPoint = usePoint(reservation.getPrice(),
+					userEntity.getPoint());
+			price = priceAndPoint.get("price");
+			totalPrice = "100";
+			int point = priceAndPoint.get("point");
+			userService.deductionPoint(userEntity, point);
+		} else {
+			price = reservation.getPrice();
+		}
 
+		KakaoPaymentDto kakaoPaymentDto = null;
+		if (Integer.parseInt(totalPrice) > 0) {
+			
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 		params.add("cid", "TC0ONETIME");
 		params.add("partner_order_id", partnerOrderId);
@@ -182,17 +196,29 @@ public class ReservationApiController {
 
 		ResponseEntity<KakaoPaymentDto> responseKakao = restTemplate.exchange("https://kapi.kakao.com/v1/payment/ready",
 				HttpMethod.POST, requestKakao, KakaoPaymentDto.class);
-		KakaoPaymentDto kakaoPaymentDto = responseKakao.getBody();
+		kakaoPaymentDto = responseKakao.getBody();
 
 		tId = kakaoPaymentDto.tid;
-		if (isUsePoint) {
-			Map<String, Integer> priceAndPoint = usePoint(reservation.getPrice(),
-					userEntity.getPoint());
-			price = priceAndPoint.get("price");
-			int point = priceAndPoint.get("point");
-			userService.deductionPoint(userEntity, point);
 		} else {
-			price = reservation.getPrice();
+			MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+			params.add("cid", "TC0ONETIME");
+			params.add("partner_order_id", partnerOrderId);
+			params.add("partner_user_id", partnerUserId);
+			params.add("item_name", itemName);
+			params.add("quantity", quantity);
+			params.add("total_amount", totalPrice);
+			params.add("tax_free_amount", "50");
+			params.add("approval_url", "http://localhost:7777/api/reservation/kakaopay/approve");
+			params.add("cancel_url", "http://localhost:7777/reservation/cancel/" + seats.size());
+			params.add("fail_url", "http://localhost:7777/reservation/cancel/" + seats.size());
+			
+			HttpEntity<MultiValueMap<String, String>> requestKakao = new HttpEntity<>(params, httpHeaders);
+			
+			ResponseEntity<KakaoPaymentDto> responseKakao = restTemplate.exchange("https://kapi.kakao.com/v1/payment/ready",
+					HttpMethod.POST, requestKakao, KakaoPaymentDto.class);
+			kakaoPaymentDto = responseKakao.getBody();
+			
+			tId = kakaoPaymentDto.tid;
 		}
 		seats.forEach(seatNumber -> {
 			Reservation reservationEntity = new Reservation();
