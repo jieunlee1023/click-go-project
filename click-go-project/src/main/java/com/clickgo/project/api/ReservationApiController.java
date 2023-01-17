@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
-import javax.persistence.criteria.CriteriaBuilder.In;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
@@ -21,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -34,6 +32,7 @@ import com.clickgo.project.dto.res.kakaoPay.KakaoPaymentHistory;
 import com.clickgo.project.dto.res.kakaoPay.reject.KakaoPaymentRejectDto;
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.Store;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.ApproveStatus;
 import com.clickgo.project.model.enums.PaymentType;
 import com.clickgo.project.model.mydate.MyDate;
@@ -145,6 +144,7 @@ public class ReservationApiController {
 	public ResponseDto<?> kakaopayReady(@PathVariable List<Integer> seats, @PathVariable int storeId,
 			@PathVariable boolean isUsePoint, @RequestBody Reservation reservation,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		User userEntity = userService.findById(principalDetails.getUser().getId());
 		Store storeEntity = storeService.findById(storeId);
 		Object objOrderId = reservation.getId();
 		partnerOrderId = objOrderId.toString();
@@ -187,10 +187,10 @@ public class ReservationApiController {
 		tId = kakaoPaymentDto.tid;
 		if (isUsePoint) {
 			Map<String, Integer> priceAndPoint = usePoint(reservation.getPrice(),
-					principalDetails.getUser().getPoint());
+					userEntity.getPoint());
 			price = priceAndPoint.get("price");
 			int point = priceAndPoint.get("point");
-			userService.deductionPoint(principalDetails.getUser(), point);
+			userService.deductionPoint(userEntity, point);
 		} else {
 			price = reservation.getPrice();
 		}
@@ -199,7 +199,7 @@ public class ReservationApiController {
 			reservationEntity.setApproveStatus(ApproveStatus.WAITING);
 			reservationEntity.setPaymentType(PaymentType.KAKAO);
 			reservationEntity.setStore(storeEntity);
-			reservationEntity.setUser(principalDetails.getUser());
+			reservationEntity.setUser(userEntity);
 			reservationEntity.setPrice(price / seats.size());
 			reservationEntity.setReservationSeat(seatNumber);
 			reservationEntity.setReservationDate(reservation.getReservationDate());
