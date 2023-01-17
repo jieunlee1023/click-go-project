@@ -12,8 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Caution;
 import com.clickgo.project.entity.StoreFranchise;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.service.CautionService;
 import com.clickgo.project.service.StoreFranchiseService;
+import com.clickgo.project.service.UserService;
 
 @Controller
 @RequestMapping("/mypage")
@@ -25,9 +27,14 @@ public class MyPageController {
 	@Autowired
 	private CautionService cautionService;
 
+	@Autowired
+	private UserService userService;
+	
 	@GetMapping({ "", "/" })
 	public String myPage(Model model, @AuthenticationPrincipal PrincipalDetails principalDetails) {
+		User userEntity = userService.findById(principalDetails.getUser().getId());
 		Caution cautionEntity = cautionService.findLastIdByUserId(principalDetails.getUser().getId());
+		model.addAttribute("user", userEntity);
 		model.addAttribute("caution", cautionEntity);
 		franchiseMassageCount(model);
 		return "/user/my/mypage";
