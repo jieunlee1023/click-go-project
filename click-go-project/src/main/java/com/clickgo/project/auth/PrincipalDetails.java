@@ -5,6 +5,7 @@ import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationException;
 
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.RoleType;
@@ -42,7 +43,7 @@ public class PrincipalDetails implements UserDetails {
 	public String getPassword() {
 		try {
 		return user.getPassword();
-		} catch (Exception e) {
+		} catch (RememberMeAuthenticationException e) {
 			System.err.println("정지당한 유저의 접속 시도");
 		}
 		return null;

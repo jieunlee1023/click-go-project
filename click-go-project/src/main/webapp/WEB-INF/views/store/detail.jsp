@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
-<br>
 
+<br>
 <div class="container" id="store-update">
 	<c:if test="${store.user.id eq principal.user.id}">
 		<div id="view-more-title">
@@ -70,8 +70,12 @@
 									data-like-btn='heartBtn'>♥</button>
 							</c:otherwise>
 						</c:choose>
-						<a class="nav-link" href="#">메시지 보내기</a>
-						<input type="hidden" value="${store.id }" id="storeId">
+						<a class="ml-3" id="kakaotalk-sharing-btn" href="javascript:;">
+							<img
+							src="https://developers.kakao.com/assets/img/about/logos/kakaotalksharing/kakaotalk_sharing_btn_medium.png"
+							alt="카카오톡 공유 보내기 버튼" />
+						</a> <a class="nav-link" href="#">메시지 보내기</a> <input type="hidden"
+							value="${store.id }" id="storeId">
 						<c:if test="${store.user.id eq principal.user.id}">
 							<div class="store-detail-update">
 								<a href="/care-store/update/${store.id}">수정하기</a>
@@ -228,49 +232,79 @@
 <br>
 <script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript">
-   $('document').ready(function() {
-      $('#startTime').timepicker({
-         timeFormat : 'HH:mm',
-         interval : 10,
-         startTime : '${nowTime}',
-         dynamic : false,
-         dropdown : true,
-         scrollbar : true,
+	$('document').ready(function() {
+		$('#startTime').timepicker({
+			timeFormat : 'HH:mm',
+			interval : 10,
+			startTime : '${nowTime}',
+			dynamic : false,
+			dropdown : true,
+			scrollbar : true,
 
-         change : function(time) {
-            var element = $(this), text;
-            var timepicker = element.timepicker();
-            text = timepicker.format(time);
-            timeCheck();
-         }
-      });
-      $('#endTime').timepicker({
-         timeFormat : 'HH:mm',
-         interval : 10,
-         startTime : '${nowTime}',
-         dynamic : false,
-         dropdown : true,
-         scrollbar : true,
+			change : function(time) {
+				var element = $(this), text;
+				var timepicker = element.timepicker();
+				text = timepicker.format(time);
+				timeCheck();
+			}
+		});
+		$('#endTime').timepicker({
+			timeFormat : 'HH:mm',
+			interval : 10,
+			startTime : '${nowTime}',
+			dynamic : false,
+			dropdown : true,
+			scrollbar : true,
 
-         change : function(time) {
-            var element = $(this), text;
-            var timepicker = element.timepicker();
-            text = timepicker.format(time);
-            timeCheck();
-         }
-      });
-   });
+			change : function(time) {
+				var element = $(this), text;
+				var timepicker = element.timepicker();
+				text = timepicker.format(time);
+				timeCheck();
+			}
+		});
+	});
 
-   $(function() {
-      $('[data-toggle="tooltip"]').tooltip()
-   });
+	$(function() {
+		$('[data-toggle="tooltip"]').tooltip()
+	});
 
 	$(this).ready(function() {
 		timeCheck();
-		reservationIndex.addMap('${store.storeAddress}' , '${store.storeName}');
+		reservationIndex.addMap('${store.storeAddress}', '${store.storeName}');
 	})
 </script>
-
+<script>
+	let image = $("#store-detail-img").attr("src");
+	Kakao.Share.createDefaultButton({
+		container : '#kakaotalk-sharing-btn',
+		objectType : 'location',
+		address : `${store.storeAddress}`,
+		addressTitle : `${store.storeName}`,
+		content : {
+			title : `Click Go - ${store.storeName}`,
+			description : `최고의 인기를 끄는 ${store.storeName}`,
+			imageUrl : image,
+			link : {
+				// [내 애플리케이션] > [플랫폼] 에서 등록한 사이트 도메인과 일치해야 함
+				mobileWebUrl : 'http://localhost:7777',
+				webUrl : 'http://localhost:7777',
+			},
+		},
+		social : {
+			likeCount : 286,
+			commentCount : 45,
+			sharedCount : 845,
+		},
+		buttons : [ {
+			title : '웹으로 보기',
+			link : {
+				mobileWebUrl : 'http://localhost:7777',
+				webUrl : 'http://localhost:7777',
+			},
+		}, ],
+	});
+</script>
 <script type="text/javascript" src="/js/reservation.js"></script>
 <script type="text/javascript" src="/js/wish-list.js"></script>
 <%@ include file="../layout/footer.jsp"%>

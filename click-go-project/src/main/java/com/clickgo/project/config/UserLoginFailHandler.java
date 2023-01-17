@@ -3,7 +3,6 @@ package com.clickgo.project.config;
 import java.io.IOException;
 import java.net.URLEncoder;
 
-import javax.security.auth.login.CredentialExpiredException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,8 +12,8 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
+import org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationException;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -34,6 +33,8 @@ public class UserLoginFailHandler extends SimpleUrlAuthenticationFailureHandler 
 			errorMessage = "인증 요청이 거부되었습니다. 관리자에게 문의하세요.";
 		} else if (exception instanceof DisabledException) {
 			errorMessage = "휴먼 계정입니다. 관리자에게 문의해주세요";
+		} else if (exception instanceof RememberMeAuthenticationException) {
+			errorMessage = "정지 당한 계정입니다. 관리자에게 문의해주세요";
 		} else {
 			errorMessage = "알 수 없는 이유로 로그인에 실패하였습니다 관리자에게 문의하세요.";
 		}
