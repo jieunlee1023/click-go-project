@@ -27,6 +27,12 @@
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.10/dist/sweetalert2.min.css">
 
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.1.0/kakao.min.js"
+	integrity="sha384-dpu02ieKC6NUeKFoGMOKz6102CLEWi9+5RQjWSV0ikYSFFd8M3Wp2reIcquJOemx"
+	crossorigin="anonymous"></script>
+<script>
+	Kakao.init('9e1456a9ac9148a20acaf98282066ab1'); // 사용하려는 앱의 JavaScript 키 입력
+</script>
 <script type="text/javascript"
 	src="https://www.gstatic.com/charts/loader.js"></script>
 <script
@@ -104,6 +110,10 @@
 					<div class="nav--list">
 						<ul id="nav--item">
 							<li><a class="nav-link" href="/">홈</a></li>
+<<<<<<< HEAD
+=======
+							<li><a class="nav-link" href="#">메시지</a></li>
+>>>>>>> developer
 							<li><a class="nav-link" href="/store/main">상점</a></li>
 							<li id="more--view"><a class="nav-link" href="#">더보기</a>
 								<ul id="nave--moreview--item">
@@ -126,6 +136,10 @@
 					<div class="nav--list">
 						<ul id="nav--item">
 							<li><a class="nav-link" href="/">홈</a></li>
+<<<<<<< HEAD
+=======
+							<li><a class="nav-link" href="#">메시지</a></li>
+>>>>>>> developer
 							<li><a class="nav-link" href="/store/main">상점</a></li>
 							<li><a class="nav-link"
 								href="/storeFranchise/store-franchise-list">가맹점 목록</a></li>

@@ -26,6 +26,9 @@ public class ReservationService {
 	@Autowired
 	private IReservationRepository ireservationRepository;
 
+	@Autowired
+	private UserService userService;
+
 	@Transactional
 	public Page<Reservation> searchBoard(User user, Pageable pageable) {
 		if (user.getRole().equals(RoleType.GEUST)) {
@@ -49,7 +52,7 @@ public class ReservationService {
 	public List<Reservation> findByStoreId(int storeId) {
 		return ireservationRepository.findByStoreId(storeId);
 	}
-	
+
 	public List<Reservation> findSeatByStoreId(int storeId) {
 		return ireservationRepository.findSeatByStoreId(storeId);
 	}
@@ -158,7 +161,7 @@ public class ReservationService {
 	public Page<Reservation> findAllPage(Pageable pageable) {
 		return ireservationRepository.findAll(pageable);
 	}
-	
+
 	@Transactional
 	public List<Reservation> findAll() {
 		return ireservationRepository.findAll();
@@ -200,5 +203,4 @@ public class ReservationService {
 //		return ireservationRepository.findByStoreNameContaining(q, pageable);
 //	}
 
-	
 }
