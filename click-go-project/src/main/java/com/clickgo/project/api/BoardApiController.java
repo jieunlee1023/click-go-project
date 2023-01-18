@@ -21,7 +21,7 @@ public class BoardApiController {
 
 	@Autowired
 	private BoardService boardService;
-
+ 
 
 	@PutMapping("/api/board/{boardId}")
 	public ResponseDto<?> boardUpdate(@PathVariable int boardId, @RequestBody CsBoard csBoard) {

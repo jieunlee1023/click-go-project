@@ -21,9 +21,11 @@ public class Error implements ErrorController {
 			if (statusCode == HttpStatus.NOT_FOUND.value()) {
 				return ERROR_TEMPLATES_PATH + "/error";
 			}
-
 			if (statusCode == HttpStatus.FORBIDDEN.value()) {
-				return ERROR_TEMPLATES_PATH + "500";
+				return ERROR_TEMPLATES_PATH + "/error";
+			}
+			if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+				return ERROR_TEMPLATES_PATH + "/error";
 			}
 		}
 		return "/error";

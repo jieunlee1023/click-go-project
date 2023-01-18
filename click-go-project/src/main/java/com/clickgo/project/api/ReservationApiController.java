@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,6 +32,7 @@ import com.clickgo.project.dto.res.kakaoPay.KakaoPaymentHistory;
 import com.clickgo.project.dto.res.kakaoPay.reject.KakaoPaymentRejectDto;
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.Store;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.ApproveStatus;
 import com.clickgo.project.model.enums.PaymentType;
 import com.clickgo.project.model.mydate.MyDate;
@@ -40,11 +40,13 @@ import com.clickgo.project.service.AmountService;
 import com.clickgo.project.service.KakaoPaymentHistoryService;
 import com.clickgo.project.service.ReservationService;
 import com.clickgo.project.service.StoreService;
+import com.clickgo.project.service.UserService;
 
 @RestController
 @RequestMapping("/api/reservation")
 public class ReservationApiController {
 
+	private int price;
 	private String tId;
 	private String partnerOrderId;
 	private String partnerUserId;
@@ -61,6 +63,9 @@ public class ReservationApiController {
 
 	@Autowired
 	private AmountService amountService;
+
+	@Autowired
+	private UserService userService;
 
 	@PostMapping("/time-check/{storeId}")
 	public ResponseDto<?> timeCheck(@PathVariable int storeId, @RequestBody ReservationDateDto timeDto) {
@@ -118,7 +123,7 @@ public class ReservationApiController {
 								// 찾는 날 < 예약된 날
 							} else if (startDay < findDay) {
 								seats.add(findSeat);
-								
+
 							}
 							// 찾는 달 < 예약된 달
 						} else if (startMonth < findMonth) {
@@ -135,10 +140,12 @@ public class ReservationApiController {
 		return new ResponseDto<>(false, "잘못된 선택입니다.");
 	}
 
-	@PostMapping("/kakaopay/ready/{storeId}/{seats}")
+	@PostMapping("/kakaopay/ready/{storeId}/{seats}/{isUsePoint}")
 	public ResponseDto<?> kakaopayReady(@PathVariable List<Integer> seats, @PathVariable int storeId,
-			@RequestParam Map<String, String> reservationDate, @RequestBody Reservation reservation,
+			@PathVariable(required = false) boolean isUsePoint, @RequestBody Reservation reservation,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
+		System.out.println(isUsePoint);
+		User userEntity = userService.findById(principalDetails.getUser().getId());
 		Store storeEntity = storeService.findById(storeId);
 		Object objOrderId = reservation.getId();
 		partnerOrderId = objOrderId.toString();
@@ -159,7 +166,20 @@ public class ReservationApiController {
 
 		httpHeaders.add("Authorization", "KakaoAK 1c9e66dbc0a2e55b9b2e3016e90a8b17");
 		httpHeaders.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
+		if (isUsePoint) {
+			Map<String, Integer> priceAndPoint = usePoint(reservation.getPrice(),
+					userEntity.getPoint());
+			price = priceAndPoint.get("price");
+			totalPrice = "100";
+			int point = priceAndPoint.get("point");
+			userService.deductionPoint(userEntity, point);
+		} else {
+			price = reservation.getPrice();
+		}
 
+		KakaoPaymentDto kakaoPaymentDto = null;
+		if (Integer.parseInt(totalPrice) > 0) {
+			
 		MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 		params.add("cid", "TC0ONETIME");
 		params.add("partner_order_id", partnerOrderId);
@@ -176,17 +196,36 @@ public class ReservationApiController {
 
 		ResponseEntity<KakaoPaymentDto> responseKakao = restTemplate.exchange("https://kapi.kakao.com/v1/payment/ready",
 				HttpMethod.POST, requestKakao, KakaoPaymentDto.class);
-		KakaoPaymentDto kakaoPaymentDto = responseKakao.getBody();
+		kakaoPaymentDto = responseKakao.getBody();
 
 		tId = kakaoPaymentDto.tid;
-		int price = reservation.getPrice();
-		seats.forEach(seatNumber -> {
+		} else {
+			MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
+			params.add("cid", "TC0ONETIME");
+			params.add("partner_order_id", partnerOrderId);
+			params.add("partner_user_id", partnerUserId);
+			params.add("item_name", itemName);
+			params.add("quantity", quantity);
+			params.add("total_amount", totalPrice);
+			params.add("tax_free_amount", "50");
+			params.add("approval_url", "http://localhost:7777/api/reservation/kakaopay/approve");
+			params.add("cancel_url", "http://localhost:7777/reservation/cancel/" + seats.size());
+			params.add("fail_url", "http://localhost:7777/reservation/cancel/" + seats.size());
 			
+			HttpEntity<MultiValueMap<String, String>> requestKakao = new HttpEntity<>(params, httpHeaders);
+			
+			ResponseEntity<KakaoPaymentDto> responseKakao = restTemplate.exchange("https://kapi.kakao.com/v1/payment/ready",
+					HttpMethod.POST, requestKakao, KakaoPaymentDto.class);
+			kakaoPaymentDto = responseKakao.getBody();
+			
+			tId = kakaoPaymentDto.tid;
+		}
+		seats.forEach(seatNumber -> {
 			Reservation reservationEntity = new Reservation();
 			reservationEntity.setApproveStatus(ApproveStatus.WAITING);
 			reservationEntity.setPaymentType(PaymentType.KAKAO);
 			reservationEntity.setStore(storeEntity);
-			reservationEntity.setUser(principalDetails.getUser());
+			reservationEntity.setUser(userEntity);
 			reservationEntity.setPrice(price / seats.size());
 			reservationEntity.setReservationSeat(seatNumber);
 			reservationEntity.setReservationDate(reservation.getReservationDate());
@@ -280,5 +319,17 @@ public class ReservationApiController {
 		} catch (Exception e) {
 			return new ResponseDto<>(false, "거절 실패 !");
 		}
+	}
+
+	private Map<String, Integer> usePoint(int price, int point) {
+		Map<String, Integer> map = new HashMap<>();
+		if (price >= point) {
+			map.put("price", (price - point));
+			map.put("point", 0);
+		} else {
+			map.put("price", 0);
+			map.put("point", (point - price));
+		}
+		return map;
 	}
 }
