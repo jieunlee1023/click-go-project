@@ -18,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
+import com.clickgo.project.dto.res.chart.CategorySales;
+import com.clickgo.project.dto.res.chart.MySales;
+import com.clickgo.project.dto.res.chart.Sales;
 import com.clickgo.project.entity.Admin;
 import com.clickgo.project.entity.OneToOneAnswer;
 import com.clickgo.project.entity.OneToOneAsk;
@@ -26,9 +29,7 @@ import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
-import com.clickgo.project.model.chart.CategorySales;
-import com.clickgo.project.model.chart.MySales;
-import com.clickgo.project.model.chart.Sales;
+import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.service.AdminService;
 import com.clickgo.project.service.OneToOneAnswerService;
 import com.clickgo.project.service.OneToOneAskService;
@@ -408,4 +409,8 @@ public class AdminController {
 		}
 		return "/admin/chart/category/sales/this-year";
 	}
+	
+	
+	
+	
 }

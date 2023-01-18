@@ -64,6 +64,36 @@ values('host9', '19@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r
 insert into user(username, email, createDate, password, phoneNumber, role, loginType)
 values('host10', '20@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-6485-4454', 'HOST', 'CLICKGO');
 
+-- 다른 년 , 달 가입 host 
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('host11', 'asdeasd@naver.com', '2022-02-01 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-6485-4454', 'HOST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('host12', 'asdasweeda@naver.com', '2022-02-02 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-6485-4454', 'HOST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('host13', 'asdasdqwes@naver.com', '2022-02-03 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-6485-4454', 'HOST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('host14', 'asdaqwesd@naver.com', '2022-02-04 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-6485-4454', 'HOST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('host15', 'aswqqweed@naver.com', '2022-02-05 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-6485-4454', 'HOST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('host16', 'asdqwweeee@naver.com', '2022-02-06 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-6485-4454', 'HOST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('host17', 'qweeasd@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-6485-4454', 'HOST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('host18', 'qweeasd1@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-6485-4454', 'HOST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('host19', 'qweeasdsd@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-6485-4454', 'HOST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('host20', 'qweeasasdd@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-6485-4454', 'HOST', 'CLICKGO');
 
 /*GEUST*/
 insert into user(username, email, createDate, password, phoneNumber, role, loginType)
@@ -95,3 +125,34 @@ values('user9', '29@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r
 
 insert into user(username, email, createDate, password, phoneNumber, role, loginType)
 values('user10', '30@naver.com', now(), '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
+
+-- 다른 년 , 달 가입 geust
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('user11', '32130@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('user12', '32121330@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('user13', '3213we0@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('user14', '321301234@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('user15', '3222130@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('user16', '3213dd0@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('user17', 'aa32130@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('user18', '3ss2130@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('user19', 'qq32130@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');
+
+insert into user(username, email, createDate, password, phoneNumber, role, loginType)
+values('user20', 'cvv32130@naver.com', '2022-02-07 14:30:20', '$2a$12$HFJII9Y8xTiWW0n4YOBWQew7CmBzCvD6r0ApzEJRlpWY3v3Fb8Srq', '010-7891-7893', 'GEUST', 'CLICKGO');

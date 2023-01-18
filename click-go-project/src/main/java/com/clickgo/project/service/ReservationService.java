@@ -9,10 +9,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.clickgo.project.dto.res.chart.AWeekStoreSales;
+import com.clickgo.project.dto.res.chart.TodayStoreSales;
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.User;
-import com.clickgo.project.model.chart.AWeekStoreSales;
-import com.clickgo.project.model.chart.TodayStoreSales;
 import com.clickgo.project.model.enums.ApproveStatus;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.mydate.MyDate;

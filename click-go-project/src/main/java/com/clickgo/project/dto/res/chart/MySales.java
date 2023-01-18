@@ -1,4 +1,4 @@
-package com.clickgo.project.model.chart;
+package com.clickgo.project.dto.res.chart;
 
 import lombok.Data;
 
