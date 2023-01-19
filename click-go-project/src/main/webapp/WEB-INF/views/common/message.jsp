@@ -20,26 +20,22 @@
 	border-top: 1px solid #ddd;
 	border-right: 1px solid #ddd;
 	padding: 20px;
-	border-bottom: 1px solid #222;
 	text-align: center;
 }
 
 .tabs li.active {
 	background: #fff;
-	border-top: 1px solid #222;
-	border-left: 1px solid #222;
-	border-right: 1px solid #222;
 	border-bottom: 0;
 }
 
 .tabs li.active a {
-	color: #0051a4;
+	color: grey;
 	font-weight: 500;
 }
 
 .tabs li a {
 	font-size: 14px;
-	color: #222;
+	color: black;
 	display: block;
 	width: 100%;
 	height: 100%;
@@ -64,24 +60,25 @@
 						<button type="button" class="close" data-dismiss="modal">×</button>
 						<div class="tabs">
 							<ul>
-								<li class="active"><a href="#" rel="tab1">쪽지보내기</a></li>
-								<li><a href="#" rel="tab2">내 쪽지함</a></li>
+								<li class="active"><a href="#" rel="tab1">📩 쪽지보내기</a></li>
+								<li><a href="#" rel="tab2">💬 내 쪽지함</a></li>
 							</ul>
 						</div>
 						<div id="tab1" class="tab_content">
 							<div class="modal-body">
 								<c:forEach var="reservation"
 									items="${sessionScope.reservationeds}">
-									<div class="d-flex justify-content-between">
-										<div>${reservation.store.storeName}</div>
+									<div class="d-flex justify-content-between mr-3 ml-3">
+										<div>📌 ${reservation.store.storeName}(
+											${reservation.store.category.id} )</div>
 										<div>
-											${reservation.store.category.id}
+
 											<button
 												onclick="sendMessageToHost(`${reservation.store.id}`,`${reservation.store.storeName}`);"
-												class="btn btn-outline-primary">쪽지보내기</button>
+												class="btn btn-outline-dark ">쪽지보내기</button>
 										</div>
 									</div>
-									<div style="border: solid 1px gray; margin: 10px;"></div>
+									<div style="border: dotted 1px gray; margin: 10px;"></div>
 								</c:forEach>
 							</div>
 						</div>
@@ -90,11 +87,11 @@
 								<c:forEach var="myNote" items="${sessionScope.myNoteList}">
 									<table class="modal_table mt-3" id="table--${myNote.id}">
 										<tr>
-											<td id="modal_userID">${myNote.store.storeName}가게 사장님</td>
+											<td id="modal_userID">📌 ${myNote.store.storeName} 사장님</td>
 											<td id="modal_userFollow">
 												<button
 													onclick="resendMessageToHOST(`${myNote.content}`,`${myNote.store.storeName}`,`${myNote.id}`);"
-													class="btn btn-outline-primary">답장하기</button>
+													class="btn btn-outline-dark">답장하기</button>
 											</td>
 										</tr>
 									</table>
@@ -118,7 +115,7 @@
 				<div class="modal-content">
 					<div class="modal-header">
 						<!-- //모달창의 header 부분에 해당한다.  -->
-						<h4 class="modal-title">💬쪽지함</h4>
+						<h4 class="modal-title">💬 쪽지함</h4>
 						<button type="button" class="close" data-dismiss="modal">×</button>
 
 					</div>
@@ -126,11 +123,11 @@
 						<c:forEach var="note" items="${sessionScope.noteList}">
 							<table class="modal_table mt-3" id="table--${note.id}">
 								<tr>
-									<td id="modal_userID">${note.user.username}유저</td>
+									<td id="modal_userID">📌 ${note.user.username} 님</td>
 									<td id="modal_userFollow">
 										<button
 											onclick="sendMessageToGeust(`${note.content}`,`${note.user.username}`,`${note.id}`);"
-											class="btn btn-outline-primary">답장하기</button>
+											class="btn btn-outline-dark">답장하기</button>
 									</td>
 								</tr>
 							</table>
