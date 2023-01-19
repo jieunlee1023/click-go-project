@@ -69,6 +69,11 @@
 				</ul></li>
 		</ul>
 	</div>
+	<div class="nav--list">
+			<ul>
+				<li><a class="nav-link" href="/admin/chart/signup-stats/this-month">가입현황</a>
+			</ul>
+		</div>
 </div>
 <div class="d-flex justify-content-center">
 <div id="chart--today" style="width: 90%; height: 800px;"></div>

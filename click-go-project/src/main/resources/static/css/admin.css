@@ -559,3 +559,9 @@
 	border: 2px dotted black;
 	border-radius: 10px;
 }
+
+/** 회원 통계 차트 */
+.signup-stats-chart{
+	width: 70vw;
+	height: 70vh;
+}

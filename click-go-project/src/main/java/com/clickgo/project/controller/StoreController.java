@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.clickgo.project.auth.PrincipalDetails;
+import com.clickgo.project.dto.res.chart.AWeekStoreSales;
+import com.clickgo.project.dto.res.chart.TodayStoreSales;
 import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.Caution;
 import com.clickgo.project.entity.Image;
@@ -30,8 +32,6 @@ import com.clickgo.project.entity.Review;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
 import com.clickgo.project.entity.User;
-import com.clickgo.project.model.chart.AWeekStoreSales;
-import com.clickgo.project.model.chart.TodayStoreSales;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.enums.StoreCategory;
 import com.clickgo.project.model.mydate.MyDate;

@@ -9,10 +9,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.clickgo.project.dto.res.chart.AWeekStoreSales;
+import com.clickgo.project.dto.res.chart.TodayStoreSales;
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.User;
-import com.clickgo.project.model.chart.AWeekStoreSales;
-import com.clickgo.project.model.chart.TodayStoreSales;
 import com.clickgo.project.model.enums.ApproveStatus;
 import com.clickgo.project.model.enums.RoleType;
 import com.clickgo.project.model.mydate.MyDate;
@@ -25,6 +25,9 @@ public class ReservationService {
 
 	@Autowired
 	private IReservationRepository ireservationRepository;
+
+	@Autowired
+	private UserService userService;
 
 	@Transactional
 	public Page<Reservation> searchBoard(User user, Pageable pageable) {
@@ -49,7 +52,7 @@ public class ReservationService {
 	public List<Reservation> findByStoreId(int storeId) {
 		return ireservationRepository.findByStoreId(storeId);
 	}
-	
+
 	public List<Reservation> findSeatByStoreId(int storeId) {
 		return ireservationRepository.findSeatByStoreId(storeId);
 	}
@@ -159,7 +162,7 @@ public class ReservationService {
 	public Page<Reservation> findAllPage(Pageable pageable) {
 		return ireservationRepository.findAll(pageable);
 	}
-	
+
 	@Transactional
 	public List<Reservation> findAll() {
 		return ireservationRepository.findAll();

@@ -25,10 +25,12 @@ import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.StoreFranchise;
+import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.ApproveStatus;
 import com.clickgo.project.service.ReservationService;
 import com.clickgo.project.service.StoreFranchiseService;
 import com.clickgo.project.service.StoreService;
+import com.clickgo.project.service.UserService;
 
 @Controller
 @RequestMapping("/reservation")
@@ -42,15 +44,18 @@ public class ReservationController {
 
 	@Autowired
 	private StoreFranchiseService franchiseService;
+	
+	@Autowired
+	private UserService userService;
 
 	@PostMapping("/{storeId}")
-
 	public String reservation(@RequestParam(required = false) String paymentType,
 			@RequestParam(required = false) Integer[] seatNumber, @PathVariable int storeId,
 			@RequestParam String startTime, @RequestParam String endTime, @RequestParam String startDate,
 			@RequestParam String endDate, @AuthenticationPrincipal PrincipalDetails principalDetails, Model model)
 			throws InterruptedException {
 		try {
+			User userEntity = userService.findById(principalDetails.getUser().getId());
 			Store storeEntity = storeService.findById(storeId);
 			int endHour = 0;
 			int endMinute = 0;
@@ -121,19 +126,19 @@ public class ReservationController {
 						if (startMinute > endMinute) {
 							if (startMinute - endMinute == 10) {
 								int minute = (minuteToHour - 10);
-								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+								reservationEntity.setPrice((storeEntity.getPrice() * minute)/10);
 							} else if (startMinute - endMinute == 20) {
 								int minute = (minuteToHour - 20);
-								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+								reservationEntity.setPrice((storeEntity.getPrice() * minute)/10);
 							} else if (startMinute - endMinute == 30) {
 								int minute = (minuteToHour - 30);
-								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+								reservationEntity.setPrice((storeEntity.getPrice() * minute)/10);
 							} else if (startMinute - endMinute == 40) {
 								int minute = (minuteToHour - 40);
-								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+								reservationEntity.setPrice((storeEntity.getPrice() * minute)/10);
 							} else if (startMinute - endMinute == 50) {
 								int minute = (minuteToHour - 50);
-								reservationEntity.setPrice((storeEntity.getPrice() * minute));
+								reservationEntity.setPrice((storeEntity.getPrice() * minute)/10);
 							}
 						} else if (startMinute == endMinute) {
 							int minute = minuteToHour;
@@ -145,7 +150,7 @@ public class ReservationController {
 					}
 					reservationEntity.setApproveStatus(ApproveStatus.WAITING);
 					reservationEntity.setReservationSeat(seatNumber[i]);
-					reservationEntity.setUser(principalDetails.getUser());
+					reservationEntity.setUser(userEntity);
 					reservationEntity.setStore(storeEntity);
 					reservationEntity.setReservationTime(startHour + ":" + startMinute);
 					reservationEntity.setEndTime(endHour + ":" + endMinute);
@@ -154,6 +159,7 @@ public class ReservationController {
 					reservations.add(reservationEntity);
 					model.addAttribute("reservationEntity", reservationEntity);
 				}
+				model.addAttribute("user", userEntity);
 				model.addAttribute("reservations", reservations);
 				model.addAttribute("store", storeEntity);
 				return "/store/payment";

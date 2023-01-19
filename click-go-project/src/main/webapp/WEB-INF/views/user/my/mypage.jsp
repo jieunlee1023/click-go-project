@@ -3,9 +3,9 @@
 
 <%@ include file="../../layout/header.jsp"%>
 
-<input type="hidden" value="${principal.user.id}" id="user-id">
+<input type="hidden" value="${user.id}" id="user-id">
 <c:choose>
-	<c:when test="${principal.user.role eq 'GEUST'}">
+	<c:when test="${user.role eq 'GEUST'}">
 		<div class="container" id="mypage">
 
 			<div class="d-flexr" id="view-more-title"
@@ -18,8 +18,9 @@
 
 			<br>
 			<h4 id="mypage--title">반갑습니다.</h4>
-			<h4 id="mypage--title">" ${principal.user.username} " 님,</h4>
+			<h4 id="mypage--title">" ${user.username} " 님,</h4>
 			<h4 id="mypage--title">최고의 서비스로 모시겠습니다.</h4>
+			<h5 id="mypage--title">포인트 : ${user.point}P</h5>
 		</div>
 		<br>
 		<div class="container d-flex justify-content-center"
@@ -95,7 +96,7 @@
 
 			<br>
 			<h4 id="mypage--title">반갑습니다.</h4>
-			<h4 id="mypage--title">" ${principal.user.username} "</h4>
+			<h4 id="mypage--title">" ${user.username} "</h4>
 			<h4 id="mypage--title">가맹점주님</h4>
 			<h4 id="mypage--title">최고의 서비스로 모시겠습니다.</h4>
 		</div>

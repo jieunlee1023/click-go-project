@@ -14,6 +14,7 @@ import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.ResponseDto;
 import com.clickgo.project.entity.Caution;
 import com.clickgo.project.entity.User;
+import com.clickgo.project.repository.StatsRepository;
 import com.clickgo.project.service.UserService;
 
 @RestController
@@ -63,4 +64,7 @@ public class AdminApiController {
 		boolean success = userService.cancelBlacklist(user);
 		return new ResponseDto<>(success, "고유번호 (" + user.getId() + ")님을 정지해제 시켰습니다.");
 	}
+	
+	
+	
 }

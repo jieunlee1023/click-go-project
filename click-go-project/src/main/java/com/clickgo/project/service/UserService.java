@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.datetime.DateFormatter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -161,11 +162,8 @@ public class UserService {
 		int idx = 0;
 		for (int i = 0; i < 10; i++) {
 			idx = (int) (charSet.length * Math.random());
-			System.out.println(idx);
 			str += charSet[idx];
 		}
-		System.out.println("!!");
-		System.out.println(str);
 		return str;
 	}
 
@@ -260,5 +258,14 @@ public class UserService {
 			}
 		});
 		return true;
+	}
+
+	@Transactional
+	public void deductionPoint(User user, int point) {
+		User userEntity = userRepository.findById(user.getId()).orElseThrow(() -> {
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다.");
+		});
+
+		userEntity.setPoint(point);
 	}
 }

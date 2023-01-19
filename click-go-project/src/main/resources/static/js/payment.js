@@ -7,6 +7,8 @@ let index = {
 	
 	kakaopay: function() {
 		let reservatinoCount = $("#reservationCount").val();
+		let isUsePoint = $("#isUsePoint").val();
+		alert(isUsePoint);
 		let seats = new Array();
 		for (let i = 0; i < reservatinoCount; i++) {
 			seats.push($(`#reservationSeat-${i}`).text());
@@ -21,7 +23,7 @@ let index = {
 		}
 		$.ajax({
 			type: 'post',
-			url: `/api/reservation/kakaopay/ready/${storeId}/${seats}`,
+			url: `/api/reservation/kakaopay/ready/${storeId}/${seats}/${isUsePoint}`,
 			data: JSON.stringify(data),
 			contentType: "application/json; charset=UTF-8",
 			dataType: "json"
