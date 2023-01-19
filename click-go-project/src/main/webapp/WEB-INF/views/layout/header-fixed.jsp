@@ -73,7 +73,6 @@
 					<div class="nav--list">
 						<ul id="nav--item">
 							<li><a class="nav-link" href="/">홈</a></li>
-													<li><a class="nav-link" href="#">메시지</a></li>
 							<li><a class="nav-link" href="/store/main">상점</a></li>
 							<li id="more--view"><a class="nav-link" href="#">더보기</a>
 								<ul id="nave--moreview--item">
@@ -93,7 +92,7 @@
 					<div class="nav--list">
 						<ul id="nav--item">
 							<li><a class="nav-link" href="/">홈</a></li>
-													<li><a class="nav-link" href="#">메시지</a></li>
+							<li><a class="nav-link" href="#">📫메시지</a></li>
 							<li><a class="nav-link" href="/store/main">상점</a></li>
 							<li id="more--view"><a class="nav-link" href="#">더보기</a>
 								<ul id="nave--moreview--item">
@@ -104,7 +103,7 @@
 									<li><a class="dropdown-item" href="/view-more/terms-list">약관 및 정책</a></li>
 								</ul></li>
 							<li><a class="nav-link" href="/admin/main">관리자</a></li>
-														<li><a class="nav-link" href="/m-logout">로그아웃</a></li>
+							<li><a class="nav-link" href="/m-logout">로그아웃</a></li>
 						</ul>
 					</div>
 				</c:when>
@@ -113,7 +112,7 @@
 					<div class="nav--list">
 						<ul id="nav--item">
 							<li><a class="nav-link" href="/">홈</a></li>
-													<li><a class="nav-link" href="#">메시지</a></li>
+							<li><a class="nav-link" id="follower" href="#">📫메시지</a></li>
 							<li><a class="nav-link" href="/store/main">상점</a></li>
 							<li id="more--view"><a class="nav-link" href="#">가맹점</a>
 								<ul id="nave--moreview--item">
@@ -138,5 +137,11 @@
 			</c:choose>
 		</div>
 	</div>
+	<%@ include file="../common/message.jsp"%>
+	<script type="text/javascript">
+	 $('#follower').click(function(){
+			$('#followModal').modal();
+	 	 });
+	</script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>

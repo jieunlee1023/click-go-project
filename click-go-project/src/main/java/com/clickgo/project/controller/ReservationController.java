@@ -218,4 +218,8 @@ public class ReservationController {
 		model.addAttribute("waitMsg", waitMsg);
 	}
 	
+	
+	
+	
+	
 }

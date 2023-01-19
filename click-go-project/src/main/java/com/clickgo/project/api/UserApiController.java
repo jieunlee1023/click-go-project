@@ -1,5 +1,6 @@
 package com.clickgo.project.api;
 
+import java.util.List;
 import java.util.Properties;
 
 import javax.mail.Authenticator;
@@ -28,14 +29,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.clickgo.project.auth.PrincipalDetails;
 import com.clickgo.project.dto.res.ResponseDto;
+import com.clickgo.project.entity.Note;
+import com.clickgo.project.entity.Reservation;
+import com.clickgo.project.entity.Store;
 import com.clickgo.project.entity.User;
 import com.clickgo.project.model.enums.LoginType;
+import com.clickgo.project.model.enums.NoteType;
+import com.clickgo.project.repository.IReservationRepository;
+import com.clickgo.project.service.NoteService;
+import com.clickgo.project.service.ReservationService;
+import com.clickgo.project.service.StoreService;
 import com.clickgo.project.service.UserService;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import lombok.RequiredArgsConstructor;
 
@@ -50,8 +62,12 @@ public class UserApiController {
 	@Value("${mail.id}")
 	private String id;
 
+	private final NoteService noteService;
 	private final UserService userService;
+	private final StoreService storeService;
+	
 	private final AuthenticationManager authenticationManager;
+	private final ReservationService reservationService;
 
 	@PostMapping("/sign-up")
 	public ResponseDto<?> signUp(@Valid @RequestBody User user, Model model) {
@@ -99,22 +115,22 @@ public class UserApiController {
 	// 비밀번호 찾기
 	@PostMapping("/send-mail")
 	public ResponseDto<?> mailSend(@RequestBody User user) {
-		
-		User userEntity = userService.searchPassword(user.getUsername(), user.getEmail());
+
+		User userEntity = userService.searchPassword(user.getUsername(), user.getEmail()); 
 		LoginType lognType;
 		try {
 			lognType = userEntity.getLoginType();
 		} catch (Exception e) {
 			lognType = LoginType.CLICKGO;
 		}
-		
-		if(lognType != LoginType.CLICKGO) {
+
+		if (lognType != LoginType.CLICKGO) {
 			return new ResponseDto<String>(false, new String("소셜회원은 아이디/비밀번호를 찾을 수 없습니다. 관리자에게 문의해주세요"));
 		}
 		return new ResponseDto<>(true, naverMailSend(userEntity.getEmail()));
 	}
 
-	public int naverMailSend(String email) {
+	public int naverMailSend(String email) { 
 		String host = "smtp.naver.com";
 		// 테스트후 개인정보 보안상 비밀번호는 지워주세요
 
@@ -176,7 +192,60 @@ public class UserApiController {
 			return -1;
 		}
 	}
-	
 
+	// 과거에 갔던 가게 리스트 보기(10개)
+	@GetMapping("/reservationed")
+	public ResponseDto<?> sendMessage(@AuthenticationPrincipal PrincipalDetails principalDetails, Model model) {
+		System.err.println("들어옴?");
+		List<Reservation> reservationedList = reservationService
+				.findReservationedUser(principalDetails.getUser().getId());
+		
+		ObjectMapper mapper = new ObjectMapper();
+		String array = "";
+		try {
+			array = mapper.writeValueAsString(reservationedList);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		return new ResponseDto<>(true, array);
+	}
+	
+	// 과거에 갔던 가게 쪽지보내기
+	@PostMapping("/send-message/{storeId}")
+	public void sendMessage(@RequestBody Note note, @PathVariable int storeId, @AuthenticationPrincipal PrincipalDetails details) {
+		
+		Store storeEntity = storeService.findById(storeId);
+		note.setNoteType(NoteType.STORE);
+		note.setUser(details.getUser());
+		note.setStore(storeEntity);
+		noteService.noteSave(note);
+		// 해당하는 가게 host한테 쪽지보내기
+		
+	}
+	
+	
+	@PostMapping("/check-message/{noteId}")
+	public ResponseDto<?> checkMessage( @PathVariable int noteId, @AuthenticationPrincipal PrincipalDetails details, @RequestBody Note note) {
+		Note noteEntity = noteService.checkMessage(noteId); 
+		
+		note.setNoteType(NoteType.USER);
+		note.setStore(noteEntity.getStore());
+		note.setUser(noteEntity.getUser());
+		note.setChecked(false);
+		noteService.noteSave(note);
+		return new ResponseDto<>(true, noteId);
+	}
+
+	@PostMapping("/resend-message/{noteId}")
+	public ResponseDto<?> resendMessage( @PathVariable int noteId, @AuthenticationPrincipal PrincipalDetails details, @RequestBody Note note) {
+		Note noteEntity = noteService.checkMessage(noteId); 
+		
+		note.setNoteType(NoteType.STORE);
+		note.setStore(noteEntity.getStore());
+		note.setUser(noteEntity.getUser());
+		note.setChecked(false);
+		noteService.noteSave(note);
+		return new ResponseDto<>(true, noteId);
+	}
 
 }

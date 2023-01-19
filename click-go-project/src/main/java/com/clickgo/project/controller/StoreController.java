@@ -24,6 +24,7 @@ import com.clickgo.project.entity.Category;
 import com.clickgo.project.entity.Caution;
 import com.clickgo.project.entity.Image;
 import com.clickgo.project.entity.LikeStore;
+import com.clickgo.project.entity.Note;
 import com.clickgo.project.entity.Reservation;
 import com.clickgo.project.entity.Review;
 import com.clickgo.project.entity.Store;
@@ -39,6 +40,7 @@ import com.clickgo.project.repository.ILikeStoreRepository;
 import com.clickgo.project.repository.IStoreRepository;
 import com.clickgo.project.service.CategoryService;
 import com.clickgo.project.service.CautionService;
+import com.clickgo.project.service.NoteService;
 import com.clickgo.project.service.ReservationService;
 import com.clickgo.project.service.ReviewService;
 import com.clickgo.project.service.StoreFranchiseService;
@@ -79,17 +81,29 @@ public class StoreController {
 	@Autowired
 	private CautionService cautionService;
 
+	@Autowired
+	private NoteService noteService;
+	
 	private Page<Store> stores;
 
 	@GetMapping({ "/main", "/search" })
 	public String store(@RequestParam(required = false) String q, @RequestParam(required = false) String pageName,
-			Model model, @PageableDefault(size =12, sort = "id", direction = Direction.DESC) Pageable pageable,
+			Model model, @PageableDefault(size = 12, sort = "id", direction = Direction.DESC) Pageable pageable,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
 		String searchName = q == null ? "" : q;
 		Map<Integer, Integer> starScoreMap = new HashMap<>();
 		List<StoreCategory> categories = new ArrayList<>();
 		List<Review> reviews = new ArrayList<>();
 		List<Category> categoryEntitys = categoryService.findAll();
+		if (principalDetails != null) { // ㅁㅁ
+			List<Reservation> reservationeds = reservationService
+					.findReservationedUser(principalDetails.getUser().getId());
+			model.addAttribute("reservationeds", reservationeds);
+			List<Note> noteList = noteService.readMessages(principalDetails.getUser().getId());
+			model.addAttribute("noteList", noteList);
+		
+		
+		}
 		categoryEntitys.forEach(t -> {
 			categories.add(t.getId());
 		});

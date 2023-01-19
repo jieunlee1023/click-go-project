@@ -92,6 +92,7 @@ public class ReservationService {
 		reservation.setApproveStatus(ApproveStatus.REJECT);
 	}
 
+	// 어디서 사용됨?
 	@Transactional
 	public List<Reservation> findByStoreIdAndNotReject(int storeId) {
 		return ireservationRepository.findByStoreIdAndNotReject(storeId);
@@ -195,10 +196,9 @@ public class ReservationService {
 		}
 		return storeSales;
 	}
-//	@Transactional
-//	public Page<Reservation> searchReservation(String q, Pageable pageable) {
-//		return ireservationRepository.findByStoreNameContaining(q, pageable);
-//	}
 
-	
+	@Transactional
+	public List<Reservation> findReservationedUser(int userId) {
+		return ireservationRepository.findReservationedUser(userId);
+	}
 }
