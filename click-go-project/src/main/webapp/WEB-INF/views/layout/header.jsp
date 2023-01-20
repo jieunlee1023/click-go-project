@@ -131,9 +131,7 @@
 				<c:when test="${principal.user.role eq 'ADMIN'}">
 					<div class="nav--list">
 						<ul id="nav--item">
-							<li><a class="nav-link" id="follower" href="#">📫</a></li>
 							<li><a class="nav-link" href="/">홈</a></li>
-							<li><a class="nav-link" href="#">메시지</a></li>
 							<li><a class="nav-link" href="/store/main">상점</a></li>
 							<li><a class="nav-link"
 								href="/storeFranchise/store-franchise-list">가맹점 목록</a></li>

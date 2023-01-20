@@ -653,67 +653,67 @@ values('APPROVED', now(), '2023-01-13', '2023-01-13', '10:30', '12:30', 'KAKAO',
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-14', '2023-01-14', '15:30', '18:30', 'KAKAO', 12000, 12,  12,  21);
+values('APPROVED', now(), '2023-01-14', '2023-01-14', '15:30', '18:30', 'KAKAO', 12000, 12,  12,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-15', '2023-01-15', '15:30', '18:30', 'KAKAO', 12000, 12,  12,  21);
+values('APPROVED', now(), '2023-01-15', '2023-01-15', '15:30', '18:30', 'KAKAO', 12000, 12,  12,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-15', '2023-01-15', '15:30', '18:30', 'KAKAO', 15000, 12,  26,  21);
+values('REJECT', now(), '2023-01-15', '2023-01-15', '15:30', '18:30', 'KAKAO', 15000, 12,  26,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-15', '2023-01-15', '15:30', '18:30', 'KAKAO', 15000, 12,  36,  21);
+values('APPROVED', now(), '2023-01-15', '2023-01-15', '15:30', '18:30', 'KAKAO', 15000, 12,  36,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-16', '2023-01-16', '15:30', '18:30', 'KAKAO', 12000, 12,  12,  21);
+values('REJECT', now(), '2023-01-16', '2023-01-16', '15:30', '18:30', 'KAKAO', 12000, 12,  12,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-16', '2023-01-16', '15:30', '18:30', 'KAKAO', 15000, 12,  26,  21);
+values('REJECT', now(), '2023-01-16', '2023-01-16', '15:30', '18:30', 'KAKAO', 15000, 12,  26,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-16', '2023-01-16', '15:30', '18:30', 'KAKAO', 12000, 12,  36,  21);
+values('APPROVED', now(), '2023-01-16', '2023-01-16', '15:30', '18:30', 'KAKAO', 12000, 12,  36,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-17', '2023-01-17', '15:30', '18:30', 'KAKAO', 30000, 12,  12,  21);
+values('APPROVED', now(), '2023-01-17', '2023-01-17', '15:30', '18:30', 'KAKAO', 30000, 12,  12,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-17', '2023-01-17', '15:30', '18:30', 'KAKAO', 30000, 12,  26,  21);
+values('REJECT', now(), '2023-01-17', '2023-01-17', '15:30', '18:30', 'KAKAO', 30000, 12,  26,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-17', '2023-01-17', '11:30', '12:30', 'KAKAO', 15000, 12,  36,  21);
+values('REJECT', now(), '2023-01-17', '2023-01-17', '11:30', '12:30', 'KAKAO', 15000, 12,  36,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-17', '2023-01-17', '11:30', '12:30', 'KAKAO', 15000, 12,  12,  21);
+values('APPROVED', now(), '2023-01-17', '2023-01-17', '11:30', '12:30', 'KAKAO', 15000, 12,  12,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-17', '2023-01-17', '11:30', '12:30', 'KAKAO', 15000, 12,  26,  21);
+values('APPROVED', now(), '2023-01-17', '2023-01-17', '11:30', '12:30', 'KAKAO', 15000, 12,  26,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-17', '2023-01-17', '11:30', '12:30', 'KAKAO', 15000, 12,  36,  21);
+values('APPROVED', now(), '2023-01-17', '2023-01-17', '11:30', '12:30', 'KAKAO', 15000, 12,  36,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-17', '2023-01-17', '16:30', '17:30', 'KAKAO', 25000, 12,  36,  21);
+values('APPROVED', now(), '2023-01-17', '2023-01-17', '16:30', '17:30', 'KAKAO', 25000, 12,  36,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-17', '2023-01-17', '16:30', '17:30', 'KAKAO', 25000, 12,  12,  21);
+values('APPROVED', now(), '2023-01-17', '2023-01-17', '16:30', '17:30', 'KAKAO', 25000, 12,  12,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
-values('WAITING', now(), '2023-01-17', '2023-01-17', '16:30', '17:30', 'KAKAO', 25000, 12,  26,  21);
+values('APPROVED', now(), '2023-01-17', '2023-01-17', '16:30', '17:30', 'KAKAO', 25000, 12,  26,  21);
 
 insert into reservation(approveStatus, createDate, reservationDate, endDate, reservationTime, endTime, 
 paymentType, price, reservationSeat, storeId, userId)
