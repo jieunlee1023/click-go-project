@@ -33,12 +33,11 @@ public class ReservationScheduler {
 	@Autowired
 	private KakaoPaymentHistoryService kakaoPaymentHistoryService;
 
-	@Scheduled(cron = "10 * * * * ?", zone = "Asia/Seoul")
-	@Scheduled(cron = "20 * * * * ?", zone = "Asia/Seoul")
-	@Scheduled(cron = "30 * * * * ?", zone = "Asia/Seoul")
-	@Scheduled(cron = "40 * * * * ?", zone = "Asia/Seoul")
-	@Scheduled(cron = "50 * * * * ?", zone = "Asia/Seoul")
-	@Scheduled(cron = "0 * * * * ?", zone = "Asia/Seoul")
+	@Scheduled(cron = "30 10 * * * ?", zone = "Asia/Seoul")
+	@Scheduled(cron = "30 20 * * * ?", zone = "Asia/Seoul")
+	@Scheduled(cron = "30 30 * * * ?", zone = "Asia/Seoul")
+	@Scheduled(cron = "30 40 * * * ?", zone = "Asia/Seoul")
+	@Scheduled(cron = "30 50 * * * ?", zone = "Asia/Seoul")
 	public void test() {
 		MyDate myDate = new MyDate();
 		List<Reservation> reservations = reservationService.findAll();
@@ -61,8 +60,7 @@ public class ReservationScheduler {
 
 									String tid = kakaoPaymentHistoryEntity.getTid();
 
-									Object objCancelAmount = kakaoPaymentHistoryEntity.getAmount().getTotal();
-									String cancelAmount = objCancelAmount.toString();
+									String cancelAmount = String.valueOf(kakaoPaymentHistoryEntity.getAmount().getTotal());
 
 									Object objTaxFree = kakaoPaymentHistoryEntity.getAmount().getTaxFree();
 									String taxFree = objTaxFree.toString();

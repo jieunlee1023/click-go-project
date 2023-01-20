@@ -25,7 +25,7 @@
 		</c:when>
 		<c:otherwise>
 			<div class=" justify-content-center ">
-				
+
 				<div>
 					<div class="d-flex" style="align-items: flex-end;">
 						<c:choose>
@@ -73,8 +73,6 @@
 						</c:choose>
 
 						<input type="hidden" value="${store.id }" id="storeId">
-						<a class="nav-link" href="#">메시지 보내기</a> <input type="hidden"
-							value="${store.id }" id="storeId">
 						<c:if test="${store.user.id eq principal.user.id}">
 							<div class="store-detail-update">
 								<a href="/care-store/update/${store.id}">수정하기</a>
@@ -92,11 +90,12 @@
 						<p class="store-detail-tel">📞 : ${store.storeTEL}</p>
 					</c:otherwise>
 				</c:choose>
-				
-				<a class="" id="kakaotalk-sharing-btn" href="javascript:;">
-					<img src="/image/kakao.png" alt="카카오톡 공유 보내기 버튼" width="200px" />
-				</a>
 
+				<a class="" id="kakaotalk-sharing-btn" href="javascript:;"> <img
+					src="/image/kakao.png" alt="카카오톡 공유 보내기 버튼" width="200px" />
+				</a> <br>
+				<br>
+				<br>
 				<form action="/reservation/${store.id}" method="post"
 					id="doReservation">
 					<div class="justify-content-center">
