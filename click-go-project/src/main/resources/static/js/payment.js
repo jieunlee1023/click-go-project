@@ -8,7 +8,6 @@ let index = {
 	kakaopay: function() {
 		let reservatinoCount = $("#reservationCount").val();
 		let isUsePoint = $("#isUsePoint").val();
-		alert(isUsePoint);
 		let seats = new Array();
 		for (let i = 0; i < reservatinoCount; i++) {
 			seats.push($(`#reservationSeat-${i}`).text());

@@ -141,10 +141,8 @@ public class ReservationApiController {
 	}
 
 	@PostMapping("/kakaopay/ready/{storeId}/{seats}/{isUsePoint}")
-	public ResponseDto<?> kakaopayReady(@PathVariable List<Integer> seats, @PathVariable int storeId,
-			@PathVariable(required = false) boolean isUsePoint, @RequestBody Reservation reservation,
+	public ResponseDto<?> kakaopayReady(@PathVariable List<Integer> seats, @PathVariable int storeId, @RequestBody Reservation reservation,
 			@AuthenticationPrincipal PrincipalDetails principalDetails) {
-		System.out.println(isUsePoint);
 		User userEntity = userService.findById(principalDetails.getUser().getId());
 		Store storeEntity = storeService.findById(storeId);
 		Object objOrderId = reservation.getId();
@@ -166,16 +164,9 @@ public class ReservationApiController {
 
 		httpHeaders.add("Authorization", "KakaoAK 1c9e66dbc0a2e55b9b2e3016e90a8b17");
 		httpHeaders.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-		if (isUsePoint) {
-			Map<String, Integer> priceAndPoint = usePoint(reservation.getPrice(),
-					userEntity.getPoint());
-			price = priceAndPoint.get("price");
-			totalPrice = "100";
-			int point = priceAndPoint.get("point");
-			userService.deductionPoint(userEntity, point);
-		} else {
+		
 			price = reservation.getPrice();
-		}
+		
 
 		KakaoPaymentDto kakaoPaymentDto = null;
 		if (Integer.parseInt(totalPrice) > 0) {
