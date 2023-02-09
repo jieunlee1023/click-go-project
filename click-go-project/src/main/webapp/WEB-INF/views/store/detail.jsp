@@ -102,11 +102,11 @@
 						<div class="d-flex justify-content-center">
 							<div>
 								<input type="date" name="startDate" id="startDate"
-									value="${nowDate}" min="${nowDate}" max="${maxDate}">
+									value="2023-02-09" min="2023-02-09" max="${maxDate}">
 							</div>
 							<div>
 								<input type="date" name="endDate" id="endDate"
-									value="${nowDate}" min="${nowDate}" max="${maxDate}">
+									value="2023-02-09" min="2023-02-09" max="${maxDate}">
 							</div>
 							<div>
 								<input type="text" class="timepicker" name="startTime"
